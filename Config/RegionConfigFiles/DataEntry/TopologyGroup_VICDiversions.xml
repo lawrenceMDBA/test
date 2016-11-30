@@ -1,0 +1,23 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="VIC_Diversions_OPO">
+		<nodes id="ObservedProcessing.VIC_Diversions_OPO" name="VIC Diversions">
+			<node id="VIC_Diversions.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>VIC_Diversions.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="VIC_Diversions.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>VIC_Diversions.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+ 			<nodes id="VIC_Diversions.Telemetry" name="Review Telemetry">
+				<node id="VIC_Diversions.Process_QORDopo" name="Order">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>VIC_Diversions.Process_QORDopo</displayGroupId>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

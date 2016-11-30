@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--Compute subcatchment averages for display purposes-->
+	<variable>
+		<variableId>Merged_Forecast_subareas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Merged_Forecast_subcatchments</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Subcatchment_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subcatchments.$CATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="SubCatchAverageRainfall">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>Merged_Forecast_subareas</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>Merged_Forecast_subcatchments</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+</transformationModule>

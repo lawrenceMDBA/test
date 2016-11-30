@@ -1,0 +1,39 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="RMR_and_FMIT_OPO">
+		<nodes id="ObservedProcessing.RMR_and_FMIT_OPO" name="LMW RMR and FMIT">
+			<node id="RMR_and_FMIT.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>RMR_and_FMIT.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="RMR_and_FMIT.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>RMR_and_FMIT.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="RMR_and_FMIT.Telemetry" name="Review Telemetry">
+				<node id="RMR_and_FMIT.Process_Qopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>RMR_and_FMIT.Process_Qopo</displayGroupId>
+					<defaultModifierId>Q_select_OPO</defaultModifierId>
+					<visibleModifierGroup>Q_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="RMR_and_FMIT.Process_QORDopo" name="3 Day Order">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>RMR_and_FMIT.Process_QORDopo</displayGroupId>
+					<!--<defaultModifierId>QORD_select_OPO</defaultModifierId>
+					<visibleModifierGroup>QORD_OPO</visibleModifierGroup> -->
+					<localRun>false</localRun>
+				</node>
+				<node id="RMR_and_FMIT.Process_QORD.longtermopo" name="Longterm Order">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>RMR_and_FMIT.Process_QORD.longtermopo</displayGroupId>
+					<!-- <defaultModifierId>QORD.longterm_select_OPO</defaultModifierId>
+					<visibleModifierGroup>QORD.longterm_OPO</visibleModifierGroup> -->
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

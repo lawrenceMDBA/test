@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<!--H_obs-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_100.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_403234A</locationId>
+			<locationId>R_403235A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403235A_100</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_403235A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>-->
+	<!--Q_obs-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_400.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_403220B</locationId>
+			<locationId>R_403210B</locationId>	<!-- missing-->
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+	<!--Q_rated-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_400.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403241A</locationId>
+			<locationId>R_403242C</locationId>
+			<locationId>R_403213A</locationId>
+			<locationId>R_403227A</locationId>
+			<locationId>R_403205C</locationId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403242C_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403242C</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403213A_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403227A_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403227A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403205C_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403230A_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<!--TODO: <locationId>R_403210B</locationId>
+this Q_obs or Q_rated is missing! -->
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403210B_400</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_403210B</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<!--AT_comb-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_1900.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_comb</parameterId>
+			<locationId>R_083084</locationId>
+			<locationId>R_083085</locationId>
+			<locationId>R_083024</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083085_1900</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_comb</parameterId>
+			<locationId>R_083085</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083024_1900</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_comb</parameterId>
+			<locationId>R_083024</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<!--EVAP_obs-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_1950.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<locationId>R_083083</locationId>
+			<locationId>R_082039</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="2" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>082039_1950</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<locationId>R_082039</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="2" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<!--P_comb-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_2000.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_082039</locationId>
+			<locationId>R_083073</locationId>
+			<locationId>R_403227A</locationId>
+			<locationId>R_403250A</locationId>
+			<locationId>R_403233A</locationId>
+			<locationId>R_403220B</locationId>
+			<locationId>R_403213A</locationId>
+			<locationId>R_403230A</locationId>
+			<locationId>R_403205C</locationId>
+			<locationId>R_082138</locationId>
+			<locationId>R_083084</locationId>
+			<locationId>R_083085</locationId>
+			<locationId>R_083024</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083073_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_083073</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403227A_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403227A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+<!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403250A_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403250A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403233A_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403233A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403220B_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403220B</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403213A_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403230A_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>403205C_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>082138_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_082138</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083084_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_083084</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083085_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_083085</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+--><!--	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<name>083024_2000</name>
+				<suffix>
+					<simpleString>.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationId>R_083024</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="10" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+-->	<!--GatesOpen_obs-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</folder>
+			<exportFileName>
+				<useExternalLocationIdAsName>true</useExternalLocationIdAsName>
+				<suffix>
+					<simpleString>_134.CSV</simpleString>
+				</suffix>
+				<temporaryPrefix>
+					<simpleString>xxx</simpleString>
+				</temporaryPrefix>
+			</exportFileName>
+			<idMapId>IdExportHydstraTSM</idMapId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<locationId>R_403235A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="2" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>

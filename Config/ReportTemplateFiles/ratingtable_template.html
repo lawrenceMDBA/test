@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<title>Current rating table in ROWS</title>
+
+<style type="text/css">
+body {
+font-family: Arial,Helvetica,sans-serif;
+font-size: small;
+}
+.link {
+font-family: Arial,Helvetica,sans-serif;
+font-weight: normal;
+font-size: small;
+color: #000066;
+}
+.title1 {
+position: fixed;
+left: 130px;
+text-align: left;
+color: black;
+background-color: #33cc00;
+padding-left: 10px;
+padding-right: 10px;
+}
+.title2 {
+position: fixed;
+color: #336666;
+left: 480px;
+font-size: 100px;
+font-family: Arial Narrow;
+font-weight: bold;
+margin-top: -18px;
+}
+.title3 {
+position: fixed;
+left: 630px;
+text-align: center;
+color: #00cccc;
+margin-top: -8px;
+line-height: 140%;
+}
+.title4 {
+position: fixed;
+text-align: left;
+color: #336666;
+font-family: Arial;
+font-size: x-large;
+line-height: 80%;
+left: 830px;
+}
+.title5 {
+background-color: #336666;
+height: 76px;
+position: fixed;
+left: 1030px;
+width: 400px;
+}
+.hidden {
+display: none;
+}
+.header {
+font-weight: bold;
+text-align: center;
+font-family: Arial,Helvetica,sans-serif;
+font-size: xx-large;
+color: #000066;
+opacity: 0.813;
+height: 80px;
+background-color: white;
+}
+.window {
+position: fixed;
+top: 100px;
+right: 0;
+bottom: 0;
+left: 0;
+overflow: auto;
+}
+.unhidden {
+margin-top: 10px;
+margin-left: 10px;
+padding-top: 10px;
+padding-left: 10px;
+display: block;
+width: 1000px;
+overflow: hidden;
+position: static;
+  top: 0;
+left: 180px;
+}
+.container {
+border: thin solid silver;
+width: 1050px;
+  top: 20px;
+  position: absolute;
+left: 25%;
+margin-top: -10px;
+margin-left: 10px;
+display: block;
+}
+.sidebar {
+border: thin solid silver;
+margin-top: 10px;
+margin-left: 10px;
+padding-top: 10px;
+padding-left: 10px;
+width: 20%;
+height: 100%;
+}
+table#tableStyle4 {
+border: 0px solid #000000;
+width: 200px;
+background-color: #ffffff;
+border-collapse: collapse;
+margin-left: 0;
+font-family: Arial,Verdana,Helvetica,sans-serif;
+}
+table#tableStyle4 td {
+border: 1px solid #c0c0c0;
+font-size: 9px;
+text-align: left;
+width: 200px;
+}
+table#tableStyle3 {
+border: 0px solid #000000;
+width: 200px;
+background-color: #ffffff;
+border-collapse: collapse;
+margin-left: 0;
+font-family: Arial,Verdana,Helvetica,sans-serif;
+}
+table#tableStyle3 td {
+border: 1px solid #c0c0c0;
+font-size: 9px;
+text-align: left;
+height:11px;
+width: 200px;
+}
+table#tableStyle5 {
+border: 0px solid #000000;
+background-color: #ffffff;
+border-collapse: collapse;
+margin-left: 0;
+font-family: Arial,Verdana,Helvetica,sans-serif;
+}
+table#tableStyle5 td {
+border: 1px solid #c0c0c0;
+font-size: 9px;
+text-align: left;
+}
+table#tableStyle5 th {
+border: 0px solid #000000;
+padding: 2px;
+color: #000000;
+background-color: #ffffff;
+font-size: 9px;
+text-align: left;
+}
+.tableStyle5_leftcol {
+text-align: left;
+color: #000000;
+background-color: #ffffff;
+font-size: 9px;
+}
+.tableStyle5_warning {
+text-align: left;
+background-color: #ccccff;
+font-size: smaller;
+color: #ffffff;
+}
+.tableStyle5_thresholds {
+border-top: 1px solid #c0c0c0;
+padding: 1px;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_0 {
+background-color: #c0ffc0;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_1 {
+background-color: #ffff00;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_2 {
+background-color: #ffc700;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_3 {
+background-color: #ff9700;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_4 {
+background-color: #ff6200;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_5 {
+background-color: #ff0000;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_6 {
+background-color: #ff40ff;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_7 {
+background-color: #c000c0;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_NaN {
+text-align: center;
+font-size: 9px;
+background-color: #4c4646;
+}
+.tableStyle5_thresholds_NoThresholdDefinition {
+background-color: #c0c0c0;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_NaN_NoThresholdDefinition {
+background-color: #c0c0c0;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_PartlyMissing {
+background-color: #959492;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholds_PartlyMissing_NoThresholdDefinition {
+background-color: #FFFF00;
+text-align: center;
+font-size: 9px;
+}
+.tableStyle5_thresholdcount {
+padding: 4px;
+text-align: center;
+}
+</style>
+<script type="text/javascript">
+function unhide(divID) {
+var divs=document.getElementById('wrap').getElementsByTagName('div');
+for(var i=0;i<divs.length;i++)
+divs[i].className='hidden';
+var item = document.getElementById(divID);
+if (item) {
+item.className=(item.className=='hidden')?'unhidden':'hidden';
+}
+}
+</script>
+</head>
+<body>
+<br>
+<br>
+<table>
+<tbody>
+<tr><font style="font-weight: bold;font-family: verdana;font-size: 11pt">Rating table for $DEFINITION(siteId)$ ($DEFINITION(siteName)$)
+<br>
+Valid at $CURRENTTIME(dateFormat1)$</font><br><br></tr>
+<tr>
+<td> $TABLE(ratingTable)$ </td>
+</tr>
+</tbody>
+</table>
+<br>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<description>Preconfigured display for Hydro seasonal data</description>
+	<plot id="CategoryPlot">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>HYDRO_sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360" />
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>HYDRO_sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360" />
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<plotViewerId>category</plotViewerId>
+	</plot>
+	<plot id="HydroSeasonal_Q_plan">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep75</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydroSeasonalDaily_Q_plan">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep75</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydroSeasonal_Q_plan.inflow">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>inflow</qualifierId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>inflow</qualifierId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep75</qualifierId>
+				<qualifierId>inflow</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>inflow</qualifierId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>inflow</qualifierId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>inflow</qualifierId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydroSeasonal_Q_plan.div">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep75</qualifierId>
+				<qualifierId>div</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep75</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydroSeasonalDaily_Q_plan.div">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>aep75</qualifierId>
+				<qualifierId>div</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep90</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep75</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep50</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep25</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_plan</parameterId>
+				<qualifierId>div</qualifierId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>aep10</qualifierId>
+				<locationSetId>sites</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="HydroSeasonal_Q_plan" name="Monthly flow">
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites_OQ</locationSetId>
+			<plotId>HydroSeasonal_Q_plan</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="HydroSeasonalDaily_Q_plan" name="Daily Flow">
+		<viewPermission>RiverOperations</viewPermission>
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites_OQ</locationSetId>
+			<plotId>HydroSeasonalDaily_Q_plan</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="HydroSeasonal_Q_plan.inflow" name="Monthly inflow">
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites_OQI</locationSetId>
+			<plotId>HydroSeasonal_Q_plan.inflow</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="HydroSeasonal_Q_plan.div" name="Monthly Demand">
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<plotId>HydroSeasonal_Q_plan</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="HydroSeasonalDaily_Q_plan.div" name="Daily Demand">
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<plotId>HydroSeasonalDaily_Q_plan</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="CategoryPlot" name="CategoryPlots">
+		<singleLocationDisplays>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<plotId>CategoryPlot</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+</displayGroups>

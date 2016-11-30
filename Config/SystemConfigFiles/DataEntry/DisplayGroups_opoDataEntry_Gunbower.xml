@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 sp2 (http://www.altova.com) by Radhika Subramanian (Murray-Darling Basin Authority) -->
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Gunbower.OPO" name="Processing Gunbower sites ">
+		<displayGroup id="Gunbower.DataEntry" name="Data entry">
+			<singleLocationDisplays id="dataentry_Gunbower">
+				<locationSetId>Gunbower.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Gunbower.Process" name="Create OPO">
+			<singleLocationDisplays id="ImportProcess_Gunbower">
+				<locationSetId>Gunbower.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Gunbower.Telemetry" name="Telemetry">
+			<displayGroup id="Gunbower.Process_Hopo" name="Gunbower water level">
+				<singleLocationDisplays id="ImportProcess_Gunbower_H">
+					<locationSetId>Gunbower.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Gunbower.Process_Qopo" name="Gunbower discharge">
+				<singleLocationDisplays id="ImportProcess_Gunbower_Q">
+					<locationSetId>Gunbower.sites_Q_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Gunbower.Process_WTopo" name="Gunbower water temperature">
+				<singleLocationDisplays id="ImportProcess_Gunbower_WT">
+					<locationSetId>Gunbower.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

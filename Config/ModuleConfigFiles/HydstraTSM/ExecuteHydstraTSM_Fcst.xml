@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+<general>
+    <rootDir>$MODULES_HYDSTRA_TSM_ROOT$</rootDir>
+    <workDir>$IMPORT_FOLDER_FROM_HYDSTRA_TSM$</workDir>
+    <exportDir>$EXPORT_FOLDER_TO_HYDSTRA_TSM$</exportDir>
+    <importDir>$IMPORT_FOLDER_FROM_HYDSTRA_TSM$</importDir>
+    <dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+    <dumpDir>%ROOT_DIR%\logs</dumpDir>
+    <diagnosticFile>%ROOT_DIR%\logs\HydstraTSM.xml</diagnosticFile>
+    <missVal>-999.0</missVal>
+    <convertDatum>false</convertDatum>
+    <timeZone>
+      <timeZoneName>GMT+10:00</timeZoneName>
+    </timeZone>
+ </general> 
+ <activities>
+    <executeActivities>
+      <executeActivity>
+        <command>
+          <executable>$MODULES_HYDSTRA_TSM_BATCH$</executable>
+        </command>
+        <arguments>
+		<argument>$IMPORT_FOLDER_FROM_HYDSTRA_TSM$</argument>
+        </arguments>
+        <timeOut>2400000</timeOut>
+		<ignoreDiagnostics>true</ignoreDiagnostics>
+      </executeActivity>
+    </executeActivities>
+  </activities>
+</generalAdapterRun>

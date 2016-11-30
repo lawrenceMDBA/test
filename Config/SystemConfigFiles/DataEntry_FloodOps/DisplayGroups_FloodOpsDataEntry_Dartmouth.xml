@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Dartmouth.Import_flood" name="Dartmouth flood sites import">
+		<nodeId>Dartmouth.Import_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="importflood_dartmouth">
+			<locationSetId>flood.sites_dartmouth</locationSetId>
+			<plotId>Import_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Dartmouth.DataEntry_flood" name="Dartmouth flood sites data entry">
+		<nodeId>Dartmouth.DataEntry_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="dataentryflood_dartmouth">
+			<locationSetId>flood.sites_dartmouth</locationSetId>
+			<plotId>DataEntry_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Dartmouth.Process_flood" name="Dartmouth flood storage sites QA">
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="Process_Observed_FloodOps">
+			<locationSetId>flood.sites_dartmouth_vobs</locationSetId>
+			<plotId>ImportProcess_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Dartmouth.Telemetry " name="Dartmouth flood sites telemetry">
+		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="Dartmouth.Process_Hflood" name="Dartmouth flood sites water level">
+			<singleLocationDisplays id="ImportProcess_dartmouth_H_flood">
+				<locationSetId>flood.sites_dartmouth_hobs</locationSetId>
+				<plotId>ImportProcess_H_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Dartmouth.Process_Qflood" name="Dartmouth flood sites discharge">
+			<singleLocationDisplays id="ImportProcess_dartmouth_Q_flood">
+				<locationSetId>flood.sites_dartmouth_qobs</locationSetId>
+				<plotId>ImportProcess_Q_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Dartmouth.Process_Pflood" name="Dartmouth flood sites precipitation">
+			<singleLocationDisplays id="ImportProcess_dartmouth_P_flood">
+				<locationSetId>flood.sites_dartmouth_pobs</locationSetId>
+				<plotId>ImportProcess_P_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Dartmouth.Process_Vflood" name="Dartmouth flood sites volume">
+			<singleLocationDisplays id="ImportProcess_dartmouth_V_flood">
+				<locationSetId>flood.sites_dartmouth_vobs</locationSetId>
+				<plotId>ImportProcess_V_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

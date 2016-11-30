@@ -1,0 +1,60 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="SouthOz_OPO">
+		<nodes id="ObservedProcessing.SouthOz_OPO" name="SouthOz">
+			<node id="SouthOz.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>SouthOz.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="SouthOz.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>SouthOz.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="SouthOz.Telemetry" name="Review Telemetry">
+				<node id="SouthOz.Process_Hopo" name="Water levels">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_Hopo</displayGroupId>
+					<defaultModifierId>H_select_OPO</defaultModifierId>
+					<visibleModifierGroup>H_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="SouthOz.Process_Qopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_Qopo</displayGroupId>
+					<defaultModifierId>Q_select_OPO</defaultModifierId>
+					<visibleModifierGroup>Q_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="SouthOz.Process_Qratedopo" name="Discharge (rated)">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_Qratedopo</displayGroupId>
+					<defaultModifierId>H_select_OPO</defaultModifierId>
+					<visibleModifierGroup>H_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="SouthOz.Process_Popo" name="Rainfall">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_Popo</displayGroupId>
+					<defaultModifierId>P_select_OPO</defaultModifierId>
+					<visibleModifierGroup>P_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="SouthOz.Process_EVAPopo" name="Evaporation">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_EVAPopo</displayGroupId>
+					<defaultModifierId>EVAP_select_OPO</defaultModifierId>
+					<visibleModifierGroup>E_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="SouthOz.Process_ECopo" name="Salinity/EC">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SouthOz.Process_ECopo</displayGroupId>
+					<defaultModifierId>EC_select_OPO</defaultModifierId>
+					<visibleModifierGroup>EC_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

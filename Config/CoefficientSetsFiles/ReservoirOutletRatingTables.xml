@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationCoefficientSets version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationCoefficientSets.xsd">
+	<coefficientSet id="Reservoirs_Valve_Outlet_Rating_Tables">
+		<!--Ratings for valve releases (ML/day)-->
+		<locationCoefficientSet>
+			<location>
+				<locationId>R_401027</locationId>
+				<locationName>Hume Dam</locationName>
+			</location>
+			<lookup>
+				<simple>
+					<interpolationType>linear</interpolationType>
+					<extrapolationType>notAllowed</extrapolationType>
+					<!--Based on the Hume head water-->
+					<!--Taken from MDBA HumeFloodSheet version updated June 2012 (provided by MDBA May 2016)-->
+					<!--Original data from spreadsheets provided by Glenn Tully 2002.
+						Used theortical data as this gave best match to rated discharge at low heads.-->
+					<lookupTable>
+						<lookupTableRow input="160" output="1633"/>
+						<lookupTableRow input="164" output="3776"/>
+						<lookupTableRow input="168" output="5084"/>
+						<lookupTableRow input="172" output="6118"/>
+						<lookupTableRow input="176" output="7002"/>
+						<lookupTableRow input="180" output="7785"/>
+						<lookupTableRow input="184" output="8497"/>
+						<lookupTableRow input="188" output="9154"/>
+						<lookupTableRow input="192" output="9766"/>
+						<lookupTableRow input="196" output="10342"/>
+					</lookupTable>
+				</simple>
+			</lookup>
+		</locationCoefficientSet>
+	</coefficientSet>
+	<coefficientSet id="Reservoirs_Hydro_Outlet_Rating_Tables">
+		<!--Ratings for hydro releases (ML/day)-->
+		<locationCoefficientSet>
+			<location>
+				<locationId>R_401027</locationId>
+				<locationName>Hume Dam</locationName>
+			</location>
+			<lookup>
+				<simple>
+					<interpolationType>linear</interpolationType>
+					<extrapolationType>notAllowed</extrapolationType>
+					<!--Based on the head difference between Hume head water and Heywood's, for both hydro units-->
+					<!--Taken from MDBA HumeFloodSheet version updated June 2012 (provided by MDBA May 2016)-->
+					<!--The original spreadsheet was supplied by Glenn Tully, State water 7 August 2002. RMW Summary prepared By Ben Dyer 8 Aug 2002. Extrapolations done as part of RMW summary 153.625-->
+					<!--Added datum at Heywoods 153.625 (as Heywoods is in local datum, and Hume in mAHD)-->
+					<lookupTable>
+						<lookupTableRow input="153.625" output="0"/>
+						<lookupTableRow input="168.625" output="0.1"/>
+						<lookupTableRow input="168.625" output="13800"/>
+						<lookupTableRow input="169.625" output="15555"/>
+						<lookupTableRow input="170.625" output="16850"/>
+						<lookupTableRow input="171.625" output="18000"/>
+						<lookupTableRow input="172.625" output="18600"/>
+						<lookupTableRow input="173.625" output="18845"/>
+						<lookupTableRow input="174.625" output="19190"/>
+						<lookupTableRow input="175.625" output="19450"/>
+						<lookupTableRow input="176.625" output="19850"/>
+						<lookupTableRow input="177.625" output="20000"/>
+						<lookupTableRow input="178.625" output="20100"/>
+						<lookupTableRow input="179.625" output="20200"/>
+						<lookupTableRow input="180.625" output="20100"/>
+						<lookupTableRow input="181.625" output="20040"/>
+						<lookupTableRow input="182.625" output="19980"/>
+						<lookupTableRow input="183.625" output="20025"/>
+						<lookupTableRow input="184.625" output="19900"/>
+						<lookupTableRow input="185.625" output="19850"/>
+						<lookupTableRow input="186.625" output="19750"/>
+						<lookupTableRow input="187.625" output="19650"/>
+						<lookupTableRow input="188.625" output="19550"/>
+						<lookupTableRow input="198.625" output="19000"/>
+					</lookupTable>
+				</simple>
+			</lookup>
+		</locationCoefficientSet>
+	</coefficientSet>
+	<coefficientSet id="Reservoirs_Spillway_Outlet_Rating_Tables">
+		<!--Ratings for spillway releases (ML/day)-->
+		<locationCoefficientSet>
+			<location>
+				<locationId>R_401027</locationId>
+				<locationName>Hume Dam</locationName>
+			</location>
+			<lookup>
+				<simple>
+					<interpolationType>linear</interpolationType>
+					<extrapolationType>notAllowed</extrapolationType>
+					<!--Based on the Hume head water-->
+					<!--Taken from MDBA HumeFloodSheet version updated June 2012 (provided by MDBA May 2016)-->
+					<lookupTable>
+						<lookupTableRow input="150" output="0"/>
+						<lookupTableRow input="184.76" output="0"/>
+						<lookupTableRow input="184.86" output="1901"/>
+						<lookupTableRow input="184.96" output="4147"/>
+						<lookupTableRow input="185.06" output="6480"/>
+						<lookupTableRow input="185.16" output="9158"/>
+						<lookupTableRow input="185.26" output="12010"/>
+						<lookupTableRow input="185.36" output="15120"/>
+						<lookupTableRow input="185.46" output="18490"/>
+						<lookupTableRow input="185.56" output="21946"/>
+						<lookupTableRow input="185.66" output="25747"/>
+						<lookupTableRow input="185.76" output="29635"/>
+						<lookupTableRow input="185.86" output="33782"/>
+						<lookupTableRow input="185.96" output="38189"/>
+						<lookupTableRow input="186.06" output="42682"/>
+						<lookupTableRow input="186.16" output="47434"/>
+						<lookupTableRow input="186.26" output="52358"/>
+						<lookupTableRow input="186.36" output="57456"/>
+						<lookupTableRow input="186.46" output="62640"/>
+						<lookupTableRow input="186.56" output="68083"/>
+						<lookupTableRow input="186.66" output="73699"/>
+						<lookupTableRow input="186.76" output="79488"/>
+						<lookupTableRow input="186.86" output="85363"/>
+						<lookupTableRow input="186.96" output="91411"/>
+						<lookupTableRow input="187.06" output="97632"/>
+						<lookupTableRow input="187.16" output="103939"/>
+						<lookupTableRow input="187.26" output="110419"/>
+						<lookupTableRow input="187.36" output="117072"/>
+						<lookupTableRow input="187.46" output="123811"/>
+						<lookupTableRow input="187.56" output="130810"/>
+						<lookupTableRow input="187.66" output="137894"/>
+						<lookupTableRow input="187.76" output="145152"/>
+						<lookupTableRow input="187.86" output="152669"/>
+						<lookupTableRow input="187.96" output="160358"/>
+						<lookupTableRow input="188.06" output="168307"/>
+						<lookupTableRow input="188.16" output="176515"/>
+						<lookupTableRow input="188.26" output="184896"/>
+						<lookupTableRow input="188.36" output="193536"/>
+						<lookupTableRow input="188.46" output="202867"/>
+						<lookupTableRow input="188.56" output="212803"/>
+						<lookupTableRow input="188.66" output="222739"/>
+						<lookupTableRow input="188.76" output="232675"/>
+						<lookupTableRow input="188.86" output="242611"/>
+						<lookupTableRow input="188.96" output="252547"/>
+						<lookupTableRow input="189.06" output="262483"/>
+						<lookupTableRow input="189.16" output="272419"/>
+						<lookupTableRow input="189.26" output="282355"/>
+						<lookupTableRow input="189.36" output="292291"/>
+						<lookupTableRow input="189.46" output="302227"/>
+						<lookupTableRow input="189.56" output="312250"/>
+						<lookupTableRow input="189.66" output="322186"/>
+						<lookupTableRow input="189.76" output="332122"/>
+						<lookupTableRow input="189.86" output="342490"/>
+						<lookupTableRow input="189.96" output="353117"/>
+						<lookupTableRow input="190.06" output="363744"/>
+						<lookupTableRow input="190.16" output="374371"/>
+						<lookupTableRow input="190.26" output="384998"/>
+						<lookupTableRow input="190.36" output="395712"/>
+						<lookupTableRow input="190.46" output="406339"/>
+						<lookupTableRow input="190.56" output="416966"/>
+						<lookupTableRow input="190.66" output="427594"/>
+						<lookupTableRow input="190.76" output="438221"/>
+						<lookupTableRow input="190.86" output="448934"/>
+						<lookupTableRow input="190.96" output="459562"/>
+						<lookupTableRow input="191.06" output="470189"/>
+						<lookupTableRow input="191.16" output="480816"/>
+						<lookupTableRow input="191.26" output="491443"/>
+						<lookupTableRow input="191.36" output="504058"/>
+						<lookupTableRow input="191.46" output="517882"/>
+						<lookupTableRow input="191.56" output="531706"/>
+						<lookupTableRow input="191.66" output="545530"/>
+						<lookupTableRow input="191.76" output="559354"/>
+						<lookupTableRow input="191.86" output="573178"/>
+						<lookupTableRow input="191.96" output="587088"/>
+						<lookupTableRow input="192.06" output="600912"/>
+						<lookupTableRow input="192.16" output="614736"/>
+						<lookupTableRow input="192.26" output="628560"/>
+						<lookupTableRow input="192.36" output="642298"/>
+						<lookupTableRow input="192.46" output="656035"/>
+						<lookupTableRow input="192.56" output="669686"/>
+						<lookupTableRow input="192.66" output="683338"/>
+						<lookupTableRow input="192.76" output="697075"/>
+						<lookupTableRow input="192.86" output="711504"/>
+						<lookupTableRow input="192.96" output="726365"/>
+						<lookupTableRow input="193.06" output="741312"/>
+						<lookupTableRow input="193.16" output="756173"/>
+						<lookupTableRow input="193.26" output="771120"/>
+						<lookupTableRow input="193.36" output="785981"/>
+						<lookupTableRow input="193.46" output="800928"/>
+						<lookupTableRow input="193.56" output="815789"/>
+						<lookupTableRow input="193.66" output="830736"/>
+						<lookupTableRow input="193.76" output="845597"/>
+						<lookupTableRow input="193.86" output="860544"/>
+						<lookupTableRow input="193.96" output="875232"/>
+						<lookupTableRow input="194.06" output="889920"/>
+						<lookupTableRow input="194.16" output="905472"/>
+						<lookupTableRow input="194.26" output="920160"/>
+						<lookupTableRow input="194.36" output="933984"/>
+						<lookupTableRow input="194.46" output="946944"/>
+						<lookupTableRow input="194.56" output="959040"/>
+						<lookupTableRow input="194.66" output="972000"/>
+						<lookupTableRow input="194.76" output="984960"/>
+						<lookupTableRow input="194.86" output="997920"/>
+						<lookupTableRow input="194.96" output="1010016"/>
+						<lookupTableRow input="195.06" output="1022976"/>
+						<lookupTableRow input="195.16" output="1035936"/>
+						<lookupTableRow input="195.26" output="1048896"/>
+						<lookupTableRow input="195.36" output="1061856"/>
+						<lookupTableRow input="195.46" output="1073952"/>
+						<lookupTableRow input="195.56" output="1086912"/>
+						<lookupTableRow input="195.66" output="1099872"/>
+						<lookupTableRow input="195.76" output="1112832"/>
+						<lookupTableRow input="195.86" output="1124928"/>
+					</lookupTable>
+				</simple>
+			</lookup>
+		</locationCoefficientSet>
+	</coefficientSet>
+</transformationCoefficientSets>

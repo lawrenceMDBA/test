@@ -1,0 +1,58 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="Hume_flood">
+		<nodes id="ObservedProcessing.Hume_flood" name="Hume">
+			<workflowId>Process_Observed_FloodOps</workflowId>
+			<node id="Hume.DataEntryFlood" name="Data entry flood">
+				<previousNodeId>ImportAndProcess_Observed_flood_latest</previousNodeId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Catchment_FloodOps_Hume</filterId>
+				<displayGroupId>Hume.DataEntry_flood</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="Hume.Process_flood" name="Quality Control flood (storage sites)">
+				<previousNodeId>ImportAndProcess_Observed_flood_latest</previousNodeId>
+				<workflowId>Process_Observed_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Catchment_FloodOps_Hume</filterId>
+				<displayGroupId>Hume.Process_flood</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="Hume.TelemetryFlood" name="Review Telemetry flood">
+				<node id="Hume.Process_Hflood" name="Water levels">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Hume</filterId>
+					<displayGroupId>Hume.Process_Hflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Hume.Process_Qflood" name="Discharge">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Hume</filterId>
+					<displayGroupId>Hume.Process_Qflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Hume.Process_Vflood" name="Volume">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Hume</filterId>
+					<displayGroupId>Hume.Process_Vflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Hume.Process_Pflood" name="Rainfall">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Hume</filterId>
+					<displayGroupId>Hume.Process_Pflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+			</nodes>
+			<mapExtentId>Upper Murray</mapExtentId>
+			<filterId>Catchment_FloodOps_Hume</filterId>
+		</nodes>
+	</group>
+</topologyGroup>

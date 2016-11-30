@@ -1,0 +1,2494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<description>Preconfigured display for thresholds data</description>
+	<plot id="URBS_Rainfall_1h">
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_comb</parameterId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-7" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-7" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessg</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessr</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<qualifierId>higher</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<qualifierId>max</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>net</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_reservoir_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<qualifierId>max</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>H_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFD</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>H_obs</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="day" start="-2" end="0"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFD</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_calc</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod end="1" start="-2" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="URBS_Official_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>net</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_Official_reservoir_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<qualifierId>max</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>H_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>OFFICIAL</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>H_obs</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="day" start="-2" end="0"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>OFFICIAL</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_calc</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod end="1" start="-2" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="URBS_Rainfall_Scenario_1h">
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_comb</parameterId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-7" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="hour" start="-48" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessg</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessr</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<qualifierId>higher</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<qualifierId>min</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>pme</qualifierId>
+				<qualifierId>max</qualifierId>
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_IFD_Scenario_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>net</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_reservoir_IFD_Scenario_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<qualifierId>max</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFDSCENARIO</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>H_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFDSCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>H_obs</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="day" start="-2" end="0"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFDSCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_calc</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod end="1" start="-2" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="URBS_Scenario_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>net</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_reservoir_Scenario_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<qualifierId>max</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>H_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>H_obs</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="day" start="-2" end="0"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_calc</parameterId>
+					<qualifierId>Fops</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod end="1" start="-2" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="URBS_Ensemble_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>aquamarine4</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSG</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSR</ensembleMemberId>
+			</timeSeriesSet>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>goldenrod1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_min</ensembleMemberId>
+			</timeSeriesSet>
+			<color>sienna</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_max</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>aquamarine4</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSG</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSR</ensembleMemberId>
+			</timeSeriesSet>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>goldenrod1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_min</ensembleMemberId>
+			</timeSeriesSet>
+			<color>sienna</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_max</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<color>aquamarine4</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSG</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSR</ensembleMemberId>
+			</timeSeriesSet>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>goldenrod1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_min</ensembleMemberId>
+			</timeSeriesSet>
+			<color>sienna</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_max</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_reservoir_Ensemble_1h">
+		<subplot>
+			<color>aquamarine4</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSG</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSR</ensembleMemberId>
+			</timeSeriesSet>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>goldenrod1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_min</ensembleMemberId>
+			</timeSeriesSet>
+			<color>sienna</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_max</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<color>aquamarine4</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSG</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ACCESSR</ensembleMemberId>
+			</timeSeriesSet>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>goldenrod1</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_min</ensembleMemberId>
+			</timeSeriesSet>
+			<color>sienna</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME_max</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red</color>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_SSD_Ensemble_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<plotWeight>20</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_calc</parameterId>
+				<qualifierId>gross</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_inflow_SSD_Ensemble_1h">
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>40</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>20</plotWeight>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_fcst_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="URBS_reservoir_SSD_Ensemble_1h">
+		<subplot>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>aquamarine</color>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-2" end="0"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<color>orchid2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD</ensembleMemberId>
+			</timeSeriesSet>
+			<color>medium turquoise</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>ADFD_higher</ensembleMemberId>
+			</timeSeriesSet>
+			<color>light coral</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>PME</ensembleMemberId>
+			</timeSeriesSet>
+			<color>lime green</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<color>spring green2</color>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>ENSEMBLE</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<color>red</color>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="upper_murray_URBS" name="URBS: Upper Murray">
+		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="rainfallpolicy_upper_murray" name="Upper Murray (rainfall policy)">
+			<nodeId>rainfallpolicy_upper_murray</nodeId>
+			<display id="rainfallpolicy_upper_murray_upper_m" name="Rainfall Forecast: Upper Murray">
+				<locationId>upper_murray_upper_m</locationId>
+				<plotId>URBS_Rainfall_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_upper_m" name="Upper Murray (run model)">
+			<nodeId>upper_murray_upper_m</nodeId>
+			<display id="R_401012_upper_m" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401549_upper_m" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401014_upper_m" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401201A_upper_m" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401015_upper_m" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401203A_upper_m" name="401203A - Hinnomunjie">
+				<locationId>R_401203A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401224A_upper_m" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_reservoir_1h</plotId>
+			</display>
+			<display id="R_401211A_upper_m" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401204A_upper_m" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401027_upper_m" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_reservoir_1h</plotId>
+			</display>
+			<display id="R_409016_upper_m" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_402205A_upper_m" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_409017_upper_m" name="409017 - Doctor's Point">
+				<locationId>R_409017</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_409001_upper_m" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="saveofficial_upper_murray" name="Upper Murray (save official)">
+			<nodeId>saveofficial_upper_murray</nodeId>
+			<display id="saveofficial_R_401012_upper_murray" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401549_upper_murray" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401009_upper_murray" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401014_upper_murray" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401201A_upper_murray" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401013_upper_murray" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401015_upper_murray" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401203A_upper_murray" name="401203A - Hinnomunjie">
+				<locationId>R_401203A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401224A_upper_murray" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_Official_reservoir_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401211A_upper_murray" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401204A_upper_murray" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_401027_upper_murray" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_Official_reservoir_1h</plotId>
+			</display>
+			<display id="saveofficial_R_409016_upper_murray" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_402205A_upper_murray" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_409017_upper_murray" name="409017 - Doctor's Point">
+				<locationId>R_409017</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="saveofficial_R_409001_upper_murray" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="rainfallpolicy_scenario_upper_murray" name="Upper Murray (rainfall policy)">
+			<nodeId>rainfallpolicy_scenario_upper_murray</nodeId>
+			<display id="rainfallpolicy_scenario_upper_murray_upper_m" name="Scenario Forecast: Upper Murray">
+				<locationId>upper_murray_upper_m</locationId>
+				<plotId>URBS_Rainfall_Scenario_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="scenario_upper_murray_upper_m" name="Upper Murray (run scenario)">
+			<nodeId>scenario_upper_murray_upper_m</nodeId>
+			<display id="scenario_R_401012_upper_m" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401549_upper_m" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401014_upper_m" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401201A_upper_m" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401015_upper_m" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401203A_upper_m" name="401203A - Hinnomunjie">
+				<locationId>R_401203A</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401224A_upper_m" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_reservoir_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401211A_upper_m" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401204A_upper_m" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401027_upper_m" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_reservoir_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_409016_upper_m" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_402205A_upper_m" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_409017_upper_m" name="409017 - Doctor's Point">
+				<locationId>R_409017</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_409001_upper_m" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_IFD_Scenario_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="savescenario_upper_murray" name="Upper Murray (save scenario)">
+			<nodeId>savescenario_upper_murray</nodeId>
+			<display id="savescenario_R_401012_upper_m" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401549_upper_m" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401014_upper_m" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401201A_upper_m" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401015_upper_m" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401203A_upper_m" name="401203A - Hinnomunjie">
+				<locationId>R_401203A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401224A_upper_m" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_reservoir_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401211A_upper_m" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401204A_upper_m" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_401027_upper_m" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_reservoir_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_409016_upper_m" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_402205A_upper_m" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_40901_upper_m" name="409017 - Doctor's Point">
+				<locationId>R_409017</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="savescenario_R_409001_upper_m" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="runensemble_upper_murray" name="Upper Murray (ensemble)">
+			<nodeId>runensemble_upper_murray</nodeId>
+			<display id="runensemble_R_401012_upper_m" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401549_upper_m" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401014_upper_m" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401201A_upper_m" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401015_upper_m" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401203A_upper_m" name="401203A - Hinnomunjie">
+				<locationId>R_401203A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401224A_upper_m" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_reservoir_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401211A_upper_m" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401204A_upper_m" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401027_upper_m" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_reservoir_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_409016_upper_m" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_402205A_upper_m" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_409001_upper_m" name="409017 - Doctor's Point">
+				<locationId>R_409017</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_409001_upper_m" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="ssdensemble_upper_murray" name="Upper Murray (ensemble, SSD)">
+			<display id="ssdensemble_R_401201A_upper_m" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_401204A_upper_m" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_401027_upper_m" name="401027 - HUME DAM (inflow)">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_inflow_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_401027_upper_m_H" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_reservoir_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_409016_upper_m" name="409016 - Heywoods">
+				<locationId>R_409016</locationId>
+				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_402205A_upper_m" name="402205A - Bandiana">
+				<locationId>R_402205A</locationId>
+				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+			<display id="ssdensemble_R_409001_upper_m" name="409001 - Albury">
+				<locationId>R_409001</locationId>
+				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSteps xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSteps.xsd">
+	<timeStep id="midnight" timeZone="GMT+10" times="00:00"/>
+	<timeStep id="1am" timeZone="GMT+10" times="01:00"/>
+	<timeStep id="8am" timeZone="GMT+10" times="08:00"/>
+	<timeStep id="8am_report" timeZone="GMT+10" times="08:01"/> <!-- used in threshold report, such that the day for reporting crossings and operator notes ends at 8:00 instead of 7:59-->
+	<timeStep id="9am" timeZone="GMT+10" times="09:00"/>
+	<timeStep id="May1" timeZone="GMT+10" monthDays="--05-01"/>
+	<timeStep id="June1" timeZone="GMT+10" monthDays="--06-01"/>
+	<timeStep id="July1" timeZone="GMT+10" monthDays="--07-01"/>
+	<timeStep id="August1" timeZone="GMT+10" monthDays="--08-01"/>
+	<timeStep id="Monthly" timeZone="GMT+10" monthDays="--01-01 --02-01 --03-01 --04-01 --05-01 --06-01 --07-01 --08-01 --09-01 --10-01 --11-01 --12-01"/>
+	<weeklyTimeStep id="wed_8am">
+		<timeZone>GMT+10</timeZone>
+		<wednesday times="08:00"/>
+	</weeklyTimeStep>
+	<weeklyTimeStep id="tue_8am">
+		<timeZone>GMT+10</timeZone>
+		<tuesday times="08:00"/>
+	</weeklyTimeStep>
+	<!-- 
+	<weeklyTimeStep id="thur_8am" >
+		<timeZone>GMT+10</timeZone>
+		<thursday times="08:00" ></thursday>
+	</weeklyTimeStep>
+	<weeklyTimeStep id="fri_8am" >
+		<timeZone>GMT+10</timeZone>
+		<friday times="08:00"/>
+	</weeklyTimeStep>
+	<weeklyTimeStep id="mon_8am" >
+		<timeZone>GMT+10</timeZone>
+		<monday times="08:00"/>
+	</weeklyTimeStep>
+	-->
+	<weeklyTimeStep id="Weekly">
+		<timeZone>GMT+10</timeZone>
+		<monday times="00:00"/>
+	</weeklyTimeStep>
+	<timeStep id="Daily" timeZone="GMT+10" times="00:00"/>
+	<yearlyTimeStep id="yearly">
+		<monthDay end="--03-31" value="--01-01" start="--01-01"/>
+	</yearlyTimeStep>
+</timeSteps>

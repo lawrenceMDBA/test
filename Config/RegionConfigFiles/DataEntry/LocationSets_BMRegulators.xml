@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="BMRegulators.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="BMRegulators"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="BMRegulators.sites_GatesOpen">
+		<description>data entry sites with gates</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>BMRegulators.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- #######################
+Data entry sites to MDBC_OPS
+##########################-->
+	<locationSet id="BMRegulators2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>BMRegulators.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="BMRegulators"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="BMRegulators2MDBC_OPS.sites_Gates">
+		<description>data entry sites with gates</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>BMRegulators2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+</locationSets>

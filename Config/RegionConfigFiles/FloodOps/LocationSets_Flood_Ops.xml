@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!--Sites used for flood operations-->
+	<locationSet id="flood.sites">
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="FLOOD_OPS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth">
+		<description>Dartmouth flood ops sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Dartmouth"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume">
+		<description>Hume flood ops sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Hume"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga">
+		<description>Yarrawonga flood ops sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Yarrawonga"/>
+		</constraints>
+	</locationSet>
+	<!--Sites used for flood operations (organised by parameter)-->
+	<locationSet id="flood.sites_hobs">
+		<description>Flood ops water level observation sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="H_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_pobs">
+		<description>Flood ops precipitation observation sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_pobs_daily">
+		<description>Flood ops precipitation observation sites (daily)</description>
+		<locationSetId>flood.sites_pobs</locationSetId>
+		<constraints>
+			<attributeTextContains id="DAILY_FLOOD" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_pobs_subdaily">
+		<description>Flood ops precipitation observation sites (daily)</description>
+		<locationSetId>flood.sites_pobs</locationSetId>
+		<constraints>
+			<not>
+				<attributeTextContains id="DAILY_FLOOD" contains="P"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_pobsacc">
+		<description>Flood ops water level observation sites (accumulative sensor)</description>
+		<locationSetId>flood.sites_pobs_subdaily</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs_acc"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_pobsinst">
+		<description>Flood ops water level observation sites (instanteaneous sensor)</description>
+		<locationSetId>flood.sites_pobs_subdaily</locationSetId>
+		<constraints>
+			<not>
+				<allValid>
+					<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs_acc"/>
+				</allValid>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_qobs">
+		<description>Flood ops flow observation sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="Q_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_q_rated">
+		<description>Flood ops flow sites (rated)</description>
+		<locationSetId>flood.sites_qobs</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_q_not_rated">
+		<description>Flood ops flow sites (not rated)</description>
+		<locationSetId>flood.sites_qobs</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_vobs">
+		<description>Flood ops volume observation sites</description>
+		<locationSetId>flood.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="V_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_H_capacity">
+		<description>Flood ops water level sites for volume calculation</description>
+		<locationSetId>flood.sites_hobs</locationSetId>
+		<constraints>
+			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_vobs_capacity">
+		<description>Flood ops volume calculation sites</description>
+		<locationSetId>flood.sites_vobs</locationSetId>
+		<constraints>
+			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_vobs_not_capacity">
+		<description>Flood ops volume observation sites (not calculation)</description>
+		<locationSetId>flood.sites_vobs</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="CAPACITY"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth_hobs">
+		<description>Dartmouth flood ops water level observation sites</description>
+		<locationSetId>flood.sites_dartmouth</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="H_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth_pobs">
+		<description>Dartmouth flood ops precipitation observation sites</description>
+		<locationSetId>flood.sites_dartmouth</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth_qobs">
+		<description>Dartmouth flood ops flow observation sites</description>
+		<locationSetId>flood.sites_dartmouth</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="Q_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth_q_rated">
+		<description>Dartmouth flood ops flow sites (rated)</description>
+		<locationSetId>flood.sites_dartmouth_qobs</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_dartmouth_vobs">
+		<description>Dartmouth flood ops volume observation sites</description>
+		<locationSetId>flood.sites_dartmouth</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="CAPACITY"/>
+				<attributeTextContains id="FLOOD_OPS_PARAMS" contains="V_obs"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume_hobs">
+		<description>Hume flood ops water level observation sites</description>
+		<locationSetId>flood.sites_hume</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="H_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume_pobs">
+		<description>Hume flood ops precipitation observation sites</description>
+		<locationSetId>flood.sites_hume</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume_qobs">
+		<description>Hume flood ops flow observation sites</description>
+		<locationSetId>flood.sites_hume</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="Q_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume_q_rated">
+		<description>Hume flood ops flow sites (rated)</description>
+		<locationSetId>flood.sites_hume_qobs</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_hume_vobs">
+		<description>Hume flood ops volume observation sites</description>
+		<locationSetId>flood.sites_hume</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="CAPACITY"/>
+				<attributeTextContains id="FLOOD_OPS_PARAMS" contains="V_obs"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga_hobs">
+		<description>Yarrawonga flood ops water level observation sites</description>
+		<locationSetId>flood.sites_yarrawonga</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="H_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga_pobs">
+		<description>Yarrawonga flood ops precipitation observation sites</description>
+		<locationSetId>flood.sites_yarrawonga</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="P_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga_qobs">
+		<description>Yarrawonga flood ops flow observation sites</description>
+		<locationSetId>flood.sites_yarrawonga</locationSetId>
+		<constraints>
+			<attributeTextContains id="FLOOD_OPS_PARAMS" contains="Q_obs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga_q_rated">
+		<description>Yarrawonga flood ops flow sites (rated)</description>
+		<locationSetId>flood.sites_yarrawonga_qobs</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flood.sites_yarrawonga_vobs">
+		<description>yarrawonga flood ops volume observation sites</description>
+		<locationSetId>flood.sites_yarrawonga</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="CAPACITY"/>
+				<attributeTextContains id="FLOOD_OPS_PARAMS" contains="V_obs"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+</locationSets>

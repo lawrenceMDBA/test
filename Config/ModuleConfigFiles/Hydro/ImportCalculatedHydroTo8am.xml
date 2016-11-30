@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Q_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EC_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QDIV_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QL_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QI_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_rr_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_vs_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QRL_calc_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EC_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QDIV_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QL_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QI_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_rr_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NoGatesOpen_vs_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QRL_calc_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Q_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>Q_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>Q_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>Q_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="EC_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>EC_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>EC_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>EC_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="H_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>H_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>H_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>H_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="V_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>V_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>V_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>V_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="NoGatesOpen_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>NoGatesOpen_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>NoGatesOpen_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>NoGatesOpen_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="QDIV_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>QDIV_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>QDIV_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>QDIV_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="QL_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>QL_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>QL_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>QL_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="QI_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>QI_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>QI_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>QI_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="NoGatesOpen_rr_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>NoGatesOpen_rr_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>NoGatesOpen_rr_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>NoGatesOpen_rr_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="NoGatesOpen_vs_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>NoGatesOpen_vs_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>NoGatesOpen_vs_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>NoGatesOpen_vs_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="QRL_shift_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>QRL_calc_raw</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>QRL_calc_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>QRL_calc_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+</transformationModule>

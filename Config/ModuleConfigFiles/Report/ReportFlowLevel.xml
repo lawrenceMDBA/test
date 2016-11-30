@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="ForecastingRegion">Murray-Darling</defineGlobal>
+		<chartFormat id="chartFormat1">
+			<includeTime0>true</includeTime0>
+			<includeLegend>true</includeLegend>
+			<season>
+				<startMonthDay>--01-01</startMonthDay>
+				<endMonthDay>--12-31</endMonthDay>
+			</season>
+		</chartFormat>
+		<dateFormat id="dateFormat1">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>dd/MM/yyyy HH:mm z</pattern>
+		</dateFormat>
+		<dateFormat id="dateFormatThreshold">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>yyyy-MM-dd</pattern>
+		</dateFormat>
+		<dateFormat id="timeFormatThreshold">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>HH:mm</pattern>
+		</dateFormat>
+		<dateFormat id="dateTimeFormatThreshold">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>yyyy-MM-dd HH:mm</pattern>
+		</dateFormat>
+		<numberFormat id="numberFormat1">{0,number,###0.00}</numberFormat>
+		<numberFormat id="numberFormat2">{0,number,###0}</numberFormat>
+		<numberFormat id="numberFormat3">{0,number,###0.0}</numberFormat>
+		<numberFormat id="numberFormatThreshold">{0,number,0.00}</numberFormat>
+		<generatePdf>false</generatePdf>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir/>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+	</declarations>
+	<report scrubFolder="false">
+		<inputVariable variableId="Q_obs_edward">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>flr.sites_edward</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="0" start="-366" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Q_fcst_edward">
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>flr.sites_edward</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="366" start="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<chart formatId="chartFormat1" height="900" id="chart1" width="900">
+			<timeSeries>Q_obs_edward</timeSeries>
+			<timeSeries>Q_fcst_edward</timeSeries>
+			<fileName>report_flowlevel_edward</fileName>
+		</chart>
+		<template>flowlevel_template.html</template>
+		<outputFileName>report_flowlevel_edward.html</outputFileName>
+	</report>
+</reports>

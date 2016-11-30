@@ -1,0 +1,2136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesDisplay version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd">
+	<!-- defaultViewPeriod is 14 days back -->
+	<!--
+	Revision  20150401
+	parameters display config precisions changed
+	-->
+	<defaultViewPeriod unit="day" start="-14" end="1"/>
+	<thresholdDisplayConfig>
+		<thresholdDisplayOptions id="Minor_Flooding">
+			<color>yellow</color>
+			<lineStyle>dotted</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Moderate_Flooding">
+			<color>orange</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Major_Flooding">
+			<color>red</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Full_Supply_Level">
+			<color>navy</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Full_Supply_Level_up">
+			<color>navy</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Full_Supply_Volume">
+			<color>navy</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Surcharge_Level">
+			<color>navy</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Surcharge_Volume">
+			<color>navy</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_special">
+			<lineStyle>none</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_up">
+			<color>orange</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_down">
+			<color>orange</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_range_up">
+			<color>orange</color>
+			<lineStyle>dashdot</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_range_down">
+			<color>orange</color>
+			<lineStyle>dashdot</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_range_up_switchoff">
+			<lineStyle>none</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Soft_range_down_switchoff">
+			<lineStyle>none</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_special">
+			<lineStyle>none</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_up">
+			<color>red</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_down">
+			<color>red</color>
+			<lineStyle>dashdot</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_range_up">
+			<color>red</color>
+			<lineStyle>dashdot</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_range_down">
+			<color>red</color>
+			<lineStyle>dashdot</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_range_up_switchoff">
+			<lineStyle>none</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Hard_range_down_switchoff">
+			<lineStyle>none</lineStyle>
+			<labelAlignment>right</labelAlignment>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Condition">
+			<lineStyle>none</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Salinity">
+			<color>purple</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="Salinity_up">
+			<color>purple</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="DO%">
+			<color>olive drab</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+		<thresholdDisplayOptions id="DO%_down">
+			<color>olive drab</color>
+			<lineStyle>dashed</lineStyle>
+		</thresholdDisplayOptions>
+	</thresholdDisplayConfig>
+	<classBreaks>
+		<classBreaks id="WaterLevel">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>royal blue1</upperColor>
+			<lowerValue>-5</lowerValue>
+			<lowerValue>0</lowerValue>
+			<lowerValue>5</lowerValue>
+			<lowerValue>10</lowerValue>
+			<lowerValue>15</lowerValue>
+			<lowerValue>20</lowerValue>
+			<lowerValue>25</lowerValue>
+			<lowerValue>30</lowerValue>
+			<lowerValue>35</lowerValue>
+			<lowerValue>40</lowerValue>
+			<lowerValue>45</lowerValue>
+			<lowerValue>50</lowerValue>
+			<lowerValue>55</lowerValue>
+			<lowerValue>60</lowerValue>
+		</classBreaks>
+		<classBreaks id="Rainfall">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>royal blue2</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>1</lowerValue>
+			<lowerValue>2</lowerValue>
+			<lowerValue>3</lowerValue>
+			<lowerValue>4</lowerValue>
+			<lowerValue>5</lowerValue>
+			<lowerValue>6</lowerValue>
+			<lowerValue>7</lowerValue>
+			<lowerValue>8</lowerValue>
+			<lowerValue>9</lowerValue>
+			<lowerValue>10</lowerValue>
+		</classBreaks>
+		<classBreaks id="Discharge">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>royal blue3</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>2500</lowerValue>
+			<lowerValue>5000</lowerValue>
+			<lowerValue>7500</lowerValue>
+			<lowerValue>10000</lowerValue>
+			<lowerValue>12500</lowerValue>
+			<lowerValue>15000</lowerValue>
+			<lowerValue>17500</lowerValue>
+			<lowerValue>20000</lowerValue>
+			<lowerValue>22500</lowerValue>
+			<lowerValue>25000</lowerValue>
+		</classBreaks>
+		<classBreaks id="StorageVolume">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>royal blue4</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>15000</lowerValue>
+			<lowerValue>30000</lowerValue>
+			<lowerValue>45000</lowerValue>
+			<lowerValue>60000</lowerValue>
+			<lowerValue>75000</lowerValue>
+			<lowerValue>90000</lowerValue>
+			<lowerValue>105000</lowerValue>
+			<lowerValue>120000</lowerValue>
+			<lowerValue>135000</lowerValue>
+			<lowerValue>150000</lowerValue>
+		</classBreaks>
+		<classBreaks id="Evaporation">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>green</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>3</lowerValue>
+			<lowerValue>6</lowerValue>
+			<lowerValue>9</lowerValue>
+			<lowerValue>12</lowerValue>
+			<lowerValue>15</lowerValue>
+			<lowerValue>18</lowerValue>
+			<lowerValue>21</lowerValue>
+			<lowerValue>24</lowerValue>
+			<lowerValue>27</lowerValue>
+			<lowerValue>30</lowerValue>
+		</classBreaks>
+		<classBreaks id="DissolvedOxygen">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>blue</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>2</lowerValue>
+			<lowerValue>4</lowerValue>
+			<lowerValue>6</lowerValue>
+			<lowerValue>8</lowerValue>
+			<lowerValue>10</lowerValue>
+			<lowerValue>12</lowerValue>
+			<lowerValue>14</lowerValue>
+			<lowerValue>16</lowerValue>
+			<lowerValue>18</lowerValue>
+			<lowerValue>20</lowerValue>
+		</classBreaks>
+		<classBreaks id="ElectricalConductivity">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>yellow</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>1</lowerValue>
+			<lowerValue>2</lowerValue>
+			<lowerValue>3</lowerValue>
+			<lowerValue>4</lowerValue>
+			<lowerValue>5</lowerValue>
+			<lowerValue>6</lowerValue>
+			<lowerValue>7</lowerValue>
+			<lowerValue>8</lowerValue>
+			<lowerValue>9</lowerValue>
+			<lowerValue>10</lowerValue>
+		</classBreaks>
+		<classBreaks id="WaterTemperature">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>red</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>4</lowerValue>
+			<lowerValue>8</lowerValue>
+			<lowerValue>12</lowerValue>
+			<lowerValue>16</lowerValue>
+			<lowerValue>20</lowerValue>
+			<lowerValue>24</lowerValue>
+			<lowerValue>28</lowerValue>
+			<lowerValue>32</lowerValue>
+			<lowerValue>36</lowerValue>
+			<lowerValue>40</lowerValue>
+		</classBreaks>
+	</classBreaks>
+	<timeMarkersDisplayConfig>
+		<timeMarkerDisplayOptions marker="systemTime">
+			<color>green4</color>
+			<lineStyle>solid</lineStyle>
+		</timeMarkerDisplayOptions>
+		<timeMarkerDisplayOptions marker="timeZero">
+			<color>black</color>
+			<lineStyle>dotted</lineStyle>
+		</timeMarkerDisplayOptions>
+		<timeMarkerDisplayOptions marker="displayTime">
+			<color>red</color>
+			<lineStyle>solid</lineStyle>
+		</timeMarkerDisplayOptions>
+		<timeMarkerDisplayOptions marker="threshold">
+			<color>orange</color>
+			<lineStyle>dotted;thick</lineStyle>
+		</timeMarkerDisplayOptions>
+		<timeMarkerDisplayOptions marker="zeroBaseline">
+			<color>black</color>
+			<lineStyle>solid;thick</lineStyle>
+		</timeMarkerDisplayOptions>
+	</timeMarkersDisplayConfig>
+	<parametersDisplayConfig>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>dark olive green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>blue violet</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>6</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>fao56</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>deep pink</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fao56</qualifierId>
+			<preferredColor>blue violet</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>brown</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="SM_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>3</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>3</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>salmon1</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opt2</qualifierId>
+			<preferredColor>salmon1</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>3</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>primary</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>secondary</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>Fops</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_fcst">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_fcst">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_fcst">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="H_fcst">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>3</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>salmon1</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>dark olive green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opt2</qualifierId>
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<preferredColor>orange</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>gross</qualifierId>
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>gross</qualifierId>
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>gross</qualifierId>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>gross</qualifierId>
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>net</qualifierId>
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>net</qualifierId>
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>net</qualifierId>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_calc">
+			<qualifierId>net</qualifierId>
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>accessg</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>accessr</qualifierId>
+			<preferredColor>red1</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>adfd</qualifierId>
+			<preferredColor>orchid2</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<preferredColor>medium turquoise</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>pme</qualifierId>
+			<preferredColor>light coral</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>pme</qualifierId>
+			<qualifierId>min</qualifierId>
+			<preferredColor>goldenrod1</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_fcst">
+			<qualifierId>pme</qualifierId>
+			<qualifierId>max</qualifierId>
+			<preferredColor>sienna</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_comb">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>Fops</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>valves</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>spill</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>inflow</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_obs">
+			<qualifierId>rated</qualifierId>
+			<preferredColor>salmon1</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_plan">
+			<preferredColor>dark olive green</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_fcst">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_fcst">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_fcst">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_fcst">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_in_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_in_fcst">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_in_fcst">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_in_fcst">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_in_fcst">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_out_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_out_fcst">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_out_fcst">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_out_fcst">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_out_fcst">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_release">
+			<preferredColor>red</preferredColor>
+			<lineStyle>solid;thick</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EGEN_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_fcst">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_fcst">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>lime green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_fcst">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>dashed</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_fcst">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>spring green2</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+			<legendItemPerEnsembleMember>true</legendItemPerEnsembleMember>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V%_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="DO%_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_calc">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EC_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>rectangle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>3</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="AT_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_calc">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WT_fcst">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>opt</qualifierId>
+			<preferredColor>aquamarine4</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<qualifierId>hydrographic_update</qualifierId>
+			<preferredColor>orange</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Turbidity_obs">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QORD_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QORD_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QORD_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QORD_obs">
+			<preferredColor>sky blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_obs">
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_obs">
+			<qualifierId>opc</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_obs">
+			<preferredColor>sky blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_calc">
+			<preferredColor>sky blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QDIV_fcst">
+			<preferredColor>sky blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRTN_obs">
+			<preferredColor>green1</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRTN_calc">
+			<preferredColor>green1</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRTN_fcst">
+			<preferredColor>green1</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRL_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRL_obs">
+			<preferredColor>gray</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRL_calc">
+			<preferredColor>gray</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QRL_fcst">
+			<preferredColor>gray</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QI_obs">
+			<preferredColor>goldenrod</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QI_calc">
+			<preferredColor>goldenrod</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QI_fcst">
+			<preferredColor>goldenrod</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QL_obs">
+			<preferredColor>brown</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QL_calc">
+			<preferredColor>brown</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="QL_fcst">
+			<preferredColor>brown</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>x</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="NoGatesOpen_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WindDir_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="WindVel_obs">
+			<qualifierId>opo</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>circle</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_H">
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>100</min>
+			<max>106</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_dH">
+			<preferredColor>dark green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>200</min>
+			<max>206</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_Q">
+			<preferredColor>dark green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>300</min>
+			<max>306</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_dQ">
+			<preferredColor>dark green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>400</min>
+			<max>406</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_V">
+			<preferredColor>dark green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>500</min>
+			<max>506</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_EC">
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>700</min>
+			<max>706</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_DO%">
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>diamond</markerStyle>
+			<markerSize>6</markerSize>
+			<min>800</min>
+			<max>806</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_H_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_dH_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_Q_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_dQ_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_V_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_EC_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Threshold_DO%_count">
+			<preferredColor>light goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<min>0</min>
+			<max>10</max>
+		</parameterDisplayOptions>
+	</parametersDisplayConfig>
+	<moduleInstanceIdMappings>
+		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Hcst">
+			<description>[Historical]</description>
+		</moduleInstanceIdMapping>
+		<moduleInstanceIdMapping id="ewSource_Fcst">
+			<description>[Forecast]</description>
+		</moduleInstanceIdMapping>
+		<moduleInstanceIdMapping id="ImportFromHydstraTSM_Fcst">
+			<description>Hydstra Forecast</description>
+		</moduleInstanceIdMapping>
+		<moduleInstanceIdMapping id="ImportForecastSTF">
+			<description>STF Forecast</description>
+		</moduleInstanceIdMapping>
+	</moduleInstanceIdMappings>
+	<statisticalFunctions>
+		<statisticalFunction function="durationExceedence"/>
+		<statisticalFunction function="relativeAggregation">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="movingAverage">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="centralMovingAverage">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="calendarAggregation">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="cumulative">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="accumulationInterval">
+			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
+			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
+		</statisticalFunction>
+		<statisticalFunction function="scatterPlot"/>
+		<statisticalFunction function="boxPlot">
+			<timeStep id="Daily"/>
+			<timeStep id="Weekly"/>
+			<timeStep id="Monthly"/>
+			<!-- 
+			<timeStep id="Seasons"/>
+			-->
+		</statisticalFunction>
+		<statisticalFunction function="historicalAnalysis">
+		   <historicalPeriods>
+			  <historicalPeriod>
+				 <startForwardLookingPeriod>--01-01</startForwardLookingPeriod>
+				 <season startMonthDay="--06-01" endMonthDay="--05-31" label="Water Year"/>
+			  </historicalPeriod>
+		   </historicalPeriods>
+		</statisticalFunction>
+	</statisticalFunctions>
+	<descriptiveFunctionGroups>
+		<descriptiveFunctionGroup name="Basic statistics">
+			<descriptiveFunction function="infoLocationId" ignoreMissings="true"/>
+			<descriptiveFunction function="infoLocationName" ignoreMissings="true"/>
+			<descriptiveFunction function="infoParameterId" ignoreMissings="true"/>
+			<descriptiveFunction function="infoParameterName" ignoreMissings="true"/>
+			<descriptiveFunction function="startTime" ignoreMissings="true"/>
+			<descriptiveFunction function="endTime" ignoreMissings="true"/>
+			<descriptiveFunction function="mean" ignoreMissings="true"/>
+			<descriptiveFunction function="min" ignoreMissings="true"/>
+			<descriptiveFunction function="max" ignoreMissings="true"/>
+			<descriptiveFunction function="sum" ignoreMissings="true"/>
+			<descriptiveFunction function="missings" ignoreMissings="true"/>
+			<descriptiveFunction function="unreliables" ignoreMissings="true"/>
+			<descriptiveFunction function="doubtfuls" ignoreMissings="true"/>
+			<descriptiveFunction function="completed" ignoreMissings="true"/>
+			<descriptiveFunction function="corrected" ignoreMissings="true"/>
+			<descriptiveFunction function="count" ignoreMissings="true"/>
+			<descriptiveFunction function="standardDeviation" ignoreMissings="true"/>
+		</descriptiveFunctionGroup>
+		<descriptiveFunctionGroup name="Descriptive statistics">
+			<descriptiveFunction function="mean" ignoreMissings="true"/>
+			<descriptiveFunction function="min"/>
+			<descriptiveFunction function="max"/>
+			<descriptiveFunction function="sum" ignoreMissings="true"/>
+			<descriptiveFunction function="standardDeviation" ignoreMissings="true"/>
+			<descriptiveFunction function="percentileExceedence" ignoreMissings="true">
+				<value>5</value>
+				<value>25</value>
+				<value>50</value>
+				<value>75</value>
+				<value>95</value>
+			</descriptiveFunction>
+		</descriptiveFunctionGroup>
+		<descriptiveFunctionGroup name="Time series info">
+			<descriptiveFunction function="infoLocationId"/>
+			<descriptiveFunction function="infoLocationName"/>
+			<descriptiveFunction function="infoParameterId"/>
+			<descriptiveFunction function="infoParameterName"/>
+			<descriptiveFunction function="infoModuleinstance"/>
+			<descriptiveFunction function="startTime"/>
+			<descriptiveFunction function="endTime"/>
+		</descriptiveFunctionGroup>
+		<descriptiveFunctionGroup name="Data quality">
+			<descriptiveFunction function="count"/>
+			<descriptiveFunction function="completed"/>
+			<descriptiveFunction function="corrected"/>
+			<descriptiveFunction function="reliables"/>
+			<descriptiveFunction function="doubtfuls"/>
+			<descriptiveFunction function="unreliables"/>
+			<descriptiveFunction function="missings"/>
+		</descriptiveFunctionGroup>
+	</descriptiveFunctionGroups>
+	<buttonSettings>
+		<showDisplayGroups visible="true"/>
+		<showTable/>
+		<showTwentyFourHour visible="false"/>
+		<showChart/>
+		<showStatistics/>
+		<rotateChartAndTable/>
+		<zoomIn/>
+		<zoomOut/>
+		<zoomToDefault/>
+		<selectPreviousZoomLevel/>
+		<selectNextZoomLevel/>
+		<moveBackOneViewPeriod/>
+		<moveBackHalfViewPeriod visible="false"/>
+		<moveForwardHalfViewPeriod visible="false"/>
+		<moveForwardOneViewPeriod/>
+		<showAllData/>
+		<switchReferenceLevel/>
+		<setViewPeriod/>
+		<copyTimeSeries/>
+		<pasteTimeSeries/>
+		<lockSelection/>
+		<runWorkflow visible="false"/>
+		<undoTimeSeriesChanges/>
+		<saveTimeSeriesChanges/>
+		<setTimeSeriesEditableByClicking visible="false"/>
+		<showThresholdWarningLevels/>
+		<printChart/>
+		<saveChartAsPicture/>
+		<showLongTermScroller/>
+		<searchAndSelectForecasts/>
+		<setTimeSeriesVisibility/>
+	</buttonSettings>
+</timeSeriesDisplay>

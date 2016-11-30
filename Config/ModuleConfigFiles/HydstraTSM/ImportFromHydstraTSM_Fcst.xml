@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!--These locations in sample import file: 403241A,403242C,403230A 
+
+TODO: will there be more? Which locationSet is most convenient? -->
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_FROM_HYDSTRA_TSM$</folder>
+			<fileNamePatternFilter>*tsraw.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_HYDSTRA_TSM$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdImportHydstraTSM</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>HYD_TSM</dataFeedId>
+			<expiryTime unit="day" multiplier="3"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>cor</qualifierId>
+			<locationSetId>tsm_sites_output</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_FROM_HYDSTRA_TSM$</folder>
+			<fileNamePatternFilter>*tscomp.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_HYDSTRA_TSM$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdImportHydstraTSM</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>HYD_TSM</dataFeedId>
+			<expiryTime unit="day" multiplier="3"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>ucor</qualifierId>
+			<locationSetId>tsm_sites_output</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

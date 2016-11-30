@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secondaryValidation xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/secondaryValidation.xsd">
+	<variableDefinition>
+		<variableId>OPO_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variableDefinition>
+	<spatialHomogeneityCheck id="SpatialHomogeneity_Popo_8am">
+		<input>
+			<variableId>OPO_8am</variableId>
+		</input>
+		<searchRadius>100000</searchRadius>
+		<distanceGeoDatum>UTM53S</distanceGeoDatum>
+		<numberOfPoints>4</numberOfPoints>
+		<numberOfBackupPoints>8</numberOfBackupPoints>
+		<distancePower>2</distancePower>
+		<threshold>
+			<absolute>5</absolute>
+			<outputFlag>doubtful</outputFlag>
+			<logLevel>INFO</logLevel>
+			<logEventCode>SecondaryValidation.spatialHomogeneity</logEventCode>
+			<logMessage>%AMOUNT_CHANGED_FLAGS% flags set to %OUTPUT_FLAG% at: %HEADER%</logMessage>
+		</threshold>
+		<output>
+			<variableId>OPO_8am</variableId>
+		</output>
+	</spatialHomogeneityCheck>
+</secondaryValidation>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on areaId level. Export of external forecasts-->
+	<!--FEWS external forecasts will be stored in -->
+	<!--<archiveFolder>/<yyyy>/<MM>/<areaId>/<dd> /external_forecasts/<sourceId>_<ExtForecastTime>-->
+	<exportExternalForecast>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ACCESSG.nc</fileName>
+					<areaId>mdba</areaId>
+					<sourceId>ACCESSG</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ACCESSG)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>NWP</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep multiplier="3" unit="hour"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ACCESSR.nc</fileName>
+					<areaId>mdba</areaId>
+					<sourceId>ACCESSR</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ACCESSR)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>NWP</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep multiplier="1" unit="hour"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Soil_Moisture_ACCESSR.nc</fileName>
+					<areaId>mdba</areaId>
+					<sourceId>ACCESSR</sourceId>
+					<ncMetaData>
+						<title>Soil Moisture (ACCESSR)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>Soil_moist</parameterId>
+						<locationId>NWP</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep multiplier="1" unit="hour"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportExternalForecast>
+</exportArchiveModule>

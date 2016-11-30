@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="ForecastingRegion">Murray-Darling</defineGlobal>
+		<ratingCurveTableFormat id="ratingTableFormat" tableStyle="tableStyle3">
+			<stageColumn>
+				<header>Stage (%UNIT%)</header>
+			</stageColumn>
+			<dischargeColumn>
+				<header>Discharge (%UNIT%)</header>
+			</dischargeColumn>
+		</ratingCurveTableFormat>
+		<dateFormat id="dateFormat1">
+			<pattern>yyyy-mm-dd</pattern>
+		</dateFormat>
+		<units>system</units>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir>Ratings</reportsRootSubDir>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<inputVariable>
+			<timeSeriesSet>
+				<moduleInstanceId>LevelToFlow</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>rated</qualifierId>
+				<locationSetId>sites_H_rated</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+	</declarations>
+	<report singleLocation="true">
+		<ratingCurveTable formatId="ratingTableFormat" id="ratingTable"/>
+		<template>ratingtable_template.html</template>
+		<outputFileName>CurrentRating.html</outputFileName>
+		<defineLocal id="siteId">@ROWS_SITE_ID@</defineLocal>
+		<defineLocal id="siteName">@SHORT_NAME@</defineLocal>
+	</report>
+</reports>

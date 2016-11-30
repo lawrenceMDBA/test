@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- 
+		Created to consolidate ProcessXXXopo moduleinstances by copying ProcessEVAPmlake to ProcessEVAPopo.
+		Should be used consolidate all Processopo to sigle module instance....may be
+	-->
+	<variable>
+		<!-- Input Variable -->
+		<variableId>Input_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPmlake</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!-- Input Variable -->
+		<variableId>Input_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPfao</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!-- Output Variable -->
+		<variableId>Output_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!-- Output Variable -->
+		<variableId>Output_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--  Perform a simple merge to copy the data from input to output variable-->
+	<transformation id="MergeSimple1">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Input_1</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Output_1</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="MergeSimple2">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Input_2</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Output_2</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>		
+</transformationModule>

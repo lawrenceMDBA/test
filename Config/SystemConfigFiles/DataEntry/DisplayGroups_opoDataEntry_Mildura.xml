@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Mildura.OPO" name="Processing Mildura sites ">
+		<displayGroup id="Mildura.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_mildura">
+				<locationSetId>Mildura.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Mildura.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_mildura">
+				<locationSetId>Mildura.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Mildura.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Mildura.Process_Hopo" name="Mildura water level">
+				<singleLocationDisplays id="ImportProcess_mildura_H">
+					<locationSetId>Mildura.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_Qopo" name="Mildura discharge">
+				<singleLocationDisplays id="ImportProcess_mildura_Q">
+					<locationSetId>Mildura.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_Qratedopo" name="Mildura rated discharge">
+				<singleLocationDisplays id="ImportProcess_mildura_Qrated">
+					<locationSetId>Mildura.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_Vopo" name="Mildura storage">
+				<singleLocationDisplays id="ImportProcess_mildura_V">
+					<locationSetId>Mildura.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_Popo" name="Mildura precipitation">
+				<singleLocationDisplays id="ImportProcess_mildura_P">
+					<locationSetId>Mildura.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Mildura.Process_EVAPopo" name="Mildura evaporation">
+				<singleLocationDisplays id="ImportProcess_mildura_EVAP">
+					<locationSetId>Mildura.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Mildura.Process_ECopo" name="Mildura electric conductivity">
+				<singleLocationDisplays id="ImportProcess_mildura_EC">
+					<locationSetId>Mildura.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_DOopo" name="Mildura dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_mildura_DO">
+					<locationSetId>Mildura.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_WTopo" name="Mildura water temperature">
+				<singleLocationDisplays id="ImportProcess_mildura_WT">
+					<locationSetId>Mildura.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_Turbidityopo" name="Mildura Turbidity">
+				<singleLocationDisplays id="ImportProcess_mildura_Turbidity">
+					<locationSetId>Mildura.sites_Turbidity</locationSetId>
+					<plotId>ImportProcess_Turbidity</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Mildura.Process_pHopo" name="Mildura pH">
+				<singleLocationDisplays id="ImportProcess_mildura_pH">
+					<locationSetId>Mildura.sites_pH</locationSetId>
+					<plotId>ImportProcess_pH</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Mildura.Process_ATopo" name="Mildura air temperature">
+				<singleLocationDisplays id="ImportProcess_mildura_AT">
+					<locationSetId>Mildura.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

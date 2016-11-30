@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--Interpolates the gridded data to TSM sites for Hydstra model run-->
+	<variable>
+		<variableId>ADFD_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_TSMSites</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAT_fcst_To_TSMSites</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--START OF THE COMPUTATIONS - Compute average over polygons using cookie cutter method-->
+	<transformation id="Interpolate_ADFD_to_TSMSites">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ADFD_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ADFD_TSMSites</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+</transformationModule>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Dartmouth.OPO" name="Processing Dartmouth sites ">
+		<displayGroup id="Dartmouth.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Dartmouth">
+				<locationSetId>Dartmouth.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Dartmouth.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Dartmouth">
+				<locationSetId>Dartmouth.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Dartmouth.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Dartmouth.Process_Hopo" name="Dartmouth water level">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_H">
+					<locationSetId>Dartmouth.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!--  			<displayGroup id="Dartmouth.Process_Qopo" name="Dartmouth discharge">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_Q">
+					<locationSetId>Dartmouth.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Dartmouth.Process_Qratedopo" name="Dartmouth rated discharge">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_Qrated">
+					<locationSetId>Dartmouth.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_Vopo" name="Dartmouth storage">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_V">
+					<locationSetId>Dartmouth.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_Popo" name="Dartmouth precipitation">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_P">
+					<locationSetId>Dartmouth.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_EVAPopo" name="Dartmouth evaporation">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_EVAP">
+					<locationSetId>Dartmouth.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!--<displayGroup id="Dartmouth.Process_ECopo" name="Dartmouth electric conductivity">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_EC">
+					<locationSetId>Dartmouth.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_DOopo" name="Dartmouth dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_DO">
+					<locationSetId>Dartmouth.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_WTopo" name="Dartmouth water temperature">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_WT">
+					<locationSetId>Dartmouth.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Dartmouth.Process_ATopo" name="Dartmouth air temperature">
+				<singleLocationDisplays id="ImportProcess_Dartmouth_AT">
+					<locationSetId>Menindee.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>-->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

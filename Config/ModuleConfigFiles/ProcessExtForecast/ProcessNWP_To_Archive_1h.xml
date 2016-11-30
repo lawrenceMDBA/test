@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" version="1.0">
+	<variable>
+		<variableId>NWP</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecast$NWP$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>$NWP_GRID$</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NWP_archive</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecast$NWP$</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>$NWP_GRID_ARCHIVE$</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="NWP_to_archive_grid">
+		<interpolationSpatial>
+			<bilinear>
+				<inputVariable>
+					<variableId>NWP</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>NWP_archive</variableId>
+				</outputVariable>
+			</bilinear>
+		</interpolationSpatial>
+	</transformation>
+</transformationModule>

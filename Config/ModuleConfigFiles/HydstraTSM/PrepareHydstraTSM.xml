@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>HydroUpdate_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NWP_P</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<qualifierId>avg</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<relativeViewPeriod start="-7" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NWP_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_P_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_P_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_P_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_P_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_P_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Merged_P</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>tsm_sites_P</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NWP_AT_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAT_fcst_To_TSMSites</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_AT_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_AT_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_AT_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_AT_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_AT_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_AT_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Merged_AT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_comb</parameterId>
+			<locationSetId>tsm_sites_AT</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_E_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_E</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-7" end="1" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>E_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<locationSetId>tsm_sites_E</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="1" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_H_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_H_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_H_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_H_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_H</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_Q_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Q_obs_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Q_obs_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Q_obs_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>1h</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Q_obs_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_Q_obs_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_Q_obs_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_Q_obs</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_H_hourly_Q_rated_sites</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>tsm_sites_Q_rated</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_Q_rated_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>rated</qualifierId>
+			<locationSetId>tsm_sites_Q_rated</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="OPT_P_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_P_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT_P_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_P_gapfill_15m">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>OPT_P_15m</variableId>
+				</inputVariable>
+				<maxGapLength>96</maxGapLength>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>OPT_P_15m</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="OPT_P_15m_to_hourly">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>OPT_P_15m</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPT_P_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="OPC_P_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_P_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPC_P_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_P_gapfill_15m">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>OPC_P_15m</variableId>
+				</inputVariable>
+				<maxGapLength>96</maxGapLength>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>OPC_P_15m</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="OPC_P_15m_to_hourly">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>OPC_P_15m</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPC_P_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="SelectPreferred_P_hourly">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_P_hourly</variableId>
+				</input>
+				<input>
+					<variableId>OPC_P_hourly</variableId>
+				</input>
+				<attributeFunctionId>@P_PREFERRED@_hourly</attributeFunctionId>
+				<output>
+					<variableId>Selected_P_hourly</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_P_Over_Selected_OPT_OPC_hourly">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>HydroUpdate_P_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_P_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_P_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT_P_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_P_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_P_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="NWP_P_hourly">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>NWP_P</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>NWP_P_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Merged_P">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_P_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>NWP_P_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Merged_P</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPT_AT_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_AT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT_AT_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_AT_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_AT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPC_AT_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="SelectPreferred_AT_hourly">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_AT_hourly</variableId>
+				</input>
+				<input>
+					<variableId>OPC_AT_hourly</variableId>
+				</input>
+				<attributeFunctionId>@AT_PREFERRED@_hourly</attributeFunctionId>
+				<output>
+					<variableId>Selected_AT_hourly</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_AT_Over_Selected_OPT_OPC_hourly">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_AT_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_AT_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT_AT_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_AT_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_AT_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merged_AT">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_AT_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>NWP_AT_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Merged_AT</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Convert Evap Daily to Hourly">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>OPO_E_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>E_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="OPT_H_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_H_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT_H_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_H_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_H_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPC_H_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT2_H_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT2_H_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT2_H_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="SelectPreferred_H_hourly">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_H_hourly</variableId>
+				</input>
+				<input>
+					<variableId>OPC_H_hourly</variableId>
+				</input>
+				<input>
+					<variableId>OPT2_H_hourly</variableId>
+				</input>
+				<attributeFunctionId>@H_PREFERRED@_hourly</attributeFunctionId>
+				<output>
+					<variableId>Selected_H_hourly</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_H_Over_Selected_OPT_OPC_OPT2_hourly">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>HydroUpdate_H_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_H_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_H_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT_H_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_H_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT2_H_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_H_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPT_Q_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_Q_obs_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT_Q_obs_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_Q_neq_to_hourly">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_Q_obs_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPC_Q_obs_hourly</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="SelectPreferred_Q_obs_hourly">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_Q_obs_hourly</variableId>
+				</input>
+				<input>
+					<variableId>OPC_Q_obs_hourly</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_hourly</attributeFunctionId>
+				<output>
+					<variableId>Selected_Q_obs_hourly</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Q_obs_Over_Selected_OPT_OPC_hourly">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>HydroUpdate_Q_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_Q_obs_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_Q_obs_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT_Q_obs_hourly</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_Q_obs_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_Q_obs_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="StageToDischarge_dailydischarge_hourly">
+		<stageDischarge>
+			<ratingCurve>
+				<stage>
+					<variableId>OPO_H_hourly_Q_rated_sites</variableId>
+				</stage>
+				<discharge>
+					<variableId>OPO_Q_rated_hourly</variableId>
+				</discharge>
+			</ratingCurve>
+		</stageDischarge>
+	</transformation>
+</transformationModule>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="global1">Global Value 1</defineGlobal>
+		<rowPerLocationHtmlTableFormat id="rowPerLocationHtml" tableStyle="tableStyle3">
+			<onlyWriteRowsWithCrossedThresholds>true</onlyWriteRowsWithCrossedThresholds>
+			<writeSingleTable enabled="true">
+				<!--the time of the timestep is interpreted as the starting time of the period-->
+				<timeStep id="8am_report"/>
+			</writeSingleTable>
+			<!-- for each date from the view period as specified in the Manual Workflow display with Cold state -> Run start time and T0 a separate Html table will be created -->
+			<!-- Column definitions. Any function can be used -->
+			<!-- If there is at least one THRESHOLDCROSSING function with keyword "ALL_", then all crossings in the view period or season will be listed -->
+			<!-- RowPerLocationHtmlTable has then one row per location and threshold crossing  -->
+			<column>
+				<header>Location</header>
+				<function>LOCATIONATTRIBUTE(shortname)</function>
+			</column>
+			<column>
+				<header>Date</header>
+				<function>THRESHOLDCROSSING(ALL_DATETIMES;ALL_threshold_max;dateFormat2)</function>
+			</column>
+			<column>
+				<header>H</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;H_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(H_calc;1Decimal)</function>
+			</column>
+			<column>
+				<header>dH</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Set_dH_deltaH;2Decimal)</function>
+			</column>
+			<column>
+				<header>Q</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;Q_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Q_merge;0Decimal)</function>
+			</column>
+			<column>
+				<header>dQ</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dQ_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Set_dQ_deltaQ;1Decimal)</function>
+			</column>
+			<column>
+				<header>V</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;V_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(V_merge;0Decimal)</function>
+			</column>
+			<column>
+				<header>EC</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;EC_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(EC_calc;0Decimal)</function>
+			</column>
+			<column>
+				<header>DO%</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;DO%_threshold)</backgroundColorFunction>
+				<function>MINVALUE(DOPCT_calc;0Decimal)</function>
+			</column>
+			<column>
+				<header>Date Time</header>
+				<function>THRESHOLDCROSSING(ALL_DATETIMES;ALL_threshold_hourly_max;dateFormat1)</function>
+			</column>
+			<column>
+				<header>dH_hourly</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_hourly_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Set_dH_hourly_deltaH;2Decimal)</function>
+			</column>
+		</rowPerLocationHtmlTableFormat>
+		<dateFormat id="dateFormat1">
+			<pattern>dd-MMM-yyyy HH:mm</pattern>
+		</dateFormat>
+		<dateFormat id="dateFormat2">
+			<pattern>dd-MMM-yyyy</pattern>
+		</dateFormat>
+		<dateFormat id="dateFormat3">
+			<pattern>yyyy</pattern>
+		</dateFormat>
+		<numberFormat id="0Decimal">{0,number,###0}</numberFormat>
+		<numberFormat id="1Decimal">{0,number,###0.0}</numberFormat>
+		<numberFormat id="2Decimal">{0,number,###0.00}</numberFormat>
+		<units>system</units>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir>ThresholdCrossingsSOnO</reportsRootSubDir>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<timeZone>
+			<timeZoneOffset>+10:00</timeZoneOffset>
+		</timeZone>
+		<inputVariable variableId="H_calc">
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_calc</parameterId>
+				<locationSetId>threshold_sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Set_dH_deltaH">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
+				<locationSetId>threshold_sites_dH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Set_dH_hourly_deltaH">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
+				<qualifierId>delta</qualifierId>
+				<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+				<timeStep multiplier="1" unit="hour"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Q_merge">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<locationSetId>threshold_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Set_dQ_deltaQ">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dQ</parameterId>
+				<locationSetId>threshold_sites_dQ</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="V_merge">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_calc</parameterId>
+				<locationSetId>threshold_sites_V</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="EC_calc">
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_calc</parameterId>
+				<locationSetId>threshold_sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="DOPCT_calc">
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO%_calc</parameterId>
+				<locationSetId>threshold_sites_DO%</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="H_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_H</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dH_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_dH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dH_hourly_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_dH_hourly</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep multiplier="1" unit="hour"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Q_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_Q</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dQ_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dQ</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_dQ</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="V_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_V</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="EC_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_EC</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="DO%_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_DO%</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_DO%</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="ALL_threshold_merge">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_ALL</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="ALL_threshold_max">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_ALL</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>max</qualifierId>
+				<locationSetId>threshold_sites_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="ALL_threshold_hourly_max">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationSetId>threshold_sites_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+	</declarations>
+	<!-- Since writeSingleTable=true, use scrubFolder=true to clear folder. Number of generated tables may differ every time the report is created  -->
+	<report scrubFolder="true">
+		<rowPerLocationHtmlTableInstance id="table" formatId="rowPerLocationHtml"/>
+		<template>thresholdcrossings_table_template.html</template>
+		<outputFileName>ThresholdCrossings_Table.html</outputFileName>
+	</report>
+	<!--  Merge tables in one html report. Template function FILECONTENT uses keyword  REMOVE to delete files after include  -->
+	<report>
+		<template>thresholdcrossings_SOnO_report_template.html</template>
+		<outputFileName>ThresholdCrossings_SOnO_Report.html</outputFileName>
+	</report>
+</reports>

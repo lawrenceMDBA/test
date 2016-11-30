@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modifierTypes xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/modifierTypes.xsd">
+	<timeSeriesModifier id="OPO_modification" name="OPO modification">
+		<timeSeries>
+			<qualifierId>opo</qualifierId>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime multiplier="90" unit="day"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Hume_Release_Forecast" name="Hume Release Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Hume_Release_Scenario" name="Hume Release Scenario">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release_scen</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<ratingCurveModifiers>
+		<tableRatingCurveModifier id="rating" name="Modify RT">
+			<modifierTypeDescription>Rating Modification:</modifierTypeDescription>
+			<expiryTime unit="week" multiplier="2600"/>
+			<defaultStartTime>start run</defaultStartTime>
+			<defaultEndTime>end run</defaultEndTime>
+			<!--<offsetDefaultEndTime multiplier="30" unit="day"/>-->
+		</tableRatingCurveModifier>
+	</ratingCurveModifiers>
+	<attributeModifiers>
+		<locationAttributeModifier id="H_select_OPO" name="H">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Water levels">
+				<locationSetId>sites_H_obs</locationSetId>
+				<attribute id="H_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPT2</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="P_select_OPO" name="P">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Rainfall">
+				<locationSetId>sites_P_obs</locationSetId>
+				<attribute id="P_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="Q_select_OPO" name="Q">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Discharge">
+				<locationSetId>sites_Q_obs</locationSetId>
+				<attribute id="Q_PREFERRED">
+					<selection>
+						<predefined>
+							<option>Rated</option>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+					<comment>test</comment>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="V_select_OPO" name="V">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Storage Volume">
+				<locationSetId>sites_V_obs</locationSetId>
+				<attribute id="V_PREFERRED">
+					<selection>
+						<predefined>
+							<option>Capacity</option>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="WT_select_OPO" name="WT">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Water Temperature">
+				<locationSetId>sites_WT_obs</locationSetId>
+				<attribute id="WT_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="AT_select_OPO" name="AT">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Air Temperature">
+				<locationSetId>sites_AT_obs</locationSetId>
+				<attribute id="AT_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="DO_select_OPO" name="DO">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Dissolved Oxygen">
+				<locationSetId>sites_DO_obs</locationSetId>
+				<attribute id="DO_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="EC_select_OPO" name="EC">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Salinity (EC)">
+				<locationSetId>sites_EC_obs</locationSetId>
+				<attribute id="EC_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPT</option>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="EVAP_select_OPO" name="Evap">
+			<expiryTime unit="week" multiplier="52"/>
+			<modifiableGroup name="Evaporation">
+				<locationSetId>sites_EVAP_obs</locationSetId>
+				<attribute id="EVAP_PREFERRED">
+					<selection>
+						<predefined>
+							<option>OPC</option>
+							<option>OPO</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="Rainfall Policy" name="Rainfall Current Policy">
+			<expiryTime unit="day" multiplier="14"/>
+			<modifiableGroup name="Catchments">
+				<locationSetId>URBS_catchments</locationSetId>
+				<attribute id="CATCH_P_NWP_SELECT">
+					<selection>
+						<predefined>
+							<option>ACCESSG</option>
+							<option>ACCESSR</option>
+							<option>ADFD</option>
+							<option>ADFD_higher</option>
+							<option>PME</option>
+							<option>PME_min</option>
+							<option>PME_max</option>
+							<option>None</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<attribute id="CATCH_P_NWP_MULT"/>
+				<panelLayout>
+					<tableLayout id="Catchments_NWP">
+						<title>Gridded rainfall forecast</title>
+						<attributeId>CATCH_P_NWP_SELECT</attributeId>
+						<attributeId>CATCH_P_NWP_MULT</attributeId>
+					</tableLayout>
+				</panelLayout>
+				<summaryFunction>Grid=@CATCH_P_NWP_SELECT@</summaryFunction>
+			</modifiableGroup>
+			<modifiableGroup name="SubCatchments">
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<attribute id="SC_P_MAN_SELECT">
+					<selection>
+						<predefined>
+							<option>Depth</option>
+							<option>Persistence</option>
+							<option>Recession</option>
+							<option>None</option>
+						</predefined>
+					</selection>
+					<conditionalSelection>
+						<option value="Depth">
+							<disabledAttributeId>SC_P_MAN_MATCH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_FACTOR</disabledAttributeId>
+						</option>
+						<option value="Persistence">
+							<disabledAttributeId>SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_DELAY</disabledAttributeId>
+						</option>
+						<option value="Recession">
+							<disabledAttributeId>SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_DELAY</disabledAttributeId>
+						</option>
+						<option value="None">
+							<disabledAttributeId>SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_LENGTH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_DELAY</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_MATCH</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_OFFSET</disabledAttributeId>
+							<disabledAttributeId>SC_P_MAN_FACTOR</disabledAttributeId>
+						</option>
+					</conditionalSelection>
+					<comment>no advice  </comment>
+				</attribute>
+				<attribute id="SC_P_MAN_DEPTH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SC_P_MAN_LENGTH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SC_P_MAN_DELAY">
+					<comment>Should always be greater than or equal to 0</comment>
+				</attribute>
+				<attribute id="SC_P_MAN_MATCH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SC_P_MAN_OFFSET">
+					<comment>Should always be less than or equal to 0</comment>
+				</attribute>
+				<attribute id="SC_P_MAN_FACTOR">
+					<comment>no advice </comment>
+				</attribute>
+				<panelLayout>
+					<tableLayout id="SubCatchments_Manual">
+						<title>User defined rainfall forecast</title>
+						<attributeId>SC_P_MAN_SELECT</attributeId>
+						<attributeId>SC_P_MAN_DEPTH</attributeId>
+						<attributeId>SC_P_MAN_LENGTH</attributeId>
+						<attributeId>SC_P_MAN_DELAY</attributeId>
+						<attributeId>SC_P_MAN_MATCH</attributeId>
+						<attributeId>SC_P_MAN_OFFSET</attributeId>
+						<attributeId>SC_P_MAN_FACTOR</attributeId>
+					</tableLayout>
+				</panelLayout>
+				<summaryFunction>User=@SC_P_MAN_SELECT@</summaryFunction>
+			</modifiableGroup>
+			<template id="SUB" name="Sub Catchment">
+				<panel>
+					<panelId>SubCatchments_Manual</panelId>
+					<position row="1" column="1"/>
+				</panel>
+				<panel>
+					<panelId>Catchments_NWP</panelId>
+					<position row="2" column="1"/>
+				</panel>
+			</template>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="Rainfall Scenario" name="Rainfall What-If Scenario">
+			<expiryTime unit="day" multiplier="14"/>
+			<modifiableGroup name="Catchments">
+				<locationSetId>URBS_catchments</locationSetId>
+				<attribute id="SCEN_CATCH_P_NWP_SELECT">
+					<selection>
+						<predefined>
+							<option>ACCESSG</option>
+							<option>ACCESSR</option>
+							<option>ADFD</option>
+							<option>ADFD_higher</option>
+							<option>PME</option>
+							<option>PME_min</option>
+							<option>PME_max</option>
+							<option>None</option>
+						</predefined>
+					</selection>
+				</attribute>
+				<attribute id="SCEN_CATCH_P_NWP_MULT"/>
+				<panelLayout>
+					<tableLayout id="Catchments_NWP">
+						<title>Gridded rainfall forecast</title>
+						<attributeId>SCEN_CATCH_P_NWP_SELECT</attributeId>
+						<attributeId>SCEN_CATCH_P_NWP_MULT</attributeId>
+					</tableLayout>
+				</panelLayout>
+				<summaryFunction>Grid=@SCEN_CATCH_P_NWP_SELECT@</summaryFunction>
+			</modifiableGroup>
+			<modifiableGroup name="SubCatchments">
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<attribute id="SCEN_SC_P_MAN_SELECT">
+					<selection>
+						<predefined>
+							<option>Depth</option>
+							<option>Persistence</option>
+							<option>Recession</option>
+							<option>None</option>
+						</predefined>
+					</selection>
+					<conditionalSelection>
+						<option value="Depth">
+							<disabledAttributeId>SCEN_SC_P_MAN_MATCH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_FACTOR</disabledAttributeId>
+						</option>
+						<option value="Persistence">
+							<disabledAttributeId>SCEN_SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_DELAY</disabledAttributeId>
+						</option>
+						<option value="Recession">
+							<disabledAttributeId>SCEN_SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_DELAY</disabledAttributeId>
+						</option>
+						<option value="None">
+							<disabledAttributeId>SCEN_SC_P_MAN_DEPTH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_LENGTH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_DELAY</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_MATCH</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_OFFSET</disabledAttributeId>
+							<disabledAttributeId>SCEN_SC_P_MAN_FACTOR</disabledAttributeId>
+						</option>
+					</conditionalSelection>
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_DEPTH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_LENGTH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_DELAY">
+					<comment>Should always be greater than or equal to 0</comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_MATCH">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_OFFSET">
+					<comment>Should always be less than or equal to 0</comment>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_FACTOR">
+					<comment>no advice </comment>
+				</attribute>
+				<panelLayout>
+					<tableLayout id="SubCatchments_Manual">
+						<title>User defined rainfall forecast</title>
+						<attributeId>SCEN_SC_P_MAN_SELECT</attributeId>
+						<attributeId>SCEN_SC_P_MAN_DEPTH</attributeId>
+						<attributeId>SCEN_SC_P_MAN_LENGTH</attributeId>
+						<attributeId>SCEN_SC_P_MAN_DELAY</attributeId>
+						<attributeId>SCEN_SC_P_MAN_MATCH</attributeId>
+						<attributeId>SCEN_SC_P_MAN_OFFSET</attributeId>
+						<attributeId>SCEN_SC_P_MAN_FACTOR</attributeId>
+					</tableLayout>
+				</panelLayout>
+				<summaryFunction>User=@SCEN_SC_P_MAN_SELECT@</summaryFunction>
+			</modifiableGroup>
+			<template id="SUB" name="Sub Catchment">
+				<panel>
+					<panelId>SubCatchments_Manual</panelId>
+					<position row="1" column="1"/>
+				</panel>
+				<panel>
+					<panelId>Catchments_NWP</panelId>
+					<position row="2" column="1"/>
+				</panel>
+			</template>
+		</locationAttributeModifier>
+		<locationAttributeModifier id="URBS_R" name="URBS parameters">
+			<expiryTime unit="day" multiplier="14"/>
+			<modifiableGroup name="URBS Loss model">
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<attribute id="URBS_LOSSTYPE">
+					<comment>The model is calibrated using the initial loss / proportional runoff model (ILPR option) - this is default</comment>
+				</attribute>
+				<attribute id="URBS_IL">
+					<comment>Default 0mm, calibration range 0 - 90mm</comment>
+				</attribute>
+				<attribute id="URBS_PR">
+					<comment>Default 0.25, calibration range 0.15-0.35</comment>
+				</attribute>
+				<attribute id="URBS_IF">
+					<comment>Default unlimited (10000000000)</comment>
+				</attribute>
+				<attribute id="URBS_ILMX">
+					<comment>Default 90mm</comment>
+				</attribute>
+				<attribute id="URBS_RF">
+					<comment>Default 0</comment>
+				</attribute>
+				<attribute id="URBS_IFRF">
+					<comment>Default 0</comment>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+				</tabularLayout>
+				<summaryFunction>LM=@URBS_LOSSTYPE@ IL=@URBS_IL@ IF=@URBS_IF@ Alpha=@URBS_ALPHA@ Beta=@URBS_BETA@ M=@URBS_M@</summaryFunction>
+			</modifiableGroup>
+			<modifiableGroup name="URBS Routing">
+				<locationSetId>URBS_subcatchments</locationSetId>
+				<attribute id="URBS_ALPHA">
+					<comment>Calibration range 0.15-0.33</comment>
+				</attribute>
+				<attribute id="URBS_BETA">
+					<comment>Calibration range 2.0-4.0</comment>
+				</attribute>
+				<attribute id="URBS_M">
+					<comment>Default value 0.8 - change with extreme caution</comment>
+				</attribute>
+				<attribute id="URBS_BASF">
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_BF">
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_TRLS">
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_N">
+					<visible>false</visible>
+					<comment>No advice</comment>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+				</tabularLayout>
+				<summaryFunction>LM=@URBS_LOSSTYPE@ IL=@URBS_IL@  IF=@URBS_IF@ Alpha=@URBS_ALPHA@ Beta=@URBS_BETA@ M=@URBS_M@</summaryFunction>
+			</modifiableGroup>
+			<modifiableGroup name="URBS Matching">
+				<locationSetId>URBS_matching</locationSetId>
+				<attribute id="URBS_SUBCATCHID">
+					<readOnly>true</readOnly>
+					<comment>Advice for this location: @MATCHING_ADVICE@</comment>
+				</attribute>
+				<attribute id="URBS_MATCHID">
+					<readOnly>true</readOnly>
+					<comment>Advice for this location: @MATCHING_ADVICE@</comment>
+				</attribute>
+				<attribute id="INCLUDE_MATCH_IN_URBS">
+					<comment>Advice for this location: @MATCHING_ADVICE@</comment>
+				</attribute>
+				<attribute id="MATCHING_ADVICE">
+					<readOnly>true</readOnly>
+					<comment>Advice for this location: @MATCHING_ADVICE@</comment>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+			</modifiableGroup>
+			<modifiableGroup name="URBS Reservoirs">
+				<locationSetId>URBS_reservoirs</locationSetId>
+				<attribute id="VBFNAME_URBS">
+					<readOnly>true</readOnly>
+				</attribute>
+				<attribute id="INITIAL_RESERVOIR_LEVEL">
+					<comment>Advice: The default initial lake level is set to -99. This means that the observed water level will be used by URBS. Enter a modified value to overule the initial water level.</comment>
+				</attribute>
+				<panelLayout>
+					<tableLayout id="URBS_Reservoirs">
+						<title>URBS Initial Reservoir Volume Before Full</title>
+						<attributeId>VBFNAME_URBS</attributeId>
+						<attributeId>INITIAL_RESERVOIR_LEVEL</attributeId>
+					</tableLayout>
+				</panelLayout>
+			</modifiableGroup>
+		</locationAttributeModifier>
+	</attributeModifiers>
+	<modifiersGroup id="None">
+		<modifierId> </modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="P_OPO">
+		<modifierId>P_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="H_OPO">
+		<modifierId>H_select_OPO</modifierId>
+		<modifierId>rating</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="Q_OPO">
+		<modifierId>Q_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="V_OPO">
+		<modifierId>V_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="WT_OPO">
+		<modifierId>WT_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="AT_OPO">
+		<modifierId>AT_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="DO_OPO">
+		<modifierId>DO_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="EC_OPO">
+		<modifierId>EC_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="E_OPO">
+		<modifierId>EVAP_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="ROWS">
+		<modifierId>OPO_modification</modifierId>
+		<modifierId>P_select_OPO</modifierId>
+		<modifierId>H_select_OPO</modifierId>
+		<modifierId>rating</modifierId>
+		<modifierId>Q_select_OPO</modifierId>
+		<modifierId>V_select_OPO</modifierId>
+		<modifierId>WT_select_OPO</modifierId>
+		<modifierId>AT_select_OPO</modifierId>
+		<modifierId>DO_select_OPO</modifierId>
+		<modifierId>EC_select_OPO</modifierId>
+		<modifierId>EVAP_select_OPO</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="Rainfall Policy">
+		<modifierId>Rainfall Policy</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="Rainfall Scenario">
+		<modifierId>Rainfall Scenario</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="URBS_R">
+		<modifierId>Rainfall Policy</modifierId>
+		<modifierId>URBS_R</modifierId>
+		<modifierId>Hume_Release_Forecast</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="URBS_R_Scen">
+		<modifierId>Rainfall Scenario</modifierId>
+		<modifierId>URBS_R</modifierId>
+		<modifierId>Hume_Release_Scenario</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="URBS_R_All">
+		<modifierId>Rainfall Policy</modifierId>
+		<modifierId>Rainfall Scenario</modifierId>
+		<modifierId>URBS_R</modifierId>
+		<modifierId>Hume_Release_Forecast</modifierId>
+	</modifiersGroup>
+</modifierTypes>
+<!--<timeSeriesModifier id="Streamgauges" name="Streamgauges">
+		<timeSeries>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites_Q_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime multiplier="365" unit="day"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Ovens Forecast" name="Ovens Forecast">
+		<timeSeries>
+		  <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+		  <valueType>scalar</valueType>
+		  <parameterId>Q_obs</parameterId>
+			<qualifierId>daily</qualifierId>
+		  <locationSetId>ewSourceRR_sites</locationSetId>
+		  <timeSeriesType>external historical</timeSeriesType>
+		  <timeStep id="Daily" />
+		</timeSeries>
+		<timeSeries>
+		  <moduleInstanceId>Ovens_ewSourceRR_Fcst</moduleInstanceId>
+		  <valueType>scalar</valueType>
+		  <parameterId>Q_fcst</parameterId>
+		  <locationSetId>ewsource_sites</locationSetId>
+		  <timeSeriesType>simulated forecasting</timeSeriesType>
+		  <timeStep id="Daily" />
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<offsetDefaultStartTime multiplier="-365" unit="day" />
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime multiplier="5" unit="day" />
+		<defaultValidTime />
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	-->

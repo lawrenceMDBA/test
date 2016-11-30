@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FTP_MDBA_ARCHIVE$</folder>
+			<fileNamePatternFilter>*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_FTP_MDBA$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<table>
+				<locationColumn/>
+				<parameterColumn/>
+				<dateTimeColumn pattern="yyyyMMddHHmmss"/>
+				<valueColumn/>
+				<flagColumn/>
+			</table>
+			<idMapId>IdImportETL</idMapId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ETL_archive</dataFeedId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

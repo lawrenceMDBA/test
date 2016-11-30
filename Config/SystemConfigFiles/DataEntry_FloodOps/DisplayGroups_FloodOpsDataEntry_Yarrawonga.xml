@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Yarrawonga.Import_flood" name="Yarrawonga flood sites import">
+		<nodeId>Yarrawonga.Import_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="importflood_yarrawonga">
+			<locationSetId>flood.sites_yarrawonga</locationSetId>
+			<plotId>Import_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Yarrawonga.DataEntry_flood" name="Yarrawonga flood sites data entry">
+		<nodeId>Yarrawonga.DataEntry_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="dataentryflood_yarrawonga">
+			<locationSetId>flood.sites_yarrawonga</locationSetId>
+			<plotId>DataEntry_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Yarrawonga.Process_flood" name="Yarrawonga flood storage sites QA">
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="Process_Observed_FloodOps">
+			<locationSetId>flood.sites_yarrawonga_vobs</locationSetId>
+			<plotId>ImportProcess_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Yarrawonga.Telemetry " name="Yarrawonga flood sites telemetry">
+		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="Yarrawonga.Process_Hflood" name="Yarrawonga flood sites water level">
+			<singleLocationDisplays id="ImportProcess_yarrawonga_H_flood">
+				<locationSetId>flood.sites_yarrawonga_hobs</locationSetId>
+				<plotId>ImportProcess_H_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Yarrawonga.Process_Qflood" name="Yarrawonga flood sites discharge">
+			<singleLocationDisplays id="ImportProcess_yarrawonga_Q_flood">
+				<locationSetId>flood.sites_yarrawonga_qobs</locationSetId>
+				<plotId>ImportProcess_Q_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Yarrawonga.Process_Pflood" name="Yarrawonga flood sites precipitation">
+			<singleLocationDisplays id="ImportProcess_yarrawonga_P_flood">
+				<locationSetId>flood.sites_yarrawonga_pobs</locationSetId>
+				<plotId>ImportProcess_P_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Yarrawonga.Process_Vflood" name="Yarrawonga flood sites volume">
+			<singleLocationDisplays id="ImportProcess_yarrawonga_V_flood">
+				<locationSetId>flood.sites_yarrawonga_vobs</locationSetId>
+				<plotId>ImportProcess_V_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+			</displayGroup>
+</displayGroups>

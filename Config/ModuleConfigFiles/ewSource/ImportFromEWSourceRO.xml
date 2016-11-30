@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!--These locations in sample import file: 403241A,403242C,403230A 
+
+TODO: will there be more? Which locationSet is most convenient? -->
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_FROM_EWSRC_RO$</folder>
+			<fileNamePatternFilter>*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_EWSRC_RO$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapEWSourceRO2ROWS</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>net</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_fcst</parameterId>
+			<qualifierId>natural</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_fcst</parameterId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_fcst</parameterId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_fcst</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_fcst</parameterId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_fcst</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_fcst</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QL_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QL_fcst</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

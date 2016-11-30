@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose OPO series from OPT, OPC -->
+	<!-- Types of daily values are distinguished:
+_8am_inst: instantaenous values at 8am	-->
+	<!--Steps conducted for OPT, OPC:-->
+	<!--_neq_to_8am_inst: 
+samples nonEquidistant series to 8am instantaneous daily series using closestOrLinear interpolation 
+(i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp) restricted by 4 hour max timewindow-->
+	<!--SelectPreferred_: 
+select preferred series (OPT, OPC,OPO) based on (modifiable) location attribute, default is OPT
+OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
+	<!--Merge_OPO_Over_Selected(_OPT_OPC):
+Merges OPO over selected (not over OPT over OPC) series-->
+	<variable>
+		<variableId>OPT_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="OPT_neq_to_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neq_to_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<!--
+	This is disabled as there is no attribute modifiers defined for this param
+	<transformation id="SelectPreferred_8am_inst">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am_inst</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am_inst</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_inst</variableId>
+				</input>				
+				<attributeFunctionId>@WT_PREFERRED@_8am_inst</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am_inst</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	-->
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</inputVariable>
+				<!--
+				<inputVariable>
+					<variableId>Selected_8am_inst</variableId>
+				</inputVariable>
+				-->
+				<inputVariable>
+					<variableId>OPT_8am_inst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

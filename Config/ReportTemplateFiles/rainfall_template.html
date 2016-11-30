@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Ovens precipitation forecast summary</TITLE>
+	<!--check for right levels up-->
+	<link href="../styles.css" rel="styleSheet" type="text/css">
+	<link href="../tables.css" rel="styleSheet" type="text/css">
+<script language="javascript">
+/*
+function display()
+{
+if (!document.images)
+return
+document.images.rainfall.src=
+document.observed.rainfall.options[document.observed.rainfall.selectedIndex].value
+}
+*/
+function populateAllTables()
+{
+	populateTable("Likely Rainfall (ADFD)","likelyTable",0,2,1,6,"P_adfd_forecast__",24)
+	populateTable("Possibly Higher Rainfall (ADFD)","possiblyHigherTable",0,1,1,6,"P_adfd_forecast_higher__",24)
+//	populateTable("PME","pmeTable",0,15,1,6,"PME__",3)
+	populateTable("PME","pmeTable",0,2,1,5,"PME__",3)
+//	populateTable("ACCESS-G","accessTable",0,4,1,6,"accessg__",3)
+}
+
+function populateTable(dataTitle,tableId,rowS,rowE,colS,colE,prefix,timeStep)
+{
+	StartTime = new Date("$MINTIME(T0DUMMY;dateFormat2)$")
+	
+	T0 = new Date("$TIMEZERO(T0DUMMY;dateFormat2)$")
+	
+	table = document.getElementById(tableId)
+	
+//	tableBody = document.createElement("tbody")
+//	table.appendChild(tableBody) // table.getElementsByTagName("tbody")[0]
+	tableBody = table.getElementsByTagName("tbody")[0]
+	
+	headerRow = document.createElement("tr")
+	headerCell = document.createElement("td")
+	headerCell.innerText=dataTitle;// appendChild(document.createTextElement(dataTitle));
+	legendCell = document.createElement("td")
+	legendImg = document.createElement("img")
+	legendImg.src="$FILERESOURCE(legend_image)$"
+	legendCell.appendChild(legendImg)
+	
+	headerRow.appendChild(headerCell)
+	headerRow.appendChild(legendCell)
+	tableBody.appendChild(headerRow)
+	
+	for( var row =rowS; row < rowE; row++ )
+	{
+		rowElement = document.createElement("tr")
+		
+		for(var col=colS; col < colE; col++)
+		{
+			imgNum = col + ((colE-1)*row)
+			cellE = document.createElement("td")
+			img = document.createElement("img")
+			
+			img.src= prefix+imgNum+".png"
+			cellE.appendChild(img)
+			rowElement.appendChild(cellE)			
+		}
+		tableBody.appendChild(rowElement)
+	}
+}
+
+window.onload = populateAllTables
+</script>	
+</head>
+<body>
+<table id="forecast_details">
+ <tr>
+    <th colspan="2">Ovens precipitation forecast report</th>
+  </tr>
+  <tr>
+    <td width="100" valign="top">Time of Report: </td>
+    <td width="100" valign="top">$CURRENTTIME(dateFormat1)$</td>
+  </tr>
+</table>
+
+<h1>Likely rainfall</h1>
+
+<table id="likelyTable" cellpadding="0">
+	<tbody>
+	</tbody>
+</table>
+
+<h1>Possibly Higher rainfall</h1>
+<table id="possiblyHigherTable" cellpadding="0">
+	<tbody>
+	</tbody>
+</table>
+
+<h1>PME (as used in Water and the Land)</h1>
+<table id="pmeTable" cellpadding="0">
+	<tbody>
+	</tbody>
+</table>
+
+<!--<h1>ACCESS-G</h1>
+<table id="accessTable" cellpadding="0">
+	<tbody>
+	</tbody>
+</table>
+-->
+
+<h1>Source Ovens Rainfall Runoff Prediction</h1>
+	<table>
+		<tbody>
+			<tr>
+				<td><p>Forecast flow @ Peechelba</p>
+				<img src="$CHART(chartMainFlow_403241A)$"></img></td>
+				<td><p>Recent and forecast catchment rainfall</p>
+					<img src="$CHART(chartRainfall)$"></img></td>
+			</tr>
+			<tr>
+				<td><p>Forecast flow @ Wangaratta</p>
+				<img src="$CHART(chartMainFlow_403242C)$"></img></td>
+				<td><p>Forecast flow @ Bright</p>
+				<img src="$CHART(chartMainFlow_403205C)$"></img></td>
+			</tr>
+		</tbody>
+	</table>
+
+<h1>Agnet</h1>
+<p>TODO</p>
+
+<h1>Weatherzone (Albury)</h1>
+<p>TODO</p>
+
+
+</body>
+
+</HTML>

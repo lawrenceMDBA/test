@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!-- imports profiles as cyclic data-->
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_CLIMATOLOGY$</folder>
+			<fileNamePatternFilter>*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_CLIMATOLOGY$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdClimatology</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime unit="year" multiplier="10"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportClimatology</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>PET_obs</parameterId>
+			<qualifierId>avg</qualifierId>
+			<locationSetId>ewsource_subcatchments</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<cycle unit="year"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>4</synchLevel>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

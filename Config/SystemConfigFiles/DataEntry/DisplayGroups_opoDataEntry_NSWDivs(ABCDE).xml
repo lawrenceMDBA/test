@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="NSWDivs(ABCDE).OPO" name="Processing NSWDivs(ABCDE) sites ">
+		<displayGroup id="NSWDivs(ABCDE).DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_NSWDivs(ABCDE)">
+				<locationSetId>NSWDivs(ABCDE).sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="NSWDivs(ABCDE).Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_NSWDivs(ABCDE)">
+				<locationSetId>NSWDivs(ABCDE).sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<!--<displayGroup id="NSWDivs(ABCDE).Telemetry" name="Telemetry">
+			<displayGroup id="NSWDivs(ABCDE).Process_Hopo" name="NSWDivs(ABCDE) water level">
+				<singleLocationDisplays id="ImportProcess_NSWDivs(ABCDE)_H">
+					<locationSetId>NSWDivs(ABCDE).sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>-->
+		<displayGroup id="NSWDivs(ABCDE).Process_Qopo" name="Discharge">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_NSWDivs(ABCDE)_Q">
+				<locationSetId>NSWDivs(ABCDE).sites_Q</locationSetId>
+				<plotId>ImportProcess_Q</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="NSWDivs(ABCDE).Process_QORDopo" name="NSWDivs(ABCDE) storage">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_NSWDivs(ABCDE)_QORD">
+				<locationSetId>NSWDivs(ABCDE).sites_QORD</locationSetId>
+				<plotId>ImportProcess_QORD</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<!--	</displayGroup>-->
+</displayGroups>

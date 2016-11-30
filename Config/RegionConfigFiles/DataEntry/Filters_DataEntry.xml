@@ -1,0 +1,2352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filters version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/filters.xsd">
+	<timeSeriesSets id="DataEntry_All">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_V</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessATopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_AT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindVel</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<!-- Import Observed -->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EGEN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EGEN</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Turbidity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindVel</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_pH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Gates</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>de.sites_Gates.rr</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>de.sites_Gates.vs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoStopLogs_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_StopLogs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>FlowDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_FlowDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>spill</qualifierId>
+			<locationSetId>de.sites_Q.spill</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>de.sites_Q.turb</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>valves</qualifierId>
+			<locationSetId>de.sites_Q.valves</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ivt</qualifierId>
+			<locationSetId>de.sites_Q.ivt</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>de.sites_Q.env</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>transfer</qualifierId>
+			<locationSetId>de.sites_Q.transfer</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>creek</qualifierId>
+			<locationSetId>de.sites_Q.creek</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>forest</qualifierId>
+			<locationSetId>de.sites_Q.forest</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fishway</qualifierId>
+			<locationSetId>de.sites_Q.fishway</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>other</qualifierId>
+			<locationSetId>de.sites_Q.other</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>de.sites_Q.total</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>instream</qualifierId>
+			<locationSetId>de.sites_Q.instream</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>de.sites_QORD.mdbc</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<!-- <timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>de.sites_QORD.shortterm</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet> -->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_QORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>de.sites_QORD.longterm</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_QDIV</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de.sites_QDIV.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>urban</qualifierId>
+			<locationSetId>de.sites_QDIV.urban</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>de.sites_QDIV.total</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>de.sites_QDIV.saline</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ind</qualifierId>
+			<locationSetId>de.sites_QDIV.ind</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de.sites_QRTN.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_H">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_V">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_V</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_P">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_EVAP">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_DO">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_DOpct">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_EC">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_AT">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessATopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_AT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_WT">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_EGEN">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEGENopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EGEN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_EGEN</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Turbidity">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Turbidity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_WindVel">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindVel</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_WindDir">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_pH">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_pH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Gates">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Gates</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Gates.rr">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>de.sites_Gates.rr</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Gates.vs">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>de.sites_Gates.vs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_StopLogs">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoStopLogs_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_StopLogs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_FlowDir">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>FlowDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_FlowDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.spill">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>spill</qualifierId>
+			<locationSetId>de.sites_Q.spill</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.turb">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>de.sites_Q.turb</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.valves">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>valves</qualifierId>
+			<locationSetId>de.sites_Q.valves</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.ivt">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ivt</qualifierId>
+			<locationSetId>de.sites_Q.ivt</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.env">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>de.sites_Q.env</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.transfer">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>transfer</qualifierId>
+			<locationSetId>de.sites_Q.transfer</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.creek">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>creek</qualifierId>
+			<locationSetId>de.sites_Q.creek</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.forest">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>forest</qualifierId>
+			<locationSetId>de.sites_Q.forest</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.fishway">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fishway</qualifierId>
+			<locationSetId>de.sites_Q.fishway</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.other">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>other</qualifierId>
+			<locationSetId>de.sites_Q.other</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QRL">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.instream">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>instream</qualifierId>
+			<locationSetId>de.sites_Q.instream</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<!--</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Q.direct">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>direct</qualifierId>
+			<locationSetId>de.sites_Q.direct</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>-->
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QORD.mdbc">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>de.sites_QORD.mdbc</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<!-- <timeSeriesSets id="DataEntry_QORD.shortterm">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>de.sites_QORD.shortterm</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets> -->
+	<timeSeriesSets id="DataEntry_QORD">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QORD.longterm">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>de.sites_QORD.longterm</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QDIV.irrig">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de.sites_QDIV.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QDIV.urban">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>urban</qualifierId>
+			<locationSetId>de.sites_QDIV.urban</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QDIV.total">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>de.sites_QDIV.total</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QDIV.saline">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>de.sites_QDIV.saline</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QDIV.ind">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ind</qualifierId>
+			<locationSetId>de.sites_QDIV.ind</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_QRTN.irrig">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de.sites_QRTN.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<!--<timeSeriesSets id="DataEntry_Gates">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de.sites_Gates</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>-->
+	<!--MobileDataEntry (parent filter_id: MobileDataEntry)-->
+	<filter id="Menindee_DataEntry" name="Menindee">
+		<child foreignKey="Menindee_DataEntry_EVAP"/>
+		<child foreignKey="Menindee_DataEntry_P"/>
+		<child foreignKey="Menindee_DataEntry_WT"/>
+		<child foreignKey="Menindee_DataEntry_H"/>
+		<child foreignKey="Menindee_DataEntry_V"/>
+		<child foreignKey="Menindee_DataEntry_EC"/>
+		<child foreignKey="Menindee_DataEntry_DO"/>
+		<child foreignKey="Menindee_DataEntry_DOpct"/>
+		<child foreignKey="Menindee_DataEntry_Q"/>
+		<child foreignKey="Menindee_DataEntry_QRL"/>
+		<child foreignKey="Menindee_DataEntry_Turbidity"/>
+		<child foreignKey="Menindee_DataEntry_QDIV_irrig"/>
+	</filter>
+	<!--	<filter id="Menindee_DataEntry_AT" name="Air Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_AT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>-->
+	<filter id="Menindee_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_QRL" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QRL</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Menindee_DataEntry_QDIV_irrig" name="Diverted Flow (irrigation)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.irrig</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Menindee"/>
+		</locationConstraints>
+	</filter>
+	<!--Data Entry (parent filter_id: Data Entry)-->
+	<filter id="Dartmouth_DataEntry" name="Dartmouth">
+		<!--<child foreignKey="Dartmouth_DataEntry_AT"/>-->
+		<child foreignKey="Dartmouth_DataEntry_EVAP"/>
+		<child foreignKey="Dartmouth_DataEntry_P"/>
+		<child foreignKey="Dartmouth_DataEntry_WT"/>
+		<child foreignKey="Dartmouth_DataEntry_H"/>
+		<child foreignKey="Dartmouth_DataEntry_V"/>
+		<child foreignKey="Dartmouth_DataEntry_EC"/>
+		<child foreignKey="Dartmouth_DataEntry_DO"/>
+		<child foreignKey="Dartmouth_DataEntry_DOpct"/>
+		<child foreignKey="Dartmouth_DataEntry_Q"/>
+		<child foreignKey="Dartmouth_DataEntry_QRL"/>
+		<child foreignKey="Dartmouth_DataEntry_QDIV_irrig"/>
+	</filter>
+	<filter id="Dartmouth_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_QRL" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QRL</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Dartmouth_DataEntry_QDIV_irrig" name="Diverted Flow (irrigation)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.irrig</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<!-- PRS Additions -->
+	<filter id="Yarrawonga_DataEntry" name="Yarrawonga">
+		<child foreignKey="Yarrawonga_DataEntry_P"/>
+		<child foreignKey="Yarrawonga_DataEntry_WT"/>
+		<child foreignKey="Yarrawonga_DataEntry_H"/>
+		<child foreignKey="Yarrawonga_DataEntry_EVAP"/>
+		<child foreignKey="Yarrawonga_DataEntry_EC"/>
+		<child foreignKey="Yarrawonga_DataEntry_Q"/>
+		<child foreignKey="Yarrawonga_DataEntry_QDIV.irrig"/>
+		<child foreignKey="Yarrawonga_DataEntry_QDIV.total"/>
+		<child foreignKey="Yarrawonga_DataEntry_Q.instream"/>
+		<child foreignKey="Yarrawonga_DataEntry_Q.ivt"/>
+		<child foreignKey="Yarrawonga_DataEntry_Q.env"/>
+		<!--<child foreignKey="Yarrawonga_DataEntry_QORD.shortterm"/>-->
+		<child foreignKey="Yarrawonga_DataEntry_QORD"/>
+		<child foreignKey="Yarrawonga_DataEntry_QRTN.irrig"/>
+		<child foreignKey="Yarrawonga_DataEntry_V"/>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_QDIV.irrig" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.irrig</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_Q.instream" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.instream</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_Q.ivt" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.ivt</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_Q.env" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.env</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<!-- 	<filter id="Yarrawonga_DataEntry_Q.div" name="Diversion Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.div</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter> -->
+	<!-- <filter id="Yarrawonga_DataEntry_QORD.shortterm" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD.shortterm</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter> -->
+	<filter id="Yarrawonga_DataEntry_QORD" name="Order">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_QRTN.irrig" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QRTN.irrig</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Yarrawonga_DataEntry_QDIV.total" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.total</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<!-- 	<filter id="Yarrawonga_DataEntry_QDIV.actual" name="Diversions (actual)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.actual</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter> -->
+	<!-- 
+	<filter id="Yarrawonga_DataEntry_QDIV" name="Diversions orders and actual">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.actual</timeSeriesSetsId>
+		<timeSeriesSetsId>DataEntry_QDIV.order</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	-->
+	<filter id="Torrumbarry_DataEntry" name="Torrumbarry">
+		<child foreignKey="Torrumbarry_DataEntry_P"/>
+		<child foreignKey="Torrumbarry_DataEntry_WT"/>
+		<child foreignKey="Torrumbarry_DataEntry_H"/>
+		<child foreignKey="Torrumbarry_DataEntry_V"/>
+		<child foreignKey="Torrumbarry_DataEntry_EC"/>
+		<child foreignKey="Torrumbarry_DataEntry_DO"/>
+		<child foreignKey="Torrumbarry_DataEntry_DOpct"/>
+		<child foreignKey="Torrumbarry_DataEntry_Q"/>
+		<child foreignKey="Torrumbarry_DataEntry_QDIV.irrig"/>
+		<child foreignKey="Torrumbarry_DataEntry_Q.instream"/>
+		<child foreignKey="Torrumbarry_DataEntry_Q.ivt"/>
+		<child foreignKey="Torrumbarry_DataEntry_Q.env"/>
+		<child foreignKey="Torrumbarry_DataEntry_pH"/>
+		<child foreignKey="Torrumbarry_DataEntry_Turbidity"/>
+		<!-- <child foreignKey="Torrumbarry_DataEntry_QORD.shortterm"/> -->
+		<child foreignKey="Torrumbarry_DataEntry_QORD"/>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_QDIV.irrig" name="Diverted Flow (irrigation)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.irrig</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_Q.instream" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.instream</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_Q.ivt" name="IVT Release/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.ivt</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_Q.env" name="Env Release/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.env</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_pH" name="pH">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_pH</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Torrumbarry_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<!--<filter id="Torrumbarry_DataEntry_QORD.shortterm" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD.shortterm</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter> -->
+	<filter id="Torrumbarry_DataEntry_QORD" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry" name="Hume">
+		<child foreignKey="Hume_DataEntry_EVAP"/>
+		<child foreignKey="Hume_DataEntry_P"/>
+		<child foreignKey="Hume_DataEntry_WT"/>
+		<child foreignKey="Hume_DataEntry_H"/>
+		<child foreignKey="Hume_DataEntry_V"/>
+		<child foreignKey="Hume_DataEntry_EC"/>
+		<child foreignKey="Hume_DataEntry_Q"/>
+		<child foreignKey="Hume_DataEntry_DO"/>
+		<child foreignKey="Hume_DataEntry_DOpct"/>
+		<child foreignKey="Hume_DataEntry_QRL"/>
+		<child foreignKey="Hume_DataEntry_Q.turb"/>
+		<child foreignKey="Hume_DataEntry_Q.valves"/>
+		<child foreignKey="Hume_DataEntry_Q.spill"/>
+		<child foreignKey="Hume_DataEntry_Q.other"/>
+		<child foreignKey="Hume_DataEntry_EGEN"/>
+	</filter>
+	<filter id="Hume_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_QRL" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QRL</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Q.turb" name="turbine flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.turb</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Q.valves" name="flow trough valves">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.valves</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Q.spill" name="spill flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.spill</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Q.other" name="other flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.other</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_EGEN" name="Electricity generation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EGEN</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry" name="Leeton">
+		<child foreignKey="Leeton_DataEntry_P"/>
+		<child foreignKey="Leeton_DataEntry_WT"/>
+		<child foreignKey="Leeton_DataEntry_H"/>
+		<child foreignKey="Leeton_DataEntry_EC"/>
+		<child foreignKey="Leeton_DataEntry_Q"/>
+		<child foreignKey="Leeton_DataEntry_V"/>
+		<child foreignKey="Leeton_DataEntry_DO"/>
+		<child foreignKey="Leeton_DataEntry_DOpct"/>
+		<child foreignKey="Leeton_DataEntry_Q.ivt"/>
+		<child foreignKey="Leeton_DataEntry_Q.env"/>
+	</filter>
+	<filter id="Leeton_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_Q.ivt" name="Discharge/Flow (ivt)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.ivt</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Leeton_DataEntry_Q.env" name="Discharge/Flow (env)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.env</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Leeton"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Snowy_DataEntry" name="Snowy">
+		<child foreignKey="Snowy_DataEntry_H"/>
+		<child foreignKey="Snowy_DataEntry_V"/>
+		<child foreignKey="Snowy_DataEntry_Q.transfer"/>
+		<child foreignKey="Snowy_DataEntry_QRL"/>
+		<child foreignKey="Snowy_DataEntry_Q"/>
+	</filter>
+	<filter id="Snowy_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Snowy"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Snowy_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Snowy"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Snowy_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Snowy"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Snowy_DataEntry_Q.transfer" name="Flow transfer">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q.transfer</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Snowy"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Snowy_DataEntry_QRL" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QRL</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Snowy"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry" name="Deniliquin">
+		<child foreignKey="Deniliquin_DataEntry_P"/>
+		<child foreignKey="Deniliquin_DataEntry_WT"/>
+		<child foreignKey="Deniliquin_DataEntry_H"/>
+		<child foreignKey="Deniliquin_DataEntry_V"/>
+		<child foreignKey="Deniliquin_DataEntry_EC"/>
+		<child foreignKey="Deniliquin_DataEntry_DO"/>
+		<child foreignKey="Deniliquin_DataEntry_DOpct"/>
+		<child foreignKey="Deniliquin_DataEntry_Q"/>
+		<child foreignKey="Deniliquin_DataEntry_pH"/>
+		<child foreignKey="Deniliquin_DataEntry_Turbidity"/>
+	</filter>
+	<filter id="Deniliquin_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_pH" name="PH">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_pH</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Deniliquin_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Deniliquin"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry" name="Mildura">
+		<child foreignKey="Mildura_DataEntry_P"/>
+		<child foreignKey="Mildura_DataEntry_WT"/>
+		<child foreignKey="Mildura_DataEntry_H"/>
+		<child foreignKey="Mildura_DataEntry_V"/>
+		<child foreignKey="Mildura_DataEntry_EC"/>
+		<child foreignKey="Mildura_DataEntry_DO"/>
+		<child foreignKey="Mildura_DataEntry_DOpct"/>
+		<child foreignKey="Mildura_DataEntry_Q"/>
+		<child foreignKey="Mildura_DataEntry_pH"/>
+		<child foreignKey="Mildura_DataEntry_Turbidity"/>
+	</filter>
+	<filter id="Mildura_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_pH" name="PH">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_pH</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mildura_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mildura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry" name="Tatura">
+		<child foreignKey="Tatura_DataEntry_P"/>
+		<child foreignKey="Tatura_DataEntry_WT"/>
+		<child foreignKey="Tatura_DataEntry_H"/>
+		<child foreignKey="Tatura_DataEntry_V"/>
+		<child foreignKey="Tatura_DataEntry_EC"/>
+		<child foreignKey="Tatura_DataEntry_DO"/>
+		<child foreignKey="Tatura_DataEntry_DOpct"/>
+		<child foreignKey="Tatura_DataEntry_Q"/>
+		<child foreignKey="Tatura_DataEntry_pH"/>
+		<!-- <child foreignKey="Tatura_DataEntry_Turbidity"/> -->
+	</filter>
+	<filter id="Tatura_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_WT" name="Water Temperature">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WT</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_DO" name="Dissolved Oxygen">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DO</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_DOpct" name="Dissolved Oxygen (%)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_DOpct</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Tatura_DataEntry_pH" name="PH">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_pH</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter>
+	<!-- 	<filter id="Tatura_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Tatura"/>
+		</locationConstraints>
+	</filter> -->
+	<filter id="Goolwa_DataEntry" name="Goolwa">
+		<child foreignKey="Goolwa_DataEntry_EVAP"/>
+		<child foreignKey="Goolwa_DataEntry_P"/>
+		<child foreignKey="Goolwa_DataEntry_H"/>
+		<!-- 		<child foreignKey="Goolwa_DataEntry_V"/>
+ -->
+		<child foreignKey="Goolwa_DataEntry_EC"/>
+		<child foreignKey="Goolwa_DataEntry_WinDir"/>
+		<child foreignKey="Goolwa_DataEntry_WinVel"/>
+		<child foreignKey="Goolwa_DataEntry_Q"/>
+		<child foreignKey="Goolwa_DataEntry_GatesOpen"/>
+		<child foreignKey="Goolwa_DataEntry_GatesOpen.vs"/>
+		<child foreignKey="Goolwa_DataEntry_GatesOpen.rr"/>
+	</filter>
+	<filter id="Goolwa_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<!-- 	<filter id="Goolwa_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+ -->
+	<filter id="Goolwa_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_WinDir" name="Wind Direction">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WindDir</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_WinVel" name="Wind Velocity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_WindVel</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_GatesOpen" name="Gates Open">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Gates</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_GatesOpen.vs" name="Gates Open.vs">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Gates.vs</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Goolwa_DataEntry_GatesOpen.rr" name="Gates Open.rr">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Gates.rr</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Goolwa"/>
+		</locationConstraints>
+	</filter>
+	<!-- parent filter_id: SouthOz_DataEntry -->
+	<filter id="SouthOz_DataEntry" name="SouthOz">
+		<child foreignKey="SouthOz_DataEntry_P"/>
+		<child foreignKey="SouthOz_DataEntry_EVAP"/>
+		<child foreignKey="SouthOz_DataEntry_H"/>
+		<child foreignKey="SouthOz_DataEntry_EC"/>
+		<child foreignKey="SouthOz_DataEntry_Q"/>
+		<child foreignKey="SouthOz_DataEntry_V"/>
+	</filter>
+	<filter id="SouthOz_DataEntry_P" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_P</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SouthOz_DataEntry_EVAP" name="Evaporation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EVAP</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SouthOz_DataEntry_H" name="Water Level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_H</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SouthOz_DataEntry_EC" name="Electrical Conductivity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_EC</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SouthOz_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SouthOz_DataEntry_V" name="Storage Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SouthOz"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SADiversions_DataEntry" name="SA Diversions">
+		<child foreignKey="SADiversions_DataEntry_QDIV.urban"/>
+		<child foreignKey="SADiversions_DataEntry_QDIV.ind"/>
+	</filter>
+	<filter id="SADiversions_DataEntry_QDIV.urban" name="Diversions(urban)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.urban</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SADiversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SADiversions_DataEntry_QDIV.ind" name="Diversions(industry)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QDIV.ind</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SADiversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="CCB_Diversions_DataEntry" name="CCB_Diversions">
+		<child foreignKey="CCB_Diversions_DataEntry_Q"/>
+		<child foreignKey="CCB_Diversions_DataEntry_QORD"/>
+	</filter>
+	<filter id="CCB_Diversions_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="CCB_Diversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="CCB_Diversions_DataEntry_QORD" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="CCB_Diversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="RMR_and_FMIT_DataEntry" name="RMR_and_FMIT">
+		<child foreignKey="RMR_and_FMIT_DataEntry_Q"/>
+		<child foreignKey="RMR_and_FMIT_DataEntry_QORD"/>
+		<child foreignKey="RMR_and_FMIT_DataEntry_QORD.longterm"/>
+	</filter>
+	<filter id="RMR_and_FMIT_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="RMR_and_FMIT"/>
+		</locationConstraints>
+	</filter>
+	<filter id="RMR_and_FMIT_DataEntry_QORD" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="RMR_and_FMIT"/>
+		</locationConstraints>
+	</filter>
+	<filter id="RMR_and_FMIT_DataEntry_QORD.longterm" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD.longterm</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="RMR_and_FMIT"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Mur(F-H)LowerDar(A-E)_DataEntry" name="Mur(F-H)LowerDar(A-E)">
+		<child foreignKey="Mur(F-H)LowerDar(A-E)_DataEntry_QORD"/>
+	</filter>
+	<filter id="Mur(F-H)LowerDar(A-E)_DataEntry_QORD" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Mur(F-H)LowerDar(A-E)"/>
+		</locationConstraints>
+	</filter>
+	<filter id="NSWDivs(ABCDE)_DataEntry" name="NSWDivs(ABCDE)">
+		<child foreignKey="NSWDivs(ABCDE)_DataEntry_Q"/>
+		<child foreignKey="NSWDivs(ABCDE)_DataEntry_QORD"/>
+	</filter>
+	<filter id="NSWDivs(ABCDE)_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="NSWDivs(ABCDE)"/>
+		</locationConstraints>
+	</filter>
+	<filter id="NSWDivs(ABCDE)_DataEntry_QORD" name="Release Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_QORD</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="NSWDivs(ABCDE)"/>
+		</locationConstraints>
+	</filter>
+	<filter id="VICDiversions_DataEntry" name="VICDiversions">
+		<child foreignKey="VICDiversions_DataEntry_Q"/>
+	</filter>
+	<filter id="VICDiversions_DataEntry_Q" name="Discharge/Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="VICDiversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="BMRegulators_DataEntry" name="BMRegulators">
+		<child foreignKey="BMRegulators_DataEntry_GatesOpen"/>
+	</filter>
+	<filter id="BMRegulators_DataEntry_GatesOpen" name="Gates Open">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Gates</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="BMRegulators"/>
+		</locationConstraints>
+	</filter>
+</filters>

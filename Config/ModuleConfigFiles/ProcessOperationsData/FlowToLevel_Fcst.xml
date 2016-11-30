@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<variable>
+		<variableId>Q</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>sites_H_rated</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites_H_rated</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="DischargeToStage">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Q</variableId>
+				</discharge>
+				<stage>
+					<variableId>H</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+</transformationModule>

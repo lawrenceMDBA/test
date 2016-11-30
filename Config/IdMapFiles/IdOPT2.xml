@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+	<parameter external="AirTemperature (1900.00)" internal="AT_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="Discharge (400.00)" internal="Q_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="EvaporationfromaU.S.ClassAPan (1950.00)" internal="EVAP_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="GateOpenFlag (134.00)" internal="NoGatesOpen_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="Rainfall (2000.00)" internal="P_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="StorageVolume (200.00)" internal="V_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="WaterLevel (100.00)" internal="H_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="WaterTemperature (3500.00)" internal="WT_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="DissolvedOxygen (5067.00)" internal="DO_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="DissolvedOxygen (1200.00)" internal="DO_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="Conductivity@25degC (3000.00)" internal="EC_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+    <parameter external="ElectricalConductivity (1300.00)" internal="EC_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	
+	<!-- HYGENEXP Export mappings -->
+	<parameter external="Water Level (Secondary Trace)" internal="H_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+	<parameter external="Rainfall" internal="P_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
+
+	<locationIdFunction externalLocationFunction="@HYDSTRA_SITE_ID@" internalLocationSet="sites"/>
+</idMap>

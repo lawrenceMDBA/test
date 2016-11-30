@@ -1,0 +1,25 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="Mur(F-H)LowerDar(A-E)_OPO">
+		<nodes id="ObservedProcessing.Mur(F-H)LowerDar(A-E)_OPO" name="Murray (F-H) Lower Darling (A-E)">
+			<node id="Mur(F-H)LowerDar(A-E).DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>Mur(F-H)LowerDar(A-E).DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="Mur(F-H)LowerDar(A-E).Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>Mur(F-H)LowerDar(A-E).Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="Mur(F-H)LowerDar(A-E).Telemetry" name="Review Telemetry">
+				<node id="Mur(F-H)LowerDar(A-E).Process_QORDopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Mur(F-H)LowerDar(A-E).Process_QORDopo</displayGroupId>
+					<!-- <defaultModifierId>QORD_select_OPO</defaultModifierId>
+					<visibleModifierGroup>QORD_OPO</visibleModifierGroup> -->
+					<localRun>false</localRun>
+				</node>
+			</nodes>	
+		</nodes>
+	</group>
+</topologyGroup>

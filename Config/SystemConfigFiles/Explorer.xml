@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<explorer version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/explorer.xsd">
+	<description>MDBA-River Operations Workflow System</description>
+	<systemInformation>
+		<description>MDBA-River Operations Workflow System</description>
+		<systemCaption>$EXPLORER_SYSTEMCAPTION$</systemCaption>
+		<systemHelpFile>$DOCUMENTS_ALWAYSVISIBLE_FOLDER$/Help.pdf</systemHelpFile>
+	</systemInformation>
+	<systemUnitsLabel>ML</systemUnitsLabel>
+	<displayUnitsLabel>GL</displayUnitsLabel>
+	<units>system</units>
+	<dateTime>
+		<timeZoneOffset>+10:00</timeZoneOffset>
+		<dateTimeFormat>EEE,dd-MM-yyyy HH:mm:ss</dateTimeFormat>
+		<!--<cardinalTimeStep id="8am"/>-->
+		<cardinalTimeStep unit="hour" multiplier="1"/>
+	</dateTime>
+	<map>
+		<geoDatum>WGS 1984</geoDatum>
+		<projection>mercator</projection>
+		<defaultExtent id="Murray-Darling">
+			<left>135</left>
+			<right>156.0</right>
+			<top>-24.0</top>
+			<bottom>-38</bottom>
+		</defaultExtent>
+		<extraExtent id="Southern MDB">
+			<left>140.0</left>
+			<right>151.0</right>
+			<top>-30.0</top>
+			<bottom>-39.3</bottom>
+		</extraExtent>
+		<extraExtent id="Upper Murray">
+			<left>145.3</left>
+			<right>148.8</right>
+			<top>-35.4</top>
+			<bottom>-37.3</bottom>
+		</extraExtent>
+		<extraExtent id="Kiewa">
+			<left>146.0</left>
+			<right>148.2</right>
+			<top>-35.8</top>
+			<bottom>-37.1</bottom>
+		</extraExtent>
+		<extraExtent id="Ovens">
+			<left>144.8</left>
+			<right>148.3</right>
+			<top>-35.6</top>
+			<bottom>-37.4</bottom>
+		</extraExtent>
+		<extraExtent id="Goulburn">
+			<left>144.1</left>
+			<right>146.9</right>
+			<top>-35.8</top>
+			<bottom>-37.5</bottom>
+		</extraExtent>
+		<extraExtent id="Loddon-Campaspe">
+			<left>142.6</left>
+			<right>146.9</right>
+			<top>-34.8</top>
+			<bottom>-37.5</bottom>
+		</extraExtent>
+		<extraExtent id="Edward-Wakool">
+			<left>143.2</left>
+			<right>145.5</right>
+			<top>-34.8</top>
+			<bottom>-36.1</bottom>
+		</extraExtent>
+		<extraExtent id="Murrumbidgee">
+			<left>143.2</left>
+			<right>148.5</right>
+			<top>-33.3</top>
+			<bottom>-36.5</bottom>
+		</extraExtent>
+		<extraExtent id="Billabong">
+			<left>144.2</left>
+			<right>146.5</right>
+			<top>-34.3</top>
+			<bottom>-35.6</bottom>
+		</extraExtent>
+		<extraExtent id="Barwon-Darling">
+			<left>141.7</left>
+			<right>152.3</right>
+			<top>-25.9</top>
+			<bottom>-32.7</bottom>
+		</extraExtent>
+		<extraExtent id="Lower Darling">
+			<left>139.4</left>
+			<right>144.3</right>
+			<top>-31.5</top>
+			<bottom>-34.2</bottom>
+		</extraExtent>
+		<extraExtent id="Lower Lakes">
+			<left>138.1</left>
+			<right>140.6</right>
+			<top>-35.0</top>
+			<bottom>-36.3</bottom>
+		</extraExtent>
+		<extraExtent id="Victoria">
+			<left>140.9</left>
+			<right>150.1</right>
+			<top>-33.9</top>
+			<bottom>-39.3</bottom>
+		</extraExtent>
+		<extraExtent id="South Australia">
+			<left>138.0</left>
+			<right>142.2</right>
+			<top>-33.6</top>
+			<bottom>-36.2</bottom>
+		</extraExtent>
+		<extraExtent id="Australia">
+			<left>110.0</left>
+			<right>160.0</right>
+			<top>-9.0</top>
+			<bottom>-38.0</bottom>
+		</extraExtent>
+		<scaleBarVisible>true</scaleBarVisible>
+		<northArrowVisible>true</northArrowVisible>
+		<labelsVisible>true</labelsVisible>
+		<backgroundColor>light sky blue2</backgroundColor>
+		<layerGroup id="Background Layers">
+			<esriShapeLayer id="Asia Pacific Region">
+				<description>Australian region</description>
+				<file>World_Asia_Pacific</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>false</visible>
+				<fillColor>light goldenrod yellow</fillColor>
+				<opaquenessPercentage>75</opaquenessPercentage>
+			</esriShapeLayer>
+			<esriShapeLayer id="Basin Relief">
+				<description>Elevation</description>
+				<file>MDB_Contours</file>
+				<visible>false</visible>
+				<lineColor>linen</lineColor>
+				<fillColor>linen</fillColor>
+				<classBreaksAttributeName>ELEV_CLASS</classBreaksAttributeName>
+				<classBreaks>
+					<break opaquenessPercentage="50" label="1" lowerValue="1" color="floral white"/>
+					<break opaquenessPercentage="50" label="2" lowerValue="2" color="linen"/>
+					<break opaquenessPercentage="50" label="3" lowerValue="3" color="lemon chiffon2"/>
+					<break opaquenessPercentage="50" label="4" lowerValue="4" color="dark sea green2"/>
+					<break opaquenessPercentage="50" label="5" lowerValue="5" color="sea green3"/>
+					<break opaquenessPercentage="50" label="6" lowerValue="6" color="white"/>
+					<break opaquenessPercentage="50" label="7" lowerValue="7" color="white"/>
+				</classBreaks>
+			</esriShapeLayer>
+		</layerGroup>
+		<openStreetMapLayer id="Open Street Map">
+			<description>Open Street Map</description>
+			<url>http://tile.openstreetmap.org</url>
+			<visible>false</visible>
+			<cacheDir>%REGION_HOME%/MapCache/OsmTiles</cacheDir>
+		</openStreetMapLayer>
+		<layer id="Satellite">
+			<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+			<visible>false</visible>
+			<properties>
+				<string key="tileUrlPattern" value="http://h%RIGHT(QUAD_KEY,1)%.ortho.tiles.virtualearth.net/tiles/h%QUAD_KEY%.jpeg?g=1"/>
+				<string key="cacheDir" value="%REGION_HOME%/MapCache/Satellite"/>
+				<int key="minZoomLevel" value="2"/>
+				<int key="maxZoomLevel" value="17"/>
+				<int key="topZoomLevel" value="19"/>
+				<int key="tileSize" value="256"/>
+			</properties>
+		</layer>
+		<layerGroup id="Ovens Catchment">
+			<esriShapeLayer id="GridPrecipitationOvens">
+				<description>GridPrecipitationOvens</description>
+				<file>General_Rainfall_Aggegation_areas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:100000</maxScale>
+				<lineColor>dark khaki</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="SourceModelSubcatchments">
+				<description>Source Subcatchments</description>
+				<file>ovens_ewSource_subcatchments</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>beige</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Ovens Catchment Map">
+				<description>Ovens Catchment Map</description>
+				<file>Ovens_Catchment</file>
+				<geoDatum>WGS 1984</geoDatum>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>dark khaki</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+		</layerGroup>
+		<layerGroup id="Administration">
+			<esriShapeLayer id="Towns">
+				<description>Populated Places</description>
+				<file>aus_towns</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<label>%NAME%</label>
+				<fillColor>FF0000</fillColor>
+				<pointSize>6</pointSize>
+			</esriShapeLayer>
+			<esriShapeLayer id="Irrigated Areas">
+				<description>Irrigation Areas and Districts</description>
+				<file>Irrigation</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<toolTip>%DISTRICT%</toolTip>
+				<lineColor>sea green3</lineColor>
+				<fillColor>sea green3</fillColor>
+			</esriShapeLayer>
+			<esriShapeLayer id="Australian States">
+				<description>State Boundaries</description>
+				<file>State_Border</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>false</visible>
+				<lineColor>sky blue</lineColor>
+			</esriShapeLayer>
+			<esriShapeLayer id="MDB Boundary">
+				<description>Murray Darling Basin</description>
+				<file>MDB_Boundary</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>false</visible>
+				<lineColor>gray60</lineColor>
+			</esriShapeLayer>
+		</layerGroup>
+		<layerGroup id="Water">
+			<esriShapeLayer id="River Network">
+				<description>River Network</description>
+				<file>River_Network</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<toolTip>%NAME% (%STATUS%)</toolTip>
+				<lineColor>sky blue2</lineColor>
+				<lineWidth value="1" scale="1:100000"/>
+				<lineWidth value="0" scale="1:1000000"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Major Rivers">
+				<description>Major Rivers</description>
+				<file>Major_Rivers</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<toolTip>%NAME%</toolTip>
+				<lineColor>dodger blue2</lineColor>
+				<lineWidth value="4" scale="1:100000"/>
+				<lineWidth value="3" scale="1:200000"/>
+				<lineWidth value="2" scale="1:500000"/>
+				<lineWidth value="1" scale="1:750000"/>
+				<lineWidth value="0" scale="1:1000000"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Water Bodies">
+				<description>Major Water Bodies</description>
+				<file>GF_Slake_Waterbodies</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<toolTip>%NAME%</toolTip>
+				<lineColor>dodger blue2</lineColor>
+				<fillColor>dodger blue2</fillColor>
+			</esriShapeLayer>
+		</layerGroup>
+	</map>
+	<explorerTasks>
+		<explorerTask name="Plots">
+			<iconFile>graph.gif</iconFile>
+			<predefinedDisplay>time series dialog</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<allowMultipleInstances>true</allowMultipleInstances>
+			<doubleClickLocationEnabled>true</doubleClickLocationEnabled>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Spatial">
+			<iconFile>spatial.png</iconFile>
+			<mnemonic>G</mnemonic>
+			<arguments>GridDisplay</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.grid.GridDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<allowMultipleInstances>true</allowMultipleInstances>
+			<accelerator>ctrl G</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Modifiers">
+			<iconFile>wrench.png</iconFile>
+			<mnemonic>M</mnemonic>
+			<arguments>ModifiersPlugin</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.modifiersdisplay.ModifiersPanel</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl M</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Manual Workflow">
+			<iconFile>manforc.png</iconFile>
+			<mnemonic>W</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.manualforecast.ManualForecastDialog</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl W</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Forecast Management">
+			<iconFile>forcman.png</iconFile>
+			<mnemonic>a</mnemonic>
+			<predefinedDisplay>forecast management</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="System Monitor">
+			<iconFile>sysmon.png</iconFile>
+			<mnemonic>S</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.systemmonitor.SystemMonitorDialog</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>false</menubarTask>
+		</explorerTask>
+		<explorerTask name="Archive Catalogue">
+			<mnemonic>A</mnemonic>
+			<displayConfigFileName>ArchiveModuleDisplay</displayConfigFileName>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl A</accelerator>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Topology">
+			<iconFile>interactive_forecast.png</iconFile>
+			<mnemonic>I</mnemonic>
+			<predefinedDisplay>topology diagram</predefinedDisplay>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl I</accelerator>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="What-if">
+			<arguments>WhatIfScenarioFilters</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.scenario.WhatIfScenarioDialog</taskClass>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Separator">
+			<separator/>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>true</menubarTask>
+		</explorerTask>
+		<explorerTask name="Timeseries Lister">
+			<iconFile>table_tab_search.png</iconFile>
+			<mnemonic>L</mnemonic>
+			<predefinedDisplay>time series lister</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl L</accelerator>
+		</explorerTask>
+		<explorerTask name="Workflow Navigator">
+			<iconFile>tree.png</iconFile>
+			<predefinedDisplay>workflow navigator</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<!-- 		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>		
+		<explorerTask name="Lab Samples">
+			<iconFile>laboratory.png</iconFile>
+			<mnemonic>M</mnemonic>
+			<predefinedDisplay>sample viewer</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl S</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask> -->
+		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>
+		<explorerTask name="Documents">
+			<iconFile>document.png</iconFile>
+			<mnemonic>o</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.information.ForecasterAidDocumentPanel</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl D</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Workflows">
+			<iconFile>tree.png</iconFile>
+			<predefinedDisplay>topology tree</predefinedDisplay>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Run Info">
+			<taskClass>nl.wldelft.fews.gui.plugin.runinfo.RunInfoPanel</taskClass>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Plot Overview">
+			<predefinedDisplay>plot overview</predefinedDisplay>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Documents Overview">
+			<taskClass>nl.wldelft.fews.gui.plugin.information.ForecasterAidSelectionPanel</taskClass>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Operator Notes">
+			<displayConfigFileName>ForecasterNotesDisplay</displayConfigFileName>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Peak Heights">
+			<iconFile>correlation.png</iconFile>
+			<mnemonic>P</mnemonic>
+			<arguments>segmentSelection</arguments>
+			<!-- 			<arguments>segmentSelection hideForecast</arguments> -->
+			<taskClass>nl.wldelft.fews.gui.plugin.correlation.CorrelationDialog</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl C</accelerator>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>
+		<explorerTask name="River Murray System">
+			<arguments>RMSystemStatus</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
+		</explorerTask>
+		<explorerTask name="River Ops Status">
+			<arguments>RiverOps_Status</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
+		</explorerTask>
+		<explorerTask name="Threshold Status Table">
+			<displayConfigFileName>ThresholdsSSD</displayConfigFileName>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
+		</explorerTask>
+		<explorerTask name="Flood Ops forecast">
+			<displayConfigFileName>FloodOpsSSD</displayConfigFileName>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<permission>FloodOperations</permission>			
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Hydstra WorkBench">
+			<taskExe>\\cbrnas01\hydstra\hyd\sys\run\hydmwb.exe</taskExe>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
+		</explorerTask>
+		<!--	Disable to include this in a single display environment
+ 		<explorerTask name="Yarra_to_Torrumbarry">
+			<arguments>Yarra_to_TorrumbarryStatus</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+		</explorerTask>
+		<explorerTask name="Hume_to_Yarra">
+			<arguments>Hume_to_YarraStatus</arguments>
+			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+		</explorerTask> -->
+		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>
+		<!--<explorerTask name="Threshold Overview">
+			<displayConfigFileName>Rows_Ops_Threshold_Display</displayConfigFileName>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<toolWindow>false</toolWindow>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Threshold Count">
+			<displayConfigFileName>Rows_Ops_Threshold_Count</displayConfigFileName>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<toolWindow>false</toolWindow>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>-->
+		<explorerTask name="WaterCoach">
+			<displayConfigFileName>WaterCoachDisplay</displayConfigFileName>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<allowMultipleInstances>false</allowMultipleInstances>
+			<permission>WaterCoach</permission>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+	</explorerTasks>
+	<panelHeaderLabels>
+		<filterPanelHeader>Filters</filterPanelHeader>
+		<locationPanelHeader>Locations</locationPanelHeader>
+		<parameterPanelHeader>Parameters</parameterPanelHeader>
+		<forecastPanelHeader>Open Forecasts</forecastPanelHeader>
+	</panelHeaderLabels>
+	<statusBarConfig>
+		<description>Standard date-time format</description>
+		<dateTimeFormat>HH:mm:ss</dateTimeFormat>
+		<timeGMT>true</timeGMT>
+		<timeCurrent>true</timeCurrent>
+		<timeLastRefresh>true</timeLastRefresh>
+		<statusOfSystem>true</statusOfSystem>
+		<mouseCoordinates>true</mouseCoordinates>
+		<userName>true</userName>
+	</statusBarConfig>
+	<logPanelConfig>
+		<clientFilter>
+			<clientId>Stand alone</clientId>
+			<logFilter>
+				<level>DEBUG</level>
+				<eventType>system</eventType>
+			</logFilter>
+			<logFilter>
+				<level>DEBUG</level>
+				<eventType>debug</eventType>
+			</logFilter>
+		</clientFilter>
+		<clientFilter>
+			<clientId>Operator Client</clientId>
+			<logFilter>
+				<level>INFO</level>
+				<eventType>system</eventType>
+			</logFilter>
+		</clientFilter>
+	</logPanelConfig>
+	<panelSizes>
+		<loggingPanelSize>20</loggingPanelSize>
+		<listsPanelSize>100</listsPanelSize>
+		<filterListSize>30</filterListSize>
+		<locationListSize>40</locationListSize>
+		<parameterListSize>25</parameterListSize>
+		<qualifierListSize>25</qualifierListSize>
+		<forecastListSize>5</forecastListSize>
+	</panelSizes>
+	<autoLogin>true</autoLogin>
+</explorer>

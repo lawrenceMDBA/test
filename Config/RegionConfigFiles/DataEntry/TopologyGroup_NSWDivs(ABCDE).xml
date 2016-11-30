@@ -1,0 +1,39 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="NSWDivs(ABCDE)_OPO">
+		<nodes id="ObservedProcessing.NSWDivs(ABCDE)_OPO" name="NSW Diversions (ABCDE)">
+			<node id="NSWDivs(ABCDE).DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>NSWDivs(ABCDE).DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="NSWDivs(ABCDE).Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>NSWDivs(ABCDE).Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="NSWDivs(ABCDE).Telemetry" name="Review Telemetry">
+				<node id="NSWDivs(ABCDE).Process_Qopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>NSWDivs(ABCDE).Process_Qopo</displayGroupId>
+					<defaultModifierId>Q_select_OPO</defaultModifierId>
+					<visibleModifierGroup>Q_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="NSWDivs(ABCDE).Process_QORDopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>NSWDivs(ABCDE).Process_QORDopo</displayGroupId>
+					<!-- <defaultModifierId>QORD_select_OPO</defaultModifierId>
+					<visibleModifierGroup>QORD_OPO</visibleModifierGroup> -->
+					<localRun>false</localRun>
+				</node>
+				<!--<node id="NSWDivs(ABCDE).Process_QORD.longtermopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>NSWDivs(ABCDE).Process_QORD.longtermopo</displayGroupId>
+					<defaultModifierId>QORD.longterm_select_OPO</defaultModifierId>
+					<visibleModifierGroup>QORD.longterm_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>-->
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

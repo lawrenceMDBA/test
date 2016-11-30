@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="Yarrawonga.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites_H</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites_H</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="Yarrawonga.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet> -->
+	<!-- 	<locationSet id="Yarrawonga.sites_DO">
+		<description>Evaporation data entry sites</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="Yarrawonga.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!--  				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="Yarrawonga.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 	<locationSet id="Yarrawonga.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga.sites_QDIV">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga.sites_QRTN">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga.sites_QDIV.total">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>-->
+	<!-- #######################
+Data entry sites to MDBC_OPS
+##########################-->
+	<!-- TODO: when idmapping is finished, go back to ...sites, also in parameetr specific sets-->
+	<locationSet id="Yarrawonga2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="TO_MDBC_OPS" contains="yarrawonga"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not>
+ -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="Yarrawonga2MDBC_OPS.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>-->
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_QDIV">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="Yarrawonga2MDBC_OPS.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_QDIV.total">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_QRTN">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="Yarrawonga2MDBC_OPS.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>-->
+</locationSets>

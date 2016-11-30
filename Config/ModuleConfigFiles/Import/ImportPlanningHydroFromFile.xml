@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+		<!-- imports seasonal planning series from Hydro as external forecasting -->
+	<import>
+		<general>
+			<importType>generalCsv</importType>
+			<folder>$IMPORT_FOLDER_FROM_HYDRO$</folder>
+			<fileNamePatternFilter>*seasonal*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_HYDRO$</failedFolder>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+			    <locationColumn name="SITEID"/>
+				<parameterColumn name="PARAMETER"/>
+				<dateTimeColumn name="PERIODDATE" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="VALUE" unit="ML"/>
+<!-- 				<locationColumn name="SITEID"/>
+				<dateColumn name="PERIODDATE" pattern="yyyy-MM-dd HH:mm:ss" />
+				<parameterColumn name="PARAMETER"/>
+				<valueColumn name="VALUE"/>
+				<valueColumn name="QTYUNIT"/ -->
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapHydro2ROWS_Planning</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-9</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>HYDRO_Planning</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>aep25</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_plan</parameterId>
+			<qualifierId>aep10</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep25</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep10</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>aep25</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>
+			<qualifierId>aep10</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>aep25</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>div</qualifierId>
+			<qualifierId>aep10</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

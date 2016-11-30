@@ -1,0 +1,1369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_Yarrawonga">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- V_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- Q_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<!--For some reason de.sites_Q does not work for sites containg Q and Q.ivt-->
+				<locationSetId>Yarrawonga.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- QRL_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- QORD_Obs-->
+		<subplot>
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mdbc</qualifierId>
+				<locationSetId>de.sites_QORD.mdbc</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="7" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>shortterm</qualifierId>
+				<locationSetId>de.sites_QORD.shortterm</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="4" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QORD</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="30" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>longterm</qualifierId>
+				<locationSetId>de.sites_QORD.longterm</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="7" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+		</subplot>
+		<!-- QDIV_obs -->
+		<subplot min="0.0">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<!-- 			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_fcst</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="7" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet> -->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>irrig</qualifierId>
+				<locationSetId>de.sites_QDIV.irrig</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>urban</qualifierId>
+				<locationSetId>de.sites_QDIV.urban</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>de.sites_QDIV.total</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>saline</qualifierId>
+				<locationSetId>de.sites_QDIV.saline</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>ind</qualifierId>
+				<locationSetId>de.sites_QDIV.ind</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+		</subplot>
+		<!-- QRTN_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRTN_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>irrig</qualifierId>
+				<locationSetId>de.sites_QRTN.irrig</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- P_obs -->
+		<subplot min="0.0">
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessPopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>P_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_P</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<aggregationPeriod unit="hour" start="-23" end="1"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<!-- EVAP_obs -->
+		<subplot min="0.0">
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>EVAP_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_EVAP</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot min="0.0">
+			<line>
+			    <axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>EVAP_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<qualifierId>fao56</qualifierId>
+					<locationSetId>de.sites_EVAP</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod start="-1" end="0" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>EVAP_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<qualifierId>mlake</qualifierId>
+					<locationSetId>de.sites_EVAP</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod start="-1" end="0" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>	
+		<!-- WT_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessATopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- Turbidity_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- WindDir_obs -->
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportObserved</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>WindDir_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_WindDir</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportObserved</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>WindVel_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_WindVel</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<!-- pH_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- EC_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessECopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- DO_obs -->
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>DO_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_DO</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>DO%_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_DO</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>NoGatesOpen_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_Gates</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>NoGatesOpen_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>rr</qualifierId>
+				<locationSetId>de.sites_Gates.rr</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>NoGatesOpen_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>vs</qualifierId>
+				<locationSetId>de.sites_Gates.vs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>NoStopLogs_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_StopLogs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>FlowDir_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_FlowDir</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_Yarrawonga">
+		<!--To Do Other MDBA added impor params need to be added -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<!--For some reason de.sites_Q does not work for sites containg Q and Q.ivt-->
+				<locationSetId>Yarrawonga.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>LevelToFlow</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>rated</qualifierId>
+				<locationSetId>de.sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QORD</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="10" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_QORD</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="10" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_QORD</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="10" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot min="0.0">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>1h</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_DO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_DO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_DO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_DO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>DO_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_DO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessECopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessECopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessECopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessATopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessATopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessATopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_AT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>WT_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_WT</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- For pH -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>pH_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_pH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!--Turbidity-->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!--QRL-->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRL_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_QRL</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!--QDIV-->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>de.sites_QDIV</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="Yarrawonga.OPO" name="Processing Yarrawonga sites ">
+		<displayGroup id="Yarrawonga.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Yarrawonga">
+				<locationSetId>Yarrawonga.sites</locationSetId>
+				<plotId>DataEntry_Yarrawonga</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Yarrawonga.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Yarrawonga">
+				<locationSetId>Yarrawonga.sites</locationSetId>
+				<plotId>ImportProcess_Yarrawonga</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Yarrawonga.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Yarrawonga.Process_Hopo" name="Yarrawonga water level">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_H">
+					<locationSetId>Yarrawonga.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_Qopo" name="Yarrawonga discharge">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_Q">
+					<locationSetId>Yarrawonga.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_Qratedopo" name="Yarrawonga rated discharge">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_Qrated">
+					<locationSetId>Yarrawonga.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_Vopo" name="Yarrawonga storage">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_V">
+					<locationSetId>Yarrawonga.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_Popo" name="Yarrawonga precipitation">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_P">
+					<locationSetId>Yarrawonga.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_ECopo" name="Yarrawonga electric conductivity">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_EC">
+					<locationSetId>Yarrawonga.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Yarrawonga.Process_WTopo" name="Yarrawonga water temperature">
+				<singleLocationDisplays id="ImportProcess_Yarrawonga_WT">
+					<locationSetId>Yarrawonga.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

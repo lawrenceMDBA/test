@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose OPO series from OPT, OPC-->
+	<!-- Types of daily values are distinguished:
+_9am_to_9am: daily mean values at 9am where the day is defined from 9am to 9am
+_8am: daily mean values at 8am where the day is defined from 9am to 9am-->
+	<!--Steps conducted for OPT and OPC:-->
+	<!-- _neq_to_15m: 
+samples nonEquidistant series to 15 minute or 15m series using closestOrLinear interpolation 
+(i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp) -->
+	<!-- _15min_gapfill_with_zero: 
+serial interpolation of 15 minute series using ldefault value 0 -->
+	<!--_15m_aggr_daily_9am_to_9am: 
+accumulative aggregation from 15m to daily mean (at 9am), where the day is defined from 9am to 9am; 
+result is reliable if fews than x% of input values are doubtful or missing-->
+	<!-- _sample_9am_to_8am:
+sample-equidistant to snap 9am value to 8am timestamp-->
+	<!--SelectPreferred_: 
+select preferred series (OPT, OPC, OPO) based on (modifiable) location attribute, default is OPT
+OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
+	<!--Merge_OPO_Over_Selected(_OPT_OPC):
+Merges OPO over Selected (not over OPT over OPC) series-->
+
+	<variable>
+		<variableId>OPO_historic_8am</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra rainfall data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_P_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_9am_to_9am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>acc</qualifierId>
+			<qualifierId>9am</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_9am_to_9am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>acc</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="OPT_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_gapfill_with_zero">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>OPT_15m</variableId>
+				</inputVariable>
+				<maxGapLength>4</maxGapLength>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>OPT_15m</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="OPT_15m_aggr_9am_to_9am">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>OPT_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>15</inputDoubtfulPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPT_9am_to_9am</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="OPT_sample_9am_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPT_9am_to_9am</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPT_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="23"/>
+				<outputVariable>
+					<variableId>OPT_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neq_to_15min">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPC_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_gapfill_with_zero">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>OPC_15m</variableId>
+				</inputVariable>
+				<maxGapLength>4</maxGapLength>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>OPC_15m</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="OPC_15m_aggr_9am_to_9am">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>OPC_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>15</inputDoubtfulPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPC_9am_to_9am</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="OPC_sample_9am_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPC_9am_to_9am</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPC_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="23"/>
+				<outputVariable>
+					<variableId>OPC_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="SelectPreferred_8am">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am</variableId>
+				</input>
+				<attributeFunctionId>@P_PREFERRED@_8am</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_8am</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>OPT_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>OPO_historic_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

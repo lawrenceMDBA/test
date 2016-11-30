@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="HydstraInput_Flow">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>hydrographic_update</qualifierId>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>rated</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraInput_Levels">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>hydrographic_update</qualifierId>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraInput_AirTemperature">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessAT_fcst_To_TSMSites</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<locationSetId>tsm_sites_AT</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>tsm_sites_AT</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>AT_comb</parameterId>
+				<locationSetId>tsm_sites_AT</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraInput_Rainfall">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>hydrographic_update</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>opt2</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessg</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="3"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>accessr</qualifierId>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>adfd</qualifierId>
+				<locationSetId>sites_P_obs</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="3"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_fcst</parameterId>
+				<qualifierId>avg</qualifierId>
+				<qualifierId>pme</qualifierId>
+				<locationSetId>sites_P_obs</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="3"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraInput_Evaporation">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>sites_EVAP_obs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<locationSetId>sites_EVAP_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraInput_Gatesopen">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>NoGatesOpen_obs</parameterId>
+				<locationSetId>tsm_sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-7" end="7" startOverrulable="true"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="HydstraResults">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>ucor</qualifierId>
+				<locationSetId>tsm_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>sites_Q_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>rated</qualifierId>
+				<locationSetId>sites_H_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="7" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>cor</qualifierId>
+				<locationSetId>tsm_sites</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="10" start="-7" unit="day"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="10" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>rated</qualifierId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="10" start="-7" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup name="Hydstra model input" id="Hydstra_model_input">
+		<viewPermission>RiverOperations</viewPermission>
+		<displayGroup id="Hydstra_input_Q" name="Flow input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_Q_obs</locationSetId>
+				<locationSetId>tsm_sites_Q_rated</locationSetId>
+				<plotId>HydstraInput_Flow</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hydstra_input_H" name="Levels input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_H</locationSetId>
+				<plotId>HydstraInput_Levels</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hydstra_input_AT" name="Air temperature input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_AT</locationSetId>
+				<plotId>HydstraInput_AirTemperature</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hydstra_input_P" name="Rainfall input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_P</locationSetId>
+				<plotId>HydstraInput_Rainfall</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hydstra_input_EVAP" name="Evaporation input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_E</locationSetId>
+				<plotId>HydstraInput_Evaporation</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hydstra_input_Gates" name="Gates open input">
+			<singleLocationDisplays>
+				<locationSetId>tsm_sites_Gates</locationSetId>
+				<plotId>HydstraInput_Gatesopen</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<displayGroup name="Hydstra results" id="Hydstra_results">
+		<viewPermission>RiverOperations</viewPermission>
+		<singleLocationDisplays>
+			<locationSetId>tsm_sites_output</locationSetId>
+			<plotId>HydstraResults</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+</displayGroups>
