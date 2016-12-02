@@ -33,7 +33,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<!-- mapping below for importing ec data exported by hygenexp-->
 	<import>
@@ -63,7 +63,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -91,7 +91,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -257,7 +257,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<!-- mapping below for importing ec data exported by hygenexp-->
 	<import>
@@ -287,7 +287,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -315,7 +315,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -598,7 +598,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -625,7 +625,7 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit unit="µS/cm" parameterId="EC_obs"/>
+		<externUnit unit="ÂµS/cm" parameterId="EC_obs"/>
 	</import>
 	<import>
 		<general>
@@ -827,12 +827,11 @@
 		</timeSeriesSet>
 	</import>
 	<import>
-			<general>
+		<general>
 			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_ETL$/OPC</folder>
 			<fileNamePatternFilter>SA_Berri_*.Translated.csv</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_ETL$/OPC</failedFolder>
-			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
 			<table>
 				<locationColumn/>
 				<skippedColumn/>
@@ -861,7 +860,6 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-<!-- 		<externUnit unit="µS/cm" parameterId="EC_obs"/> -->
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -910,6 +908,85 @@
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_ETL$/OPC</folder>
+			<fileNamePatternFilter>GMW_SCADA_*.Translated.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_ETL$/OPC</failedFolder>
+			<table>
+				<locationColumn/>
+				<skippedColumn/>
+				<parameterColumn/>
+				<dateTimeColumn pattern="yyyyMMddHHmmss"/>
+				<valueColumn/>				
+				<skippedColumn/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdOPC</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ETL_GMW_SCADA</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
 			<qualifierId>opc</qualifierId>
 			<qualifierId>raw</qualifierId>
 			<locationSetId>sites</locationSetId>
