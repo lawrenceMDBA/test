@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>$EXPORT_FOLDER_RATINGS$</rootDir>
+		<workDir>%ROOT_DIR%</workDir>
+		<exportDir>%ROOT_DIR%</exportDir>
+		<exportIdMap>IdImportRating</exportIdMap>
+		<importDir>%ROOT_DIR%</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%</dumpDir>
+		<diagnosticFile>%ROOT_DIR%\logs\diag.xml</diagnosticFile>
+		<missVal>-99.0</missVal>
+		<convertDatum>false</convertDatum>
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+	</general>
+	<activities>
+		<exportActivities>
+		<exportRatingCurveActivity>
+			<exportFile>all_ratings.xml</exportFile>
+			<locationSetId>sites_H_rated</locationSetId>
+		</exportRatingCurveActivity>
+		</exportActivities>
+	</activities>
+</generalAdapterRun>
