@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<export>
+		<general>
+			<exportType>generalCsv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDRO$</folder>
+			<exportFileName>
+				<name>_ROWS2Hydro_calc.csv</name>
+				<prefix>
+					<currentTimeFormattingString>yyyymmddhhmmss_</currentTimeFormattingString>
+				</prefix>
+				<!--<suffix>
+					<simpleString>_fromROWS.csv</simpleString>
+				</suffix>-->
+			</exportFileName>
+			<table>
+				<locationColumn/>
+				<parameterColumn/>
+				<flagColumn/>
+				<attributeColumn id="DATASOURCEID_EXPORT"/>
+				<dateTimeColumn pattern="yyyy-MM-dd"/>
+				<valueColumn unit="ML/d"/>
+			</table>
+			<idMapId>IdmapROWS2Hydro_Calculated</idMapId>
+			<flagConversionsId>HydroFlagConversions_Calculated</flagConversionsId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>HYDRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>pump</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>HYDRO_sites_QDIV.pump</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>structure</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>HYDRO_sites_QDIV.structure</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>vic</qualifierId>
+			<locationSetId>HYDRO_sites_Q.direct</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_calc</parameterId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>HYDRO_sites_QRTN.env</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Radiation_calc</parameterId>
+			<locationSetId>HYDRO_sites_Radiation</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>VL_calc</parameterId>
+			<qualifierId>evap</qualifierId>
+			<locationSetId>HYDRO_sites_VL.evap</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>HYDRO_sites_QI</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>

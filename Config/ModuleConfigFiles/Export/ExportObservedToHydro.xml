@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<export>
+		<general>
+			<exportType>generalCsv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDRO$</folder>
+			<exportFileName>
+				<name>_ROWS2HYDRO_obs.csv</name>
+				<!--<useExternalLocationIdAsName>true</useExternalLocationIdAsName>-->
+				<prefix>
+					<currentTimeFormattingString>yyyymmddhhmmss_</currentTimeFormattingString>
+				</prefix>
+			</exportFileName>
+			<table>
+				<locationColumn/>
+				<parameterColumn/>
+				<flagColumn/>
+				<attributeColumn id="DATASOURCEID_EXPORT"/>
+				<dateTimeColumn pattern="yyyy-MM-dd"/>
+				<valueColumn unit="ML/d"/>
+			</table>
+			<idMapId>IdmapROWS2Hydro_Observed</idMapId>
+			<flagConversionsId>HydroFlagConversions_Observed</flagConversionsId>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<!-- idmap issue
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_P</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!-- idmap issue-
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_WT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ProcessATopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_AT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EGEN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_EGEN</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_Turbidity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_WindDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_WindVel</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_H</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--idmap issue
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_V</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_pH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_DO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_Gates</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>de2HYDRO.sites_Gates.rr</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>de2HYDRO.sites_Gates.vs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoStopLogs_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_StopLogs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>FlowDir_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_FlowDir</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>spill</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.spill</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.turb</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>valves</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.valves</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ivt</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.ivt</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.env</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>transfer</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.transfer</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>creek</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.creek</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>forest</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.forest</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fishway</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.fishway</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>other</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.other</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>de2HYDRO.sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>instream</qualifierId>
+			<locationSetId>de2HYDRO.sites_Q.instream</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>de2HYDRO.sites_QORD.mdbc</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>de2HYDRO.sites_QORD.shortterm</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>de2HYDRO.sites_QORD.longterm</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--TODO put back when idampping fixed<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de2HYDRO.sites_QDIV.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>urban</qualifierId>
+			<locationSetId>de2HYDRO.sites_QDIV.urban</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>de2HYDRO.sites_QDIV.total</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>de2HYDRO.sites_QDIV.saline</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ind</qualifierId>
+			<locationSetId>de2HYDRO.sites_QDIV.ind</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>de2HYDRO.sites_QRTN.irrig</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+	</export>
+</timeSeriesExportRun>
