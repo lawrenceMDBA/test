@@ -13,7 +13,10 @@
 	<parameter external="Conductivity@25degC (3000.00)" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="ElectricalConductivity (1300.00)" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="EffectiveVolumeinStorage (140.00)" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 
+	
 	<parameter external="StorageDischargeVolume (300.00)" internal="QRL_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	-->
 	<parameter external="CalculatedInflow (2240.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" externalQualifier3="inflow"/>
 	<parameter external="NetTransfer(24hrTotal) (419.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<!--
@@ -33,12 +36,20 @@
 	<!-- ETL Export Mappings: Used when importing data exported by ETL Tool -->
 	<parameter external="100" internal="H_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="133" internal="NoGatesOpen_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="300" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="total"/>
 	<parameter external="400" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="411" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="turb"/>
+	<parameter external="412" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="valves"/>
+	<parameter external="413" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="spill"/>
+	<parameter external="422" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="inflow"/>
 	<parameter external="1902" internal="WindDir_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="1912" internal="WindVel_obs" internalQualifier1="opc" internalQualifier2="raw"/>	
 	<parameter external="1950" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="200" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="2000" internal="P_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="2149" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="mdbc"/>
+	<parameter external="2150" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="2151" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	<parameter external="3000" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
 	
 	<!-- HYGENEXP export mappings-->
