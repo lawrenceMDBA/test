@@ -733,7 +733,8 @@
 	</import>
 	<!-- Import ETL Datafiles -->
 	<import>
-			<general>
+		<general>
+			<!-- For Snowy's daily data feed -->
 			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_ETL$/OPT</folder>
 			<fileNamePatternFilter>Snowy_*.Translated.csv</fileNamePatternFilter>
@@ -753,7 +754,7 @@
 			<importTimeZone>
 				<timeZoneOffset>+10:00</timeZoneOffset>
 			</importTimeZone>
-			<dataFeedId>ETL_Snowy</dataFeedId>
+			<dataFeedId>ETL_Snowy_Daily</dataFeedId>
 			<expiryTime unit="day" multiplier="365"/>
 		</general>
 		<timeSeriesSet>
@@ -791,7 +792,66 @@
 		</timeSeriesSet>
 	</import>
 	<import>
-			<general>
+		<general>
+			<!-- For snowy's telemetry dada feed -->
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_ETL$/OPT</folder>
+			<fileNamePatternFilter>SnowyTel_*.Translated.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_ETL$/OPT</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<locationColumn/>
+				<skippedColumn/>
+				<parameterColumn/>
+				<dateTimeColumn pattern="yyyyMMddHHmmss"/>
+				<valueColumn/>				
+				<skippedColumn/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdOPT</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ETL_Snowy_Telemetry</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
 			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_ETL$/OPC</folder>
 			<fileNamePatternFilter>SA_Pump_*.Translated.csv</fileNamePatternFilter>
