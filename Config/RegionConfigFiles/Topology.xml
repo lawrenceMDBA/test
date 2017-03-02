@@ -20,12 +20,15 @@
 	</forecasterHelperDirectories>
 	<enableAutoRun>false</enableAutoRun>
 	<nodes id="GeneralDocumentation" name="Documentation (general)">
-			<node id="ROWSgui" name="ROWS user interface">				<toolWindow>document selection panel</toolWindow>
-</node>
-			<node id="WaterCoach" name="WaterCoach"><toolWindow>document selection panel</toolWindow>
-</node>
-			<node id="Configuration" name="Configuration">				<toolWindow>document selection panel</toolWindow>
-</node>
+		<node id="ROWSgui" name="ROWS user interface">
+			<toolWindow>document selection panel</toolWindow>
+		</node>
+		<node id="WaterCoach" name="WaterCoach">
+			<toolWindow>document selection panel</toolWindow>
+		</node>
+		<node id="Configuration" name="Configuration">
+			<toolWindow>document selection panel</toolWindow>
+		</node>
 	</nodes>
 	<nodes id="Import" name="Import">
 		<node id="Import_Observed" name="Import Observations">
@@ -147,7 +150,7 @@
 	</nodes>
 	<nodes id="SeasonalPlanning" name="Seasonal Planning">
 		<nodes id="HydroSeasonal" name="Hydro Seasonal">
-			<nodes id="HydroSeasonalMonthly" name="Monthly Patterns">		
+			<nodes id="HydroSeasonalMonthly" name="Monthly Patterns">
 				<node id="HydroSeasonal.Q_plan" name="Seasonal flow">
 					<displayGroupId>HydroSeasonal_Q_plan</displayGroupId>
 				</node>
@@ -157,11 +160,11 @@
 				<node id="HydroSeasonal.Q_plan.div" name="Seasonal Demand">
 					<displayGroupId>HydroSeasonal_Q_plan.div</displayGroupId>
 				</node>
-	<!-- 			<node id="HydroSeasonal.V_plan" name="Storage Volume">
+				<!-- 			<node id="HydroSeasonal.V_plan" name="Storage Volume">
 					<displayGroupId>HydroSeasonal_Q_plan</displayGroupId>
 				</node> -->
 			</nodes>
- 			<nodes id="HydroSeasonalDaily" name="Daily Patterns">
+			<nodes id="HydroSeasonalDaily" name="Daily Patterns">
 				<workflowId>Process_PlanningHydro</workflowId>
 				<localRun>false</localRun>
 				<node id="HydroSeasonalDaily.Q_plan" name="Flow">
@@ -174,7 +177,7 @@
 				</node>
 			</nodes>
 		</nodes>
-<!-- 		<nodes id="HydroSeasonalTest" name="Hydro Seasonal Test">
+		<!-- 		<nodes id="HydroSeasonalTest" name="Hydro Seasonal Test">
 			<node id="HydroSeasonal.Dartmouth2" name="Dartmouth2">
 				<displayGroupId>CategoryPlot</displayGroupId>
 			</node>
