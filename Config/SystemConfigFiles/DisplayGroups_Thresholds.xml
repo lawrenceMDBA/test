@@ -13,6 +13,18 @@
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_calc</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>DecJan</qualifierId>
+				<locationId>R_409216A</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
 		</subplot>
 		<subplot>
 			<axis>left</axis>
@@ -93,16 +105,16 @@
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
 				<qualifierId>delta</qualifierId>
 				<qualifierId>24h</qualifierId>
-				<locationSetId>threshold_sites_dH_hourly</locationSetId>
+                <locationId>R_401211A</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep unit="hour"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
+				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -1502,6 +1514,10 @@
 			<locationId>R_409204C</locationId>
 			<plotId>H_value</plotId>
 		</display>
+		<display id="R_409202A_H_value">
+			<locationId>R_409202A</locationId>
+			<plotId>H_value</plotId>
+		</display>
 		<display id="R_SWHPUMP_H_value">
 			<locationId>R_SWHPUMP</locationId>
 			<plotId>H_value</plotId>
@@ -1825,6 +1841,10 @@
 			<locationId>R_409204C</locationId>
 			<plotId>dH_value</plotId>
 		</display>
+		<display id="R_409202A_dH_value">
+			<locationId>R_409202A</locationId>
+			<plotId>dH_value</plotId>
+		</display>		
 		<display id="R_SWHPUMP_dH_value">
 			<locationId>R_SWHPUMP</locationId>
 			<plotId>dH_value</plotId>
@@ -2139,6 +2159,10 @@
 		</display>
 		<display id="R_409204C_Q_value">
 			<locationId>R_409204C</locationId>
+			<plotId>Q_value</plotId>
+		</display>
+		<display id="R_409202A_Q_value">
+			<locationId>R_409202A</locationId>
 			<plotId>Q_value</plotId>
 		</display>
 		<display id="R_SWHPUMP_Q_value">
@@ -2456,6 +2480,10 @@
 		</display>
 		<display id="R_409204C_dQ_value">
 			<locationId>R_409204C</locationId>
+			<plotId>dQ_value</plotId>
+		</display>
+		<display id="R_409202A_dQ_value">
+			<locationId>R_409202A</locationId>
 			<plotId>dQ_value</plotId>
 		</display>
 		<display id="R_SWHPUMP_dQ_value">
@@ -2777,6 +2805,10 @@
 			<locationId>R_409204C</locationId>
 			<plotId>V_value</plotId>
 		</display>
+		<display id="R_409202A_V_value">
+			<locationId>R_409202A</locationId>
+			<plotId>V_value</plotId>
+		</display>
 		<display id="R_SWHPUMP_V_value">
 			<locationId>R_SWHPUMP</locationId>
 			<plotId>V_value</plotId>
@@ -3096,6 +3128,10 @@
 			<locationId>R_409204C</locationId>
 			<plotId>dV_value</plotId>
 		</display>
+		<display id="R_409202A_dV_value">
+			<locationId>R_409202A</locationId>
+			<plotId>dV_value</plotId>
+		</display>
 		<display id="R_SWHPUMP_dV_value">
 			<locationId>R_SWHPUMP</locationId>
 			<plotId>dV_value</plotId>
@@ -3413,6 +3449,10 @@
 		</display>
 		<display id="R_409204C_EC_value">
 			<locationId>R_409204C</locationId>
+			<plotId>EC_value</plotId>
+		</display>
+		<display id="R_409202A_EC_value">
+			<locationId>R_409202A</locationId>
 			<plotId>EC_value</plotId>
 		</display>
 		<display id="R_SWHPUMP_EC_value">
@@ -3736,6 +3776,10 @@
 		</display>
 		<display id="R_409204C_DO_value">
 			<locationId>R_409204C</locationId>
+			<plotId>DO_value</plotId>
+		</display>
+		<display id="R_409202A_DO_value">
+			<locationId>R_409202A</locationId>
 			<plotId>DO_value</plotId>
 		</display>
 		<display id="R_SWHPUMP_DO_value">

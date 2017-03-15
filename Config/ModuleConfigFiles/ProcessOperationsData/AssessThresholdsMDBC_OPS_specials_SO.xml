@@ -9,8 +9,9 @@ In the case where multiple types of violation are associated with one type of da
 This means that in the end only one timeseries with threshold flags is stored for each combination of type of data and location.  
 -->
 	<!--Input-->
+	<!-- use hourly data to determine dH over 24h for MittaMitta -->
 	<variable>
-		<variableId>H_hourly_MittaMitta</variableId>
+		<variableId>H_MittaMitta_hourly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -23,7 +24,21 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_MittaMitta</variableId>
+		<variableId>H_MittaMitta_hourly_delay24h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="hour" multiplier="23"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_MittaMitta_hourly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -37,19 +52,18 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_24h_MittaMitta</variableId>
+		<variableId>dH_MittaMitta_hourly_24h</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
 			<qualifierId>delta</qualifierId>
 			<qualifierId>24h</qualifierId>
 			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep multiplier="1" unit="hour"/>
-			<aggregationPeriod unit="hour" start="-23" end="0"/>
+			<timeStep unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -654,6 +668,19 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>-->
 	<variable>
+		<variableId>V_Meninde</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dQ_thresh_hard_LowDar_1</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -814,6 +841,70 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>Q_thresh_soft_LowDar_JFM</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_Apr</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_NovDec</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp9</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_MaythruOct</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -829,7 +920,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
+	<!--<variable>
 		<variableId>dH_thresh_hard_Heywood_1</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -844,7 +935,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-	</variable>
+	</variable>-->
 	<variable>
 		<variableId>dH_thresh_hard_Heywood_2</variableId>
 		<timeSeriesSet>
@@ -877,7 +968,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
+	<!--<variable>
 		<variableId>dH_thresh_hard_Doctors_1</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -892,7 +983,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-	</variable>
+	</variable>-->
 	<variable>
 		<variableId>dH_thresh_hard_Doctors_2</variableId>
 		<timeSeriesSet>
@@ -927,16 +1018,14 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	</variable>
 	<!--Transformations - calc-->
 	<transformation id="MittaMitta_dH_hourly_24h">
-		<aggregation>
-			<accumulative>
-				<inputVariable>
-					<variableId>dH_hourly_MittaMitta</variableId>
-				</inputVariable>
+		<user>
+			<simple>
+				<expression>H_MittaMitta_hourly - H_MittaMitta_hourly_delay24h</expression>
 				<outputVariable>
-					<variableId>dH_hourly_24h_MittaMitta</variableId>
+					<variableId>dH_MittaMitta_hourly_24h</variableId>
 				</outputVariable>
-			</accumulative>
-		</aggregation>
+			</simple>
+		</user>
 	</transformation>
 	<!--<transformation id="MittaMitta_Q_weeklyrolling">
 		<aggregation>
@@ -1732,7 +1821,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<period>
 				<season>
 					<startMonthDay>--12-25</startMonthDay>
-					<endMonthDay>--01-31</endMonthDay>
+					<endMonthDay>--01-30</endMonthDay>
 				</season>
 			</period>
 			<aggregation>
@@ -1775,7 +1864,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_1">
 		<user>
 			<simple>
-				<expression>if ( H_hourly_MittaMitta &gt; H_S_COND_1, if(dH_hourly_MittaMitta &lt; dH_S_HARD_1, 202, 1/0), 1/0)</expression>
+				<expression>if ( H_MittaMitta_hourly &gt; H_S_COND_1 + 0.0001, if(dH_MittaMitta_hourly &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
@@ -1789,7 +1878,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_2">
 		<user>
 			<simple>
-				<expression>if(H_hourly_MittaMitta &lt;= H_S_COND_1, if(dH_hourly_MittaMitta &lt; dH_S_HARD_2, 202, 1/0), 1/0)</expression>
+				<expression>if(H_MittaMitta_hourly &lt;= H_S_COND_1, if(dH_MittaMitta_hourly &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
@@ -1803,7 +1892,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_3">
 		<user>
 			<simple>
-				<expression>if(H_hourly_MittaMitta &lt;= H_S_COND_1, if(dH_hourly_24h_MittaMitta &lt; dH_S_HARD_3, 202, 1/0), 1/0)</expression>
+				<expression>if(H_MittaMitta_hourly &lt;= H_S_COND_1, if(dH_MittaMitta_hourly_24h &lt; dH_S_HARD_3 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
 					<coefficient id="dH_S_HARD_3" value="@dH_S_HARD_3@"/>
@@ -1817,7 +1906,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_4">
 		<user>
 			<simple>
-				<expression>if ( H_hourly_MittaMitta &lt; H_S_COND_2, if(dH_hourly_MittaMitta &gt; dH_S_HARD_4, 202, 1/0), 1/0)</expression>
+				<expression>if ( H_MittaMitta_hourly &lt; H_S_COND_2 - 0.0001, if(dH_MittaMitta_hourly &gt; dH_S_HARD_4 + 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_4" value="@dH_S_HARD_4@"/>
 					<coefficient id="H_S_COND_2" value="@H_S_COND_2@"/>
@@ -1831,11 +1920,11 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_5">
 		<user>
 			<simple>
-				<expression>if ( H_hourly_MittaMitta &gt;= H_S_COND_2, if ( H_hourly_MittaMitta &lt;= H_S_COND_1, if(dH_hourly_MittaMitta &gt; dH_S_HARD_5, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if ( H_MittaMitta_hourly &gt;= H_S_COND_2, if ( H_MittaMitta_hourly &lt;= H_S_COND_3, if(dH_MittaMitta_hourly &gt; dH_S_HARD_5 + 0.0001, 202, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_5" value="@dH_S_HARD_5@"/>
-					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
 					<coefficient id="H_S_COND_2" value="@H_S_COND_2@"/>
+					<coefficient id="H_S_COND_3" value="@H_S_COND_3@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dH_thresh_hard_MittaMitta_5</variableId>
@@ -1846,9 +1935,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="MittaMitta_dH_thresh_hard_6">
 		<user>
 			<simple>
-				<expression>if ( H_hourly_MittaMitta &gt; H_S_COND_1, if(dH_hourly_MittaMitta &gt; dH_S_HARD_6, 202, 1/0), 1/0)</expression>
+				<expression>if ( H_MittaMitta_hourly &gt; H_S_COND_3 + 0.0001, if(dH_MittaMitta_hourly &gt; dH_S_HARD_6 + 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
+					<coefficient id="H_S_COND_3" value="@H_S_COND_3@"/>
 					<coefficient id="dH_S_HARD_6" value="@dH_S_HARD_6@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -1891,7 +1980,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Mulwala_Q_thresh_hard">
 		<user>
 			<simple>
-				<expression>if ( Q_Mulwala &gt; Q_related_Mulwala, 302, 1/0)</expression>
+				<expression>if ( Q_Mulwala &gt; Q_related_Mulwala + 0.0001, 302, 1/0)</expression>
 				<outputVariable>
 					<variableId>Q_thresh_hard_Mulwala</variableId>
 				</outputVariable>
@@ -1901,7 +1990,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Yarrawonga_Q_thresh_hard">
 		<user>
 			<simple>
-				<expression>if ( Q_Yarrawonga &gt; Q_related_Yarrawonga, 302, 1/0)</expression>
+				<expression>if ( Q_Yarrawonga &gt; Q_related_Yarrawonga + 0.0001, 302, 1/0)</expression>
 				<outputVariable>
 					<variableId>Q_thresh_hard_Yarrawonga</variableId>
 				</outputVariable>
@@ -1914,7 +2003,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<limitVariable>
 					<variableId>H_LakeVic</variableId>
 				</limitVariable>
-				<expression>if (H_LakeVic &gt; H_S_COND_1, if (H_LakeVic &lt; H_S_COND_2, if(dH_LakeVic &gt; dH_S_HARD_1, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if (H_LakeVic &gt; H_S_COND_1 + 0.0001, if (H_LakeVic &lt; H_S_COND_2 - 0.0001, if(dH_LakeVic &gt; dH_S_HARD_1 + 0.0001, 202, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="H_S_COND_1" value="@H_S_COND_1@"/>
@@ -1955,7 +2044,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_1">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1, 402, 1/0), 1/0)</expression>
+				<expression>if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1 - 0.0001, 402, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dQ_S_HARD_1" value="@dQ_S_HARD_1@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
@@ -1969,7 +2058,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_2">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_2, if ( Q_LowDar &lt;= Q_S_COND_3, if (dQ_LowDar &lt; dQ_S_HARD_2, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001 , if ( Q_LowDar &lt;= Q_S_COND_3, if (dQ_LowDar &lt; dQ_S_HARD_2 - 0.0001, 402, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dQ_S_HARD_2" value="@dQ_S_HARD_2@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
@@ -1984,7 +2073,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_3">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3, 402, 1/0), 1/0)</expression>
+				<expression>if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3 + 0.0001, 402, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dQ_S_HARD_3" value="@dQ_S_HARD_3@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
@@ -1998,7 +2087,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_4">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if ( Q_LowDar &gt; Q_S_COND_1 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4 + 0.0001, 402, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dQ_S_HARD_4" value="@dQ_S_HARD_4@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
@@ -2013,7 +2102,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_5">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_2, if ( Q_LowDar &lt;= Q_S_COND_3, if(dQ_LowDar &gt; dQ_S_HARD_5, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_3, if(dQ_LowDar &gt; dQ_S_HARD_5 + 0.0001, 402, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dQ_S_HARD_5" value="@dQ_S_HARD_5@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
@@ -2028,8 +2117,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_Q_thresh_hard_JanFebMar">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar_JanFebMar &lt; Q_S_HARD_1, 302, 1/0)</expression>
+				<expression>if(V_Meninde &gt; V_S_COND_1, if ( Q_LowDar_JanFebMar &lt; Q_S_HARD_1 - 0.0001, 302, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="Q_S_HARD_1" value="@Q_S_HARD_1@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2041,8 +2131,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_Q_thresh_hard_Apr">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar_Apr &lt; Q_S_HARD_2, 302, 1/0)</expression>
+				<expression>if(V_Meninde &gt; V_S_COND_1, if ( Q_LowDar_Apr &lt; Q_S_HARD_2 - 0.0001, 302, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="Q_S_HARD_2" value="@Q_S_HARD_2@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2054,8 +2145,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_Q_thresh_hard_NovDec">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar_NovDec &lt; Q_S_HARD_2, 302, 1/0)</expression>
+				<expression>if(V_Meninde &gt; V_S_COND_1, if ( Q_LowDar_NovDec &lt; Q_S_HARD_2 - 0.0001, 302, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="Q_S_HARD_2" value="@Q_S_HARD_2@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2067,8 +2159,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_Q_thresh_hard_MaythruOct">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar_MaythruOct &lt; Q_S_HARD_3, 302, 1/0)</expression>
+				<expression>if(V_Meninde &gt; V_S_COND_1, if ( Q_LowDar_MaythruOct &lt; Q_S_HARD_3 - 0.0001, 302, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="Q_S_HARD_3" value="@Q_S_HARD_3@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2080,9 +2173,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_Q_thresh_hard">
 		<user>
 			<simple>
-				<expression>if( H_LowDar &gt;= FSL, if ( Q_LowDar &lt; Q_S_HARD_4, 302, 1/0), 1/0)</expression>
+				<expression>if( V_Meninde &gt;= FSV, if ( Q_LowDar &lt; Q_S_HARD_4 - 0.0001, 302, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="FSL" value="@H_GT_rel(FSL)_HARD:H_GT_FSL@"/>
+					<coefficient id="FSV" value="@V_S_COND_3@"/>
 					<coefficient id="Q_S_HARD_4" value="@Q_S_HARD_4@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2091,10 +2184,66 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
+	<transformation id="LowDar_Q_thresh_soft_JanFebMar">
+		<user>
+			<simple>
+				<expression>if(V_Meninde &gt; V_S_COND_2, if ( Q_LowDar_JanFebMar &lt; Q_S_HARD_1 - 0.0001, 301, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="Q_S_HARD_1" value="@Q_S_HARD_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_thresh_soft_LowDar_JFM</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_Q_thresh_soft_Apr">
+		<user>
+			<simple>
+				<expression>if(V_Meninde &gt; V_S_COND_2, if ( Q_LowDar_Apr &lt; Q_S_HARD_2 - 0.0001, 301, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="Q_S_HARD_2" value="@Q_S_HARD_2@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_thresh_soft_LowDar_Apr</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_Q_thresh_soft_NovDec">
+		<user>
+			<simple>
+				<expression>if(V_Meninde &gt; V_S_COND_2, if ( Q_LowDar_NovDec &lt; Q_S_HARD_2 - 0.0001, 301, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="Q_S_HARD_2" value="@Q_S_HARD_2@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_thresh_soft_LowDar_NovDec</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_Q_thresh_soft_MaythruOct">
+		<user>
+			<simple>
+				<expression>if(V_Meninde &gt; V_S_COND_2, if ( Q_LowDar_MaythruOct &lt; Q_S_HARD_3 - 0.0001, 301, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="Q_S_HARD_3" value="@Q_S_HARD_3@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_thresh_soft_LowDar_MaythruOct</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="YarrawongStorage_H_thresh_soft_DecJan">
 		<user>
 			<simple>
-				<expression>if ( H_YarrawongaStorage_DecJan &lt; H_S_SOFT_1, 101, 1/0)</expression>
+				<expression>if ( H_YarrawongaStorage_DecJan &lt; H_S_SOFT_1 - 0.0001, 101, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
 				</coefficientSetFunctions>
@@ -2104,7 +2253,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Heywood_dH_thresh_hard1">
+	<!--<transformation id="Heywood_dH_thresh_hard1">
 		<user>
 			<simple>
 				<limitVariable>
@@ -2120,17 +2269,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				</outputVariable>
 			</simple>
 		</user>
-	</transformation>
+	</transformation>-->
 	<transformation id="Heywood_dH_thresh_hard2">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &gt;= Q_S_COND_1, if (Q_Doctors &lt;Q_GT_HARD, if(dH_Heywood &lt; dH_S_HARD_2, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Heywood &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
-					<coefficient id="Q_S_COND_1" value="12000"/>
 					<coefficient id="Q_GT_HARD" value="25000"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2145,10 +2293,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &gt;= Q_S_COND_1, if (Q_Doctors &lt; Q_GT_HARD, if(dH_Heywood_weekly_rolling &lt; dH_S_HARD_1, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Heywood_weekly_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
-					<coefficient id="Q_S_COND_1" value="12000"/>
 					<coefficient id="Q_GT_HARD" value="25000"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2157,7 +2304,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Doctors_dH_thresh_hard1">
+	<!--<transformation id="Doctors_dH_thresh_hard1">
 		<user>
 			<simple>
 				<limitVariable>
@@ -2173,17 +2320,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				</outputVariable>
 			</simple>
 		</user>
-	</transformation>
+	</transformation>-->
 	<transformation id="Doctors_dH_thresh_hard2">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &gt;= Q_S_COND_1, if (Q_Doctors &lt;Q_GT_HARD, if(dH_Doctors &lt; dH_S_HARD_2, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Doctors &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
-					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
@@ -2198,10 +2344,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &gt;= Q_S_COND_1, if (Q_Doctors &lt; Q_GT_HARD, if(dH_Doctors_weekly_rolling &lt; dH_S_HARD_1, 202, 1/0), 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Doctors_weekly_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
-					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>

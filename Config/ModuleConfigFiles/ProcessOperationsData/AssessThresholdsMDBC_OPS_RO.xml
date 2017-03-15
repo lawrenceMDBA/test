@@ -1219,7 +1219,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_hardGT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt; HARD_GT, 102, 1/0)</expression>
+				<expression>if ( H_calc &gt; HARD_GT + 0.0001, 102, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="HARD_GT" value="@RO_H_GT_HARD@"/>
 				</coefficientSetFunctions>
@@ -1245,7 +1245,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_hardLT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &lt; HARD_LT, 102, 1/0) </expression>
+				<expression>if ( H_calc &lt; HARD_LT - 0.0001, 102, 1/0) </expression>
 				<coefficientSetFunctions>
 					<coefficient id="HARD_LT" value="@H_LT_HARD@"/>
 				</coefficientSetFunctions>
@@ -1271,9 +1271,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_softGT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt;= SOFT_GT, 101, 1/0)</expression>
+				<expression>if ( H_calc &gt; SOFT_GT + 0.0001, 101, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="SOFT_GT" value="@H_GT_SOFT@"/>
+					<coefficient id="SOFT_GT" value="@RO_H_GT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_threshold_tmp4_soft</variableId>
@@ -1284,7 +1284,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_softLT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &lt; SOFT_LT, 101, 1/0)</expression>
+				<expression>if ( H_calc &lt; SOFT_LT - 0.0001, 101, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_LT" value="@H_LT_SOFT@"/>
 				</coefficientSetFunctions>
@@ -1297,7 +1297,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_softRANGE">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt; SOFT_RANGE_GT, if ( H_calc &lt; SOFT_RANGE_LT,  101, 1/0) , 1/0) </expression>
+				<expression>if ( H_calc &gt; SOFT_RANGE_GT + 0.0001, if ( H_calc &lt; SOFT_RANGE_LT - 0.0001, 101, 1/0) , 1/0) </expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_RANGE_GT" value="@RO_H_RANGE_GT_SOFT@"/>
 					<coefficient id="SOFT_RANGE_LT" value="@RO_H_RANGE_LT_SOFT@"/>
@@ -1364,7 +1364,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_softGTE">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &gt; SOFT_GT, 301, 1/0)</expression>
+				<expression>if ( Q_merge &gt; SOFT_GT + 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_GT" value="@RO_Q_GT_SOFT@"/>
 				</coefficientSetFunctions>
@@ -1377,7 +1377,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_softLT">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &lt; SOFT_LT, 301, 1/0)</expression>
+				<expression>if ( Q_merge &lt; SOFT_LT - 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_LT" value="@RO_Q_LT_SOFT@"/>
 				</coefficientSetFunctions>
@@ -1390,7 +1390,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q-QORD_GT_SOFT">
 		<user>
 			<simple>
-				<expression>if ( Q_delta &gt; SOFT_GT, 301, 1/0)</expression>
+				<expression>if ( Q_delta &gt; SOFT_GT + 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_GT" value="@Q-QORD_GT_SOFT@"/>
 				</coefficientSetFunctions>
@@ -1403,7 +1403,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q-QORD_LT_SOFT">
 		<user>
 			<simple>
-				<expression>if(Q_delta &lt; SOFT_LT, 301, 1/0)</expression>
+				<expression>if(Q_delta &lt; SOFT_LT - 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_LT" value="@Q-QORD_LT_SOFT@"/>
 				</coefficientSetFunctions>
@@ -1442,7 +1442,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="V_thresh_softGTE">
 		<user>
 			<simple>
-				<expression>if ( V_merge &gt; SOFT_GT, 501, 1/0) </expression>
+				<expression>if ( V_merge &gt; SOFT_GT , 501, 1/0) </expression>
 				<coefficientSetFunctions>
 					<coefficient id="SOFT_GT" value="@V_GT_SOFT@"/>
 				</coefficientSetFunctions>

@@ -131,7 +131,11 @@
 		</levelThresholdValue>
 		<levelThresholdValue>
 			<levelThresholdId>Soft_up</levelThresholdId>
-			<valueFunction>@H_GT_SOFT@</valueFunction>
+			<valueFunction>@RO_H_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@SO_H_GT_SOFT@</valueFunction>
 		</levelThresholdValue>
 		<levelThresholdValue>
 			<levelThresholdId>Soft_down</levelThresholdId>
@@ -774,6 +778,10 @@
 			<levelThresholdId>Condition</levelThresholdId>
 			<valueFunction>@H_S_COND_2@</valueFunction>
 		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@H_S_COND_3@</valueFunction>
+		</levelThresholdValue>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -893,7 +901,7 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
 			<qualifierId>delta</qualifierId>
@@ -901,6 +909,19 @@
 			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<aggregationPeriod unit="hour" start="-23" end="0"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>

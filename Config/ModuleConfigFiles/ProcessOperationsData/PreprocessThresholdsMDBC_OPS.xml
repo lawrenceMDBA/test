@@ -255,20 +255,6 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<delay unit="hour"/>
 		</timeSeriesSet>
 	</variable>
-	<variable>
-		<variableId>H_merge_hourly_delay24h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_obs</parameterId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-			<delay unit="day"/>
-		</timeSeriesSet>
-	</variable>
 	<!--Variables output - merges-->
 	<variable>
 		<variableId>V_merge</variableId>
@@ -430,21 +416,6 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
-		<variableId>dH_hourly_24h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>delta</qualifierId>
-			<qualifierId>24h</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
 	<!--Transformations-->
 	<transformation id="merge_H_neq">
 		<merge>
@@ -547,16 +518,6 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_24h_hourly">
-		<user>
-			<simple>
-				<expression>H_merge_hourly - H_merge_hourly_delay24h</expression>
-				<outputVariable>
-					<variableId>dH_hourly_24h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
 	<transformation id="dQ">
 		<user>
 			<simple>
@@ -614,3 +575,43 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 		</merge>
 	</transformation>
 </transformationModule>
+<!-- moved aggregation to 24 h for Colemans to xx_specials_SO, since it's only done for this single location -->
+<!--<variable>
+	<variableId>H_merge_hourly_delay24h</variableId>
+	<timeSeriesSet>
+		<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+		<valueType>scalar</valueType>
+		<parameterId>H_obs</parameterId>
+		<locationSetId>threshold_sites_dH_hourly</locationSetId>
+		<timeSeriesType>external historical</timeSeriesType>
+		<timeStep unit="hour"/>
+		<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+		<readWriteMode>add originals</readWriteMode>
+		<delay unit="hour" multiplier="23"/>
+	</timeSeriesSet>
+</variable>
+<variable>
+		<variableId>dH_hourly_24h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+<!--<transformation id="dH_24h_hourly">
+		<user>
+			<simple>
+				<expression>H_merge_hourly - H_merge_hourly_delay24h</expression>
+				<outputVariable>
+					<variableId>dH_hourly_24h</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
