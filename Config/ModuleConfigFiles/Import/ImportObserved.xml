@@ -731,7 +731,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</import>
-	<!-- Import ETL Datafiles -->
+	<!-- ETL Snowy Daily -->
 	<import>
 		<general>
 			<!-- For Snowy's daily data feed -->
@@ -791,9 +791,9 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</import>
+	<!-- ETL Snowy's telemetry dada feed -->
 	<import>
 		<general>
-			<!-- For snowy's telemetry dada feed -->
 			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_ETL$/OPT</folder>
 			<fileNamePatternFilter>SnowyTel_*.Translated.csv</fileNamePatternFilter>
@@ -886,6 +886,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</import>
+	<!-- ETL SA_Berri -->
 	<import>
 		<general>
 			<importType>generalCSV</importType>
@@ -1009,6 +1010,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</import>
+	<!-- ETL GMW_SCADA -->
 	<import>
 		<general>
 			<importType>generalCSV</importType>
@@ -1088,6 +1090,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</import>
+	<!-- ETL SWC Koncentrator -->
 	<import>
 		<general>
 			<importType>generalCSV</importType>
@@ -1254,6 +1257,98 @@
 			<valueType>scalar</valueType>
 			<parameterId>QORD_obs</parameterId>
 			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<!-- ETL Opt (NSW, Thiess etc) Telemetry data -->
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_ETL$/OPT</folder>
+			<fileNamePatternFilter>*_OPT_*.Translated.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_ETL$/OPT</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<locationColumn/>
+				<skippedColumn/>
+				<parameterColumn/>
+				<dateTimeColumn pattern="yyyyMMddHHmmss"/>
+				<valueColumn/>				
+				<skippedColumn/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdOPT</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ETL_OPT_Telemetry</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_obs</parameterId>
+			<qualifierId>opt</qualifierId>
 			<qualifierId>raw</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
