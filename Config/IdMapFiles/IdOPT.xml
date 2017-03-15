@@ -9,28 +9,33 @@
 	<parameter external="WaterLevel (100.00)" internal="H_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="WaterTemperature (3500.00)" internal="WT_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="DissolvedOxygen (5067.00)" internal="DO_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	<parameter external="DissolvedOxygen (1200.00)" internal="DO_obs" internalQualifier1="opt" internalQualifier2="raw"/>
+	<!-- 	<parameter external="DissolvedOxygen (1200.00)" internal="DO_obs" internalQualifier1="opt" internalQualifier2="raw"/> -->
 	<parameter external="Conductivity@25degC (3000.00)" internal="EC_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="ElectricalConductivity (1300.00)" internal="EC_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="EffectiveVolumeinStorage (140.00)" internal="V_obs" internalQualifier1="opt" internalQualifier2="raw" />
 	<parameter external="StorageDischargeVolume (300.00)" internal="QRL_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="CalculatedInflow (2240.00)" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="NetTransfer(24hrTotal) (419.00)" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	<parameter external="WaterOrder-ShortTerm(eg3days) (2150.00)" internal="QORD_fcst" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="WaterOrder-ShortTerm(eg3days) (2150.00)" internal="QORD_fcst" internalQualifier1="opt" internalQualifier2="raw"/>
 
 	<!-- ETL Export Mappings -->
 	<parameter external="100" internal="H_obs" internalQualifier1="opt" internalQualifier2="raw"/>
+	<parameter external="100.50" internal="H_obs" internalQualifier1="opt2" internalQualifier2="raw"/>
 	<parameter external="140" internal="V_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	<parameter external="400" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="400" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="2240" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="419" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	
+	<parameter external="2000" internal="P_obs" internalQualifier1="opt" internalQualifier2="raw"/>
+	<parameter external="3000" internal="EC_obs" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="3500" internal="WT_obs" internalQualifier1="opt" internalQualifier2="raw"/>
+	<parameter external="5067" internal="DO_obs" internalQualifier1="opt" internalQualifier2="raw"/>
+
 	<!-- HYGENEXP Export mappings -->
 	<parameter external="Water Level" internal="H_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	<parameter external="Calculated Inflow" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="Calculated Inflow" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Discharge" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Effective Volume in Storage" internal="V_obs" internalQualifier1="opt" internalQualifier2="raw" />
-	<parameter external="Net Transfer (24hr Total)" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="Net Transfer (24hr Total)" internal="Q_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Rainfall" internal="P_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Storage Volume" internal="V_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Conductivity @ 25 deg C" internal="EC_obs" internalQualifier1="opt" internalQualifier2="raw"/>
@@ -38,7 +43,7 @@
 	<parameter external="Dissolved Oxygen" internal="DO_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Storage Discharge Volume" internal="QRL_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<parameter external="Wind Direction" internal="WindDir_obs" internalQualifier1="opt" internalQualifier2="raw"/>
-	<parameter external="Wind Velocity" internal="WindVel_obs" internalQualifier1="opt" internalQualifier2="raw"/>	
+	<parameter external="Wind Velocity" internal="WindVel_obs" internalQualifier1="opt" internalQualifier2="raw"/>
 	<locationIdFunction externalLocationFunction="@HYDSTRA_SITE_ID@" internalLocationSet="sites"/>
 	<enableOneToOneMapping/>
 </idMap>
