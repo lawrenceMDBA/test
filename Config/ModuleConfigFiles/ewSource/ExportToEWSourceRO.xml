@@ -367,4 +367,29 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS2EWSRC_MDBC_OPS_FORECAST.csv</name>
+			</exportFileName>
+			<!-- <idMapId>IdmapROWS2EWSourceRO</idMapId> -->
+			<idMapId>IdmapMDBC_OPS2ROWS_Forecast</idMapId>
+			<exportMissingValue>-9999</exportMissingValue>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>	
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</export>
 </timeSeriesExportRun>
