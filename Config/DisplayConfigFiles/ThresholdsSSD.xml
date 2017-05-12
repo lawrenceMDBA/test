@@ -263,7 +263,7 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_hourly_count</variableId>
+		<variableId>dH_threshold_colemans_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -271,7 +271,7 @@
 			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dH_hourly</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
+			<timeStep unit="nonequidistant"/>
 			<relativeViewPeriod unit="day" start="0" end="0"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
@@ -969,7 +969,7 @@
 			</leftSingleClickAction>
 			<replaceTags>
 				<variable>
-					<variableId>dH_threshold_hourly_count</variableId>
+					<variableId>dH_threshold_colemans_count</variableId>
 					<locationId>R_401211A</locationId>
 				</variable>
 			</replaceTags>

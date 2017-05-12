@@ -761,6 +761,86 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dQ_thresh_soft_LowDar_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp9</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Q_thresh_hard_LowDar_JFM</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -2044,8 +2124,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_1">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1 - 0.0001, 402, 1/0), 1/0)</expression>
+				<expression>if (V_Meninde &gt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1 - 0.0001, 402, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_1" value="@dQ_S_HARD_1@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
 				</coefficientSetFunctions>
@@ -2058,8 +2139,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_2">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001 , if ( Q_LowDar &lt;= Q_S_COND_3, if (dQ_LowDar &lt; dQ_S_HARD_2 - 0.0001, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if (V_Meninde &gt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001 , if ( Q_LowDar &lt;= Q_S_COND_3, if (dQ_LowDar &lt; dQ_S_HARD_2 - 0.0001, 402, 1/0), 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_2" value="@dQ_S_HARD_2@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
 					<coefficient id="Q_S_COND_3" value="@Q_S_COND_3@"/>
@@ -2073,8 +2155,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_3">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3 + 0.0001, 402, 1/0), 1/0)</expression>
+				<expression>if (V_Meninde &gt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3 + 0.0001, 402, 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_3" value="@dQ_S_HARD_3@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
 				</coefficientSetFunctions>
@@ -2087,8 +2170,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_4">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_1 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4 + 0.0001, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if (V_Meninde &gt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_1 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4 + 0.0001, 402, 1/0), 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_4" value="@dQ_S_HARD_4@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
@@ -2102,14 +2186,98 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="LowDar_dQ_thresh_hard_5">
 		<user>
 			<simple>
-				<expression>if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_3, if(dQ_LowDar &gt; dQ_S_HARD_5 + 0.0001, 402, 1/0), 1/0), 1/0)</expression>
+				<expression>if (V_Meninde &gt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_3, if(dQ_LowDar &gt; dQ_S_HARD_5 + 0.0001, 402, 1/0), 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_5" value="@dQ_S_HARD_5@"/>
 					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
 					<coefficient id="Q_S_COND_3" value="@Q_S_COND_3@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dQ_thresh_hard_LowDar_5</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+		<transformation id="LowDar_dQ_thresh_soft_1">
+		<user>
+			<simple>
+				<expression>if (V_Meninde &gt; V_S_COND_2, if(V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1 - 0.0001, 401, 1/0), 1/0), 1/0),1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
+					<coefficient id="dQ_S_HARD_1" value="@dQ_S_HARD_1@"/>
+					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dQ_thresh_soft_LowDar_1</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_dQ_thresh_soft_2">
+		<user>
+			<simple>
+				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001 , if ( Q_LowDar &lt;= Q_S_COND_3, if (dQ_LowDar &lt; dQ_S_HARD_2 - 0.0001, 401, 1/0), 1/0), 1/0), 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
+					<coefficient id="dQ_S_HARD_2" value="@dQ_S_HARD_2@"/>
+					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
+					<coefficient id="Q_S_COND_3" value="@Q_S_COND_3@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dQ_thresh_soft_LowDar_2</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_dQ_thresh_soft_3">
+		<user>
+			<simple>
+				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3 + 0.0001, 401, 1/0), 1/0), 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>				
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
+					<coefficient id="dQ_S_HARD_3" value="@dQ_S_HARD_3@"/>
+					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dQ_thresh_soft_LowDar_3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_dQ_thresh_soft_4">
+		<user>
+			<simple>
+				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_1 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4 + 0.0001, 401, 1/0), 1/0), 1/0), 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>				
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
+					<coefficient id="dQ_S_HARD_4" value="@dQ_S_HARD_4@"/>
+					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
+					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dQ_thresh_soft_LowDar_4</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LowDar_dQ_thresh_soft_5">
+		<user>
+			<simple>
+				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_2 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_3, if(dQ_LowDar &gt; dQ_S_HARD_5 + 0.0001, 401, 1/0), 1/0), 1/0), 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
+					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
+					<coefficient id="dQ_S_HARD_5" value="@dQ_S_HARD_5@"/>
+					<coefficient id="Q_S_COND_2" value="@Q_S_COND_2@"/>
+					<coefficient id="Q_S_COND_3" value="@Q_S_COND_3@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dQ_thresh_soft_LowDar_5</variableId>
 				</outputVariable>
 			</simple>
 		</user>
