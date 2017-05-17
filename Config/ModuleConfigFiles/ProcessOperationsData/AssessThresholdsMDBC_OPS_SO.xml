@@ -1633,20 +1633,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_hourly_total_count</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH_count</parameterId>
-			<qualifierId>SO</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="nonequidistant"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>dH_threshold_24hourly_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1662,30 +1648,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_24hourly_total_count</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH_count</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>24h</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="nonequidistant"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>dH_threshold_total_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
+			<qualifierId>total</qualifierId>
 			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="nonequidistant"/>
+			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -2934,34 +2906,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="dH_thresh_hourly_tot_count">
-		<statisticsSummary>
-			<max>
-				<inputVariable>
-					<variableId>dH_threshold_hourly_count</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>dH_threshold_hourly_total_count</variableId>
-				</outputVariable>
-			</max>
-		</statisticsSummary>
-	</transformation>
-	<transformation id="dH_thresh_24hourly_tot_count">
-		<statisticsSummary>
-			<max>
-				<inputVariable>
-					<variableId>dH_threshold_24hourly_count</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>dH_threshold_24hourly_total_count</variableId>
-				</outputVariable>
-			</max>
-		</statisticsSummary>
-	</transformation>
 	<transformation id="dH_thresh_tot_count">
 			<user>
 				<simple>
-					<expression>dH_threshold_hourly_total_count + dH_threshold_24hourly_total_count</expression>
+					<expression>dH_threshold_hourly_count + dH_threshold_24hourly_count</expression>
 					<outputVariable>
 						<variableId>dH_threshold_total_count</variableId>
 					</outputVariable>
