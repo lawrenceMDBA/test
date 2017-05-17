@@ -47,9 +47,32 @@ table#tableStyle3 {
 		font-size: 11px;
 		padding: 2px;
         	border: solid #000000 1px;
+			text-align:right;
+			width:50px;
+	}
+	table#tableStyle3 td:nth-child(1) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:200px;
+	}	
+	table#tableStyle3 td:nth-child(2) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:80px;
+	}	
+	table#tableStyle3 td:nth-child(8) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:100px;
 	}
 	table#tableStyle3 th {
-		padding: 4px;
+		padding: 2px;
 		font-size: 11px;
 	        border: solid #000000 1px;
 	        color: #000066;
@@ -69,18 +92,26 @@ table#tableStyleLogEntries {
         font-family: Arial,Verdana, Helvetica, sans-serif;
 	font-size: 11px;
 	}
-	table#tableStyle3 td {
+	table#tableStyleLogEntries td:nth-child(1) {
 		font-size: 11px;
 		padding: 2px;
-
+                width: 100px;
+		text-align: left;
+		vertical-align: text-top;
 	}
-	table#tableStyle3 th {
+	table#tableStyleLogEntries td {
+		font-size: 11px;
+		padding: 2px;
+                width: 700px;
+		text-align: left;
+	}
+	table#tableStyleLogEntries th {
 		padding: 4px;
 		font-size: 11px;
 	        color: #000066;
 	        background-color: #C0C0C0;
 	}
-	.tableStyle3_data {
+	.tableStyleLogEntries_data {
 		text-align: center;
 		font-size: 11px;
     		color: #000000;
@@ -97,7 +128,8 @@ table#tableStyleLogEntries {
 </body>
 <p style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px;"><strong>Operator Notes:</strong></p>
 
-<table style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px;">
+<!--<table style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px; width:90px">-->
+<table id="tableStyleLogEntries">
 $LOGENTRIES(Thresholdcrossing.info)$
 </table>
 <br>
