@@ -505,6 +505,91 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dQ_thresh_soft_LowDar_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp9</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1215,6 +1300,23 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_24hourly_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Q_threshold_NaN</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1456,6 +1558,36 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_hourly_4reporting</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>report</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_threshold_hourly_hit</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1471,12 +1603,58 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_24hourly_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_threshold_hourly_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>total</qualifierId>
 			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
@@ -1574,6 +1752,21 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dQ_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dQ_threshold_hit</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1581,6 +1774,22 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<parameterId>Threshold_dQ</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
 			<locationSetId>threshold_sites_dQ_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -2229,6 +2438,33 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<inputVariable>
 					<variableId>dH_thresh_hard_MittaMitta_2</variableId>
 				</inputVariable>
+				<!--<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_5</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_6</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_hourly_merge_4reporting">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_2</variableId>
+				</inputVariable>
 				<inputVariable>
 					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
 				</inputVariable>
@@ -2242,7 +2478,19 @@ This means that in the end only one timeseries with threshold flags is stored fo
 					<variableId>dH_thresh_hard_MittaMitta_6</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_threshold_hourly</variableId>
+					<variableId>dH_threshold_hourly_4reporting</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_24hourly_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
@@ -2361,8 +2609,47 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<inputVariable>
 					<variableId>dQ_thresh_hard_LowDar_5</variableId>
 				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_5</variableId>
+				</inputVariable>
 				<outputVariable>
 					<variableId>dQ_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dQ_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_5</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dQ_threshold_4count</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
@@ -2477,6 +2764,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
+	<transformation id="dH_thresh_24hourly_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_24hourly &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="Q_thresh_hits">
 		<user>
 			<simple>
@@ -2503,6 +2800,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<expression>if(dQ_threshold &gt;0,1,0)</expression>
 				<outputVariable>
 					<variableId>dQ_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(dQ_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dQ_threshold_hit_4count</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -2586,6 +2893,29 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</sumInterval>
 		</accumulation>
 	</transformation>
+	<transformation id="dH_thresh_24hourly_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_24hourly_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_tot_count">
+			<user>
+				<simple>
+					<expression>dH_threshold_hourly_count + dH_threshold_24hourly_count</expression>
+					<outputVariable>
+						<variableId>dH_threshold_total_count</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+	</transformation>
 	<transformation id="Q_thresh_count">
 		<accumulation>
 			<sumInterval>
@@ -2603,7 +2933,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
-					<variableId>dQ_threshold_hit</variableId>
+					<variableId>dQ_threshold_hit_4count</variableId>
 				</inputVariable>
 				<intervalTimeStep id="June1"/>
 				<outputVariable>
@@ -2667,6 +2997,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<expression>if(dH_threshold_hourly==0,1/0,dH_threshold_hourly)</expression>
 				<outputVariable>
 					<variableId>dH_threshold_hourly_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_24hourly_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_24hourly==0,1/0,dH_threshold_24hourly)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_NaN</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -2742,6 +3082,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				</inputVariable>
 				<inputVariable>
 					<variableId>dH_threshold_hourly_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_24hourly_NaN</variableId>
 				</inputVariable>
 				<inputVariable>
 					<variableId>Q_threshold_NaN</variableId>
