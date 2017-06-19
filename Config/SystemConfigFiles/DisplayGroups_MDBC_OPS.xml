@@ -556,7 +556,16 @@
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-		</subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			</subplot>
 		<subplot>
 			<!--<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
@@ -651,6 +660,31 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
+	<!-- May not needed ... can above plot id be used? -->
+	<plot id="MDBC_OPS_salinity">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_calc</parameterId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>de.sites_EC</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>		
+	</plot>
 	<displayGroup name="MDBC_OPS" id="MDBC_OPS_results">
 		<viewPermission>RiverOperations</viewPermission>
 		<displayGroup id="MDBC_OPS.Ovens" name="Ovens (All MDBC_OPS results)">
@@ -686,6 +720,12 @@
 		<displayGroup id="MDBC_OPS.St_Flood" name="St_Flood (All MDBC_OPS results)">
 			<singleLocationDisplays>
 				<locationSetId>sites.St_Flood</locationSetId>
+				<plotId>MDBC_OPS_results</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="MDBC_OPS.Salinity" name="Salinity forecast review">
+			<singleLocationDisplays>
+				<locationSetId>sites.Midops</locationSetId>
 				<plotId>MDBC_OPS_results</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
