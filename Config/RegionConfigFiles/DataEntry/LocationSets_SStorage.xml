@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="SStorage.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SStorage"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="SStorage.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_P">
+		<description>Precipitation data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_AT">
+		<description>Air temperature data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="AT"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Turbidity">
+		<description>Turbidity data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Turbidity"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_WindDir">
+		<description>Wind direction data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WDIR"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_WindVel">
+		<description>Wind velocity data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WVEL"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="SStorage.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="SStorage.sites_H_rated">
+		<description>Rated water level sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_H.downstream">
+		<description>Upstream water level data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.downstream"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_H.upstream">
+		<description>Downstream water level data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.upstream"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="SStorage.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="SStorage.sites_pH">
+		<description>pH data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Gates">
+		<description>data entry sites with gates</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Gates.rr">
+		<description>data entry sites of gates having rock ramps</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.rr"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Gates.vs">
+		<description>data entry sites of gates having a vertcial slot</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.vs"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_StopLogs">
+		<description>data entry sites with stop logs</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_FlowDir">
+		<description>Flow direction data entry sites</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>-->
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+		<!--	</allValid>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 	<locationSet id="SStorage.sites_Q.transfer">
+		<description>data entry sites with enviromental flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.transfer"/>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="SStorage.sites_Q.creek">
+		<description>data entry sites with flow through creek</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.creek"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.forest">
+		<description>data entry sites with flow through forest</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.forest"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.fishway">
+		<description>data entry sites with flow through fishway</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.fishway"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.total">
+		<description>data entry sites with total flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 	<locationSet id="SStorage.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="SStorage.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QDIV.urban">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QDIV.total">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QDIV.saline">
+		<description>data entry sites with flow diversion of saline water</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.saline"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QDIV.ind">
+		<description>data entry sites with flow diversion for industry</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage.sites_Q.vic">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.vic"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage.sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage.sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage.sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 
+	<locationSet id="SStorage.sites_QI">
+		<description>Sites with Calculated Inflow</description>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI_calc"/>
+		</constraints>
+	</locationSet>
+	-->
+	<!-- #######################
+Data entry sites to MDBC_OPS
+##########################-->
+	<!-- TODO: when idmapping is finished, go back to ...sites, also in parameetr specific sets-->
+	<locationSet id="SStorage2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SStorage"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_P">
+		<description>Precipitation data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_AT">
+		<description>Air temperature data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="AT"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Turbidity">
+		<description>Turbidity data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Turbidity"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_WindDir">
+		<description>Wind direction data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WDIR"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_WindVel">
+		<description>Wind velocity data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WVEL"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="SStorage2MDBC_OPS.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_H_rated">
+		<description>Rated water level sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites_tmp</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>-->
+	<!--TODO uncomment when idmap fixed
+	<locationSet id="SStorage2MDBC_OPS.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_H.downstream">
+		<description>Upstream water level data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.downstream"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_H.upstream">
+		<description>Downstream water level data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.upstream"/>
+		</constraints>
+	</locationSet>-->
+	<!--TODO uncomment when idmap fixed -->
+	<locationSet id="SStorage2MDBC_OPS.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="SStorage2MDBC_OPS.sites_pH">
+		<description>pH data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Gates">
+		<description>data entry sites with gates</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Gates.rr">
+		<description>data entry sites of gates having rock ramps</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.rr"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Gates.vs">
+		<description>data entry sites of gates having a vertcial slot</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.vs"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_StopLogs">
+		<description>data entry sites with stop logs</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_FlowDir">
+		<description>Flow direction data entry sites</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>-->
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+		<!--	</allValid>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 	<locationSet id="SStorage2MDBC_OPS.sites_Q.transfer">
+		<description>data entry sites with enviromental flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.transfer"/>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.creek">
+		<description>data entry sites with flow through creek</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.creek"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.forest">
+		<description>data entry sites with flow through forest</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.forest"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.fishway">
+		<description>data entry sites with flow through fishway</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.fishway"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.total">
+		<description>data entry sites with total flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+		</constraints>
+	</locationSet>-->
+	<!-- 	<locationSet id="SStorage2MDBC_OPS.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--TODO: put back when idmap fixed
+		<locationSet id="SStorage2MDBC_OPS.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<locationSetId>SStorage2MDBC_OPS.sites_tmp</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QDIV.urban">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QDIV.total">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QDIV.saline">
+		<description>data entry sites with flow diversion of saline water</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.saline"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QDIV.ind">
+		<description>data entry sites with flow diversion for industry</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="SStorage2MDBC_OPS.sites_Q.vic">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.vic"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage2MDBC_OPS.sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage2MDBC_OPS.sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="SStorage2MDBC_OPS.sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>-->
+	<!--
+	<locationSet id="SStorage2MDBC_OPS.sites_QI.calc">
+		<description>Sites with Calculated Inflow</description>
+		<locationSetId>SStorage2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI.calc"/>
+		</constraints>
+	</locationSet>
+	-->
+</locationSets>
