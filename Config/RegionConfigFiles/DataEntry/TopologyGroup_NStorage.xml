@@ -1,105 +1,105 @@
 <topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
-	<group id="Nstorage_OPO">
-		<nodes id="ObservedProcessing.Nstorage_OPO" name="Northern storages">
-			<node id="Nstorage.DataEntry" name="Data entry">
+	<group id="NStorage_OPO">
+		<nodes id="ObservedProcessing.NStorage_OPO" name="Northern storages">
+			<node id="NStorage.DataEntry" name="Data entry">
 				<workflowId>Process_Observed</workflowId>
-				<displayGroupId>Nstorage.DataEntry</displayGroupId>
+				<displayGroupId>NStorage.DataEntry</displayGroupId>
 				<localRun>false</localRun>
 			</node>
-			<node id="Nstorage.Process" name="Quality Control">
+			<node id="NStorage.Process" name="Quality Control">
 				<workflowId>Process_Observed</workflowId>
-				<displayGroupId>Nstorage.Process</displayGroupId>
+				<displayGroupId>NStorage.Process</displayGroupId>
 				<localRun>false</localRun>
 			</node>
-			<nodes id="Nstorage.Telemetry" name="Review Telemetry">
-				<node id="Nstorage.Process_Hopo" name="Water levels">
+			<nodes id="NStorage.Telemetry" name="Review Telemetry">
+				<node id="NStorage.Process_Hopo" name="Water levels">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Hopo</displayGroupId>
+					<displayGroupId>NStorage.Process_Hopo</displayGroupId>
 					<defaultModifierId>H_select_OPO</defaultModifierId>
 					<visibleModifierGroup>H_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>
-				<!--<node id="Nstorage.Process_Qopo" name="Discharge">
+				<!--<node id="NStorage.Process_Qopo" name="Discharge">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Qopo</displayGroupId>
+					<displayGroupId>NStorage.Process_Qopo</displayGroupId>
 					<defaultModifierId>Q_select_OPO</defaultModifierId>
 					<visibleModifierGroup>Q_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_Qratedopo" name="Discharge (rated)">
+				<!--<node id="NStorage.Process_Qratedopo" name="Discharge (rated)">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Qratedopo</displayGroupId>
+					<displayGroupId>NStorage.Process_Qratedopo</displayGroupId>
 					<defaultModifierId>H_select_OPO</defaultModifierId>
 					<visibleModifierGroup>H_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<node id="Nstorage.Process_Vopo" name="Storage Volume">
+				<node id="NStorage.Process_Vopo" name="Storage Volume">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Vopo</displayGroupId>
+					<displayGroupId>NStorage.Process_Vopo</displayGroupId>
 					<defaultModifierId>V_select_OPO</defaultModifierId>
 					<visibleModifierGroup>V_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>
-				<!--<node id="Nstorage.Process_Popo" name="Rainfall">
+				<!--<node id="NStorage.Process_Popo" name="Rainfall">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Popo</displayGroupId>
+					<displayGroupId>NStorage.Process_Popo</displayGroupId>
 					<defaultModifierId>P_select_OPO</defaultModifierId>
 					<visibleModifierGroup>P_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_EVAPopo" name="Evaporation">
+				<!--<node id="NStorage.Process_EVAPopo" name="Evaporation">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_EVAPopo</displayGroupId>
+					<displayGroupId>NStorage.Process_EVAPopo</displayGroupId>
 					<defaultModifierId>EVAP_select_OPO</defaultModifierId>
 					<visibleModifierGroup>E_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_ECopo" name="Salinity/EC">
+				<!--<node id="NStorage.Process_ECopo" name="Salinity/EC">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_ECopo</displayGroupId>
+					<displayGroupId>NStorage.Process_ECopo</displayGroupId>
 					<defaultModifierId>EC_select_OPO</defaultModifierId>
 					<visibleModifierGroup>EC_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_DOopo" name="Dissolved Oxygen">
+				<!--<node id="NStorage.Process_DOopo" name="Dissolved Oxygen">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_DOopo</displayGroupId>
+					<displayGroupId>NStorage.Process_DOopo</displayGroupId>
 					<defaultModifierId>DO_select_OPO</defaultModifierId>
 					<visibleModifierGroup>DO_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_WTopo" name="Water Temperature">
+				<!--<node id="NStorage.Process_WTopo" name="Water Temperature">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_WTopo</displayGroupId>
+					<displayGroupId>NStorage.Process_WTopo</displayGroupId>
 					<defaultModifierId>WT_select_OPO</defaultModifierId>
 					<visibleModifierGroup>WT_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
-				<!--<node id="Nstorage.Process_ATopo" name="Air Temperature">
+				<!--<node id="NStorage.Process_ATopo" name="Air Temperature">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_ATopo</displayGroupId>
+					<displayGroupId>NStorage.Process_ATopo</displayGroupId>
 					<defaultModifierId>AT_select_OPO</defaultModifierId>
 					<visibleModifierGroup>AT_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>-->
 				<!-- 
-				<node id="Nstorage.Process_QI.calcopo" name="Calculated Inflow">
+				<node id="NStorage.Process_QI.calcopo" name="Calculated Inflow">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_QI.calcopo</displayGroupId>
+					<displayGroupId>NStorage.Process_QI.calcopo</displayGroupId>
 					<defaultModifierId>QI.calc_select_OPO</defaultModifierId>
 					<visibleModifierGroup>QI.calc_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>
-				<node id="Nstorage.Process_Q.transferopo" name="Transfer">
+				<node id="NStorage.Process_Q.transferopo" name="Transfer">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_Q.transferopo</displayGroupId>
+					<displayGroupId>NStorage.Process_Q.transferopo</displayGroupId>
 					<defaultModifierId>Q.transfer_select_OPO</defaultModifierId>
 					<visibleModifierGroup>Q.transfer_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
 				</node>
-				<node id="Nstorage.Process_QRLopo" name="Release">
+				<node id="NStorage.Process_QRLopo" name="Release">
 					<workflowId>Process_Observed</workflowId>
-					<displayGroupId>Nstorage.Process_QRLopo</displayGroupId>
+					<displayGroupId>NStorage.Process_QRLopo</displayGroupId>
 					<defaultModifierId>QRL_select_OPO</defaultModifierId>
 					<visibleModifierGroup>QRL_OPO</visibleModifierGroup>
 					<localRun>false</localRun>
