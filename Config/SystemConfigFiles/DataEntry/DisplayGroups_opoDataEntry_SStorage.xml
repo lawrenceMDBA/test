@@ -5,7 +5,8 @@
 			<viewPermission>RiverOperations</viewPermission>
 			<singleLocationDisplays id="dataentry_SStorage">
 				<locationSetId>SStorage.sites</locationSetId>
-				<plotId>DataEntry_All</plotId>
+				<plotId>DataEntry_Storage</plotId>
+				<!-- PlotId is defined in DisplayGroups_opoDataEntry_NStorage.xml file -->
 			</singleLocationDisplays>
 		</displayGroup>
 		<displayGroup id="SStorage.Process" name="Create OPO">
@@ -14,33 +15,6 @@
 				<locationSetId>SStorage.sites</locationSetId>
 				<plotId>ImportProcess_All</plotId>
 			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="SStorage.Telemetry" name="Telemetry">
-			<viewPermission>RiverOperations</viewPermission>
-			<displayGroup id="SStorage.Process_Hopo" name="SStorage water level">
-				<singleLocationDisplays id="ImportProcess_SStorage_H">
-					<locationSetId>SStorage.sites_H</locationSetId>
-					<plotId>ImportProcess_H</plotId>
-				</singleLocationDisplays>
-			</displayGroup>
-			<!--<displayGroup id="SStorage.Process_Qopo" name="Discharge discharge">
-				<singleLocationDisplays id="ImportProcess_SStorage_Q">
-					<locationSetId>SStorage.sites_Q</locationSetId>
-					<plotId>ImportProcess_Q</plotId>
-				</singleLocationDisplays>
-			</displayGroup>-->
-			<displayGroup id="SStorage.Process_Vopo" name="SStorage storage">
-				<singleLocationDisplays id="ImportProcess_SStorage_V">
-					<locationSetId>SStorage.sites_V</locationSetId>
-					<plotId>ImportProcess_V</plotId>
-				</singleLocationDisplays>
-			</displayGroup>
-			<!-- 			<displayGroup id="SStorage.Process_QRL" name="SStorage storage release">
-				<singleLocationDisplays id="ImportProcess_SStorage_QRL">
-					<locationSetId>SStorage.sites_QRL</locationSetId>
-					<plotId>ImportProcess_QRL</plotId>
-				</singleLocationDisplays>
-			</displayGroup> -->
 		</displayGroup>
 	</displayGroup>
 </displayGroups>
