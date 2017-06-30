@@ -75,7 +75,7 @@
 			<relativeViewPeriod start="-5" end="1" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
+		<!--<timeSeriesSet>
 			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
 			<valueType>scalar</valueType>
 			<parameterId>H_fcst</parameterId>
@@ -84,7 +84,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod end="7" start="-14" unit="day"/>
 			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
+		</timeSeriesSet>-->
 	</thresholdValueSet>
 	<!--Threshold value sets for timeSeriesSets used in threshold assessment (objectives) - general thresholds-->
 	<thresholdValueSet id="Levels_objectives" name="Water levels (SOnO, RO)">
@@ -177,7 +177,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationSetId>sites</locationSetId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -187,7 +187,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationSetId>sites</locationSetId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -197,21 +197,9 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>DecJan</qualifierId>
-			<locationId>R_409216A</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
@@ -226,7 +214,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_level_changes</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -236,13 +224,13 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_level_changes</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
+		<!--<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
@@ -251,7 +239,7 @@
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
+		</timeSeriesSet>-->
 	</thresholdValueSet>
 	<thresholdValueSet id="StorageVolume" name="Storage Volume">
 		<description>Storage Volume</description>
@@ -372,7 +360,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_storage_volume</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -445,7 +433,7 @@
 		<levelThresholdValue>
 			<levelThresholdId>Condition</levelThresholdId>
 			<valueFunction>@Q_S_COND_3@</valueFunction>
-		</levelThresholdValue>-->
+		</levelThresholdValue>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -457,7 +445,7 @@
 			<timeStep unit="nonequidistant"/>
 			<relativeViewPeriod start="-5" end="1" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
+		</timeSeriesSet>-->
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -542,67 +530,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<locationId>R_401211A</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-7" end="0"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>JanFebMar</qualifierId>
-			<locationId>R_425012</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>Apr</qualifierId>
-			<locationId>R_425012</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>NovDec</qualifierId>
-			<locationId>R_425012</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>May-Oct</qualifierId>
-			<locationId>R_425012</locationId>
+			<locationSetId>threshold_sites_Flow</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -658,7 +586,7 @@
 			<levelThresholdId>Salinity</levelThresholdId>
 			<valueFunction>@EC_GT_SAL@</valueFunction>
 		</levelThresholdValue>
-		<timeSeriesSet>
+		<!--<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>EC_obs</parameterId>
@@ -669,7 +597,7 @@
 			<timeStep unit="nonequidistant"/>
 			<relativeViewPeriod start="-5" end="1" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
+		</timeSeriesSet>-->
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -786,7 +714,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationSetId>sites</locationSetId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -796,7 +724,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationSetId>sites</locationSetId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -806,7 +734,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -863,7 +791,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -873,7 +801,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -883,7 +811,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_dH</locationSetId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -936,7 +864,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_V_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -1026,7 +954,7 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<locationSetId>threshold_sites_Q_special</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
