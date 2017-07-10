@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
 	<!-- ewsource  RO-->
+	<!-- P stand for Planning and O stands for Operational (opo) data -->
 	<locationSet id="ewSourceRO_sites">
 		<description>Sites to be exported to ewSourceRO</description>
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -32,7 +33,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_OQORD">
-		<description>ewSourceRO_sites with flow</description>
+		<description>ewSourceRO_sites with orders or demand</description>
 		<sortingLocationAttributeId>EWSRC_QORD_SEQ</sortingLocationAttributeId>
 		<locationSetId>ewSourceRO_sites</locationSetId>
 		<constraints>
@@ -87,7 +88,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_OQRL">
-		<description>ewSourceRO_sites with flow trough valves</description>
+		<description>ewSourceRO_sites with releases</description>
 		<sortingLocationAttributeId>EWSRC_Q_SEQ</sortingLocationAttributeId>
 		<locationSetId>ewSourceRO_sites</locationSetId>
 		<constraints>
@@ -98,7 +99,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_OQI">
-		<description>ewSourceRO_sites with flow trough valves</description>
+		<description>ewSourceRO_sites with Inflow</description>
 		<sortingLocationAttributeId>EWSRC_Q_SEQ</sortingLocationAttributeId>
 		<locationSetId>ewSourceRO_sites</locationSetId>
 		<constraints>
@@ -164,7 +165,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_OE.fao56">
-		<description>ewSourceRO_sites with evaporation</description>
+		<description>ewSourceRO_sites with evaporation (fao56)</description>
 		<sortingLocationAttributeId>EWSRC_E_SEQ</sortingLocationAttributeId>
 		<locationSetId>ewSourceRO_sites</locationSetId>
 		<constraints>
@@ -175,7 +176,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_OE.mlake">
-		<description>ewSourceRO_sites with evaporation</description>
+		<description>ewSourceRO_sites with evaporation (morton lake)</description>
 		<sortingLocationAttributeId>EWSRC_E_SEQ</sortingLocationAttributeId>
 		<locationSetId>ewSourceRO_sites</locationSetId>
 		<constraints>
@@ -196,7 +197,7 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-	<!-- ewsource  RR-->
+	<!-- ewsource  RR Model-->
 	<locationSet id="ewsource_subcatchments">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<esriShapeFile>
