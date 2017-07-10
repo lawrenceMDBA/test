@@ -666,14 +666,52 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
+				<parameterId>H_calc</parameterId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>HYDRO_sites_H</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<locationSetId>HYDRO_sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>		
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>HYDRO_sites_Q</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
 				<parameterId>EC_calc</parameterId>
 				<locationSetId>de.sites_EC</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-		</subplot>
-		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -683,7 +721,7 @@
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-		</subplot>		
+		</subplot>
 	</plot>
 	<displayGroup name="MDBC_OPS" id="MDBC_OPS_results">
 		<viewPermission>RiverOperations</viewPermission>
@@ -725,8 +763,8 @@
 		</displayGroup>
 		<displayGroup id="MDBC_OPS.Salinity" name="Salinity forecast review">
 			<singleLocationDisplays>
-				<locationSetId>sites.Midops</locationSetId>
-				<plotId>MDBC_OPS_results</plotId>
+				<locationSetId>de2MDBC_OPS.sites_EC</locationSetId>
+				<plotId>MDBC_OPS_salinity</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 		<!--<displayGroup id="Threshold sites" name="All Threshold sites">
