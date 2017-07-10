@@ -434,6 +434,19 @@
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
+		<explorerTask name="Metadata Tables">
+			<iconFile>csvfile.png</iconFile>
+			<mnemonic>T</mnemonic>
+			<predefinedDisplay>tabular config files display</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl T</accelerator>
+			<!-- <toolWindow>false</toolWindow> -->
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>  
+		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>
 		<explorerTask name="River Murray System">
 			<arguments>RMSystemStatus</arguments>
 			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
@@ -467,42 +480,22 @@
 			<menubarTask>true</menubarTask>
 			<permission>RiverOperations</permission>
 		</explorerTask>
-		<!--	Disable to include this in a single display environment
- 		<explorerTask name="Yarra_to_Torrumbarry">
-			<arguments>Yarra_to_TorrumbarryStatus</arguments>
-			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-		</explorerTask>
-		<explorerTask name="Hume_to_Yarra">
-			<arguments>Hume_to_YarraStatus</arguments>
-			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-		</explorerTask> -->
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
-		<!--<explorerTask name="Threshold Overview">
-			<displayConfigFileName>Rows_Ops_Threshold_Display</displayConfigFileName>
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-			<toolWindow>false</toolWindow>
-			<loadAtStartup>false</loadAtStartup>
-		</explorerTask>
-		<explorerTask name="Threshold Count">
-			<displayConfigFileName>Rows_Ops_Threshold_Count</displayConfigFileName>
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-			<toolWindow>false</toolWindow>
-			<loadAtStartup>false</loadAtStartup>
-		</explorerTask>-->
 		<explorerTask name="WaterCoach">
 			<displayConfigFileName>WaterCoachDisplay</displayConfigFileName>
 			<toolbarTask>false</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<allowMultipleInstances>false</allowMultipleInstances>
 			<permission>WaterCoach</permission>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Attribute Filter">
+			<predefinedDisplay>attribute filter</predefinedDisplay>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
 			<toolWindow>true</toolWindow>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
