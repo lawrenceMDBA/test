@@ -158,9 +158,12 @@
 		<nodes id="Salinity_Forecast" name="Salinity Forecast">
 			<node id="Review_Salinity_Forecast" name="Salinity Forecast">
 				<displayGroupId>MDBC_OPS.Salinity</displayGroupId>
-			</node>		
+			</node>
+			<node id="ExportForecastToHydstra" name="Export to Hydstra">
+				<workflowId>Export_ToHydstra_OpsForecast</workflowId>
+				<localRun>true</localRun>
+			</node>
 		</nodes>
-		
 		<viewPermission>RiverOperations</viewPermission>
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>
