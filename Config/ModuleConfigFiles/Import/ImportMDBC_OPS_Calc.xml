@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!-- imports calculated data from MDBC_OPS as simulated historical with expiry time from workflow-->
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_FROM_MDBC_OPS$</folder>
+			<fileNamePatternFilter>*calc*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_MDBC_OPS$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<logWarningsForUnmappableLocations>true</logWarningsForUnmappableLocations>
+			<logWarningsForUnmappableParameters>true</logWarningsForUnmappableParameters>
+			<idMapId>IdmapMDBC_OPS2ROWS_Calculated</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-9</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>MDBC_OPS</dataFeedId>
+			<expiryTime unit="month" multiplier="18"/>
+		</general>
+		<!-- opo series available-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EGEN_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoStopLogs_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>spill</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>valves</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>ivt</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>transfer</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>creek</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>forest</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>fishway</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>other</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>instream</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>urban</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>ind</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_calc</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<!--computed series-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>pump</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>structure</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>vic</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_calc</parameterId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<qualifierId>net</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Radiation_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>VL_calc</parameterId>
+			<qualifierId>evap</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>
