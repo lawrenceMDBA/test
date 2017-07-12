@@ -155,14 +155,21 @@
 				<displayGroupId>MDBC_OPS.St_Flood</displayGroupId>
 			</node>
 		</nodes>
-		<nodes id="Salinity_Forecast" name="Salinity Forecast">
-			<node id="Review_Salinity_Forecast" name="Salinity Forecast">
-				<displayGroupId>MDBC_OPS.Salinity</displayGroupId>
+		<nodes id="FlowAndSalinityForecast" name="Flow and Salinity Forecast">
+			<node id="Review_Salinity_Forecast" name="Flow and salinity forecast">
+				<displayGroupId>MDBC_OPS.FlowAndSalinity</displayGroupId>
+					<displayGroupId>MDBC_OPS.FlowAndSalinity</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
 			</node>
 			<node id="ExportForecastToHydstra" name="Export to Hydstra">
 				<workflowId>Export_ToHydstra_OpsForecast</workflowId>
 				<localRun>true</localRun>
 			</node>
+			<displayGroupId>MDBC_OPS.FlowAndSalinity</displayGroupId>
+			<visibleModifierGroup>None</visibleModifierGroup>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>document selection panel</toolWindow>
 		</nodes>
 		<viewPermission>RiverOperations</viewPermission>
 		<visibleModifierGroup>ROWS</visibleModifierGroup>

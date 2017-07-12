@@ -661,8 +661,8 @@
 		</subplot>
 	</plot>
 	<!-- May not needed ... can above plot id be used? -->
-	<plot id="MDBC_OPS_salinity">
-<!-- 		<subplot>
+	<plot id="MDBC_OPS_flow_salinity">
+ 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -681,7 +681,16 @@
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-		</subplot> -->
+		<timeSeriesSet>
+			<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites_H_rated</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		</subplot>
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
@@ -761,10 +770,10 @@
 				<plotId>MDBC_OPS_results</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup id="MDBC_OPS.Salinity" name="Salinity forecast review">
+		<displayGroup id="MDBC_OPS.FlowAndSalinity" name="Flow and salinity forecasts review">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_salinity</locationSetId>
-				<plotId>MDBC_OPS_salinity</plotId>
+				<plotId>MDBC_OPS_flow_salinity</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 		<!--<displayGroup id="Threshold sites" name="All Threshold sites">
