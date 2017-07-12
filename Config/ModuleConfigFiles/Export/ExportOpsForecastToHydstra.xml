@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA$</folder>
+			<exportFileName>
+				<name>ROWS2Hydstra_OpsForecast.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2Hydstra_OpsForecast</idMapId>
+			<omitMissingValues>true</omitMissingValues>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>wr.sites_salinity</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>wr.sites_salinity</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>
