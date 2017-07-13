@@ -1284,6 +1284,23 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_6day_rolling_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_threshold_hourly_NaN</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1544,6 +1561,21 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_6day_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_threshold_hourly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1588,6 +1620,22 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_6day_rolling_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_threshold_hourly_hit</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1614,6 +1662,37 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_6day_rolling_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -1648,7 +1727,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_total_count</variableId>
+		<variableId>dH_threshold_colemans_total_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -2371,27 +2450,12 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<inputVariable>
 					<variableId>dH_thresh_hard_LakeVic</variableId>
 				</inputVariable>
-				<!--<inputVariable>
-					<variableId>dH_thresh_hard_Heywood_1</variableId>
-				</inputVariable>-->
 				<inputVariable>
 					<variableId>dH_thresh_hard_Heywood_2</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>dH_thresh_hard_Heywood_3</variableId>
-				</inputVariable>
-				<!--<inputVariable>
-					<variableId>dH_thresh_hard_Doctors_1</variableId>
-				</inputVariable>-->
-				<inputVariable>
 					<variableId>dH_thresh_hard_Doctors_2</variableId>
 				</inputVariable>
-				<inputVariable>
-					<variableId>dH_thresh_hard_Doctors_3</variableId>
-				</inputVariable>
-				<!--<inputVariable>
-					<variableId>dH_threshold_tmp1_soft</variableId>
-				</inputVariable>-->
 				<outputVariable>
 					<variableId>dH_threshold</variableId>
 				</outputVariable>
@@ -2404,26 +2468,29 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<inputVariable>
 					<variableId>dH_thresh_hard_LakeVic</variableId>
 				</inputVariable>
-				<!--<inputVariable>
-					<variableId>dH_thresh_hard_Heywood_1</variableId>
-				</inputVariable>-->
 				<inputVariable>
 					<variableId>dH_thresh_hard_Heywood_2</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>dH_thresh_hard_Heywood_3</variableId>
-				</inputVariable>
-				<!--<inputVariable>
-					<variableId>dH_thresh_hard_Doctors_1</variableId>
-				</inputVariable>-->
-				<inputVariable>
 					<variableId>dH_thresh_hard_Doctors_2</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_6day_rolling_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Heywood_3</variableId>
 				</inputVariable>
 				<inputVariable>
 					<variableId>dH_thresh_hard_Doctors_3</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_threshold_4count</variableId>
+					<variableId>dH_threshold_6day_rolling</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
@@ -2754,6 +2821,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
+	<transformation id="dH_thresh_6day_rolling_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_6day_rolling &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="dH_thresh_hourly_hits">
 		<user>
 			<simple>
@@ -2880,6 +2957,29 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</sumInterval>
 		</accumulation>
 	</transformation>
+	<transformation id="dH_thresh_6day_rolling_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_6day_rolling_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_heywood_Doctors_total_count">
+			<user>
+				<simple>
+					<expression>dH_threshold_count + dH_threshold_6day_rolling_count</expression>
+					<outputVariable>
+						<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+	</transformation>
 	<transformation id="dH_thresh_hourly_count">
 		<accumulation>
 			<sumInterval>
@@ -2911,7 +3011,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<simple>
 					<expression>dH_threshold_hourly_count + dH_threshold_24hourly_count</expression>
 					<outputVariable>
-						<variableId>dH_threshold_total_count</variableId>
+						<variableId>dH_threshold_colemans_total_count</variableId>
 					</outputVariable>
 				</simple>
 			</user>
@@ -2987,6 +3087,16 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<expression>if(H_threshold==0,1/0,H_threshold)</expression>
 				<outputVariable>
 					<variableId>H_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_6day_rolling_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_6day_rolling==0,1/0,dH_threshold_6day_rolling)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_NaN</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -3079,6 +3189,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				</inputVariable>
 				<inputVariable>
 					<variableId>dH_threshold_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_6day_rolling_NaN</variableId>
 				</inputVariable>
 				<inputVariable>
 					<variableId>dH_threshold_hourly_NaN</variableId>

@@ -853,6 +853,32 @@
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
 	</thresholdValueSet>
 	<thresholdValueSet id="StorageVolume_objectives_specials" name="Storage Volume (SOnO, RO)">
 		<description>Storage Volume (SOnO, RO)</description>
@@ -1161,6 +1187,18 @@
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>

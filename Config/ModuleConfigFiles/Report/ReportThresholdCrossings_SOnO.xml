@@ -26,9 +26,14 @@
 				<function>MAXVALUE(H_calc;3Decimal)</function>
 			</column>
 			<column>
-				<header>dH</header>
+				<header>&#x0394;H</header>
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(Set_dH_deltaH;3Decimal)</function>
+			</column>
+			<column>
+				<header>&#x0394;H_6d_avg</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_6d_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Set_dH_6d_rolling;3Decimal)</function>
 			</column>
 			<column>
 				<header>Q</header>
@@ -36,7 +41,7 @@
 				<function>MAXVALUE(Q_merge;0Decimal)</function>
 			</column>
 			<column>
-				<header>dQ</header>
+				<header>&#x0394;Q</header>
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dQ_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(Set_dQ_deltaQ;1Decimal)</function>
 			</column>
@@ -56,16 +61,16 @@
 				<function>MINVALUE(DOPCT_calc;0Decimal)</function>
 			</column>-->
 			<column>
-				<header>dH_DateTime(hr/24hr)</header>
+				<header>&#x0394;H_DateTime(hr/24hr)</header>
 				<function>THRESHOLDCROSSING(ALL_DATETIMES;ALL_threshold_dH_hourly_merge;dateFormat1)</function>
 			</column>
 			<column>
-				<header>dH_hourly</header>
+				<header>&#x0394;H_hourly</header>
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_hourly_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(Set_dH_hourly_deltaH;3Decimal)</function>
 			</column>
 			<column>
-				<header>dH_24_hourly</header>
+				<header>&#x0394;H_24_hourly</header>
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_24hourly_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(Set_dH_24hourly_deltaH;3Decimal)</function>
 			</column>
@@ -109,8 +114,23 @@
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
 				<locationSetId>threshold_sites_dH</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Set_dH_6d_rolling">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>weekly</qualifierId>
+				<locationSetId>threshold_sites_dH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="day" start="-6" end="0"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
@@ -226,6 +246,20 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dH_6d_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>threshold_sites_dH_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
 		<inputVariable variableId="dH_hourly_threshold">
