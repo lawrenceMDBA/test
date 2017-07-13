@@ -2259,6 +2259,35 @@
 			<attributeTextContains id="REPORT_WEEKLY" contains="murray_system_inflow"/>
 		</constraints>
 	</locationSet>
+	<!-- For use in flow and salinity forecast publications -->
+	<locationSet id="flow-n-sal.sites_all">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="REPORT_FLOW_SAL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_level">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_flow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_flow"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_sal">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_sal"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="flr.sites_all">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
