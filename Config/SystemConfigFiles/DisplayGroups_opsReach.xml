@@ -442,10 +442,9 @@
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessPopo</moduleInstanceId>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>P_obs</parameterId>
-					<qualifierId>opo</qualifierId>
+					<parameterId>P_calc</parameterId>
 					<locationSetId>ops_display_weir_P</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="8am"/>
@@ -454,6 +453,19 @@
 					<readWriteMode>read only</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>P_fcst</parameterId>
+					<locationSetId>ops_display_weir_P</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<!--
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -506,25 +518,13 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
-			<line>
-				<axis>right</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_fcst</parameterId>
-					<locationSetId>ops_display_weir_P</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep id="8am"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
+			-->
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessHopo</moduleInstanceId>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>H_obs</parameterId>
-					<qualifierId>opo</qualifierId>
+					<parameterId>H_calc</parameterId>
 					<locationSetId>ops_display_weir_H</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="8am"/>
@@ -549,10 +549,9 @@
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessQopo</moduleInstanceId>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>Q_obs</parameterId>
-					<qualifierId>opo</qualifierId>
+					<parameterId>Q_calc</parameterId>
 					<locationSetId>ops_display_weir_Q</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="8am"/>
@@ -566,6 +565,33 @@
 					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>Q_fcst</parameterId>
+					<locationSetId>ops_display_weir_Q</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_calc</parameterId>
+					<qualifierId>inflow</qualifierId>
+					<locationSetId>ops_display_weir_Q</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<!--
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>inflow</qualifierId>
 					<locationSetId>ops_display_weir_Q</locationSetId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep id="8am"/>
@@ -636,6 +662,7 @@
 					<readWriteMode>read only</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			-->
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -679,6 +706,7 @@
 					<readWriteMode>read only</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			<!--
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -731,6 +759,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			-->
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -748,10 +777,9 @@
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessQopo</moduleInstanceId>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>Q_obs</parameterId>
-					<qualifierId>opo</qualifierId>
+					<parameterId>Q_calc</parameterId>
 					<locationSetId>ops_display_reach_Q</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="8am"/>
@@ -771,6 +799,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			<!--
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
@@ -795,6 +824,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
+			-->
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -841,58 +871,6 @@
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessg</qualifierId>
-					<locationSetId>ops_display_loss_P</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="3"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessr</qualifierId>
-					<locationSetId>ops_display_loss_P</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="1"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_fcst</parameterId>
-					<qualifierId>adfd</qualifierId>
-					<locationSetId>ops_display_loss_P</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="3"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_fcst</parameterId>
-					<qualifierId>adfd</qualifierId>
-					<locationSetId>ops_display_loss_P</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="3"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
 					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>P_fcst</parameterId>
@@ -907,10 +885,9 @@
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
-					<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>EVAP_obs</parameterId>
-					<qualifierId>opo</qualifierId>
+					<parameterId>EVAP_calc</parameterId>
 					<locationSetId>ops_display_loss_EVAP</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="8am"/>
@@ -961,6 +938,18 @@
 				</timeSeriesSet>
 			</line>
 			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_calc</parameterId>
+					<locationSetId>ops_display_loss_QL</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
 					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
@@ -972,80 +961,43 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>QL_calc</parameterId>
-					<locationSetId>ops_display_loss_QL</locationSetId>
-					<timeSeriesType>external historical</timeSeriesType>
-					<timeStep id="8am"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>QL_fcst</parameterId>
-					<locationSetId>ops_display_loss_QL</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep id="8am"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<axis>left</axis>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>QL_fcst</parameterId>
-					<qualifierId>total</qualifierId>
-					<locationSetId>ops_display_loss_QL</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep id="8am"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
 		</subplot>
 	</plot>
 	<displayGroup id="RiverOps_Overview" name="River operations Overview">
-		<displayGroup id="RiverOps_Overview.Ovens" name="Ovens">
+		<displayGroup id="RiverOps_Overview.Ovens" name="Ovens River">
 			<viewPermission>RiverOperations</viewPermission>
-			<display name="Inflows to Yarrawonga">
+			<display name="Ovens River">
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_409216A.ops_display_weir</locationSetId>
 				<plotId>ops_Weir</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="RiverOps_Overview.Kiewa" name="Kiewa">
+		<displayGroup id="RiverOps_Overview.Kiewa" name="Kiewa River">
 			<viewPermission>RiverOperations</viewPermission>
-			<display name="Inflows to Yarrawonga">
+			<display name="Kiewa River: Forecast">
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_409216A.ops_display_weir</locationSetId>
 				<plotId>ops_Weir</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="RiverOps_Overview.Yarra" name="Yarra">
+		<displayGroup id="RiverOps_Overview.Yarra" name="Yarrawonga Weir">
 			<viewPermission>RiverOperations</viewPermission>
-			<display name="Inflows to Yarrawonga">
-				<relativeViewPeriod unit="day" start="-30" end="60"/>
-				<locationSetId>R_409216A.ops_display_weir</locationSetId>
-				<plotId>ops_Weir</plotId>
-			</display>
-			<display name="Kiewa Chart">
+			<display name="Kiewa River: Forecast">
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_402222A.ops_display_reach</locationSetId>
 				<plotId>ops_Reach</plotId>
 			</display>
-			<display name="Ovens Chart">
+			<display name="Ovens River: Forecast">
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_403242C.ops_display_reach</locationSetId>
 				<plotId>ops_Reach</plotId>
 			</display>
-			<display name="Doctors Point-Yarrawonga Losses">
+			<display name="Storage Inflows">
+				<relativeViewPeriod unit="day" start="-30" end="60"/>
+				<locationSetId>R_409216A.ops_display_weir</locationSetId>
+				<plotId>ops_Weir</plotId>
+			</display>
+			<display name="DP to Yarra Losses">
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_409002.ops_display_loss</locationSetId>
 				<plotId>ops_Loss</plotId>

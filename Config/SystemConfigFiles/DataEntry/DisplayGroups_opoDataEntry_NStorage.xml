@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_Storage">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_H</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- V_obs -->
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+
 	<displayGroup id="NStorage.OPO" name="Processing NStorage sites ">
 		<displayGroup id="NStorage.DataEntry" name="Data entry">
 			<viewPermission>RiverOperations</viewPermission>
 			<singleLocationDisplays id="dataentry_NStorage">
 				<locationSetId>NStorage.sites</locationSetId>
-				<plotId>DataEntry_All</plotId>
+				<plotId>DataEntry_Storage</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 		<displayGroup id="NStorage.Process" name="Create OPO">
@@ -14,33 +44,6 @@
 				<locationSetId>NStorage.sites</locationSetId>
 				<plotId>ImportProcess_All</plotId>
 			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="NStorage.Telemetry" name="Telemetry">
-			<viewPermission>RiverOperations</viewPermission>
-			<displayGroup id="NStorage.Process_Hopo" name="NStorage water level">
-				<singleLocationDisplays id="ImportProcess_NStorage_H">
-					<locationSetId>NStorage.sites_H</locationSetId>
-					<plotId>ImportProcess_H</plotId>
-				</singleLocationDisplays>
-			</displayGroup>
-			<!--<displayGroup id="NStorage.Process_Qopo" name="Discharge discharge">
-				<singleLocationDisplays id="ImportProcess_NStorage_Q">
-					<locationSetId>NStorage.sites_Q</locationSetId>
-					<plotId>ImportProcess_Q</plotId>
-				</singleLocationDisplays>
-			</displayGroup>-->
-			<displayGroup id="NStorage.Process_Vopo" name="NStorage storage">
-				<singleLocationDisplays id="ImportProcess_NStorage_V">
-					<locationSetId>NStorage.sites_V</locationSetId>
-					<plotId>ImportProcess_V</plotId>
-				</singleLocationDisplays>
-			</displayGroup>
-			<!-- 			<displayGroup id="NStorage.Process_QRL" name="NStorage storage release">
-				<singleLocationDisplays id="ImportProcess_NStorage_QRL">
-					<locationSetId>NStorage.sites_QRL</locationSetId>
-					<plotId>ImportProcess_QRL</plotId>
-				</singleLocationDisplays>
-			</displayGroup> -->
 		</displayGroup>
 	</displayGroup>
 </displayGroups>

@@ -543,6 +543,24 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
+			<parameterId>EC_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
 			<parameterId>V_fcst</parameterId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
@@ -571,7 +589,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>QI_fcst</parameterId>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>inflow</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
@@ -580,7 +599,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>QI_fcst</parameterId>
+			<parameterId>Q_fcst</parameterId>
 			<qualifierId>natural</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
@@ -607,7 +626,8 @@
 			<timeStep id="8am"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
+		<!-- Disabled as these parameters are depricated -->
+<!-- 	<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>QDIV_fcst</parameterId>
@@ -674,6 +694,6 @@
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
+		</timeSeriesSet> -->
 	</import>
 </timeSeriesImportRun>
