@@ -24,7 +24,9 @@
 				<text>%ROWS_SITE_ID%</text>
 			</attribute>
 			<attribute id="HYDRO_SITE_ID">
-				<description>station identifier as used in Hydro archive database. Usage: idmaps</description>
+				<description>
+					station identifier as used in Hydro archive database. Usage: idmaps
+				</description>
 				<text>%HYDRO_SITE_ID%</text>
 			</attribute>
 			<attribute id="HYDSTRA_SITE_ID">
@@ -115,7 +117,10 @@
 				<text>%TO_MDBC_OPS%</text>
 			</attribute>
 			<attribute id="DS">
-				<description>Related downstream site, only defined at upstream site. Usage: webreport</description>
+				<description>
+					Related downstream site, only defined at upstream site. 
+					Usage: webreport
+				</description>
 				<text>%DOWNSTREAM_SITE%</text>
 			</attribute>
 			<attribute id="FSL">
@@ -367,11 +372,16 @@
 				<number>%V_H_HMIN%</number>
 			</attribute>
 			<attribute id="VALIDATION_H_SMAX">
-				<description>Water level validation rule, (soft) maximum allowed value expressed in local datum. Flagged as doubtful if above</description>
+				<description>
+					Water level validation rule, (soft) maximum allowed value expressed in local datum. 
+					Flagged as doubtful if above
+				</description>
 				<number>%V_H_SMAX%</number>
 			</attribute>
 			<attribute id="VALIDATION_H_SMIN">
-				<description>Water level validation rule, (soft) minimum allowed value expressed in local datum. Flagged as doubtful if below</description>
+				<description>Water level validation rule, (soft) minimum allowed value expressed in local datum. 
+					Flagged as doubtful if below
+				</description>
 				<number>%V_H_SMIN%</number>
 			</attribute>
 			<attribute id="VALIDATION_H_ROR">
@@ -383,7 +393,9 @@
 				<number>%V_H_ROF%</number>
 			</attribute>
 			<attribute id="VALIDATION_H_SRD">
-				<description>Water level validation rule, bandwidth the value may vary within if it is considered to be a same reading. The bandwidth is twice the deviation</description>
+				<description>Water level validation rule, bandwidth the value may vary within if it is 
+					considered to be a same reading. The bandwidth is twice the deviation
+				</description>
 				<number>%V_H_SRD%</number>
 			</attribute>
 			<attribute id="VALIDATION_H_SRT">
@@ -400,7 +412,9 @@
 				<number>%V_Q_HMAX%</number>
 			</attribute>
 			<attribute id="VALIDATION_Q_HMIN">
-				<description>Flow validation rule, (hard) minimum allowed value expressed in local datum. Flagged as unreliable if below</description>
+				<description>Flow validation rule, (hard) minimum allowed value expressed in local datum. 
+					Flagged as unreliable if below
+				</description>
 				<number>%V_Q_HMIN%</number>
 			</attribute>
 			<attribute id="VALIDATION_Q_SMAX">
@@ -433,19 +447,27 @@
 				<number>%V_Q_SRT%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_HMAX">
-				<description>Water temperature validation rule, (hard) maximum allowed value expressed in local datum. Flagged as unreliable if above</description>
+				<description>Water temperature validation rule, (hard) maximum allowed value expressed in local datum. 
+					Flagged as unreliable if above
+				</description>
 				<number>%V_WT_HMAX%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_HMIN">
-				<description>Water temperature validation rule, (hard) minimum allowed value expressed in local datum. Flagged as unreliable if below</description>
+				<description>Water temperature validation rule, (hard) minimum allowed value expressed in local datum. 
+					Flagged as unreliable if below
+				</description>
 				<number>%V_WT_HMIN%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_SMAX">
-				<description>Water temperature validation rule, (soft) maximum allowed value expressed in local datum. Flagged as doubtful if above</description>
+				<description>Water temperature validation rule, (soft) maximum allowed value expressed in local datum. 
+					Flagged as doubtful if above
+				</description>
 				<number>%V_WT_SMAX%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_SMIN">
-				<description>Water temperature validation rule, (soft) minimum allowed value expressed in local datum. Flagged as doubtful if below</description>
+				<description>Water temperature validation rule, (soft) minimum allowed value expressed in local datum. 
+					Flagged as doubtful if below
+				</description>
 				<number>%V_WT_SMIN%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_ROR">
@@ -457,7 +479,9 @@
 				<number>%V_WT_ROF%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_SRD">
-				<description>Water temperature validation rule, bandwidth the value may vary within if it is considered to be a same reading. The bandwidth is twice the deviation</description>
+				<description>Water temperature validation rule, bandwidth the value may vary within if it is considered 
+					to be a same reading. The bandwidth is twice the deviation
+				</description>
 				<number>%V_WT_SRD%</number>
 			</attribute>
 			<attribute id="VALIDATION_WT_SRT">
@@ -551,7 +575,9 @@
 				<number>%V_EC_ROR%</number>
 			</attribute>
 			<attribute id="VALIDATION_EC_ROF">
-				<description>Electronic conductivity validation rule, maximum rate of fall, expressed in unit/sec</description>
+				<description>
+					Electronic conductivity validation rule, maximum rate of fall, expressed in unit/sec
+				</description>
 				<number>%V_EC_ROF%</number>
 			</attribute>
 			<attribute id="VALIDATION_EC_SRD">
@@ -717,7 +743,9 @@
 				<text>%Q_PREFERRED%</text>
 			</attribute>
 			<attribute id="P_PREFERRED">
-				<description>Preferred input series. Enumeration: OPT,OPC,OPT2 Usage: selection mechanism in processing workflow</description>
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2 
+					Usage: selection mechanism in processing workflow
+				</description>
 				<text>%P_PREFERRED%</text>
 			</attribute>
 			<attribute id="V_PREFERRED">
@@ -767,19 +795,31 @@
 					<text>%V_ShowInReservoirPlot%</text>
 				</attribute>
 				<attribute id="QI_ShowInReservoirPlot">
-					<description>SiteId hosting reservoir plot where inflow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting reservoir plot where inflow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%QI_ShowInReservoirPlot%</text>
 				</attribute>
 				<attribute id="H_ShowInReservoirPlot">
-					<description>SiteId hosting reservoir plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting reservoir plot where level series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%H_ShowInReservoirPlot%</text>
 				</attribute>
 				<attribute id="Q_ShowInReservoirPlot">
-					<description>SiteId hosting reservoir plot where flow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting reservoir plot where flow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%Q_ShowInReservoirPlot%</text>
 				</attribute>
 				<attribute id="QO_ShowInReservoirPlot">
-					<description>SiteId hosting reservoir plot where outflow/release series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting reservoir plot where outflow/release series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%QO_ShowInReservoirPlot%</text>
 				</attribute>
 				<attribute id="P_ShowInReservoirPlot">
@@ -797,15 +837,24 @@
 					<text>%QO_ShowInWeirPlot%</text>
 				</attribute>
 				<attribute id="QI_ShowInWeirPlot">
-					<description>SiteId hosting weir plot where inflow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting weir plot where inflow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%QI_ShowInWeirPlot%</text>
 				</attribute>
 				<attribute id="Q_ShowInWeirPlot">
-					<description>SiteId hosting weir plot where flow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting weir plot where flow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%Q_ShowInWeirPlot%</text>
 				</attribute>
 				<attribute id="EC_ShowInWeirPlot">
-					<description>SiteId hosting weir plot where EC series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<description>
+						SiteId hosting weir plot where EC series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
 					<text>%EC_ShowInWeirPlot%</text>
 				</attribute>
 				<attribute id="P_ShowInWeirPlot">

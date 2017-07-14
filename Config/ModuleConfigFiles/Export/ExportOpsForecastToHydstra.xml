@@ -16,20 +16,29 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_fcst</parameterId>
-				<locationSetId>wr.sites_salinity</locationSetId>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>EC_fcst</parameterId>
-				<locationSetId>wr.sites_salinity</locationSetId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 	</export>
 </timeSeriesExportRun>
