@@ -660,14 +660,13 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<!-- May not needed ... can above plot id be used? -->
 	<plot id="MDBC_OPS_flow_salinity">
  		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>H_calc</parameterId>
-				<locationSetId>de.sites_H</locationSetId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -676,7 +675,7 @@
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>H_fcst</parameterId>
-				<locationSetId>HYDRO_sites_H</locationSetId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -685,7 +684,7 @@
 			<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_fcst</parameterId>
-			<locationSetId>sites_H_rated</locationSetId>
+			<locationSetId>flow-n-sal.sites_level_rated</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -696,7 +695,7 @@
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_calc</parameterId>
-				<locationSetId>HYDRO_sites_Q</locationSetId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -705,7 +704,7 @@
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_fcst</parameterId>
-				<locationSetId>HYDRO_sites_Q</locationSetId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -768,12 +767,6 @@
 			<singleLocationDisplays>
 				<locationSetId>sites.St_Flood</locationSetId>
 				<plotId>MDBC_OPS_results</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="MDBC_OPS.FlowAndSalinity" name="Flow and salinity forecasts review">
-			<singleLocationDisplays>
-				<locationSetId>flow-n-sal.sites_all</locationSetId>
-				<plotId>MDBC_OPS_flow_salinity</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 		<!--<displayGroup id="Threshold sites" name="All Threshold sites">
@@ -886,5 +879,14 @@
 				</singleLocationDisplays>
 			</displayGroup>
 		</displayGroup>-->
+	</displayGroup>
+	<displayGroup id="MDBC_OPS_Flow_n_Sal" name="Flow and salinity forecast">
+		<displayGroup id="MDBC_OPS.FlowAndSalinity" name="Flow and salinity forecasts review">
+			<singleLocationDisplays>
+				<locationSetId>flow-n-sal.sites_all</locationSetId>
+				<plotId>MDBC_OPS_flow_salinity</plotId>
+			</singleLocationDisplays>
+		</displayGroup>	
+	
 	</displayGroup>
 </displayGroups>

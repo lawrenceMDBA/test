@@ -2261,7 +2261,7 @@
 	</locationSet>
 	<!-- For use in flow and salinity forecast publications -->
 	<locationSet id="flow-n-sal.sites_all">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<!-- <sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId> -->
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="REPORT_FLOW_SAL"/>
@@ -2269,21 +2269,29 @@
 	</locationSet>
 	<locationSet id="flow-n-sal.sites_level">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
-		<locationSetId>sites</locationSetId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="flow-n-sal.sites_level_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_H_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
+		</constraints>
+	</locationSet>
+
 	<locationSet id="flow-n-sal.sites_flow">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
-		<locationSetId>sites</locationSetId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_FLOW_SAL" contains="_flow"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="flow-n-sal.sites_sal">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
-		<locationSetId>sites</locationSetId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_FLOW_SAL" contains="_sal"/>
 		</constraints>
