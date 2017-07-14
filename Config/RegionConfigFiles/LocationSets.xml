@@ -2471,6 +2471,47 @@
 			<attributeTextContains id="TYPE" contains="RO_"/>
 		</constraints>
 	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Only one threshold value set allowed per time series R_023894 H_calc (m) "8:00 GMT+10" defined in 
+	"Water levels (SOnO, RO) (Levels_objectives_specials)" and in 
+	"Water levels (SOnO, RO) (Levels_objectives)" RegionConfigFiles/ThresholdValueSets.xml-->
+	<locationSet id="threshold_sites_H_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="H_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Water_Level">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="H_GT_FSL"/>
+				<attributeExists id="RO_H_GT_HARD"/>
+				<attributeExists id="SO_H_GT_HARD"/>
+				<attributeExists id="RO_H_GT_SOFT"/>
+				<attributeExists id="SO_H_GT_SOFT"/>
+				<attributeExists id="H_GTE_HARD"/>
+				<attributeExists id="H_LT_HARD"/>
+				<attributeExists id="H_LTE_HARD"/>
+				<attributeExists id="H_LT_SOFT"/>
+				<attributeExists id="H_RANGE_GT_HARD"/>
+				<attributeExists id="H_RANGE_LT_HARD"/>
+				<attributeExists id="RO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="RO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="H_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher-->
 	<locationSet id="threshold_sites_H">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
@@ -2536,6 +2577,33 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Only one threshold value set allowed per time series 
+	R_401027 dH (m/d) "8:00 GMT+10" defined in "Water level changes (SOnO, RO)(Level changes_objectives_specials)"
+	and in "Water level changes (SOnO, RO) (Level changes_objectives)" RegionConfigFiles/ThresholdValueSets.xml-->
+	<locationSet id="threshold_sites_dH_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_level_changes">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="dH_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher-->
 	<locationSet id="threshold_sites_dH">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
@@ -2582,6 +2650,35 @@
 			<attributeTextContains id="TYPE" contains="RO_"/>
 		</constraints>
 	</locationSet>-->
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Only one threshold value set allowed per time series 
+	R_401027 V_calc (ML) "8:00 GMT+10" defined in "Storage Volume (SOnO, RO)(StorageVolume_objectives_specials)" 
+	and in "Storage Volume (SOnO, RO) (StorageVolume_objectives)" RegionConfigFiles/ThresholdValueSets.xml -->
+	<locationSet id="threshold_sites_V_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_storage_volume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_GT_SOFT"/>
+				<attributeExists id="V_GTE_HARD"/>
+				<attributeExists id="V_GTE_FSL"/>
+			</anyValid>
+			<not>
+				<attributeExists id="V_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!--- End Error Fix for build 67363 or higher -->
 	<locationSet id="threshold_sites_V">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
@@ -2621,6 +2718,44 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Config.Error: Only one threshold value set allowed per time series 
+	R_401027 Q_calc (ML/day) "8:00 GMT+10" defined in "Flow (SOnO, RO) (Flow_objectives_specials)" 
+	and in "Flow (SOnO, RO) (Flow_objectives)" RegionConfigFiles/ThresholdValueSets.xml -->
+	<locationSet id="threshold_sites_Q_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Flow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+				<attributeExists id="Q_GT_HARD"/>
+				<attributeExists id="SO_Q_GT_SOFT"/>
+				<attributeExists id="RO_Q_GT_SOFT"/>
+				<attributeExists id="Q_LT_HARD"/>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+				<attributeExists id="RO_Q_LT_SOFT"/>
+				<attributeExists id="SO_Q_LT_SOFT"/>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+				<attributeExists id="Q-QORD_LT_SOFT"/>
+				<attributeExists id="Q-QCAP_LT_HARD"/>
+				<attributeExists id="Q-QCAP_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="Q_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher -->
 	<locationSet id="threshold_sites_Q">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>

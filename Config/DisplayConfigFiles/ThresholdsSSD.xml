@@ -278,6 +278,22 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>		
+	<variable>
 		<variableId>dH_threshold_count_SO</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -2160,7 +2176,7 @@
 			</leftSingleClickAction>
 			<replaceTags>
 				<variable>
-					<variableId>dH_threshold_count_SO</variableId>
+					<variableId>dH_threshold_heywood_doctors_total_count</variableId>
 					<locationId>R_409016</locationId>
 				</variable>
 			</replaceTags>
@@ -2448,7 +2464,7 @@
 			</leftSingleClickAction>
 			<replaceTags>
 				<variable>
-					<variableId>dH_threshold_count_SO</variableId>
+					<variableId>dH_threshold_heywood_doctors_total_count</variableId>
 					<locationId>R_409017</locationId>
 				</variable>
 			</replaceTags>

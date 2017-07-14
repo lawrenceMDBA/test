@@ -277,7 +277,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<locationId>R_409016</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -306,7 +306,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -1918,26 +1918,26 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	</transformation>
 	<transformation id="Heywood_dH_weeklyrolling">
 		<aggregation>
-			<instantaneousToMean>
+			<meanToMean>
 				<inputVariable>
 					<variableId>dH_Heywood</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Heywood_weekly_rolling</variableId>
 				</outputVariable>
-			</instantaneousToMean>
+			</meanToMean>
 		</aggregation>
 	</transformation>
 	<transformation id="Doctors_dH_weeklyrolling">
 		<aggregation>
-			<instantaneousToMean>
+			<meanToMean>
 				<inputVariable>
 					<variableId>dH_Doctors</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Doctors_weekly_rolling</variableId>
 				</outputVariable>
-			</instantaneousToMean>
+			</meanToMean>
 		</aggregation>
 	</transformation>
 	<!--Transformations - thresholds temporary-->
