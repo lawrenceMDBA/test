@@ -661,6 +661,7 @@
 		</subplot>
 	</plot>
 	<plot id="MDBC_OPS_flow_salinity">
+		<!-- Only display the latest forcast (not older than 24 hrs)  -->
  		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
@@ -671,6 +672,7 @@
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
+	
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -678,15 +680,18 @@
 				<locationSetId>flow-n-sal.sites_level</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
+				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
+				<externalForecastMaxAge unit="day" multiplier="1" />
 				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
+			</timeSeriesSet>	
 		<timeSeriesSet>
 			<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_fcst</parameterId>
 			<locationSetId>flow-n-sal.sites_level_rated</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
+			<externalForecastMaxAge unit="day" multiplier="1"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 		</subplot>
@@ -707,6 +712,8 @@
 				<locationSetId>flow-n-sal.sites_flow</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
+<!-- 				<relativeForecastPeriod start="0" end="7" unit="day"/> -->
+				<externalForecastMaxAge unit="day" multiplier="1"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
@@ -727,6 +734,8 @@
 				<locationSetId>de.sites_EC</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
+				<relativeForecastPeriod end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
