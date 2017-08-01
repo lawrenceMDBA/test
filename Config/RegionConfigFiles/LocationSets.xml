@@ -865,6 +865,10 @@
 					<description>SiteId hosting weir plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
 					<text>%H_ShowInWeirPlot%</text>
 				</attribute>
+				<attribute id="H_ShowInReachPlot">
+					<description>SiteId hosting reach plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%H_ShowInReachPlot%</text>
+				</attribute>
 				<attribute id="QI_ShowInReachPlot">
 					<description>SiteId hosting reach plot where inflow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
 					<text>%QI_ShowInReachPlot%</text>
@@ -3039,6 +3043,13 @@
 			<attributeExists id="H_ShowInWeirPlot"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="ops_display_reach_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="H_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="ops_display_reach_QI">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -3300,7 +3311,16 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
-	
+	<locationSet id="Yarr2Barmah.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Yarr2Barmah"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Yarr2Barmah"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
 	<locationSet id="Jin2Doc.ops_display_reservoir">
 	<!-- Jingelling to Doctors Pt Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -3313,7 +3333,6 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
-	
 	<locationSet id="Hin2Tall.ops_display_reservoir">
 	<!-- Hinnomungie to Tallandoon Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -3325,7 +3344,7 @@
 				<attributeTextContains id="H_ShowInReservoirPlot" contains="Hin2Tall"/>
 			</anyValid>
 		</constraints>
-	</locationSet>	
+	</locationSet>
 	<locationSet id="RiverProfiles">
 		<sortingLocationAttributeId>SHORT_NAME</sortingLocationAttributeId>
 		<!--<sortByName>true</sortByName>-->
