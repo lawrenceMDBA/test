@@ -672,7 +672,6 @@
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-	
 			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -684,16 +683,38 @@
 				<externalForecastMaxAge unit="day" multiplier="1" />
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>	
-		<timeSeriesSet>
-			<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_fcst</parameterId>
-			<locationSetId>flow-n-sal.sites_level_rated</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<externalForecastMaxAge unit="day" multiplier="1"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_level_rated</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<externalForecastMaxAge unit="day" multiplier="1"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_calc</parameterId>
+				<locationSetId>flow-n-sal.sites_vol</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>		
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_vol</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+<!-- 				<relativeForecastPeriod start="0" end="7" unit="day"/> -->
+				<externalForecastMaxAge unit="day" multiplier="1"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
 		</subplot>
 		<subplot>
 			<timeSeriesSet>

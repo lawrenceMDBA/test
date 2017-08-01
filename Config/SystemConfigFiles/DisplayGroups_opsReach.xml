@@ -217,9 +217,8 @@
 		</subplot>
 	</plot>
 	<plot id="ops_Reservoir2">
-		<subplot stackPlot="true">
+		<subplot>
 			<!-- TODO: verify availability Full Supply Level and Surcharge level (?) threshold-->
-			<forecastConfidenceTimeSpan1 unit="day" multiplier="3"/>
 			<line>
 				<axis>left</axis>
 				<timeSeriesSet>
@@ -437,6 +436,94 @@
 			</line>
 		</subplot>
 	</plot>
+	<plot id="ops_Reservoir3">
+	<!-- Used in Flow and Salinity overview plots -->
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessVopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>ops_display_reservoir_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-30" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_calc</parameterId>
+					<locationSetId>ops_display_reservoir_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-30" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_fcst</parameterId>
+					<locationSetId>ops_display_reservoir_V</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessQopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>ops_display_reservoir_Q</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-30" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_calc</parameterId>
+					<locationSetId>ops_display_reservoir_Q</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-30" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<locationSetId>ops_display_reservoir_Q</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep id="8am"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>	
 	<plot id="ops_Weir">
 		<subplot>
 			<line>
@@ -1060,6 +1147,28 @@
 				<relativeViewPeriod unit="day" start="-30" end="60"/>
 				<locationSetId>R_401027.ops_display_reservoir</locationSetId>
 				<plotId>ops_Reservoir2</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="Forecast_Overview.Salinity" name="Salinity">
+			<display name="Salinity: Torrumbarry to Swan Hill">
+				<relativeViewPeriod unit="day" start="-30" end="60"/>
+				<locationSetId>Tor2Swnh.ops_display_reach</locationSetId>
+				<plotId>ops_Reach</plotId>
+			</display>
+			<display name="Salinity: Euston to Lock 9">
+				<relativeViewPeriod unit="day" start="-30" end="60"/>
+				<locationSetId>Eus2Lck9.ops_display_reach</locationSetId>
+				<plotId>ops_Reach</plotId>
+			</display>
+			<display name="Flow: Jingellic to Doctors Pt">
+				<relativeViewPeriod unit="day" start="-30" end="60"/>
+				<locationSetId>Jin2Doc.ops_display_reservoir</locationSetId>
+				<plotId>ops_Reservoir3</plotId>
+			</display>
+			<display name="Flow: Hinnomunjie to Tallandoon">
+				<relativeViewPeriod unit="day" start="-30" end="60"/>
+				<locationSetId>Hin2Tall.ops_display_reservoir</locationSetId>
+				<plotId>ops_Reservoir3</plotId>
 			</display>
 		</displayGroup>
 	</displayGroup>
