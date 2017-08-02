@@ -681,7 +681,7 @@
 				<timeStep id="8am"/>
 				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
 				<externalForecastMaxAge unit="day" multiplier="1" />
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>	
 			<timeSeriesSet>
 				<moduleInstanceId>FlowToLevel_Fcst</moduleInstanceId>
@@ -691,7 +691,7 @@
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<externalForecastMaxAge unit="day" multiplier="1"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -713,7 +713,7 @@
 				<timeStep id="8am"/>
 <!-- 				<relativeForecastPeriod start="0" end="7" unit="day"/> -->
 				<externalForecastMaxAge unit="day" multiplier="1"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -735,7 +735,7 @@
 				<timeStep id="8am"/>
 				<!-- <relativeForecastPeriod start="0" end="7" unit="day"/> -->
 				<externalForecastMaxAge unit="day" multiplier="1"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -743,7 +743,7 @@
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>EC_calc</parameterId>
-				<locationSetId>de.sites_EC</locationSetId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -752,12 +752,12 @@
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>EC_fcst</parameterId>
-				<locationSetId>de.sites_EC</locationSetId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
 				<externalForecastMaxAge unit="day" multiplier="1" />
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
