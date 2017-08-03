@@ -3360,7 +3360,21 @@
 				<attributeTextContains id="H_ShowInWeirPlot" contains="Eus2SA"/>
 			</anyValid>
 		</constraints>
-	</locationSet>	
+	</locationSet>
+	<locationSet id="Men2Mur.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="V_ShowInReachPlot" contains="Men2Mur"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Men2Mur"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
 	<locationSet id="Jin2Doc.ops_display_reservoir">
 	<!-- Jingelling to Doctors Pt Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -3370,6 +3384,17 @@
 				<attributeTextContains id="Q_ShowInReservoirPlot" contains="Jin2Doc"/>
 				<attributeTextContains id="V_ShowInReservoirPlot" contains="Jin2Doc"/>
 				<attributeTextContains id="H_ShowInReservoirPlot" contains="Jin2Doc"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Ste2Wakj.ops_display_reach">
+		<!-- Stevens Weir to Murray Below Wakool junc-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Ste2Wakj"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Ste2Wakj"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
