@@ -865,6 +865,14 @@
 					<description>SiteId hosting weir plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
 					<text>%H_ShowInWeirPlot%</text>
 				</attribute>
+				<attribute id="H_ShowInReachPlot">
+					<description>SiteId hosting reach plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%H_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="V_ShowInReachPlot">
+					<description>SiteId hosting reach plot where volume series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%V_ShowInReachPlot%</text>
+				</attribute>
 				<attribute id="QI_ShowInReachPlot">
 					<description>SiteId hosting reach plot where inflow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
 					<text>%QI_ShowInReachPlot%</text>
@@ -2310,7 +2318,7 @@
 	</locationSet>
 	<!-- For use in flow and salinity forecast publications -->
 	<locationSet id="flow-n-sal.sites_all">
-		<!-- <sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId> -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="REPORT_FLOW_SAL"/>
@@ -2330,7 +2338,13 @@
 			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
 		</constraints>
 	</locationSet>
-
+	<locationSet id="flow-n-sal.sites_vol">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_vol"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="flow-n-sal.sites_flow">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>flow-n-sal.sites_all</locationSetId>
@@ -2345,6 +2359,7 @@
 			<attributeTextContains id="REPORT_FLOW_SAL" contains="_sal"/>
 		</constraints>
 	</locationSet>
+	<!-- end of flow and salinity -->
 	<locationSet id="flr.sites_all">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -3032,6 +3047,20 @@
 			<attributeExists id="H_ShowInWeirPlot"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="ops_display_reach_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="H_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_V">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="V_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="ops_display_reach_QI">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -3107,6 +3136,8 @@
 	</locationSet>
 	<locationSet id="ops_display_reach">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach_H</locationSetId>
+		<locationSetId>ops_display_reach_V</locationSetId>
 		<locationSetId>ops_display_reach_QI</locationSetId>
 		<locationSetId>ops_display_reach_Q</locationSetId>
 		<locationSetId>ops_display_reach_P</locationSetId>
@@ -3268,7 +3299,114 @@
 				<attributeTextContains id="V_ShowInReservoirPlot" contains="R_401027"/>
 				<attributeTextContains id="H_ShowInReservoirPlot" contains="R_401027"/>
 				<attributeTextContains id="P_ShowInReservoirPlot" contains="R_401027"/>
-				<!--  				<attributeTextContains id="EVAP_ShowInReservoirPlot" contains="R_401027"/> -->
+				<!--<attributeTextContains id="EVAP_ShowInReservoirPlot" contains="R_401027"/> -->
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- Flow and Salinity forecast displays -->
+	<locationSet id="Eus2Lck9.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Eus2Lck9"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="Eus2Lck9"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Tor2Swnh.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Tor2Swnh"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="Tor2Swnh"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarr2Barmah.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Yarr2Barmah"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Yarr2Barmah"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Brmh2Bal.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Brmh2Bal"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Brmh2Bal"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Brmh2Bal"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Eus2SA.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Eus2SA"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Eus2SA"/>
+				<attributeTextContains id="V_ShowInReachPlot" contains="Eus2SA"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Eus2SA"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Men2Mur.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="V_ShowInReachPlot" contains="Men2Mur"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Men2Mur"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Jin2Doc.ops_display_reservoir">
+	<!-- Jingelling to Doctors Pt Overview Plot -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReservoirPlot" contains="Jin2Doc"/>
+				<attributeTextContains id="V_ShowInReservoirPlot" contains="Jin2Doc"/>
+				<attributeTextContains id="H_ShowInReservoirPlot" contains="Jin2Doc"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Ste2Wakj.ops_display_reach">
+		<!-- Stevens Weir to Murray Below Wakool junc-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Ste2Wakj"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Ste2Wakj"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hin2Tall.ops_display_reservoir">
+	<!-- Hinnomungie to Tallandoon Overview Plot -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReservoirPlot" contains="Hin2Tall"/>
+				<attributeTextContains id="V_ShowInReservoirPlot" contains="Hin2Tall"/>
+				<attributeTextContains id="H_ShowInReservoirPlot" contains="Hin2Tall"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
