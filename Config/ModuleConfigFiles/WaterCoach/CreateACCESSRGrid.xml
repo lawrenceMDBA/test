@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+<!-- Processing of observed rainfall data for flood operations, including deaccumulation of tipping bucket values:
+- Sample sites with daily observations to 1 hourly series (keeping missings for the other 23 hours of the day)
+- Summation of neq raw to 1hour data for instantaneous sites 
+- Sample neq raw to 15min data for accumulative sites
+- Block fill series to enable deaccumulation by timestep. Without blockfill the step from missing value to registered measurement value will result in missing value during deaccumulation.
+- Deaccumulate, results in series with '0' for those time steps which de not have a measurement registration.
+- Correct for negative values due to resetting of tipping bucket. Note: any filling of the tipping bucket to the maximum capacity may be missed
+- Put missing values back in, using the transformation feature that a missing value in the multiplier array will result in a missing value for the result
+- Aggregate to hourly data
+- Merge with Fops
+- Interpolate Fops station rainfall to grid (inverse distance)-->
+	<!-- P - variables-->
+	<variable>
+		<variableId>P_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="3" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_1h_Fops_accessr_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ACCESSR_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="3" startOverrulable="false" endOverrulable="false" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- P - transformations-->
+	<transformation id="InterpolateRainfalltoAccessrGrid">
+		<interpolationSpatial>
+			<inverseDistance>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<searchRadius>3000000</searchRadius>
+				<distanceGeoDatum>UTM56S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>4</numberOfPoints>
+				<numberOfBackupPoints>8</numberOfBackupPoints>
+				<outputVariable>
+					<variableId>P_obs_1h_Fops_accessr_grid</variableId>
+				</outputVariable>
+			</inverseDistance>
+		</interpolationSpatial>
+	</transformation>
+</transformationModule>

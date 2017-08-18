@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--and calculates the maximum theoretical release based on the simulated dam water level.-->
+	<!--Note: cumulative forecast is calculated for a timestep of 1 hour-->
+	<variable>
+		<variableId>Hsim_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hsim_Heywoods</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_out_valve_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_out_fcst</parameterId>
+			<qualifierId>Valve</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_out_hydro_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_out_fcst</parameterId>
+			<qualifierId>Hydro</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_out_spillway_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_out_fcst</parameterId>
+			<qualifierId>Spillway</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_out_total_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_out_fcst</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hsim_reservoirs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_fcst_reservoirs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--temporary time series-->
+	<variable>
+		<variableId>Hsim_Hume_head_difference</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<qualifierId>Head</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="CalculateHead_Hume">
+		<user>
+			<simple>
+				<expression>Hsim_Hume - Hsim_Heywoods</expression>
+				<outputVariable>
+					<variableId>Hsim_Hume_head_difference</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="CalculateValve_outflow">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hsim_Hume</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Valve_Outlet_Rating_Tables</coefficientSetId>
+				<coefficientSetFile>ReservoirOutletRatingTables</coefficientSetFile>
+				<output>
+					<variableId>Qsim_out_valve_Hume</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="CalculateHydro_outflow">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hsim_Hume_head_difference</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Hydro_Outlet_Rating_Tables</coefficientSetId>
+				<coefficientSetFile>ReservoirOutletRatingTables</coefficientSetFile>
+				<output>
+					<variableId>Qsim_out_hydro_Hume</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="CalculateSpillway_outflow">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hsim_Hume</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Spillway_Outlet_Rating_Tables</coefficientSetId>
+				<coefficientSetFile>ReservoirOutletRatingTables</coefficientSetFile>
+				<output>
+					<variableId>Qsim_out_spillway_Hume</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="CalculateTotalOutflow_Hume">
+		<user>
+			<simple>
+				<expression>Qsim_out_valve_Hume + Qsim_out_hydro_Hume + Qsim_out_spillway_Hume</expression>
+				<outputVariable>
+					<variableId>Qsim_out_total_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Lookup_Storage_V_fcst">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hsim_reservoirs</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_Storage_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>V_fcst_reservoirs</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+</transformationModule>
