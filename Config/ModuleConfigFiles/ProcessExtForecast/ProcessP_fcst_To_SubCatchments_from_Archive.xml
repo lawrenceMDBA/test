@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--Interpolates the gridded data to subcatchments for analysis in the spatial display. All subcatchments must have polygons, the average cookie cutter function can be used-->
+	<variable>
+		<variableId>ACCESSG_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ACCESSG_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ACCESSR_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ADFD_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_higher_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>higher</qualifierId>
+			<locationId>ADFD_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="1am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>avg</qualifierId>
+			<locationId>PME_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_min_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationId>PME_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_max_P_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<locationId>PME_archive</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--NWP subcatchments-->
+	<variable>
+		<variableId>ACCESSG_P_subareas_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSG_P_subcatchments_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSG_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_P_subareas_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_P_subareas_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_P_subcatchments_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_higher_P_subareas_1am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="1am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_higher_P_subcatchments_1am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="1am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_higher_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_P_subareas_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_P_subcatchments_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_min_P_subareas_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_min_P_subcatchments_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_min_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_max_P_subareas_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_max_P_subcatchments_3h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_max_P_subcatchments_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>
+	<!--START OF THE COMPUTATIONS - Compute average over polygons using coockie cutter method-->
+	<transformation id="Interpolate_ACCESS-G_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ACCESSG_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ACCESSG_P_subareas_3h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_ACCESS-G">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ACCESSG_P_subareas_3h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ACCESSG_P_subcatchments_3h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_ACCESS_G_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>ACCESSG_P_subcatchments_3h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESSG_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_ACCESS-R_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ACCESSR_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ACCESSR_P_subareas_1h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_ACCESS-R">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ACCESSR_P_subareas_1h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ACCESSR_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Interpolate_ADFD_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ADFD_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ADFD_P_subareas_3h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_ADFD">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ADFD_P_subareas_3h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ADFD_P_subcatchments_3h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_ADFD_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>ADFD_P_subcatchments_3h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ADFD_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_ADFD_higher_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ADFD_higher_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ADFD_higher_P_subareas_1am</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_ADFD_higher">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ADFD_higher_P_subareas_1am</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ADFD_higher_P_subcatchments_1am</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_ADFD_higher_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>ADFD_higher_P_subcatchments_1am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ADFD_higher_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_PME_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>PME_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>PME_P_subareas_3h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_PME">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>PME_P_subareas_3h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>PME_P_subcatchments_3h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_PME_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>PME_P_subcatchments_3h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>PME_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_PME_min_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>PME_min_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>PME_min_P_subareas_3h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_PME_min">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>PME_min_P_subareas_3h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>PME_min_P_subcatchments_3h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_PME_min_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>PME_min_P_subcatchments_3h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>PME_min_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_PME_max_to_subareas">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>PME_max_P_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>PME_max_P_subareas_3h</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="SubCatchAverageRainfall_PME_max">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>PME_max_P_subareas_3h</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>PME_max_P_subcatchments_3h</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Disaggregate_PME_max_1h">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>PME_max_P_subcatchments_3h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>PME_max_P_subcatchments_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+</transformationModule>

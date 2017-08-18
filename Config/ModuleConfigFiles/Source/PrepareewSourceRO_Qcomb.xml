@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ SA trade flow (see PrepareewSourceRO)-->
+	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
+	<!--+ Inflow: Climate (see PrepareewSourceRO_EVAP)-->
+	<!--+ Inflow: Flow -->
+	<!-- 	- merge OPO, short term (manual) forecast and long term forecast -->
+	<!-- 	> Trend Flow Forcast (manual)-->
+	<!-- 	- Rise to trend target,vaintain for forecast length-->
+	<!-- 	> Pulse Flow Forcast (manual)-->
+	<!-- 	- Flow until peak: Flow(n+1) = (Pulse rising flow) – Flow(n)) * (1 – Pulse rising rate) + Flow(n)-->
+	<!-- 	- Flow at peak: Flow(peak) = Pulse peak flow-->
+	<!-- 	- Flow after peak: Flow(n+1) = (Pulse recession flow) – Flow(n)) * (1 - Pulse recession rate)) + Flow(n)-->
+	<!-- 	- Flow recession to base flow: Flow(n+1) = (Recession to base flow) – Flow(n)) * (1 - Recession to base rate)) + Flow(n)-->
+	<!-- 	> Yearly average (Q_plan, statistics)-->
+	<!-- 	- look up monthly value-->
+	<!-- 	- timeshift foreward by 1 month to prepare for disaggregate -->
+	<!-- 	- disaggregate to daily 8am (goes backwards, so foreward timeshifted value is spread out over previous month-->
+	<!-- 	> merge all series with user selected short term forecast-->
+	<!--+ Water user demand: Q_plan (see PrepareewSourceRO_QORD)-->
+	<!--+ Environmental Flow Orders (not included at this stage)-->
+	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
+	<!--========================================================================================-->
+	<!--Dummy Subatchments to make modifier display work for subcatchment attributes-->
+	<variable>
+		<variableId>Dummy_Subcatchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationSetId>ewSourceRO_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= Q fcst ========= -->
+	<!--Q fcst: manual shortterm forecast-->
+	<variable>
+		<variableId>Gauges_Qobs_extend</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Trend_Qfcst_initial</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>trend</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Trend_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>trend</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_rise_initial</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_rise</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_peak</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>peak</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_recede_initial</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>recede</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_recede_fromT0</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>recede</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_recede_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>recede</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst_recede</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<qualifierId>recede</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pulse_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q fcst: other input series (fcst and obs)-->
+	<variable>
+		<variableId>Gauges_Qobs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>STF_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Source_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Shortterm_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q fcst: other input series (temporary series)-->
+	<variable>
+		<variableId>STF_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>stf</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>urbs</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q fcst: Qplan Hydro and statistics-->
+	<variable>
+		<variableId>Qplan_hydro_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q fcst: Qplan statistics - Monthly timestep (temporary)-->
+	<variable>
+		<variableId>Cycle_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>index</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_shift_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_shift_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_shift_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_shift_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q fcst: Qcomb resulting series-->
+	<variable>
+		<variableId>Qcomb_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qcomb_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qcomb_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qcomb_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========================================================================================-->
+	<!--Inflow: Flow-->
+	<!--Step 1 Flow Fcst: Generate Manual Forecaster Series-->
+	<transformation id="Gauges_Qobs_extend">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>Gauges_Qobs_extend</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Trend_Qfcst_initial">
+		<user>
+			<simple>
+				<expression>Gauges_Qobs_extend</expression>
+				<outputVariable>
+					<variableId>Trend_Qfcst_initial</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Trend_Qfcst">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE * Trend</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Trend" value="@SITE_Q_TREND_FACTOR@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Trend_Qfcst</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Trend_Qfcst_base">
+		<user>
+			<simple>
+				<expression>if((Trend_Qfcst &lt; TrendQ) , N_a_N,  Trend_Qfcst)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="TrendQ" value="@SITE_Q_TREND_BASEQ@"/>
+					<coefficient id="N_a_N" value="0/0"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Trend_Qfcst</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_rise_initial">
+		<user>
+			<simple>
+				<expression>Gauges_Qobs_extend</expression>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_rise_initial</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_rise">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE * (1/Pulse_rise_rate) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_rise_rate" value="@SITE_Q_PULSE_RISE@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_rise</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_rise_NaN">
+		<user>
+			<simple>
+				<expression>if((Pulse_Qfcst_rise &gt; ( Pulse_peak_value )) , 1/0, Pulse_Qfcst_rise)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_rise</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_peak">
+		<user>
+			<simple>
+				<expression>Pulse_peak_value</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_peak</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_recede_initial">
+		<user>
+			<simple>
+				<expression>Pulse_peak_value</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_recede_initial</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_recede_fromT0">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE * (Pulse_recede_rate) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_recede_rate" value="@SITE_Q_PULSE_RECEDE@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_recede_fromT0</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_recede_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Pulse_Qfcst_recede_fromT0</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>@SITE_Q_PULSE_PEAKT@</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_recede_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Pulse_Qfcst_recede_shift">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Pulse_Qfcst_recede_shift</variableId>
+				</inputVariable>
+				<extrapolateDirection>start</extrapolateDirection>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_recede_shift</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Pulse_Qfcst_recede_NaN">
+		<user>
+			<simple>
+				<expression>if((Pulse_Qfcst_recede_shift &lt; BaseQ) , N_a_N , Pulse_Qfcst_recede_shift)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="BaseQ" value="@SITE_Q_PULSE_BASEQ@"/>
+					<coefficient id="N_a_N" value="0/0"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_recede</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst_peak_NaN">
+		<user>
+			<simple>
+				<expression>if((Pulse_Qfcst_recede &lt; Pulse_peak_value) , N_a_N , Pulse_Qfcst_peak)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Pulse_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+					<coefficient id="N_a_N" value="0/0"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Pulse_Qfcst_peak</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Pulse_Qfcst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Pulse_Qfcst_rise</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Pulse_Qfcst_peak</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Pulse_Qfcst_recede</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Pulse_Qfcst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!--Step 2 Flow Fcst: Aggregate (instantaneous) STF and URBS series to daily-->
+	<transformation id="STF_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>STF_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>STF_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="URBS_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>URBS_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>URBS_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<!--Step 3 Flow Fcst: Yearly average (Q_plan, statistics)-->
+	<transformation id="Cycle_month">
+		<profile>
+			<timeSeries>
+				<inputProfile>
+					<data value="1" monthDay="--01-01"/>
+					<data value="2" monthDay="--02-01"/>
+					<data value="3" monthDay="--03-01"/>
+					<data value="4" monthDay="--04-01"/>
+					<data value="5" monthDay="--05-01"/>
+					<data value="6" monthDay="--06-01"/>
+					<data value="7" monthDay="--07-01"/>
+					<data value="8" monthDay="--08-01"/>
+					<data value="9" monthDay="--09-01"/>
+					<data value="10" monthDay="--10-01"/>
+					<data value="11" monthDay="--11-01"/>
+					<data value="12" monthDay="--12-01"/>
+					<timeZone>
+						<timeZoneOffset>+10:00</timeZoneOffset>
+					</timeZone>
+				</inputProfile>
+				<type>simple</type>
+				<outputVariable>
+					<variableId>Cycle_month</variableId>
+				</outputVariable>
+			</timeSeries>
+		</profile>
+	</transformation>
+	<transformation id="Qplan_monthly_min">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_MIN_QPLAN, if(Cycle_month==2, FEB_MIN_QPLAN, if(Cycle_month==3, MAR_MIN_QPLAN, if(Cycle_month==4, APR_MIN_QPLAN, if(Cycle_month==5, MAY_MIN_QPLAN, if(Cycle_month==6, JUN_MIN_QPLAN , if(Cycle_month==7, JUL_MIN_QPLAN , if(Cycle_month==8, AUG_MIN_QPLAN, if(Cycle_month==9, SEP_MIN_QPLAN, if(Cycle_month==10, OCT_MIN_QPLAN , if(Cycle_month==11, NOV_MIN_QPLAN , DEC_MIN_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_MIN_QPLAN" value="@JAN_MIN_QPLAN@"/>
+					<coefficient id="FEB_MIN_QPLAN" value="@FEB_MIN_QPLAN@"/>
+					<coefficient id="MAR_MIN_QPLAN" value="@MAR_MIN_QPLAN@"/>
+					<coefficient id="APR_MIN_QPLAN" value="@APR_MIN_QPLAN@"/>
+					<coefficient id="MAY_MIN_QPLAN" value="@MAY_MIN_QPLAN@"/>
+					<coefficient id="JUN_MIN_QPLAN" value="@JUN_MIN_QPLAN@"/>
+					<coefficient id="JUL_MIN_QPLAN" value="@JUL_MIN_QPLAN@"/>
+					<coefficient id="AUG_MIN_QPLAN" value="@AUG_MIN_QPLAN@"/>
+					<coefficient id="SEP_MIN_QPLAN" value="@SEP_MIN_QPLAN@"/>
+					<coefficient id="OCT_MIN_QPLAN" value="@OCT_MIN_QPLAN@"/>
+					<coefficient id="NOV_MIN_QPLAN" value="@NOV_MIN_QPLAN@"/>
+					<coefficient id="DEC_MIN_QPLAN" value="@DEC_MIN_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qplan_monthly_aep90">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_90_QPLAN, if(Cycle_month==2, FEB_90_QPLAN, if(Cycle_month==3, MAR_90_QPLAN, if(Cycle_month==4, APR_90_QPLAN, if(Cycle_month==5, MAY_90_QPLAN, if(Cycle_month==6, JUN_90_QPLAN , if(Cycle_month==7, JUL_90_QPLAN , if(Cycle_month==8, AUG_90_QPLAN, if(Cycle_month==9, SEP_90_QPLAN, if(Cycle_month==10, OCT_90_QPLAN , if(Cycle_month==11, NOV_90_QPLAN , DEC_90_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_90_QPLAN" value="@JAN_90_QPLAN@"/>
+					<coefficient id="FEB_90_QPLAN" value="@FEB_90_QPLAN@"/>
+					<coefficient id="MAR_90_QPLAN" value="@MAR_90_QPLAN@"/>
+					<coefficient id="APR_90_QPLAN" value="@APR_90_QPLAN@"/>
+					<coefficient id="MAY_90_QPLAN" value="@MAY_90_QPLAN@"/>
+					<coefficient id="JUN_90_QPLAN" value="@JUN_90_QPLAN@"/>
+					<coefficient id="JUL_90_QPLAN" value="@JUL_90_QPLAN@"/>
+					<coefficient id="AUG_90_QPLAN" value="@AUG_90_QPLAN@"/>
+					<coefficient id="SEP_90_QPLAN" value="@SEP_90_QPLAN@"/>
+					<coefficient id="OCT_90_QPLAN" value="@OCT_90_QPLAN@"/>
+					<coefficient id="NOV_90_QPLAN" value="@NOV_90_QPLAN@"/>
+					<coefficient id="DEC_90_QPLAN" value="@DEC_90_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qplan_monthly_aep75">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_75_QPLAN, if(Cycle_month==2, FEB_75_QPLAN, if(Cycle_month==3, MAR_75_QPLAN, if(Cycle_month==4, APR_75_QPLAN, if(Cycle_month==5, MAY_75_QPLAN, if(Cycle_month==6, JUN_75_QPLAN , if(Cycle_month==7, JUL_75_QPLAN , if(Cycle_month==8, AUG_75_QPLAN, if(Cycle_month==9, SEP_75_QPLAN, if(Cycle_month==10, OCT_75_QPLAN , if(Cycle_month==11, NOV_75_QPLAN , DEC_75_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_75_QPLAN" value="@JAN_75_QPLAN@"/>
+					<coefficient id="FEB_75_QPLAN" value="@FEB_75_QPLAN@"/>
+					<coefficient id="MAR_75_QPLAN" value="@MAR_75_QPLAN@"/>
+					<coefficient id="APR_75_QPLAN" value="@APR_75_QPLAN@"/>
+					<coefficient id="MAY_75_QPLAN" value="@MAY_75_QPLAN@"/>
+					<coefficient id="JUN_75_QPLAN" value="@JUN_75_QPLAN@"/>
+					<coefficient id="JUL_75_QPLAN" value="@JUL_75_QPLAN@"/>
+					<coefficient id="AUG_75_QPLAN" value="@AUG_75_QPLAN@"/>
+					<coefficient id="SEP_75_QPLAN" value="@SEP_75_QPLAN@"/>
+					<coefficient id="OCT_75_QPLAN" value="@OCT_75_QPLAN@"/>
+					<coefficient id="NOV_75_QPLAN" value="@NOV_75_QPLAN@"/>
+					<coefficient id="DEC_75_QPLAN" value="@DEC_75_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qplan_monthly_aep50">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_50_QPLAN, if(Cycle_month==2, FEB_50_QPLAN, if(Cycle_month==3, MAR_50_QPLAN, if(Cycle_month==4, APR_50_QPLAN, if(Cycle_month==5, MAY_50_QPLAN, if(Cycle_month==6, JUN_50_QPLAN , if(Cycle_month==7, JUL_50_QPLAN , if(Cycle_month==8, AUG_50_QPLAN, if(Cycle_month==9, SEP_50_QPLAN, if(Cycle_month==10, OCT_50_QPLAN , if(Cycle_month==11, NOV_50_QPLAN , DEC_50_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_50_QPLAN" value="@JAN_50_QPLAN@"/>
+					<coefficient id="FEB_50_QPLAN" value="@FEB_50_QPLAN@"/>
+					<coefficient id="MAR_50_QPLAN" value="@MAR_50_QPLAN@"/>
+					<coefficient id="APR_50_QPLAN" value="@APR_50_QPLAN@"/>
+					<coefficient id="MAY_50_QPLAN" value="@MAY_50_QPLAN@"/>
+					<coefficient id="JUN_50_QPLAN" value="@JUN_50_QPLAN@"/>
+					<coefficient id="JUL_50_QPLAN" value="@JUL_50_QPLAN@"/>
+					<coefficient id="AUG_50_QPLAN" value="@AUG_50_QPLAN@"/>
+					<coefficient id="SEP_50_QPLAN" value="@SEP_50_QPLAN@"/>
+					<coefficient id="OCT_50_QPLAN" value="@OCT_50_QPLAN@"/>
+					<coefficient id="NOV_50_QPLAN" value="@NOV_50_QPLAN@"/>
+					<coefficient id="DEC_50_QPLAN" value="@DEC_50_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qplan_monthly_shift_min">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_min</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_shift_min</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Qplan_monthly_shift_aep90">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_aep90</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_shift_aep90</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Qplan_monthly_shift_aep75">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_aep75</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_shift_aep75</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Qplan_monthly_shift_aep50">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_aep50</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_shift_aep50</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Qplan_daily_min">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_shift_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_min</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="Qplan_daily_aep90">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_shift_aep90</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_aep90</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="Qplan_daily_aep75">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_shift_aep75</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_aep75</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="Qplan_daily_aep50">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_shift_aep50</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_aep50</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<!--Step 4 Flow Fcst: Select forecast and scenario (via modifiers)-->
+	<transformation id="Shortterm_Qfcst">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>STF_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Trend_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Pulse_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>URBS_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Source_Qfcst</variableId>
+				</input>
+				<attributeFunctionId>@SITE_Q_FCST_SELECT@_Qfcst</attributeFunctionId>
+				<output>
+					<variableId>Shortterm_Qfcst</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Qcomb_min">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Shortterm_Qfcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_min</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qcomb_min</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Qcomb_aep90">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Shortterm_Qfcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep90</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_aep90</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qcomb_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Qcomb_aep75">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Shortterm_Qfcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep75</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_aep75</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qcomb_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Qcomb_aep50">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Shortterm_Qfcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep50</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_aep50</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qcomb_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

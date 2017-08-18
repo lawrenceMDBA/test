@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ SA trade flow (see PrepareewSourceRO)-->
+	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
+	<!--+ Inflow: Climate (see PrepareewSourceRO_EVAP)-->
+	<!--+ Inflow: Flow (see PrepareewSourceRO_Qcomb)-->
+	<!--+ Water user demand: Q_plan-->
+	<!-- 	-  Merge Q_obs QORD_obs and Q_plan to generate long forecast input timeseries file -->
+	<!-- 	-  Prepare data for export to for River Operations Source model  -->
+	<!--+ Environmental Flow Orders (not included at this stage)-->
+	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
+	<!--========================================================================================-->
+	<!--Dummy Catchments to make modifier display work for catchment attributes-->
+	<variable>
+		<variableId>Dummy_Catchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ewSource_RO</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= QORD opo and hydro  ========= -->
+	<variable>
+		<variableId>OPO_Q</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="730" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.mdbc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.mdbc</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.longterm</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.longterm</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= Q_plan fcst (temporary)  ========= -->
+	<variable>
+		<variableId>QORD_obs_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q ORD: Qcomb resulting series-->
+	<variable>
+		<variableId>QORD_plan_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========================================================================================-->
+	<!--Water User Demands: Q_plan-->
+	<!--Merge all observations, select planning scenario (via modifiers) and merge all-->
+	<transformation id="QORD_obs_tmp">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_Q</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.mdbc</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.longterm</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_obs_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Gapfill_Q_obs">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>QORD_obs_tmp</variableId>
+				</inputVariable>
+				<maxGapLength>14</maxGapLength>
+				<outputVariable>
+					<variableId>QORD_obs</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="QORD_plan_min">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_min</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep50">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep50</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep75">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep75</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep90">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep90</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>
