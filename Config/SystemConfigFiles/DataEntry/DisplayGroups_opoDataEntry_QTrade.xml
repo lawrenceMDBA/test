@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_QSATrade_undelivered_trade">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_undelivered</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>undelivered_trade</qualifierId>
+				<locationId>SA_border</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod start="-180" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_undelivered</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>undelivered_trade</qualifierId>
+				<locationId>SA_border</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod start="-180" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="DataEntry_QSATrade_SA_deferred">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_trade</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>SA_deferred</qualifierId>
+				<locationId>SA_border</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod start="-180" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="DataEntry_QSATrade_environmental_trade">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_trade</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>TLM</qualifierId>
+				<qualifierId>environmental_trade</qualifierId>
+				<locationId>SA_border</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod start="-180" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_trade</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>CEHW</qualifierId>
+				<qualifierId>environmental_trade</qualifierId>
+				<locationId>SA_border</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod start="-180" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="QSATrade.OPO" name="QSA Trade Components">
+		<displayGroup id="QSATrade_DataEntry" name="Data entry (monthly)">
+			<nodeId>QSATrade_DataEntry</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<display id="DataEntry_QSATrade_SA_deferred" name="SA Deferred">
+				<plotId>DataEntry_QSATrade_SA_deferred</plotId>
+			</display>
+			<display id="DataEntry_QSATrade_undelivered_trade" name="Undelivered Trade">
+				<plotId>DataEntry_QSATrade_undelivered_trade</plotId>
+			</display>
+			<display id="DataEntry_QSATrade_environmental_trade" name="Environmental Trade">
+				<plotId>DataEntry_QSATrade_environmental_trade</plotId>
+			</display>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>
