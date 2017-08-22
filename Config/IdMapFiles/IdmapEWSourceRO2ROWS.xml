@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+<parameter external="Latest Run>Gauge>Edward River @ Moulamein (409014)>Unaccounted Difference" internal="H_fcst" externalQualifier="unaccounted_diff"/>
+
 	<parameter external="100" internal="H_fcst"/>
 	<parameter external="3000" internal="EC_fcst"/>
 	<parameter external="5060" internal="pH_fcst"/>
 	<parameter external="400" internal="Q_fcst"/>
 	<parameter external="3500" internal="WT_fcst"/>
-	<parameter external="1950" internal="EVAP_fcst"/>
+	<parameter external="1950" internal="EVAP_comb"/>
 	<parameter external="2000" internal="P_fcst"/>
 	<parameter external="200" internal="V_fcst"/>
 	<parameter external="5065" internal="DO_fcst"/>
@@ -17,7 +19,7 @@
 	
 	<parameter external="300" internal="QRL_fcst"/>
 	<parameter external="2240" internal="QI_fcst"/>
-	<parameter external="1949" internal="EVAP_fcst" internalQualifier="net"/>
+	<parameter external="1949" internal="EVAP_comb" internalQualifier="net"/>
 	<parameter external="1" internal="QI_fcst" internalQualifier="natural"/>
 	<parameter external="750" internal="QDIV_fcst" internalQualifier="total"/>
 	<parameter external="737" internal="QDIV_fcst" internalQualifier="saline"/>
@@ -36,4 +38,5 @@
 
 
 	<locationIdFunction externalLocationFunction="@EWSRC_ID@" internalLocationSet="ewSourceRO_sites"/>
+	<enableOneToOneMapping/>
 </idMap>

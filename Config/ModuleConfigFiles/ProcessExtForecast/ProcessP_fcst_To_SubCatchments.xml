@@ -112,7 +112,7 @@
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -181,7 +181,7 @@
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>adfd</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -266,7 +266,7 @@
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>pme</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -309,7 +309,7 @@
 			<qualifierId>min</qualifierId>
 			<qualifierId>pme</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -353,7 +353,7 @@
 			<qualifierId>max</qualifierId>
 			<qualifierId>pme</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -376,15 +376,16 @@
 	<!--START OF THE COMPUTATIONS - Compute average over polygons using coockie cutter method-->
 	<transformation id="Interpolate_ACCESS-G_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>ACCESSG_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>ACCESSG_P_subareas_3h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ACCESS-G">
@@ -414,15 +415,16 @@
 	</transformation>
 	<transformation id="Interpolate_ACCESS-R_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>ACCESSR_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>ACCESSR_P_subareas_1h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ACCESS-R">
@@ -440,15 +442,16 @@
 	</transformation>
 	<transformation id="Interpolate_ADFD_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>ADFD_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>ADFD_P_subareas_3h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ADFD">
@@ -478,15 +481,16 @@
 	</transformation>
 	<transformation id="Interpolate_ADFD_higher_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>ADFD_higher_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>ADFD_higher_P_subareas_1am</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ADFD_higher">
@@ -516,15 +520,16 @@
 	</transformation>
 	<transformation id="Interpolate_PME_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>PME_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>PME_P_subareas_3h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME">
@@ -554,15 +559,16 @@
 	</transformation>
 	<transformation id="Interpolate_PME_min_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>PME_min_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>PME_min_P_subareas_3h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME_min">
@@ -592,15 +598,16 @@
 	</transformation>
 	<transformation id="Interpolate_PME_max_to_subareas">
 		<interpolationSpatial>
-			<average>
-				<minimumValue>0</minimumValue>
+			<closestDistance>
 				<inputVariable>
 					<variableId>PME_max_P_grid</variableId>
 				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>PME_max_P_subareas_3h</variableId>
 				</outputVariable>
-			</average>
+			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME_max">

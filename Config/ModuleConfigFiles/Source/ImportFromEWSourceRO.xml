@@ -1,34 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
-	<!--These locations in sample import file: 403241A,403242C,403230A 
-
-TODO: will there be more? Which locationSet is most convenient? -->
+	<!--Import of ewSource_RO output files-->
+	<!--file naming convention: Source_<scenario>_<parameter>.csv-->
+	<!--  - scenario examples: default, min, aep90. This information is stored in a qualifierId-->
+	<!--Define scenario in WF, run module instance multiple times, once for each scenario.-->
+	<!--TODO: delete imported files (set to false for testing purposes)-->
+	<!--TODO: make locationSets based on attribute (now based on locationId)-->
+	<!--==========================================-->
+	<!--===============Start import =================-->
+	<!--==========================================-->
 	<import>
 		<general>
-			<importType>csv</importType>
+			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_EWSRC_RO$</folder>
-			<fileNamePatternFilter>*.csv</fileNamePatternFilter>
+			<fileNamePatternFilter>Source_$SCENARIO$*naccounted*.csv</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_EWSRC_RO$</failedFolder>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+				<dateColumn name="Date" pattern="d/MM/yyyy"/>
+				<valueColumn name="Latest Run>Gauge>Edward River @ Moulamein (409014)>Unaccounted Difference" parameterId="Q_fcst" unit="ML/day" locationId="R_409014" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>Edward River @ Toonalook (409047)>Unaccounted Difference" parameterId="Q_fcst" unit="ML/day" locationId="R_409047" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>Kiewa River @ Bandiana (402205A)>Unaccounted Difference" parameterId="Q_fcst" unit="ML/day" locationId="R_402205A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Corowa (409002)>Unaccounted Difference" parameterId="Q_fcst" unit="ML/day" locationId="R_409002" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Swan Hill (409204)>Unaccounted Difference" parameterId="Q_fcst" unit="ML/day" locationId="R_409204C" time="08:00"/>
+			</table>
 			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
 			<idMapId>IdmapEWSourceRO2ROWS</idMapId>
 			<unitConversionsId>ImportUnitConversions</unitConversionsId>
 			<importTimeZone>
 				<timeZoneOffset>+10:00</timeZoneOffset>
 			</importTimeZone>
+			<dataFeedId>ewSource_RO</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
 		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>H_fcst</parameterId>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>unaccounted_diff</qualifierId>
+			<qualifierId>$SCENARIO$</qualifierId>
 			<locationSetId>ewSourceRO_sites</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_EWSRC_RO$</folder>
+			<fileNamePatternFilter>Source_$SCENARIO$*evel*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_EWSRC_RO$</failedFolder>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+				<dateColumn name="Date" pattern="d/MM/yyyy"/>
+				<valueColumn name="Latest Run>Storage>Hume Dam (409011)>Storage Level" parameterId="H_fcst" unit="m" locationId="R_401027" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Hume Dam (409011)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_401027" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Dartmouth Dam (401224)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_401224A" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Dartmouth Dam (401224)>Storage Level" parameterId="H_fcst" unit="m" locationId="R_401224A" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Yarrawonga Weir (409216)>Storage Level" parameterId="H_fcst" unit="m" locationId="R_409216A" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Yarrawonga Weir (409216)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_409216A" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Euston Weir (414209)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_414209" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Lock 7 (426508)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_A4260508" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Lock 7 (426508)>Storage Level" parameterId="H_fcst" unit="m" locationId="R_A4260508" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Lake Menindee (425022)>Storage Volume" parameterId="V_fcst" unit="GL" locationId="R_425022" time="08:00"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapEWSourceRO2ROWS</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ewSource_RO</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
+			<parameterId>H_fcst</parameterId>
+			<qualifierId>$SCENARIO$</qualifierId>
 			<locationSetId>ewSourceRO_sites</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
@@ -38,132 +88,54 @@ TODO: will there be more? Which locationSet is most convenient? -->
 			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_fcst</parameterId>
+			<qualifierId>$SCENARIO$</qualifierId>
 			<locationSetId>ewSourceRO_sites</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>EVAP_fcst</parameterId>
-			<qualifierId>net</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_EWSRC_RO$</folder>
+			<fileNamePatternFilter>Source_$SCENARIO$*low*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_EWSRC_RO$</failedFolder>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+				<dateColumn name="Date" pattern="d/MM/yyyy"/>
+				<valueColumn name="Functions > Functions > SystemFunctions > Torrumbarry > $f_Tortrbn (GL.day^-1)" parameterId="Q_fcst" unit="ML/day" locationId="R_409017" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Doctors Point (409017)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="ML/day" locationId="R_409017" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Corowa (409002)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409002" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>Kiewa River @ Bandiana (402205A)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_402205A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>Ovens River @ Peechelba (403241A)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_403241A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Tocumwal (409202)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409202A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Barmah (409215)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409215B" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Barham (409005)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409005" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Swan Hill (409204)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409204C" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ Wakool Junction (414200)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_414200A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ DS Yarrawonga (409025)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409025" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Yarrawonga Weir (409216)>Downstream Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_409216A" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Lake Victoria (426553)>Downstream Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_A4260553" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Hume Dam (409011)>Downstream Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_401027" time="08:00"/>
+				<valueColumn name="Latest Run>Storage>Dartmouth Dam (401224)>Downstream Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_401224A" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>Darling River @ Weir 32 (425012)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_425012" time="08:00"/>
+				<valueColumn name="Latest Run>Gauge>River Murray @ DS Euston (414203)>Recorded Gauging Station Flow" parameterId="Q_fcst" unit="Q_fcst" locationId="R_414203C" time="08:00"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapEWSourceRO2ROWS</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>ewSource_RO</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QI_fcst</parameterId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QI_fcst</parameterId>
-			<qualifierId>natural</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QORD_fcst</parameterId>
-			<qualifierId>shortterm</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QORD_fcst</parameterId>
-			<qualifierId>mdbc</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_fcst</parameterId>
-			<qualifierId>irrig</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_fcst</parameterId>
-			<qualifierId>saline</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_fcst</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QRTN_fcst</parameterId>
-			<qualifierId>irrig</qualifierId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QRL_fcst</parameterId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QL_fcst</parameterId>
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QL_fcst</parameterId>
-			<qualifierId>total</qualifierId>
+			<qualifierId>$SCENARIO$</qualifierId>
 			<locationSetId>ewSourceRO_sites</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>

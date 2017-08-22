@@ -8,9 +8,13 @@
 	</systemInformation>
 	<systemUnitsLabel>ML</systemUnitsLabel>
 	<displayUnitsLabel>GL</displayUnitsLabel>
+	<!-- @ROWS-Flood@ Comment element above and uncomment element below -->
+	<!-- <displayUnitsLabel>m3/s</displayUnitsLabel> -->
 	<units>system</units>
 	<dateTime>
-		<timeZoneOffset>+10:00</timeZoneOffset>
+		<timeZoneName>AET</timeZoneName>
+		<timeZoneName>AEST</timeZoneName>
+		<timeZoneName>GMT</timeZoneName>
 		<dateTimeFormat>EEE,dd-MM-yyyy HH:mm:ss</dateTimeFormat>
 		<!--<cardinalTimeStep id="8am"/>-->
 		<cardinalTimeStep unit="hour" multiplier="1"/>
@@ -163,6 +167,53 @@
 				<int key="tileSize" value="256"/>
 			</properties>
 		</layer>
+		<layerGroup id="Upper Murray Catchment">
+			<esriShapeLayer id="GridPrecipitationUpperM">
+				<description>GridPrecipitationUpperM</description>
+				<file>General_Rainfall_Aggegation_areas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:100000</maxScale>
+				<lineColor>dark khaki</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Upper Murray subareas">
+				<description>Upper Murray subareas</description>
+				<file>upperMurray_upper_m_urbs_subareas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>black</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Mitta subareas">
+				<description>Mitta subareas</description>
+				<file>upperMurray_mitta_urbs_subareas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>plum</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Upper subareas">
+				<description>Upper subareas</description>
+				<file>upperMurray_upper_urbs_subareas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>red</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+			<esriShapeLayer id="Below subareas">
+				<description>Below subareas</description>
+				<file>upperMurray_below_urbs_subareas</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>blue</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
+		</layerGroup>
 		<layerGroup id="Ovens Catchment">
 			<esriShapeLayer id="GridPrecipitationOvens">
 				<description>GridPrecipitationOvens</description>
@@ -345,13 +396,14 @@
 			<toolbarTask>false</toolbarTask>
 			<menubarTask>true</menubarTask>
 		</explorerTask>
-		<explorerTask name="Timeseries Lister">
+		<explorerTask name="Database viewer">
 			<iconFile>table_tab_search.png</iconFile>
 			<mnemonic>L</mnemonic>
 			<predefinedDisplay>time series lister</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl L</accelerator>
+			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Workflow Navigator">
 			<iconFile>tree.png</iconFile>
@@ -360,18 +412,19 @@
 			<menubarTask>true</menubarTask>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
-		<!-- 		<explorerTask name="Separator">
+		<explorerTask name="Separator">
 			<separator/>
-		</explorerTask>		
-		<explorerTask name="Lab Samples">
-			<iconFile>laboratory.png</iconFile>
+		</explorerTask>
+		<explorerTask name="Water quality">
+			<iconFile>sample.png</iconFile>
 			<mnemonic>M</mnemonic>
 			<predefinedDisplay>sample viewer</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl S</accelerator>
-			<loadAtStartup>true</loadAtStartup>
-		</explorerTask> -->
+			<toolWindow>false</toolWindow>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
@@ -383,6 +436,15 @@
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl D</accelerator>
 			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Web">
+			<iconFile>world_wide_web.png</iconFile>
+			<mnemonic>h</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.webbrowser.WebBrowserDisplay</taskClass>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<accelerator>ctrl H</accelerator>
+			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Workflows">
 			<iconFile>tree.png</iconFile>
@@ -424,12 +486,11 @@
 			<iconFile>correlation.png</iconFile>
 			<mnemonic>P</mnemonic>
 			<arguments>segmentSelection</arguments>
-			<!-- 			<arguments>segmentSelection hideForecast</arguments> -->
 			<taskClass>nl.wldelft.fews.gui.plugin.correlation.CorrelationDialog</taskClass>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl C</accelerator>
-			<loadAtStartup>true</loadAtStartup>
+			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Separator">
 			<separator/>
@@ -443,7 +504,7 @@
 			<accelerator>ctrl T</accelerator>
 			<!-- <toolWindow>false</toolWindow> -->
 			<loadAtStartup>true</loadAtStartup>
-		</explorerTask>  
+		</explorerTask>
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
@@ -471,7 +532,7 @@
 			<displayConfigFileName>FloodOpsSSD</displayConfigFileName>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
-			<permission>FloodOperations</permission>			
+			<permission>FloodOperations</permission>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Hydstra WorkBench">
@@ -536,6 +597,10 @@
 			</logFilter>
 		</clientFilter>
 	</logPanelConfig>
+	<notification enabled="true"/>
+	<forecasterNotesNotification enabled="true">
+		<eventCodeId>Info</eventCodeId>
+	</forecasterNotesNotification>
 	<panelSizes>
 		<loggingPanelSize>20</loggingPanelSize>
 		<listsPanelSize>100</listsPanelSize>
@@ -545,5 +610,13 @@
 		<qualifierListSize>25</qualifierListSize>
 		<forecastListSize>5</forecastListSize>
 	</panelSizes>
+	<!-- @ROWS-Flood@ uncomment element below -->
+	<!--
+	<rollingBarrelOptions>
+		<type>not_automatic</type>
+	</rollingBarrelOptions>
+	-->
 	<autoLogin>true</autoLogin>
+	<vjdbcServicePortRange start="40402" end="40402"/>
+	<loginMinimumBuildNumber>66000</loginMinimumBuildNumber>
 </explorer>

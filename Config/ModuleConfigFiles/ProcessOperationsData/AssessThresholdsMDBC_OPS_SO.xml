@@ -2111,9 +2111,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_hardGT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt; HARD_GT + 0.0001, 102, 1/0)</expression>
+				<expression>if ( H_calc &gt; SO_H_GT_HARD + 0.0001, 102, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_GT" value="@SO_H_GT_HARD@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_threshold_tmp2_hard</variableId>
@@ -2124,9 +2124,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_hardGTE">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt;= HARD_GTE, 102, 1/0)</expression>
+				<expression>if ( H_calc &gt;= H_GTE_HARD, 102, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_GTE" value="@H_GTE_HARD@"/>
+					<coefficient id="H_GTE_HARD" value="@H_GTE_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_threshold_tmp10_hard</variableId>
@@ -2137,9 +2137,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_hardLT">
 		<user>
 			<simple>
-				<expression>if ( H_calc &lt; HARD_LT - 0.0001, 102, 1/0) </expression>
+				<expression>if ( H_calc &lt; H_LT_HARD - 0.0001, 102, 1/0) </expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_LT" value="@H_LT_HARD@"/>
+					<coefficient id="H_LT_HARD" value="@H_LT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_threshold_tmp3_hard</variableId>
@@ -2189,10 +2189,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="H_thresh_softRANGE">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt; SOFT_RANGE_GT + 0.0001, if ( H_calc &lt; SOFT_RANGE_LT - 0.0001,  101, 1/0) , 1/0) </expression>
+				<expression>if ( H_calc &gt; SO_H_RANGE_GT_SOFT + 0.0001, if ( H_calc &lt; SO_H_RANGE_LT_SOFT - 0.0001,  101, 1/0) , 1/0) </expression>
 				<coefficientSetFunctions>
-					<coefficient id="SOFT_RANGE_GT" value="@SO_H_RANGE_GT_SOFT@"/>
-					<coefficient id="SOFT_RANGE_LT" value="@SO_H_RANGE_LT_SOFT@"/>
+					<coefficient id="SO_H_RANGE_GT_SOFT" value="@SO_H_RANGE_GT_SOFT@"/>
+					<coefficient id="SO_H_RANGE_LT_SOFT" value="@SO_H_RANGE_LT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_threshold_tmp6_soft</variableId>
@@ -2203,7 +2203,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<!--<transformation id="H_thresh_hardRANGE">
 		<user>
 			<simple>
-				<expression>if ( H_calc &gt; HARD_RANGE_GT, if ( H_calc &lt; HARD_RANGE_LT,  102, 1/0) , 1/0) </expression>
+				<expression>if ( H_calc &gt; HARD_RANGE_GT, if ( H_calc &lt; HARD_RANGE_LT - 0.0001,  102, 1/0) , 1/0) </expression>
 				<coefficientSetFunctions>
 					<coefficient id="HARD_RANGE_GT" value="@H_RANGE_GT_HARD@"/>
 					<coefficient id="HARD_RANGE_LT" value="@H_RANGE_LT_HARD@"/>
@@ -2230,9 +2230,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_hardGT">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &gt; HARD_GT + 0.0001, 302, 1/0)</expression>
+				<expression>if ( Q_merge &gt; Q_GT_HARD + 0.0001, 302, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_GT" value="@Q_GT_HARD@"/>
+					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Q_threshold_tmp1_hard</variableId>
@@ -2243,9 +2243,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_hardLT">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &lt; HARD_LT - 0.0001, 302, 1/0) </expression>
+				<expression>if ( Q_merge &lt; Q_LT_HARD - 0.0001, 302, 1/0) </expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_LT" value="@Q_LT_HARD@"/>
+					<coefficient id="Q_LT_HARD" value="@Q_LT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Q_threshold_tmp2_hard</variableId>
@@ -2256,7 +2256,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<!--<transformation id="Q_rel_thresh_hardLT">
 		<user>
 			<simple>
-				<expression>if ( Set_LT_Q_hard &lt; Set_LT_Q_related_hard, 302, 1/0)</expression>
+				<expression>if ( Set_LT_Q_hard &lt; Set_LT_Q_related_hard - 0.0001, 302, 1/0)</expression>
 				<outputVariable>
 					<variableId>Q_rel_threshold_LT_hard</variableId>
 				</outputVariable>
@@ -2267,9 +2267,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_softGT">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &gt; SO_SOFT_GT + 0.0001, 301, 1/0)</expression>
+				<expression>if ( Q_merge &gt; SO_Q_GT_SOFT + 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="SO_SOFT_GT" value="@SO_Q_GT_SOFT@"/>
+					<coefficient id="SO_Q_GT_SOFT" value="@SO_Q_GT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Q_threshold_tmp6_soft</variableId>
@@ -2280,9 +2280,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Q_thresh_softLT">
 		<user>
 			<simple>
-				<expression>if ( Q_merge &lt; SOFT_LT - 0.0001, 301, 1/0)</expression>
+				<expression>if ( Q_merge &lt; SO_Q_LT_SOFT - 0.0001, 301, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="SOFT_LT" value="@SO_Q_LT_SOFT@"/>
+					<coefficient id="SO_Q_LT_SOFT" value="@SO_Q_LT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Q_threshold_tmp3_soft</variableId>
@@ -2329,9 +2329,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="V_thresh_fslGT">
 		<user>
 			<simple>
-				<expression>if ( V_merge &gt;= FSL_GTE, 503, 1/0)</expression>
+				<expression>if ( V_merge &gt;= V_GTE_FSL, 503, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="FSL_GTE" value="@V_GTE_FSL@"/>
+					<coefficient id="V_GTE_FSL" value="@V_GTE_FSL@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>V_threshold_tmp1_fsl</variableId>
@@ -2342,9 +2342,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="V_thresh_hardGTE">
 		<user>
 			<simple>
-				<expression>if ( V_merge &gt;= HARD_GTE, 502, 1/0)</expression>
+				<expression>if ( V_merge &gt;= V_GTE_HARD, 502, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="HARD_GTE" value="@V_GTE_HARD@"/>
+					<coefficient id="V_GTE_HARD" value="@V_GTE_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>V_threshold_tmp2_hard</variableId>
@@ -2355,9 +2355,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="V_thresh_softGTE">
 		<user>
 			<simple>
-				<expression>if ( V_merge &gt; SOFT_GT, 501, 1/0) </expression>
+				<expression>if ( V_merge &gt; V_GT_SOFT + 0.0001, 501, 1/0) </expression>
 				<coefficientSetFunctions>
-					<coefficient id="SOFT_GT" value="@V_GT_SOFT@"/>
+					<coefficient id="V_GT_SOFT" value="@V_GT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>V_threshold_tmp3_soft</variableId>
@@ -2757,9 +2757,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<!--<transformation id="EC_thresh_GT">
 		<user>
 			<simple>
-				<expression>if ( EC_calc &gt; GT , 704, 1/0)</expression>
+				<expression>if ( EC_calc &gt; EC_GT_SAL , 704, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="GT" value="@EC_GT_SAL@"/>
+					<coefficient id="EC_GT_SAL" value="@EC_GT_SAL@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>EC_threshold</variableId>
@@ -2770,9 +2770,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="DO%_thresh_LTE">
 		<user>
 			<simple>
-				<expression>if ( DOPCT_calc &lt;= LTE, 805, 1/0)</expression>
+				<expression>if ( DOPCT_calc &lt;= DOPCT_LTE_DOPCT, 805, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="LTE" value="@DOPCT_LTE_DOPCT@"/>
+					<coefficient id="DOPCT_LTE_DOPCT" value="@DOPCT_LTE_DOPCT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>DO_threshold</variableId>

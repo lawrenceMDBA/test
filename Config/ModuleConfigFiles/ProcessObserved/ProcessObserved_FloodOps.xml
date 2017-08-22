@@ -23,7 +23,8 @@
 - Correct for negative values due to resetting of tipping bucket. Note: any filling of the tipping bucket to the maximum capacity may be missed
 - Put missing values back in, using the transformation feature that a missing value in the multiplier array will result in a missing value for the result
 - Aggregate to hourly data
-- Merge with Fops-->
+- Merge with Fops
+- Interpolate Fops station rainfall to grid (inverse distance)-->
 	<!-- H - variables-->
 	<variable>
 		<variableId>H_obs_neq_primary</variableId>
@@ -465,6 +466,37 @@
 			<expiryTime unit="day" multiplier="365"/>
 		</timeSeriesSet>
 	</variable>
+	<variable>
+		<variableId>P_obs_1h_Fops_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>GridPrecipitationUpperMurray</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_3h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
 	<!-- H - transformations-->
 	<transformation id="Sample: H primary neq_to_1h">
 		<sample>
@@ -696,7 +728,7 @@
 	<transformation id="Correct neg. values (reset tipping bucket) Pdeacc_obs_15m_tmp">
 		<user>
 			<simple>
-				<expression>if(Pdeacc_obs_15m_tmp &lt; 0, (Pacc_obs_15m_raw), Pdeacc_obs_15m_tmp)</expression>
+				<expression>if(Pdeacc_obs_15m_tmp &lt; 0 - 0.0001, (Pacc_obs_15m_raw), Pdeacc_obs_15m_tmp)</expression>
 				<outputVariable>
 					<variableId>Pdeacc_obs_15m_tmp</variableId>
 				</outputVariable>
@@ -743,5 +775,38 @@
 				</outputVariable>
 			</simple>
 		</merge>
+	</transformation>
+	<transformation id="InterpolateRainfalltoGrid">
+		<interpolationSpatial>
+			<inverseDistance>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<searchRadius>3000000</searchRadius>
+				<distanceGeoDatum>UTM56S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>4</numberOfPoints>
+				<numberOfBackupPoints>8</numberOfBackupPoints>
+				<outputVariable>
+					<variableId>P_obs_1h_Fops_grid</variableId>
+				</outputVariable>
+			</inverseDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Aggregate P_Fops 1h_to_3h">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputMissingPercentage>80</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>P_obs_3h_Fops</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
 	</transformation>
 </transformationModule>

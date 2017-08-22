@@ -21,7 +21,7 @@
 			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
+			<locationId>$ACCESSG_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep multiplier="3" unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -33,7 +33,7 @@
 			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
+			<locationId>$ACCESSR_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -45,7 +45,7 @@
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>ADFD</locationId>
+			<locationId>$ADFD_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -58,7 +58,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>higher</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$ADFD_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="1am"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -71,7 +71,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>avg</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -84,7 +84,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>min</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -97,7 +97,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>max</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -309,21 +309,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>NWP_subareas_Scenario</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>NWP</qualifierId>
-			<qualifierId>Scenario</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-6" end="168" endOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>P_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
@@ -361,7 +346,7 @@
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-48" end="168" endOverrulable="true" unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 			<expiryTime unit="day"/>
 		</timeSeriesSet>
@@ -409,6 +394,21 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>NWP_subareas_Scenario</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>NWP</qualifierId>
+			<qualifierId>Scenario</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="hour" start="-6" end="168" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Manual_subareas</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -448,7 +448,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>ACCESSG</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -463,7 +463,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>ACCESSR</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -478,7 +478,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>ADFD</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -493,7 +493,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>ADFD_higher</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -508,7 +508,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>PME</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -523,7 +523,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>PME_min</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -538,7 +538,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>PME_max</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -553,7 +553,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>URBS Local</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -568,7 +568,7 @@
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleId>$ENSEMBLE$</ensembleId>
 			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
@@ -1028,8 +1028,8 @@
 			</selectDataSource>
 		</merge>
 	</transformation>
-	<!--Processing steps for final product: merge observed with NWP products to create merged ensembles-->
-	<transformation id="Merge Observed and ACCESS_G: NWP Ensemble 1">
+	<!--Processing steps for final product: merge observed with NWP products to create merged $ENSEMBLE$s-->
+	<transformation id="Merge Observed and ACCESS_G: NWP $ENSEMBLE$ 1">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1057,7 +1057,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and ACCESS_R: NWP Ensemble 2">
+	<transformation id="Merge Observed and ACCESS_R: NWP $ENSEMBLE$ 2">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1085,7 +1085,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and ADFD: NWP Ensemble 3">
+	<transformation id="Merge Observed and ADFD: NWP $ENSEMBLE$ 3">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1113,7 +1113,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and ADFD_higher: NWP Ensemble 4">
+	<transformation id="Merge Observed and ADFD_higher: NWP $ENSEMBLE$ 4">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1141,7 +1141,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and PME: NWP Ensemble 5">
+	<transformation id="Merge Observed and PME: NWP $ENSEMBLE$ 5">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1169,7 +1169,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and PME_min: NWP Ensemble 6">
+	<transformation id="Merge Observed and PME_min: NWP $ENSEMBLE$ 6">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1197,7 +1197,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and PME_max: NWP Ensemble 7">
+	<transformation id="Merge Observed and PME_max: NWP $ENSEMBLE$ 7">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1225,7 +1225,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and Manual Official Forecast: NWP Ensemble 8">
+	<transformation id="Merge Observed and Manual Official Forecast: NWP $ENSEMBLE$ 8">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -1256,7 +1256,7 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Merge Observed and Manual Scenario Forecast: NWP Ensemble 9">
+	<transformation id="Merge Observed and Manual Scenario Forecast: NWP $ENSEMBLE$ 9">
 		<merge>
 			<simple>
 				<inputVariable>

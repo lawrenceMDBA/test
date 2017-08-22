@@ -1457,6 +1457,765 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_prepare_Rainfall">
+		<!--gridded rain processed to locations (daily)-->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-23" end="1" unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<!-- temporary time series -->
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>NWP</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_prepare_Qtrade">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>NSW</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-60" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>VIC</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-60" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>SA_deferred</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-60" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>TLM</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-60" end="60" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>CEHW</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-60" end="60" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>proportion</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>SA_deferred</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TLM</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>CEHW</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_prepare_Qcomb">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-3" end="1" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>stf</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>trend</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>pulse</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_prepare_EVAP">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-6" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_prepare_QORD">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="730" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.mdbc</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.longterm</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_import">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>unaccounted_diff</qualifierId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>ewSourceRO_sites_fcst_UD</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>ewSourceRO_sites_fcst_H</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>ewSourceRO_sites_fcst_V</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>ewSourceRO_sites_fcst_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_calculate_flow">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>sites.ops_reach</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="ewSource_export">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OEC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>SA_deferred</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>CEHW</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TLM</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OV</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<!-- MDBC_OPS (parent filter_id: River_Operations)-->
 	<filter id="MDBC_OPS_results" name="Operations (from MDBC_OPS)">
 		<child foreignKey="MDBS_OPS_calculated_results_OVENS"/>
@@ -2195,6 +2954,77 @@
 				<attributeTextContains id="TYPE" contains="RO_"/>
 			</allValid>
 		</locationConstraints>
+	</filter>
+	<!-- ewSource (parent filter_id: River_Operations)-->
+	<filter id="ewSource_results" name="Operations (Source RO)">
+		<child foreignKey="ewSource_prepare_Rainfall"/>
+		<child foreignKey="ewSource_prepare_Qtrade"/>
+		<child foreignKey="ewSource_prepare_Qcomb"/>
+		<child foreignKey="ewSource_prepare_EVAP"/>
+		<child foreignKey="ewSource_prepare_QORD"/>
+		<child foreignKey="ewSource_export"/>
+		<child foreignKey="ewSource_import"/>
+	</filter>
+	<filter id="ewSource_prepare_Rainfall" name="Prepare Rainfall for Source RO">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_prepare_Rainfall</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_prepare_EVAP" name="Prepare EVAP data for Source RO">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_prepare_EVAP</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_prepare_QORD" name="Prepare QORD data for Source RO">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_prepare_QORD</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_prepare_Qcomb" name="Prepare Q_comb data for Source RO">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_prepare_Qcomb</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_prepare_Qtrade" name="Prepare Qtrade for Source RO">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_prepare_Qtrade</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_export" name="export data">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_export</timeSeriesSetsId>
+	</filter>
+	<filter id="ewSource_import" name="import data">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>ewSource_import</timeSeriesSetsId>
+	</filter>
+	<!-- Water quality (parent filter_id: River_Operations)-->
+	<filter id="Water_quality" name="Water quality">
+		<mapExtentId>Southern MDB</mapExtentId>
+		<relativeViewPeriod start="-100000" end="10" unit="day"/>
+		<locationConstraints>
+			<anyValid>
+				<attributeTextContains id="SAMPLE_PARAMS" contains="Turbidity"/>
+				<attributeTextContains id="SAMPLE_PARAMS" contains="cyanobacteria"/>
+			</anyValid>
+		</locationConstraints>
+		<parameterConstraints>
+			<anyValid>
+				<idStartsWith prefix="Cyanobacteria"/>
+				<idStartsWith prefix="Turbidity_obs"/>
+				<idStartsWith prefix="WT_obs"/>
+				<idStartsWith prefix="DO%_obs"/>
+				<idStartsWith prefix="DO_obs"/>
+				<idStartsWith prefix="EC_obs"/>
+				<idStartsWith prefix="pH_obs"/>
+				<idStartsWith prefix="pH_obs"/>
+			</anyValid>
+		</parameterConstraints>
+		<qualifierConstraints>
+			<idStartsWith prefix=""/>
+		</qualifierConstraints>
 	</filter>
 	<!-- HYDRO (parent filter_id: Hydro)-->
 	<filter id="Hydro_planning_OVENS" name="Ovens (planning)">

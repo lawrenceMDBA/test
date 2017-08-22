@@ -13,6 +13,8 @@
 		<child foreignKey="MDBC_OPS_results"/>
 		<child foreignKey="MDBC_OPS_thresholds_SO"/>
 		<child foreignKey="MDBC_OPS_thresholds_RO"/>
+		<child foreignKey="ewSource_results"/>
+		<child foreignKey="Water_quality"/>
 	</filter>
 	<!-- Filters_DataEntry -->
 	<filter id="MobileDataEntry" name="Mobile data entry (demo)">
@@ -77,9 +79,10 @@
 	</filter>
 	<!-- Filters_FloodOps-->
 	<filter id="Flood Ops" name="Flood Ops">
-			<viewPermission>FloodOperations</viewPermission>
+		<viewPermission>FloodOperations</viewPermission>
 		<child foreignKey="Catchment_FloodOps"/>
 		<child foreignKey="Parameter_FloodOps"/>
+		<child foreignKey="URBS"/>
 	</filter>
 	<!-- Filters_Debug -->
 	<filter id="Debug" name="Debug">

@@ -14,8 +14,10 @@
 	<qualifier id="accessg" name="accessg"/>
 	<qualifier id="accessr" name="accessr"/>
 	<qualifier id="pme" name="pme"/>
+	<qualifier id="AWRA-L RZ" name="AWRA-L RZ"/>
 	<qualifier id="cor" name="corrected"/>
 	<qualifier id="daily" name="Daily"/>
+	<qualifier id="monthly"/>
 	<qualifier id="ds" name="ds"/>
 	<qualifier id="excess" name="excess"/>
 	<qualifier id="crossing" name="crossing"/>
@@ -78,6 +80,12 @@
 	<qualifier id="delta" name="delta"/>
 	<qualifier id="total" name="Total"/>
 	<qualifier id="trend" name="trend"/>
+	<qualifier id="initial"/>
+	<qualifier id="rise"/>
+	<qualifier id="peak"/>
+	<qualifier id="pulse"/>
+	<qualifier id="recede"/>
+	<qualifier id="base"/>
 	<qualifier id="weekly" name="weekly"/>
 	<qualifier id="fromMay1" name="fromMay1"/>
 	<qualifier id="fromJuly1" name="fromJuly1"/>
@@ -119,6 +127,8 @@
 	<qualifier id="SO" name="SO"/>
 	<qualifier id="primary" name="primary"/>
 	<qualifier id="secondary" name="secondary"/>
+	<qualifier id="stf"/>
+	<qualifier id="urbs"/>
 	<qualifier id="req" name="req'd"/>	
 	<!--Evap-->
 	<qualifier id="fao56" name="FAO 56"/>
@@ -133,6 +143,7 @@
 	<qualifier id="shift_t4" name="shift 4 timesteps"/>
 	<qualifier id="unaccounted_diff" name="unaccounted_diff"/>
 	<qualifier id="ucor" name="uncorrected"/>
+	<qualifier id="default" name="default"/>
 	<qualifier id="aep90" name="90% AEP"/>
 	<qualifier id="aep75" name="75% AEP"/>
 	<qualifier id="aep50" name="50% AEP"/>
@@ -151,4 +162,98 @@
 	<qualifier id="manual_dept" name="manual depth"/>
 	<qualifier id="manual recession" name="manual recession"/>
 	<qualifier id="manual persistence" name="manual percistence"/>
+	<!--QSA Trade-->
+	<qualifier id="environmental_trade"/>
+	<qualifier id="undelivered_trade"/>
+	<qualifier id="SA_deferred"/>
+	<qualifier id="NSW"/>
+	<qualifier id="VIC"/>
+	<qualifier id="TLM"/>
+	<qualifier id="CEHW"/>
+	<qualifier id="trade"/>
+	<qualifier id="TS00"/>
+	<qualifier id="TS01"/>
+	<qualifier id="TS02"/>
+	<qualifier id="TS03"/>
+	<qualifier id="TS04"/>
+	<qualifier id="TS05"/>
+	<qualifier id="TS06"/>
+	<qualifier id="TS07"/>
+	<qualifier id="TS08"/>
+	<qualifier id="TS09"/>
+	<qualifier id="TS10"/>
+	<qualifier id="TS11"/>
+	<qualifier id="TS12"/>
+	<qualifier id="shift"/>
+	<qualifier id="constant"/>
+	<csvFile>
+		<file>ROWS_samples_alertlevels.csv</file>
+		<id>Ralert_%qualifierId%</id>
+		<name>Ralert_%qualifierCode%</name>
+		<group>Recreational Alert level</group>
+		<attribute id="ExternalQualifierId">
+			<text>Ralert_%qualifierCode%</text>
+		</attribute>
+		<attribute id="_recreational">
+			<text>%qualifierId%</text>
+		</attribute>
+	</csvFile>
+	<csvFile>
+		<file>ROWS_samples_alertlevels.csv</file>
+		<id>DWalert_%qualifierId%</id>
+		<name>DWalert_%qualifierCode%</name>
+		<group>Drinking water Alert level</group>
+		<attribute id="ExternalQualifierId">
+			<text>DWalert_%qualifierCode%</text>
+		</attribute>
+		<attribute id="_drinkingwater">
+			<text>%qualifierId%</text>
+		</attribute>
+	</csvFile>
+	<csvFile>
+		<file>ROWS_samples_alertlevels.csv</file>
+		<id>LSalert_%qualifierId%</id>
+		<name>LSalert_%qualifierCode%</name>
+		<group>Livestock Alert level</group>
+		<attribute id="ExternalQualifierId">
+			<text>LSalert_%qualifierCode%</text>
+		</attribute>
+		<attribute id="_livestock">
+			<text>%qualifierId%</text>
+		</attribute>
+	</csvFile>
+	<csvFile>
+		<file>ROWS_samples_alertlevels.csv</file>
+		<id>CBalert_%qualifierId%</id>
+		<name>CBalert_%qualifierCode%</name>
+		<group>Cyanobacteria Alert level</group>
+		<attribute id="ExternalQualifierId">
+			<text>CBalert_%qualifierCode%</text>
+		</attribute>
+		<attribute id="_cyanobacteria">
+			<text>%qualifierId%</text>
+		</attribute>
+	</csvFile>
+	<qualifierRootNode id="Sample data">
+		<qualifierNode id="recreational alert levels">
+			<constraints>
+				<attributeExists id="_recreational"/>
+			</constraints>
+		</qualifierNode>
+		<qualifierNode id="drinkingwater alert levels">
+			<constraints>
+				<attributeExists id="_drinkingwater"/>
+			</constraints>
+		</qualifierNode>
+	<qualifierNode id="livestock alert levels">
+			<constraints>
+				<attributeExists id="_livestock"/>
+			</constraints>
+		</qualifierNode>
+	<qualifierNode id="cyanobacteria alert levels">
+			<constraints>
+				<attributeExists id="_cyanobacteria"/>
+			</constraints>
+		</qualifierNode>
+	</qualifierRootNode>
 </qualifiers>

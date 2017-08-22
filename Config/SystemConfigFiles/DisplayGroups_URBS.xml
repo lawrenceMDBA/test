@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<description>Preconfigured display for thresholds data</description>
-	<plot id="URBS_Rainfall_1h">
+	<plot id="Rainfall_1h">
 		<subplot>
 			<inverted>true</inverted>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>P_comb</parameterId>
-				<locationSetId>URBS_subcatchments</locationSetId>
+				<locationSetId>URBS_subcatchments.only</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
-				<relativeViewPeriod unit="day" start="-7" end="0"/>
-				<readWriteMode>read only</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>IFD</ensembleId>
+				<ensembleMemberId>URBS Local</ensembleMemberId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_comb</parameterId>
+				<locationSetId>URBS_subcatchments.only</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>OFFICIAL</ensembleId>
+				<ensembleMemberId>URBS Final</ensembleMemberId>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -206,7 +217,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -257,6 +268,20 @@
 					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
 					<valueType>scalar</valueType>
 					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFD</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_in_fcst</parameterId>
+					<qualifierId>acc</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>simulated forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
@@ -444,6 +469,20 @@
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_in_fcst</parameterId>
+					<qualifierId>acc</qualifierId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>OFFICIAL</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>V_calc</parameterId>
@@ -457,31 +496,42 @@
 			</line>
 		</subplot>
 	</plot>
-	<plot id="URBS_Rainfall_Scenario_1h">
+	<plot id="Rainfall_Scenario_1h">
 		<subplot>
 			<inverted>true</inverted>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>P_comb</parameterId>
-				<locationSetId>URBS_subcatchments</locationSetId>
+				<locationSetId>URBS_subcatchments.only</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
-				<relativeViewPeriod unit="day" start="-7" end="0"/>
-				<readWriteMode>read only</readWriteMode>
+				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>IFDSCENARIO</ensembleId>
+				<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>P_comb</parameterId>
+				<locationSetId>URBS_subcatchments.only</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>SCENARIO</ensembleId>
+				<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
 			<inverted>true</inverted>
 			<timeSeriesSet>
-				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>P_obs</parameterId>
 				<locationSetId>URBS_subcatchments</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep unit="hour"/>
-				<relativeViewPeriod unit="hour" start="-48" end="0"/>
+				<relativeViewPeriod unit="day" start="-7" end="0"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
@@ -559,7 +609,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_IFD_Scenario_1h">
+	<plot id="URBS_Scenario_IFD_1h">
 		<subplot>
 			<plotWeight>40</plotWeight>
 			<timeSeriesSet>
@@ -635,7 +685,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_reservoir_IFD_Scenario_1h">
+	<plot id="URBS_Scenario_IFD_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -713,6 +763,20 @@
 					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
 					<valueType>scalar</valueType>
 					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>IFDSCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_in_fcst</parameterId>
+					<qualifierId>acc</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>simulated forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
@@ -812,7 +876,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_reservoir_Scenario_1h">
+	<plot id="URBS_Scenario_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -890,6 +954,20 @@
 					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
 					<valueType>scalar</valueType>
 					<parameterId>V_fcst</parameterId>
+					<locationSetId>URBS_reservoirs</locationSetId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SCENARIO</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+					<valueType>scalar</valueType>
+					<parameterId>V_in_fcst</parameterId>
+					<qualifierId>acc</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>simulated forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
@@ -1282,7 +1360,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_reservoir_Ensemble_1h">
+	<plot id="URBS_Ensemble_reservoir_1h">
 		<subplot>
 			<color>aquamarine4</color>
 			<timeSeriesSet>
@@ -1734,7 +1812,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_inflow_SSD_Ensemble_1h">
+	<plot id="URBS_SSD_Ensemble_inflow_1h">
 		<subplot>
 			<plotWeight>40</plotWeight>
 			<color>orchid2</color>
@@ -1961,7 +2039,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="URBS_reservoir_SSD_Ensemble_1h">
+	<plot id="URBS_SSD_Ensemble_reservoir_1h">
 		<subplot>
 			<color>orchid2</color>
 			<timeSeriesSet>
@@ -2113,379 +2191,561 @@
 		<viewPermission>FloodOperations</viewPermission>
 		<displayGroup id="rainfallpolicy_upper_murray" name="Upper Murray (rainfall policy)">
 			<nodeId>rainfallpolicy_upper_murray</nodeId>
-			<display id="rainfallpolicy_upper_murray_upper_m" name="Rainfall Forecast: Upper Murray">
-				<locationId>upper_murray_upper_m</locationId>
-				<plotId>URBS_Rainfall_1h</plotId>
+			<display id="rainfallpolicy_upper_murray_mitta" name="Rainfall Forecast: Mitta">
+				<locationId>upper_murray_mitta</locationId>
+				<plotId>Rainfall_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_upper_murray_upper" name="Rainfall Forecast: Upper">
+				<locationId>upper_murray_upper</locationId>
+				<plotId>Rainfall_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_upper_murray_below" name="Rainfall Forecast: Below">
+				<locationId>upper_murray_below</locationId>
+				<plotId>Rainfall_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_upper_m" name="Upper Murray (run model)">
-			<nodeId>upper_murray_upper_m</nodeId>
-			<display id="R_401012_upper_m" name="401012 - Biggara">
-				<locationId>R_401012</locationId>
+		<displayGroup id="upper_murray_mitta" name="Upper Murray - mitta (run model)">
+			<nodeId>upper_murray_mitta</nodeId>
+			<display id="R_401216A_mitta" name="401216A - Jokers Ck">
+				<locationId>R_401216A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_401549_upper_m" name="401549 - Bringenbong">
-				<locationId>R_401549</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
-				<locationId>R_401009</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401014_upper_m" name="401014 - Pinegrove">
-				<locationId>R_401014</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401201A_upper_m" name="401201A - Jingellic">
-				<locationId>R_401201A</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
-				<locationId>R_401013</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401015_upper_m" name="401015 - Yambla">
-				<locationId>R_401015</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
-			<display id="R_401203A_upper_m" name="401203A - Hinnomunjie">
+			<display id="R_401203A_mitta" name="401203A - Hinnomunjie">
 				<locationId>R_401203A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_401224A_upper_m" name="401224A - Dartmouth Dam">
+			<display id="R_401217A_mitta" name="401217A - Gibbo Pk">
+				<locationId>R_401217A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401224A_mitta" name="401224A - Dartmouth Dam">
 				<locationId>R_401224A</locationId>
 				<plotId>URBS_reservoir_1h</plotId>
 			</display>
-			<display id="R_401211A_upper_m" name="401211A - Colemans">
+			<display id="R_401211A_mitta" name="401211A - Colemans">
 				<locationId>R_401211A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_401204A_upper_m" name="401204A - Tallandoon">
+			<display id="R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_401027_upper_m" name="401027 - HUME DAM">
+		</displayGroup>
+		<displayGroup id="upper_murray_upper" name="Upper Murray - upper (run model)">
+			<nodeId>upper_murray_upper</nodeId>
+			<display id="R_401012_upper" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_MUR1REL_upper" name="MUR1REL - Murray 1 Release">
+				<locationId>R_MUR1REL</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401569_upper" name="401569 - Khancoban releases">
+				<locationId>R_401569</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401549_upper" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401009_upper" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401014_upper" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401229A_upper" name="401229A - Cudgewa North">
+				<locationId>R_401229A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401013_upper" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401015_upper" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401220B_upper" name="401220B - McCallums">
+				<locationId>R_401220B</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401204A_upper" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401027_upper" name="401027 - HUME DAM">
 				<locationId>R_401027</locationId>
 				<plotId>URBS_reservoir_1h</plotId>
 			</display>
-			<display id="R_409016_upper_m" name="409016 - Heywoods">
+		</displayGroup>
+		<displayGroup id="upper_murray_below" name="Upper Murray - below (run model)">
+			<nodeId>upper_murray_below</nodeId>
+			<display id="R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_402205A_upper_m" name="402205A - Bandiana">
+			<display id="R_402222A_below" name="402222A - Kiewa">
+				<locationId>R_402222A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_402205A_below" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_409017_upper_m" name="409017 - Doctor's Point">
+			<display id="R_409017_below" name="409017 - Doctor's Point">
 				<locationId>R_409017</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_409001_upper_m" name="409001 - Albury">
+			<display id="R_409001_below" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="saveofficial_upper_murray" name="Upper Murray (save official)">
-			<nodeId>saveofficial_upper_murray</nodeId>
-			<display id="saveofficial_R_401012_upper_murray" name="401012 - Biggara">
-				<locationId>R_401012</locationId>
+		<displayGroup id="upper_murray_official" name="Upper Murray (save official)">
+			<nodeId>upper_murray_official</nodeId>
+			<display id="official_R_401216A_mitta" name="401216A - Jokers Ck">
+				<locationId>R_401216A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_401549_upper_murray" name="401549 - Bringenbong">
-				<locationId>R_401549</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401009_upper_murray" name="401009 - MARAGLE @ MARAGLE">
-				<locationId>R_401009</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401014_upper_murray" name="401014 - Pinegrove">
-				<locationId>R_401014</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401201A_upper_murray" name="401201A - Jingellic">
-				<locationId>R_401201A</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401013_upper_murray" name="401013 - Jingellic Ck @ Jingellic">
-				<locationId>R_401013</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401015_upper_murray" name="401015 - Yambla">
-				<locationId>R_401015</locationId>
-				<plotId>URBS_Official_1h</plotId>
-			</display>
-			<display id="saveofficial_R_401203A_upper_murray" name="401203A - Hinnomunjie">
+			<display id="official_R_401203A_mitta" name="401203A - Hinnomunjie">
 				<locationId>R_401203A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_401224A_upper_murray" name="401224A - Dartmouth Dam">
+			<display id="official_R_401217A_mitta" name="401217A - Gibbo Pk">
+				<locationId>R_401217A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401224A_mitta" name="401224A - Dartmouth Dam">
 				<locationId>R_401224A</locationId>
 				<plotId>URBS_Official_reservoir_1h</plotId>
 			</display>
-			<display id="saveofficial_R_401211A_upper_murray" name="401211A - Colemans">
+			<display id="official_R_401211A_mitta" name="401211A - Colemans">
 				<locationId>R_401211A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_401204A_upper_murray" name="401204A - Tallandoon">
+			<display id="official_R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_401027_upper_murray" name="401027 - HUME DAM">
+			<display id="official_R_401012_upper" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_MUR1REL_upper" name="MUR1REL - Murray 1 Release">
+				<locationId>R_MUR1REL</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401569_upper" name="401569 - Khancoban releases">
+				<locationId>R_401569</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401549_upper" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401009_upper" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401014_upper" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401229A_upper" name="401229A - Cudgewa North">
+				<locationId>R_401229A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401013_upper" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401015_upper" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401220B_upper" name="401220B - McCallums">
+				<locationId>R_401220B</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401204A_upper" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401027_upper" name="401027 - HUME DAM">
 				<locationId>R_401027</locationId>
 				<plotId>URBS_Official_reservoir_1h</plotId>
 			</display>
-			<display id="saveofficial_R_409016_upper_murray" name="409016 - Heywoods">
+			<display id="official_R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_402205A_upper_murray" name="402205A - Bandiana">
+			<display id="official_R_402222A_below" name="402222A - Kiewa">
+				<locationId>R_402222A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_402205A_below" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_409017_upper_murray" name="409017 - Doctor's Point">
+			<display id="official_R_409017_below" name="409017 - Doctor's Point">
 				<locationId>R_409017</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
-			<display id="saveofficial_R_409001_upper_murray" name="409001 - Albury">
+			<display id="official_R_409001_below" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="rainfallpolicy_scenario_upper_murray" name="Upper Murray (rainfall policy)">
-			<nodeId>rainfallpolicy_scenario_upper_murray</nodeId>
-			<display id="rainfallpolicy_scenario_upper_murray_upper_m" name="Scenario Forecast: Upper Murray">
-				<locationId>upper_murray_upper_m</locationId>
-				<plotId>URBS_Rainfall_Scenario_1h</plotId>
+		<displayGroup id="rainfallscenario_upper_murray" name="Upper Murray (rainfall policy)">
+			<nodeId>rainfallscenario_upper_murray</nodeId>
+			<display id="rainfallpolicy_scenario_upper_murray_mitta" name="Scenario Forecast: Mitta">
+				<locationId>upper_murray_mitta</locationId>
+				<plotId>Rainfall_Scenario_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_scenario_upper_murray_upper" name="Scenario Forecast: Upper">
+				<locationId>upper_murray_upper</locationId>
+				<plotId>Rainfall_Scenario_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_scenario_upper_murray_below" name="Scenario Forecast: Below">
+				<locationId>upper_murray_below</locationId>
+				<plotId>Rainfall_Scenario_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="scenario_upper_murray_upper_m" name="Upper Murray (run scenario)">
-			<nodeId>scenario_upper_murray_upper_m</nodeId>
-			<display id="scenario_R_401012_upper_m" name="401012 - Biggara">
-				<locationId>R_401012</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+		<displayGroup id="upper_murray_runscenario" name="Upper Murray (run scenario)">
+			<nodeId>upper_murray_runscenario</nodeId>
+			<display id="runscenario_R_401216A_mitta" name="401216A - Jokers Ck">
+				<locationId>R_401216A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_401549_upper_m" name="401549 - Bringenbong">
-				<locationId>R_401549</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
-				<locationId>R_401009</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401014_upper_m" name="401014 - Pinegrove">
-				<locationId>R_401014</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401201A_upper_m" name="401201A - Jingellic">
-				<locationId>R_401201A</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
-				<locationId>R_401013</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401015_upper_m" name="401015 - Yambla">
-				<locationId>R_401015</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
-			</display>
-			<display id="scenario_R_401203A_upper_m" name="401203A - Hinnomunjie">
+			<display id="runscenario_R_401203A_mitta" name="401203A - Hinnomunjie">
 				<locationId>R_401203A</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_401224A_upper_m" name="401224A - Dartmouth Dam">
+			<display id="runscenario_R_401217A_mitta" name="401217A - Gibbo Pk">
+				<locationId>R_401217A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401224A_mitta" name="401224A - Dartmouth Dam">
 				<locationId>R_401224A</locationId>
-				<plotId>URBS_reservoir_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_reservoir_1h</plotId>
 			</display>
-			<display id="scenario_R_401211A_upper_m" name="401211A - Colemans">
+			<display id="runscenario_R_401211A_mitta" name="401211A - Colemans">
 				<locationId>R_401211A</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_401204A_upper_m" name="401204A - Tallandoon">
+			<display id="runscenario_R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_401027_upper_m" name="401027 - HUME DAM">
+			<display id="runscenario_R_401012_upper" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_MUR1REL_upper" name="MUR1REL - Murray 1 Release">
+				<locationId>R_MUR1REL</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401569_upper" name="401569 - Khancoban releases">
+				<locationId>R_401569</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401549_upper" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401009_upper" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401014_upper" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401229A_upper" name="401229A - Cudgewa North">
+				<locationId>R_401229A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401013_upper" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401015_upper" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401220B_upper" name="401220B - McCallums">
+				<locationId>R_401220B</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401204A_upper" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401027_upper" name="401027 - HUME DAM">
 				<locationId>R_401027</locationId>
-				<plotId>URBS_reservoir_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_reservoir_1h</plotId>
 			</display>
-			<display id="scenario_R_409016_upper_m" name="409016 - Heywoods">
+			<display id="runscenario_R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_402205A_upper_m" name="402205A - Bandiana">
+			<display id="runscenario_R_402222A_below" name="402222A - Kiewa">
+				<locationId>R_402222A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_402205A_below" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_409017_upper_m" name="409017 - Doctor's Point">
+			<display id="runscenario_R_409017_below" name="409017 - Doctor's Point">
 				<locationId>R_409017</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
-			<display id="scenario_R_409001_upper_m" name="409001 - Albury">
+			<display id="runscenario_R_409001_below" name="409001 - Albury">
 				<locationId>R_409001</locationId>
-				<plotId>URBS_IFD_Scenario_1h</plotId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="savescenario_upper_murray" name="Upper Murray (save scenario)">
-			<nodeId>savescenario_upper_murray</nodeId>
-			<display id="savescenario_R_401012_upper_m" name="401012 - Biggara">
-				<locationId>R_401012</locationId>
+		<displayGroup id="upper_murray_scenario" name="Upper Murray (save scenario)">
+			<nodeId>upper_murray_scenario</nodeId>
+			<display id="scenario_R_401216A_mitta" name="401216A - Jokers Ck">
+				<locationId>R_401216A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_401549_upper_m" name="401549 - Bringenbong">
-				<locationId>R_401549</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
-				<locationId>R_401009</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401014_upper_m" name="401014 - Pinegrove">
-				<locationId>R_401014</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401201A_upper_m" name="401201A - Jingellic">
-				<locationId>R_401201A</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
-				<locationId>R_401013</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401015_upper_m" name="401015 - Yambla">
-				<locationId>R_401015</locationId>
-				<plotId>URBS_Scenario_1h</plotId>
-			</display>
-			<display id="savescenario_R_401203A_upper_m" name="401203A - Hinnomunjie">
+			<display id="scenario_R_401203A_mitta" name="401203A - Hinnomunjie">
 				<locationId>R_401203A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_401224A_upper_m" name="401224A - Dartmouth Dam">
-				<locationId>R_401224A</locationId>
-				<plotId>URBS_reservoir_Scenario_1h</plotId>
+			<display id="scenario_R_401217A_mitta" name="401217A - Gibbo Pk">
+				<locationId>R_401217A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_401211A_upper_m" name="401211A - Colemans">
+			<display id="scenario_R_401224A_mitta" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_Scenario_reservoir_1h</plotId>
+			</display>
+			<display id="scenario_R_401211A_mitta" name="401211A - Colemans">
 				<locationId>R_401211A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_401204A_upper_m" name="401204A - Tallandoon">
+			<display id="scenario_R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_401027_upper_m" name="401027 - HUME DAM">
-				<locationId>R_401027</locationId>
-				<plotId>URBS_reservoir_Scenario_1h</plotId>
+			<display id="scenario_R_401012_upper" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_409016_upper_m" name="409016 - Heywoods">
+			<display id="scenario_R_MUR1REL_upper" name="MUR1REL - Murray 1 Release">
+				<locationId>R_MUR1REL</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401569_upper" name="401569 - Khancoban releases">
+				<locationId>R_401569</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401549_upper" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401009_upper" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401014_upper" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401229A_upper" name="401229A - Cudgewa North">
+				<locationId>R_401229A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401013_upper" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401015_upper" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401220B_upper" name="401220B - McCallums">
+				<locationId>R_401220B</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401204A_upper" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401027_upper" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_Scenario_reservoir_1h</plotId>
+			</display>
+			<display id="scenario_R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_402205A_upper_m" name="402205A - Bandiana">
+			<display id="scenario_R_402222A_below" name="402222A - Kiewa">
+				<locationId>R_402222A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_402205A_below" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_40901_upper_m" name="409017 - Doctor's Point">
+			<display id="scenario_R_409017_below" name="409017 - Doctor's Point">
 				<locationId>R_409017</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
-			<display id="savescenario_R_409001_upper_m" name="409001 - Albury">
+			<display id="scenario_R_409001_below" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="runensemble_upper_murray" name="Upper Murray (ensemble)">
-			<nodeId>runensemble_upper_murray</nodeId>
-			<display id="runensemble_R_401012_upper_m" name="401012 - Biggara">
-				<locationId>R_401012</locationId>
+		<displayGroup id="upper_murray_runensemble" name="Upper Murray (run ensemble)">
+			<nodeId>upper_murray_runensemble</nodeId>
+			<display id="runensemble_R_401216A_mitta" name="401216A - Jokers Ck">
+				<locationId>R_401216A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_401549_upper_m" name="401549 - Bringenbong">
-				<locationId>R_401549</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401009_upper_m" name="401009 - MARAGLE @ MARAGLE">
-				<locationId>R_401009</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401014_upper_m" name="401014 - Pinegrove">
-				<locationId>R_401014</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401201A_upper_m" name="401201A - Jingellic">
-				<locationId>R_401201A</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401013_upper_m" name="401013 - Jingellic Ck @ Jingellic">
-				<locationId>R_401013</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401015_upper_m" name="401015 - Yambla">
-				<locationId>R_401015</locationId>
-				<plotId>URBS_Ensemble_1h</plotId>
-			</display>
-			<display id="runensemble_R_401203A_upper_m" name="401203A - Hinnomunjie">
+			<display id="runensemble_R_401203A_mitta" name="401203A - Hinnomunjie">
 				<locationId>R_401203A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_401224A_upper_m" name="401224A - Dartmouth Dam">
-				<locationId>R_401224A</locationId>
-				<plotId>URBS_reservoir_Ensemble_1h</plotId>
+			<display id="runensemble_R_401217A_mitta" name="401217A - Gibbo Pk">
+				<locationId>R_401217A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_401211A_upper_m" name="401211A - Colemans">
+			<display id="runensemble_R_401224A_mitta" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_Ensemble_reservoir_1h</plotId>
+			</display>
+			<display id="runensemble_R_401211A_mitta" name="401211A - Colemans">
 				<locationId>R_401211A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_401204A_upper_m" name="401204A - Tallandoon">
+			<display id="runensemble_R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_401027_upper_m" name="401027 - HUME DAM">
-				<locationId>R_401027</locationId>
-				<plotId>URBS_reservoir_Ensemble_1h</plotId>
+			<display id="runensemble_R_401012_upper" name="401012 - Biggara">
+				<locationId>R_401012</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_409016_upper_m" name="409016 - Heywoods">
+			<display id="runensemble_R_MUR1REL_upper" name="MUR1REL - Murray 1 Release">
+				<locationId>R_MUR1REL</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401569_upper" name="401569 - Khancoban releases">
+				<locationId>R_401569</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401549_upper" name="401549 - Bringenbong">
+				<locationId>R_401549</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401009_upper" name="401009 - MARAGLE @ MARAGLE">
+				<locationId>R_401009</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401014_upper" name="401014 - Pinegrove">
+				<locationId>R_401014</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401229A_upper" name="401229A - Cudgewa North">
+				<locationId>R_401229A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401013_upper" name="401013 - Jingellic Ck @ Jingellic">
+				<locationId>R_401013</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401015_upper" name="401015 - Yambla">
+				<locationId>R_401015</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401220B_upper" name="401220B - McCallums">
+				<locationId>R_401220B</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401204A_upper" name="401204A - Tallandoon">
+				<locationId>R_401204A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401027_upper" name="401027 - HUME DAM">
+				<locationId>R_401027</locationId>
+				<plotId>URBS_Ensemble_reservoir_1h</plotId>
+			</display>
+			<display id="runensemble_R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_402205A_upper_m" name="402205A - Bandiana">
+			<display id="runensemble_R_402222A_below" name="402222A - Kiewa">
+				<locationId>R_402222A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_402205A_below" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_409001_upper_m" name="409017 - Doctor's Point">
+			<display id="runensemble_R_409017_below" name="409017 - Doctor's Point">
 				<locationId>R_409017</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
-			<display id="runensemble_R_409001_upper_m" name="409001 - Albury">
+			<display id="runensemble_R_409001_below" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="ssdensemble_upper_murray" name="Upper Murray (ensemble, SSD)">
-			<display id="ssdensemble_R_401201A_upper_m" name="401201A - Jingellic">
+		<displayGroup id="upper_murray_ssdensemble" name="Upper Murray (ensemble, SSD)">
+			<display id="ssdensemble_R_401201A_upper_murray" name="401201A - Jingellic">
 				<locationId>R_401201A</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_401204A_upper_m" name="401204A - Tallandoon">
+			<display id="ssdensemble_R_401204A_upper_murray" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_401027_upper_m" name="401027 - HUME DAM (inflow)">
+			<display id="ssdensemble_R_401027_upper_murray" name="401027 - HUME DAM (inflow)">
 				<locationId>R_401027</locationId>
-				<plotId>URBS_inflow_SSD_Ensemble_1h</plotId>
+				<plotId>URBS_SSD_Ensemble_inflow_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_401027_upper_m_H" name="401027 - HUME DAM">
+			<display id="ssdensemble_R_401027_upper_murray_H" name="401027 - HUME DAM">
 				<locationId>R_401027</locationId>
-				<plotId>URBS_reservoir_SSD_Ensemble_1h</plotId>
+				<plotId>URBS_SSD_Ensemble_reservoir_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_409016_upper_m" name="409016 - Heywoods">
+			<display id="ssdensemble_R_409016_upper_murray" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_402205A_upper_m" name="402205A - Bandiana">
+			<display id="ssdensemble_R_402205A_upper_murray" name="402205A - Bandiana">
 				<locationId>R_402205A</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
 			</display>
-			<display id="ssdensemble_R_409001_upper_m" name="409001 - Albury">
+			<display id="ssdensemble_R_409001_upper_murray" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
 			</display>

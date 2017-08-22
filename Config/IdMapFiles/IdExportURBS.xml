@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
 	<function internalLocationSet="URBS_subareas" internalParameter="P_comb" externalLocationFunction="@URBS_SUBAREAID@" externalParameterFunction="P.obs"/>
-	<function internalLocationSet="URBS_fcst_sites" internalParameter="Q_obs" externalLocationFunction="@QSIM_URBSID@" externalParameterFunction="G"/>
-	<function internalLocationSet="URBS_reservoirs" internalParameter="H_obs" externalLocationFunction="@QSIM_URBSID@" externalParameterFunction="G"/>
+	<function internalLocationSet="URBS_fcst_sites" internalParameter="Q_fcst" externalLocationFunction="@QSIM_URBSID@" externalParameterFunction="I"/>
+	<!--  all parameters below map to a .g file, so only one file (i.e. parameter) per location will come through  -->
 	<function internalLocationSet="URBS_reservoirs_controlled" internalParameter="Q_release" externalLocationFunction="@QRELEASE_URBSID@" externalParameterFunction="G"/>
 	<function internalLocationSet="URBS_reservoirs_controlled" internalParameter="Q_release_scen" externalLocationFunction="@QRELEASE_URBSID@" externalParameterFunction="G"/>
+	<function internalLocationSet="URBS_reservoirs" internalParameter="H_obs" externalLocationFunction="@QSIM_URBSID@" externalParameterFunction="G"/>
+	<function internalLocationSet="URBS_fcst_sites" internalParameter="Q_obs" externalLocationFunction="@QSIM_URBSID@" externalParameterFunction="G"/>
 </idMap>

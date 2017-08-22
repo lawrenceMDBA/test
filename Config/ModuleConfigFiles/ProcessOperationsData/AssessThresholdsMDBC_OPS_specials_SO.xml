@@ -2427,7 +2427,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_S_COND_1, if(dH_Heywood &lt; dH_S_HARD_1, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_S_COND_1, if(dH_Heywood &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="Q_S_COND_1" value="12000"/>
