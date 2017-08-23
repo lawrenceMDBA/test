@@ -1,0 +1,2102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ SA trade flow-->
+	<!-- NSW, VIC undelivered -->
+	<!-- - manual data entry of underlivered at start of month [ML] -->
+	<!-- - transform to NSW/VIC underlivered trade [ML/month] -->
+	<!-- - combine and disaggregate into Total underlivered trade [ML/day] -->
+	<!-- SA Deferred Water -->
+	<!-- - manual data entry [ML/month] -->
+	<!-- - dissaggregate to [ML/day] -->
+	<!-- TLM and CWEH direct trade to SA -->
+	<!-- - manual data entry [ML/month] -->
+	<!-- - combine and dissagregate into Potentional Environmental Direct Murray Trades [ML/day] -->
+	<!-- Daily Trade Adjustment -->
+	<!-- - combine all three source [ML/day]-->
+	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
+	<!--+ Inflow: Climate (see PrepareewSourceRO_EVAP)-->
+	<!--+ Inflow: Flow (see PrepareewSourceRO_Qcomb)-->
+	<!--+ Water user demand: Q_plan (see PrepareewSourceRO_QORD)-->
+	<!--+ Environmental Flow Orders (not included at this stage)-->
+	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
+	<!--========================================================================================-->
+	<!--Variables - Undelivered from NSW and VIC-->
+	<variable>
+		<variableId>Cycle_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>index</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<relativeViewPeriod start="0" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>proportion</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>proportion</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undelivered_Vol_NSW</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<qualifierId>NSW</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undelivered_Vol_VIC</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<qualifierId>VIC</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undelivered_Volume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undel_Vol_Constant</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_undelivered</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>constant</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Variables - TS to shift (temporary)-->
+	<variable>
+		<variableId>TS00</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS00</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS00_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS00</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS01</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS01</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS01_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS01</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS02</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS02</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS02_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS02</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS03</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS03</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS03_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS03</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS04</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS04</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS04_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS04</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS05</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS05</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS05_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS05</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS06</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS06</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS06_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS06</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS07</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS07</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS07_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS07</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS08</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS08</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS08_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS08</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS09</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS09</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS09_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS09</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS10</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS10</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS10_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS10</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>TS11</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>TS11</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="0" end="1" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables - Undelivered trade, SA Deferred and Environmental trade - monthly timestep-->
+	<variable>
+		<variableId>Undelivered_trade_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undelivered_trade_month_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="1"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SA_Deferred_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>SA_deferred</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_TLM_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>TLM</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_CEHW_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>CEHW</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables - Undelivered trade, SA Deferred and Environmental trade - shift time (temporary)-->
+	<variable>
+		<variableId>Undelivered_trade_month_fcst_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SA_Deferred_month_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>SA_deferred</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_TLM_month_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>TLM</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_CEHW_month_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>CEHW</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables - Undelivered trade, SA Deferred and Environmental trade - daily timestep-->
+	<variable>
+		<variableId>Undelivered_trade_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Undelivered_trade_day_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day" multiplier="1"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SA_Deferred_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>SA_deferred</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_TLM_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>TLM</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_CEHW_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>CEHW</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Environmental_trade_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>environmental_trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Total_trade_day</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_trade</parameterId>
+			<qualifierId>trade</qualifierId>
+			<locationId>SA_border</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Proportions (preparations to calculate Q_trade)-->
+	<transformation id="Cycle_month">
+		<profile>
+			<timeSeries>
+				<inputProfile>
+					<data value="1" monthDay="--01-01"/>
+					<data value="2" monthDay="--02-01"/>
+					<data value="3" monthDay="--03-01"/>
+					<data value="4" monthDay="--04-01"/>
+					<data value="5" monthDay="--05-01"/>
+					<data value="6" monthDay="--06-01"/>
+					<data value="7" monthDay="--07-01"/>
+					<data value="8" monthDay="--08-01"/>
+					<data value="9" monthDay="--09-01"/>
+					<data value="10" monthDay="--10-01"/>
+					<data value="11" monthDay="--11-01"/>
+					<data value="12" monthDay="--12-01"/>
+					<timeZone>
+						<timeZoneOffset>+10:00</timeZoneOffset>
+					</timeZone>
+				</inputProfile>
+				<type>simple</type>
+				<outputVariable>
+					<variableId>Cycle_month</variableId>
+				</outputVariable>
+			</timeSeries>
+		</profile>
+	</transformation>
+	<transformation id="proportion">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_PROP, if(Cycle_month==2, FEB_PROP, if(Cycle_month==3, MAR_PROP, if(Cycle_month==4, APR_PROP, if(Cycle_month==5, MAY_PROP, if(Cycle_month==6, JUN_PROP, if(Cycle_month==7, JUL_PROP, if(Cycle_month==8, AUG_PROP, if(Cycle_month==9, SEP_PROP, if(Cycle_month==10, OCT_PROP, if(Cycle_month==11, NOV_PROP, DEC_PROP)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_PROP" value="@JAN_PROP@"/>
+					<coefficient id="FEB_PROP" value="@FEB_PROP@"/>
+					<coefficient id="MAR_PROP" value="@MAR_PROP@"/>
+					<coefficient id="APR_PROP" value="@APR_PROP@"/>
+					<coefficient id="MAY_PROP" value="@MAY_PROP@"/>
+					<coefficient id="JUN_PROP" value="@JUN_PROP@"/>
+					<coefficient id="JUL_PROP" value="@JUL_PROP@"/>
+					<coefficient id="AUG_PROP" value="@AUG_PROP@"/>
+					<coefficient id="SEP_PROP" value="@SEP_PROP@"/>
+					<coefficient id="OCT_PROP" value="@OCT_PROP@"/>
+					<coefficient id="NOV_PROP" value="@NOV_PROP@"/>
+					<coefficient id="DEC_PROP" value="@DEC_PROP@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>proportion</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Undelivered_Volume">
+		<user>
+			<simple>
+				<expression>Undelivered_Vol_NSW + Undelivered_Vol_VIC</expression>
+				<outputVariable>
+					<variableId>Undelivered_Volume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Undel_Vol_Constant">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Undelivered_Volume</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>Undel_Vol_Constant</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<!--calculate Q_trade (TS00-TS11)-->
+	<transformation id="TS00">
+		<user>
+			<simple>
+				<expression>proportion * Undel_Vol_Constant</expression>
+				<outputVariable>
+					<variableId>TS00</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift)</expression>
+				<outputVariable>
+					<variableId>TS01</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift)</expression>
+				<outputVariable>
+					<variableId>TS02</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift)</expression>
+				<outputVariable>
+					<variableId>TS03</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift)</expression>
+				<outputVariable>
+					<variableId>TS04</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift)</expression>
+				<outputVariable>
+					<variableId>TS05</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift)</expression>
+				<outputVariable>
+					<variableId>TS06</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_7">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS06_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS07">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift - TS06_shift) </expression>
+				<outputVariable>
+					<variableId>TS07</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_8">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>8</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_7">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS06_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS07_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS07</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS07_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS08">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift - TS06_shift - TS07_shift)</expression>
+				<outputVariable>
+					<variableId>TS08</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_9">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>9</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_8">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>8</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_7">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS06_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS07_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS07</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS07_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS08_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS08</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS08_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS09">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift - TS06_shift - TS07_shift - TS08_shift)</expression>
+				<outputVariable>
+					<variableId>TS09</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_10">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_9">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>9</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_8">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>8</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_7">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS06_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS07_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS07</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS07_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS08_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS08</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS08_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS09_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS09</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS09_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS10">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift - TS06_shift - TS07_shift - TS08_shift - TS09_shift)</expression>
+				<outputVariable>
+					<variableId>TS10</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="TS00_shift_11">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>11</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS00_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS01_shift_10">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS01_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS02_shift_9">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>9</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS02_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS03_shift_8">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>8</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS03_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS04_shift_7">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS04_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS05_shift_6">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>6</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS05_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS06_shift_5">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>5</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS06_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS07_shift_4">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS07</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>4</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS07_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS08_shift_3">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS08</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS08_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS09_shift_2">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS09</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>2</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS09_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS10_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>TS10</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>TS10_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="TS11">
+		<user>
+			<simple>
+				<expression>proportion * (Undel_Vol_Constant - TS00_shift - TS01_shift -TS02_shift - TS03_shift - TS04_shift -TS05_shift - TS06_shift - TS07_shift - TS08_shift - TS09_shift - TS10_shift)</expression>
+				<outputVariable>
+					<variableId>TS11</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--combine sources, convert monthly to daily, merge to total trade-->
+	<transformation id="Undelivered_trade_month_fcst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>TS11</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS10</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS09</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS08</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS07</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS06</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS05</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS04</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS03</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS02</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS01</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>TS00</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Undelivered_trade_month_fcst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Undelivered_trade_month">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Undelivered_trade_month_fcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Undelivered_trade_month</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Undelivered_trade_month</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Undelivered_trade_month_fcst_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Undelivered_trade_month_fcst</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Undelivered_trade_month_fcst_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="SA_Deferred_month_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>SA_Deferred_month</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>SA_Deferred_month_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Environmental_trade_TLM_month_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Environmental_trade_TLM_month</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Environmental_trade_TLM_month_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Environmental_trade_CEHW_month_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Environmental_trade_CEHW_month</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Environmental_trade_CEHW_month_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Undelivered_trade_day_fcst">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Undelivered_trade_month_fcst_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Undelivered_trade_day_fcst</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Undelivered_trade_day">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Undelivered_trade_month</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Undelivered_trade_day</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Undelivered_trade_day">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Undelivered_trade_day_fcst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Undelivered_trade_day</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Undelivered_trade_day</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="SA_Deferred_day">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>SA_Deferred_month_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SA_Deferred_day</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Environmental_trade_TLM_day">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Environmental_trade_TLM_month_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Environmental_trade_TLM_day</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Environmental_trade_CEHW_day">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Environmental_trade_CEHW_month_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Environmental_trade_CEHW_day</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Undelivered_trade_day_fill">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Undelivered_trade_day</variableId>
+				</inputVariable>
+				<defaultValueFunction>0</defaultValueFunction>
+				<outputVariable>
+					<variableId>Undelivered_trade_day</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="SA_Deferred_day_fill">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>SA_Deferred_day</variableId>
+				</inputVariable>
+				<defaultValueFunction>0</defaultValueFunction>
+				<outputVariable>
+					<variableId>SA_Deferred_day</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Environmental_trade_TLM_day_fill">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Environmental_trade_TLM_day</variableId>
+				</inputVariable>
+				<defaultValueFunction>0</defaultValueFunction>
+				<outputVariable>
+					<variableId>Environmental_trade_TLM_day</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Environmental_trade_CEHW_day_fill">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Environmental_trade_CEHW_day</variableId>
+				</inputVariable>
+				<defaultValueFunction>0</defaultValueFunction>
+				<outputVariable>
+					<variableId>Environmental_trade_CEHW_day</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Total_trade_day">
+		<user>
+			<simple>
+				<expression>Environmental_trade_TLM_day + Environmental_trade_CEHW_day + SA_Deferred_day + Undelivered_trade_day</expression>
+				<outputVariable>
+					<variableId>Total_trade_day</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

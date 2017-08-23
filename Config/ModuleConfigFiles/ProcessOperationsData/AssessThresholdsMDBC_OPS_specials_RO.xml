@@ -614,10 +614,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 				<limitVariable>
 					<variableId>Q_dsYarrawonga</variableId>
 				</limitVariable>
-				<expression>if (Q_dsYarrawonga &lt; Q_GT_SOFT - 0.0001, if(dH_dsYarrawonga &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<expression>if (Q_dsYarrawonga &lt; RO_Q_GT_SOFT - 0.0001, if(dH_dsYarrawonga &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
-					<coefficient id="Q_GT_SOFT" value="@RO_Q_GT_SOFT@"/>
+					<coefficient id="RO_Q_GT_SOFT" value="@RO_Q_GT_SOFT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dH_thresh_soft_Yarrawonga</variableId>
@@ -628,10 +628,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="EdwardOT_dH_thresh_soft1">
 		<user>
 			<simple>
-				<expression>if (H_EdwardOT &lt;= H_GT_HARD, if(dH_EdwardOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<expression>if (H_EdwardOT &lt;= SO_H_GT_HARD, if(dH_EdwardOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
-					<coefficient id="H_GT_HARD" value="@SO_H_GT_HARD@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dH_thresh_soft_EdwardOT_1</variableId>
@@ -656,10 +656,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="GulpaOT_dH_thresh_soft1">
 		<user>
 			<simple>
-				<expression>if (H_GulpaOT &lt;= H_GT_HARD, if(dH_GulpaOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<expression>if (H_GulpaOT &lt;= SO_H_GT_HARD, if(dH_GulpaOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
-					<coefficient id="H_GT_HARD" value="@SO_H_GT_HARD@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dH_thresh_soft_GulpaOT_1</variableId>
@@ -670,10 +670,10 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="GulpaOT_dH_thresh_soft2">
 		<user>
 			<simple>
-				<expression>if (H_GulpaOT &lt;= H_GT_HARD, if(dH_GulpaOT &gt;= dH_S_SOFT_2, 201, 1/0), 1/0)</expression>
+				<expression>if (H_GulpaOT &lt;= SO_H_GT_HARD, if(dH_GulpaOT &gt;= dH_S_SOFT_2, 201, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_SOFT_2" value="@dH_S_SOFT_2@"/>
-					<coefficient id="H_GT_HARD" value="@SO_H_GT_HARD@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>dH_thresh_soft_GulpaOT_2</variableId>

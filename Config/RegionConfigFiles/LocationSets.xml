@@ -1192,6 +1192,10 @@
 					<description>Default reservoir level</description>
 					<number>%INITIAL_RESERVOIR_LEVEL%</number>
 				</attribute>
+				<attribute id="QBC">
+					<description>Locations on Q boundary between subcatchments</description>
+					<text>%QBC%</text>
+				</attribute>
 				<attribute id="URBS_OUTPUTPAR_PGROSS" name="URBS_outputPar_Pgross">
 					<description>Fixed urbs parameter name</description>
 					<text>Gross_Rainfall</text>
@@ -1215,6 +1219,465 @@
 				<attribute id="URBS_INPUTPAR_QI" name="URBS_inputPar_QI">
 					<description>Fixed urbs parameter name</description>
 					<text>I</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_sites_idmap</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="catchment">
+					<relatedLocationId>ewSource_RO</relatedLocationId>
+				</relation>
+				<attribute id="1_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%1_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="5_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%5_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="35_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%35_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="36_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%36_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="37_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%37_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="38_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%38_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="50_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%50_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="51_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%51_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="60_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%60_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="63_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%63_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="70_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%70_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="79_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%79_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="87_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%87_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="204_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%204_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="206_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%206_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="211_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%211_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="212_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%212_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="223_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%223_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="224_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%224_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="278_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%278_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="414_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%414_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="457_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%457_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="466_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%466_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="490_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%490_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="536_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%536_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="640_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%640_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="650_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%650_EWSRC_ID%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_evap_tables</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="subcatchment">
+					<relatedLocationId>%SUB_CATCH%</relatedLocationId>
+				</relation>
+				<attribute id="SUB_CATCH" name="Subcatchment">
+					<text>%SUB_CATCH%</text>
+				</attribute>
+				<attribute id="JAN_640_EVAP" name="JAN_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JAN_640_EVAP%</number>
+				</attribute>
+				<attribute id="FEB_640_EVAP" name="FEB_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%FEB_640_EVAP%</number>
+				</attribute>
+				<attribute id="MAR_640_EVAP" name="MAR_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%MAR_640_EVAP%</number>
+				</attribute>
+				<attribute id="APR_640_EVAP" name="APR_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%APR_640_EVAP%</number>
+				</attribute>
+				<attribute id="MAY_640_EVAP" name="MAY_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%MAY_640_EVAP%</number>
+				</attribute>
+				<attribute id="JUN_640_EVAP" name="JUN_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JUN_640_EVAP%</number>
+				</attribute>
+				<attribute id="JUL_640_EVAP" name="JUL_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JUL_640_EVAP%</number>
+				</attribute>
+				<attribute id="AUG_640_EVAP" name="AUG_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%AUG_640_EVAP%</number>
+				</attribute>
+				<attribute id="SEP_640_EVAP" name="SEP_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%SEP_640_EVAP%</number>
+				</attribute>
+				<attribute id="OCT_640_EVAP" name="OCT_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%OCT_640_EVAP%</number>
+				</attribute>
+				<attribute id="NOV_640_EVAP" name="NOV_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%NOV_640_EVAP%</number>
+				</attribute>
+				<attribute id="DEC_640_EVAP" name="DEC_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%DEC_640_EVAP%</number>
+				</attribute>
+				<attribute id="JAN_650_EVAP" name="JAN_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JAN_650_EVAP%</number>
+				</attribute>
+				<attribute id="FEB_650_EVAP" name="FEB_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%FEB_650_EVAP%</number>
+				</attribute>
+				<attribute id="MAR_650_EVAP" name="MAR_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%MAR_650_EVAP%</number>
+				</attribute>
+				<attribute id="APR_650_EVAP" name="APR_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%APR_650_EVAP%</number>
+				</attribute>
+				<attribute id="MAY_650_EVAP" name="MAY_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%MAY_650_EVAP%</number>
+				</attribute>
+				<attribute id="JUN_650_EVAP" name="JUN_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JUN_650_EVAP%</number>
+				</attribute>
+				<attribute id="JUL_650_EVAP" name="JUL_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JUL_650_EVAP%</number>
+				</attribute>
+				<attribute id="AUG_650_EVAP" name="AUG_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%AUG_650_EVAP%</number>
+				</attribute>
+				<attribute id="SEP_650_EVAP" name="SEP_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%SEP_650_EVAP%</number>
+				</attribute>
+				<attribute id="OCT_650_EVAP" name="OCT_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%OCT_650_EVAP%</number>
+				</attribute>
+				<attribute id="NOV_650_EVAP" name="NOV_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%NOV_650_EVAP%</number>
+				</attribute>
+				<attribute id="DEC_650_EVAP" name="DEC_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%DEC_650_EVAP%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_qplan_tables</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SOURCE_ID" name="SOURCE_ID">
+					<text>%SOURCE_ID%</text>
+				</attribute>
+				<attribute id="SITE_Q_FCST_SELECT" name="Type">
+					<description>Manual Flow Forecast Source</description>
+					<text>%SITE_Q_FCST_SELECT%</text>
+				</attribute>
+				<attribute id="SITE_Q_TREND_BASEQ" name="Target">
+					<description>Trend to base flow</description>
+					<number>%SITE_Q_TREND_BASEQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_TREND_FACTOR" name="Recede rate">
+					<description>Recession factor of Trend (less than 1)</description>
+					<number>%SITE_Q_TREND_FACTOR%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_RISE" name="Rise rate">
+					<description>1/Rate at which Pulse fcst rices to peak flow [-]</description>
+					<number>%SITE_Q_PULSE_RISE%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKQ" name="Peak Q">
+					<description>Peak flow during Pulse fcst (ML/day)</description>
+					<number>%SITE_Q_PULSE_PEAKQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKT" name="Peak timing">
+					<description>Timing peak flow in days from now</description>
+					<number>%SITE_Q_PULSE_PEAKT%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_RECEDE" name="Recede rate">
+					<description>Rate at which Pulse fcst recedes to base flow [-]</description>
+					<number>%SITE_Q_PULSE_RECEDE%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_BASEQ" name="Target">
+					<description>Flow to end Pulse fcst with (ML/day)</description>
+					<number>%SITE_Q_PULSE_BASEQ%</number>
+				</attribute>
+				<attribute id="JAN_MIN_QPLAN" name="JAN_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JAN_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_MIN_QPLAN" name="FEB_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%FEB_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_MIN_QPLAN" name="MAR_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%MAR_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_MIN_QPLAN" name="APR_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%APR_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_MIN_QPLAN" name="MAY_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%MAY_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_MIN_QPLAN" name="JUN_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JUN_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_MIN_QPLAN" name="JUL_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JUL_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_MIN_QPLAN" name="AUG_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%AUG_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_MIN_QPLAN" name="SEP_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%SEP_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_MIN_QPLAN" name="OCT_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%OCT_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_MIN_QPLAN" name="NOV_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%NOV_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_MIN_QPLAN" name="DEC_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%DEC_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_90_QPLAN" name="JAN_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JAN_90_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_90_QPLAN" name="FEB_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%FEB_90_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_90_QPLAN" name="MAR_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%MAR_90_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_90_QPLAN" name="APR_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%APR_90_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_90_QPLAN" name="MAY_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%MAY_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_90_QPLAN" name="JUN_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JUN_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_90_QPLAN" name="JUL_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JUL_90_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_90_QPLAN" name="AUG_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%AUG_90_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_90_QPLAN" name="SEP_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%SEP_90_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_90_QPLAN" name="OCT_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%OCT_90_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_90_QPLAN" name="NOV_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%NOV_90_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_90_QPLAN" name="DEC_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%DEC_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_75_QPLAN" name="JAN_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JAN_75_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_75_QPLAN" name="FEB_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%FEB_75_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_75_QPLAN" name="MAR_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%MAR_75_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_75_QPLAN" name="APR_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%APR_75_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_75_QPLAN" name="MAY_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%MAY_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_75_QPLAN" name="JUN_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JUN_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_75_QPLAN" name="JUL_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JUL_75_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_75_QPLAN" name="AUG_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%AUG_75_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_75_QPLAN" name="SEP_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%SEP_75_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_75_QPLAN" name="OCT_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%OCT_75_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_75_QPLAN" name="NOV_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%NOV_75_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_75_QPLAN" name="DEC_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%DEC_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_50_QPLAN" name="JAN_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JAN_50_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_50_QPLAN" name="FEB_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%FEB_50_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_50_QPLAN" name="MAR_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%MAR_50_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_50_QPLAN" name="APR_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%APR_50_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_50_QPLAN" name="MAY_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%MAY_50_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_50_QPLAN" name="JUN_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JUN_50_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_50_QPLAN" name="JUL_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JUL_50_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_50_QPLAN" name="AUG_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%AUG_50_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_50_QPLAN" name="SEP_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%SEP_50_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_50_QPLAN" name="OCT_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%OCT_50_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_50_QPLAN" name="NOV_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%NOV_50_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_50_QPLAN" name="DEC_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%DEC_50_QPLAN%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_samples_parameters</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SAMPLE_PARAMS">
+					<text>%SAMPLE_PARAMS%</text>
 				</attribute>
 			</attributeFile>
 		</csvFile>
@@ -1923,6 +2386,14 @@
 			<attributeTextEquals equals="Y" id="H_OBS"/>
 		</constraints>
 	</locationSet>
+	<!-- _samples sites-->
+	<locationSet id="sites_samples">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="SAMPLE_PARAMS"/>
+		</constraints>
+	</locationSet>
 	<!--Import/Processing specific  time stamped sites-->
 	<locationSet id="sites_H_8am_to_8am">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -2047,6 +2518,108 @@
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains contains="8am_to_8am" id="Q_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="site_QSATrade">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<csvFile>
+			<file>ROWS_ewsource_qtrade</file>
+			<id>%ROWS_SITE_ID%</id>
+			<name>%NAME%</name>
+			<description>%ROWS_SITE_ID%</description>
+			<label>%ROWS_SITE_ID%</label>
+			<x>%LONGITUDE%</x>
+			<y>%LATITUDE%</y>
+			<attribute id="ROWS_SITE_ID">
+				<description>station identifier as used in ROWS. Usage: ratings report</description>
+				<text>%ROWS_SITE_ID%</text>
+			</attribute>
+			<attribute id="NAME">
+				<description>Name</description>
+				<text>%NAME%</text>
+			</attribute>
+			<attribute id="HYDRO_SITE_ID">
+				<description>station identifier as used in Hydro archive database. Usage: idmaps</description>
+				<text>%HYDRO_SITE_ID%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY">
+				<description>Location requires data entry</description>
+				<text>%DATA_ENTRY%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY_SEQ">
+				<description>Defines order in data entry locationset</description>
+				<text>%DATA_ENTRY_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_ID">
+				<description>station identifier as used in ewSource model. Usage: locatonset in model workflow, idmap</description>
+				<text>%EWSRC_ID%</text>
+			</attribute>
+			<attribute id="JAN_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JAN_PROP%</number>
+			</attribute>
+			<attribute id="FEB_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%FEB_PROP%</number>
+			</attribute>
+			<attribute id="MAR_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%MAR_PROP%</number>
+			</attribute>
+			<attribute id="APR_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%APR_PROP%</number>
+			</attribute>
+			<attribute id="MAY_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%MAY_PROP%</number>
+			</attribute>
+			<attribute id="JUN_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JUN_PROP%</number>
+			</attribute>
+			<attribute id="JUL_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JUL_PROP%</number>
+			</attribute>
+			<attribute id="AUG_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%AUG_PROP%</number>
+			</attribute>
+			<attribute id="SEP_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%SEP_PROP%</number>
+			</attribute>
+			<attribute id="OCT_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%OCT_PROP%</number>
+			</attribute>
+			<attribute id="NOV_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%NOV_PROP%</number>
+			</attribute>
+			<attribute id="DEC_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%DEC_PROP%</number>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<locationSet id="site_QSATrade_DE">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>site_QSATrade</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="site_QSATrade_direct">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>site_QSATrade_DE</locationSetId>
+		<constraints>
+			<not>
+				<anyValid>
+					<attributeExists id="JAN_PROP"/>
+				</anyValid>
+			</not>
 		</constraints>
 	</locationSet>
 	<locationSet id="sites_Gates">

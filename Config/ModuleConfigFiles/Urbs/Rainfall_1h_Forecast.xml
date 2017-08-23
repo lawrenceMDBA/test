@@ -21,7 +21,7 @@
 			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
+			<locationId>$ACCESSG_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep multiplier="3" unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -33,7 +33,7 @@
 			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
+			<locationId>$ACCESSR_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -45,7 +45,7 @@
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
-			<locationId>ADFD</locationId>
+			<locationId>$ADFD_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -58,7 +58,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>higher</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$ADFD_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="1am"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -71,7 +71,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>avg</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -84,7 +84,7 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>min</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -97,13 +97,13 @@
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>max</qualifierId>
-			<locationId>ADFD</locationId>
+			<locationId>$PME_GRID$</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--NWP Forecast series interpolated to sub-areas in original time interval and 1 hour time interval-->
+	<!--NWP Forecast series interpolated to sub-areas in original time interval (temporary)-->
 	<variable>
 		<variableId>ACCESSG_P_UrbsSubAreas</variableId>
 		<timeSeriesSet>
@@ -118,32 +118,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSG</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESSR</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_P_UrbsSubAreas</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -153,19 +127,6 @@
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ADFD</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>adfd</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -184,20 +145,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ADFD_higher</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>adfd</qualifierId>
-			<qualifierId>higher</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>PME_P_UrbsSubAreas</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -207,19 +154,6 @@
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>PME</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>pme</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -238,20 +172,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>PME_min</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>min</qualifierId>
-			<qualifierId>pme</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>PME_max_P_UrbsSubAreas</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -265,6 +185,87 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--NWP Forecast series interpolated to sub-areas in 1 hour time interval (result)-->
+	<variable>
+		<variableId>ACCESSG</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_higher</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>higher</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>PME_max</variableId>
 		<timeSeriesSet>
@@ -274,12 +275,12 @@
 			<qualifierId>max</qualifierId>
 			<qualifierId>pme</qualifierId>
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Observed and computed series interpolated to sub-areas in hourly time interval-->
+	<!--Observed and computed series interpolated to sub-areas and sub-catchments (temporary)-->
 	<variable>
 		<variableId>None</variableId>
 		<timeSeriesSet>
@@ -309,20 +310,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>P_1h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_obs</parameterId>
-			<qualifierId>Fops</qualifierId>
-			<locationSetId>sites_P_obs</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>P_1h_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -343,12 +330,27 @@
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_obs</parameterId>
-			<locationSetId>URBS_subareas</locationSetId>
+			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-48" end="168" endOverrulable="true" unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 			<expiryTime unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Observed and computed series interpolated to sub-areas and sub-catchments in hourly time interval-->
+	<variable>
+		<variableId>P_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>sites_P_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -365,6 +367,7 @@
 			<expiryTime unit="day"/>
 		</timeSeriesSet>
 	</variable>
+	<!--Computed series interpolated to sub-areas in hourly time interval-->
 	<variable>
 		<variableId>Depth</variableId>
 		<timeSeriesSet>
@@ -646,7 +649,7 @@
 				<input>
 					<variableId>None</variableId>
 				</input>
-				<attributeFunctionId>@catchment:CATCH_P_NWP_SELECT@</attributeFunctionId>
+				<attributeFunctionId>@catchment:$CATCH_SCEN$_P_NWP_SELECT@</attributeFunctionId>
 				<output>
 					<variableId>NWP_subareas</variableId>
 				</output>
@@ -658,7 +661,7 @@
 			<simple>
 				<expression>NWP_subareas * multiplier</expression>
 				<coefficientSetFunctions>
-					<coefficient id="multiplier" value="@catchment:CATCH_P_NWP_MULT@"/>
+					<coefficient id="multiplier" value="@catchment:$CATCH_SCEN$_P_NWP_MULT@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>NWP_subareas</variableId>
@@ -666,7 +669,7 @@
 			</simple>
 		</user>
 	</transformation>
-	<!--Step 4: Interpolate Gauges Rainfall to subareas-->
+	<!--Step 4: Interpolate Gauges Rainfall to subareas and subcatchments-->
 	<transformation id="P_gapfill_1h">
 		<interpolationSerial>
 			<default>
@@ -698,15 +701,33 @@
 			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
+	<transformation id="InverseDistance_P_sites_to_subcatchments">
+		<interpolationSpatial>
+			<inverseDistance>
+				<inputVariable>
+					<variableId>P_1h_tmp</variableId>
+				</inputVariable>
+				<minimumValue>0</minimumValue>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>4</numberOfPoints>
+				<numberOfBackupPoints>8</numberOfBackupPoints>
+				<outputVariable>
+					<variableId>Gauges_subcatchments</variableId>
+				</outputVariable>
+			</inverseDistance>
+		</interpolationSpatial>
+	</transformation>
 	<!--Step 5: Generate Manual Forecaster Series-->
 	<transformation id="Manual_Depth_Forecast_SubCatch">
 		<generation>
 			<constant>
 				<coefficientSetFunctions>
-					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_LENGTH@"/>
-					<totalSum>@subcatchment:SC_P_MAN_DEPTH@</totalSum>
-					<delay unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_DELAY@"/>
-					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:SC_P_MAN_OFFSET@"/>
+					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_LENGTH@"/>
+					<totalSum>@subcatchment:$SC_SCEN$_P_MAN_DEPTH@</totalSum>
+					<delay unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_DELAY@"/>
+					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:$SC_SCEN$_P_MAN_OFFSET@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Depth</variableId>
@@ -721,10 +742,10 @@
 					<variableId>Gauges</variableId>
 				</inputVariable>
 				<coefficientSetFunctions>
-					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_LENGTH@"/>
-					<matchingPeriod unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_MATCH@"/>
-					<recessionFactor>@subcatchment:SC_P_MAN_FACTOR@</recessionFactor>
-					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:SC_P_MAN_OFFSET@"/>
+					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_LENGTH@"/>
+					<matchingPeriod unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_MATCH@"/>
+					<recessionFactor>@subcatchment:$SC_SCEN$_P_MAN_FACTOR@</recessionFactor>
+					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:$SC_SCEN$_P_MAN_OFFSET@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Recession</variableId>
@@ -739,10 +760,10 @@
 					<variableId>Gauges</variableId>
 				</inputVariable>
 				<coefficientSetFunctions>
-					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_LENGTH@"/>
-					<matchingPeriod unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:SC_P_MAN_MATCH@"/>
-					<recessionFactor>@subcatchment:SC_P_MAN_FACTOR@</recessionFactor>
-					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:SC_P_MAN_OFFSET@"/>
+					<duration unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_LENGTH@"/>
+					<matchingPeriod unit="@catchment:CATCH_P_UNIT@" multiplier="@subcatchment:$SC_SCEN$_P_MAN_MATCH@"/>
+					<recessionFactor>@subcatchment:$SC_SCEN$_P_MAN_FACTOR@</recessionFactor>
+					<offset unit="@catchment:CATCH_P_UNIT@" value="@subcatchment:$SC_SCEN$_P_MAN_OFFSET@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Persistence</variableId>
@@ -765,7 +786,7 @@
 				<input>
 					<variableId>None</variableId>
 				</input>
-				<attributeFunctionId>@subcatchment:SC_P_MAN_SELECT@</attributeFunctionId>
+				<attributeFunctionId>@subcatchment:$SC_SCEN$_P_MAN_SELECT@</attributeFunctionId>
 				<output>
 					<variableId>Manual_subareas</variableId>
 				</output>
@@ -803,18 +824,5 @@
 				</outputVariable>
 			</default>
 		</interpolationSerial>
-	</transformation>
-	<transformation id="SubCatchAverageRainfall_gauges">
-		<statisticsRelatedLocations>
-			<mean>
-				<inputVariable>
-					<variableId>Gauges</variableId>
-				</inputVariable>
-				<locationRelationId>subcatchment</locationRelationId>
-				<outputVariable>
-					<variableId>Gauges_subcatchments</variableId>
-				</outputVariable>
-			</mean>
-		</statisticsRelatedLocations>
 	</transformation>
 </transformationModule>

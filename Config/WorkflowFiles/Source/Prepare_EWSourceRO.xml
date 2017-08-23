@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<properties>
+		<string key="AEP" value="min"/>
+		<string key="CATCHMENT" value="upper_murray"/>
+		<string key="SUBCATCHMENT" value="mitta"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ewSource_Rainfall_Forecast</moduleInstanceId>
+		<moduleConfigFileName>Rainfall_1d_Forecast</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+	</activity>
+		<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+		<string key="CATCHMENT" value="upper_murray"/>
+		<string key="SUBCATCHMENT" value="mitta"/>
+	</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+	</activity>
+		<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>PrepareewSourceRO_Qtrade_forecastlength</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
+	</activity>
+
+<!--<activity>
+	<workflowId>EWSourceRO_Rainfall_Forecast</workflowId>
+</activity>
+<activity>
+	<workflowId>Prepare_EWSourceRO_EVAP</workflowId>
+</activity>
+<activity>
+	<workflowId>Prepare_EWSourceRO_QORD</workflowId>
+</activity>
+<activity>
+	<workflowId>Prepare_EWSourceRO_Qcomb</workflowId>
+</activity>
+<activity>
+	<workflowId>Prepare_EWSourceRO_Qtrade</workflowId>
+</activity>-->
+</workflow>

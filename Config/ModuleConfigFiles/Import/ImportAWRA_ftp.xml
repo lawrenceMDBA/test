@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!--Average values (mm)-->
+	<import>
+		<general>
+			<importType>NETCDF-CF_GRID</importType>
+			<folder>$IMPORT_FTP_MDBA_AWRA$</folder>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdImportAWRA</idMapId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<geoDatum>WGS 1984</geoDatum>
+			<dataFeedId>BOM_AWRA</dataFeedId>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="day" multiplier="2"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportAWRA</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>SM_fcst</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>AWRA</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="90"/>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

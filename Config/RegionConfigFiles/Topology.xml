@@ -7,6 +7,7 @@
 		<multipleNodesDirectory nodeIdPrefix="Configuration">$DOCUMENTS_CONFIGURATION_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="General">$DOCUMENTS_GENERAL_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="GridProcessing">$DOCUMENTS_GRIDPROCESSING_FOLDER$</multipleNodesDirectory>
+		<multipleNodesDirectory nodeIdPrefix="ewSource">$DOCUMENTS_SOURCE_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="Import">$DOCUMENTS_IMPORT_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="ObservedProcessing">$DOCUMENTS_OPOPROCESSING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="PeakHeights">$DOCUMENTS_PEAKHEIGHTS_FOLDER$</multipleNodesDirectory>
@@ -37,6 +38,12 @@
 		</node>
 		<node id="Import_Forecast" name="Import NWP and STF forecasts">
 			<workflowId>Import_Forecast</workflowId>
+			<localRun>false</localRun>
+		</node>
+		<node id="Import_Samples" name="Import Water quality data">
+			<workflowId>Import_Samples</workflowId>
+			<mainPanel>web browser display</mainPanel>
+			<url>https://publicwiki.deltares.nl/display/FEWSDOC/18+Sample+Viewer</url>
 			<localRun>false</localRun>
 		</node>
 		<node id="Import_Ratings" name="Import Ratings">
@@ -84,11 +91,16 @@
 			<groupId>VIC_Diversions_OPO</groupId>
 			<groupId>IVT_OPO</groupId>
 		</nodes>
+		<nodes name="Monthly Data Entry" id="QTrade_OPO">
+			<node id="QSATrade_DataEntry" name="Data entry">
+				<localRun>false</localRun>
+			</node>
+		</nodes>
 		<nodes name="Environmental Watering Data Entry" id="TLM_OPO">
 			<groupId>BMRegulators_OPO</groupId>
 			<groupId>Millewa_OPO</groupId>
 			<groupId>Gunbower_OPO</groupId>
-<!-- 			<groupId>Hatter_OPO</groupId>
+			<!-- <groupId>Hatta_OPO</groupId>
 			<groupId>Koondrook and Pericoota_OPO</groupId>
 			<groupId>Chowilla_OPO</groupId>
 			<groupId>Mulcra_OPO</groupId>
@@ -107,16 +119,70 @@
 	<nodes id="RiverOps" name="River Operations">
 		<node id="ExportTo_OPSsheets" name="Export to OPSsheets">
 			<workflowId>Export_ToMDBC_OPS</workflowId>
+			<visibleModifierGroup>ROWS</visibleModifierGroup>
 			<localRun>true</localRun>
 		</node>
 		<node id="Import_MDBC_OPS" name="Import from OPSsheets">
 			<workflowId>Import_MDBC_OPS</workflowId>
-			<localRun>false</localRun>
+			<displayGroupId>MDBC_OPS</displayGroupId>
+			<visibleModifierGroup>ROWS</visibleModifierGroup>
+			<localRun>true</localRun>
+		</node>
+		<nodes id="ewSource_Prepare" name="Prepare data for Source RO">
+			<workflowId>Prepare_EWSourceRO</workflowId>
+			<node id="ewSource_Prepare_Data_Qtrade" name="Prepare SA trade for Source RO">
+				<workflowId>Prepare_EWSourceRO_Qtrade</workflowId>
+				<useForecastLengthFromInteractiveForecastDisplay>false</useForecastLengthFromInteractiveForecastDisplay>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>false</localRun>
+			</node>
+			<node id="ewSource_Prepare_Data_Qcomb" name="Prepare Q_comb data for Source RO">
+				<workflowId>Prepare_EWSourceRO_Qcomb</workflowId>
+				<cardinalTimeStepStartTime times="08:00" timeZone="AEST"/>
+				<defaultModifierId>Q_fcst_ewSource</defaultModifierId>
+				<visibleModifierGroup>Source_RO</visibleModifierGroup>
+				<mainPanel>modifiers panel</mainPanel>
+				<localRun>false</localRun>
+			</node>
+			<node id="ewSource_Prepare_Data_QORD" name="Prepare QORD data for Source RO">
+				<workflowId>Prepare_EWSourceRO_QORD</workflowId>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>false</localRun>
+			</node>
+			<node id="ewSource_Rainfall" name="Prepare Rainfall for Source RO">
+				<workflowId>EWSourceRO_Rainfall_Forecast</workflowId>
+				<defaultModifierId>P_fcst_ewSource</defaultModifierId>
+				<visibleModifierGroup>Source_RO</visibleModifierGroup>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>false</localRun>
+			</node>
+			<node id="ewSource_Prepare_Data_EVAP" name="Prepare EVAP data for Source RO">
+				<workflowId>Prepare_EWSourceRO_EVAP</workflowId>
+				<defaultModifierId>EVAP_fcst_Source</defaultModifierId>
+				<visibleModifierGroup>Source_RO</visibleModifierGroup>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>false</localRun>
+			</node>
+		</nodes>
+		<node id="ExportTo_ewSource" name="Export to Source RO">
+			<workflowId>Export_ToEWSourceRO</workflowId>
+			<timeZero date="2016-12-31" time="22:00:00"/>
+			<!-- date and time in GMT time zone-->
+			<visibleModifierGroup>None</visibleModifierGroup>
 		</node>
 		<!-- To be removed once the new export files are configured -->
 		<node id="ExportTo_ewSource_temp" name="Export to Source (Old Method)">
 			<workflowId>Export_ToEWSourceRO_temp</workflowId>
+			<visibleModifierGroup>None</visibleModifierGroup>
 			<localRun>true</localRun>
+		</node>
+		<node id="ImportFrom_ewSource" name="Import from Source RO">
+			<workflowId>Import_FromEWSourceRO</workflowId>
+			<displayGroupId>ImportFrom_ewSource</displayGroupId>
+			<visibleModifierGroup>None</visibleModifierGroup>
+			<localRun>false</localRun>
 		</node>
 		<nodes id="RiverOps_Overview" name="Operations Overview plots">
 			<node id="RiverOps_Overview.Kiewa" name="Kiewa River">
@@ -352,6 +418,74 @@
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>
 	<nodes id="Flood_Ops" name="Flood Ops">
+		<nodes id="Prepare Forecast data for Flood Training" name="Prepare Forecast Data - Flood Training">
+			<node id="ImportAndProcess_Observed" name="Import and process observations">
+				<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<viewPermission>Administrators</viewPermission>
+				<visibleModifierGroup>ROWS</visibleModifierGroup>
+				<graceTime unit="day" multiplier="1"/>
+				<localRun>false</localRun>
+			</node>
+			<node id="Create Forecast Grid" name="Create Forecast Grid">
+				<workflowId>Create_ACCESSR_fromObs</workflowId>
+				<viewPermission>Administrators</viewPermission>
+				<localRun>true</localRun>
+			</node>
+		</nodes>
+		<nodes id="Prepare_flood_training" name="Prepare system (training)">
+			<workflowId>Import_test_data</workflowId>
+			<node id="Import_Ratings_flood_training" name="Import ratings from local Import folder">
+				<workflowId>Import_Ratings_local</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<visibleModifierGroup>ROWS</visibleModifierGroup>
+				<graceTime unit="day" multiplier="14"/>
+				<mainPanel>map display</mainPanel>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="Import_historical_flood_training" name="Import historical events from local Import folder">
+				<workflowId>Import_HistoricalEvents</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<graceTime unit="day" multiplier="14"/>
+				<mainPanel>map display</mainPanel>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="ImportAndProcess_Observed_flood_archive_training" name="Import and process observations prior to event">
+				<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+				<coldState unit="day" multiplier="28"/>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<graceTime unit="day" multiplier="14"/>
+				<mainPanel>map display</mainPanel>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="Update_ModulesBin_flood_training" name="Prepare URBS modules folder">
+				<workflowId>Update_ModulesBin_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<graceTime unit="day" multiplier="14"/>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="ImportAndProcess_Forecast_FloodOps_training" name="Import and process archived NWP from local folder">
+				<workflowId>ImportAndProcess_Forecast_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<graceTime unit="day" multiplier="1"/>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<viewPermission>WaterCoach</viewPermission>
+			<visibleModifierGroup>None</visibleModifierGroup>
+		</nodes>
 		<nodes id="Prepare_flood" name="Prepare system">
 			<workflowId>Prepare_System_FloodOps</workflowId>
 			<node id="Import_Ratings_flood" name="Import ratings from local Import folder">
@@ -409,7 +543,7 @@
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
 				<graceTime unit="hour" multiplier="6"/>
-				<mainPanel>map display</mainPanel>
+				<mainPanel>grid display</mainPanel>
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
@@ -423,6 +557,15 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
+			<node id="ImportAndProcess_AWRA_FloodOps" name="Import and process AWRA data">
+				<workflowId>ImportAndProcess_AWRA_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>grid display</mainPanel>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
 			<visibleModifierGroup>None</visibleModifierGroup>
 		</nodes>
 		<nodes id="ObservedProcessing_flood" name="Observations ">
@@ -432,7 +575,6 @@
 				<filterId>Parameter_FloodOps</filterId>
 				<visibleModifierGroup>ROWS</visibleModifierGroup>
 				<graceTime unit="day" multiplier="1"/>
-				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
 			<node id="ArchiveTo_flood_observed" name="Archive observations to local disk">
@@ -442,7 +584,6 @@
 				<filterId>Parameter_FloodOps</filterId>
 				<visibleModifierGroup>None</visibleModifierGroup>
 				<graceTime unit="day" multiplier="1"/>
-				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
 			<groupId>Dartmouth_flood</groupId>
@@ -453,12 +594,12 @@
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
-		<nodes id="URBS" name="URBS Forecasting (Upper Murray)">
-			<node id="rainfallpolicy_upper_murray" name="Set Rainfall Policy">
-				<workflowId>UpperMurray_Rainfall_Forecast</workflowId>
+		<nodes id="URBS_training" name="URBS Forecasting (training)">
+			<node id="rainfallpolicy_upper_murray_training" name="   Set Rainfall Current Policy and T0">
+				<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Pobs</filterId>
@@ -471,16 +612,16 @@
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
-			<node id="upper_murray_upper_m" name="Run URBS Forecast">
-				<previousNodeId>rainfallpolicy_upper_murray</previousNodeId>
-				<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
+			<node id="upper_murray_mitta_training" name="   Run Upper Murray - Mitta">
+				<previousNodeId>rainfallpolicy_upper_murray_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Mitta</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>upper_murray_upper_m</displayGroupId>
+				<displayGroupId>upper_murray_mitta</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
 				<visibleModifierGroup>URBS_R</visibleModifierGroup>
 				<graceTime unit="hour" multiplier="6"/>
@@ -489,31 +630,69 @@
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
-			<node id="saveofficial_upper_murray" name="Save URBS Forecast">
-				<previousNodeId>upper_murray_upper_m</previousNodeId>
-				<workflowId>UpperMurray_URBS_Official_Forecast</workflowId>
+			<node id="upper_murray_upper_training" name="   Run Upper Murray - Upper">
+				<previousNodeId>upper_murray_mitta_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Upper</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>saveofficial_upper_murray</displayGroupId>
+				<displayGroupId>upper_murray_upper</displayGroupId>
+				<defaultModifierId>URBS_R</defaultModifierId>
 				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_below_training" name="   Run Upper Murray - Below">
+				<previousNodeId>upper_murray_upper_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Below</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_below</displayGroupId>
+				<defaultModifierId>URBS_R</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="saveofficial_upper_murray_training" name="Save Upper Murray Forecast">
+				<previousNodeId>rainfallpolicy_upper_murray_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Official_Archive</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_official</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
 				<mainPanel>time series dialog</mainPanel>
 				<toolWindow>plot overview</toolWindow>
 				<localRun>false</localRun>
 				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
 			</node>
-			<node id="rainfallscenario_upper_murray" name="Create Rainfall What-If Scenario">
-				<workflowId>UpperMurray_Rainfall_Scenario_Forecast</workflowId>
+			<node id="rainfallscenario_upper_murray_training" name="   Set Rainfall What-If Scenario">
+				<workflowId>UpperMurray_Rainfall_Scenario_IFD_Archive</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>rainfallpolicy_scenario_upper_murray</displayGroupId>
+				<displayGroupId>rainfallscenario_upper_murray</displayGroupId>
 				<defaultModifierId>Rainfall Scenario</defaultModifierId>
 				<visibleModifierGroup>Rainfall Scenario</visibleModifierGroup>
 				<graceTime unit="day"/>
@@ -522,57 +701,229 @@
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
-			<node id="scenario_upper_murray_upper_m" name="Run What-If Scenario">
-				<previousNodeId>rainfallscenario_upper_murray</previousNodeId>
-				<workflowId>UpperMurray_URBS_Scenario_IFD_Forecast</workflowId>
+			<node id="scenario_upper_murray_training" name="   Run Upper Murray Scenario">
+				<previousNodeId>rainfallscenario_upper_murray_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Scenario_Archive</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>scenario_upper_murray_upper_m</displayGroupId>
+				<displayGroupId>upper_murray_runscenario</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
 				<visibleModifierGroup>URBS_R_Scen</visibleModifierGroup>
-				<mainPanel>modifiers panel</mainPanel>
+				<graceTime unit="day"/>
+				<mainPanel>time series dialog</mainPanel>
 				<toolWindow>plot overview</toolWindow>
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
-			<node id="savescenario_upper_murray" name="Save What-If Scenario Run">
-				<previousNodeId>scenario_upper_murray_upper_m</previousNodeId>
-				<workflowId>UpperMurray_URBS_Scenario_Official_Forecast</workflowId>
+			<node id="savescenario_upper_murray_training" name="Save Upper Murray Scenario">
+				<previousNodeId>rainfallscenario_upper_murray_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Scenario_Official_Archive</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>savescenario_upper_murray</displayGroupId>
+				<displayGroupId>upper_murray_scenario</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
 				<visibleModifierGroup>URBS_R_Scen</visibleModifierGroup>
+				<graceTime unit="day"/>
 				<mainPanel>time series dialog</mainPanel>
 				<toolWindow>plot overview</toolWindow>
 				<localRun>false</localRun>
 				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
 			</node>
-			<node id="runensemble_upper_murray" name="Ensemble Rainfall Comparison">
-				<previousNodeId>rainfallpolicy_upper_murray</previousNodeId>
-				<workflowId>UpperMurray_URBS_Ensemble_Forecast</workflowId>
+			<node id="runensemble_upper_murray_training" name="Run Ensemble Rainfall Comparison">
+				<previousNodeId>rainfallpolicy_upper_murray_training</previousNodeId>
+				<workflowId>UpperMurray_URBS_Ensemble_Archive</workflowId>
 				<coldStateFromCurrentRun>
-					<workflowId>UpperMurray_URBS_IFD_Forecast</workflowId>
-					<coldState unit="day" multiplier="7"/>
+					<workflowId>UpperMurray_Rainfall_IFD_Archive</workflowId>
+					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
-				<displayGroupId>runensemble_upper_murray</displayGroupId>
+				<displayGroupId>upper_murray_runensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
 				<visibleModifierGroup>URBS_R_All</visibleModifierGroup>
+				<graceTime unit="day"/>
 				<mainPanel>time series dialog</mainPanel>
 				<toolWindow>plot overview</toolWindow>
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
 			</node>
-			<mapExtentId>Upper Murray</mapExtentId>
-			<filterId>Parameter_FloodOps_Pobs</filterId>
+			<viewPermission>WaterCoach</viewPermission>
 			<visibleModifierGroup>None</visibleModifierGroup>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
+		</nodes>
+		<nodes id="URBS" name="URBS Forecasting (Upper Murray)">
+			<node id="rainfallpolicy_upper_murray" name="   Set Rainfall Current Policy and T0">
+				<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Pobs</filterId>
+				<displayGroupId>rainfallpolicy_upper_murray</displayGroupId>
+				<defaultModifierId>Rainfall Policy</defaultModifierId>
+				<visibleModifierGroup>Rainfall Policy</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_mitta" name="   Run Upper Murray - Mitta">
+				<previousNodeId>rainfallpolicy_upper_murray</previousNodeId>
+				<workflowId>UpperMurray_URBS_Mitta</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_mitta</displayGroupId>
+				<defaultModifierId>URBS_R</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_upper" name="   Run Upper Murray - Upper">
+				<previousNodeId>upper_murray_mitta</previousNodeId>
+				<workflowId>UpperMurray_URBS_Upper</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_upper</displayGroupId>
+				<defaultModifierId>URBS_R</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_below" name="   Run Upper Murray - Below">
+				<previousNodeId>upper_murray_upper</previousNodeId>
+				<workflowId>UpperMurray_URBS_Below</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_below</displayGroupId>
+				<defaultModifierId>URBS_R</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_official" name="Save Upper Murray Forecast">
+				<previousNodeId>rainfallpolicy_upper_murray</previousNodeId>
+				<workflowId>UpperMurray_URBS_Official</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_official</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>URBS_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="rainfallscenario_upper_murray" name="   Set Rainfall What-If Scenario">
+				<workflowId>UpperMurray_Rainfall_Scenario_IFD</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>rainfallscenario_upper_murray</displayGroupId>
+				<defaultModifierId>Rainfall Scenario</defaultModifierId>
+				<visibleModifierGroup>Rainfall Scenario</visibleModifierGroup>
+				<graceTime unit="day"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_runscenario" name="   Run Upper Murray Scenario">
+				<previousNodeId>rainfallscenario_upper_murray</previousNodeId>
+				<workflowId>UpperMurray_URBS_Scenario</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_runscenario</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
+				<visibleModifierGroup>URBS_R_Scen</visibleModifierGroup>
+				<graceTime unit="day"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_scenario" name="Save Upper Murray Scenario">
+				<previousNodeId>rainfallscenario_upper_murray</previousNodeId>
+				<workflowId>UpperMurray_URBS_Scenario_Official</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_scenario</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
+				<visibleModifierGroup>URBS_R_Scen</visibleModifierGroup>
+				<graceTime unit="day"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_runensemble" name="Run Ensemble Rainfall Comparison">
+				<previousNodeId>rainfallpolicy_upper_murray</previousNodeId>
+				<workflowId>UpperMurray_URBS_Ensemble</workflowId>
+				<coldStateFromCurrentRun>
+					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
+					<coldState unit="day" multiplier="2"/>
+				</coldStateFromCurrentRun>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_runensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
+				<visibleModifierGroup>URBS_R_All</visibleModifierGroup>
+				<graceTime unit="day"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<visibleModifierGroup>None</visibleModifierGroup>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
 		</nodes>
 		<nodes id="FloodOps" name="Flood Operations">
 			<workflowId>Export_ToFloodsheets</workflowId>
@@ -585,7 +936,7 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="Export_ToFloodsheets_dartmouth" name="Export to Darthmouth Floodsheet">
+			<node id="Export_ToFloodsheets_dartmouth" name="Export to Dartmouth Floodsheet">
 				<workflowId>Export_ToFloodsheets_dartmouth</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>

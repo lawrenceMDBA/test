@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<activity>
+		<workflowId>Import_Ratings_local</workflowId>
+	</activity>
+	<activity>
+		<workflowId>Import_HistoricalEvents</workflowId>
+	</activity>
+	<activity>
+		<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+	</activity>
+	<activity>
+		<workflowId>Update_ModulesBin_FloodOps</workflowId>
+	</activity>
+	<activity>
+		<!-- BoM forecasts -->
+		<workflowId>Import_FromArchive</workflowId>
+	</activity>
+	<!-- set T0 to 2016-09-28 10:00 -->
+<!--	<activity>
+		<moduleInstanceId>ProcessP_fcst_To_SubCatchments_from_Archive</moduleInstanceId>
+	</activity>
+--></workflow>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <timeSeriesDisplay version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd">
 	<!-- defaultViewPeriod is 14 days back -->
-	<!--
-	Revision  20150401
-	parameters display config precisions changed
-	-->
+	<!-- 	Revision  20150401 	parameters display config precisions changed 	-->
 	<defaultViewPeriod unit="day" start="-14" end="1"/>
 	<thresholdDisplayConfig>
 		<thresholdDisplayOptions id="Minor_Flooding">
@@ -138,23 +135,6 @@
 			<lowerValue>55</lowerValue>
 			<lowerValue>60</lowerValue>
 		</classBreaks>
-		<classBreaks id="Rainfall">
-			<missingValueColor>gray</missingValueColor>
-			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
-			<lowerColor>white</lowerColor>
-			<upperColor>royal blue2</upperColor>
-			<lowerValue>0</lowerValue>
-			<lowerValue>1</lowerValue>
-			<lowerValue>2</lowerValue>
-			<lowerValue>3</lowerValue>
-			<lowerValue>4</lowerValue>
-			<lowerValue>5</lowerValue>
-			<lowerValue>6</lowerValue>
-			<lowerValue>7</lowerValue>
-			<lowerValue>8</lowerValue>
-			<lowerValue>9</lowerValue>
-			<lowerValue>10</lowerValue>
-		</classBreaks>
 		<classBreaks id="Discharge">
 			<missingValueColor>gray</missingValueColor>
 			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
@@ -171,6 +151,22 @@
 			<lowerValue>20000</lowerValue>
 			<lowerValue>22500</lowerValue>
 			<lowerValue>25000</lowerValue>
+		</classBreaks>
+		<classBreaks id="Rainfall">
+			<missingValueColor>gray70</missingValueColor>
+			<unitVisible>true</unitVisible>
+			<break color="FFFFFF" lowerValue="-0.02"/>
+			<break color="FFFFFF" lowerValue="0"/>
+			<break color="FFCC66" lowerValue="1.0"/>
+			<break color="FF9900" lowerValue="5.0"/>
+			<break color="FFFF00" lowerValue="10.0"/>
+			<break color="CCFF00" lowerValue="15.0"/>
+			<break color="66FF00" lowerValue="25.0"/>
+			<break color="00CC99" lowerValue="50.0"/>
+			<break color="0099FF" lowerValue="100.0"/>
+			<break color="3333FF" lowerValue="200.0"/>
+			<break color="9B00FF" lowerValue="300.0"/>
+			<break color="FF00FF" lowerValue="400.0"/>
 		</classBreaks>
 		<classBreaks id="StorageVolume">
 			<missingValueColor>gray</missingValueColor>
@@ -189,22 +185,37 @@
 			<lowerValue>135000</lowerValue>
 			<lowerValue>150000</lowerValue>
 		</classBreaks>
-		<classBreaks id="Evaporation">
+		<classBreaks id="SoilMoisture">
 			<missingValueColor>gray</missingValueColor>
 			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
 			<lowerColor>white</lowerColor>
 			<upperColor>green</upperColor>
 			<lowerValue>0</lowerValue>
-			<lowerValue>3</lowerValue>
-			<lowerValue>6</lowerValue>
-			<lowerValue>9</lowerValue>
-			<lowerValue>12</lowerValue>
-			<lowerValue>15</lowerValue>
-			<lowerValue>18</lowerValue>
-			<lowerValue>21</lowerValue>
-			<lowerValue>24</lowerValue>
-			<lowerValue>27</lowerValue>
 			<lowerValue>30</lowerValue>
+			<lowerValue>60</lowerValue>
+			<lowerValue>90</lowerValue>
+			<lowerValue>120</lowerValue>
+			<lowerValue>150</lowerValue>
+			<lowerValue>180</lowerValue>
+			<lowerValue>210</lowerValue>
+			<lowerValue>240</lowerValue>
+			<lowerValue>270</lowerValue>
+			<lowerValue>300</lowerValue>
+		</classBreaks>
+		<classBreaks id="Evaporation">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<break lowerValue="0" color="FEFEFE"/>
+			<break lowerValue="30" color="F7FBFF"/>
+			<break lowerValue="60" color="E1EDF8"/>
+			<break lowerValue="90" color="CBDFF1"/>
+			<break lowerValue="120" color="ABD0E6"/>
+			<break lowerValue="150" color="82BADB"/>
+			<break lowerValue="180" color="59A2CF"/>
+			<break lowerValue="210" color="3787C0"/>
+			<break lowerValue="240" color="1B6AAF"/>
+			<break lowerValue="270" color="084D97"/>
+			<break lowerValue="300" color="08306B"/>
 		</classBreaks>
 		<classBreaks id="DissolvedOxygen">
 			<missingValueColor>gray</missingValueColor>
@@ -256,6 +267,31 @@
 			<lowerValue>32</lowerValue>
 			<lowerValue>36</lowerValue>
 			<lowerValue>40</lowerValue>
+		</classBreaks>
+		<classBreaks id="AirTemperature">
+			<missingValueColor>gray70</missingValueColor>
+			<unitVisible>true</unitVisible>
+			<break color="FFFFFF" lowerValue="-5.0"/>
+			<break color="FFCC66" lowerValue="0.0"/>
+			<break color="FF9900" lowerValue="2.0"/>
+			<break color="FFFF00" lowerValue="5.0"/>
+			<break color="CCFF00" lowerValue="10.0"/>
+			<break color="66FF00" lowerValue="15.0"/>
+			<break color="00CC99" lowerValue="20.0"/>
+			<break color="0099FF" lowerValue="25.0"/>
+			<break color="3333FF" lowerValue="30.0"/>
+			<break color="9B00FF" lowerValue="35.0"/>
+			<break color="FF00FF" lowerValue="40.0"/>
+		</classBreaks>
+		<classBreaks id="Probability">
+			<missingValueColor>gray70</missingValueColor>
+			<unitVisible>true</unitVisible>
+			<break color="FFFFFF" lowerValue="0.0" label="0 % probability"/>
+			<break color="FF9900" lowerValue="0.2" label="0-20% probability"/>
+			<break color="CCFF00" lowerValue="0.4" label="20-40% probability"/>
+			<break color="00CC99" lowerValue="0.6" label="40-60% probability"/>
+			<break color="3333FF" lowerValue="0.8" label="60-80% probability"/>
+			<break color="FF00FF" lowerValue="1" label="80-100% probability"/>
 		</classBreaks>
 	</classBreaks>
 	<timeMarkersDisplayConfig>
@@ -367,6 +403,32 @@
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="EVAP_fcst">
 			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_comb">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_comb">
+			<qualifierId>mlake</qualifierId>
+			<preferredColor>dark goldenrod</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>4</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_comb">
+			<qualifierId>fao56</qualifierId>
+			<preferredColor>blue violet</preferredColor>
 			<lineStyle>bar</lineStyle>
 			<lineWidth>1</lineWidth>
 			<markerStyle>+</markerStyle>
@@ -584,14 +646,14 @@
 			<precision>1</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="P_obs">
-			<preferredColor>orange</preferredColor>
+			<preferredColor>slate blue</preferredColor>
 			<lineStyle>bar</lineStyle>
 			<lineWidth>1</lineWidth>
 			<precision>1</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="P_obs">
 			<qualifierId>hydrographic_update</qualifierId>
-			<preferredColor>orange</preferredColor>
+			<preferredColor>slate blue</preferredColor>
 			<lineStyle>bar</lineStyle>
 			<lineWidth>1</lineWidth>
 			<precision>1</precision>
@@ -727,6 +789,34 @@
 		<parameterDisplayOptions id="P_comb">
 			<preferredColor>slate blue</preferredColor>
 			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_comb">
+			<ensembleId>IFD</ensembleId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_comb">
+			<ensembleId>OFFICIAL</ensembleId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>none</lineStyle>
+			<markerStyle>+</markerStyle>
+			<markerSize>5</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_comb">
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="P_comb">
+			<ensembleId>SCENARIO</ensembleId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>none</lineStyle>
+			<markerStyle>+</markerStyle>
+			<markerSize>5</markerSize>
 			<precision>1</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="Q_obs">
@@ -1025,6 +1115,109 @@
 			<lineWidth>1</lineWidth>
 			<markerStyle>circle</markerStyle>
 			<markerSize>5</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<preferredColor>red</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>CEHW</qualifierId>
+			<preferredColor>red</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>TLM</qualifierId>
+			<preferredColor>red</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<preferredColor>red</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<qualifierId>monthly</qualifierId>
+			<preferredColor>red</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_trade">
+			<qualifierId>daily</qualifierId>
+			<preferredColor>red</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="proportion">
+			<preferredColor>gray</preferredColor>
+			<lineStyle>solid;thick</lineStyle>
+			<lineWidth>4</lineWidth>
+			<precision>4</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_undelivered">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>NSW</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_undelivered">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>undelivered_trade</qualifierId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>VIC</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>bar</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>9</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_undelivered">
+			<qualifierId>monthly</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>11</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_undelivered">
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>constant</qualifierId>
+			<preferredColor>aquamarine</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>square</markerStyle>
+			<markerSize>7</markerSize>
 			<precision>0</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="V_obs">
@@ -2033,17 +2226,14 @@
 			<timeStep id="Daily"/>
 			<timeStep id="Weekly"/>
 			<timeStep id="Monthly"/>
-			<!-- 
-			<timeStep id="Seasons"/>
-			-->
 		</statisticalFunction>
 		<statisticalFunction function="historicalAnalysis">
-		   <historicalPeriods>
-			  <historicalPeriod>
-				 <startForwardLookingPeriod>--01-01</startForwardLookingPeriod>
-				 <season startMonthDay="--06-01" endMonthDay="--05-31" label="Water Year"/>
-			  </historicalPeriod>
-		   </historicalPeriods>
+			<historicalPeriods>
+				<historicalPeriod>
+					<startForwardLookingPeriod>--01-01</startForwardLookingPeriod>
+					<season startMonthDay="--06-01" endMonthDay="--05-31" label="Water Year"/>
+				</historicalPeriod>
+			</historicalPeriods>
 		</statisticalFunction>
 		<statisticalFunction function="elevation"/>
 		<statisticalFunction function="gaussianCurve"/>
@@ -2135,4 +2325,22 @@
 		<searchAndSelectForecasts/>
 		<setTimeSeriesVisibility/>
 	</buttonSettings>
+		<!--
+		<missingValueColor>gray</missingValueColor>
+		<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+		<lowerColor>white</lowerColor>
+		<upperColor>royal blue2</upperColor>
+		<lowerValue>0</lowerValue>
+		<lowerValue>1</lowerValue>
+		<lowerValue>2</lowerValue>
+		<lowerValue>3</lowerValue>
+		<lowerValue>4</lowerValue>
+		<lowerValue>5</lowerValue>
+		<lowerValue>6</lowerValue>
+		<lowerValue>7</lowerValue>
+		
+		<lowerValue>8</lowerValue>
+		<lowerValue>9</lowerValue>
+		<lowerValue>10</lowerValue>
+		-->
 </timeSeriesDisplay>

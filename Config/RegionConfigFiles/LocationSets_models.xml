@@ -489,4 +489,618 @@
 			<attributeTextContains id="MODEL_TYPE" contains="TSM"/>
 		</constraints>
 	</locationSet>
+	<!--URBS-->
+	<locationSet id="URBS_reservoirs">
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeExists id="VBFNAME_URBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeExists id="QRELEASE_URBSID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching">
+		<sortingLocationAttributeId>MATCHING_ORDER</sortingLocationAttributeId>
+		<csvFile>
+			<file>ROWS_urbs_matching</file>
+			<id>%URBS_SUBCATCHID%_%ROWS_MATCHID%</id>
+			<name>%URBS_MATCHID%</name>
+			<x>%LONG%</x>
+			<y>%LAT%</y>
+			<attribute id="URBS_SUBCATCHID" name="Urbs sub catchment">
+				<text>%URBS_SUBCATCHID%</text>
+			</attribute>
+			<attribute id="URBS_MATCHID" name="Urbs name">
+				<text>%URBS_MATCHID%</text>
+			</attribute>
+			<attribute id="ROWS_MATCHID" name="ROWS site id">
+				<text>%ROWS_MATCHID%</text>
+			</attribute>
+			<attribute id="INCLUDE_MATCH_IN_URBS" name="Match station">
+				<boolean>%INCLUDE_MATCH_IN_URBS%</boolean>
+			</attribute>
+			<attribute id="MATCHING_ORDER" name="Matching display order">
+				<number>%MATCHING_ORDER%</number>
+			</attribute>
+			<attribute id="MATCHING_ADVICE" name="Matching advice">
+				<text>%MATCHING_ADVICE%</text>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_upper_m">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_mitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_upper">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_below">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_catchments">
+		<csvFile>
+			<file>ROWS_urbs_catchments.csv</file>
+			<geoDatum>GDA94</geoDatum>
+			<id>%CATCHMENT%</id>
+			<name>%CATCHMENT%</name>
+			<description>%CATCHMENT%</description>
+			<x>0</x>
+			<y>0</y>
+			<relation id="catchment">
+				<relatedLocationId>%CATCHMENT%</relatedLocationId>
+			</relation>
+			<attribute id="CATCHMENT" name="Catchment">
+				<description>Catchment</description>
+				<text>%CATCHMENT%</text>
+			</attribute>
+			<attribute id="CATCH_P_UNIT" name="Unit">
+				<description>Seelct Catchment or Subcatchment</description>
+				<text>%P_UNIT%</text>
+			</attribute>
+			<attribute id="CATCH_P_NWP_SELECT" name="Source">
+				<description>NWP Rainfall Source</description>
+				<text>%P_NWP_SELECT%</text>
+			</attribute>
+			<attribute id="CATCH_P_NWP_MULT" name="Multiplier">
+				<description>NWP Rainfall Multiplier</description>
+				<number>%P_NWP_MULT%</number>
+			</attribute>
+			<attribute id="SCEN_CATCH_P_NWP_SELECT" name="Source">
+				<description>NWP Rainfall Source</description>
+				<text>%P_NWP_SELECT%</text>
+			</attribute>
+			<attribute id="SCEN_CATCH_P_NWP_MULT" name="Multiplier">
+				<description>NWP Rainfall Multiplier</description>
+				<number>%P_NWP_MULT%</number>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<locationSet id="URBS_subcatchments">
+		<sortingLocationAttributeId>SC_ORDER</sortingLocationAttributeId>
+		<csvFile>
+			<file>ROWS_urbs_subcatchments</file>
+			<geoDatum>GDA94</geoDatum>
+			<id>%SUBCATCHID%</id>
+			<name>%SUBCATCHID%</name>
+			<description>%URBS_SUBCATCHMENT_NAME%</description>
+			<x>%X_CENTROID%</x>
+			<y>%Y_CENTROID%</y>
+			<relation id="catchment">
+				<relatedLocationId>%CATCHMENT%</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBCATCHMENT_NAME">
+				<description>Sub-catchment description</description>
+				<text>%URBS_SUBCATCHMENT_NAME%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID">
+				<description>ROWS URBS sub-catchment identifier</description>
+				<text>%SUBCATCHID%</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>%CATCHMENT%</text>
+			</attribute>
+			<attribute id="SC_ORDER" name="Sub-catchment order">
+				<description>Sub-catchment order</description>
+				<number>%SC_ORDER%</number>
+			</attribute>
+			<attributeFile>
+				<csvFile>ROWS_Rainfall_Subcatchments.csv</csvFile>
+				<id>%URBS_SUBCATCHMENT_ID%</id>
+				<attribute id="SC_P_OBS_SELECT" name="Source">
+					<description>Observed Rainfall Source</description>
+					<text>%SC_P_OBS_SELECT%</text>
+				</attribute>
+				<attribute id="SC_P_OBS_MULT" name="Multiplier">
+					<description>Observed Rainfall Multiplier</description>
+					<number>%SC_P_OBS_MULT%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_SELECT" name="Type">
+					<description>Nowcast Rainfall Source</description>
+					<text>%SC_P_MAN_SELECT%</text>
+				</attribute>
+				<attribute id="SC_P_MAN_DEPTH" name="Depth (mm)">
+					<description>Forecaster Rainfall Depth</description>
+					<number>%SC_P_MAN_DEPTH%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_DELAY" name="Delay (hr)">
+					<description>Delay of Forecast Rainfall</description>
+					<number>%SC_P_MAN_DELAY%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_MATCH" name="Matching Period (hr)">
+					<description>Matching Period of Observed Rainfall</description>
+					<number>%SC_P_MAN_MATCH%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_LENGTH" name="Duration (hr)">
+					<description>Forecaster scenario Length</description>
+					<number>%SC_P_MAN_LENGTH%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_FACTOR" name="Recession Factor">
+					<description>Factor to use in Recession and Persistence</description>
+					<number>%SC_P_MAN_FACTOR%</number>
+				</attribute>
+				<attribute id="SC_P_MAN_OFFSET" name="T0 Offset (hr)">
+					<description>Offset from T0 in model time steps</description>
+					<number>%SC_P_MAN_OFFSET%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_OBS_SELECT" name="Source">
+					<description>Observed Rainfall Source</description>
+					<text>%SCEN_SC_P_OBS_SELECT%</text>
+				</attribute>
+				<attribute id="SCEN_SC_P_OBS_MULT" name="Multiplier">
+					<description>Observed Rainfall Multiplier</description>
+					<number>%SCEN_SC_P_OBS_MULT%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_SELECT" name="Type">
+					<description>Nowcast Rainfall Source</description>
+					<text>%SCEN_SC_P_MAN_SELECT%</text>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_DEPTH" name="Depth (mm)">
+					<description>Forecaster Rainfall Depth</description>
+					<number>%SCEN_SC_P_MAN_DEPTH%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_DELAY" name="Delay (hr)">
+					<description>Delay of Forecast Rainfall</description>
+					<number>%SCEN_SC_P_MAN_DELAY%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_MATCH" name="Matching Period (hr)">
+					<description>Matching Period of Observed Rainfall</description>
+					<number>%SCEN_SC_P_MAN_MATCH%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_LENGTH" name="Duration (hr)">
+					<description>Forecaster scenario Length</description>
+					<number>%SCEN_SC_P_MAN_LENGTH%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_FACTOR" name="Recession Factor">
+					<description>Factor to use in Recession and Persistence</description>
+					<number>%SCEN_SC_P_MAN_FACTOR%</number>
+				</attribute>
+				<attribute id="SCEN_SC_P_MAN_OFFSET" name="T0 Offset (hr)">
+					<description>Offset from T0 in model time steps</description>
+					<number>%SCEN_SC_P_MAN_OFFSET%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_urbs_parameters.csv</csvFile>
+				<id>%URBS_SUBCATCHMENT_ID%</id>
+				<attribute id="URBS_SUBCATCHMENT" name="URBS sub catchment">
+					<description>URBS sub catchment name</description>
+					<text>%URBS_SUBCATCHMENT%</text>
+				</attribute>
+				<attribute id="URBS_TIMESTEP" name="URBS timestep (h)">
+					<description>[URBS_TIMESTEP] URBS timestep (h)</description>
+					<number>%URBS_TIMESTEP_IN_HRS%</number>
+				</attribute>
+				<attribute id="URBS_LOSSTYPE" name="URBS Loss Model Type">
+					<description>[URBS_LOSSTYPE] The type of continuing loss model used: ILCL is for a loss rate independent of rainfall and ILPR is for a runoff factor.</description>
+					<text>%URBS_LOSSTYPE%</text>
+				</attribute>
+				<attribute id="URBS_IL" name="Initial Loss (mm)">
+					<description>[URBS_IL] Initial rainfall loss.</description>
+					<number>%URBS_IL%</number>
+				</attribute>
+				<attribute id="URBS_CL" name="Continuing Loss (mm/hr)">
+					<description>[URBS_CL] Continuing loss rate (ILCL model only).</description>
+					<number>%URBS_CL%</number>
+				</attribute>
+				<attribute id="URBS_PR" name="Proportional Runoff (fraction)">
+					<description>[URBS_PR] Runoff proportion (ILPR model only).</description>
+					<number>%URBS_PR%</number>
+				</attribute>
+				<attribute id="URBS_IF" name="Infiltration Capacity (mm)">
+					<description>[URBS_IF] Maximum cumulative infiltration until losses become 0. </description>
+					<number>%URBS_IF%</number>
+				</attribute>
+				<attribute id="URBS_ALPHA" name="Alpha [-]">
+					<description>[URBS_ALPHA] Channel routing lag. Range: 0 to 0.08</description>
+					<number>%URBS_ALPHA%</number>
+				</attribute>
+				<attribute id="URBS_BETA" name="Beta [-]">
+					<description>[URBS_BETA] Catchment routing lag (1-9). Range: 0 to 0.77</description>
+					<number>%URBS_BETA%</number>
+				</attribute>
+				<attribute id="URBS_BASF" name="Baseflow [y/n]">
+					<description>[URBS_BASF] If selected the baseflow is set to the initial flow at the start of the model run for all gauging stations (excluding dams).</description>
+					<boolean>%URBS_BASF%</boolean>
+				</attribute>
+				<attribute id="URBS_M" name="M (Catchment routing exponent) ">
+					<description>[URBS_M] Catchment routing exponent. Range: 0 to 0.21</description>
+					<number>%URBS_M%</number>
+				</attribute>
+				<attribute id="URBS_TRLS" name="Transmission Loss (ML/km)">
+					<description>[URBS_TRLS] Transmission losses during channel routing</description>
+					<number>%URBS_TRLS%</number>
+				</attribute>
+				<attribute id="URBS_RF" name="Recovering Initial Loss Factor">
+					<description>[URBS_RF] Fraction of continuing loss deficit that contributes to the initial loss recovery if recovering initial losses are modelled. Setting this to 0 will turn off initial loss recovery.</description>
+					<number>%URBS_RF%</number>
+				</attribute>
+				<attribute id="URBS_ILMX" name="Maximum initial loss (mm)">
+					<description>[URBS_ILMX] Maximum initial loss if recovering initial losses are modelled.</description>
+					<number>%URBS_ILMX%</number>
+				</attribute>
+				<attribute id="URBS_IFRF" name="Infiltration Recovery Rate">
+					<description>[URBS_IFRF] Recession rate for cumulative infiltration.</description>
+					<number>%URBS_IFRF%</number>
+				</attribute>
+				<attribute id="URBS_BF" name="Initial Baseflow [m3/s]">
+					<description>[URBS_BF] Define the Baseflow at the start of the simulation into the dam. Divide by 86.4 to convert ML/day to m3/s.</description>
+					<number>%URBS_BF%</number>
+				</attribute>
+				<attribute id="URBS_N" name="N (Channel routing exponent)">
+					<description>[URBS_N] Channel routing exp 1/(km/h) 0.8-1</description>
+					<number>%URBS_N%</number>
+				</attribute>
+			</attributeFile>
+		</csvFile>
+	</locationSet>
+	<locationSet id="URBS_subcatchments.only">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_subcatchments</locationSetId>
+		<constraints>
+			<not>
+				<attributeTextContains id="URBS_SUBCATCHMENT_NAME" contains="whole"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_subcatchments.upper_murray">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_subcatchments</locationSetId>
+		<constraints>
+			<attributeTextEquals id="URBS_CATCHMENT" equals="upper_murray"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_subareas">
+		<locationSetId>URBS_subareas.upper_murray</locationSetId>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray">
+		<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray_m">
+		<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_upper_m</locationSetId>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray_mitta">
+		<esriShapeFile>
+			<file>upperMurray_mitta_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_mitta_%Name%</id>
+			<name>upper_murray_mitta_%Name%</name>
+			<description>upper (upper_murray)</description>
+			<shortName>upper_murray_mitta_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_mitta</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_mitta</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>mitta</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray_upper">
+		<esriShapeFile>
+			<file>upperMurray_upper_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_upper_%Name%</id>
+			<name>upper_murray_upper_%Name%</name>
+			<description>upper (upper_murray)</description>
+			<shortName>upper_murray_upper_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_upper</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_upper</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>upper</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray_below">
+		<esriShapeFile>
+			<file>upperMurray_below_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_below_%Name%</id>
+			<name>upper_murray_below_%Name%</name>
+			<description>below (upper_murray)</description>
+			<shortName>upper_murray_below_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_below</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_below</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>below</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="URBS_subareas.upper_murray_upper_m">
+		<esriShapeFile>
+			<file>upperMurray_upper_m_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_upper_m_%Name%</id>
+			<name>upper_murray_upper_m_%Name%</name>
+			<description>upper murray (upper_murray)</description>
+			<shortName>upper_murray_upper_m_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_upper_m</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_upper_m</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>upper_m</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="OUT_URBS_SUBCATCHID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="VBFNAME_URBS"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="FLOOD_OPS_PARAMS" contains="Q_obs"/>
+				<attributeExists id="RATING"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_upper_m">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_mitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_upper">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_below">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeExists id="QBC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_mitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_upper">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_below">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_upper_m">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_mitta">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_upper">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_below">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_upper_m">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_mitta">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_upper">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_below">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_upper_m">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_mitta">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_upper">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_below">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+		</constraints>
+	</locationSet>
 </locationSets>

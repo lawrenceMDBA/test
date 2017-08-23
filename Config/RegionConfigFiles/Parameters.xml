@@ -34,7 +34,7 @@
 		<parameterGroup id="Flow">
 			<parameterType>instantaneous</parameterType>
 			<unit>ML/day</unit>
-			<!-- <displayUnit>GL/day</displayUnit> -->
+			<displayUnit>m3/s</displayUnit>
 			<valueResolution>.1</valueResolution>
 			<parameter id="Q_obs" name="Flow observed">
 				<shortName>Q_obs</shortName>
@@ -47,6 +47,9 @@
 			</parameter>
 			<parameter id="Q_fcst" name="Flow forecast">
 				<shortName>Q_fcst</shortName>
+			</parameter>
+			<parameter id="Q_comb" name="Flow combined observed and forecast">
+				<shortName>Q_comb</shortName>
 			</parameter>
 			<parameter id="Q_in_fcst" name="Flow forecast (inflow)">
 				<shortName>Q_in_fcst</shortName>
@@ -126,11 +129,35 @@
 			<parameter id="QCR_fcst" name="Flow Credit forecast">
 				<shortName>QCR_fcst</shortName>
 			</parameter>
+			<parameter id="QTrade" name="Trade Volume">
+				<shortName>QTrade</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Flow (monthly)">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML/month</unit>
+			<valueResolution>.1</valueResolution>
+			<parameter id="Q_trade" name="Trade Volume">
+				<shortName>Q_trade</shortName>
+			</parameter>
+			<parameter id="Q_trade_TLM" name="Trade Volume TLM">
+				<shortName>Q_trade_TLM</shortName>
+			</parameter>
+			<parameter id="Q_trade_CEHW" name="Trade Volume CEHW">
+				<shortName>Q_trade_CEHW</shortName>
+			</parameter>
+			<parameter id="Q_trade_SA_deferred" name="Trade Volume  SA_deferred">
+				<shortName>Q_trade_SA_deferred</shortName>
+			</parameter>
+			<parameter id="Q_trade_undelivered" name="Trade Volume  undelivered">
+				<shortName>Q_trade_undelivered</shortName>
+			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Seasonal Patterns">
 			<parameterType>accumulative</parameterType>
 			<unit>ML</unit>
 			<displayUnit>GL</displayUnit>
+			<valueResolution>.1</valueResolution>
 			<parameter id="Q_plan" name="Flow planned">
 				<shortName>Q_plan</shortName>
 			</parameter>
@@ -178,6 +205,9 @@
 			</parameter>
 			<parameter id="VL_fcst" name="Storage Volume Loss forecast">
 				<shortName>VL_fcst</shortName>
+			</parameter>
+			<parameter id="V_undelivered" name="Undelivered volume">
+				<shortName>V_undel</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Storage Volume change">
@@ -262,10 +292,21 @@
 			<parameter id="EVAP_fcst" name="Evaporation forecast">
 				<shortName>EVAP_fcst</shortName>
 			</parameter>
+			<parameter id="EVAP_comb" name="Evaporation combined observed and forecast">
+				<shortName>EVAP_comb</shortName>
+			</parameter>
 			<parameter id="PET_obs" name="Potential Evapo Transpiration observed ">
 				<shortName>PET_obs</shortName>
 			</parameter>
 		</parameterGroup>
+	<parameterGroup id="Losses">
+		<parameterType>accumulative</parameterType>
+		<unit>mm</unit>
+		<valueResolution>0.1</valueResolution>
+		<parameter id="IL" name="Initial Loss">
+			<shortName>IL</shortName>
+		</parameter>
+	</parameterGroup>
 		<parameterGroup id="Soil Moisture">
 			<parameterType>instantaneous</parameterType>
 			<unit>mm</unit>
@@ -360,6 +401,17 @@
 			</parameter>
 			<parameter id="Turbidity_fcst" name="Turbidity forecast">
 				<shortName>Turbidity_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Bacteria">
+			<parameterType>instantaneous</parameterType>
+			<unit>mm3/l</unit>
+			<valueResolution>0.01</valueResolution>
+			<parameter id="Cyanobacteria_obs">
+				<shortName>Cyanobacteria_obs</shortName>
+			</parameter>
+			<parameter id="CyanobacteriaToxic_obs">
+				<shortName>CyanobacteriaToxic_obs</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Velocity">
@@ -460,6 +512,34 @@
 			</parameter>
 			<parameter id="Daily_Report_trigger" name="Nr. of daily reports to send (should be max 1)">
 				<shortName>Daily_Report_trigger</shortName>
+			</parameter>
+			<parameter id="index" name="index">
+				<shortName>index</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Alert level">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="Recreational_alert" name="Recreational_alert">
+				<shortName>Recreational_alert</shortName>
+			</parameter>
+			<parameter id="DrinkingWater_alert" name="DrinkingWater_alert">
+				<shortName>DrinkingWater_alert</shortName>
+			</parameter>
+			<parameter id="Livestock_alert" name="Livestock_alert">
+				<shortName>Livestock_alert</shortName>
+			</parameter>
+			<parameter id="Cyanobacteria_alert" name="Cyanobacteria_alert">
+				<shortName>Cyanobacteria_alert</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Misc">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>0.0001</valueResolution>
+			<parameter id="proportion" name="Undelivered proportion">
+				<shortName>prop</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Probability">

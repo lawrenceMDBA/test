@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflowDescriptors version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflowDescriptors.xsd">
+	<workflowDescriptor forecast="false" id="Import_test_data" name="Import Test Data" visible="true">
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Import_Samples" name="Import Sample Data (csv file)" visible="true">
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="EWSourceRO_Rainfall_Forecast" name="Select rainfall Source RO" visible="true" autoApprove="true">
+		<description>Prepare rainfall for ewSource River Operations</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO" name="Prepare data for export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Prepare data for export to ewSource RO</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_EVAP" name="Prepare EVAP data for export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Prepare EVAP data for export to ewSource RO</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_Qcomb" name="Prepare Q_comb (Flow forecast) data for export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Prepare Qfcst data for export to ewSource RO</description>
+		<cardinalTimeStep id="8am"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_QORD" name="Prepare QORD (Water demands) data for export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Prepare QORD data for export to ewSource RO</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_Qtrade" name="Prepare Qtrade (SA daily trade) data for export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Prepare Qtrade data for export to ewSource RO</description>
+		<cardinalTimeStep id="Monthly"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Export_ToEWSourceRO" name="Export to ewSource River Operations" visible="true" autoApprove="true">
+		<description>Export OPO to ewSource RO</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Import_FromEWSourceRO" name="Import EWSource_RO Forecasts" visible="true" autoApprove="true">
+		<description>Import EWSource_RO Forecast</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Climatology" name="Import climatology data" visible="true">
 		<description>Import climatology (PET profiles)</description>
 		<viewPermission>RiverOperations</viewPermission>
@@ -9,16 +56,16 @@
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="Import_Forecast" name="Import NWPs and STF forecasts" visible="true">
+	<workflowDescriptor forecast="true" id="Import_Forecast" name="Import NWPs and STF forecasts" visible="true" autoApprove="true">
 		<description>Import nwp data from various Bureau Forecasts; import STF from BoM</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="false" id="Import_FromEWSourceRO" name="Import EWSource_RO Forecasts" visible="true">
-		<description>Import EWSource_RO Forecast</description>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_AWRA_FloodOps" name="Import and process  AWRA data" visible="true" autoApprove="true">
+		<description>Import andqrocess AWRA data from ftp</description>
 		<cardinalTimeStep unit="hour"/>
-		<runExpiryTime unit="day" multiplier="7"/>
+		<runExpiryTime unit="day" multiplier="3"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Hydstra_Fcst" name="Import Hydstra Forecasts" visible="true">
@@ -96,6 +143,11 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
+		<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Create ACCESSR Forecast from observations" visible="true">
+		<description>Create gridded ACCESSR data from observations for Flood Training</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>	
 	<workflowDescriptor forecast="false" id="Process_AWAP" name="Process AWAP data" visible="true">
 		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas.</description>
 		<runExpiryTime unit="day" multiplier="365"/>
@@ -199,7 +251,6 @@
 	<workflowDescriptor forecast="false" id="Maintenance_Workflow" name="Maintenance Workflow" visible="true">
 		<description>Generalised maintenance workflow</description>
 	</workflowDescriptor>
-
 	<!--Flood ops workflow descriptors-->
 	<workflowDescriptor forecast="false" id="Prepare_System_FloodOps" name="Prepare system for flood operations" visible="true">
 		<description>Prepare stand alone application for flood operations</description>
@@ -210,7 +261,7 @@
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="false" id="Process_Observed_FloodOps" name="Processing of data for flood ops" visible="true">
+	<workflowDescriptor forecast="false" id="Process_Observed_FloodOps" name="Processing of observed data for flood ops" visible="true">
 		<runExpiryTime unit="day" multiplier="365"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
@@ -250,42 +301,102 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_Forecast" name="Upper Murray Rainfall (Current Policy)" visible="true" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall" name="Rainfall Upper Murray (Current Policy) - only used in other WFs" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_Scenario_Forecast" name="Upper Murray Rainfall (What-If Scenario)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_IFD" name="Rainfall Upper Murray (Current Policy)" visible="true" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Catchment_Forecast" name="Upper Murray URBS Forecast (models)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_IFD_Archive" name="Rainfall Upper Murray (Current Policy) - based on archived NWP" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_IFD_Forecast" name="Upper Murray URBS Forecast (IFD)" visible="true" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_Scenario_IFD" name="Rainfall Upper Murray (What-If Scenario)" visible="true" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Ensemble_Forecast" name="Upper Murray URBS Forecast (Ensemble)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall_Scenario_IFD_Archive" name="Rainfall Upper Murray (What-If Scenario) - based on archived NWP" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario_Official_Forecast" name="Upper Murray URBS Forecast (What-If Scenario)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Catchment_Mitta" name="URBS Upper Murray Mitta - only used in other WFs" visible="true" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario_IFD_Forecast" name="Upper Murray URBS Forecast (What-If Scenario, IFD)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Catchment_Upper" name="URBS Upper Murray Upper - only used in other WFs" visible="true" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Official_Forecast" name="Upper Murray URBS Forecast (Current Policy)" visible="false" autoApprove="true">
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Catchment_Below" name="URBS Upper Murray Below - only used in other WFs" visible="true" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Catchment" name="URBS Upper Murray - only used in other WFs" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Mitta" name="URBS Upper Murray Mitta (Current Policy, local)" visible="true" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Upper" name="URBS Upper Murray Upper (Current Policy, local)" visible="true" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Below" name="URBS Upper Murray Below (Current Policy, local)" visible="true" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Official" name="URBS Upper Murray (Current Policy, official)" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Official_Archive" name="URBS Upper Murray (Current Policy, official) - based on archived NWP" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Ensemble" name="URBS Upper Murray (Ensemble, local)" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Ensemble_Archive" name="URBS Upper Murray (Ensemble, local) - based on archived NWP" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario" name="URBS Upper Murray (What-If Scenario, local)" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario_Archive" name="URBS Upper Murray (What-If Scenario, local) - based on archived NWP" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario_Official" name="URBS Upper Murray (What-If Scenario, official)" visible="false" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="UpperMurray_URBS_Scenario_Official_Archive" name="URBS Upper Murray (What-If Scenario, official) - based on archived NWP" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>

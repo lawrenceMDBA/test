@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ Q_obs and QORD-->
+	<!-- 	-  Merge Q_obs QORD_obs and Q_plan to generate long forecast input timeseries file -->
+	<!-- 	-  Prepare data for export to for River Operations Source model  -->
+	<!--========================================================================================-->
+	<!--Dummy Catchments to make modifier display work for catchment attributes-->
+	<variable>
+		<variableId>Dummy_Catchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<locationId>ewSource_RO</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= Q_obs and QORD ========= -->
+	<variable>
+		<variableId>OPO_Q</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="730" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.longterm</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.longterm</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_plan_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="14" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_plan_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="14" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Result_QORD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========================================================================================-->
+	<!--Q_obs and QORD-->
+	<!-- Simple merge of Q_obs + QORD_obs + Q_plan -->
+	<!-- Merging Q_obs over QORD_obs over Q_plan -->
+	<transformation id="Q_obs">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_Q</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.longterm</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_obs</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Gapfill_Q_obs">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Q_obs</variableId>
+				</inputVariable>
+				<maxGapLength>14</maxGapLength>
+				<outputVariable>
+					<variableId>Q_obs</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Select_Q_plan_scenario">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>Q_plan_min</variableId>
+				</input>
+				<input>
+					<variableId>Q_plan_aep90</variableId>
+				</input>
+				<attributeFunctionId>Q_plan_@catchment:QORD_SCEN_SELECT@</attributeFunctionId>
+				<output>
+					<variableId>Result_QORD</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Result_QORD">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Result_QORD</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Result_QORD</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

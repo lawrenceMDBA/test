@@ -4,10 +4,6 @@
 	<moduleInstanceDescriptor id="PeakHeights_Correlation">
 		<description>Dummy for correlation results</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Ovens_ewSourceRRCorrection_Fcst"/>
-	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Hcst">
-		<description>SourceHistoricalSimulation</description>
-	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
 		<description>Exports Rainfall data in CSV format to HydstraTSM</description>
 	</moduleInstanceDescriptor>
@@ -33,9 +29,6 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToMDBC_OPS_Menindee">
 		<description>Export Menindee data to MDBC_OPS</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportToEWSourceRO">
-		<description>Export data to ewSource RO</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExecuteHydstraTSM_Fcst">
 		<description>Runs HydstraTSM model</description>
@@ -91,6 +84,12 @@
 	<moduleInstanceDescriptor id="ImportForecastPME_ftp">
 		<description>Import PME from ftp</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAWRA">
+		<description>Import AWRA</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportAWRA_ftp">
+		<description>Import AWRA from ftp</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportForecastSTF">
 		<description>Import STF</description>
 	</moduleInstanceDescriptor>
@@ -118,6 +117,9 @@
 	<moduleInstanceDescriptor id="ImportObserved">
 		<description>Import Observed series from hydstra (OPT, OPC, OPT2, Daily)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportSamples">
+		<description>Import Sample data (csv files)</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportRatings">
 		<description>Import Ratings</description>
 	</moduleInstanceDescriptor>
@@ -136,17 +138,43 @@
 	<moduleInstanceDescriptor id="PostprocessHydstraTSM_Fcst">
 		<description>Postprocessing to HydstraTSM Forecast, creates daily series</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreProcessWeeklyReportData">
+		<description>Preprocessing of weekly report data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareewSourceRO">
+		<description>Prepare data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_EVAP">
+		<description>Prepare EVAP data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qcomb">
+		<description>Prepare Q_fcst data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_QORD">
+		<description>Prepare QORD data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade_forecastlength"/>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade">
+		<description>Manual enter underlivered, deferred and trade flows, process to Daily QSA Trade Adjustment</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ewSource_Rainfall_Forecast">
+		<description>Prepare rainfall data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportToEWSourceRO">
+		<description>Export data to ewSource_RO</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportFromEWSourceRO">
 		<description>Import Forecasts from EWSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Ovens_PrepareewSourceRR">
+		<description>CombineRainfall</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Fcst">
 		<description>SourceOvensForecast</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreProcessWeeklyReportData">
-		<description>Preprocessing of weekly report data</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Ovens_PrepareewSourceRR">
-		<description>CombineRainfall</description>
+	<moduleInstanceDescriptor id="Ovens_ewSourceRRCorrection_Fcst"/>
+	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Hcst">
+		<description>SourceHistoricalSimulation</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PrepareHydstraTSM">
 		<description>Combines Gridded Rainfall (PME) and Temperature (ADFD) with the Observed series</description>
@@ -286,6 +314,9 @@
 	<moduleInstanceDescriptor id="FlowToLevel_Fcst">
 		<description>Applies rating to convert Q fcst to H</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="MaxRelease_Hume_1h_URBS_Forecast">
+		<description>calculates the maximum theoretical release based on the simulated dam water level</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="LevelToStorage">
 		<description>Applies capacity table to convert H to V</description>
 	</moduleInstanceDescriptor>
@@ -309,6 +340,12 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessAWAP_To_AgAreas">
 		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas (for display)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessAWRA">
+		<description>Process AWRA data (daily grids) into URVS catchements (for display)</description>
+	</moduleInstanceDescriptor>
+		<moduleInstanceDescriptor id="CreateACCESSRGrid">
+		<description>Create gridded ACCESSR data from observations for Flood Training</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessNWP_To_Archive">
 		<description>Process NWP gridded data into smaller grids for archiving</description>
@@ -385,13 +422,18 @@
 	<moduleInstanceDescriptor id="Amalgamate_ImportData_Monthly">
 		<description>Monthly timeseries blobs amalgamation</description>
 	</moduleInstanceDescriptor>
-
 	<moduleInstanceDescriptor id="Update_ModulesBin">
 		<description>Module to extract software to Modules_Bin folder</description>
 	</moduleInstanceDescriptor>
 	<!--Dummy module for moduledatasets-->
 	<moduleInstanceDescriptor id="modules_bin_ewSource">
 		<description>ewSource software</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="modules_bin_ewSource_full">
+		<description>ewSource software (full)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="modules_bin_ewSource_plugins">
+		<description>ewSource software plugins</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="modules_bin_ewSourceAdapter">
 		<description>ewSource model adapter</description>
@@ -421,13 +463,34 @@
 	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments">
 		<description>Process NWP data to URBS subcatchments</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments_from_Archive">
+		<description>Process NWP data to URBS subcatchments (for data retrieved from Archive)</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PrepareUrbs_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_mitta_Rainfall_Forecast">
+		<description>Prepare URBS input</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_upper_Rainfall_Forecast">
+		<description>Prepare URBS input</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_below_Rainfall_Forecast">
+		<description>Prepare URBS input</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Subcatchment_Forecast">
+		<description>Computes subcatchment averaged rainfall for URBS subcatchment</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_mitta_Rainfall_Subcatchment_Forecast">
+		<description>Computes subcatchment averaged rainfall for URBS subcatchment</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_upper_Rainfall_Subcatchment_Forecast">
+		<description>Computes subcatchment averaged rainfall for URBS subcatchment</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_below_Rainfall_Subcatchment_Forecast">
 		<description>Computes subcatchment averaged rainfall for URBS subcatchment</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Scenario_Forecast">
@@ -442,11 +505,26 @@
 	<moduleInstanceDescriptor id="upper_murray_upper_m_URBS_Forecast">
 		<description>URBS General Adapter upper_murray_upper_m</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_upper_URBS_Forecast">
+		<description>URBS General Adapter upper_murray_upper</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_mitta_URBS_Forecast">
+		<description>URBS General Adapter upper_murray_mitta</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_below_URBS_Forecast">
+		<description>URBS General Adapter upper_murray_below</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="upper_murray_upper_m_URBS_QtoH_Forecast">
 		<description>URBS Flow To Level Transformation upper_murray_upper_m</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="upper_murray_upper_m_Urbs_Fcst">
-		<description>Urbs forecast upper m subcatchment</description>
+	<moduleInstanceDescriptor id="upper_murray_mitta_URBS_QtoH_Forecast">
+		<description>URBS Flow To Level Transformation upper_murray_mitta</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_upper_URBS_QtoH_Forecast">
+		<description>URBS Flow To Level Transformation upper_murray_upper</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_below_URBS_QtoH_Forecast">
+		<description>URBS Flow To Level Transformation upper_murray_below</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="URBS_State">
 		<description>Placeholder URBS state</description>
@@ -466,6 +544,12 @@
 	<moduleInstanceDescriptor id="ImportObservedFloodOpsArchive">
 		<description>Import observed data for use in flood operations from the last few weeks from local disc after manual download</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportForecastToFloodsheets_HPQ_new">
+		<description>Export H,Q forecast for hume dam to Flood Ops spreadsheet</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_HPQ_new">
+		<description>Export H,Q observed for hume dam to Flood Ops spreadsheet</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_HPQ">
 		<description>Export H,P,Q observed for all flood sites to Flood Ops spreadsheet</description>
 	</moduleInstanceDescriptor>
@@ -474,6 +558,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets">
 		<description>Export data for Hume flood sites to Flood Ops spreadsheet</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportForecastToFloodsheets_hume">
+		<description>Export data for Hume to Flood Ops spreadsheet</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_hume">
 		<description>Export data for Hume flood sites to Flood Ops spreadsheet</description>
@@ -496,15 +583,15 @@
 	<moduleInstanceDescriptor id="Update_ModulesBin_FloodOps">
 		<description>Module to extract software to Modules_Bin folder</description>
 	</moduleInstanceDescriptor>
-<!--Flood Ops Dummy module for moduledataset -->
+	<!--Flood Ops Dummy module for moduledataset -->
 	<moduleInstanceDescriptor id="modules_bin_delft-adapters">
 		<description>Delft-FEWS model adapters</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="modules_bin_urbs">
 		<description>URBS software</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="upper_murray_URBS_Forecast">
-		<description>upper_murray URBS model</description>
+	<moduleInstanceDescriptor id="ovens_ewSource_Forecast">
+		<description>ovens Source model</description>
 	</moduleInstanceDescriptor>
 	<!-- Maintenance modules -->
 	<moduleInstanceDescriptor id="ChangeTimeSeriesModuleInstanceId">

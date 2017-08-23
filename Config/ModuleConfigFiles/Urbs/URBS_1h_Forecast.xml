@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.10</piVersion>
+		<rootDir>%REGION_HOME%/Modules/urbs\$CATCHMENT$\$SUBCATCHMENT$</rootDir>
+		<workDir>%ROOT_DIR%\model</workDir>
+		<exportDir>%ROOT_DIR%\to_urbs</exportDir>
+		<exportDataSetDir>%REGION_HOME%\Modules</exportDataSetDir>
+		<exportIdMap>IdExportURBS</exportIdMap>
+		<exportUnitConversionsId>URBSExportUnitConversions</exportUnitConversionsId>
+		<importDir>%ROOT_DIR%\from_urbs</importDir>
+		<importIdMap>IdImportURBS</importIdMap>
+		<importUnitConversionsId>URBSImportUnitConversions</importUnitConversionsId>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%</dumpDir>
+		<diagnosticFile>%ROOT_DIR%\logs\urbsdiag.xml</diagnosticFile>
+		<missVal>-99.0</missVal>
+		<convertDatum>true</convertDatum>
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%\from_urbs\*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%\logs\*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%\model\*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%\states\*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%\to_urbs\*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportStateActivity>
+				<moduleInstanceId>URBS_State</moduleInstanceId>
+				<stateExportDir>%ROOT_DIR%/states</stateExportDir>
+				<stateConfigFile>%ROOT_DIR%\states\states.xml</stateConfigFile>
+				<stateLocations type="file">
+					<stateLocation>
+						<readLocation>states.txt</readLocation>
+						<writeLocation>states.txt</writeLocation>
+					</stateLocation>
+				</stateLocations>
+				<stateSelection>
+					<warmState>
+						<stateSearchPeriod unit="hour" start="-48" end="-1"/>
+					</warmState>
+				</stateSelection>
+			</exportStateActivity>
+			<exportTimeSeriesActivity>
+				<exportFile>Input.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_comb</parameterId>
+						<locationSetId>URBS_subareas.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<!-- all parameters below map to a .g file, so only one file (i.e. parameter) per location will come through (i.e the last to be exported)-->
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0"/>
+						<readWriteMode>read only</readWriteMode>
+						<ensembleId>main</ensembleId>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>User_Input</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>$RELEASE$</parameterId>
+						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+						<ensembleId>main</ensembleId>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>URBS_fcst_sites_no_res.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0"/>
+						<readWriteMode>read only</readWriteMode>
+						<ensembleId>main</ensembleId>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportDataSetActivity>
+				<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			</exportDataSetActivity>
+			<exportParameterActivity>
+				<fileName>params.xml</fileName>
+				<templateLocationLooping>
+					<locationModelLoop>
+						<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+						<model>Subcatchments</model>
+					</locationModelLoop>
+					<locationModelLoop>
+						<locationSetId>URBS_matching.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<model>Matching</model>
+					</locationModelLoop>
+					<locationModelLoop>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<model>Reservoirs</model>
+					</locationModelLoop>
+				</templateLocationLooping>
+				<moduleInstanceId>URBS_Parameters</moduleInstanceId>
+			</exportParameterActivity>
+			<exportRunFileActivity>
+				<exportFile>paramAdapter_runinfo.xml</exportFile>
+				<properties>
+					<string key="urbsIniFile" value="%ROOT_DIR%\model\$SUBCATCHMENT$.ini"/>
+					<string key="rdfFile" value="%ROOT_DIR%\model\$SUBCATCHMENT$.rdf"/>
+					<string key="URBS_BIN" value="$MODULES_BIN$\urbs"/>
+				</properties>
+			</exportRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<command>
+					<className>nl.wldelft.urbs.ParameterAdapter</className>
+					<binDir>$MODULES_BIN$\delft-adapters</binDir>
+				</command>
+				<arguments>
+					<argument>%ROOT_DIR%\to_urbs\paramAdapter_runinfo.xml</argument>
+				</arguments>
+				<timeOut>400000</timeOut>
+			</executeActivity>
+			<executeActivity>
+				<description>Run PreAdapter</description>
+				<command>
+					<executable>$MODULES_BIN$\urbs\preadapter.exe</executable>
+				</command>
+				<arguments>
+					<argument>%ROOT_DIR%\to_urbs\Input.xml</argument>
+					<argument>%ROOT_DIR%\model\$SUBCATCHMENT$.ini</argument>
+					<argument>%ROOT_DIR%\logs\urbsdiag_pre.xml</argument>
+					<argument>%ROOT_DIR%\model\$SUBCATCHMENT$.vec</argument>
+					<argument>%ROOT_DIR%\model\$SUBCATCHMENT$.rdf</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+				<overrulingDiagnosticFile>%ROOT_DIR%\logs\urbsdiag_pre.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<description>Run modelAdapter (using cmd.exe /c to properly terminate)</description>
+				<command>
+					<executable>c:\$WINCOMMANDSHELL$</executable>
+				</command>
+				<arguments>
+					<argument>/c</argument>
+					<argument>%ROOT_DIR%\model\modelAdapter.bat</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+			</executeActivity>
+			<executeActivity>
+				<description>Run PostAdapter</description>
+				<command>
+					<executable>$MODULES_BIN$\urbs\postadapter.exe</executable>
+				</command>
+				<arguments>
+					<argument>%ROOT_DIR%\from_urbs\$SUBCATCHMENT$.csv</argument>
+					<argument>%ROOT_DIR%\logs\urbsout.log</argument>
+					<argument>%ROOT_DIR%\logs\urbserr.log</argument>
+					<argument>%ROOT_DIR%\from_urbs\Output.xml</argument>
+					<argument>%ROOT_DIR%\logs\urbsdiag_post.xml</argument>
+					<argument>-l..\model\$SUBCATCHMENT$.lst</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+				<overrulingDiagnosticFile>%ROOT_DIR%\logs\urbsdiag_post.xml</overrulingDiagnosticFile>
+			</executeActivity>
+		</executeActivities>
+		<importActivities>
+			<importTimeSeriesActivity>
+				<importFile>Output.xml</importFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_in_fcst</parameterId>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_out_fcst</parameterId>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_calc</parameterId>
+						<qualifierId>gross</qualifierId>
+						<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_calc</parameterId>
+						<qualifierId>net</qualifierId>
+						<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_fcst</parameterId>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importTimeSeriesActivity>
+		</importActivities>
+	</activities>
+</generalAdapterRun>
