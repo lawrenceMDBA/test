@@ -10,7 +10,7 @@
 	<!-- - dissaggregate to [ML/day] -->
 	<!-- TLM and CWEH direct trade to SA -->
 	<!-- - manual data entry [ML/month] -->
-	<!-- - combine and dissagregate into Potentional Environmental Direct Murray Trades [ML/day] -->
+	<!-- - combine and dissagregate into Potentional Direct Murray Trades [ML/day] -->
 	<!-- Daily Trade Adjustment -->
 	<!-- - combine all three source [ML/day]-->
 	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
@@ -472,7 +472,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Variables - Undelivered trade, SA Deferred and Environmental trade - monthly timestep-->
+	<!--Variables - Undelivered trade, SA Deferred and direct trade - monthly timestep-->
 	<variable>
 		<variableId>Undelivered_trade_month</variableId>
 		<timeSeriesSet>
@@ -717,7 +717,7 @@
 			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
-			<qualifierId>trade</qualifierId>
+			<qualifierId>tot_trade</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
