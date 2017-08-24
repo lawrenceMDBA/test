@@ -521,14 +521,14 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_TLM_month</variableId>
+		<variableId>Direct_trade_TLM_month</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
 			<qualifierId>opo</qualifierId>
 			<qualifierId>monthly</qualifierId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>TLM</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -538,14 +538,14 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_CEHW_month</variableId>
+		<variableId>Direct_trade_CEHW_month</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
 			<qualifierId>opo</qualifierId>
 			<qualifierId>monthly</qualifierId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>CEHW</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -588,14 +588,14 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_TLM_month_shift</variableId>
+		<variableId>Direct_trade_TLM_month_shift</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
 			<qualifierId>opo</qualifierId>
 			<qualifierId>monthly</qualifierId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>TLM</qualifierId>
 			<qualifierId>shift</qualifierId>
 			<locationId>SA_border</locationId>
@@ -606,14 +606,14 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_CEHW_month_shift</variableId>
+		<variableId>Direct_trade_CEHW_month_shift</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
 			<qualifierId>opo</qualifierId>
 			<qualifierId>monthly</qualifierId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>CEHW</qualifierId>
 			<qualifierId>shift</qualifierId>
 			<locationId>SA_border</locationId>
@@ -668,12 +668,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_TLM_day</variableId>
+		<variableId>Direct_trade_TLM_day</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>TLM</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
@@ -683,12 +683,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_CEHW_day</variableId>
+		<variableId>Direct_trade_CEHW_day</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<qualifierId>CEHW</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
@@ -698,12 +698,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Environmental_trade_day</variableId>
+		<variableId>Direct_trade_day</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_trade</parameterId>
-			<qualifierId>environmental_trade</qualifierId>
+			<qualifierId>dir_trade</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
@@ -1934,30 +1934,30 @@
 			</constant>
 		</timeShift>
 	</transformation>
-	<transformation id="Environmental_trade_TLM_month_shift">
+	<transformation id="Direct_trade_TLM_month_shift">
 		<timeShift>
 			<constant>
 				<inputVariable>
-					<variableId>Environmental_trade_TLM_month</variableId>
+					<variableId>Direct_trade_TLM_month</variableId>
 				</inputVariable>
 				<direction>forward</direction>
 				<numberOfTimeSteps>1</numberOfTimeSteps>
 				<outputVariable>
-					<variableId>Environmental_trade_TLM_month_shift</variableId>
+					<variableId>Direct_trade_TLM_month_shift</variableId>
 				</outputVariable>
 			</constant>
 		</timeShift>
 	</transformation>
-	<transformation id="Environmental_trade_CEHW_month_shift">
+	<transformation id="Direct_trade_CEHW_month_shift">
 		<timeShift>
 			<constant>
 				<inputVariable>
-					<variableId>Environmental_trade_CEHW_month</variableId>
+					<variableId>Direct_trade_CEHW_month</variableId>
 				</inputVariable>
 				<direction>forward</direction>
 				<numberOfTimeSteps>1</numberOfTimeSteps>
 				<outputVariable>
-					<variableId>Environmental_trade_CEHW_month_shift</variableId>
+					<variableId>Direct_trade_CEHW_month_shift</variableId>
 				</outputVariable>
 			</constant>
 		</timeShift>
@@ -2013,26 +2013,26 @@
 			</accumulative>
 		</disaggregation>
 	</transformation>
-	<transformation id="Environmental_trade_TLM_day">
+	<transformation id="Direct_trade_TLM_day">
 		<disaggregation>
 			<accumulative>
 				<inputVariable>
-					<variableId>Environmental_trade_TLM_month_shift</variableId>
+					<variableId>Direct_trade_TLM_month_shift</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>Environmental_trade_TLM_day</variableId>
+					<variableId>Direct_trade_TLM_day</variableId>
 				</outputVariable>
 			</accumulative>
 		</disaggregation>
 	</transformation>
-	<transformation id="Environmental_trade_CEHW_day">
+	<transformation id="Direct_trade_CEHW_day">
 		<disaggregation>
 			<accumulative>
 				<inputVariable>
-					<variableId>Environmental_trade_CEHW_month_shift</variableId>
+					<variableId>Direct_trade_CEHW_month_shift</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>Environmental_trade_CEHW_day</variableId>
+					<variableId>Direct_trade_CEHW_day</variableId>
 				</outputVariable>
 			</accumulative>
 		</disaggregation>
@@ -2063,28 +2063,28 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Environmental_trade_TLM_day_fill">
+	<transformation id="Direct_trade_TLM_day_fill">
 		<interpolationSerial>
 			<default>
 				<inputVariable>
-					<variableId>Environmental_trade_TLM_day</variableId>
+					<variableId>Direct_trade_TLM_day</variableId>
 				</inputVariable>
 				<defaultValueFunction>0</defaultValueFunction>
 				<outputVariable>
-					<variableId>Environmental_trade_TLM_day</variableId>
+					<variableId>Direct_trade_TLM_day</variableId>
 				</outputVariable>
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Environmental_trade_CEHW_day_fill">
+	<transformation id="Direct_trade_CEHW_day_fill">
 		<interpolationSerial>
 			<default>
 				<inputVariable>
-					<variableId>Environmental_trade_CEHW_day</variableId>
+					<variableId>Direct_trade_CEHW_day</variableId>
 				</inputVariable>
 				<defaultValueFunction>0</defaultValueFunction>
 				<outputVariable>
-					<variableId>Environmental_trade_CEHW_day</variableId>
+					<variableId>Direct_trade_CEHW_day</variableId>
 				</outputVariable>
 			</default>
 		</interpolationSerial>
@@ -2092,7 +2092,7 @@
 	<transformation id="Total_trade_day">
 		<user>
 			<simple>
-				<expression>Environmental_trade_TLM_day + Environmental_trade_CEHW_day + SA_Deferred_day + Undelivered_trade_day</expression>
+				<expression>Direct_trade_TLM_day + Direct_trade_CEHW_day + SA_Deferred_day + Undelivered_trade_day</expression>
 				<outputVariable>
 					<variableId>Total_trade_day</variableId>
 				</outputVariable>
