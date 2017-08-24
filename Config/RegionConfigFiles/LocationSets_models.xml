@@ -371,6 +371,104 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
+	<!-- Source River Ops model locationSet
+		 These will eventually replace the locationsets
+		 defined for the old export method
+	-->
+	<locationSet id="SourceRO_sites">
+		<description>All sites to be used/exported to Source RO model</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="SOURCE_PARAMS"/>
+			<attributeExists id="HYDRO_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<!-- Rainfall sites (param P) -->
+	<locationSet id="SourceRO_sites_P">
+		<description>Source sites with rainfall</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="P;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Evaoration sites (param EVAP) -->
+	<locationSet id="SourceRO_sites_EVAP">
+		<description>Source sites with evap</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="EVAP;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Water level sites (param H) -->
+	<locationSet id="SourceRO_sites_H">
+		<description>Source sites with water level</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="H;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Flow sites (param Q) -->
+	<locationSet id="SourceRO_sites_Q">
+		<description>Source sites with flow</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="Q;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Water order/demand sites (param QORD) -->
+	<locationSet id="SourceRO_sites_QORD">
+		<description>Source sites with water orders</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="QORD;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Trade sites sites (param QTRD) -->
+	<locationSet id="SourceRO_sites_QTRD">
+		<description>Source sites with trade</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="QTRD;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Storage volume sites (param V) -->
+	<locationSet id="SourceRO_sites_V">
+		<description>Source sites with volume</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="V;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- End of Source River Ops model locationSets -->
 	<!-- ewsource  RR-->
 	<locationSet id="ewsource_subareas.upper_murray">
 		<locationSetId>URBS_subareas.upper_murray</locationSetId>
