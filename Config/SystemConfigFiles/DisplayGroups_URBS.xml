@@ -193,6 +193,25 @@
 	<plot id="URBS_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<qualifierId>manual</qualifierId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
@@ -211,15 +230,6 @@
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>IFD</ensembleId>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>User_Input</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_release</parameterId>
-				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
-				<timeStep unit="hour"/>
-				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
@@ -384,6 +394,27 @@
 	<plot id="URBS_Official_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+                                <ensembleId>main</ensembleId>
+                                <ensembleMemberIndex>0</ensembleMemberIndex>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<qualifierId>manual</qualifierId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
@@ -402,15 +433,6 @@
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>OFFICIAL</ensembleId>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>User_Input</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_release</parameterId>
-				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
-				<timeStep unit="hour"/>
-				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
@@ -688,6 +710,25 @@
 	<plot id="URBS_Scenario_IFD_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release_scen</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release_scen</parameterId>
+				<qualifierId>manual</qualifierId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
@@ -706,15 +747,6 @@
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>IFDSCENARIO</ensembleId>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>User_Input</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_release</parameterId>
-				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
-				<timeStep unit="hour"/>
-				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
@@ -879,6 +911,25 @@
 	<plot id="URBS_Scenario_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release_scen</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>User_Input</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release_scen</parameterId>
+				<qualifierId>manual</qualifierId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
@@ -897,15 +948,6 @@
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 				<ensembleId>SCENARIO</ensembleId>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>User_Input</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_release</parameterId>
-				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
-				<timeStep unit="hour"/>
-				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
@@ -1598,7 +1640,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -2181,7 +2223,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -2216,6 +2258,14 @@
 			</display>
 			<display id="R_401217A_mitta" name="401217A - Gibbo Pk">
 				<locationId>R_401217A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401210A_mitta" name="401210A - Granite Flat">
+				<locationId>R_401210A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401231A_mitta" name="401231A - Lightning Ck">
+				<locationId>R_401231A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
 			<display id="R_401224A_mitta" name="401224A - Dartmouth Dam">
@@ -2321,6 +2371,14 @@
 			</display>
 			<display id="official_R_401217A_mitta" name="401217A - Gibbo Pk">
 				<locationId>R_401217A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="officail_R_401231A_mitta" name="401231A - Lightning Ck">
+				<locationId>R_401231A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
+			<display id="official_R_401210A_mitta" name="401210A - Granite Flat">
+				<locationId>R_401210A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
 			<display id="official_R_401224A_mitta" name="401224A - Dartmouth Dam">
@@ -2437,6 +2495,14 @@
 				<locationId>R_401217A</locationId>
 				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
+			<display id="runscenario_R_401231A_mitta" name="401231A - Lightning Ck">
+				<locationId>R_401231A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401210A_mitta" name="401210A - Granite Flat">
+				<locationId>R_401210A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
 			<display id="runscenario_R_401224A_mitta" name="401224A - Dartmouth Dam">
 				<locationId>R_401224A</locationId>
 				<plotId>URBS_Scenario_IFD_reservoir_1h</plotId>
@@ -2536,6 +2602,14 @@
 				<locationId>R_401217A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
+			<display id="scenario_R_401231A_mitta" name="401231A - Lightning Ck">
+				<locationId>R_401231A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
+			<display id="scenario_R_401210A_mitta" name="401210A - Granite Flat">
+				<locationId>R_401210A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
 			<display id="scenario_R_401224A_mitta" name="401224A - Dartmouth Dam">
 				<locationId>R_401224A</locationId>
 				<plotId>URBS_Scenario_reservoir_1h</plotId>
@@ -2633,6 +2707,14 @@
 			</display>
 			<display id="runensemble_R_401217A_mitta" name="401217A - Gibbo Pk">
 				<locationId>R_401217A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401231A_mitta" name="401231A - Lightning Ck">
+				<locationId>R_401231A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401210A_mitta" name="401210A - Granite Flat">
+				<locationId>R_401210A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
 			<display id="runensemble_R_401224A_mitta" name="401224A - Dartmouth Dam">

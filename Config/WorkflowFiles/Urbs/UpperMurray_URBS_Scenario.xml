@@ -9,11 +9,26 @@
 		<string key="ADFD_GRID" value="ADFD"/>
 		<string key="PME_GRID" value="ADFD"/>
 		<string key="RELEASE" value="Q_release_scen"/>
-				<string key="CATCH_SCEN" value="SCEN_CATCH"/>
+		<string key="CATCH_SCEN" value="SCEN_CATCH"/>
 		<string key="SC_SCEN" value="SCEN_SC"/>
 	</properties>
 	<activity>
 		<workflowId>UpperMurray_Rainfall</workflowId>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease_forecastlength</moduleInstanceId>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_Dart_Qrelease</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_Hume_Qrelease</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_QBC_Qrelease</moduleConfigFileName>
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>

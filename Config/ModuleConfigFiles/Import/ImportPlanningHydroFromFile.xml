@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
-		<!-- imports seasonal planning series from Hydro as external forecasting -->
+	<!-- imports seasonal planning series from Hydro as external forecasting -->
 	<import>
 		<general>
 			<importType>generalCsv</importType>
@@ -9,15 +9,10 @@
 			<failedFolder>$IMPORT_FAILED_FROM_HYDRO$</failedFolder>
 			<deleteImportedFiles>true</deleteImportedFiles>
 			<table>
-			    <locationColumn name="SITEID"/>
+				<locationColumn name="SITEID"/>
 				<parameterColumn name="PARAMETER"/>
 				<dateTimeColumn name="PERIODDATE" pattern="yyyy-MM-dd HH:mm:ss"/>
 				<valueColumn name="VALUE" unit="ML"/>
-<!-- 				<locationColumn name="SITEID"/>
-				<dateColumn name="PERIODDATE" pattern="yyyy-MM-dd HH:mm:ss" />
-				<parameterColumn name="PARAMETER"/>
-				<valueColumn name="VALUE"/>
-				<valueColumn name="QTYUNIT"/ -->
 			</table>
 			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
 			<idMapId>IdmapHydro2ROWS_Planning</idMapId>

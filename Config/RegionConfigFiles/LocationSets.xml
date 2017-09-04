@@ -1193,8 +1193,12 @@
 					<number>%INITIAL_RESERVOIR_LEVEL%</number>
 				</attribute>
 				<attribute id="QBC">
-					<description>Locations on Q boundary between subcatchments</description>
+					<description>Locations on Q boundary between subcatchments (G file input(Qobs + manual release forecast) for the URBS models)</description>
 					<text>%QBC%</text>
+				</attribute>
+				<attribute id="MODEL_INFLOW">
+					<description>Locations on Q boundary between subcatchments (I file input to the subsequent URBS models)</description>
+					<text>%MODEL_INFLOW%</text>
 				</attribute>
 				<attribute id="URBS_OUTPUTPAR_PGROSS" name="URBS_outputPar_Pgross">
 					<description>Fixed urbs parameter name</description>

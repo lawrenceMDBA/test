@@ -71,8 +71,8 @@
 					<timeSeriesSet>
 						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
 						<valueType>scalar</valueType>
-						<parameterId>Q_fcst</parameterId>
-						<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+						<parameterId>Q_out_fcst</parameterId>
+						<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
 						<timeSeriesType>simulated forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
 						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
@@ -98,7 +98,7 @@
 						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
 						<timeSeriesType>simulated forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
-						<relativeViewPeriod unit="day" end="0"/>
+						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 						<ensembleId>main</ensembleId>
 					</timeSeriesSet>

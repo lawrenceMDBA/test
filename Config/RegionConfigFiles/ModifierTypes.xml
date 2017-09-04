@@ -17,12 +17,12 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<locationSetId>ewSourceRO_subcatchments</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
 		</timeSeries>
+		<onlyApplyLastModifier>true</onlyApplyLastModifier>
 		<defaultStartTime>time zero</defaultStartTime>
 		<defaultEndTime>time zero</defaultEndTime>
 		<offsetDefaultEndTime unit="day" multiplier="14"/>
+		<defaultValidTime/>
 		<resolveInWorkflow>true</resolveInWorkflow>
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
@@ -31,10 +31,11 @@
 		<timeSeries>
 			<moduleInstanceId>User_Input</moduleInstanceId>
 			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
 			<locationId>R_401027</locationId>
 		</timeSeries>
-		<defaultStartTime>time zero</defaultStartTime>
-		<defaultEndTime>time zero</defaultEndTime>		
+		<defaultStartTime>start run</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
 		<offsetDefaultEndTime unit="day" multiplier="10"/>
 		<defaultValidTime/>
 		<resolveInWorkflow>true</resolveInWorkflow>
@@ -44,15 +45,75 @@
 	<timeSeriesModifier id="Hume_Release_Scenario" name="Hume Release Scenario">
 		<timeSeries>
 			<moduleInstanceId>User_Input</moduleInstanceId>
-			<valueType>scalar</valueType>
 			<parameterId>Q_release_scen</parameterId>
+			<qualifierId>manual</qualifierId>
 			<locationId>R_401027</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="KP_Release_Forecast" name="KP Release Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401569</locationId>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>		
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="KP_Release_Scenario" name="KP Release Scenario">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401569</locationId>
 			<timeStep unit="hour"/>
 		</timeSeries>
 		<defaultStartTime>time zero</defaultStartTime>
 		<defaultEndTime>time zero</defaultEndTime>
 		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Dart_Release_Forecast" name="Dart Release Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401224A</locationId>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Dart_Release_Scenario" name="Dart Release Scenario">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_release_scen</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401224A</locationId>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
 		<resolveInWorkflow>true</resolveInWorkflow>
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
@@ -827,16 +888,22 @@
 		<modifierId>Rainfall Policy</modifierId>
 		<modifierId>URBS_R</modifierId>
 		<modifierId>Hume_Release_Forecast</modifierId>
+		<modifierId>KP_Release_Forecast</modifierId>
+		<modifierId>Dart_Release_Forecast</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="URBS_R_Scen">
 		<modifierId>Rainfall Scenario</modifierId>
 		<modifierId>URBS_R</modifierId>
 		<modifierId>Hume_Release_Scenario</modifierId>
+		<modifierId>KP_Release_Scenario</modifierId>
+		<modifierId>Dart_Release_Scenario</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="URBS_R_All">
 		<modifierId>Rainfall Policy</modifierId>
 		<modifierId>Rainfall Scenario</modifierId>
 		<modifierId>URBS_R</modifierId>
 		<modifierId>Hume_Release_Forecast</modifierId>
+		<modifierId>KP_Release_Forecast</modifierId>
+		<modifierId>Dart_Release_Forecast</modifierId>
 	</modifiersGroup>
 </modifierTypes>

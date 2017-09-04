@@ -960,9 +960,14 @@
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites</locationSetId>
 		<constraints>
-			<not>
-				<attributeExists id="VBFNAME_URBS"/>
-			</not>
+			<allValid>
+				<not>
+					<attributeExists id="VBFNAME_URBS"/>
+				</not>
+				<not>
+					<attributeExists id="QBC"/>
+				</not>
+			</allValid>	
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_fcst_sites_rated">
@@ -1005,9 +1010,37 @@
 	</locationSet>
 	<locationSet id="URBS_fcst_sites_qbc">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
-		<locationSetId>URBS_fcst_sites</locationSetId>
+		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="QBC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_model_inflow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeExists id="MODEL_INFLOW"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_mitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_upper">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_below">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_fcst_sites_no_res.upper_murray_mitta">

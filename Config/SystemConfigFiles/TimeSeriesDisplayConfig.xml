@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <timeSeriesDisplay version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd">
 	<!-- defaultViewPeriod is 14 days back -->
-	<!-- 	Revision  20150401 	parameters display config precisions changed 	-->
+	<!--
+	Revision  20150401
+	parameters display config precisions changed
+	-->
 	<defaultViewPeriod unit="day" start="-14" end="1"/>
 	<thresholdDisplayConfig>
 		<thresholdDisplayOptions id="Minor_Flooding">
@@ -1102,10 +1105,34 @@
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="Q_release">
 			<preferredColor>red</preferredColor>
-			<lineStyle>solid;thick</lineStyle>
-			<lineWidth>1</lineWidth>
+			<lineStyle>none</lineStyle>
 			<markerStyle>circle</markerStyle>
-			<markerSize>4</markerSize>
+			<markerSize>8</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_release">
+			<qualifierId>manual</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>2</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>12</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_release_scen">
+			<preferredColor>red</preferredColor>
+			<lineStyle>none</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<markerSize>8</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="Q_release_scen">
+			<qualifierId>manual</qualifierId>
+			<preferredColor>green</preferredColor>
+			<lineStyle>none</lineStyle>
+			<lineWidth>2</lineWidth>
+			<markerStyle>+</markerStyle>
+			<markerSize>12</markerSize>
 			<precision>0</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="EGEN_obs">

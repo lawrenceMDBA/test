@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
-	<!--and calculates the maximum theoretical release based on the simulated dam water level.-->
+	<!--Calculates maximum theoretical release based on the simulated dam water level.-->
 	<!--Note: cumulative forecast is calculated for a timestep of 1 hour-->
 	<variable>
 		<variableId>Hsim_Hume</variableId>
@@ -26,6 +26,33 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<variable>
+		<variableId>Hsim_reservoirs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--temporary time series-->
+	<variable>
+		<variableId>Hsim_Hume_head_difference</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<qualifierId>Head</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--output: maximum theoretical release based on the simulated dam water level.-->
 	<variable>
 		<variableId>Qsim_out_valve_Hume</variableId>
 		<timeSeriesSet>
@@ -83,18 +110,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Hsim_reservoirs</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_fcst</parameterId>
-			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>V_fcst_reservoirs</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
@@ -102,20 +117,6 @@
 			<parameterId>V_fcst</parameterId>
 			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--temporary time series-->
-	<variable>
-		<variableId>Hsim_Hume_head_difference</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_fcst</parameterId>
-			<qualifierId>Head</qualifierId>
-			<locationId>R_401027</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
@@ -130,7 +131,7 @@
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="CalculateValve_outflow">
+	<transformation id="Qsim_out_valve_Hume">
 		<lookup>
 			<simple>
 				<input>
@@ -144,7 +145,7 @@
 			</simple>
 		</lookup>
 	</transformation>
-	<transformation id="CalculateHydro_outflow">
+	<transformation id="Qsim_out_hydro_Hume">
 		<lookup>
 			<simple>
 				<input>
@@ -158,7 +159,7 @@
 			</simple>
 		</lookup>
 	</transformation>
-	<transformation id="CalculateSpillway_outflow">
+	<transformation id="Qsim_out_spillway_Hume">
 		<lookup>
 			<simple>
 				<input>
@@ -172,7 +173,7 @@
 			</simple>
 		</lookup>
 	</transformation>
-	<transformation id="CalculateTotalOutflow_Hume">
+	<transformation id="Qsim_out_total_Hume">
 		<user>
 			<simple>
 				<expression>Qsim_out_valve_Hume + Qsim_out_hydro_Hume + Qsim_out_spillway_Hume</expression>
@@ -182,7 +183,7 @@
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Lookup_Storage_V_fcst">
+	<transformation id="V_fcst_reservoirs">
 		<lookup>
 			<simple>
 				<input>
