@@ -28,7 +28,7 @@
 		</subplot>
 		<plotViewerId>category</plotViewerId>
 	</plot>
-	<plot id="HydroSeasonal_Q_plan">
+	<plot id="HydroSeasonalMonthly_Q_plan">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
@@ -168,7 +168,7 @@
 			</timeSeriesSet> -->
 		</subplot>
 	</plot>
-	<plot id="HydroSeasonal_Q_plan.inflow">
+	<plot id="HydroSeasonalMonthly_Q_plan.inflow">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
@@ -244,7 +244,7 @@
 			</timeSeriesSet> -->
 		</subplot>
 	</plot>
-	<plot id="HydroSeasonal_Q_plan.div">
+	<plot id="HydroSeasonal_Q_plan.demand">
 	<!-- Demand display nodes -->
 		<subplot>
 			<timeSeriesSet>
@@ -388,7 +388,7 @@
 			</timeSeriesSet> -->
 		</subplot>
 	</plot>
-	<plot id="HydroSeasonalDaily_Q_plan.div">
+	<plot id="HydroSeasonalDaily_Q_plan.demand">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
@@ -531,40 +531,40 @@
 			</timeSeriesSet> -->
 		</subplot>
 	</plot>
-	<displayGroup id="HydroSeasonal_Q_plan" name="Monthly flow">
+	<displayGroup id="HydroSeasonalMonthly_Q_plan" name="Monthly flow">
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites_OQ</locationSetId>
-			<plotId>HydroSeasonal_Q_plan</plotId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<plotId>HydroSeasonalMonthly_Q_plan</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="HydroSeasonalDaily_Q_plan" name="Daily Flow">
+	<displayGroup id="HydroSeasonalDaily_Q_plan" name="Daily flow">
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites_OQ</locationSetId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<plotId>HydroSeasonalDaily_Q_plan</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="HydroSeasonal_Q_plan.inflow" name="Monthly inflow">
+	<displayGroup id="HydroSeasonalMonthly_Q_plan_inflow" name="Monthly inflow">
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites_OQI</locationSetId>
-			<plotId>HydroSeasonal_Q_plan.inflow</plotId>
+			<locationSetId>SourceRO_sites_Inflow</locationSetId>
+			<plotId>HydroSeasonalMonthly_Q_plan.inflow</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="HydroSeasonal_Q_plan.div" name="Monthly Demand">
+	<displayGroup id="HydroSeasonalMonthly_Q_plan.demand" name="Monthly demand">
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
-			<plotId>HydroSeasonal_Q_plan</plotId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<plotId>HydroSeasonalMonthly_Q_plan</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="HydroSeasonalDaily_Q_plan.div" name="Daily Demand">
+	<displayGroup id="HydroSeasonalDaily_Q_plan.demand" name="Daily demand">
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
 			<plotId>HydroSeasonalDaily_Q_plan</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
 	<displayGroup id="CategoryPlot" name="CategoryPlots">
 		<singleLocationDisplays>
-			<locationSetId>ewSourceRO_sites</locationSetId>
+			<locationSetId>SourceRO_sites</locationSetId>
 			<plotId>CategoryPlot</plotId>
 		</singleLocationDisplays>
 	</displayGroup>

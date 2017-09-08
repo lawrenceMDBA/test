@@ -81,38 +81,47 @@
 			<attributeExists id="HYDRO_SITE_ID"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="ewSourceRO_sites_Qfcst">
-		<description>ewSourceRO_sites with flow forecast</description>
-		<locationSetId>ewSourceRO_sites</locationSetId>
+	<locationSet id="SourceRO_sites_Qfcst">
+		<description>SourceRO_sites with planning data in attribute table</description>
+		<locationSetId>SourceRO_sites_Q</locationSetId>
 		<constraints>
-			<attributeExists id="JAN_MIN_QPLAN"/>
-			<attributeTextEndsWith postfix="_1" id="SOURCE_ID"/>
+			<allValid>
+				<attributeExists id="JAN_MIN_QPLAN"/>
+				<attributeTextEndsWith postfix="_1" id="SOURCE_ID"/>
+			</allValid>			
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_EVAPfcst">
 		<description>ewSourceRO_sites with evap forecast</description>
-		<locationSetId>ewSourceRO_sites</locationSetId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<attributeExists id="JAN_640_EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_sites_EVAPfcst">
+		<description>ewSourceRO_sites with evap forecast</description>
+		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<attributeExists id="JAN_640_EVAP"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_EVAPfcst_upper">
 		<description>ewSourceRO_sites with evap forecast for subcatchment upper</description>
-		<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+		<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 		<constraints>
 			<attributeTextContains id="SUB_CATCH" contains="ewSource_RO_upper"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_EVAPfcst_middle">
 		<description>ewSourceRO_sites with evap forecast for subcatchment middle</description>
-		<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+		<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 		<constraints>
 			<attributeTextContains id="SUB_CATCH" contains="ewSource_RO_middle"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="ewSourceRO_sites_EVAPfcst_lower">
 		<description>ewSourceRO_sites with evap forecast for subcatchment lower</description>
-		<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+		<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 		<constraints>
 			<attributeTextContains id="SUB_CATCH" contains="ewSource_RO_lower"/>
 		</constraints>
@@ -428,6 +437,20 @@
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="Q;"/>
+				<attributeExists id="SOURCE_SEQ"/>
+				<not>
+					<attributeTextContains id="SOURCE_PARAMS" contains="QORD;"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_sites_Inflow">
+		<description>SourceRO_sites with Inflow</description>
+		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="Q.inflow;"/>
 				<attributeExists id="SOURCE_SEQ"/>
 			</allValid>
 		</constraints>

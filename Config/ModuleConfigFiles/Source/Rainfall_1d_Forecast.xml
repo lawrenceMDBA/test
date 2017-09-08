@@ -12,6 +12,14 @@
 	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
 	<!--========================================================================================-->
 	<!--Dummy Catchments to make modifier display work for catchment attributes-->
+	
+	<!--Process rainfall data is based on the Rainfall scenario selection-->
+	<!--Step 1: Compute ewSource location averages from all rainfall forecast products-->
+	<!--Step 2: Aggregate all original NWP data to 1 day intervals-->
+	<!--Step 3: Select NWP rainfall source-->
+	<!--Step 4: Interpolate Gauges Rainfall to ewSource locations-->
+	<!--Step 5: Generate Manual Forecaster Series-->
+	<!--Step 6: Merge all series together, as backup fill with 0 mm-->
 	<variable>
 		<variableId>Dummy_Catchment</variableId>
 		<timeSeriesSet>
@@ -82,7 +90,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
@@ -96,7 +104,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessr</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="1"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
@@ -110,7 +118,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>adfd</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
@@ -124,7 +132,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>pme</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
@@ -138,8 +146,8 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<locationSetId>SourceRO_sites_P</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -152,8 +160,8 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessr</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<locationSetId>SourceRO_sites_P</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -166,8 +174,8 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>adfd</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<locationSetId>SourceRO_sites_P</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -180,8 +188,8 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>pme</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
+			<locationSetId>SourceRO_sites_P</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -194,10 +202,11 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>None</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="0" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="0" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="0" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -213,7 +222,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<aggregationPeriod start="-23" end="1" unit="hour"/>
-			<relativeViewPeriod start="-365" end="10" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod start="-400" end="10" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -228,7 +237,7 @@
 			<locationSetId>sites_P_obs</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod start="-365" end="10" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod start="-400" end="10" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -238,10 +247,10 @@
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_obs</parameterId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod start="-365" end="2" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod start="-400" end="2" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -253,10 +262,11 @@
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>NWP</qualifierId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -268,10 +278,27 @@
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>NWP</qualifierId>
 			<qualifierId>tmp2</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NWP_tmp3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>NWP</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -282,10 +309,11 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_comb</parameterId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -296,10 +324,11 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_comb</parameterId>
 			<qualifierId>tmp2</qualifierId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -310,10 +339,11 @@
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_comb</parameterId>
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/>
+			<!-- <relativeViewPeriod unit="week" start="-52" end="78" startOverrulable="true" endOverrulable="true"/> -->
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -482,6 +512,18 @@
 			</simple>
 		</user>
 	</transformation>
+	<!-- Set any negative values to 0. Sometimes the forecast grid has negative values -->
+	<transformation id="Set_negative_values_to_zero">
+		<user>
+			<simple>
+				<expression>if(NWP_tmp2 &lt; 0, 0,NWP_tmp2)</expression>
+				<outputVariable>
+					<variableId>NWP_tmp3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>	
+	
 	<!--Step 4: Interpolate Gauges Rainfall to subareas-->
 	<transformation id="P_obs_gapfill">
 		<interpolationSerial>
@@ -523,7 +565,7 @@
 					<variableId>Gauges</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>NWP_tmp2</variableId>
+					<variableId>NWP_tmp3</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>Merged_Forecast_tmp</variableId>

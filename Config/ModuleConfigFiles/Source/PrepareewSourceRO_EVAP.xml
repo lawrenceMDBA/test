@@ -33,7 +33,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<locationRelationId>subcatchment</locationRelationId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" end="1" endOverrulable="true"/>
@@ -41,13 +41,29 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>EVAP_obs</variableId>
+		<variableId>EVAP_fao56_obs</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_obs</parameterId>
 			<qualifierId>opo</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_mlake_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="1" unit="day"/>
@@ -61,7 +77,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_comb</parameterId>
 			<qualifierId>fao56</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -75,7 +91,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_comb</parameterId>
 			<qualifierId>mlake</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -89,7 +105,7 @@
 			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>index</parameterId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="Monthly"/>
 			<cycle unit="year"/>
@@ -104,7 +120,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>fao56</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="Monthly"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -118,7 +134,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>mlake</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="Monthly"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -133,7 +149,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>fao56</qualifierId>
 			<qualifierId>shift</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="Monthly"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -148,7 +164,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>mlake</qualifierId>
 			<qualifierId>shift</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="Monthly"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -163,7 +179,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>fao56</qualifierId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -178,7 +194,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>mlake</qualifierId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -193,7 +209,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -207,7 +223,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>tmp</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -222,7 +238,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>fao56</qualifierId>
 			<qualifierId>tmp2</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -237,7 +253,7 @@
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>mlake</qualifierId>
 			<qualifierId>tmp2</qualifierId>
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -540,7 +556,7 @@
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>EVAP_obs</variableId>
+					<variableId>EVAP_fao56_obs</variableId>
 				</inputVariable>
 				<inputVariable>
 					<variableId>EVAP_fcst_fao56_modified</variableId>
@@ -555,7 +571,7 @@
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>EVAP_obs</variableId>
+					<variableId>EVAP_mlake_obs</variableId>
 				</inputVariable>
 				<inputVariable>
 					<variableId>EVAP_fcst_mlake_modified</variableId>
