@@ -483,30 +483,20 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
+			<node id="ArchiveTo_flood_Config" name="Archive Config to local disk">
+				<workflowId>Export_ToArchive_FloodOps_Config</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<graceTime unit="day" multiplier="1"/>
+				<toolWindow>document selection panel</toolWindow>
+				<localRun>false</localRun>
+			</node>
 			<viewPermission>WaterCoach</viewPermission>
 			<visibleModifierGroup>None</visibleModifierGroup>
 		</nodes>
 		<nodes id="Prepare_flood" name="Prepare system">
 			<workflowId>Prepare_System_FloodOps</workflowId>
-			<node id="Import_Ratings_flood" name="Import ratings from local Import folder">
-				<workflowId>Import_Ratings_local</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
-				<filterId>Parameter_FloodOps</filterId>
-				<visibleModifierGroup>ROWS</visibleModifierGroup>
-				<graceTime unit="day" multiplier="14"/>
-				<mainPanel>map display</mainPanel>
-				<toolWindow>document selection panel</toolWindow>
-				<localRun>false</localRun>
-			</node>
-			<node id="Import_historical_flood" name="Import historical events from local Import folder">
-				<workflowId>Import_HistoricalEvents</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
-				<filterId>Parameter_FloodOps</filterId>
-				<graceTime unit="day" multiplier="14"/>
-				<mainPanel>map display</mainPanel>
-				<toolWindow>document selection panel</toolWindow>
-				<localRun>false</localRun>
-			</node>
 			<node id="ImportAndProcess_Observed_flood_archive" name="Import and process observations prior to event">
 				<workflowId>ImportAndProcess_Observed_FloodOps_Archive</workflowId>
 				<coldState unit="day" multiplier="28"/>
@@ -524,16 +514,7 @@
 				<filterId>Parameter_FloodOps</filterId>
 				<graceTime unit="day" multiplier="14"/>
 				<toolWindow>document selection panel</toolWindow>
-				<localRun>false</localRun>
-			</node>
-			<node id="ArchiveTo_flood_Config" name="Archive Config to local disk">
-				<workflowId>Export_ToArchive_FloodOps_Config</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
-				<filterId>Parameter_FloodOps</filterId>
-				<visibleModifierGroup>None</visibleModifierGroup>
-				<graceTime unit="day" multiplier="1"/>
-				<toolWindow>document selection panel</toolWindow>
-				<localRun>false</localRun>
+				<localRun>true</localRun>
 			</node>
 			<visibleModifierGroup>None</visibleModifierGroup>
 		</nodes>
@@ -584,7 +565,7 @@
 				<filterId>Parameter_FloodOps</filterId>
 				<visibleModifierGroup>None</visibleModifierGroup>
 				<graceTime unit="day" multiplier="1"/>
-				<localRun>false</localRun>
+				<localRun>true</localRun>
 			</node>
 			<groupId>Dartmouth_flood</groupId>
 			<groupId>Hume_flood</groupId>
