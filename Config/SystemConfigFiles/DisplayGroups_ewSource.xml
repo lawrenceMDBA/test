@@ -7,29 +7,32 @@
 				<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>P_comb</parameterId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
+				<relativeViewPeriod end="10" start="-10" unit="day"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
+				<moduleInstanceId>ProcessPopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>P_obs</parameterId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_P</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<relativeViewPeriod start="-7" end="5" startOverrulable="true" unit="day"/>
+				<aggregationPeriod unit="hour" start="-23" end="1"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>P_fcst</parameterId>
-				<qualifierId>accessg</qualifierId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<qualifierId>adfd</qualifierId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="7" startOverrulable="true" unit="day"/>
@@ -40,7 +43,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>P_fcst</parameterId>
 				<qualifierId>accessr</qualifierId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="7" startOverrulable="true" unit="day"/>
@@ -50,8 +53,8 @@
 				<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>P_fcst</parameterId>
-				<qualifierId>adfd</qualifierId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<qualifierId>accessg</qualifierId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="7" startOverrulable="true" unit="day"/>
@@ -62,7 +65,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>P_fcst</parameterId>
 				<qualifierId>pme</qualifierId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="7" startOverrulable="true" unit="day"/>
@@ -72,7 +75,7 @@
 	</plot>
 	<plot id="ewSource_Prepare_Data_EVAP">
 		<subplot>
-			<timeSeriesSet>
+ 			<timeSeriesSet>
 				<moduleInstanceId>ProcessATopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>AT_obs</parameterId>
@@ -83,6 +86,7 @@
 				<relativeViewPeriod unit="day" start="-30" end="730"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
+			<!--
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -93,13 +97,14 @@
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
+			-->
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>AT_fcst</parameterId>
 				<qualifierId>adfd</qualifierId>
 				<qualifierId>max</qualifierId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<locationSetId>SourceRO_sites_EVAP</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -111,17 +116,19 @@
 				<valueType>scalar</valueType>
 				<parameterId>EVAP_comb</parameterId>
 				<qualifierId>fao56</qualifierId>
-				<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+				<locationSetId>SourceRO_sites_EVAP</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
+		</subplot>
+		<subplot>		
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>EVAP_comb</parameterId>
 				<qualifierId>mlake</qualifierId>
-				<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+				<locationSetId>SourceRO_sites_EVAP</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -135,7 +142,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>min</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -145,7 +152,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep90</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -155,7 +162,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep75</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -165,7 +172,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep50</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -179,7 +186,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>min</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="730"/>
@@ -190,7 +197,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep90</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="730"/>
@@ -201,7 +208,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep75</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="730"/>
@@ -212,7 +219,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep50</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="730"/>
@@ -317,7 +324,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="ewSource_Prepare_Data_Qtrade_environmental_trade">
+	<plot id="ewSource_Prepare_Data_Qtrade_direct_trade">
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
@@ -326,7 +333,7 @@
 				<qualifierId>opo</qualifierId>
 				<qualifierId>monthly</qualifierId>
 				<qualifierId>TLM</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
@@ -340,7 +347,7 @@
 				<qualifierId>opo</qualifierId>
 				<qualifierId>monthly</qualifierId>
 				<qualifierId>CEHW</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
@@ -376,7 +383,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
 				<qualifierId>TLM</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -387,7 +394,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
 				<qualifierId>CEHW</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -397,7 +404,7 @@
 				<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
-				<qualifierId>trade</qualifierId>
+				<qualifierId>tot_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -594,7 +601,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>EVAP_comb</parameterId>
 				<qualifierId>fao56</qualifierId>
-				<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+				<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -605,7 +612,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>EVAP_comb</parameterId>
 				<qualifierId>mlake</qualifierId>
-				<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+				<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
@@ -636,7 +643,7 @@
 				<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>P_comb</parameterId>
-				<locationSetId>ewSourceRO_sites_OP</locationSetId>
+				<locationSetId>SourceRO_sites_P</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -652,7 +659,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>min</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -663,7 +670,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep50</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -674,7 +681,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep75</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -685,7 +692,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep90</qualifierId>
-				<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+				<locationSetId>SourceRO_sites_Q</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -712,7 +719,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
 				<qualifierId>CEHW</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -724,7 +731,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
 				<qualifierId>TLM</qualifierId>
-				<qualifierId>environmental_trade</qualifierId>
+				<qualifierId>dir_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -746,7 +753,7 @@
 				<moduleInstanceId>PrepareewSourceRO_Qtrade</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_trade</parameterId>
-				<qualifierId>trade</qualifierId>
+				<qualifierId>tot_trade</qualifierId>
 				<locationId>SA_border</locationId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
@@ -779,7 +786,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep50</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -795,7 +802,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep75</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -811,7 +818,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>aep90</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -827,7 +834,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
 				<qualifierId>min</qualifierId>
-				<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -842,7 +849,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_fcst</parameterId>
 				<qualifierId>default</qualifierId>
-				<locationSetId>ewSourceRO_sites</locationSetId>
+				<locationSetId>SourceRO_sites</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -854,7 +861,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>H_fcst</parameterId>
 				<qualifierId>default</qualifierId>
-				<locationSetId>ewSourceRO_sites</locationSetId>
+				<locationSetId>SourceRO_sites</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -866,7 +873,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>V_fcst</parameterId>
 				<qualifierId>default</qualifierId>
-				<locationSetId>ewSourceRO_sites</locationSetId>
+				<locationSetId>SourceRO_sites</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
@@ -879,46 +886,46 @@
 				<parameterId>Q_fcst</parameterId>
 				<qualifierId>unaccounted_diff</qualifierId>
 				<qualifierId>default</qualifierId>
-				<locationSetId>ewSourceRO_sites</locationSetId>
+				<locationSetId>SourceRO_sites</locationSetId>
 				<timeSeriesType>simulated forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<displayGroup id="ewSource_rainfall" name="Rainfall ewSource RO">
+	<displayGroup id="ewSource_rainfall" name="Prepare Rainfall Data">
 		<nodeId>ewSource_Rainfall</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays id="rainfallpolicy_ewSource">
-			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<locationSetId>SourceRO_sites_P</locationSetId>
 			<plotId>ewSource_Rainfall</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_EVAP" name="Evaporation ewSource RO">
+	<displayGroup id="ewSource_Prepare_Data_EVAP" name="Prepare Evaporation Data">
 		<nodeId>ewSource_Prepare_Data_EVAP</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays id="evaporation_ewSource">
-			<locationSetId>ewSourceRO_sites_EVAPfcst</locationSetId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
 			<plotId>ewSource_Prepare_Data_EVAP</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_Qcomb" name="Qfcst ewSource RO">
+	<displayGroup id="ewSource_Prepare_Data_Qcomb" name="Prepare Flow Data">
 		<nodeId>ewSource_Prepare_Data_Qcomb</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays id="discharge_ewSource">
-			<locationSetId>ewSourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<plotId>ewSource_Prepare_Data_Qcomb</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_QORD" name="Qord ewSource RO">
+	<displayGroup id="ewSource_Prepare_Data_QORD" name="Prepare Demand (Orders)">
 		<nodeId>ewSource_Prepare_Data_QORD</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays id="QORD_ewSource">
-			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
 			<plotId>ewSource_Prepare_Data_QORD</plotId>
 		</singleLocationDisplays>
 	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_Qtrade" name="Qtrade ewSource RO">
+	<displayGroup id="ewSource_Prepare_Data_Qtrade" name="Prepare Trade data">
 		<nodeId>ewSource_Prepare_Data_Qtrade</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
 		<display id="ewSource_Prepare_Data_Qtrade_SA_deferred" name="SA Deferred">
@@ -927,8 +934,8 @@
 		<display id="ewSource_Prepare_Data_Qtrade_undelivered_trade" name="Undelivered Trade">
 			<plotId>ewSource_Prepare_Data_Qtrade_undelivered_trade</plotId>
 		</display>
-		<display id="ewSource_Prepare_Data_Qtrade_environmental_trade" name="Environmental Trade">
-			<plotId>ewSource_Prepare_Data_Qtrade_environmental_trade</plotId>
+		<display id="ewSource_Prepare_Data_Qtrade_direct_trade" name="Direct Trade">
+			<plotId>ewSource_Prepare_Data_Qtrade_direct_trade</plotId>
 		</display>
 		<display id="ewSource_Prepare_Data_Qtrade" name="SA border trade">
 			<plotId>ewSource_Prepare_Data_Qtrade</plotId>

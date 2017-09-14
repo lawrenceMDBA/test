@@ -220,6 +220,7 @@
 				</description>
 				<text>%MODEL_TYPE%</text>
 			</attribute>
+			<!-- The columns below shoud be removed one the new sSource export is finalised -->
 			<attribute id="EWSRC_ID">
 				<description>
 					station identifier as used in ewSource model. Usage: locatonset in model workflow, idmap
@@ -268,6 +269,21 @@
 				</description>
 				<text>%EWSRC_EC_SEQ%</text>
 			</attribute>
+			<!-- old eWater Source columns above -->
+			<!-- Source locations sets for new export -->
+			<attribute id="SOURCE_PARAMS">
+				<description>
+					Parameters to be exported to Source River Ops model 
+				</description>
+				<text>%SOURCE_PARAMS%</text>
+			</attribute>			
+			<attribute id="SOURCE_SEQ">
+				<description>
+					Indicates the order in which the sites are exported to Source River Ops model 
+				</description>
+				<text>%SOURCE_SEQ%</text>
+			</attribute>
+			<!-- Source -->
 			<attribute id="H_TIMESTEP">
 				<description>
 					Indicates time window/calculation method for daily timestep if deviating from default (8am_inst); 
@@ -2554,6 +2570,7 @@
 				<description>Defines order in data entry locationset</description>
 				<text>%DATA_ENTRY_SEQ%</text>
 			</attribute>
+			<!-- The columns below shoud be removed once the new sSource export is finalised -->
 			<attribute id="EWSRC_ID">
 				<description>station identifier as used in ewSource model. Usage: locatonset in model workflow, idmap</description>
 				<text>%EWSRC_ID%</text>

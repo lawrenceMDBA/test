@@ -251,13 +251,13 @@
 		<nodes id="HydroSeasonal" name="Hydro Seasonal">
 			<nodes id="HydroSeasonalMonthly" name="Monthly Patterns">
 				<node id="HydroSeasonal.Q_plan" name="Seasonal flow">
-					<displayGroupId>HydroSeasonal_Q_plan</displayGroupId>
+					<displayGroupId>HydroSeasonalMonthly_Q_plan</displayGroupId>
 				</node>
 				<node id="HydroSeasonal.Q_plan.inflow" name="Seasonal inflow">
-					<displayGroupId>HydroSeasonal_Q_plan.inflow</displayGroupId>
+					<displayGroupId>HydroSeasonalMonthly_Q_plan_inflow</displayGroupId>
 				</node>
-				<node id="HydroSeasonal.Q_plan.div" name="Seasonal Demand">
-					<displayGroupId>HydroSeasonal_Q_plan.div</displayGroupId>
+				<node id="HydroSeasonal.Q_plan.demand" name="Seasonal Demand">
+					<displayGroupId>HydroSeasonalMonthly_Q_plan.demand</displayGroupId>
 				</node>
 				<!-- 			<node id="HydroSeasonal.V_plan" name="Storage Volume">
 					<displayGroupId>HydroSeasonal_Q_plan</displayGroupId>
@@ -270,8 +270,8 @@
 					<displayGroupId>HydroSeasonalDaily_Q_plan</displayGroupId>
 					<localRun>false</localRun>
 				</node>
-				<node id="HydroSeasonalDaily.Q_plan.div" name="Demand">
-					<displayGroupId>HydroSeasonalDaily_Q_plan.div</displayGroupId>
+				<node id="HydroSeasonalDaily.Q_plan.demand" name="Demand">
+					<displayGroupId>HydroSeasonalDaily_Q_plan.demand</displayGroupId>
 					<localRun>false</localRun>
 				</node>
 			</nodes>
