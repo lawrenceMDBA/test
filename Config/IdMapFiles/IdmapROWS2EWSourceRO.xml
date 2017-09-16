@@ -5,10 +5,16 @@
 	<map internalLocation="R_COBPUMP" internalParameter="Q_obs" internalQualifier1="opo" externalLocation="b-COBPUMP.70" externalParameter="70"/>
 	<map internalLocation="R_WOORPUM" internalParameter="Q_obs" internalQualifier1="opo" externalLocation="b-WOORPUM.70" externalParameter="70"/>
 	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="SA_deferred" externalLocation="SA_border" externalParameter="SA_deferred"/>
-	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="CEHW" internalQualifier2="environmental_trade" externalLocation="SA_border" externalParameter="CEHW"/>
-	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="TLM" internalQualifier2="environmental_trade" externalLocation="SA_border" externalParameter="TLM"/>
+	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="CEHW" internalQualifier2="dir_trade" externalLocation="SA_border" externalParameter="CEHW"/>
+	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="TLM" internalQualifier2="dir_trade" externalLocation="SA_border" externalParameter="TLM"/>
 	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="undelivered_trade" externalLocation="SA_border" externalParameter="undelivered"/>
-	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="trade" externalLocation="SA_border" externalParameter="Q_trade"/>
+	<map internalLocation="SA_border" internalParameter="Q_trade" internalQualifier1="tot_trade" externalLocation="SA_border" externalParameter="Q_trade"/>
+	<map internalLocation="R_409701E" internalParameter="Q_obs" internalQualifier1="opo" externalLocation="NATDS" externalParameter="1"/>
+	<map internalLocation="R_409701E" internalParameter="Q_comb" internalQualifier1="min" externalLocation="NATDS" externalParameter="1_min"/>
+	<map internalLocation="R_409701E" internalParameter="Q_comb" internalQualifier1="aep90" externalLocation="NATDS" externalParameter="1_aep90"/>
+	<map internalLocation="R_409701E" internalParameter="Q_comb" internalQualifier1="aep75" externalLocation="NATDS" externalParameter="1_aep75"/>
+	<map internalLocation="R_409701E" internalParameter="Q_comb" internalQualifier1="aep50" externalLocation="NATDS" externalParameter="1_aep50"/>
+	
 	<parameter external="1" internal="Q_obs" internalQualifier1="opo"/>
 	<parameter external="5" internal="EC_obs" internalQualifier1="opo"/>
 	<parameter external="35" internal="H_obs" internalQualifier1="opo"/>
@@ -38,13 +44,13 @@
 	<parameter external="650" internal="EVAP_obs" internalQualifier1="opo" internalQualifier2="mlake"/>
 	<parameter external="640" internal="EVAP_comb" internalQualifier2="fao56"/>
 	<parameter external="650" internal="EVAP_comb" internalQualifier2="mlake"/>
-	<parameter external="212_min" internal="Q_obs" internalQualifier1="min"/>
-	<parameter external="212_min" internal="Q_comb" internalQualifier1="min"/>
-	<parameter external="212_aep50" internal="Q_obs" internalQualifier1="aep50"/>
-	<parameter external="212_aep50" internal="Q_comb" internalQualifier1="aep50"/>
-	<parameter external="212_aep75" internal="Q_obs" internalQualifier1="aep75"/>
-	<parameter external="212_aep75" internal="Q_comb" internalQualifier1="aep75"/>
-	<parameter external="212_aep90" internal="Q_obs" internalQualifier1="aep90"/>
-	<parameter external="212_aep90" internal="Q_comb" internalQualifier1="aep90"/>
-	<locationIdFunction externalLocationFunction="@HYDRO_SITE_ID@" internalLocationSet="ewSourceRO_sites"/>
+	<parameter external="1_min" internal="Q_obs" internalQualifier1="min"/>
+	<parameter external="1_min" internal="Q_comb" internalQualifier1="min"/>
+	<parameter external="1_aep50" internal="Q_obs" internalQualifier1="aep50"/>
+	<parameter external="1_aep50" internal="Q_comb" internalQualifier1="aep50"/>
+	<parameter external="1_aep75" internal="Q_obs" internalQualifier1="aep75"/>
+	<parameter external="1_aep75" internal="Q_comb" internalQualifier1="aep75"/>
+	<parameter external="1_aep90" internal="Q_obs" internalQualifier1="aep90"/>
+	<parameter external="1_aep90" internal="Q_comb" internalQualifier1="aep90"/>
+	<locationIdFunction externalLocationFunction="@HYDRO_SITE_ID@" internalLocationSet="SourceRO_sites"/>
 </idMap>
