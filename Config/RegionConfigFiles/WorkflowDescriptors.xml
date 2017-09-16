@@ -301,6 +301,12 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="ImportAndProcess_Forecast_FloodOps_Training" name="Import and process fcst for flood training (includes import from archive)" visible="true">
+		<description>Import nwp data from various Bureau Forecasts from ftp and process the data</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>WaterCoach</viewPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall" name="Rainfall Upper Murray (Current Policy) - only used in other WFs" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
