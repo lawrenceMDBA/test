@@ -396,48 +396,48 @@
 	<!-- Rainfall sites (param P) -->
 	<locationSet id="SourceRO_sites_P">
 		<description>Source sites with rainfall</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_P_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="P;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_P_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Evaoration sites (param EVAP) -->
 	<locationSet id="SourceRO_sites_EVAP">
 		<description>Source sites with evap</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_EVAP_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="EVAP;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_EVAP_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Water level sites (param H) -->
 	<locationSet id="SourceRO_sites_H">
 		<description>Source sites with water level</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_H_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="H;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_H_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Flow sites (param Q) -->
 	<locationSet id="SourceRO_sites_Q">
 		<description>Source sites with flow</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_Q_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="Q;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_Q_SEQ"/>
 				<not>
 					<attributeTextContains id="SOURCE_PARAMS" contains="QORD;"/>
 				</not>
@@ -446,48 +446,48 @@
 	</locationSet>
 	<locationSet id="SourceRO_sites_Inflow">
 		<description>SourceRO_sites with Inflow</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_Q_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="Q.inflow;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_Q_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Water order/demand sites (param QORD) -->
 	<locationSet id="SourceRO_sites_QORD">
 		<description>Source sites with water orders</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_QORD_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="QORD;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_QORD_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Trade sites sites (param QTRD) -->
 	<locationSet id="SourceRO_sites_QTRD">
 		<description>Source sites with trade</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_Q_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="QTRD;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_Q_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<!-- Storage volume sites (param V) -->
 	<locationSet id="SourceRO_sites_V">
 		<description>Source sites with volume</description>
-		<sortingLocationAttributeId>SOURCE_SEQ</sortingLocationAttributeId>
+		<sortingLocationAttributeId>SOURCE_V_SEQ</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="V;"/>
-				<attributeExists id="SOURCE_SEQ"/>
+				<attributeExists id="SOURCE_V_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
