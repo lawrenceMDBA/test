@@ -83,14 +83,25 @@
 	</locationSet>
 	<locationSet id="SourceRO_sites_Qfcst">
 		<description>SourceRO_sites with planning data in attribute table</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>SourceRO_sites_Q</locationSetId>
 		<constraints>
 			<allValid>
-				<attributeExists id="JAN_MIN_QPLAN"/>
+				<!-- <attributeExists id="JAN_MIN_QPLAN"/> -->
 				<attributeTextEndsWith postfix="_1" id="SOURCE_ID"/>
 			</allValid>			
 		</constraints>
 	</locationSet>
+	<locationSet id="SourceRO_sites_Q_Plan">
+		<description>SourceRO_sites with planning data in attribute table</description>
+		<locationSetId>SourceRO_sites_Q</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeExists id="SOURCE_ID"/>
+			</allValid>			
+		</constraints>
+	</locationSet>
+
 	<locationSet id="ewSourceRO_sites_EVAPfcst">
 		<description>ewSourceRO_sites with evap forecast</description>
 		<locationSetId>SourceRO_sites</locationSetId>
@@ -451,6 +462,17 @@
 		<constraints>
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="Q.inflow;"/>
+				<attributeExists id="SOURCE_Q_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_sites_instream_credits">
+		<description>SourceRO_sites with instream credits</description>
+		<sortingLocationAttributeId>SOURCE_Q_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="Q.instream;"/>
 				<attributeExists id="SOURCE_Q_SEQ"/>
 			</allValid>
 		</constraints>
