@@ -611,6 +611,7 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
+	<!-- SA Traded -->
 	<export>
 		<general>
 			<description>PrepareewSourceRO - Q_trade (SA_border)</description>
@@ -678,6 +679,18 @@
 			<qualifierId>tot_trade</qualifierId>
 			<locationId>SA_border</locationId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>instream</qualifierId>			
+			<locationSetId>SourceRO_sites_instream_credits</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
