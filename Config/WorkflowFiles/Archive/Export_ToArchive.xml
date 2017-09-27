@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<properties>
+		<string key="AREAID" value="mdba"/>
+	</properties>
 	<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_OPO</moduleInstanceId>
 	</activity>
-<!-- not sure if this is required. Needs review at some stage -->
-<!-- 	<activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_AWRA</moduleInstanceId>
+	</activity>
+	<!-- Runnig separately Export_ToArchive_FloodOps_NWP -->
+	<!--<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_NWP</moduleInstanceId>
-	</activity> -->
-<!--   Should be manual archive -->
+	</activity>-->
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_Messages</moduleInstanceId>
+	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_Ratings</moduleInstanceId>
-  </activity>
+        </activity>
 	<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_Configuration</moduleInstanceId>

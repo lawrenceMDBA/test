@@ -6,7 +6,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportAWRA</moduleInstanceId>
 			<valueType>grid</valueType>
-			<parameterId>SM_fcst</parameterId>
+			<parameterId>SM_obs</parameterId>
 			<qualifierId>AWRA-L RZ</qualifierId>
 			<locationId>AWRA</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -20,7 +20,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>grid</valueType>
-			<parameterId>SM_fcst</parameterId>
+			<parameterId>SM_obs</parameterId>
 			<qualifierId>AWRA-L RZ</qualifierId>
 			<locationId>AWRA</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -35,7 +35,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>SM_fcst</parameterId>
+			<parameterId>SM_obs</parameterId>
 			<qualifierId>AWRA-L RZ</qualifierId>
 			<locationSetId>URBS_subcatchments.only</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -50,7 +50,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>SM_fcst</parameterId>
+			<parameterId>SM_obs</parameterId>
 			<qualifierId>AWRA-L RZ</qualifierId>
 			<locationSetId>URBS_subareas</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -78,7 +78,7 @@
 		</sample>
 	</transformation>
 	<!-- SDK: temporary transformation to transform AWRA data from the website (0-1) to 0-100%. Should be removed when data in mm is supplied by BoM -->
-	<transformation id="multiply AWRA to 100%">
+	<!-- <transformation id="multiply AWRA to 100%">
 		<user>
 			<simple>
 				<expression>100 * Grid_RZ_mm_8am</expression>
@@ -87,7 +87,7 @@
 				</outputVariable>
 			</simple>
 		</user>
-	</transformation>
+	</transformation> -->
 	<transformation id="SubCatchments_RZ_mm">
 		<interpolationSpatial>
 			<closestDistance>
