@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Goolwa.OPO" name="Processing Goolwa sites ">
+		<displayGroup id="Goolwa.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Goolwa">
+				<locationSetId>Goolwa.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Goolwa.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Goolwa">
+				<locationSetId>Goolwa.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Goolwa.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Goolwa.Process_Hopo" name="Goolwa water level">
+				<singleLocationDisplays id="ImportProcess_Goolwa_H">
+					<locationSetId>Goolwa.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_Qopo" name="Goolwa discharge">
+				<singleLocationDisplays id="ImportProcess_Goolwa_Q">
+					<locationSetId>Goolwa.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 
+			<displayGroup id="Goolwa.Process_Qratedopo" name="Goolwa rated discharge">
+				<singleLocationDisplays id="ImportProcess_Goolwa_Qrated">
+					<locationSetId>Goolwa.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			-->
+			<!-- 			<displayGroup id="Goolwa.Process_Vopo" name="Goolwa storage">
+				<singleLocationDisplays id="ImportProcess_Goolwa_V">
+					<locationSetId>Goolwa.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Goolwa.Process_Popo" name="Goolwa precipitation">
+				<singleLocationDisplays id="ImportProcess_Goolwa_P">
+					<locationSetId>Goolwa.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_EVAPopo" name="Goolwa evaporation">
+				<singleLocationDisplays id="ImportProcess_Goolwa_EVAP">
+					<locationSetId>Goolwa.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_ECopo" name="Goolwa electric conductivity">
+				<singleLocationDisplays id="ImportProcess_Goolwa_EC">
+					<locationSetId>Goolwa.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!--<displayGroup id="Goolwa.Process_DOopo" name="Goolwa dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_Goolwa_DO">
+					<locationSetId>Goolwa.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_WTopo" name="Goolwa water temperature">
+				<singleLocationDisplays id="ImportProcess_Goolwa_WT">
+					<locationSetId>Goolwa.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_Turbidityopo" name="Goolwa Turbidity">
+				<singleLocationDisplays id="ImportProcess_Goolwa_Turbidity">
+					<locationSetId>Goolwa.sites_Turbidity</locationSetId>
+					<plotId>ImportProcess_Turbidity</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Goolwa.Process_pHopo" name="Goolwa pH">
+				<singleLocationDisplays id="ImportProcess_Goolwa_pH">
+					<locationSetId>Goolwa.sites_pH</locationSetId>
+					<plotId>ImportProcess_pH</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+ 			<displayGroup id="Goolwa.Process_ATopo" name="Goolwa air temperature">
+				<singleLocationDisplays id="ImportProcess_Goolwa_AT">
+					<locationSetId>Goolwa.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Goolwa.Process_Windopo" name="Goolwa Wind vel and dir">
+				<singleLocationDisplays id="ImportProcess_Goolwa_Wind">
+					<locationSetId>Goolwa.sites_WindVel</locationSetId>
+					<plotId>ImportProcess_Wind</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

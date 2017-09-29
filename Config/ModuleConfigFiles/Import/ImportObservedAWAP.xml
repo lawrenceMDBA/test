@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>ArcInfoAsciiGrid</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_AWAP$</folder>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdAWAP</idMapId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<geoDatum>GDA94</geoDatum>
+			<dataFeedId>BOM_AWAP</dataFeedId>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedAWAP</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>AWAP</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="9am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

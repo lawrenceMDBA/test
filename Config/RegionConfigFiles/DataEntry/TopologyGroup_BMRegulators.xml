@@ -1,0 +1,23 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="BMRegulators_OPO">
+		<nodes id="ObservedProcessing.BMRegulators_OPO" name="BM Regulators">
+			<node id="BMRegulators.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>BMRegulators.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="BMRegulators.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>BMRegulators.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="BMRegulators.Telemetry" name="Review Telemetry">
+				<node id="BMRegulators.Process_GatesOpen" name="No of Gates Open">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>BMRegulators.Process_GatesOpen</displayGroupId>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

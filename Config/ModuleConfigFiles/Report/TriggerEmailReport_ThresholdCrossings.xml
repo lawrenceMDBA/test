@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secondaryValidation xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/secondaryValidation.xsd">
+	<variableDefinition>
+		<variableId>DO_reports_trigger</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Daily_Report_trigger</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-1439" unit="minute"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="7"/>
+		</timeSeriesSet>
+	</variableDefinition>
+	<seriesComparisonCheck id="Daily_report">
+		<expression>DO_reports_trigger .gt. 0</expression>
+		<validatingVariableId>DO_reports_trigger</validatingVariableId>
+		<outputFlag>unreliable</outputFlag>
+		<logLevel>WARN</logLevel>
+		<logEventCode>Thresholds.Trigger_Daily_Report</logEventCode>
+		<logMessage>Station ID %LOCATION_ID%: %LOCATION_NAME% DO_pct threshold crossed.</logMessage>
+	</seriesComparisonCheck>
+</secondaryValidation>

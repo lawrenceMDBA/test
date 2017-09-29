@@ -1,0 +1,2096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scadaDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/scadaDisplay.xsd">
+	<displayName>Flood Ops Summary</displayName>
+	<dateFormat id="DF1">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>dd-MM-yyyy</dateTimePattern>
+	</dateFormat>
+	<dateFormat id="DF2">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>HH:mm</dateTimePattern>
+	</dateFormat>
+	<dateFormat id="DF3">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>HH:mm EEE dd-MM-yyyy</dateTimePattern>
+	</dateFormat>
+	<numberFormat id="NF0">
+		<pattern>{0,number,###,###}</pattern>
+	</numberFormat>
+	<numberFormat id="NF1">
+		<pattern>{0,number,##0.0}</pattern>
+	</numberFormat>
+	<numberFormat id="NF2">
+		<pattern>{0,number,##0.00}</pattern>
+	</numberFormat>
+	<!--Variables for ADFD ensemble-->
+	<variable>
+		<!--P_fcs_ADFD-->
+		<variableId>C4R0</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_ADFD-->
+		<variableId>C1R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_ADFD-->
+		<variableId>C1R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_ADFD-->
+		<variableId>C1R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_ADFD-->
+		<variableId>C1R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_ADFD-->
+		<variableId>C1R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_ADFD-->
+		<variableId>C1R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_V_fcst_ADFD-->
+		<variableId>C2R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_V_fcst_ADFD-->
+		<variableId>C2R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_V_in_fcst_ADFD-->
+		<variableId>C2R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_in_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_V_fcst_ADFD-->
+		<variableId>C2R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_V_fcst_ADFD-->
+		<variableId>C2R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_V_fcst_ADFD-->
+		<variableId>C2R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_H_fcst_ADFD-->
+		<variableId>C3R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_H_fcst_ADFD-->
+		<variableId>C3R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_ADFD-->
+		<variableId>C3R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_H_fcst_ADFD-->
+		<variableId>C3R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_H_fcst_ADFD-->
+		<variableId>C3R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_H_fcst_ADFD-->
+		<variableId>C3R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_ADFD-->
+		<variableId>C4R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_ADFD-->
+		<variableId>C4R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_ADFD-->
+		<variableId>C4R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_ADFD-->
+		<variableId>C4R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_ADFD-->
+		<variableId>C4R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_ADFD-->
+		<variableId>C4R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_ADFD-->
+		<variableId>C4R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables for ADFD_higher ensemble-->
+	<variable>
+		<!--P_fcs_ADFD_higher-->
+		<variableId>Z4R0</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>higher</qualifierId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="1am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_ADFD_higher-->
+		<variableId>Z1R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_ADFD_higher-->
+		<variableId>Z1R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_ADFD_higher-->
+		<variableId>Z1R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_ADFD_higher-->
+		<variableId>Z1R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_ADFD_higher-->
+		<variableId>Z1R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_ADFD_higher-->
+		<variableId>Z1R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_V_fcst_ADFD_higher-->
+		<variableId>Z2R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_V_fcst_ADFD_higher-->
+		<variableId>Z2R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_V_in_fcst_ADFD_higher-->
+		<variableId>Z2R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_in_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_V_fcst_ADFD_higher-->
+		<variableId>Z2R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_V_fcst_ADFD_higher-->
+		<variableId>Z2R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_V_fcst_ADFD_higher-->
+		<variableId>Z2R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_H_fcst_ADFD_higher-->
+		<variableId>Z3R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_H_fcst_ADFD_higher-->
+		<variableId>Z3R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_ADFD_higher-->
+		<variableId>Z3R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_H_fcst_ADFD_higher-->
+		<variableId>Z3R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_H_fcst_ADFD_higher-->
+		<variableId>Z3R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_fcst_ADFD_higher-->
+		<variableId>Z3R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_ADFD_higher-->
+		<variableId>Z4R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_ADFD_higher-->
+		<variableId>Z4R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_ADFD_higher-->
+		<variableId>Z4R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_ADFD_higher-->
+		<variableId>Z4R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_ADFD_higher-->
+		<variableId>Z4R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_ADFD_higher-->
+		<variableId>Z4R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_ADFD_higher-->
+		<variableId>Z4R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>ADFD_higher</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables for PME ensemble-->
+	<variable>
+		<!--P_fcs_PME-->
+		<variableId>X4R0</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>avg</qualifierId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_PME-->
+		<variableId>X1R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_PME-->
+		<variableId>X1R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_PME-->
+		<variableId>X1R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_PME-->
+		<variableId>X1R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_PME-->
+		<variableId>X1R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_PME-->
+		<variableId>X1R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_V_fcst_PME-->
+		<variableId>X2R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_V_fcst_PME-->
+		<variableId>X2R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_V_in_fcst_PME-->
+		<variableId>X2R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_in_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_V_fcst_PME-->
+		<variableId>X2R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_V_fcst_PME-->
+		<variableId>X2R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_V_fcst_PME-->
+		<variableId>X2R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_H_fcst_PME-->
+		<variableId>X3R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_H_fcst_PME-->
+		<variableId>X3R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_PME-->
+		<variableId>X3R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_H_fcst_PME-->
+		<variableId>X3R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_H_fcst_PME-->
+		<variableId>X3R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_fcst_PME-->
+		<variableId>X3R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401201A_R_JINGELLIC_Q_fcst_PME-->
+		<variableId>X4R1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401201A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401204A_TALLANDOON_Q_fcst_PME-->
+		<variableId>X4R2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HD_INFLOW_Q_in_fcst_PME-->
+		<variableId>X4R3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_401027_HUME_H_fcst_PME-->
+		<variableId>X4R4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409016_HEYWOODS_Q_fcst_PME-->
+		<variableId>X4R5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_402205A_BANDIANA_Q_fcst_PME-->
+		<variableId>X4R6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<!--R_409001_ALBURY_Q_fcst_PME-->
+		<variableId>X4R7</variableId>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>PME</ensembleMemberId>
+		</timeSeriesSet>
+	</variable>
+	<scadaPanel id="Flood_Ops_Hume_Summary" name="Flood Ops: Hume Summary">
+		<svgFile>FloodOps_Hume_Summary.svg</svgFile>
+		<nodeId>runensemble_upper_murray</nodeId>
+		<permission>FloodOperations</permission>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R0</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R0</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R1</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Jingellic</title>
+						<display>
+							<displayId>ssdensemble_R_401201A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum discharge in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>C1R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R2</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Tallandoon</title>
+						<display>
+							<displayId>ssdensemble_R_401204A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>C1R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R3</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Hume Dam</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>C1R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R5</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Heywoods</title>
+						<display>
+							<displayId>ssdensemble_R_409016_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>C1R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R6</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Bandiana</title>
+						<display>
+							<displayId>ssdensemble_R_402205A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>C1R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C1R7</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Albury</title>
+						<display>
+							<displayId>ssdensemble_R_409001_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>C1R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R1</svgObjectId>
+			<toolTip>
+				<toolTipText>Maximum volume in URBS calculation (Volume = accumulated discharge of URBS calculation)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>C2R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C2R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C2R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C2R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C2R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C2R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C2R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R1</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C3R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C3R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R4</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -  Hume Dam (level)</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray_H</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>C3R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C3R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C3R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C3R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C3R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R1</svgObjectId>
+			<toolTip>
+				<toolTipText>Time of maximum discharge in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>C4R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R4</svgObjectId>
+			<toolTip>
+				<toolTipText>Time of maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>C4R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>C4R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>C4R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R0</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R0</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R1</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Jingellic</title>
+						<display>
+							<displayId>ssdensemble_R_401201A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum discharge in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R2</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Tallandoon</title>
+						<display>
+							<displayId>ssdensemble_R_401204A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R3</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Hume Dam</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R5</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Heywoods</title>
+						<display>
+							<displayId>ssdensemble_R_409016_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R6</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Bandiana</title>
+						<display>
+							<displayId>ssdensemble_R_402205A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z1R7</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Albury</title>
+						<display>
+							<displayId>ssdensemble_R_409001_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>Z1R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R1</svgObjectId>
+			<toolTip>
+				<toolTipText>Maximum volume in URBS calculation (Volume = accumulated discharge of URBS calculation)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z2R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z2R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R1</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R4</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -  Hume Dam (level)</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray_H</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z3R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z3R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R1</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R4</svgObjectId>
+			<toolTip>
+				<toolTipText>Time of maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Z4R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>Z4R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R0</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R0</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R1</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Jingellic</title>
+						<display>
+							<displayId>ssdensemble_R_401201A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum discharge in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>X1R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R2</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Tallandoon</title>
+						<display>
+							<displayId>ssdensemble_R_401204A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>X1R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R3</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Hume Dam</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>X1R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R5</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Heywoods</title>
+						<display>
+							<displayId>ssdensemble_R_409016_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>X1R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R6</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Bandiana</title>
+						<display>
+							<displayId>ssdensemble_R_402205A_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>X1R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X1R7</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -   Albury</title>
+						<display>
+							<displayId>ssdensemble_R_409001_upper_murray</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<replaceTags>
+				<variable>
+					<variableId>X1R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R1</svgObjectId>
+			<toolTip>
+				<toolTipText>Maximum volume in URBS calculation (Volume = accumulated discharge of URBS calculation)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>X2R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X2R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X2R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X2R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X2R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X2R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X2R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R1</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X3R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X3R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R4</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flood Ops fcst -  Hume Dam (level)</title>
+						<display>
+							<displayId>ssdensemble_R_401027_upper_murray_H</displayId>
+						</display>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<toolTip>
+				<toolTipText>Maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>X3R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X3R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X3R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X3R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X3R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R1</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R1</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R2</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R2</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R3</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R3</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R4</svgObjectId>
+			<toolTip>
+				<toolTipText>Time of maximum reservoir level in URBS calculation</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>X4R4</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R5</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R5</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R6</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R6</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>X4R7</svgObjectId>
+			<replaceTags>
+				<variable>
+					<variableId>X4R7</variableId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+	</scadaPanel>
+</scadaDisplay>

@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--Processing of observed level for flood operations:
+- Sample neq raw to 1h data (primary and secondary)
+- Merge primary and secondary observed data
+- Aggregate to hourly data (instantaneous, step is obsolete)
+- Merge with Fops-->
+	<!--Processing of observed level and flow for flood operations:
+- Level to flow conversion for hourly levels (rated)
+- Sample neq raw to 1h data (not_rated)
+- Aggregate to hourly data (not_rated, step is obsolete)
+- Merge with Fops-->
+	<!--Processing of observed volume data for flood operations:
+- Level to flow conversion for hourly levels (capacity)
+- Sample neq raw to hourly data (not_capacity)
+- Merge with Fops-->
+	<!-- Processing of observed rainfall data for flood operations, including deaccumulation of tipping bucket values:
+- Sample sites with daily observations to 1 hourly series (keeping missings for the other 23 hours of the day)
+- Summation of neq raw to 1hour data for instantaneous sites 
+- Sample neq raw to 15min data for accumulative sites
+- Block fill series to enable deaccumulation by timestep. Without blockfill the step from missing value to registered measurement value will result in missing value during deaccumulation.
+- Deaccumulate, results in series with '0' for those time steps which de not have a measurement registration.
+- Correct for negative values due to resetting of tipping bucket. Note: any filling of the tipping bucket to the maximum capacity may be missed
+- Put missing values back in, using the transformation feature that a missing value in the multiplier array will result in a missing value for the result
+- Aggregate to hourly data
+- Merge with Fops
+- Interpolate Fops station rainfall to grid (inverse distance)-->
+	<!-- H - variables-->
+	<variable>
+		<variableId>H_obs_neq_primary</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_neq_secondary</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_1h_primary</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_1h_secondary</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_1h_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- Q - variables-->
+	<variable>
+		<variableId>H_obs_1h_Fops_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_q_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_1h_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites_q_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites_q_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_1h_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>flood.sites_q_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_1h_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites_q_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites_qobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_qobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- V - variables-->
+	<variable>
+		<variableId>H_obs_1h_Fops_capacity</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_vobs_capacity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_1h_capacity</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs_capacity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_1h_not_capacity</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs_not_capacity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- P - variables-->
+	<variable>
+		<variableId>P_obs_neq_raw_daily</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>flood.sites_pobs_daily</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_1h_daily</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobs_daily</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_neq_raw_subdaily</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>flood.sites_pobs_subdaily</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pinst_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobsinst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pacc_obs_15m_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>acc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>flood.sites_pobsacc</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="15" unit="minute"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pacc_obs_15m_raw_block</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>acc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>flood.sites_pobsacc</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="15" unit="minute"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pdeacc_obs_15m_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>flood.sites_pobsacc</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="15" unit="minute"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pdeacc_obs_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobsacc</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="15" unit="minute"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Pdeacc_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobsacc</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_1h_Fops_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>GridPrecipitationUpperMurray</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_obs_3h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>1</synchLevel>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- H - transformations-->
+	<transformation id="Sample: H primary neq_to_1h">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>H_obs_neq_primary</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>H_obs_1h_primary</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Sample: H secondary neq_to_1h">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>H_obs_neq_secondary</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>H_obs_1h_secondary</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Merge_H_obs">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_obs_1h_primary</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_obs_1h_secondary</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_obs_1h_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Aggregate: H 1h_to_1h">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>H_obs_1h_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_obs_1h</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="Merge_H_obs_Fops">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_obs_1h_Fops</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_obs_1h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_obs_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!-- Q - transformations-->
+	<transformation id="StageToDischarge_1h">
+		<stageDischarge>
+			<ratingCurve>
+				<stage>
+					<variableId>H_obs_1h_Fops_rated</variableId>
+				</stage>
+				<discharge>
+					<variableId>Q_obs_1h_rated</variableId>
+				</discharge>
+			</ratingCurve>
+		</stageDischarge>
+	</transformation>
+	<transformation id="Sample: Q neq_to_1h">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>Q_obs_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>Q_obs_1h_tmp</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Aggregate: Q 1h_to_1h">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>Q_obs_1h_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_obs_1h_not_rated</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="Merge_Q_obs_Fops">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_obs_1h_Fops</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_obs_1h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_obs_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!-- V - transformations-->
+	<transformation id="Lookup_Storage_V_obs_1h_capacity">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>H_obs_1h_Fops_capacity</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_Storage_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>V_obs_1h_capacity</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Sample: V neq_to_1h">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>V_obs_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>V_obs_1h_not_capacity</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Merge_V_obs_Fops">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_obs_1h_Fops</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_obs_1h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_obs_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!-- P - transformations-->
+	<transformation id="Sample daily sites: P neq_to_1h">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>P_obs_neq_raw_daily</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>P_obs_1h_daily</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Sum instantaneaous sites: P neq_to_1h">
+		<statisticsSerial>
+			<sum>
+				<inputVariable>
+					<variableId>P_obs_neq_raw_subdaily</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Pinst_obs_1h</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="Sample accumulative sites: P neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>P_obs_neq_raw_subdaily</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>Pacc_obs_15m_raw</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="Block fill accu.sites for diff calc: Pacc_obs_15m_raw_block">
+		<interpolationSerial>
+			<block>
+				<inputVariable>
+					<variableId>Pacc_obs_15m_raw</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Pacc_obs_15m_raw_block</variableId>
+				</outputVariable>
+			</block>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Deaccumulate Pacc_obs_15m_raw_block">
+		<deaccumulation>
+			<sum>
+				<inputVariable>
+					<variableId>Pacc_obs_15m_raw_block</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Pdeacc_obs_15m_tmp</variableId>
+				</outputVariable>
+			</sum>
+		</deaccumulation>
+	</transformation>
+	<transformation id="Correct neg. values (reset tipping bucket) Pdeacc_obs_15m_tmp">
+		<user>
+			<simple>
+				<expression>if(Pdeacc_obs_15m_tmp &lt; 0 - 0.0001, (Pacc_obs_15m_raw), Pdeacc_obs_15m_tmp)</expression>
+				<outputVariable>
+					<variableId>Pdeacc_obs_15m_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Put gaps back in Pdeacc_obs_15m (remove block function)">
+		<user>
+			<simple>
+				<expression>if(Pacc_obs_15m_raw ==0,Pdeacc_obs_15m_tmp,Pdeacc_obs_15m_tmp * (Pacc_obs_15m_raw/Pacc_obs_15m_raw))</expression>
+				<outputVariable>
+					<variableId>Pdeacc_obs_15m</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Aggregate P 15m_to_1h">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Pdeacc_obs_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputMissingPercentage>80</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>Pdeacc_obs_1h</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="Merge_P_obs_Fops">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>P_obs_1h</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="InterpolateRainfalltoGrid">
+		<interpolationSpatial>
+			<inverseDistance>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<searchRadius>3000000</searchRadius>
+				<distanceGeoDatum>UTM56S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>4</numberOfPoints>
+				<numberOfBackupPoints>8</numberOfBackupPoints>
+				<outputVariable>
+					<variableId>P_obs_1h_Fops_grid</variableId>
+				</outputVariable>
+			</inverseDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Aggregate P_Fops 1h_to_3h">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>P_obs_1h_Fops</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputMissingPercentage>80</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>P_obs_3h_Fops</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+</transformationModule>

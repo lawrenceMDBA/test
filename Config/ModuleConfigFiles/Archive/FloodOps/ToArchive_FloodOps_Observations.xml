@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on areaId level. Export of observed data-->
+	<!--FEWS observations  will be stored in <archiveFolder>/<yyyy>/<MM>/<areaId>/<dd>/observed/-->
+	<exportObserved>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>WaterLevel_Fops.nc</fileName>
+					<areaId>mdba</areaId>
+					<ncMetaData>
+						<title>Observed Water Levels (Fops)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<thresholdGroupId>FloodOps</thresholdGroupId>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>flood.sites_hobs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Fops.nc</fileName>
+					<areaId>mdba</areaId>
+					<ncMetaData>
+						<title>Observed Flows (Fops)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<thresholdGroupId>FloodOps</thresholdGroupId>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>flood.sites_qobs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Volume_Fops.nc</fileName>
+					<areaId>mdba</areaId>
+					<ncMetaData>
+						<title>Observed Volume (Fops)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<thresholdGroupId>Volume</thresholdGroupId>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>flood.sites_vobs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fops.nc</fileName>
+					<areaId>mdba</areaId>
+					<ncMetaData>
+						<title>Observed Precipitation (Fops)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_obs</parameterId>
+						<qualifierId>Fops</qualifierId>
+						<locationSetId>flood.sites_pobs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportObserved>
+</exportArchiveModule>

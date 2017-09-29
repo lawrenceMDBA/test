@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<properties>
+		<string key="CATCHMENT" value="upper_murray"/>
+		<string key="ENSEMBLE" value="ENSEMBLE"/>
+		<string key="NWP_GRID" value="NWP"/>
+		<string key="ACCESSG_GRID" value="NWP"/>
+		<string key="ACCESSR_GRID" value="NWP"/>
+		<string key="ADFD_GRID" value="ADFD"/>
+		<string key="PME_GRID" value="ADFD"/>
+		<string key="RELEASE" value="Q_release"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>upper_murray_Rainfall_Ensemble_Forecast</moduleInstanceId>
+		<moduleConfigFileName>Rainfall_1h_Ensemble_Forecast</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease_forecastlength</moduleInstanceId>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_Dart_Qrelease</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_Hume_Qrelease</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+		<moduleConfigFileName>PrepareURBS_QBC_Qrelease</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<workflowId>UpperMurray_URBS_Catchment</workflowId>
+		<ensemble>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+</workflow>

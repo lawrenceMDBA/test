@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forecasterNotesDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/forecasterNotesDisplay.xsd">
+	<title>Operator Notes</title>
+	<!--<defaultTopologyNodeId>OPOProcessing</defaultTopologyNodeId>-->
+	<defaultAreaId>mdba</defaultAreaId>
+	<msgTemplate id="Data ready">
+		<message>QA'd data is now available for ...</message>
+	</msgTemplate>
+	<msgTemplate id="Data modification">
+		<message>Modifier has been made for ...</message>
+	</msgTemplate>
+	<eventCode id="General.info"/>
+	<eventCode id="Thresholdcrossing.info">
+		<expiryTime unit="day" multiplier="600"/>
+	</eventCode>
+	<eventCode id="DataEntry.info"/>
+	<eventCode id="DataEntry.warning"/>
+	<eventCode id="QualityControl.info"/>
+	<eventCode id="QualityControl.warning"/>
+	<eventCode id="RiverOperations.info"/>
+	<eventCode id="RiverOperations.warning"/>
+	<eventCode id="System.info"/>
+	<eventCode id="System.maintenance"/>
+	<eventCode id="ewSourceRR.info"/>
+	<eventCode id="ewSourceRR.warning"/>
+	<eventCode id="URBS.info"/>
+	<eventCode id="URBS.warning"/>
+</forecasterNotesDisplay>

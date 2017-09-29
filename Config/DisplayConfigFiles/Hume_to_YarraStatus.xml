@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scadaDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/scadaDisplay.xsd">
+	<displayName>River Murray System Display</displayName>
+	<showTimeNavigatorToolbar>
+		<timeNavigatorRelativePeriod end="30" start="-60" unit="day"/>
+		<movieFrameDurationMillis>200</movieFrameDurationMillis>
+	</showTimeNavigatorToolbar>
+	<dateFormat id="DF1">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>dd-MM-yyyy</dateTimePattern>
+	</dateFormat>
+	<dateFormat id="DF2">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>HH:mm</dateTimePattern>
+	</dateFormat>
+	<dateFormat id="DF3">
+		<timeZone>
+			<timeZoneName>GMT+10</timeZoneName>
+		</timeZone>
+		<dateTimePattern>dd-MM-yyyy HH:mm</dateTimePattern>
+	</dateFormat>
+	<numberFormat id="NF1">
+		<pattern>{0,number,##0.0}</pattern>
+	</numberFormat>
+	<numberFormat id="NF2">
+		<pattern>{0,number,##0}</pattern>
+	</numberFormat>
+	<numberFormat id="NF3">
+		<pattern>{0,number,##0.00}</pattern>
+	</numberFormat>
+	<variable>
+		<variableId>H_opo</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_hydro</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_MDBC_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_MDBC_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_opo</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_hydro</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_MDBC_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_MDBC_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_opo</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_hydro</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_MDBC_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_MDBC_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="30" start="-60" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="merge_H">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_opo</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_hydro</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_MDBC_calc</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_MDBC_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_merge</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="merge_V">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_opo</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_hydro</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_MDBC_calc</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_MDBC_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_merge</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="merge_Q">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_opo</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_hydro</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_MDBC_calc</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_MDBC_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_merge</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<scadaPanel id="ScadaDisplay" name="Hume_to_Yarra">
+		<svgFile>Hume_to_Yarra.svg</svgFile>
+		<shapeComponentBehaviourDefinition>
+			<svgObjectId>Hume_Fill</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Storage volume at Hume Dam</title>
+						<variable>
+							<variableId>V_hydro</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_opo</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_MDBC_calc</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_MDBC_fcst</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<linkPropertiesToData>
+				<height>
+					<variable>
+						<variableId>V_merge</variableId>
+						<locationId>R_401027</locationId>
+					</variable>
+					<dataLowerLimit>2000</dataLowerLimit>
+					<dataUpperLimit>3005.2</dataUpperLimit>
+					<heightLowerLimit>0</heightLowerLimit>
+					<heightUpperLimit>44.8</heightUpperLimit>
+					<anchorPoint>bottom</anchorPoint>
+				</height>
+			</linkPropertiesToData>
+		</shapeComponentBehaviourDefinition>
+		<shapeComponentBehaviourDefinition>
+			<svgObjectId>Yarra_Fill</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Yarrawonga weir</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<linkPropertiesToData>
+				<height>
+					<variable>
+						<variableId>H_merge</variableId>
+						<locationId>R_409216A</locationId>
+					</variable>
+					<dataLowerLimit>115</dataLowerLimit>
+					<dataUpperLimit>124.9</dataUpperLimit>
+					<heightLowerLimit>0</heightLowerLimit>
+					<heightUpperLimit>40.5</heightUpperLimit>
+					<anchorPoint>bottom</anchorPoint>
+				</height>
+			</linkPropertiesToData>
+		</shapeComponentBehaviourDefinition>
+		<shapeComponentBehaviourDefinition>
+			<svgObjectId>William_Fill</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water depth at Lake William Hovell</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<linkPropertiesToData>
+				<height>
+					<variable>
+						<variableId>H_merge</variableId>
+						<locationId>R_403234A</locationId>
+					</variable>
+					<dataLowerLimit>390</dataLowerLimit>
+					<dataUpperLimit>410</dataUpperLimit>
+					<heightLowerLimit>0</heightLowerLimit>
+					<heightUpperLimit>35.2</heightUpperLimit>
+					<anchorPoint>bottom</anchorPoint>
+				</height>
+			</linkPropertiesToData>
+		</shapeComponentBehaviourDefinition>
+		<shapeComponentBehaviourDefinition>
+			<svgObjectId>Buffalo_Fill</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Lake Buffalo</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<linkPropertiesToData>
+				<height>
+					<variable>
+						<variableId>H_merge</variableId>
+						<locationId>R_403235A</locationId>
+					</variable>
+					<dataLowerLimit>250</dataLowerLimit>
+					<dataUpperLimit>270</dataUpperLimit>
+					<heightLowerLimit>0</heightLowerLimit>
+					<heightUpperLimit>35.2</heightUpperLimit>
+					<anchorPoint>bottom</anchorPoint>
+				</height>
+			</linkPropertiesToData>
+		</shapeComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Hume_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Hume Dam</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+				<toolTipText>Water level at Hume dam (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Hume_V</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Storage volume at Hume Dam</title>
+						<variable>
+							<variableId>V_hydro</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_opo</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_MDBC_calc</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+						<variable>
+							<variableId>V_MDBC_fcst</variableId>
+							<locationId>R_401027</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>V_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>V_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+				<toolTipText>Storage volume at Hume dam (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>V_merge</variableId>
+					<locationId>R_401027</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Yarra_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Yarrawonga weir</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_409216A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409216A</locationId>
+				</variable>
+				<thresholdReference>relative_view_period</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409216A</locationId>
+				</variable>
+				<toolTipText>Water level at Yarrawonga weir (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409216A</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>William_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Lake William Hovell</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403234A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403234A</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403234A</locationId>
+				</variable>
+				<toolTipText>Water level at Lake William Hovell (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403234A</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Buffalo_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Lake Buffalo</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403235A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403235A</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403235A</locationId>
+				</variable>
+				<toolTipText>Water level at Lake Buffalo (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403235A</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Corrowa_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Corrowa</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_409002</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_409002</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_409002</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_409002</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+				<toolTipText>Water level at Corrowa (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Corrowa_Q</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flow at Corrowa</title>
+						<variable>
+							<variableId>Q_hydro</variableId>
+							<locationId>R_409002</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_opo</variableId>
+							<locationId>R_409002</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_calc</variableId>
+							<locationId>R_409002</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_fcst</variableId>
+							<locationId>R_409002</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+				<toolTipText>Flow at Corrowa (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_409002</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Wangaratta_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Wangaratta</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403242C</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403242C</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403242C</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403242C</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+				<toolTipText>Water level at Wangaratta (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Wangaratta_Q</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flow at Wangaratta</title>
+						<variable>
+							<variableId>Q_hydro</variableId>
+							<locationId>R_403242C</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_opo</variableId>
+							<locationId>R_403242C</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_calc</variableId>
+							<locationId>R_403242C</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_fcst</variableId>
+							<locationId>R_403242C</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+				<toolTipText>Flow at Wangaratta (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_403242C</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Albury_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Albury</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_409001</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_409001</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_409001</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_409001</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409001</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409001</locationId>
+				</variable>
+				<toolTipText>Water level at Albury (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409001</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Bandiana_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Bandiana</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_402205A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_402205A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_402205A</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_402205A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+				<toolTipText>Water level at Bandiana (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>Bandiana_Q</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Flow at Bandiana</title>
+						<variable>
+							<variableId>Q_hydro</variableId>
+							<locationId>R_402205A</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_opo</variableId>
+							<locationId>R_402205A</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_calc</variableId>
+							<locationId>R_402205A</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_fcst</variableId>
+							<locationId>R_402205A</locationId>
+							<overrulingRelativeViewPeriod unit="day" start="-60" end="30"/>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+				<toolTipText>Flow at Bandiana (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>Q_merge</variableId>
+					<locationId>R_402205A</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>DSHume_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Downstream Hume Dam</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_409016</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_409016</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_409016</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_409016</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409016</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409016</locationId>
+				</variable>
+				<toolTipText>Water level at Downstream Hume dam (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_409016</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>DSWilliam_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Downstream Lake William Hovell</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403228B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403228B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403228B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403228B</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403228B</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403228B</locationId>
+				</variable>
+				<toolTipText>Water level at Downstream Lake William Hovell (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403228B</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+		<textComponentBehaviourDefinition>
+			<svgObjectId>DSBuffalo_H</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Water level at Downstream Lake Buffalo</title>
+						<variable>
+							<variableId>H_hydro</variableId>
+							<locationId>R_403220B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_opo</variableId>
+							<locationId>R_403220B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_calc</variableId>
+							<locationId>R_403220B</locationId>
+						</variable>
+						<variable>
+							<variableId>H_MDBC_fcst</variableId>
+							<locationId>R_403220B</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
+			<useThresholdWarningLevelColors>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403220B</locationId>
+				</variable>
+				<thresholdReference>last_value</thresholdReference>
+				<colorType>fill_and_stroke</colorType>
+			</useThresholdWarningLevelColors>
+			<toolTip>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403220B</locationId>
+				</variable>
+				<toolTipText>Water level at Downstream Lake Buffalo (%LASTVALUETIME(DF3)%)</toolTipText>
+			</toolTip>
+			<replaceTags>
+				<variable>
+					<variableId>H_merge</variableId>
+					<locationId>R_403220B</locationId>
+				</variable>
+			</replaceTags>
+		</textComponentBehaviourDefinition>
+	</scadaPanel>
+</scadaDisplay>

@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose OPO series from OPT, OPC and OPT2-->
+	<!-- Types of daily values are distinguished:
+_8am_inst: instantaneous values at 8am
+_8am_to_8am: daily mean values at 8am where the day is defined from 8am to 8am
+_midnight_inst: instantaneous value at midnight (i.e value at 30-11 23:59.59 is reported as 01-12 00:00:00h. Will be snapped to 8am on 30-11-->
+	<!--Steps conducted for OPT, OPC and OPT2:-->
+	<!-- _neq_to_15m: 
+samples nonEquidistant series to 15 minute or 15m series using closestOrLinear interpolation 
+(i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp)-->
+	<!--_neq_to_8am_inst: 
+closest sample from 15m to 8am instantaneous daily series restricted by 4 hour max timewindow-->
+	<!--_15m_aggr_daily_8am_to_8am: 
+instantaneousToMean aggregation from 15m to daily mean (at 8am), where the day is defined from 8am to 8am; 
+result is reliable if fews than x% of input values are doubtful or missing-->
+	<!--_neq_to_midnight_inst:
+closest sample from 15m to midnight instantaneous daily series restricted by 4 hour max timewindow-->
+	<!-- _midnigh_inst_to_8am:
+closestForward sample to assign midnight value to 8am on the previous day-->
+	<!--SelectPreferred_: 
+select preferred series (OPT, OPC, OPT2, OPO) based on (modifiable) location attribute, default is OPT
+OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
+	<!--Merge_OPO_Over_Selected(_OPT_OPC_OPT2)_:
+Merges OPO over selected (not over OPT over OPC over OPT2) series-->
+	<variable>
+		<variableId>OPO_historic_8am_inst</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra level data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra level data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra level data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_midnight_inst_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_midnight_inst_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_15m</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_midnight_inst_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am_inst</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="OPT_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_neq_to_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_neq_to_midnight_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT_midnight_inst_tmp</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_copy_midnight_inst_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPT_midnight_inst_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPT_midnight_inst_at_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="16"/>
+				<outputVariable>
+					<variableId>OPT_midnight_inst_at_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_15m_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPT_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPT_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="OPT_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPT_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPT_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPC_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neq_to_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neq_to_midnight_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_midnight_inst_tmp</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_copy_midnight_inst_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPC_midnight_inst_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPC_midnight_inst_at_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="16"/>
+				<outputVariable>
+					<variableId>OPC_midnight_inst_at_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_15m_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPC_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPC_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="OPC_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPC_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPC_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPT2_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT2_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<outputVariable>
+					<variableId>OPT2_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT2_neq_to_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT2_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT2_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT2_neq_to_midnight_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT2_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT2_midnight_inst_tmp</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT2_copy_midnight_inst_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPT2_midnight_inst_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPT2_midnight_inst_at_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="16"/>
+				<outputVariable>
+					<variableId>OPT2_midnight_inst_at_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT2_15m_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPT2_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPT2_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="OPT2_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPT2_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPT2_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="SelectPreferred_8am_inst">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am_inst</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am_inst</variableId>
+				</input>
+				<input>
+					<variableId>OPT2_8am_inst</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_inst</variableId>
+				</input>
+				<attributeFunctionId>@H_PREFERRED@_8am_inst</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am_inst</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="SelectPreferred_8am_to_8am">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am_to_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am_to_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPT2_8am_to_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_to_8am</variableId>
+				</input>
+				<attributeFunctionId>@H_PREFERRED@_@H_TIMESTEP@</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am_to_8am</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="SelectPreferred_midnight_inst">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_midnight_inst_at_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPC_midnight_inst_at_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPT2_midnight_inst_at_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPO_midnight_inst_at_8am</variableId>
+				</input>
+				<attributeFunctionId>@H_PREFERRED@_@H_TIMESTEP@_at_8am</attributeFunctionId>
+				<output>
+					<variableId>Selected_midnight_inst_at_8am</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC_OPT2)_8am_inst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_8am_inst</variableId>
+				</inputVariable>
+				<!--	<inputVariable>
+					<variableId>OPT_8am_inst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT2_8am_inst</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>OPO_historic_8am_inst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC_OPT2)_8am_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_8am_to_8am</variableId>
+				</inputVariable>
+				<!--	<inputVariable>
+					<variableId>OPT_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT2_8am_to_8am</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>OPO_historic_8am_to_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC_OPT2)_midnight_inst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_midnight_inst_at_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Selected_midnight_inst_at_8am</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>OPT_midnight_inst_at_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_midnight_inst_at_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT2_midnight_inst_at_8am</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>OPO_historic_midnight_inst_at_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_midnight_inst_at_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

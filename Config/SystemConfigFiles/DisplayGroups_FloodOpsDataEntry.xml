@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_All_flood">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_H_capacity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="Import_All_flood">
+		<!-- H_obs -->
+		<subplot>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>primary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>secondary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- Q_obs -->
+		<subplot>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- V_obs -->
+		<subplot>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- P_obs -->
+		<subplot>
+			<inverted>true</inverted>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_All_flood">
+		<!-- Controls the quality control plots -->
+		<!-- H_obs -->
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>primary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>secondary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- Q_obs -->
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- V_obs -->
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<!-- P_obs -->
+		<subplot>
+			<inverted>true</inverted>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_P_flood">
+		<subplot>
+			<inverted>true</inverted>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_P_flood_daily">
+		<subplot>
+			<inverted>true</inverted>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobs_daily</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobs_daily</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_P_flood_acc">
+		<subplot>
+			<inverted>true</inverted>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobsacc</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobsacc</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_P_flood_inst">
+		<subplot>
+			<inverted>true</inverted>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_pobsinst</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>P_obs</parameterId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>flood.sites_pobsinst</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_H_flood">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>primary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>secondary</qualifierId>
+				<locationSetId>flood.sites_hobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_Q_flood">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_Q_flood_rated">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_q_rated</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<locationSetId>flood.sites_q_rated</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_Q_flood_not_rated">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_q_not_rated</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<locationSetId>flood.sites_q_not_rated</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="ImportProcess_V_flood">
+		<subplot>
+			<color>slate blue</color>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<locationSetId>flood.sites_vobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-2" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="Import_flood" name="Observations flood sites">
+		<nodeId>Import_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="importflood">
+			<locationSetId>flood.sites</locationSetId>
+			<plotId>Import_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup name="Observations (processing) flood sites (debug)">
+		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="ImportProcess_flood" name="All parameters flood sites">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_All_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_P_flood" name="P flood sites (all)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processPflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_P_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_P_flood_daily" name="P flood sites (daily)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processPflood_daily">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_P_flood_daily</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_P_flood_inst" name="P flood sites (inst)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processPflood_acc">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_P_flood_inst</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_P_flood_acc" name="P flood sites (acc)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processPflood_inst">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_P_flood_acc</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_H_flood" name="H flood sites">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processHflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_H_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_Q_flood" name="Q flood sites">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processQflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_Q_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_Q_flood_rated_" name="Q flood sites (rated)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processQflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_Q_flood_rated</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_Q_flood_not_rated" name="Q flood sites (not rated)">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processQflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_Q_flood_not_rated</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ImportProcess_V_flood" name="V flood sites">
+			<nodeId>ImportProcess_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="processVflood">
+				<locationSetId>flood.sites</locationSetId>
+				<plotId>ImportProcess_V_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+	<displayGroup id="DataEntry_flood" name="Observations (Fops) flood sites">
+		<nodeId>DataEntry_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="dataentryflood">
+			<locationSetId>flood.sites</locationSetId>
+			<plotId>DataEntry_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+</displayGroups>

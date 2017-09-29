@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>ACCESSG_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSG_scalar</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSG_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_scalar</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>ACCESSR_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>Combined_ACCESS</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod start="-2" end="10" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Interpolate_ACCESSG_to_scalar">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>ACCESSG_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESSG_scalar</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="ACCESSG_To_hourly">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>ACCESSG_scalar</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESSG_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Interpolate_ACCESSR_to_scalar">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>ACCESSR_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESSR_scalar</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<!--<transformation id="ACCESSR_To_hourly">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>ACCESSR_scalar</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESSR_hourly</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>-->
+	<transformation id="merge_ACCESSG_ACCESSR">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>ACCESSR_scalar</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>ACCESSG_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Combined_ACCESS</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

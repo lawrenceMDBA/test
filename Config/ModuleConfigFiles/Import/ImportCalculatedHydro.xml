@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!-- imports water balance results from hydro database-->
+	<import>
+		<general>
+			<importType>database</importType>
+			<!--<jdbcDriverClass>net.sourceforge.jtds.jdbc.Driver</jdbcDriverClass>
+			<jdbcBinDir>$JDBC_BIN_FOLDER$</jdbcBinDir>
+			<jdbcConnectionString>jdbc:jtds:sqlserver://$HYDRO_DB_SERVER$;DatabaseName=$HYDRO_DB_INSTANCE_PROD$;useCursors=false;sendStringParametersAsUnicode=false</jdbcConnectionString>-->
+			<jdbcDriverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbcDriverClass>
+			<jdbcBinDir>$JDBC_BIN_FOLDER$</jdbcBinDir>
+			<jdbcConnectionString>jdbc:sqlserver://$HYDRO_DB_SERVER$;databaseName=$HYDRO_DB_INSTANCE_PROD$;useCursors=false;sendStringParametersAsUnicode=false</jdbcConnectionString>
+			<jdbcConnectionTimeOutMillis>60000</jdbcConnectionTimeOutMillis>
+			<user>$HYDRO_USER$</user>
+			<password>$HYDRO_PW$</password>
+			<relativeViewPeriod unit="day" start="-300" end="0" startOverrulable="true" endOverrulable="true"/>
+			<table name="V_ROWS_DAILY_BEST_WEEKLY_RPT">
+				<locationColumn name="SITEID"/>
+				<parameterColumn name="MEASURANDID"/>
+				<dateTimeColumn name="PERIODDATE" pattern="yyyy-MM-dd"/>
+				<valueColumn name="VALUE" unit="ML"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapHydro2ROWS_Calculated</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-9</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>HYDRO_Daily</dataFeedId>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<!-- opo series-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<!-- non-opo series-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindVel_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WindDir_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>shortterm</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoStopLogs_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>saline</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<qualifierId>net</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EGEN_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_calc</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>irrig</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>pump</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>ind</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>urban</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>structure</qualifierId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>transfer</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>instream</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>ivt</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Radiation_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRTN_calc</parameterId>
+			<qualifierId>env</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>valves</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>spill</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>other</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>vic</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QRL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="midnight"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="Hume.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="Hume.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet> -->
+	<!-- 	<locationSet id="Hume.sites_DOpct">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DOpct"/>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="Hume.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<!-- #######################
+	Data entry sites to MDBC_OPS
+	##########################-->
+	<locationSet id="Hume2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume.sites</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY_PARAMS"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!--TODO uncomment when idmap fixed-->
+	<locationSet id="Hume2MDBC_OPS.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="Hume2MDBC_OPS.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet> -->
+	<!-- 	<locationSet id="Hume2MDBC_OPS.sites_DOpct">
+		<description>Dissolved oxygen data entry sites</description>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DOpct"/>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="Hume2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hume2MDBC_OPS.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+</locationSets>

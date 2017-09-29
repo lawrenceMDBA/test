@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<rootDir>$MODULES_HDCALC_DATA_FOLDER$</rootDir>
+		<workDir>$MODULES_HDCALC_INI_FOLDER$</workDir>
+		<exportDir>$MODULES_HDCALC_INI_FOLDER$</exportDir>
+		<exportDataSetDir>$MODULES_HDCALC_INI_FOLDER$</exportDataSetDir>
+		<!--
+		<importDir>$IMPORT_FOLDER_FROM_HDCALC$</importDir>
+		-->
+		<importDir>$MODULES_HDCALC_INI_FOLDER$</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>$MODULES_HDCALC_DATA_FOLDER$</dumpDir>
+		<dumpDir>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs</dumpDir>		
+		<diagnosticFile>$MODULES_HDCALC_DATA_FOLDER$/HDCALC_diag.xml</diagnosticFile>
+		<missVal>-999.0</missVal>
+		<convertDatum>false</convertDatum>
+		<timeZone>
+			<timeZoneName>GMT+10:00</timeZoneName>
+		</timeZone>
+		<dateTimeFormat id="formatMonth">
+			<dateTimePattern>MM</dateTimePattern>
+		</dateTimeFormat>
+		<dateTimeFormat id="formatYear">
+			<dateTimePattern>yyyy</dateTimePattern>
+		</dateTimeFormat>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/*.xml</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>$MODULES_HDCALC_INI_FOLDER$/*.INI</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>$MODULES_HDCALC_DATA_FOLDER$/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>\\cbrnas01\hydstra\hyd\dat\ptmp\ROWS_HYDROEXP\*.CSV</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportTimeSeriesActivity>
+				<exportFile>test.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessECopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EC_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>Menindee.sites_EC</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportDataSetActivity>
+				<moduleInstanceId>modules_bin_HDCalcSuite</moduleInstanceId>
+			</exportDataSetActivity>
+			<exportRunFileActivity>
+				<exportFile>runinfo.xml</exportFile>
+			</exportRunFileActivity>
+			<exportCustomFormatRunFileActivity>
+				<templateFile>$MODULES_HDCALC_INI_FOLDER$/HDCALC_template.ini</templateFile>
+				<exportFile>$MODULES_HDCALC_INI_FOLDER$/HDCALC.INI</exportFile>
+			</exportCustomFormatRunFileActivity>
+			<exportCustomFormatRunFileActivity>
+				<templateFile>$MODULES_HDCALC_INI_FOLDER$/HDSMOOTH_template.ini</templateFile>
+				<exportFile>$MODULES_HDCALC_INI_FOLDER$/HDSMOOTH.INI</exportFile>
+			</exportCustomFormatRunFileActivity>
+			<exportCustomFormatRunFileActivity>
+				<templateFile>$MODULES_HDCALC_INI_FOLDER$/HDAGG_template.ini</templateFile>
+				<exportFile>$MODULES_HDCALC_INI_FOLDER$/HDAGG.INI</exportFile>
+			</exportCustomFormatRunFileActivity>
+			<exportCustomFormatRunFileActivity>
+				<templateFile>$MODULES_HDCALC_INI_FOLDER$/HDCALC1_template.ini</templateFile>
+				<exportFile>$MODULES_HDCALC_INI_FOLDER$/HDCALC1.INI</exportFile>
+			</exportCustomFormatRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<!--Run HdCalc and upload daily result to Hydro DB^-->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDCALC$.exe</executable>
+				</command>
+				<logFile>
+					<file>$MODULES_HDCALC_DATA_FOLDER$/$MODULES_HDCALC$_ERROR.TXT</file>
+					<!-- Import lines from log as a separate FEWS info log message. -->
+					<infoLinePattern> Hdcalc*</infoLinePattern>
+					<infoLinePattern> Data*</infoLinePattern>
+					<infoLinePattern> Normal*</infoLinePattern>
+				</logFile>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/HdCalc_err.XML</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell script (Cannot pass startup args to powershell without quotes)-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args -->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/HYDRODAY.CSV</argument>
+					<argument>HDCALC_DAY_Upload_Diag</argument>
+					<argument>daily</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDCALC_DAY_Upload_Diag.xml</overrulingDiagnosticFile>
+				<!-- <ignoreExitCode>true</ignoreExitCode> -->
+			</executeActivity>
+			<!--Run 1st HdSmooth and upload daily result to Hydro DB-->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDSMOOTH$.exe</executable>
+				</command>
+				<logFile>
+					<file>$MODULES_HDCALC_DATA_FOLDER$/$MODULES_HDSMOOTH$_ERROR.TXT</file>
+					<!-- Import lines from log as a separate FEWS info log message. -->
+					<infoLinePattern> Hdsmooth*</infoLinePattern>
+					<infoLinePattern> Data *</infoLinePattern>
+					<infoLinePattern> Normal *</infoLinePattern>
+				</logFile>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/HdSmooth_err.XML</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/HYDRODAY.CSV</argument>
+					<argument>HDSMOOTH_DAY_Upload_Diag</argument>
+					<argument>daily</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDSMOOTH_DAY_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			
+			<!--Run 1st HdAgg and upload monthly result to Hydro DB-->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDAGG$.exe</executable>
+				</command>
+				<logFile>
+					<file>$MODULES_HDCALC_DATA_FOLDER$/$MODULES_HDAGG$_ERROR.TXT</file>
+					<!-- Import lines from log as a separate FEWS info log message. -->
+					<infoLinePattern>*input*</infoLinePattern>
+					<infoLinePattern>*aggregates*</infoLinePattern>
+					<infoLinePattern> Normal *</infoLinePattern>
+				</logFile>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/Hdagg_err.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/hydromonth.csv</argument>
+					<argument>HDAGG_MONTH_Upload_Diag</argument>
+					<argument>monthly</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDAGG_MONTH_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+
+			<!--Run HdCalc1 and upload both daily and monthly results to Hydro DB-->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDCALC1$.exe</executable>
+				</command>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/HdCalc1.XML</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/HYDRODAY.CSV</argument>
+					<argument>HDCALC1_DAY_Upload_Diag</argument>
+					<argument>daily</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDCALC1_DAY_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/HYDROMONTH.CSV</argument>
+					<argument>HDCALC1_MONTH_Upload_Diag</argument>
+					<argument>monthly</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDCALC1_MONTH_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<!-- End of run HdCalc1-->
+			
+			<!--Run 2nd HdSmooth and upload daily result to Hydro DB-->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDSMOOTH$.exe</executable>
+				</command>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/HdSmooth_err.XML</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/HYDRODAY.CSV</argument>
+					<argument>HDSMOOTH_2ND_DAY_Upload_Diag</argument>
+					<argument>daily</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDSMOOTH_2ND_DAY_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<!--end 2nd HdSmooth run-->
+			
+			<!--Run 2nd HdAgg and upload monthly result to Hydro DB -->
+			<executeActivity>
+				<command>
+					<executable>$MODULES_HDCALC_EXE_FOLDER$/$MODULES_HDAGG$.exe</executable>
+				</command>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HDCALC_INI_FOLDER$/HdAgg_err.xml</overrulingDiagnosticFile>
+			</executeActivity>
+			<executeActivity>
+				<command>
+					<executable>$POWERSHELL_EXE$</executable>
+				</command>
+				<arguments>
+					<!-- Powershell args-->
+					<argument>$MODULES_HYDRO_POWERSHELL_SCRIPT$</argument>
+					<!-- scripts args-->
+					<argument>$HYDRO_DB_INSTANCE_PROD$</argument>
+					<argument>$MODULES_HDCALC_DATA_FOLDER$/hydromonth.csv</argument>
+					<argument>HDAGG_2ND_MONTH_Upload_Diag</argument>
+					<argument>monthly</argument>
+				</arguments>
+				<timeOut>600000</timeOut>
+				<overrulingDiagnosticFile>$MODULES_HYDRO_POWERSHELL_SCRIPT_FOLDER$/Logs/HDAGG_2ND_MONTH_Upload_Diag.xml</overrulingDiagnosticFile>
+			</executeActivity>
+		</executeActivities>
+	</activities>
+</generalAdapterRun>

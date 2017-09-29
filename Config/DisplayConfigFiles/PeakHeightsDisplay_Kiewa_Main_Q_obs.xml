@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<correlationDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews
+http://fews.wldelft.nl/schemas/version1.0/correlationDisplay.xsd" version="1.1">
+	<inputTimeSerieInfo>
+		<moduleInstanceId>ProcessQopo</moduleInstanceId>
+		<parameterId>Q_obs</parameterId>
+		<qualifierId>opo</qualifierId>
+		<timeSeriesType>external historical</timeSeriesType>
+		<timeStep id="8am"/>
+		<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+		<readWriteMode>add originals</readWriteMode>
+	</inputTimeSerieInfo>
+	<eventSetsDescriptorId>PeakHeightsEvents_Kiewa_Main_AEST</eventSetsDescriptorId>
+	<travelTimesDescriptorId>PeakHeightsTravelTimes_Kiewa_Main</travelTimesDescriptorId>
+	<eventSelectionType>combined</eventSelectionType>
+	<outputTimeSerieInfo>
+		<moduleInstanceId>PeakHeights_Correlation</moduleInstanceId>
+		<parameterId>Q_cor</parameterId>
+		<timeSeriesType>external historical</timeSeriesType>
+		<timeStep id="8am"/>
+		<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+		<readWriteMode>add originals</readWriteMode>
+	</outputTimeSerieInfo>
+	<correlationDisplayOptions>
+		<scatterplotOptions>
+			<preferredColor>red</preferredColor>
+			<markerStyle>circle</markerStyle>
+			<markerSize>8</markerSize>
+			<markerFilled>false</markerFilled>
+		</scatterplotOptions>
+		<equationOptions>
+			<lineStyle>solid</lineStyle>
+		</equationOptions>
+	</correlationDisplayOptions>
+</correlationDisplay>

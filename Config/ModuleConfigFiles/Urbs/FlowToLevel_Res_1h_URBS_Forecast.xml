@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--This module converts simulated flow to level, level to volume, calculates the cumulative volume from the forecast,-->
+	<!--Note: cumulative forecast is calculated for a timestep of 1 hour-->
+	<variable>
+		<variableId>Qsim_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_rated.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hrat_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>URBS_rated.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_all_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Cumulative_Qsim_all_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qsim_reservoir_inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Cumulative_Qsim_reservoir_inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_in_fcst</parameterId>
+			<qualifierId>acc</qualifierId>
+			<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="DischargeToStage">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Qsim_rated</variableId>
+				</discharge>
+				<stage>
+					<variableId>Hrat_rated</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="DischargeToCumulativeVolume">
+		<accumulation>
+			<sum>
+				<inputVariable>
+					<variableId>Qsim_all_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Cumulative_Qsim_all_fcst</variableId>
+				</outputVariable>
+			</sum>
+		</accumulation>
+	</transformation>
+	<transformation id="ConvertVolume">
+		<user>
+			<simple>
+				<expression>Cumulative_Qsim_all_fcst / 24</expression>
+				<outputVariable>
+					<variableId>Cumulative_Qsim_all_fcst</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DischargeToCumulativeVolume_reservoirs">
+		<accumulation>
+			<sum>
+				<inputVariable>
+					<variableId>Qsim_reservoir_inflow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Cumulative_Qsim_reservoir_inflow</variableId>
+				</outputVariable>
+			</sum>
+		</accumulation>
+	</transformation>
+	<transformation id="ConvertVolume_reservoirs">
+		<user>
+			<simple>
+				<expression>Cumulative_Qsim_reservoir_inflow / 24</expression>
+				<outputVariable>
+					<variableId>Cumulative_Qsim_reservoir_inflow</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

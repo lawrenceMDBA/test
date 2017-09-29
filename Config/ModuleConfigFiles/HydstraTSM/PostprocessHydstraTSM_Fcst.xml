@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- turns hourly HydstraTSM forecast into a dialy (8am) series by mean aggregation-->
+	<variable>
+		<variableId>hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>cor</qualifierId>
+			<locationSetId>tsm_sites_output</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>daily_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PostprocessHydstraTSM_Fcst</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>tsm_sites_output</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+
+	<transformation id="hourly_to_daily">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>hourly</variableId>
+				</inputVariable>
+				<allowMissingValues>true</allowMissingValues>
+				<includeFirstValueOfAggregationPeriodInCalculation>false</includeFirstValueOfAggregationPeriodInCalculation>
+				<outputVariable>
+					<variableId>daily</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+</transformationModule>

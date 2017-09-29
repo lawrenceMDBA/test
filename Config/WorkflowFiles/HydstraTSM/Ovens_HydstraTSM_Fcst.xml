@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+  <activity>
+    <runIndependent>true</runIndependent>
+    <moduleInstanceId>PrepareHydstraTSM</moduleInstanceId>
+  </activity> 
+   <activity>
+    <runIndependent>false</runIndependent>
+    <moduleInstanceId>ExportToHydstraTSM_Fcst</moduleInstanceId>
+  </activity> 
+  <!-- bat file is missing -->
+ <activity>
+    <runIndependent>false</runIndependent>
+    <moduleInstanceId>ExecuteHydstraTSM_Fcst</moduleInstanceId>
+  </activity>
+  <activity>
+    <runIndependent>false</runIndependent>
+    <moduleInstanceId>ImportFromHydstraTSM_Fcst</moduleInstanceId>
+  </activity> 
+</workflow>

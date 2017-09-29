@@ -1,0 +1,59 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="Yarrawonga_flood">
+		<nodes id="ObservedProcessing.Yarrawonga_flood" name="Yarrawonga">
+			<workflowId>Process_Observed_FloodOps</workflowId>
+			<node id="Yarrawonga.DataEntryFlood" name="Data entry flood">
+				<previousNodeId>ImportAndProcess_Observed_flood_latest</previousNodeId>
+				<workflowId>Process_Observed_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+				<displayGroupId>Yarrawonga.DataEntry_flood</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="Yarrawonga.Process_flood" name="Quality Control flood (storage sites)">
+				<previousNodeId>ImportAndProcess_Observed_flood_latest</previousNodeId>
+				<workflowId>Process_Observed_FloodOps</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+				<displayGroupId>Yarrawonga.Process_flood</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="Yarrawonga.TelemetryFlood" name="Review Telemetry flood">
+				<node id="Yarrawonga.Process_Hflood" name="Water levels">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+					<displayGroupId>Yarrawonga.Process_Hflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Yarrawonga.Process_Qflood" name="Discharge">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+					<displayGroupId>Yarrawonga.Process_Qflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Yarrawonga.Process_Vflood" name="Volume">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+					<displayGroupId>Yarrawonga.Process_Vflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+				<node id="Yarrawonga.Process_Pflood" name="Rainfall">
+					<mapExtentId>Upper Murray</mapExtentId>
+					<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+					<displayGroupId>Yarrawonga.Process_Pflood</displayGroupId>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</node>
+			</nodes>
+			<mapExtentId>Upper Murray</mapExtentId>
+			<filterId>Catchment_FloodOps_Yarrawonga</filterId>
+		</nodes>
+	</group>
+</topologyGroup>

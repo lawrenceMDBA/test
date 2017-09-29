@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+	<parameter external="AirTemperature (1900.00)" internal="AT_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Discharge (400.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="EvaporationfromaU.S.ClassAPan (1950.00)" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="GateOpenFlag (134.00)" internal="NoGatesOpen_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Rainfall (2000.00)" internal="P_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="StorageVolume (200.00)" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="WaterLevel (100.00)" internal="H_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="WaterTemperature (3500.00)" internal="WT_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="DissolvedOxygen (5067.00)" internal="DO_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="DissolvedOxygen (1200.00)" internal="DO_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Conductivity@25degC (3000.00)" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="ElectricalConductivity (1300.00)" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="EffectiveVolumeinStorage (140.00)" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 
+	
+	<parameter external="StorageDischargeVolume (300.00)" internal="QRL_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	-->
+	<parameter external="CalculatedInflow (2240.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" externalQualifier3="inflow"/>
+	<parameter external="NetTransfer(24hrTotal) (419.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!--
+    <parameter external="WaterOrder-ShortTerm(eg3days) (2150.00)" internal="QORD_fcst" internalQualifier1="opc" internalQualifier2="raw"/>	
+    <parameter external="WaterOrder-MDBCComponent (2149.00)" internal="QORD_fcst" internalQualifier1="opc" internalQualifier2="raw"/>
+	-->
+	<parameter external="WaterOrder-ShortTerm(eg3days) (2150.00)" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="WaterOrder-LongTerm(eg3weeksadv) (2151.00)" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="WaterOrder-MDBCComponent (2149.00)" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="mdbc"/>
+	<parameter external="PumpedIrrigationDistrictDiversion (569.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="UrbanDiversion (563.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="TownandIndustrialDiversion (562.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="DischargeThroughHydro(TotalTurbine) (411.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="turb"/>
+	<parameter external="DischargeThroughValves(Total) (412.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="valves"/>
+	<parameter external="DischargeOverSpillwayTotal (413.00)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="spill"/>
+
+	<!-- ETL Export Mappings: Used when importing data exported by ETL Tool -->
+	<parameter external="100" internal="H_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="133" internal="NoGatesOpen_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="300" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="total"/>
+	<parameter external="400" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="411" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="turb"/>
+	<parameter external="412" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="valves"/>
+	<parameter external="413" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="spill"/>
+	<parameter external="422" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="inflow"/>
+	<parameter external="1902" internal="WindDir_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="1912" internal="WindVel_obs" internalQualifier1="opc" internalQualifier2="raw"/>	
+	<parameter external="1950" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="200" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="2000" internal="P_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="2149" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="mdbc"/>
+	<parameter external="2150" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="2151" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="3000" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	
+	<!-- HYGENEXP export mappings-->
+	<parameter external="Air Temperature" internal="AT_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Discharge" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Evaporation from a U.S. Class A Pan" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Evapotranspiration FAO56" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="fao56"/>
+	<parameter external="Evaporation Mortans Lake" internal="EVAP_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="mlake"/>
+	<parameter external="Gate Open Flag" internal="NoGatesOpen_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Rainfall" internal="P_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Storage Volume" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Water Level" internal="H_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Water Temperature" internal="WT_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Dissolved Oxygen" internal="DO_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Conductivity @ 25 deg C" internal="EC_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Effective Volume in Storage" internal="V_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Storage Discharge Volume" internal="QRL_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Calculated Inflow" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="inflow"/>
+	<parameter external="Water Order - Short Term (eg 3 days)" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Water Order - Long Term (eg 3 weeks adv)" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="longterm"/>
+	<parameter external="Water Order - MDBC Component" internal="QORD_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="mdbc"/>
+	<parameter external="Irrigation Return" internal="QRTN_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Discharge Through Hydro (Total Turbine)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="turb"/>
+	<parameter external="Discharge Through Valves (Total)" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="valves"/>
+	<parameter external="Discharge Over Spillway Total" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="spill"/>
+	<!-- 467,"Environmental Diversion-Pump","Megalitres"  -->
+	<parameter external="Environmental Diversion-Pump" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="env"/>
+	<!-- 468,"Environmental Diversion-Structure" -->
+	<parameter external="Environmental Diversion-Structure" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw" internalQualifier3="env"/>
+	<!-- 561,"Private Regulated Irrigation Diversion","Megalitres/Day" -->
+	<parameter external="Private Regulated Irrigation Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 564,"Private Irrigation Diversion","Megalitres/Day" -->
+	<parameter external="Private Irrigation Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 566,"Gravity Irrigation District Diversion","Megalitres/Day" -->
+	<parameter external="Gravity Irrigation District Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 569,"Pumped Irrigation District Diversion" -->
+	<parameter external="Pumped Irrigation District Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 750,"Total Diversion","Megalitres/day" -->
+	<parameter external="Total Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 562,"Town and Industrial Diversion","Megalitres/Day" -->
+	<parameter external="Town and Industrial Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 563,"Urban Diversion","Megalitres/Day","PL Diversion (ML/D)" -->
+	<parameter external="Urban Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<!-- 737,"MDBC_ops Pumped Saline Diversion","Megalitres/day" -->
+	<parameter external="MDBC_ops Pumped Saline Diversion" internal="Q_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	
+	<parameter external="Wind Direction" internal="WindDir_obs" internalQualifier1="opc" internalQualifier2="raw"/>
+	<parameter external="Wind Velocity" internal="WindVel_obs" internalQualifier1="opc" internalQualifier2="raw"/>	
+	
+	<locationIdFunction externalLocationFunction="@HYDSTRA_SITE_ID@" internalLocationSet="sites"/>
+</idMap>

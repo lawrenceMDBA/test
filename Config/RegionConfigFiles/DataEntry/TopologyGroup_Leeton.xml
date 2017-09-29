@@ -1,0 +1,90 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="Leeton_OPO">
+		<nodes id="ObservedProcessing.Leeton_OPO" name="Leeton">
+			<node id="Leeton.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>Leeton.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="Leeton.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>Leeton.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<nodes id="Leeton.Telemetry" name="Review Telemetry">
+				<node id="Leeton.Process_Hopo" name="Water levels">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_Hopo</displayGroupId>
+					<defaultModifierId>H_select_OPO</defaultModifierId>
+					<visibleModifierGroup>H_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<!--
+				<node id="Leeton.Process_Qopo" name="Discharge">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_Qopo</displayGroupId>
+					<defaultModifierId>Q_select_OPO</defaultModifierId>
+					<visibleModifierGroup>Q_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				-->
+				<node id="Leeton.Process_Qratedopo" name="Discharge (rated)">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_Qratedopo</displayGroupId>
+					<defaultModifierId>H_select_OPO</defaultModifierId>
+					<visibleModifierGroup>H_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="Leeton.Process_Vopo" name="Storage Volume">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_Vopo</displayGroupId>
+					<defaultModifierId>V_select_OPO</defaultModifierId>
+					<visibleModifierGroup>V_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="Leeton.Process_Popo" name="Rainfall">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_Popo</displayGroupId>
+					<defaultModifierId>P_select_OPO</defaultModifierId>
+					<visibleModifierGroup>P_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<!--<node id="Leeton.Process_EVAPopo" name="Evaporation">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_EVAPopo</displayGroupId>
+					<defaultModifierId>EVAP_select_OPO</defaultModifierId>
+					<visibleModifierGroup>E_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>-->
+				<node id="Leeton.Process_ECopo" name="Salinity/EC">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_ECopo</displayGroupId>
+					<defaultModifierId>EC_select_OPO</defaultModifierId>
+					<visibleModifierGroup>EC_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="Leeton.Process_DOopo" name="Dissolved Oxygen">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_DOopo</displayGroupId>
+					<defaultModifierId>DO_select_OPO</defaultModifierId>
+					<visibleModifierGroup>DO_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<node id="Leeton.Process_WTopo" name="Water Temperature">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_WTopo</displayGroupId>
+					<defaultModifierId>WT_select_OPO</defaultModifierId>
+					<visibleModifierGroup>WT_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>
+				<!--<node id="Leeton.Process_ATopo" name="Air Temperature">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>Leeton.Process_ATopo</displayGroupId>
+					<defaultModifierId>AT_select_OPO</defaultModifierId>
+					<visibleModifierGroup>AT_OPO</visibleModifierGroup>
+					<localRun>false</localRun>
+				</node>-->
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

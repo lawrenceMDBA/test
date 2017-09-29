@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filters version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/filters.xsd">
+<!--	<defaultFilterId>Reports</defaultFilterId>-->
+	<timeSeriesSets id="Hydro_calculated_results">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QL_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QI_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Weekly_report_results">
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="day" multiplier="7"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_allstorages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="day" multiplier="7"/>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromMay1</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromMay1</qualifierId>
+			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_alldiversions</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_alldiversions</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_alldiversions</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>prev_month</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>prev_month</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>wr.sites_salinity</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationSetId>wr.sites_salinity</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>fromAugust1</qualifierId>
+			<locationSetId>wr.sites_salinity</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>fromAugust1</qualifierId>
+			<locationSetId>wr.sites_salinity</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>ahd</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>shift_t2</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>trend</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_murrayweirs</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>ds</qualifierId>
+			<locationSetId>wr.sites_murrayweirs_usds</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_murrayweirs</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>ds</qualifierId>
+			<locationSetId>wr.sites_murrayweirs_usds</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationSetId>wr.sites_lowerlakes</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod end="0" start="-5" unit="day"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>ahd</qualifierId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>vs</qualifierId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>NoGatesOpen_calc</parameterId>
+			<qualifierId>rr</qualifierId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_mdbastorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_mdbastorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_mdbastorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_mdbastorage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_nswdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_nswdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_vicdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_vicdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<!-- reports (parent filter_id: Reports)-->
+	<!-- HYDRO by reach-->
+	<filter id="Hydro_calculated_by_reach" name="Hydro/water balance (by reach)">
+		<child foreignKey="Hydro_calculated_OVENS"/>
+		<child foreignKey="Hydro_calculated_KIEWA"/>
+		<child foreignKey="Hydro_calculated_YARRA"/>
+		<child foreignKey="Hydro_calculated_EDWOPS"/>
+		<child foreignKey="Hydro_calculated_MIDOPS"/>
+		<child foreignKey="Hydro_calculated_ST_FLOOD"/>
+	</filter>
+	<filter id="Hydro_calculated_OVENS" name="Ovens (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="OVENS"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hydro_calculated_KIEWA" name="Kiewa (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="KIEWA"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hydro_calculated_YARRA" name="Yarrawonga (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="YARRA"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hydro_calculated_EDWOPS" name="Edward ops (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="EDWOPS"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hydro_calculated_MIDOPS" name="Mid ops (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="MIDOPS"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hydro_calculated_ST_FLOOD" name="St Flood (calculated)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="OPS_REACH" contains="ST_FLOOD"/>
+		</locationConstraints>
+	</filter>
+	<!-- weekly report-->
+	<filter id="Weekly_report" name="Weekly report">
+		<child foreignKey="Weekly_report_snowy_storage"/>
+		<child foreignKey="Weekly_report_barrages"/>
+		<child foreignKey="Weekly_report_flow_to_sa"/>
+		<child foreignKey="Weekly_report_lower_lakes"/>
+		<child foreignKey="Weekly_report_major_state_storages"/>
+		<child foreignKey="Weekly_report_mdba_storage"/>
+		<child foreignKey="Weekly_report_nat_inflow_hume"/>
+		<child foreignKey="Weekly_report_mdba_total"/>
+		<child foreignKey="Weekly_report_murray_weirs"/>
+		<child foreignKey="Weekly_report_nsw_diversion"/>
+		<child foreignKey="Weekly_report_nsw_total"/>
+		<child foreignKey="Weekly_report_river_murray"/>
+		<child foreignKey="Weekly_report_salinity"/>
+		<child foreignKey="Weekly_report_tributaries"/>
+		<child foreignKey="Weekly_report_vic_diversion"/>
+		<child foreignKey="Weekly_report_vic_total"/>
+	</filter>
+	<filter id="Weekly_report_snowy_storage" name="Snowy storage">
+		<child foreignKey="Hydro_calculated_snowy_storage"/>
+		<child foreignKey="Weekly_report_results_snowy_storage"/>
+	</filter>
+	<filter id="Hydro_calculated_snowy_storage" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_snowy_storage" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_barrages" name="Barrages">
+		<child foreignKey="Hydro_calculated_barrages"/>
+		<child foreignKey="Weekly_report_results_barrages"/>
+	</filter>
+	<filter id="Hydro_calculated_barrages" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="barrages"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_barrages" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="barrages"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_flow_to_sa" name="Flow to SA">
+		<child foreignKey="Hydro_calculated_flow_to_sa"/>
+		<child foreignKey="Weekly_report_results_flow_to_sa"/>
+	</filter>
+	<filter id="Hydro_calculated_flow_to_sa" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="flow_to_sa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_flow_to_sa" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="flow_to_sa"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_lower_lakes" name="Lower Lakes">
+		<child foreignKey="Hydro_calculated_lower_lakes"/>
+		<child foreignKey="Weekly_report_results_lower_lakes"/>
+	</filter>
+	<filter id="Hydro_calculated_lower_lakes" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="lower_lakes"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_lower_lakes" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="lower_lakes"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_major_state_storages" name="Major State Storages">
+		<child foreignKey="Hydro_calculated_major_state_storages"/>
+		<child foreignKey="Weekly_report_results_major_state_storages"/>
+	</filter>
+	<filter id="Hydro_calculated_major_state_storages" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="major_state_storages"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_major_state_storages" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="major_state_storages"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_mdba_storage" name="MDBA Storage">
+		<child foreignKey="Hydro_calculated_mdba_storage"/>
+		<child foreignKey="Weekly_report_results_mdba_storage"/>
+	</filter>
+	<filter id="Hydro_calculated_mdba_storage" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_mdba_storage" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_nat_inflow_hume" name="Natural Inflow Hume">
+		<child foreignKey="Hydro_calculated_nat_inflow_hume"/>
+		<child foreignKey="Weekly_report_results_nat_inflow_hume"/>
+	</filter>
+	<filter id="Hydro_calculated_nat_inflow_hume" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nat_inflow_hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_nat_inflow_hume" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nat_inflow_hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_mdba_total" name="MDBA Total">
+		<child foreignKey="Hydro_calculated_mdba_total"/>
+		<child foreignKey="Weekly_report_results_mdba_total"/>
+	</filter>
+	<filter id="Hydro_calculated_mdba_total" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_mdba_total" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_murray_weirs" name="Murray Weirs">
+		<child foreignKey="Hydro_calculated_murray_weirs"/>
+		<child foreignKey="Weekly_report_results_murray_weirs"/>
+	</filter>
+	<filter id="Hydro_calculated_murray_weirs" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="murray_weirs"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_murray_weirs" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="murray_weirs"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_nsw_diversion" name="NSW Diversion">
+		<child foreignKey="Hydro_calculated_nsw_diversion"/>
+		<child foreignKey="Weekly_report_results_nsw_diversion"/>
+	</filter>
+	<filter id="Hydro_calculated_nsw_diversion" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_nsw_diversion" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_nsw_total" name="NSW Total">
+		<child foreignKey="Hydro_calculated_nsw_total"/>
+		<child foreignKey="Weekly_report_results_nsw_total"/>
+	</filter>
+	<filter id="Hydro_calculated_nsw_total" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_nsw_total" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_river_murray" name="River Murray">
+		<child foreignKey="Hydro_calculated_river_murray"/>
+		<child foreignKey="Weekly_report_results_river_murray"/>
+	</filter>
+	<filter id="Hydro_calculated_river_murray" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="river_murray"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_river_murray" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="river_murray"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_salinity" name="Salinity">
+		<child foreignKey="Hydro_calculated_salinity"/>
+		<child foreignKey="Weekly_report_results_salinity"/>
+	</filter>
+	<filter id="Hydro_calculated_salinity" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="salinity"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_salinity" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="salinity"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_tributaries" name="Tributaries">
+		<child foreignKey="Hydro_calculated_tributaries"/>
+		<child foreignKey="Weekly_report_results_tributaries"/>
+	</filter>
+	<filter id="Hydro_calculated_tributaries" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="tributaries"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_tributaries" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="tributaries"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_vic_diversion" name="VIC Diversion">
+		<child foreignKey="Hydro_calculated_vic_diversion"/>
+		<child foreignKey="Weekly_report_results_vic_diversion"/>
+	</filter>
+	<filter id="Hydro_calculated_vic_diversion" name="Water balance results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_vic_diversion" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_vic_total" name="VIC Total">
+		<child foreignKey="Hydro_calculated_vic_total"/>
+		<child foreignKey="Weekly_report_results_vic_total"/>
+	</filter>
+	<filter id="Hydro_calculated_vic_total" name="Waterbalance results (Hydro)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Hydro_calculated_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Weekly_report_results_vic_total" name="Report Results">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>Weekly_report_results</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
+		</locationConstraints>
+	</filter>
+</filters>

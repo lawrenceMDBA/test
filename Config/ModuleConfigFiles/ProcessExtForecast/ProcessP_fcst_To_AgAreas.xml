@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--Interpolates the gridded data to subcatchments for analysis in the spatial display.-->
+	<variable>
+		<variableId>ACCESS-G_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESS-G_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESS-R_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESS-R_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessr</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>avg</qualifierId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>PME_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>avg</qualifierId>
+			<qualifierId>pme</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="3"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--START OF THE COMPUTATIONS - Compute average over polygons using cookie cutter method-->
+	<transformation id="Interpolate_ACCESS-G_to_AggregationAreas">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>ACCESS-G_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESS-G_AgAreas</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Interpolate_ACCESS-R_to_AggregationAreas">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>ACCESS-R_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ACCESS-R_AgAreas</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Interpolate_ADFD_to_AggregationAreas">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>ADFD_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ADFD_AgAreas</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Interpolate_PME_to_AggregationAreas">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>PME_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>PME_AgAreas</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+</transformationModule>

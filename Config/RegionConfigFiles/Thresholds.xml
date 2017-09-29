@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thresholdGroups xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/thresholds.xsd">
+	<eventExpiryTime unit="day" multiplier="366"/>
+	<thresholdGroup id="Waterlevel" name="Water Level">
+		<defaultThreshold shortName="None"/>
+		<levelThreshold id="Minor_Flooding" name="Minor Flooding">
+			<upWarningLevelId>Minor_Flooding</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Moderate_Flooding" name="Moderate Flooding">
+			<upWarningLevelId>Moderate_Flooding</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Major_Flooding" name="Major Flooding">
+			<upWarningLevelId>Major_Flooding</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Full_Supply_Level" name="Full Supply Level">
+			<upWarningLevelId>Full_Supply_Level</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Surcharge_Level" name="Surcharge Level">
+			<upWarningLevelId>Surcharge_Level</upWarningLevelId>
+		</levelThreshold>
+	</thresholdGroup>
+	<thresholdGroup id="Volume" name="Volume">
+		<defaultThreshold shortName="None"/>
+		<levelThreshold id="Full_Supply_Volume" name="Full Supply Volume">
+			<upWarningLevelId>Full_Supply_Volume</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Surcharge_Volume" name="Surcharge Volume">
+			<upWarningLevelId>Surcharge_Volume</upWarningLevelId>
+		</levelThreshold>
+	</thresholdGroup>
+	<thresholdGroup id="ThresholdsDisplay" name="Thresholds Display">
+		<defaultThreshold shortName="Default"/>
+		<!--These are for the Threshold_X parameters. -->
+		<levelThreshold id="Soft" name="Soft" shortName="Soft">
+			<upWarningLevelId>Soft</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard" name="Hard" shortName="Hard">
+			<upWarningLevelId>Hard</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Full_Supply_Level" name="Full Supply" shortName="FS">
+			<upWarningLevelId>Full_Supply_Level</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Full_Supply_Volume" name="Full Supply" shortName="FS">
+			<upWarningLevelId>Full_Supply_Volume</upWarningLevelId>
+		</levelThreshold>
+		<!--These are for the physical parameters. -->
+		<levelThreshold id="Active" name="Active" shortName="Active">
+			<upWarningLevelId>Active</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_up" name="Soft (GT)" shortName="Soft (GT)">
+			<upWarningLevelId>Soft_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_down" name="Soft (LT)" shortName="Soft (LT)">
+			<downWarningLevelId>Soft_down</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_range_up" name="Soft range (GT)" shortName="Soft range (GT)">
+			<upWarningLevelId>Soft_range_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_range_down" name="Soft range (LT)" shortName="Soft range (LT)">
+			<downWarningLevelId>Soft_range_down</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_range_up_switchoff" name="Soft range (GT)" shortName="Soft range (GT)">
+			<downWarningLevelId>Soft_range_up_switchoff</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Soft_range_down_switchoff" name="Soft range (LT)" shortName="Soft range (LT)">
+			<upWarningLevelId>Soft_range_down_switchoff</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_up" name="Hard (GT)" shortName="Hard (GT)">
+			<upWarningLevelId>Hard_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_down" name="Hard (LT)" shortName="Hard (LT)">
+			<downWarningLevelId>Hard_down</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_range_up" name="Hard range (GT)" shortName="Hard range (GT)">
+			<upWarningLevelId>Hard_range_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_range_down" name="Hard range (LT)" shortName="Hard range (LT)">
+			<downWarningLevelId>Hard_range_down</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_range_up_switchoff" name="Hard range (GT)" shortName="Hard range (GT)">
+			<downWarningLevelId>Hard_range_up_switchoff</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Hard_range_down_switchoff" name="Hard range (LT)" shortName="Hard range (LT)">
+			<upWarningLevelId>Hard_range_down_switchoff</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Full_Supply_Level_up" name="Full Supply (GT)" shortName="FS (GT)">
+			<upWarningLevelId>Full_Supply_Level_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Salinity" name="Salinity" shortName="Salinity">
+			<upWarningLevelId>Salinity</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Salinity_up" name="Salinity (GT)" shortName="Salinity (GT)">
+			<upWarningLevelId>Salinity_up</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="DO%" name="DO%" shortName="DO%">
+			<downWarningLevelId>DO%</downWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="DO%_down" name="DO% (LT)" shortName="DO% (LT)">
+			<downWarningLevelId>DO%_down</downWarningLevelId>
+		</levelThreshold>
+		<!--Hard_special, Soft_special, Condition can't be displayed properly in the general timeSeriesDisplayConfig-->
+		<levelThreshold id="Hard_special" name="Hard" shortName="Hard"/>
+		<levelThreshold id="Soft_special" name="Soft" shortName="Soft"/>
+		<levelThreshold id="Condition" name="Condition" shortName="Condition">
+			<upWarningLevelId>Condition</upWarningLevelId>
+		</levelThreshold>
+	</thresholdGroup>
+	<thresholdGroup id="FloodOps" name="Flood Operations">
+		<defaultThreshold shortName="None"/>
+		<levelThreshold id="Channel_Capacity_Q" name="Channel Capacity">
+			<upWarningLevelId>Channel_Capacity_Q</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Minor_landholder_impact_Q" name="Minor landholder impacts">
+			<upWarningLevelId>Minor_landholder_impact_Q</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Considerable_landholder_impact_Q" name="1:2 ARI, Considerable landholder impacts impacts">
+			<upWarningLevelId>Considerable_landholder_impact_Q</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Channel_Capacity_H" name="Channel Capacity">
+			<upWarningLevelId>Channel_Capacity_H</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Minor_landholder_impact_H" name="Minor landholder impacts">
+			<upWarningLevelId>Minor_landholder_impact_H</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Major_landholder_impact_H" name="Major landholder impacts">
+			<upWarningLevelId>Major_landholder_impact_H</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Major_flood_H" name="1:20 ARI, Major Flood level">
+			<upWarningLevelId>Major_flood_H</upWarningLevelId>
+		</levelThreshold>
+		<levelThreshold id="Top_of_Albury" name="1:100 ARI, Top of Albury level">
+			<upWarningLevelId>Top_of_Albury</upWarningLevelId>
+		</levelThreshold>
+	</thresholdGroup>
+</thresholdGroups>

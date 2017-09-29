@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scadaDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/scadaDisplay.xsd">
+  <displayName>River Murray System Display</displayName>
+  <showTimeNavigatorToolbar>
+    <timeNavigatorRelativePeriod end="4" start="-20" unit="hour" />
+    <movieFrameDurationMillis>200</movieFrameDurationMillis>
+  </showTimeNavigatorToolbar>
+  <dateFormat id="DF1">
+    <timeZone>
+      <timeZoneName>GMT+10</timeZoneName>
+    </timeZone>
+    <dateTimePattern>dd-MM-yyyy</dateTimePattern>
+  </dateFormat>
+  <dateFormat id="DF2">
+    <timeZone>
+      <timeZoneName>GMT+10</timeZoneName>
+    </timeZone>
+    <dateTimePattern>HH:mm</dateTimePattern>
+  </dateFormat>
+  <dateFormat id="DF3">
+    <timeZone>
+      <timeZoneName>GMT+10</timeZoneName>
+    </timeZone>
+    <dateTimePattern>dd-MM-yyyy HH:mm</dateTimePattern>
+  </dateFormat>
+  <numberFormat id="NF1">
+    <pattern>{0,number,##0.00}</pattern>
+  </numberFormat>
+  <scadaPanel id="ScadaDisplay" name="Yarra_to_Torrumbarry">
+    <svgFile>Yarra_to_Torrumbarry.svg</svgFile>
+  </scadaPanel>
+</scadaDisplay>

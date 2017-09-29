@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<whatIfScenarioFilters id="OvensWhatIf" name="OvensWhatIf" version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/whatIfScenarioFilters.xsd">
+  <description>What-If Scenario Templates for Ovens</description>
+  <variableSets>
+    <variable variableId="Catchment Average Rainfall (Previous 24 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="-1" start="-1" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+    <variable variableId="Catchment Average Rainfall (24 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="1" start="1" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+    <variable variableId="Catchment Average Rainfall (Previous 48 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="-1" start="-2" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+    <variable variableId="Catchment Average Rainfall (48 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="2" start="1" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+    <variable variableId="Catchment Average Rainfall (Previous 72 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="-1" start="-3" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+    <variable variableId="Catchment Average Rainfall (72 hours)">
+      <timeSeriesSet>
+        <moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>P_obs_avg</parameterId>
+        <locationSetId>ewsource_subareas.ovens</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+        <timeStep id="Daily" />
+        <relativeViewPeriod end="3" start="1" startOverrulable="true" unit="day" />
+        <readWriteMode>add originals</readWriteMode>
+        <synchLevel>3</synchLevel>
+      </timeSeriesSet>
+    </variable>
+  </variableSets>
+</whatIfScenarioFilters>

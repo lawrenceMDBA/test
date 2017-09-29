@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_FLOOD_OPS$</folder>
+			<exportFileName>
+				<name>ROWStoFloodOps_spreadsheet_hume_forecast.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2FloodSheets_Forecast</idMapId>
+			<omitMissingValues>true</omitMissingValues>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>upper_murray_upper_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>

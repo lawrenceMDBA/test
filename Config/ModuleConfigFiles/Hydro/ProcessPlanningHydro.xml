@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- This module is is using properties feature in workflows to parameterise the 
+		 processing of monthly to daily values
+	-->
+	<!-- Q_plan -->
+	<variable>
+		<variableId>Monthly_plan_midnight_Q_plan</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="minute" multiplier="0"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Daily_plan_midnight_Q_plan</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Daily"/>
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Daily_plan_8am_Q_plan</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>			
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Q_plan.inflow -->
+		<variable>
+		<variableId>Monthly_plan_midnight_Q_plan.inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>			
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="minute" multiplier="0"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Daily_plan_midnight_Q_plan.inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>		
+			<qualifierId>$AEP$</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Daily"/>
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Daily_plan_8am_Q_plan.inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>inflow</qualifierId>		
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>			
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Reference trace for sample transformation -->
+	<variable>
+		<variableId>Q_plan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="week" startOverrulable="true" start="-1" end="104"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Transformations for Q_plan -->
+	<transformation id="disaggregate_monthly_to_daily_midnight">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Monthly_plan_midnight_Q_plan</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Daily_plan_midnight_Q_plan</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Shift_timestep_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>Daily_plan_midnight_Q_plan</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>Q_plan_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>Daily_plan_8am_Q_plan</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<!-- Transformations for Q_plan.xxx -->
+	<transformation id="disaggregate_monthly_to_daily_midnight">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Monthly_plan_midnight_Q_plan.inflow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Daily_plan_midnight_Q_plan.inflow</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+	<transformation id="Shift_timestep_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>Daily_plan_midnight_Q_plan.inflow</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>Q_plan_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="day" multiplier="1"/>
+				<outputVariable>
+					<variableId>Daily_plan_8am_Q_plan.inflow</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+</transformationModule>

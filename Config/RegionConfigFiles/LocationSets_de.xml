@@ -1,0 +1,1454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="de.sites">
+		<description>Data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY_PARAMS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_AT">
+		<description>Air temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="AT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Turbidity">
+		<description>Turbidity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Turbidity"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_WindDir">
+		<description>Wind direction data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WDIR"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_WindVel">
+		<description>Wind velocity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WVEL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_H</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_H_not_rated">
+		<description>Non rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_Q</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_V_capacity">
+		<description>Non rated storage volume sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_V</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="CAPACITY"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_pH">
+		<description>pH data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Gates">
+		<description>data entry sites with gates</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Gates.rr">
+		<description>data entry sites of gates having rock ramps</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.rr"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Gates.vs">
+		<description>data entry sites of gates having a vertcial slot</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.vs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_StopLogs">
+		<description>data entry sites with stop logs</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_FlowDir">
+		<description>Flow direction data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!--	<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.inflow">
+		<description>data entry sites with inflow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow;"/>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI_calc;"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.transfer">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.transfer"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.creek">
+		<description>data entry sites with flow through creek</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.creek"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.forest">
+		<description>data entry sites with flow through forest</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.forest"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.fishway">
+		<description>data entry sites with flow through fishway</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.fishway"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.total">
+		<description>data entry sites with total flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+		</constraints>
+	</locationSet>
+	<!-- QRL should not be used. Use Q or Q with qualifier-->
+	<locationSet id="de.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV.urban">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV.total">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV.saline">
+		<description>data entry sites with flow diversion of saline water</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.saline"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QDIV.ind">
+		<description>data entry sites with flow diversion for industry</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de.sites_Q.direct">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.direct"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="de.sites_QCR.vic">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR.vic"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de.sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de.sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de.sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>-->
+	<!-- #######################
+	Data entry sites to MDBC_OPS
+	##########################-->
+	<locationSet id="de2MDBC_OPS.sites">
+		<description>Data entry sites to be exported to MDBC_OPS</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY_PARAMS"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_AT">
+		<description>Air temperature data entry sites</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+			<constraints>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="AT"/>
+			</constraints>
+	</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Turbidity">
+		<description>Turbidity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Turbidity"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_WindDir">
+		<description>Wind direction data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WDIR"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_WindVel">
+		<description>Wind velocity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WVEL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites_H</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_H_not_rated">
+	<description>Non rated water level sites</description>
+	<locationSetId>de2MDBC_OPS.sites_Q</locationSetId>
+	<constraints>
+		<not>
+			<attributeExists id="RATING"/>
+		</not>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_H.downstream">
+	<description>Upstream water level data entry sites</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.downstream"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_H.upstream">
+	<description>Downstream water level data entry sites</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.upstream"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_pH">
+		<description>pH data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Gates">
+		<description>data entry sites with gates</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen;"/>
+				<!--<not>
+						<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+					</not>-->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Gates.rr">
+		<description>data entry sites of gates having rock ramps</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.rr"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Gates.vs">
+		<description>data entry sites of gates having a vertcial slot</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.vs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_StopLogs">
+		<description>data entry sites with stop logs</description>
+		<!--<locationSetId>de2MDBC_OPS.sites</locationSetId>-->
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_FlowDir">
+	<description>Flow direction data entry sites</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not>
+ -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.inflow">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI_calc"/>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.transfer">
+	<description>data entry sites with enviromental flow</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.transfer"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.creek">
+	<description>data entry sites with flow through creek</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.creek"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.forest">
+	<description>data entry sites with flow through forest</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.forest"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.fishway">
+	<description>data entry sites with flow through fishway</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.fishway"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.total">
+		<description>data entry sites with total flow</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QDIV">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_QDIV.urban">
+	<description>data entry sites with flow diversion for urban purposes</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_QDIV.total">
+	<description>data entry sites with flow diversion for urban purposes</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_QDIV.saline">
+	<description>data entry sites with flow diversion of saline water</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.saline"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_QDIV.ind">
+	<description>data entry sites with flow diversion for industry</description>
+	<locationSetId>de2MDBC_OPS.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2MDBC_OPS.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2MDBC_OPS.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2MDBC_OPS.sites_Q.direct">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.direct"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="de2MDBC_OPS.sites_QCR.vic">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR.vic"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2MDBC_OPS.sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2MDBC_OPS.sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>-->
+	<!-- #######################
+Data entry sites to MDBC_OPS
+##########################-->
+	<locationSet id="de2HYDRO.sites">
+		<description>Data entry sites to be exported to HYDRO</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeExists id="TO_MDBC_OPS"/>
+			<attributeExists id="HYDRO_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_EVAP">
+		<description>Evaporation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_P">
+		<description>Precipitation data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="P"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_WT">
+		<description>Water temperature data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_AT">
+	<description>Air temperature data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="AT"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_EGEN">
+		<description>Electricity generation data entry sites</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EGEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Turbidity">
+		<description>Turbidity data entry sites</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Turbidity"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_WindDir">
+	<description>Wind direction data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WDIR"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_WindVel">
+	<description>Wind velocity data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="WVEL"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_H">
+		<description>Water level data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_H_rated">
+		<description>Rated water level sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites_H</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_H_not_rated">
+	<description>Non rated water level sites</description>
+	<locationSetId>de2HYDRO.sites_Q</locationSetId>
+	<constraints>
+		<not>
+			<attributeExists id="RATING"/>
+		</not>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_H.downstream">
+	<description>Upstream water level data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.downstream"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_H.upstream">
+	<description>Downstream water level data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H.upstream"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_V">
+		<description>Storage Volume data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_pH">
+		<description>pH data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="pH"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_EC">
+		<description>Electrical conductivity data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_DO">
+		<description>Dissolved oxygen data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="DO"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_Gates">
+	<description>data entry sites with gates</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<allValid>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen"/>
+			<not>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen."/>
+			</not>
+		</allValid>
+	</constraints>
+</locationSet>
+-->
+	<!--<locationSet id="de2HYDRO.sites_Gates.rr">
+	<description>data entry sites of gates having rock ramps</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.rr"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_Gates.vs">
+	<description>data entry sites of gates having a vertcial slot</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="GatesOpen.vs"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_StopLogs">
+		<description>data entry sites with stop logs</description>
+		<!--<locationSetId>de2HYDRO.sites</locationSetId>-->
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_FlowDir">
+	<description>Flow direction data entry sites</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_Q">
+		<description>data entry sites with flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.spill">
+		<description>data entry sites with spill flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.turb">
+		<description>data entry sites with turbine flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.valves">
+		<description>data entry sites with flow trough valves</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.valves"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.ivt">
+		<description>data entry sites with intervalley transfer flows</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_Q.transfer">
+	<description>data entry sites with enviromental flow</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.transfer"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_Q.creek">
+	<description>data entry sites with flow through creek</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.creek"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_Q.forest">
+	<description>data entry sites with flow through forest</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.forest"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_Q.fishway">
+	<description>data entry sites with flow through fishway</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.fishway"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_Q.other">
+		<description>data entry sites with other flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_Q.total">
+	<description>data entry sites with total flow</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_QRL">
+		<description>data entry sites with release flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_QORD.mdbc">
+	<description>data entry sites with ordered flow (mdbc)</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+	</constraints>
+</locationSet>-->
+	<!-- 	<locationSet id="de2HYDRO.sites_QORD.shortterm">
+		<description>data entry sites with ordered flow (short term)</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_QORD.longterm">
+	<description>data entry sites with ordered flow (long term)</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_QDIV.irrig">
+		<description>data entry sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_QDIV.urban">
+	<description>data entry sites with flow diversion for urban purposes</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_QDIV.total">
+	<description>data entry sites with flow diversion for urban purposes</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.total"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_QDIV.saline">
+	<description>data entry sites with flow diversion of saline water</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.saline"/>
+	</constraints>
+</locationSet>-->
+	<!--<locationSet id="de2HYDRO.sites_QDIV.ind">
+	<description>data entry sites with flow diversion for industry</description>
+	<locationSetId>de2HYDRO.sites</locationSetId>
+	<constraints>
+		<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+	</constraints>
+</locationSet>-->
+	<locationSet id="de2HYDRO.sites_QRTN.irrig">
+		<description>data entry sites with irrigation return flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de2HYDRO.sites_Q.instream">
+		<description>data entry sites with instream credit flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="de2HYDRO.sites_Q.vic">
+		<description>data entry sites with instream credit flow</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.vic"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2HYDRO.sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2HYDRO.sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2HYDRO.sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<locationSetId>de2HYDRO.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>-->
+	<!--	<locationSet id="de2MDBC_OPS.sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<locationSetId>de2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>-->
+	<!-- #######################
+Data entry sites to EWSRC_DE
+##########################-->
+	<!-- Date entry to Hydsra export sites Created to control the data entry groups to export instead of exporting all de2MDBC_OPS sites -->
+	<locationSet id="de2HYDSTRA_sites_P">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Dartmouth2MDBC_OPS.sites_P</locationSetId>
+		<locationSetId>Hume2MDBC_OPS.sites_P</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_P</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_P</locationSetId>
+		<locationSetId>Deniliquin2MDBC_OPS.sites_P</locationSetId>
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_EVAP">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Dartmouth2MDBC_OPS.sites_EVAP</locationSetId>
+		<locationSetId>Hume2MDBC_OPS.sites_EVAP</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_EVAP</locationSetId>
+		<!-- 		<locationSetId>Yarrawonga2MDBC_OPS.sites_EVAP</locationSetId> -->
+		<locationSetId>Deniliquin2MDBC_OPS.sites_EVAP</locationSetId>
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_WT">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites_WT</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_WT</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_WT</locationSetId>
+		<locationSetId>Deniliquin2MDBC_OPS.sites_WT</locationSetId>
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_H">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Dartmouth2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>Hume2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>Deniliquin2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>SouthOz2MDBC_OPS.sites_H</locationSetId>
+		<locationSetId>Goolwa.sites_H</locationSetId>		
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_V">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Dartmouth2MDBC_OPS.sites_V</locationSetId>
+		<locationSetId>Hume2MDBC_OPS.sites_V</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_V</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_V</locationSetId>
+		<!--<locationSetId>SouthOz2MDBC_OPS.sites_V</locationSetId>-->
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_EC">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<!-- <locationSetId>Dartmouth2MDBC_OPS.sites_EC</locationSetId> -->
+		<locationSetId>Hume2MDBC_OPS.sites_EC</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_EC</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_EC</locationSetId>
+		<locationSetId>Deniliquin2MDBC_OPS.sites_EC</locationSetId>
+		<locationSetId>SouthOz2MDBC_OPS.sites_EC</locationSetId>
+		<locationSetId>Goolwa.sites_EC</locationSetId>	
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_Q">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Dartmouth2MDBC_OPS.sites_Q</locationSetId>
+		<locationSetId>Menindee2MDBC_OPS.sites_Q</locationSetId>
+		<locationSetId>Yarrawonga2MDBC_OPS.sites_Q</locationSetId>
+		<locationSetId>Deniliquin2MDBC_OPS.sites_Q</locationSetId>
+		<locationSetId>SouthOz2MDBC_OPS.sites_Q</locationSetId>
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_QRL">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Hume2MDBC_OPS.sites_QRL</locationSetId>
+		<!-- 		<locationSetId>Yarrawonga2MDBC_OPS.sites_QRL</locationSetId> -->
+	</locationSet>
+	<locationSet id="de2HYDSTRA_sites_Gates">
+		<description>OPO data entry sites exported to Hydstra</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>Goolwa.sites_Gates</locationSetId>
+	</locationSet>
+</locationSets>

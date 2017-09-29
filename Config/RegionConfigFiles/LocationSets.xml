@@ -1,0 +1,4042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<locationSet id="sites">
+		<csvFile>
+			<file>ROWS_LOCATIONS</file>
+			<id>%ROWS_SITE_ID%</id>
+			<name>%HYDSTRA_SITE_ID% - %SHORT_NAME%</name>
+			<description>%LONG_NAME%</description>
+			<label>%SHORT_NAME%</label>
+			<toolTip>HYDRO id: %HYDRO_SITE_ID%\nData entry group: %DATA_ENTRY%\nReach: %OPS_REACH%\nSMS No: +%SMS_NO%(%SMS_CMD%)
+			OPC origin: %OPC%\n
+			Daily Timestep (default=8am inst): H (%H_TIMESTEP%), Q (%Q_TIMESTEP%), V (%V_TIMESTEP%)
+			</toolTip>
+			<parentLocationId>%PARENT_ID%</parentLocationId>
+			<x>%LONGITUDE%</x>
+			<y>%LATITUDE%</y>
+			<z>%GAUGEZ%</z>
+			<relation id="DS">
+				<description>Relation to downstream site Usage: webreports</description>
+				<relatedLocationId>%DOWNSTREAM_SITE%</relatedLocationId>
+			</relation>
+			<attribute id="ROWS_SITE_ID">
+				<description>station identifier as used in ROWS. Usage: ratings report</description>
+				<text>%ROWS_SITE_ID%</text>
+			</attribute>
+			<attribute id="HYDRO_SITE_ID">
+				<description>
+					station identifier as used in Hydro archive database. Usage: idmaps
+				</description>
+				<text>%HYDRO_SITE_ID%</text>
+			</attribute>
+			<attribute id="HYDSTRA_SITE_ID">
+				<description>station identifier as used in Hydstra telemetry database. Usage: idmaps</description>
+				<text>%HYDSTRA_SITE_ID%</text>
+			</attribute>
+			<attribute id="SHORT_NAME">
+				<description>station name. Usage: ratings report</description>
+				<text>%SHORT_NAME%</text>
+			</attribute>
+			<attribute id="DATASOURCEID_EXPORT">
+				<description>Data source tag in Hydro export.</description>
+				<text>ROWS</text>
+			</attribute>
+			<attribute id="DATA_ENTRY">
+				<description>
+					Defines grouping for data entry (like sheets in BLACK_OPS spreadsheet). Multiple 
+					entries will result in site being included in multiple locationsets
+				</description>
+				<text>%DATA_ENTRY%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY_PARAMS">
+				<description>
+					Parameter enumeration. Defines the kind of parameters to be QC'd/entered for this site. 
+					Usage: group-parameter specific locationset for displays
+				</description>
+				<text>%DATA_ENTRY_PARAMS%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY_SEQ">
+				<description>Defines order in data entry locationset</description>
+				<text>%DATA_ENTRY_SEQ%</text>
+			</attribute>
+			<attribute id="OPS_REACH">
+				<description>
+					Geographic reach as used by river operations (grouping like the tabs in the OPS_Sheets)
+					Usage: LocationSet grouping mechanism for displays and workflows
+				</description>
+				<text>%OPS_REACH%</text>
+			</attribute>
+			<attribute id="OPS_REACH_SEQ">
+				<description>Defines order in reach locationset</description>
+				<text>%OPS_REACH_SEQ%</text>
+			</attribute>
+			<attribute id="THRESHOLD">
+				<description>Threshold display</description>
+				<text>%THRESHOLD%</text>
+			</attribute>
+			<attribute id="RATING">
+				<description>
+					Boolean: Y/N. Indicates availability of rating. 
+					Usage: LocationSet organisation for data processing
+				</description>
+				<text>%RATING%</text>
+			</attribute>
+			<attribute id="CAPACITY">
+				<description>
+					Boolean: Y/N. Indicates availability of capacity table. 
+					Usage: LocationSet organisation for data processing
+				</description>
+				<text>%CAPACITY%</text>
+			</attribute>
+			<attribute id="PARAMS2HYDRO_OBS">
+				<description>
+					Parameter enumeration. Defines which observed series need to be exported to 
+					Hydro for this site. Usage: LocationSet organisation for export
+				</description>
+				<text>%PARAMS2HYDRO_OBS%</text>
+			</attribute>
+			<attribute id="PARAMS2HYDRO_FCST">
+				<description>
+					Parameter enumeration. Defines which forecast series need to be exported 
+					to Hydro for this site. Usage: LocationSet organisation for export
+				</description>
+				<text>%PARAMS2HYDRO_FCST%</text>
+			</attribute>
+			<attribute id="PARAMS2HYDRO_CALC">
+				<description>
+					Parameter enumeration. Defines which forecast series need to be 
+					exported to Hydro for this site. Usage: LocationSet organisation for export
+				</description>
+				<text>%PARAMS2HYDRO_CALC%</text>
+			</attribute>
+			<attribute id="TO_MDBC_OPS">
+				<description>
+					Defines file name for site export to MDBC_OPS, parameters to export are defined by 
+					DATA_ENTRY_PARAMS. Usage: LocationSet organisation for export
+				</description>
+				<text>%TO_MDBC_OPS%</text>
+			</attribute>
+			<attribute id="DS">
+				<description>
+					Related downstream site, only defined at upstream site. 
+					Usage: webreport
+				</description>
+				<text>%DOWNSTREAM_SITE%</text>
+			</attribute>
+			<attribute id="FSL">
+				<description>
+					Full storage level expressed in local datum. 
+					Usage: web report and threshold in the displays.
+				</description>
+				<number>%FSL%</number>
+			</attribute>
+			<attribute id="FSV">
+				<description>Full storage volume. Usage: web report and threshold in the displays.</description>
+				<number>%FSV%</number>
+			</attribute>
+			<attribute id="SURL">
+				<description>
+					Surcharge level expressed in local datum. 
+					Usage: web report and threshold in the displays.
+				</description>
+				<number>%SURL%</number>
+			</attribute>
+			<attribute id="SURV">
+				<description>
+					Surcharge volume. Usage: web report and threshold in the displays.
+				</description>
+				<number>%SURV%</number>
+			</attribute>
+			<attribute id="OPT">
+				<description>
+					Boolean: Y/N. Indicates if data is provided at this station by telemetry
+					Usage: LocationSet organisation for workflows and displays
+				</description>
+				<text>%OPT%</text>
+			</attribute>
+			<attribute id="OPC">
+				<description>
+					String indicating data providing organisation, may be separated by semi-colon.
+					Usage: LocationSet organisation for workflows and displays
+				</description>
+				<text>%OPC%</text>
+			</attribute>
+			<attribute id="OPT_SENSOR_2">
+				<description>
+					Boolean: Y/N. Indicates if telemetry data is available from a second sensor
+					Usage: LocastionSet organisation for workflows and displays
+				</description>
+				<text>%OPT_SENSOR_2%</text>
+			</attribute>
+			<attribute id="LATITUDE">
+				<description>
+					WGS 1984 y-coordinate of site, expressed in degree-decimals. 
+					Usage: tooltip
+				</description>
+				<number>%LATITUDE%</number>
+			</attribute>
+			<attribute id="LONGITUDE">
+				<description>
+					WGS 1984 x-coordinate of site, expressed in degree-decimals. 
+					Usage: tooltip
+				</description>
+				<number>%LONGITUDE%</number>
+			</attribute>
+			<attribute id="GAUGEZ">
+				<description>
+					Vertical datum of the sensor (gauge) in AHD. 
+					Usage: Off-set to AHD for calculations and displays
+				</description>
+				<number>%GAUGEZ%</number>
+			</attribute>
+			<attribute id="ELEVATION">
+				<description>
+					Actual elevation of the station in mAHD, 
+					Usage: tooltip
+				</description>
+				<number>%ELEVATION%</number>
+			</attribute>
+			<attribute id="CEASE_TO_FLOW_LEVEL">
+				<description>
+					Level below which there is no visible flow, e.g. crest of a weir
+					Usage: validation rules, could be used as threshold
+				</description>
+				<number>%CEASE_TO_FLOW%</number>
+			</attribute>
+			<attribute id="CATCHMENT">
+				<description>Catchment associated to station</description>
+				<text>%CATCHMENT%</text>
+			</attribute>
+			<attribute id="SENSOR_TYPE">
+				<description>
+					Type of sensor/station; multiple items allowed with semi-colon separator. 
+					Enumeration options: Meteo; River; Storage
+				</description>
+				<text>%STATION_TYPE%</text>
+			</attribute>
+			<attribute id="MODEL_TYPE">
+				<description>
+					Indication what model computes hydrological forecast. Usage: locationset in workflow
+				</description>
+				<text>%MODEL_TYPE%</text>
+			</attribute>
+			<!-- The columns below shoud be removed one the new sSource export is finalised -->
+			<attribute id="EWSRC_ID">
+				<description>
+					station identifier as used in ewSource model. Usage: locatonset in model workflow, idmap
+				</description>
+				<text>%EWSRC_ID%</text>
+			</attribute>
+			<attribute id="EWSRC_Q_SEQ">
+				<description>
+					Flow sequence as used in ewSource planning model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_Q_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_QORD_SEQ">
+				<description>
+					Order sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_QORD_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_H_SEQ">
+				<description>
+					Level sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_H_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_V_SEQ">
+				<description>
+					Volume sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_V_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_P_SEQ">
+				<description>
+					Rainfall sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_P_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_E_SEQ">
+				<description>
+					Evap sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_E_SEQ%</text>
+			</attribute>
+			<attribute id="EWSRC_EC_SEQ">
+				<description>
+					EC sequence as used in ewSource ops model. Usage: locatonset in model workflow
+				</description>
+				<text>%EWSRC_EC_SEQ%</text>
+			</attribute>
+			<!-- old eWater Source columns above -->
+			<!-- Source locations sets for new export -->
+			<attribute id="SOURCE_PARAMS">
+				<description>
+					Parameters to be exported to Source River Ops model 
+				</description>
+				<text>%SOURCE_PARAMS%</text>
+			</attribute>			
+			<attribute id="SOURCE_SEQ">
+				<description>
+					Indicates the order in which the sites are exported to Source River Ops model 
+				</description>
+				<text>%SOURCE_SEQ%</text>
+			</attribute>
+			<!-- Source -->
+			<attribute id="H_TIMESTEP">
+				<description>
+					Indicates time window/calculation method for daily timestep if deviating from default (8am_inst); 
+					Enumeration options: 8am_to_8am; midnight_inst. Usage: locationset in workflow
+				</description>
+				<text>%H_TIMESTEP%</text>
+			</attribute>
+			<attribute id="Q_TIMESTEP">
+				<description>
+					Indicates time window/calculation method for daily timestep if deviating from default (8am_inst);  
+					Enumeration options: midnight_to_midnight
+				</description>
+				<text>%Q_TIMESTEP%</text>
+			</attribute>
+			<attribute id="V_TIMESTEP">
+				<description>
+					Indicates time window/calculation method for daily timestep if deviating from default (8am_inst); 
+					Enumeration options: 8am_to_8am; midnight_to_midnight
+				</description>
+				<text>%V_TIMESTEP%</text>
+			</attribute>
+			<attribute id="DEAD_STORAGE">
+				<description>
+					Dead Storage volume (ML). 
+					Usage: web reports and threshold in the displays.
+				</description>
+				<number>%DEAD_STORAGE%</number>
+			</attribute>
+			<attribute id="REPORT_WEEKLY">
+				<description>
+					Identifies if a site is used in a specific section of the weekly report. Multiple entries allowed. 
+					Usage: locationset for webreport
+					Enumeration options:mdba_storage; major_state_storages; snowy_storage; snowy_diversion; nsw_diversion; 
+					vic_diversion; flow_to_sa; salinity; river_murray; tributaries; nat_inflow_hume; murray_weirs; lower lakes; barrages
+				</description>
+				<text>%R_WEEKLY%</text>
+			</attribute>
+			<attribute id="REPORT_FLOW_SAL">
+				<description>
+					Identifies if a site is used in a specific section of the Flow and salinity report. Multiple entries allowed. 
+					Usage: locationset for webreport
+					Enumeration options: obs_flow; obs_sal; fcst_flow; fcst_sal
+				</description>
+				<text>%R_FLOW_SAL%</text>
+			</attribute>
+			<attribute id="REPORT_STORAGE">
+				<description>
+					Identifies if a site is used in a specific chart of the Storage Volumes and Releases report. 
+					Usage: locationset for webreport
+					Enumeration options:dartmouth; hume; menindee; lake_victoria
+				</description>
+				<text>%R_STORAGE%</text>
+			</attribute>
+			<attribute id="REPORT_FLOW_LEVEL">
+				<description>
+					Identifies if a site is used in a specific chart of the River Flows and Levels report. 
+					Usage: locationset for webreport
+					Enumeration options: edward; barmah; picnic; yarrawonga; torrumbarry; sunraysia
+				</description>
+				<text>%R_FLOW_LEVEL%</text>
+			</attribute>
+			<attribute id="REPORT_RIVER_SAL">
+				<description>
+					Identifies if a site is used in a specific chart of the River Salinity report. 
+					Usage: locationset for webreport
+					Enumeration options:burtundy; euston; mildura
+				</description>
+				<text>%R_RIVER_SAL%</text>
+			</attribute>
+			<attribute id="FL_MAJOR">
+				<description>
+					Major flood level expressed in local datum
+				</description>
+				<number>%FL_MAJOR%</number>
+			</attribute>
+			<attribute id="FL_MODERATE">
+				<description>Moderate flood level expressed in local datum</description>
+				<number>%FL_MODERATE%</number>
+			</attribute>
+			<attribute id="FL_MINOR">
+				<description>Minor flood level expressed in local datum</description>
+				<number>%FL_MINOR%</number>
+			</attribute>
+			<attribute id="SMS_CMD">
+				<description>Command to use when calling the gate by phone</description>
+				<text>%SMS_CMD%</text>
+			</attribute>
+			<attribute id="SMS_NO">
+				<description>Phone number to the gate sensor</description>
+				<text>%SMS_NO%</text>
+			</attribute>
+			<attribute id="VALIDATION_H_HMAX">
+				<description>
+					Water level validation rule, (hard) maximum allowed value expressed in local datum. Flagged as unreliable if above
+				</description>
+				<number>%V_H_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_HMIN">
+				<description>
+					Water level validation rule, (hard) minimum allowed value expressed in local datum. Flagged as unreliable if below
+				</description>
+				<number>%V_H_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_SMAX">
+				<description>
+					Water level validation rule, (soft) maximum allowed value expressed in local datum. 
+					Flagged as doubtful if above
+				</description>
+				<number>%V_H_SMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_SMIN">
+				<description>Water level validation rule, (soft) minimum allowed value expressed in local datum. 
+					Flagged as doubtful if below
+				</description>
+				<number>%V_H_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_ROR">
+				<description>Water level validation rule, maximum rate of rise, expressed in unit/sec</description>
+				<number>%V_H_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_ROF">
+				<description>Water level validation rule, maximum rate of fall, expressed in unit/sec</description>
+				<number>%V_H_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_SRD">
+				<description>Water level validation rule, bandwidth the value may vary within if it is 
+					considered to be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_H_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_H_SRT">
+				<description>
+					Water level validation rule, rate of change (unit/sec) that must be exceeded both on change 
+					to shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_H_SRT%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_HMAX">
+				<description>Flow validation rule, (hard) maximum allowed value expressed in local datum. 
+					Flagged as unreliable if above
+				</description>
+				<number>%V_Q_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_HMIN">
+				<description>Flow validation rule, (hard) minimum allowed value expressed in local datum. 
+					Flagged as unreliable if below
+				</description>
+				<number>%V_Q_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_SMAX">
+				<description>Flow validation rule, (soft) maximum allowed value expressed in local datum. Flagged as doubtful if above</description>
+				<number>%V_Q_SMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_SMIN">
+				<description>Flow validation rule, (soft) minimum allowed value expressed in local datum. Flagged as doubtful if below</description>
+				<number>%V_Q_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_ROR">
+				<description>Flow validation rule, maximum rate of rise, expressed in unit/sec</description>
+				<number>%V_Q_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_ROF">
+				<description>Flow validation rule, maximum rate of fall, expressed in unit/sec</description>
+				<number>%V_Q_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_SRD">
+				<description>Flow validation rule, bandwidth the value may vary within if it is considered to 
+					be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_Q_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_Q_SRT">
+				<description>
+					Flow validation rule, rate of change (unit/sec) that must be exceeded both on change to 
+					shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_Q_SRT%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_HMAX">
+				<description>Water temperature validation rule, (hard) maximum allowed value expressed in local datum. 
+					Flagged as unreliable if above
+				</description>
+				<number>%V_WT_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_HMIN">
+				<description>Water temperature validation rule, (hard) minimum allowed value expressed in local datum. 
+					Flagged as unreliable if below
+				</description>
+				<number>%V_WT_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_SMAX">
+				<description>Water temperature validation rule, (soft) maximum allowed value expressed in local datum. 
+					Flagged as doubtful if above
+				</description>
+				<number>%V_WT_SMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_SMIN">
+				<description>Water temperature validation rule, (soft) minimum allowed value expressed in local datum. 
+					Flagged as doubtful if below
+				</description>
+				<number>%V_WT_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_ROR">
+				<description>Water temperature validation rule, maximum rate of rise, expressed in unit/sec</description>
+				<number>%V_WT_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_ROF">
+				<description>Water temperature validation rule, maximum rate of fall, expressed in unit/sec</description>
+				<number>%V_WT_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_SRD">
+				<description>Water temperature validation rule, bandwidth the value may vary within if it is considered 
+					to be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_WT_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_WT_SRT">
+				<description>Water temperature validation rule, rate of change (unit/sec) that must be exceeded both 
+					on change to shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_WT_SRT%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_HMAX">
+				<description>Air temperature validation rule, (hard) maximum allowed value expressed 
+					in local datum. Flagged as unreliable if above
+				</description>
+				<number>%V_AT_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_HMIN">
+				<description>
+					Air temperature validation rule, (hard) minimum allowed value 
+					expressed in local datum. Flagged as unreliable if below
+				</description>
+				<number>%V_AT_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_SMAX">
+				<description>
+					Air temperature validation rule, (soft) maximum allowed value expressed 
+					in local datum. Flagged as doubtful if above
+				</description>
+				<number>%V_AT_SMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_SMIN">
+				<description>
+					Air temperature validation rule, (soft) minimum allowed value 
+					expressed in local datum. Flagged as doubtful if below
+				</description>
+				<number>%V_AT_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_ROR">
+				<description>
+					Air temperature validation rule, maximum rate of rise, 
+					expressed in unit/sec</description>
+				<number>%V_AT_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_ROF">
+				<description>Air temperature validation rule, maximum rate of fall, expressed in unit/sec
+			</description>
+				<number>%V_AT_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_SRD">
+				<description>
+					Air temperature validation rule, bandwidth the value may vary 
+					within if it is considered to be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_AT_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_AT_SRT">
+				<description>
+					Air temperature validation rule, rate of change (unit/sec) that must be exceeded both on 
+					change to shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_AT_SRT%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_HMAX">
+				<description>
+					Electronic conductivity validation rule, (hard) maximum allowed value 
+					expressed in local datum. Flagged as unreliable if above
+				</description>
+				<number>%V_EC_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_HMIN">
+				<description>
+					Electronic conductivity validation rule, (hard) minimum allowed 
+					value expressed in local datum. Flagged as unreliable if below
+				</description>
+				<number>%V_EC_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_SMAX">
+				<description>
+					Electronic conductivity validation rule, (soft) maximum allowed value 
+					expressed in local datum. Flagged as doubtful if above
+				</description>
+				<number>%V_EC_SMAXR%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_SMIN">
+				<description>
+					Electronic conductivity validation rule, (soft) minimum allowed value 
+					expressed in local datum. Flagged as doubtful if below
+				</description>
+				<number>%V_EC_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_ROR">
+				<description>Electronic conductivity validation rule, maximum rate of rise, expressed in unit/sec</description>
+				<number>%V_EC_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_ROF">
+				<description>
+					Electronic conductivity validation rule, maximum rate of fall, expressed in unit/sec
+				</description>
+				<number>%V_EC_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_SRD">
+				<description>
+					Electronic conductivity validation rule, bandwidth the value may vary within if 
+					it is considered to be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_EC_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_EC_SRT">
+				<description>
+					Electronic conductivity validation rule, rate of change (unit/sec) that must be exceeded 
+					both on change to shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_EC_SRT%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_HMAX">
+				<description>
+					Dissolved Oxygen validation rule, (hard) maximum allowed value expressed 
+					in local datum. Flagged as unreliable if above
+				</description>
+				<number>%V_DO_HMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_HMIN">
+				<description>
+					Dissolved Oxygen validation rule, (hard) minimum allowed value expressed 
+					in local datum. Flagged as unreliable if below
+				</description>
+				<number>%V_DO_HMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_SMAX">
+				<description>
+					Dissolved Oxygen validation rule, (soft) maximum allowed value expressed 
+					in local datum. Flagged as doubtful if above
+				</description>
+				<number>%V_DO_SMAX%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_SMIN">
+				<description>
+					Dissolved Oxygen validation rule, (soft) minimum allowed value expressed in local datum. 
+					Flagged as doubtful if below
+				</description>
+				<number>%V_DO_SMIN%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_ROR">
+				<description>
+					Dissolved Oxygen validation rule, maximum rate of rise, expressed in unit/sec
+				</description>
+				<number>%V_DO_ROR%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_ROF">
+				<description>
+					Dissolved Oxygen validation rule, maximum rate of fall, expressed in unit/sec
+				</description>
+				<number>%V_DO_ROF%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_SRD">
+				<description>
+					Dissolved Oxygen validation rule, bandwidth the value may vary within if it is 
+					considered to be a same reading. The bandwidth is twice the deviation
+				</description>
+				<number>%V_DO_SRD%</number>
+			</attribute>
+			<attribute id="VALIDATION_DO_SRT">
+				<description>
+					Dissolved Oxygen validation rule, rate of change (unit/sec) that must be exceeded both 
+					on change to shifted value and change back to original value range for validation rule to apply
+				</description>
+				<number>%V_DO_SRT%</number>
+			</attribute>
+			<attribute id="SO_H_MAX">
+				<description>Specific Objective threshold, alert level for maximum water level</description>
+				<number>%SO_H_MAX%</number>
+			</attribute>
+			<attribute id="SO_H_MIN">
+				<description>Specific Objective threshold, alert level for minimum water level</description>
+				<number>%SO_H_MIN%</number>
+			</attribute>
+			<attribute id="SO_H_WL1">
+				<description>Specific Objective threshold, alert level for pre-warning water level</description>
+				<number>%SO_H_WL1%</number>
+			</attribute>
+			<attribute id="SO_Q_MAX">
+				<description>Specific Objective threshold, alert level for maximum flow rate</description>
+				<number>%SO_Q_MAX%</number>
+			</attribute>
+			<attribute id="SO_Q_MIN">
+				<description>Specific Objective threshold, alert level for minimum flow rate (ML/day)</description>
+				<number>%SO_Q_MIN%</number>
+			</attribute>
+			<attribute id="SO_Q_WL1">
+				<description>Specific Objective threshold, alert level for pre-warning flow rate (ML/day)</description>
+				<number>%SO_Q_WL1%</number>
+			</attribute>
+			<attribute id="H_OBS">
+				<description>
+					Boolean flag indication whether water level observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%H_OBS%</text>
+			</attribute>
+			<attribute id="Q_OBS">
+				<description>
+					Boolean flag indication whether discharge observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%Q_OBS%</text>
+			</attribute>
+			<attribute id="P_OBS">
+				<description>
+					Boolean flag indication whether rainfall observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%P_OBS%</text>
+			</attribute>
+			<attribute id="WT_OBS">
+				<description>
+					Boolean flag indication whether water temperature observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%WT_OBS%</text>
+			</attribute>
+			<attribute id="AT_OBS">
+				<description>
+					Boolean flag indication whether air temperature observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%AT_OBS%</text>
+			</attribute>
+			<attribute id="EC_OBS">
+				<description>
+					Boolean flag indication whether electronic conductivity observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%EC_OBS%</text>
+			</attribute>
+			<attribute id="DO_OBS">
+				<description>
+					Boolean flag indication whether dissolved oxygen observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%DO_OBS%</text>
+			</attribute>
+			<attribute id="EVAP_OBS">
+				<description>
+					Boolean flag indication whether evaporation observations are available. 
+					Usage: locationset in DataViewer/Filters
+				</description>
+				<text>%EVAP_OBS%</text>
+			</attribute>
+			<attribute id="H_PREFERRED">
+				<description>
+					Preferred input series. Enumeration: OPT,OPC,OPT2. 
+					Usage: selection mechanism in processing workflow
+				</description>
+				<text>%H_PREFERRED%</text>
+			</attribute>
+			<attribute id="Q_PREFERRED">
+				<description>
+					Preferred input series. Enumeration: Rated, OPT,OPC,OPT2. 
+					Usage: selection mechanism in processing workflow
+				</description>
+				<text>%Q_PREFERRED%</text>
+			</attribute>
+			<attribute id="P_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2 
+					Usage: selection mechanism in processing workflow
+				</description>
+				<text>%P_PREFERRED%</text>
+			</attribute>
+			<attribute id="V_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%V_PREFERRED%</text>
+			</attribute>
+			<attribute id="EC_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%EC_PREFERRED%</text>
+			</attribute>
+			<attribute id="WT_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%WT_PREFERRED%</text>
+			</attribute>
+			<attribute id="AT_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%AT_PREFERRED%</text>
+			</attribute>
+			<attribute id="DO_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%DO_PREFERRED%</text>
+			</attribute>
+			<attribute id="EVAP_PREFERRED">
+				<description>Preferred input series. Enumeration: OPT,OPC,OPT2. Usage: selection mechanism in processing workflow</description>
+				<text>%EVAP_PREFERRED%</text>
+			</attribute>
+			<attribute id="FLOOD_OPS">
+				<description>Defines the flood operations sites</description>
+				<text>%FLOOD_OPS%</text>
+			</attribute>
+			<attribute id="FLOOD_OPS_PARAMS">
+				<description>Defines the flood operations sites parameters</description>
+				<text>%FLOOD_OPS_PARAMS%</text>
+			</attribute>
+			<attribute id="DAILY_FLOOD">
+				<description>Flood operations sites with daily data reading</description>
+				<text>%DAILY_FLOOD%</text>
+			</attribute>
+			<attributeFile>
+				<csvFile>ROWS_ops_DisplayLayout.csv</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="V_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where storage volume series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%V_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="QI_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where inflow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%QI_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="H_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where level series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%H_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="Q_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where flow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%Q_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="QO_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where outflow/release series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%QO_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="P_ShowInReservoirPlot">
+					<description>
+						SiteId hosting reservoir plot where precipitation series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%P_ShowInReservoirPlot%</text>
+				</attribute>
+				<attribute id="QO_ShowInWeirPlot">
+					<description>
+						SiteId hosting weir plot where outflow/release series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%QO_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="QI_ShowInWeirPlot">
+					<description>
+						SiteId hosting weir plot where inflow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%QI_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="Q_ShowInWeirPlot">
+					<description>
+						SiteId hosting weir plot where flow series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%Q_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="EC_ShowInWeirPlot">
+					<description>
+						SiteId hosting weir plot where EC series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%EC_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="P_ShowInWeirPlot">
+					<description>SiteId hosting weir plot where precipitation series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%P_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="H_ShowInWeirPlot">
+					<description>SiteId hosting weir plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%H_ShowInWeirPlot%</text>
+				</attribute>
+				<attribute id="H_ShowInReachPlot">
+					<description>SiteId hosting reach plot where level series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%H_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="V_ShowInReachPlot">
+					<description>SiteId hosting reach plot where volume series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%V_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="QI_ShowInReachPlot">
+					<description>SiteId hosting reach plot where inflow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%QI_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="Q_ShowInReachPlot">
+					<description>SiteId hosting reach plot where flow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%Q_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="P_ShowInReachPlot">
+					<description>
+						SiteId hosting reach plot where precipitation series of this site should should be shown. 
+						Usage: locationset, relation to reservoir display
+					</description>
+					<text>%P_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="EC_ShowInReachPlot">
+					<description>SiteId hosting reach plot where EC series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%EC_ShowInReachPlot%</text>
+				</attribute>
+				<attribute id="Q_ShowInLossPlot">
+					<description>SiteId hosting loss plot where flow series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%Q_ShowInLossPlot%</text>
+				</attribute>
+				<attribute id="QL_ShowInLossPlot">
+					<description>SiteId hosting loss plot where loss series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%QL_ShowInLossPlot%</text>
+				</attribute>
+				<attribute id="P_ShowInLossPlot">
+					<description>SiteId hosting loss plot where precipitation series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%P_ShowInLossPlot%</text>
+				</attribute>
+				<attribute id="EVAP_ShowInLossPlot">
+					<description>SiteId hosting loss plot where evaporation series of this site should should be shown. Usage: locationset, relation to reservoir display</description>
+					<text>%EVAP_ShowInLossPlot%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ops_Thresholds.csv</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="Q_GT_rel(Q)_SOFT">
+					<relatedLocationId>%Q_GT_rel(Q)_SOFT%</relatedLocationId>
+				</relation>
+				<relation id="Q_LT_rel(Q)_HARD">
+					<relatedLocationId>%Q_LT_rel(Q)_HARD%</relatedLocationId>
+				</relation>
+				<relation id="H_GT_rel(FSL)_HARD">
+					<relatedLocationId>%H_GT_rel(FSL)_HARD%</relatedLocationId>
+				</relation>
+				<attribute id="TYPE">
+					<text>%TYPE%</text>
+				</attribute>
+				<attribute id="dH_HOUR_SPECIAL">
+					<text>%dH_HOUR_SPECIAL%</text>
+				</attribute>
+				<attribute id="dH_SPECIAL">
+					<text>%dH_SPECIAL%</text>
+				</attribute>
+				<attribute id="dH_LT_SOFT">
+					<number>%dH_LT_SOFT%</number>
+				</attribute>
+				<attribute id="DOPCT_LTE_DOPCT">
+					<number>%DOPCT_LTE_DOPCT%</number>
+				</attribute>
+				<attribute id="dQ_SPECIAL">
+					<text>%dQ_SPECIAL%</text>
+				</attribute>
+				<attribute id="EC_GT_SAL">
+					<number>%EC_GT_SAL%</number>
+				</attribute>
+				<attribute id="H_GT_FSL">
+					<number>%H_GT_FSL%</number>
+				</attribute>
+				<attribute id="RO_H_GT_HARD">
+					<number>%RO_H_GT_HARD%</number>
+				</attribute>
+				<attribute id="SO_H_GT_HARD">
+					<number>%SO_H_GT_HARD%</number>
+				</attribute>
+				<attribute id="H_GTE_HARD">
+					<number>%H_GTE_HARD%</number>
+				</attribute>
+				<attribute id="RO_H_GT_SOFT">
+					<number>%RO_H_GT_SOFT%</number>
+				</attribute>
+				<attribute id="SO_H_GT_SOFT">
+					<number>%SO_H_GT_SOFT%</number>
+				</attribute>
+				<attribute id="H_LT_HARD">
+					<number>%H_LT_HARD%</number>
+				</attribute>
+				<attribute id="H_LTE_HARD">
+					<number>%H_LTE_HARD%</number>
+				</attribute>
+				<attribute id="H_LT_SOFT">
+					<number>%H_LT_SOFT%</number>
+				</attribute>
+				<attribute id="H_PREP">
+					<text>%H_PREP%</text>
+				</attribute>
+				<attribute id="H_RANGE_GT_HARD">
+					<number>%H_RANGE_GT_HARD%</number>
+				</attribute>
+				<attribute id="H_RANGE_LT_HARD">
+					<number>%H_RANGE_LT_HARD%</number>
+				</attribute>
+				<attribute id="RO_H_RANGE_GT_SOFT">
+					<number>%RO_H_RANGE_GT_SOFT%</number>
+				</attribute>
+				<attribute id="RO_H_RANGE_LT_SOFT">
+					<number>%RO_H_RANGE_LT_SOFT%</number>
+				</attribute>
+				<attribute id="SO_H_RANGE_GT_SOFT">
+					<number>%SO_H_RANGE_GT_SOFT%</number>
+				</attribute>
+				<attribute id="SO_H_RANGE_LT_SOFT">
+					<number>%SO_H_RANGE_LT_SOFT%</number>
+				</attribute>
+				<attribute id="H_SPECIAL">
+					<text>%H_SPECIAL%</text>
+				</attribute>
+				<attribute id="Q_GT_rel(Q)_SOFT">
+					<text>%Q_GT_rel(Q)_SOFT%</text>
+				</attribute>
+				<attribute id="Q_GT_HARD">
+					<number>%Q_GT_HARD%</number>
+				</attribute>
+				<attribute id="SO_Q_GT_SOFT">
+					<number>%SO_Q_GT_SOFT%</number>
+				</attribute>
+				<attribute id="RO_Q_GT_SOFT">
+					<number>%RO_Q_GT_SOFT%</number>
+				</attribute>
+				<attribute id="Q_LT_HARD">
+					<number>%Q_LT_HARD%</number>
+				</attribute>
+				<attribute id="Q_LT_rel(Q)_HARD">
+					<text>%Q_LT_rel(Q)_HARD%</text>
+				</attribute>
+				<attribute id="RO_Q_LT_SOFT">
+					<number>%RO_Q_LT_SOFT%</number>
+				</attribute>
+				<attribute id="SO_Q_LT_SOFT">
+					<number>%SO_Q_LT_SOFT%</number>
+				</attribute>
+				<attribute id="Q_PREP">
+					<text>%Q_PREP%</text>
+				</attribute>
+				<attribute id="Q_SPECIAL">
+					<text>%Q_SPECIAL%</text>
+				</attribute>
+				<attribute id="Q-QORD_GT_SOFT">
+					<number>%Q-QORD_GT_SOFT%</number>
+				</attribute>
+				<attribute id="Q-QORD_LT_SOFT">
+					<number>%Q-QORD_LT_SOFT%</number>
+				</attribute>
+				<attribute id="Q-QCAP_LT_HARD">
+					<number>%Q-QCAP_LT_HARD%</number>
+				</attribute>
+				<attribute id="Q-QCAP_LT_SOFT">
+					<number>%Q-QCAP_LT_SOFT%</number>
+				</attribute>
+				<attribute id="V_GTE_FSL">
+					<number>%V_GTE_FSL%</number>
+				</attribute>
+				<attribute id="V_GTE_HARD">
+					<number>%V_GTE_HARD%</number>
+				</attribute>
+				<attribute id="V_GT_SOFT">
+					<number>%V_GT_SOFT%</number>
+				</attribute>
+				<attribute id="V_RANGE_GT_SOFT">
+					<number>%V_RANGE_GT_SOFT%</number>
+				</attribute>
+				<attribute id="V_RANGE_LT_SOFT">
+					<number>%V_RANGE_LT_SOFT%</number>
+				</attribute>
+				<attribute id="V_PREP">
+					<text>%V_PREP%</text>
+				</attribute>
+				<attribute id="V_SPECIAL">
+					<text>%V_SPECIAL%</text>
+				</attribute>
+				<attribute id="H_S_SOFT_1">
+					<number>%H_S_SOFT_1%</number>
+				</attribute>
+				<attribute id="H_S_SOFT_2">
+					<number>%H_S_SOFT_2%</number>
+				</attribute>
+				<attribute id="dH_S_SOFT_1">
+					<number>%dH_S_SOFT_1%</number>
+				</attribute>
+				<attribute id="dH_S_SOFT_2">
+					<number>%dH_S_SOFT_2%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_1">
+					<number>%dH_S_HARD_1%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_2">
+					<number>%dH_S_HARD_2%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_3">
+					<number>%dH_S_HARD_3%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_4">
+					<number>%dH_S_HARD_4%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_5">
+					<number>%dH_S_HARD_5%</number>
+				</attribute>
+				<attribute id="dH_S_HARD_6">
+					<number>%dH_S_HARD_6%</number>
+				</attribute>
+				<attribute id="Q_S_SOFT_1">
+					<number>%Q_S_SOFT_1%</number>
+				</attribute>
+				<attribute id="Q_S_SOFT_2">
+					<number>%Q_S_SOFT_2%</number>
+				</attribute>
+				<attribute id="Q_S_SOFT_3">
+					<number>%Q_S_SOFT_3%</number>
+				</attribute>
+				<attribute id="Q_S_HARD_1">
+					<number>%Q_S_HARD_1%</number>
+				</attribute>
+				<attribute id="Q_S_HARD_2">
+					<number>%Q_S_HARD_2%</number>
+				</attribute>
+				<attribute id="Q_S_HARD_3">
+					<number>%Q_S_HARD_3%</number>
+				</attribute>
+				<attribute id="Q_S_HARD_4">
+					<number>%Q_S_HARD_4%</number>
+				</attribute>
+				<attribute id="dQ_S_HARD_1">
+					<number>%dQ_S_HARD_1%</number>
+				</attribute>
+				<attribute id="dQ_S_HARD_2">
+					<number>%dQ_S_HARD_2%</number>
+				</attribute>
+				<attribute id="dQ_S_HARD_3">
+					<number>%dQ_S_HARD_3%</number>
+				</attribute>
+				<attribute id="dQ_S_HARD_4">
+					<number>%dQ_S_HARD_4%</number>
+				</attribute>
+				<attribute id="dQ_S_HARD_5">
+					<number>%dQ_S_HARD_5%</number>
+				</attribute>
+				<attribute id="V_S_SOFT">
+					<number>%V_S_SOFT%</number>
+				</attribute>
+				<attribute id="V_S_COND_1">
+					<number>%V_S_COND_1%</number>
+				</attribute>
+				<attribute id="V_S_COND_2">
+					<number>%V_S_COND_2%</number>
+				</attribute>
+				<attribute id="V_S_COND_3">
+					<number>%V_S_COND_3%</number>
+				</attribute>
+				<attribute id="H_S_COND_1">
+					<number>%H_S_COND_1%</number>
+				</attribute>
+				<attribute id="H_S_COND_2">
+					<number>%H_S_COND_2%</number>
+				</attribute>
+				<attribute id="H_S_COND_3">
+					<number>%H_S_COND_3%</number>
+				</attribute>
+				<attribute id="Q_S_COND_1">
+					<number>%Q_S_COND_1%</number>
+				</attribute>
+				<attribute id="Q_S_COND_2">
+					<number>%Q_S_COND_2%</number>
+				</attribute>
+				<attribute id="Q_S_COND_3">
+					<number>%Q_S_COND_3%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_urbs_sites_idmap</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="QSIM_URBSID">
+					<description>Connects urbs name to station id for simulated river flow</description>
+					<text>%QSIM_URBSID%</text>
+				</attribute>
+				<attribute id="QRESIN_URBSID">
+					<description>Urbs names of dam inflow location</description>
+					<text>%QRESIN_URBSID%</text>
+				</attribute>
+				<attribute id="QRESOUT_URBSID">
+					<description>Urbs names of dam outflow location</description>
+					<text>%QRESOUT_URBSID%</text>
+				</attribute>
+				<attribute id="QRELEASE_URBSID">
+					<description>Urbs names of dam release location</description>
+					<text>%QRELEASE_URBSID%</text>
+				</attribute>
+				<attribute id="OUT_URBS_SUBCATCHID">
+					<description>Urbs subcatchments producing output at this station</description>
+					<text>%OUT_URBS_SUBCATCHID%</text>
+				</attribute>
+				<attribute id="URBS_CATCHMENT_ID">
+					<description>Catchment identifier</description>
+					<text>%URBS_CATCHMENT_ID%</text>
+				</attribute>
+				<attribute id="HRESIN_URBS">
+					<description>Reservoir water level</description>
+					<text>%HRESIN_URBS%</text>
+				</attribute>
+				<attribute id="VBFNAME_URBS">
+					<description>Reservoir identifier</description>
+					<text>%VBFNAME_URBS%</text>
+				</attribute>
+				<attribute id="INITIAL_RESERVOIR_LEVEL">
+					<description>Default reservoir level</description>
+					<number>%INITIAL_RESERVOIR_LEVEL%</number>
+				</attribute>
+				<attribute id="QBC">
+					<description>Locations on Q boundary between subcatchments (G file input(Qobs + manual release forecast) for the URBS models)</description>
+					<text>%QBC%</text>
+				</attribute>
+				<attribute id="MODEL_INFLOW">
+					<description>Locations on Q boundary between subcatchments (I file input to the subsequent URBS models)</description>
+					<text>%MODEL_INFLOW%</text>
+				</attribute>
+				<attribute id="URBS_OUTPUTPAR_PGROSS" name="URBS_outputPar_Pgross">
+					<description>Fixed urbs parameter name</description>
+					<text>Gross_Rainfall</text>
+				</attribute>
+				<attribute id="URBS_OUTPUTPAR_PNET" name="URBS_outputPar_Pnet">
+					<description>Fixed urbs parameter name</description>
+					<text>Net_Rainfall</text>
+				</attribute>
+				<attribute id="URBS_OUTPUTPAR_Q" name="URBS_outputPar_Q">
+					<description>Fixed urbs parameter name</description>
+					<text>Calculated_Discharge</text>
+				</attribute>
+				<attribute id="URBS_OUTPUTPAR_H" name="URBS_outputPar_H">
+					<description>Fixed urbs parameter name</description>
+					<text>Calculated_Level</text>
+				</attribute>
+				<attribute id="URBS_INPUTPAR_QG" name="URBS_inputPar_QG">
+					<description>Fixed urbs parameter name</description>
+					<text>G</text>
+				</attribute>
+				<attribute id="URBS_INPUTPAR_QI" name="URBS_inputPar_QI">
+					<description>Fixed urbs parameter name</description>
+					<text>I</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_sites_idmap</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="catchment">
+					<relatedLocationId>ewSource_RO</relatedLocationId>
+				</relation>
+				<attribute id="1_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%1_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="5_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%5_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="35_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%35_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="36_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%36_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="37_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%37_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="38_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%38_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="50_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%50_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="51_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%51_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="60_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%60_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="63_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%63_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="70_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%70_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="79_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%79_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="87_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%87_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="204_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%204_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="206_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%206_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="211_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%211_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="212_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%212_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="223_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%223_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="224_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%224_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="278_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%278_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="414_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%414_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="457_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%457_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="466_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%466_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="490_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%490_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="536_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%536_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="640_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%640_EWSRC_ID%</text>
+				</attribute>
+				<attribute id="650_EWSRC_ID" name="ewSource ID">
+					<description>ewSource ID (includes parameter ID)</description>
+					<text>%650_EWSRC_ID%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_evap_tables</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="subcatchment">
+					<relatedLocationId>%SUB_CATCH%</relatedLocationId>
+				</relation>
+				<attribute id="SUB_CATCH" name="Subcatchment">
+					<text>%SUB_CATCH%</text>
+				</attribute>
+				<attribute id="JAN_640_EVAP" name="JAN_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JAN_640_EVAP%</number>
+				</attribute>
+				<attribute id="FEB_640_EVAP" name="FEB_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%FEB_640_EVAP%</number>
+				</attribute>
+				<attribute id="MAR_640_EVAP" name="MAR_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%MAR_640_EVAP%</number>
+				</attribute>
+				<attribute id="APR_640_EVAP" name="APR_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%APR_640_EVAP%</number>
+				</attribute>
+				<attribute id="MAY_640_EVAP" name="MAY_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%MAY_640_EVAP%</number>
+				</attribute>
+				<attribute id="JUN_640_EVAP" name="JUN_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JUN_640_EVAP%</number>
+				</attribute>
+				<attribute id="JUL_640_EVAP" name="JUL_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%JUL_640_EVAP%</number>
+				</attribute>
+				<attribute id="AUG_640_EVAP" name="AUG_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%AUG_640_EVAP%</number>
+				</attribute>
+				<attribute id="SEP_640_EVAP" name="SEP_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%SEP_640_EVAP%</number>
+				</attribute>
+				<attribute id="OCT_640_EVAP" name="OCT_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%OCT_640_EVAP%</number>
+				</attribute>
+				<attribute id="NOV_640_EVAP" name="NOV_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%NOV_640_EVAP%</number>
+				</attribute>
+				<attribute id="DEC_640_EVAP" name="DEC_640_EVAP">
+					<description>Longterm forecast Evaporation FAO56</description>
+					<number>%DEC_640_EVAP%</number>
+				</attribute>
+				<attribute id="JAN_650_EVAP" name="JAN_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JAN_650_EVAP%</number>
+				</attribute>
+				<attribute id="FEB_650_EVAP" name="FEB_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%FEB_650_EVAP%</number>
+				</attribute>
+				<attribute id="MAR_650_EVAP" name="MAR_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%MAR_650_EVAP%</number>
+				</attribute>
+				<attribute id="APR_650_EVAP" name="APR_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%APR_650_EVAP%</number>
+				</attribute>
+				<attribute id="MAY_650_EVAP" name="MAY_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%MAY_650_EVAP%</number>
+				</attribute>
+				<attribute id="JUN_650_EVAP" name="JUN_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JUN_650_EVAP%</number>
+				</attribute>
+				<attribute id="JUL_650_EVAP" name="JUL_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%JUL_650_EVAP%</number>
+				</attribute>
+				<attribute id="AUG_650_EVAP" name="AUG_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%AUG_650_EVAP%</number>
+				</attribute>
+				<attribute id="SEP_650_EVAP" name="SEP_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%SEP_650_EVAP%</number>
+				</attribute>
+				<attribute id="OCT_650_EVAP" name="OCT_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%OCT_650_EVAP%</number>
+				</attribute>
+				<attribute id="NOV_650_EVAP" name="NOV_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%NOV_650_EVAP%</number>
+				</attribute>
+				<attribute id="DEC_650_EVAP" name="DEC_650_EVAP">
+					<description>Longterm forecast Evaporation Morton Lakes</description>
+					<number>%DEC_650_EVAP%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_qplan_tables</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SOURCE_ID" name="SOURCE_ID">
+					<text>%SOURCE_ID%</text>
+				</attribute>
+				<attribute id="SITE_Q_FCST_SELECT" name="Type">
+					<description>Manual Flow Forecast Source</description>
+					<text>%SITE_Q_FCST_SELECT%</text>
+				</attribute>
+				<attribute id="SITE_Q_TREND_BASEQ" name="Target">
+					<description>Trend to base flow</description>
+					<number>%SITE_Q_TREND_BASEQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_TREND_FACTOR" name="Recede rate">
+					<description>Recession factor of Trend (less than 1)</description>
+					<number>%SITE_Q_TREND_FACTOR%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_RISE" name="Rise rate">
+					<description>1/Rate at which Pulse fcst rices to peak flow [-]</description>
+					<number>%SITE_Q_PULSE_RISE%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKQ" name="Peak Q">
+					<description>Peak flow during Pulse fcst (ML/day)</description>
+					<number>%SITE_Q_PULSE_PEAKQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKT" name="Peak timing">
+					<description>Timing peak flow in days from now</description>
+					<number>%SITE_Q_PULSE_PEAKT%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_RECEDE" name="Recede rate">
+					<description>Rate at which Pulse fcst recedes to base flow [-]</description>
+					<number>%SITE_Q_PULSE_RECEDE%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_BASEQ" name="Target">
+					<description>Flow to end Pulse fcst with (ML/day)</description>
+					<number>%SITE_Q_PULSE_BASEQ%</number>
+				</attribute>
+				<attribute id="JAN_MIN_QPLAN" name="JAN_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JAN_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_MIN_QPLAN" name="FEB_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%FEB_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_MIN_QPLAN" name="MAR_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%MAR_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_MIN_QPLAN" name="APR_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%APR_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_MIN_QPLAN" name="MAY_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%MAY_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_MIN_QPLAN" name="JUN_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JUN_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_MIN_QPLAN" name="JUL_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%JUL_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_MIN_QPLAN" name="AUG_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%AUG_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_MIN_QPLAN" name="SEP_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%SEP_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_MIN_QPLAN" name="OCT_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%OCT_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_MIN_QPLAN" name="NOV_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%NOV_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_MIN_QPLAN" name="DEC_MIN_QPLAN">
+					<description>Longterm forecast Qplan minimum scenario</description>
+					<number>%DEC_MIN_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_90_QPLAN" name="JAN_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JAN_90_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_90_QPLAN" name="FEB_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%FEB_90_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_90_QPLAN" name="MAR_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%MAR_90_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_90_QPLAN" name="APR_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%APR_90_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_90_QPLAN" name="MAY_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%MAY_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_90_QPLAN" name="JUN_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JUN_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_90_QPLAN" name="JUL_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%JUL_90_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_90_QPLAN" name="AUG_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%AUG_90_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_90_QPLAN" name="SEP_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%SEP_90_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_90_QPLAN" name="OCT_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%OCT_90_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_90_QPLAN" name="NOV_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%NOV_90_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_90_QPLAN" name="DEC_90_QPLAN">
+					<description>Longterm forecast Qplan 90% AEP</description>
+					<number>%DEC_90_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_75_QPLAN" name="JAN_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JAN_75_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_75_QPLAN" name="FEB_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%FEB_75_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_75_QPLAN" name="MAR_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%MAR_75_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_75_QPLAN" name="APR_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%APR_75_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_75_QPLAN" name="MAY_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%MAY_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_75_QPLAN" name="JUN_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JUN_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_75_QPLAN" name="JUL_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%JUL_75_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_75_QPLAN" name="AUG_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%AUG_75_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_75_QPLAN" name="SEP_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%SEP_75_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_75_QPLAN" name="OCT_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%OCT_75_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_75_QPLAN" name="NOV_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%NOV_75_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_75_QPLAN" name="DEC_75_QPLAN">
+					<description>Longterm forecast Qplan 75% AEP</description>
+					<number>%DEC_75_QPLAN%</number>
+				</attribute>
+				<attribute id="JAN_50_QPLAN" name="JAN_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JAN_50_QPLAN%</number>
+				</attribute>
+				<attribute id="FEB_50_QPLAN" name="FEB_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%FEB_50_QPLAN%</number>
+				</attribute>
+				<attribute id="MAR_50_QPLAN" name="MAR_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%MAR_50_QPLAN%</number>
+				</attribute>
+				<attribute id="APR_50_QPLAN" name="APR_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%APR_50_QPLAN%</number>
+				</attribute>
+				<attribute id="MAY_50_QPLAN" name="MAY_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%MAY_50_QPLAN%</number>
+				</attribute>
+				<attribute id="JUN_50_QPLAN" name="JUN_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JUN_50_QPLAN%</number>
+				</attribute>
+				<attribute id="JUL_50_QPLAN" name="JUL_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%JUL_50_QPLAN%</number>
+				</attribute>
+				<attribute id="AUG_50_QPLAN" name="AUG_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%AUG_50_QPLAN%</number>
+				</attribute>
+				<attribute id="SEP_50_QPLAN" name="SEP_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%SEP_50_QPLAN%</number>
+				</attribute>
+				<attribute id="OCT_50_QPLAN" name="OCT_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%OCT_50_QPLAN%</number>
+				</attribute>
+				<attribute id="NOV_50_QPLAN" name="NOV_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%NOV_50_QPLAN%</number>
+				</attribute>
+				<attribute id="DEC_50_QPLAN" name="DEC_50_QPLAN">
+					<description>Longterm forecast Qplan 50% AEP</description>
+					<number>%DEC_50_QPLAN%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_ewsource_export_seq</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SOURCE_Q_SEQ" name="Source Q Seq">
+					<description>Flow site sequence</description>
+					<text>%Q_SEQ%</text>
+				</attribute>
+				<attribute id="SOURCE_QORD_SEQ" name="Source QORD Seq">
+					<description>Order/Demand site sequence</description>
+					<text>%QORD_SEQ%</text>
+				</attribute>			
+
+				<attribute id="SOURCE_H_SEQ" name="Source H Seq">
+					<description>Water level site sequence</description>
+					<text>%H_SEQ%</text>
+				</attribute>
+				<attribute id="SOURCE_V_SEQ" name="Source V Seq">
+					<description>Storage volume site sequence</description>
+					<text>%V_SEQ%</text>
+				</attribute>
+				<attribute id="SOURCE_P_SEQ" name="Source P Seq">
+					<description>rainfall site sequence</description>
+					<text>%P_SEQ%</text>
+				</attribute>
+				<attribute id="SOURCE_EVAP_SEQ" name="Source EVAP Seq">
+					<description>Evaporation site sequence</description>
+					<text>%EVAP_SEQ%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_samples_parameters</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SAMPLE_PARAMS">
+					<text>%SAMPLE_PARAMS%</text>
+				</attribute>
+			</attributeFile>
+		</csvFile>
+	</locationSet>
+	<locationSet id="aggregation_areas">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<esriShapeFile>
+			<file>General_Rainfall_Aggegation_areas.dbf</file>
+			<id>Area_%ID%</id>
+			<name>Aggregation area %ID%</name>
+			<description>Aggregation area %ID%</description>
+			<label>Aggregation area %ID%</label>
+			<attribute id="ID">
+				<description>ID column</description>
+				<number>%ID%</number>
+			</attribute>
+			<!--TODO: Get shapefile from MDBA which includes the name of the rainfall aggregation area-->
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="meteo_sites">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="Meteo" id="SENSOR_TYPE"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="river_sites">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="River" id="SENSOR_TYPE"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="storage_sites">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="Storage" id="SENSOR_TYPE"/>
+		</constraints>
+	</locationSet>
+	<!-- MDBC_OPS reach sites-->
+	<locationSet id="sites.Ovens">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="OVENS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.Kiewa">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="KIEWA"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.Yarra">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="YARRA"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.Edwops">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="EDWOPS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.Midops">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="MIDOPS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.St_Flood">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="ST_FLOOD"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.ops_reach">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites.Ovens</locationSetId>
+		<locationSetId>sites.Kiewa</locationSetId>
+		<locationSetId>sites.Yarra</locationSetId>
+		<locationSetId>sites.Edwops</locationSetId>
+		<locationSetId>sites.Midops</locationSetId>
+		<locationSetId>sites.St_Flood</locationSetId>
+	</locationSet>
+	<!-- HYDRO sites by reach-->
+	<locationSet id="HYDRO_sites">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>HYDRO_sites.Ovens</locationSetId>
+		<locationSetId>HYDRO_sites.Kiewa</locationSetId>
+		<locationSetId>HYDRO_sites.Yarra</locationSetId>
+		<locationSetId>HYDRO_sites.Edwops</locationSetId>
+		<locationSetId>HYDRO_sites.Midops</locationSetId>
+		<locationSetId>HYDRO_sites.St_Flood</locationSetId>
+	</locationSet>
+	<locationSet id="HYDRO_sites.Ovens">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="OVENS"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites.Kiewa">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="KIEWA"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites.Yarra">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="YARRA"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites.Edwops">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="EDWOPS"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites.Midops">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="MIDOPS"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites.St_Flood">
+		<sortingLocationAttributeId>OPS_REACH_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OPS_REACH" contains="ST_FLOOD"/>
+			<anyValid>
+				<attributeExists id="PARAMS2HYDRO_OBS"/>
+				<attributeExists id="PARAMS2HYDRO_FCST"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- Hydro sites 	by parameter-qualifier-->
+	<locationSet id="ROWS2HYDSTRA_obs_sites">
+		<!-- can be removed when idmap finished-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY_PARAMS"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ROWS2HYDRO_obs_sites">
+		<!-- can be removed when idmap finished-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="PARAMS2HYDRO_OBS"/>
+			<attributeExists id="HYDRO_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_EVAP">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="EVAP" id="PARAMS2HYDRO_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_P">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_OBS" contains="P"/>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="EVAP"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_EC">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="EC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_WT">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="WT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_GEN">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="GEN"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_OBS" contains="H"/>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="pH"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_pH">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="pH"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Radiation">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Radiation"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_V">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_OBS" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="VL"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="EVAP"/>
+				</not>-->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_VL.evap">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_CALC" contains="VL_calc.evap"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_DO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_OBS" contains="DO"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_GatesOpen">
+		<description>Sites with multiple gates</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="GatesOpen"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_GatesOpen.rr">
+		<description>Gate with rock ramp</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="GatesOpen.rr"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_GatesOpen.vs">
+		<description>Gates with vertical slot</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="GatesOpen.vs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_WDIR">
+		<description>Wind direction sites</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="WDIR"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_WVEL">
+		<description>Wind velocity sites</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="WVEL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_StopLogs">
+		<description>Sites with stop logs</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="StopLogs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q;"/>
+				<!-- <not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QRTN"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.spill">
+		<description>Sites with spill flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.spill"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.turb">
+		<description>Sites with turbine flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.turb"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.ivt">
+		<description>Sites with intervalley transfer flows</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.ivt"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.env">
+		<description>Sites with enviromental flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.env"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.other">
+		<description>Sites with other flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.other"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QRL">
+		<description>Sites with release flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QI">
+		<description>Sites with release flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.inflow"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.instream">
+		<description>Sites with instream credit flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.instream"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_Q.vic">
+		<description>Sites with credit flow Victoria</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="Q.vic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QORD">
+		<description>Sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QORD;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QORD.mdbc">
+		<description>Sites with ordered flow (mdbc)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QORD.shortterm">
+		<description>Sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QORD.longterm">
+		<description>Sites with ordered flow (long term)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QDIV">
+		<description>Sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QDIV.irrig">
+		<description>Sites with flow diversion for irrigation</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QDIV.pump">
+		<description>Sites with pumped flow diversion</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV.pump"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QDIV.structure">
+		<description>Sites with flow diversion by gravity structure</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV.structure"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QDIV.saline">
+		<description>Sites with flow diversion of saline water</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QDIV.saline"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QRTN.env">
+		<description>Sites with environmenal return flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QRTN.env"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_sites_QRTN.irrig">
+		<description>Sites with irrigation return flow</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_OBS" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_EVAP.net">
+		<description>Sites with evaporation forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="EVAP.net"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_H">
+		<description>Sites with water level forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="H"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_V">
+		<description>Sites with volume forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_FCST" contains="V;"/>
+				<!--				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="EVAP"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QDIV"/>
+				</not> -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_Q">
+		<description>Sites with flow forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_FCST" contains="Q;"/>
+				<!-- 				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QRTN"/>
+				</not>
+ -->
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QI">
+		<description>Sites with inflow forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QI"/>
+				<not>
+					<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QI.natural"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QI.natural">
+		<description>Sites with natural inflow forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QI.natural"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QRL">
+		<description>Sites with release flow forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QRL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QORD.mdbc">
+		<description>Sites with ordered flow forecast (mdbc)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QORD.shortterm">
+		<description>Sites with ordered flow forecast (short term)</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QORD.shortterm"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QDIV.irrig">
+		<description>Sites with flow diversion forecast for irrigation</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QDIV.irrig"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QDIV.saline">
+		<description>Sites with saline flow diversion forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QDIV.saline"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QDIV.total">
+		<description>Sites with total flow diversion forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QDIV.total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="HYDRO_fcst_sites_QRTN.irrig">
+		<description>Sites with irrigation return flow forecast</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="PARAMS2HYDRO_FCST" contains="QRTN.irrig"/>
+		</constraints>
+	</locationSet>
+	<!-- _OBS sites-->
+	<locationSet id="sites_EVAP_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="EVAP_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EVAP_obs_sorted">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_EVAP_obs</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_P_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="P_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="H_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_obs_sorted">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<!-- <sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId> -->
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="H" id="DATA_ENTRY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="river_sites_H_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>river_sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="H_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="storage_sites_H_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>storage_sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="H_OBS"/>
+		</constraints>
+	</locationSet>
+	<!-- _samples sites-->
+	<locationSet id="sites_samples">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="SAMPLE_PARAMS"/>
+		</constraints>
+	</locationSet>
+	<!--Import/Processing specific  time stamped sites-->
+	<locationSet id="sites_H_8am_to_8am">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="8am_to_8am" id="H_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_midnight_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="midnight_inst" id="H_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_8am_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="H_TIMESTEP"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_capacity">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_observed">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="Q_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_Q_observed</locationSetId>
+		<locationSetId>sites_H_rated</locationSetId>
+	</locationSet>
+	<locationSet id="sites_Q_midnight_to_midnight">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="midnight_to_midnight" id="Q_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_midnight_to_midnight_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="sites_Q_midnight_to_midnight_not_rated">
+		<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="sites_Q_midnight_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="midnight_inst" id="Q_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="sites_Q_midnight_inst_rated">
+		<locationSetId>sites_Q_midnight_inst</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="sites_Q_midnight_inst_not_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_Q_midnight_inst</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_8am_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="Q_TIMESTEP"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_8am_inst_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_Q_8am_inst</locationSetId>
+		<constraints>
+			<attributeExists id="RATING"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_8am_inst_not_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_Q_8am_inst</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="RATING"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Q_8am_to_8am">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="8am_to_8am" id="Q_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="site_QSATrade">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<csvFile>
+			<file>ROWS_ewsource_qtrade</file>
+			<id>%ROWS_SITE_ID%</id>
+			<name>%NAME%</name>
+			<description>%ROWS_SITE_ID%</description>
+			<label>%ROWS_SITE_ID%</label>
+			<x>%LONGITUDE%</x>
+			<y>%LATITUDE%</y>
+			<attribute id="ROWS_SITE_ID">
+				<description>station identifier as used in ROWS. Usage: ratings report</description>
+				<text>%ROWS_SITE_ID%</text>
+			</attribute>
+			<attribute id="NAME">
+				<description>Name</description>
+				<text>%NAME%</text>
+			</attribute>
+			<attribute id="HYDRO_SITE_ID">
+				<description>station identifier as used in Hydro archive database. Usage: idmaps</description>
+				<text>%HYDRO_SITE_ID%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY">
+				<description>Location requires data entry</description>
+				<text>%DATA_ENTRY%</text>
+			</attribute>
+			<attribute id="DATA_ENTRY_SEQ">
+				<description>Defines order in data entry locationset</description>
+				<text>%DATA_ENTRY_SEQ%</text>
+			</attribute>
+			<!-- The columns below shoud be removed once the new sSource export is finalised -->
+			<attribute id="EWSRC_ID">
+				<description>station identifier as used in ewSource model. Usage: locatonset in model workflow, idmap</description>
+				<text>%EWSRC_ID%</text>
+			</attribute>
+			<attribute id="JAN_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JAN_PROP%</number>
+			</attribute>
+			<attribute id="FEB_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%FEB_PROP%</number>
+			</attribute>
+			<attribute id="MAR_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%MAR_PROP%</number>
+			</attribute>
+			<attribute id="APR_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%APR_PROP%</number>
+			</attribute>
+			<attribute id="MAY_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%MAY_PROP%</number>
+			</attribute>
+			<attribute id="JUN_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JUN_PROP%</number>
+			</attribute>
+			<attribute id="JUL_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%JUL_PROP%</number>
+			</attribute>
+			<attribute id="AUG_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%AUG_PROP%</number>
+			</attribute>
+			<attribute id="SEP_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%SEP_PROP%</number>
+			</attribute>
+			<attribute id="OCT_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%OCT_PROP%</number>
+			</attribute>
+			<attribute id="NOV_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%NOV_PROP%</number>
+			</attribute>
+			<attribute id="DEC_PROP">
+				<description>Proportion of undelivered trade to deliver per month</description>
+				<number>%DEC_PROP%</number>
+			</attribute>
+		</csvFile>
+	</locationSet>
+	<locationSet id="site_QSATrade_DE">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>site_QSATrade</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="site_QSATrade_direct">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>site_QSATrade_DE</locationSetId>
+		<constraints>
+			<not>
+				<anyValid>
+					<attributeExists id="JAN_PROP"/>
+				</anyValid>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_Gates">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>storage_sites</locationSetId>
+	</locationSet>
+	<locationSet id="sites_Releases">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>storage_sites</locationSetId>
+	</locationSet>
+	<locationSet id="sites_V_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>storage_sites</locationSetId>
+	</locationSet>
+	<locationSet id="sites_DO_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="DO_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EC_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="EC_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_WT_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="WT_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_AT_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="AT_OBS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_V_8am_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_V_obs</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="V_TIMESTEP"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_V_8am_inst_capacity">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_V_8am_inst</locationSetId>
+		<constraints>
+			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_V_8am_inst_not_capacity">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_V_obs</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="CAPACITY"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_V_midnight_inst">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_V_obs</locationSetId>
+		<constraints>
+			<attributeTextContains contains="midnight_inst" id="V_TIMESTEP"/>
+		</constraints>
+	</locationSet>
+	<!-- 	<locationSet id="sites_V_midnight_inst_capacity">
+		<locationSetId>sites_V_midnight_inst</locationSetId>
+		<constraints>
+			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet> -->
+	<locationSet id="sites_V_midnight_inst_not_capacity">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_V_midnight_inst</locationSetId>
+		<constraints>
+			<not>
+				<attributeExists id="CAPACITY"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- web report sites-->
+	<locationSet id="wr.sites_all">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="REPORT_WEEKLY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_mdbastorage_total">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_mdbastorage">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_mdbastorage_table">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
+				<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_majorstatestorages">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="major_state_storages"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_allstorages">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>wr.sites_mdbastorage</locationSetId>
+		<locationSetId>wr.sites_majorstatestorages</locationSetId>
+	</locationSet>
+	<locationSet id="wr.sites_snowystorage">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_nswdiversion">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_nswdiversion_table">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
+				<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_nswdiversion_total">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_vicdiversion">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_vicdiversion_table">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
+				<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_vicdiversion_total">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_alldiversions">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>wr.sites_nswdiversion</locationSetId>
+		<locationSetId>wr.sites_vicdiversion</locationSetId>
+	</locationSet>
+	<locationSet id="wr.sites_flowtosa">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="flow_to_sa"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_salinity">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="salinity"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_rivermurray">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="river_murray"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_tributaries">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="tributaries"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_natinflowhume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="nat_inflow_hume"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_allriverlevelflows">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>wr.sites_rivermurray</locationSetId>
+		<locationSetId>wr.sites_tributaries</locationSetId>
+		<locationSetId>wr.sites_natinflowhume</locationSetId>
+	</locationSet>
+	<locationSet id="wr.sites_murrayweirs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="murray_weirs"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_murrayweirs_usds">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>wr.sites_murrayweirs</locationSetId>
+		<constraints>
+			<attributeExists id="DS"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_lowerlakes">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="lower_lakes"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_barrages">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="barrages"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_murray_system_inflow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_WEEKLY" contains="murray_system_inflow"/>
+		</constraints>
+	</locationSet>
+	<!-- For use in flow and salinity forecast publications -->
+	<locationSet id="flow-n-sal.sites_all">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="REPORT_FLOW_SAL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_level">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_level_rated">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_H_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_level"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_vol">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_vol"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_flow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_flow"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flow-n-sal.sites_sal">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flow-n-sal.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_SAL" contains="_sal"/>
+		</constraints>
+	</locationSet>
+	<!-- end of flow and salinity -->
+	<locationSet id="flr.sites_all">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="REPORT_FLOW_LEVEL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="flr.sites_edward">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>flr.sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="REPORT_FLOW_LEVEL" contains="edward"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="river_sites_WT">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<constraints>
+			<allValid>
+				<attributeTextContains contains="River" id="SENSOR_TYPE"/>
+				<attributeTextEquals equals="Y" id="WT_OBS"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="storage_sites_WT">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<constraints>
+			<allValid>
+				<attributeTextContains contains="Storage" id="SENSOR_TYPE"/>
+				<attributeTextEquals equals="Y" id="WT_OBS"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.goulburn">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="Goulburn" id="CATCHMENT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.kiewa">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Kiewa" id="CATCHMENT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.mittamitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="Mitta Mitta" id="CATCHMENT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.ovens">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Ovens" id="CATCHMENT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.uppermurray">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains contains="Upper Murray" id="CATCHMENT"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites.catchment">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites.goulburn</locationSetId>
+		<locationSetId>sites.kiewa</locationSetId>
+		<locationSetId>sites.mittamitta</locationSetId>
+		<locationSetId>sites.ovens</locationSetId>
+		<locationSetId>sites.uppermurray</locationSetId>
+	</locationSet>
+	<!--Sites used in threshold displays-->
+	<locationSet id="threshold_sites_all">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_HOUR_SPECIAL"/>
+				<attributeExists id="dH_LT_SOFT"/>
+				<attributeExists id="dH_SPECIAL"/>
+				<attributeExists id="DOPCT_LTE_DOPCT"/>
+				<attributeExists id="dQ_SPECIAL"/>
+				<attributeExists id="EC_GT_SAL"/>
+				<attributeExists id="H_GT_FSL"/>
+				<attributeExists id="RO_H_GT_HARD"/>
+				<attributeExists id="SO_H_GT_HARD"/>
+				<attributeExists id="H_GTE_HARD"/>
+				<attributeExists id="RO_H_GT_SOFT"/>
+				<attributeExists id="SO_H_GT_SOFT"/>
+				<attributeExists id="H_LT_HARD"/>
+				<attributeExists id="H_LTE_HARD"/>
+				<attributeExists id="H_LT_SOFT"/>
+				<attributeExists id="H_PREP"/>
+				<attributeExists id="H_RANGE_GT_HARD"/>
+				<attributeExists id="H_RANGE_LT_HARD"/>
+				<attributeExists id="RO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="RO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="H_SPECIAL"/>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+				<attributeExists id="Q_GT_HARD"/>
+				<attributeExists id="SO_Q_GT_SOFT"/>
+				<attributeExists id="RO_Q_GT_SOFT"/>
+				<attributeExists id="Q_LT_HARD"/>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+				<attributeExists id="RO_Q_LT_SOFT"/>
+				<attributeExists id="SO_Q_LT_SOFT"/>
+				<attributeExists id="Q_PREP"/>
+				<attributeExists id="Q_SPECIAL"/>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+				<attributeExists id="Q-QORD_LT_SOFT"/>
+				<attributeExists id="Q-QCAP_LT_HARD"/>
+				<attributeExists id="Q-QCAP_LT_SOFT"/>
+				<attributeExists id="V_GTE_FSL"/>
+				<attributeExists id="V_GTE_HARD"/>
+				<attributeExists id="V_GT_SOFT"/>
+				<attributeExists id="V_PREP"/>
+				<attributeExists id="V_SPECIAL"/>
+				<attributeExists id="V_RANGE_GT_SOFT"/>
+				<attributeExists id="V_RANGE_LT_SOFT"/>
+				<attributeExists id="H_S_SOFT_1"/>
+				<attributeExists id="H_S_SOFT_2"/>
+				<attributeExists id="dH_S_SOFT_1"/>
+				<attributeExists id="dH_S_SOFT_2"/>
+				<attributeExists id="dH_S_HARD_1"/>
+				<attributeExists id="dH_S_HARD_2"/>
+				<attributeExists id="dH_S_HARD_3"/>
+				<attributeExists id="dH_S_HARD_4"/>
+				<attributeExists id="dH_S_HARD_5"/>
+				<attributeExists id="dH_S_HARD_6"/>
+				<attributeExists id="Q_S_SOFT_1"/>
+				<attributeExists id="Q_S_SOFT_2"/>
+				<attributeExists id="Q_S_SOFT_3"/>
+				<attributeExists id="Q_S_HARD_1"/>
+				<attributeExists id="Q_S_HARD_2"/>
+				<attributeExists id="Q_S_HARD_3"/>
+				<attributeExists id="Q_S_HARD_4"/>
+				<attributeExists id="dQ_S_HARD_1"/>
+				<attributeExists id="dQ_S_HARD_2"/>
+				<attributeExists id="dQ_S_HARD_3"/>
+				<attributeExists id="dQ_S_HARD_4"/>
+				<attributeExists id="dQ_S_HARD_5"/>
+				<attributeExists id="V_S_SOFT"/>
+				<attributeExists id="V_S_COND_1"/>
+				<attributeExists id="V_S_COND_2"/>
+				<attributeExists id="V_S_COND_3"/>
+				<attributeExists id="H_S_COND_1"/>
+				<attributeExists id="H_S_COND_2"/>
+				<attributeExists id="H_S_COND_3"/>
+				<attributeExists id="Q_S_COND_1"/>
+				<attributeExists id="Q_S_COND_2"/>
+				<attributeExists id="Q_S_COND_3"/>
+				<attributeExists id="TYPE"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Only one threshold value set allowed per time series R_023894 H_calc (m) "8:00 GMT+10" defined in 
+	"Water levels (SOnO, RO) (Levels_objectives_specials)" and in 
+	"Water levels (SOnO, RO) (Levels_objectives)" RegionConfigFiles/ThresholdValueSets.xml-->
+	<locationSet id="threshold_sites_H_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="H_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Water_Level">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="H_GT_FSL"/>
+				<attributeExists id="RO_H_GT_HARD"/>
+				<attributeExists id="SO_H_GT_HARD"/>
+				<attributeExists id="RO_H_GT_SOFT"/>
+				<attributeExists id="SO_H_GT_SOFT"/>
+				<attributeExists id="H_GTE_HARD"/>
+				<attributeExists id="H_LT_HARD"/>
+				<attributeExists id="H_LTE_HARD"/>
+				<attributeExists id="H_LT_SOFT"/>
+				<attributeExists id="H_RANGE_GT_HARD"/>
+				<attributeExists id="H_RANGE_LT_HARD"/>
+				<attributeExists id="RO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="RO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="H_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher-->
+	<locationSet id="threshold_sites_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="H_GT_FSL"/>
+				<attributeExists id="RO_H_GT_HARD"/>
+				<attributeExists id="SO_H_GT_HARD"/>
+				<attributeExists id="RO_H_GT_SOFT"/>
+				<attributeExists id="SO_H_GT_SOFT"/>
+				<attributeExists id="H_GTE_HARD"/>
+				<attributeExists id="H_LT_HARD"/>
+				<attributeExists id="H_LTE_HARD"/>
+				<attributeExists id="H_LT_SOFT"/>
+				<attributeExists id="H_RANGE_GT_HARD"/>
+				<attributeExists id="H_RANGE_LT_HARD"/>
+				<attributeExists id="RO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="RO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="H_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_H_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_H</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_H_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_H</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_H_prep">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_LT_SOFT"/>
+				<attributeExists id="dH_SPECIAL"/>
+				<attributeExists id="H_GT_FSL"/>
+				<attributeExists id="RO_H_GT_HARD"/>
+				<attributeExists id="SO_H_GT_HARD"/>
+				<attributeExists id="H_GTE_HARD"/>
+				<attributeExists id="RO_H_GT_SOFT"/>
+				<attributeExists id="SO_H_GT_SOFT"/>
+				<attributeExists id="H_LT_HARD"/>
+				<attributeExists id="H_LTE_HARD"/>
+				<attributeExists id="H_LT_SOFT"/>
+				<attributeExists id="H_RANGE_GT_HARD"/>
+				<attributeExists id="H_RANGE_LT_HARD"/>
+				<attributeExists id="RO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="RO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_GT_SOFT"/>
+				<attributeExists id="SO_H_RANGE_LT_SOFT"/>
+				<attributeExists id="H_SPECIAL"/>
+				<attributeExists id="H_PREP"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Only one threshold value set allowed per time series 
+	R_401027 dH (m/d) "8:00 GMT+10" defined in "Water level changes (SOnO, RO)(Level changes_objectives_specials)"
+	and in "Water level changes (SOnO, RO) (Level changes_objectives)" RegionConfigFiles/ThresholdValueSets.xml-->
+	<locationSet id="threshold_sites_dH_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_level_changes">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="dH_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher-->
+	<locationSet id="threshold_sites_dH">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_LT_SOFT"/>
+				<attributeExists id="dH_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_dH</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_dH</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_hourly">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dH_HOUR_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_hourly_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_dH_hourly</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="threshold_sites_dH_hourly_RO">
+		<locationSetId>threshold_sites_dH_hourly</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>-->
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Only one threshold value set allowed per time series 
+	R_401027 V_calc (ML) "8:00 GMT+10" defined in "Storage Volume (SOnO, RO)(StorageVolume_objectives_specials)" 
+	and in "Storage Volume (SOnO, RO) (StorageVolume_objectives)" RegionConfigFiles/ThresholdValueSets.xml -->
+	<locationSet id="threshold_sites_V_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_storage_volume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_GT_SOFT"/>
+				<attributeExists id="V_GTE_HARD"/>
+				<attributeExists id="V_GTE_FSL"/>
+			</anyValid>
+			<not>
+				<attributeExists id="V_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!--- End Error Fix for build 67363 or higher -->
+	<locationSet id="threshold_sites_V">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_GT_SOFT"/>
+				<attributeExists id="V_GTE_HARD"/>
+				<attributeExists id="V_GTE_FSL"/>
+				<attributeExists id="V_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_V_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_V</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_V_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_V</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_V_prep">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="V_GT_SOFT"/>
+				<attributeExists id="V_GTE_HARD"/>
+				<attributeExists id="V_GTE_FSL"/>
+				<attributeExists id="V_SPECIAL"/>
+				<attributeExists id="V_PREP"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
+	<!-- To get rid of Errors in build 67363 or higher like 
+	Config.Error: Config.Error: Only one threshold value set allowed per time series 
+	R_401027 Q_calc (ML/day) "8:00 GMT+10" defined in "Flow (SOnO, RO) (Flow_objectives_specials)" 
+	and in "Flow (SOnO, RO) (Flow_objectives)" RegionConfigFiles/ThresholdValueSets.xml -->
+	<locationSet id="threshold_sites_Q_special">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Flow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+				<attributeExists id="Q_GT_HARD"/>
+				<attributeExists id="SO_Q_GT_SOFT"/>
+				<attributeExists id="RO_Q_GT_SOFT"/>
+				<attributeExists id="Q_LT_HARD"/>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+				<attributeExists id="RO_Q_LT_SOFT"/>
+				<attributeExists id="SO_Q_LT_SOFT"/>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+				<attributeExists id="Q-QORD_LT_SOFT"/>
+				<attributeExists id="Q-QCAP_LT_HARD"/>
+				<attributeExists id="Q-QCAP_LT_SOFT"/>
+			</anyValid>
+			<not>
+				<attributeExists id="Q_SPECIAL"/>
+			</not>
+		</constraints>
+	</locationSet>
+	<!-- End Error fix for build 67363 or higher -->
+	<locationSet id="threshold_sites_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+				<attributeExists id="Q_GT_HARD"/>
+				<attributeExists id="SO_Q_GT_SOFT"/>
+				<attributeExists id="RO_Q_GT_SOFT"/>
+				<attributeExists id="Q_LT_HARD"/>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+				<attributeExists id="RO_Q_LT_SOFT"/>
+				<attributeExists id="SO_Q_LT_SOFT"/>
+				<attributeExists id="Q_SPECIAL"/>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+				<attributeExists id="Q-QORD_LT_SOFT"/>
+				<attributeExists id="Q-QCAP_LT_HARD"/>
+				<attributeExists id="Q-QCAP_LT_SOFT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Q_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_Q</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Q_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_Q</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dQ">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dQ_SPECIAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dQ_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_dQ</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="threshold_sites_dQ_RO">
+		<locationSetId>threshold_sites_dQ</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="threshold_sites_Q_prep">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="dQ_SPECIAL"/>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+				<attributeExists id="Q_GT_HARD"/>
+				<attributeExists id="RO_Q_GT_SOFT"/>
+				<attributeExists id="SO_Q_GT_SOFT"/>
+				<attributeExists id="Q_LT_HARD"/>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+				<attributeExists id="RO_Q_LT_SOFT"/>
+				<attributeExists id="SO_Q_LT_SOFT"/>
+				<attributeExists id="Q_SPECIAL"/>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+				<attributeExists id="Q-QCAP_LT_HARD"/>
+				<attributeExists id="Q-QCAP_LT_SOFT"/>
+				<attributeExists id="Q_PREP"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Q-QORD">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q-QORD_GT_SOFT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_Q_LT_REL_HARD">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_LT_rel(Q)_HARD"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="threshold_sites_Q_GT_REL_SOFT">
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="threshold_sites_Q_REL">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
+		<!--<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>-->
+	</locationSet>
+	<locationSet id="threshold_sites_EC">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="EC_GT_SAL"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_EC_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_EC</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_EC_RO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_EC</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="RO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_DO%">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="DOPCT_LTE_DOPCT"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- ops display sites-->
+	<locationSet id="ops_display_reservoir_V">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="V_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir_QI">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QI_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="H_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="Q_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir_QO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QO_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir_P">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="P_ShowInReservoirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_QO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QO_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_QI">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QI_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="Q_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_EC">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="EC_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_P">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="P_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_weir_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="H_ShowInWeirPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_H">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="H_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_V">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="V_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_QI">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QI_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="Q_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_P">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="P_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reach_EC">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="EC_ShowInReachPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_loss_Q">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="Q_ShowInLossPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_loss_QL">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="QL_ShowInLossPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_loss_P">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="P_ShowInLossPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_loss_EVAP">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="EVAP_ShowInLossPlot"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="ops_display_reservoir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir_V</locationSetId>
+		<locationSetId>ops_display_reservoir_QI</locationSetId>
+		<locationSetId>ops_display_reservoir_H</locationSetId>
+		<locationSetId>ops_display_reservoir_Q</locationSetId>
+		<locationSetId>ops_display_reservoir_QO</locationSetId>
+		<locationSetId>ops_display_reservoir_P</locationSetId>
+	</locationSet>
+	<locationSet id="ops_display_weir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_weir_QO</locationSetId>
+		<locationSetId>ops_display_weir_QI</locationSetId>
+		<locationSetId>ops_display_weir_Q</locationSetId>
+		<locationSetId>ops_display_weir_EC</locationSetId>
+		<locationSetId>ops_display_weir_H</locationSetId>
+	</locationSet>
+	<locationSet id="ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach_H</locationSetId>
+		<locationSetId>ops_display_reach_V</locationSetId>
+		<locationSetId>ops_display_reach_QI</locationSetId>
+		<locationSetId>ops_display_reach_Q</locationSetId>
+		<locationSetId>ops_display_reach_P</locationSetId>
+		<locationSetId>ops_display_reach_EC</locationSetId>
+	</locationSet>
+	<locationSet id="ops_display_loss">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_loss_Q</locationSetId>
+		<locationSetId>ops_display_loss_QL</locationSetId>
+		<locationSetId>ops_display_loss_P</locationSetId>
+		<locationSetId>ops_display_loss_EVAP</locationSetId>
+	</locationSet>
+	<!--Individual OPS display locationSets-->
+	<locationSet id="R_409219.ops_display_weir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_weir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QO_ShowInWeirPlot" contains="R_409219"/>
+				<attributeTextContains id="QI_ShowInWeirPlot" contains="R_409219"/>
+				<attributeTextContains id="Q_ShowInWeirPlot" contains="R_409219"/>
+				<attributeTextContains id="EC_ShowInWeirPlot" contains="R_409219"/>
+				<attributeTextContains id="P_ShowInWeirPlot" contains="R_409219"/>
+				<attributeTextContains id="H_ShowInWeirPlot" contains="R_409219"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_409101.ops_display_weir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_weir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QO_ShowInWeirPlot" contains="R_409101"/>
+				<attributeTextContains id="QI_ShowInWeirPlot" contains="R_409101"/>
+				<attributeTextContains id="Q_ShowInWeirPlot" contains="R_409101"/>
+				<attributeTextContains id="EC_ShowInWeirPlot" contains="R_409101"/>
+				<attributeTextContains id="P_ShowInWeirPlot" contains="R_409101"/>
+				<attributeTextContains id="H_ShowInWeirPlot" contains="R_409101"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_409215B.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QI_ShowInReachPlot" contains="R_409215B"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="R_409215B"/>
+				<attributeTextContains id="P_ShowInReachPlot" contains="R_409215B"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="R_409215B"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_414209.ops_display_weir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_weir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QO_ShowInWeirPlot" contains="R_414209"/>
+				<attributeTextContains id="QI_ShowInWeirPlot" contains="R_414209"/>
+				<attributeTextContains id="Q_ShowInWeirPlot" contains="R_414209"/>
+				<attributeTextContains id="EC_ShowInWeirPlot" contains="R_414209"/>
+				<attributeTextContains id="P_ShowInWeirPlot" contains="R_414209"/>
+				<attributeTextContains id="H_ShowInWeirPlot" contains="R_414209"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_414209.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QI_ShowInReachPlot" contains="R_414209"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="R_414209"/>
+				<attributeTextContains id="P_ShowInReachPlot" contains="R_414209"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="R_414209"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_414209.ops_display_loss">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_loss</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInLossPlot" contains="R_414209"/>
+				<attributeTextContains id="QL_ShowInLossPlot" contains="R_414209"/>
+				<attributeTextContains id="P_ShowInLossPlot" contains="R_414209"/>
+				<attributeTextContains id="EVAP_ShowInLossPlot" contains="R_414209"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_409035.ops_display_loss">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_loss</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInLossPlot" contains="R_409035"/>
+				<attributeTextContains id="QL_ShowInLossPlot" contains="R_409035"/>
+				<attributeTextContains id="P_ShowInLossPlot" contains="R_409035"/>
+				<attributeTextContains id="EVAP_ShowInLossPlot" contains="R_409035"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_409216A.ops_display_weir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_weir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QO_ShowInWeirPlot" contains="R_409216A"/>
+				<attributeTextContains id="QI_ShowInWeirPlot" contains="R_409216A"/>
+				<attributeTextContains id="Q_ShowInWeirPlot" contains="R_409216A"/>
+				<attributeTextContains id="EC_ShowInWeirPlot" contains="R_409216A"/>
+				<attributeTextContains id="P_ShowInWeirPlot" contains="R_409216A"/>
+				<attributeTextContains id="H_ShowInWeirPlot" contains="R_409216A"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_402222A.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QI_ShowInReachPlot" contains="R_402222A"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="R_402222A"/>
+				<attributeTextContains id="P_ShowInReachPlot" contains="R_402222A"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="R_402222A"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_403242C.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="QI_ShowInReachPlot" contains="R_403242C"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="R_403242C"/>
+				<attributeTextContains id="P_ShowInReachPlot" contains="R_403242C"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="R_403242C"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_409002.ops_display_loss">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_loss</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInLossPlot" contains="R_409002"/>
+				<attributeTextContains id="QL_ShowInLossPlot" contains="R_409002"/>
+				<attributeTextContains id="P_ShowInLossPlot" contains="R_409002"/>
+				<attributeTextContains id="EVAP_ShowInLossPlot" contains="R_409002"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_401027.ops_display_reservoir">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="V_ShowInReservoirPlot" contains="R_401027"/>
+				<attributeTextContains id="H_ShowInReservoirPlot" contains="R_401027"/>
+				<attributeTextContains id="P_ShowInReservoirPlot" contains="R_401027"/>
+				<!--<attributeTextContains id="EVAP_ShowInReservoirPlot" contains="R_401027"/> -->
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<!-- Flow and Salinity forecast displays -->
+	<locationSet id="Eus2Lck9.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Eus2Lck9"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="Eus2Lck9"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Tor2Swnh.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Tor2Swnh"/>
+				<attributeTextContains id="EC_ShowInReachPlot" contains="Tor2Swnh"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Yarr2Barmah.ops_display_reach">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Yarr2Barmah"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Yarr2Barmah"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Brmh2Bal.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Brmh2Bal"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Brmh2Bal"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Brmh2Bal"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Eus2SA.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Eus2SA"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Eus2SA"/>
+				<attributeTextContains id="V_ShowInReachPlot" contains="Eus2SA"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Eus2SA"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Men2Mur.ops_display_reach">
+		<!-- Barmah to Balranald-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Men2Mur"/>
+				<attributeTextContains id="V_ShowInReachPlot" contains="Men2Mur"/>
+				<!-- The attribute is used to show weir pool level in different plot -->
+				<attributeTextContains id="H_ShowInWeirPlot" contains="Men2Mur"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Jin2Doc.ops_display_reservoir">
+	<!-- Jingelling to Doctors Pt Overview Plot -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReservoirPlot" contains="Jin2Doc"/>
+				<attributeTextContains id="V_ShowInReservoirPlot" contains="Jin2Doc"/>
+				<attributeTextContains id="H_ShowInReservoirPlot" contains="Jin2Doc"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Ste2Wakj.ops_display_reach">
+		<!-- Stevens Weir to Murray Below Wakool junc-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reach</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="H_ShowInReachPlot" contains="Ste2Wakj"/>
+				<attributeTextContains id="Q_ShowInReachPlot" contains="Ste2Wakj"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="Hin2Tall.ops_display_reservoir">
+	<!-- Hinnomungie to Tallandoon Overview Plot -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>ops_display_reservoir</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeTextContains id="Q_ShowInReservoirPlot" contains="Hin2Tall"/>
+				<attributeTextContains id="V_ShowInReservoirPlot" contains="Hin2Tall"/>
+				<attributeTextContains id="H_ShowInReservoirPlot" contains="Hin2Tall"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="RiverProfiles">
+		<sortingLocationAttributeId>SHORT_NAME</sortingLocationAttributeId>
+		<!--<sortByName>true</sortByName>-->
+		<locationId>MurrayRiver</locationId>
+		<locationId>OvensRiver</locationId>
+	</locationSet>
+</locationSets>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"/>
+  		<TITLE>ThresholdCrossings per date</TITLE>
+
+  		<!-- Style data (copied from css files) -->
+		<style type="text/css">
+
+		/* Body div element */
+
+		div.body {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			background-color: #FFFFFF;
+			}
+
+		 /* Breadcrumb */
+
+   		 table#breadcrumb {
+        	background-color:#FFFFFF;
+        	border: solid #000000 0px;
+        	font-family: Arial, Verdana, Helvetica, sans-serif;
+        	}
+	   	table#breadcrumb td {
+        	padding: 0px;
+        	border: solid #000000 0px;
+        	font-size: 11px;
+        	}
+
+        /* Table */
+
+/* tableStyle3 */
+
+table#tableStyle3 {
+	background-color:#FFFFFF;
+	border-collapse: collapse;
+	border: solid #000000 2px;
+	margin-left: 0pt;
+        font-family: Arial,Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	}
+	table#tableStyle3 td {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:right;
+			width:50px;
+	}
+	table#tableStyle3 td:nth-child(1) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:200px;
+	}	
+	table#tableStyle3 td:nth-child(2) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:80px;
+	}	
+	table#tableStyle3 td:nth-child(9) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:100px;
+	}	
+	table#tableStyle3 td:nth-child(10) {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+			text-align:left;
+			width:100px;
+	}
+	table#tableStyle3 th {
+		padding: 2px;
+		font-size: 11px;
+	        border: solid #000000 1px;
+	        color: #000066;
+	        background-color: #C0C0C0;
+	}
+	.tableStyle3_data {
+		text-align: center;
+		font-size: 11px;
+    		color: #000000;
+    		background-color: #FFFFFF;
+	}
+
+table#tableStyleLogEntries {
+	background-color:#FFFFFF;
+	border-collapse: collapse;
+	margin-left: 0pt;
+        font-family: Arial,Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	}
+	table#tableStyleLogEntries td:nth-child(1) {
+		font-size: 11px;
+		padding: 2px;
+                width: 100px;
+		text-align: left;
+		vertical-align: text-top;
+	}
+	table#tableStyleLogEntries td {
+		font-size: 11px;
+		padding: 2px;
+                width: 700px;
+		text-align: left;
+	}
+	table#tableStyleLogEntries th {
+		padding: 4px;
+		font-size: 11px;
+	        color: #000066;
+	        background-color: #C0C0C0;
+	}
+	.tableStyleLogEntries_data {
+		text-align: center;
+		font-size: 11px;
+    		color: #000000;
+    		background-color: #FFFFFF;
+	}
+		</style>
+
+	</head>
+
+<p style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px;"><strong>$PERIOD(END;;dateFormat2)$</strong></p>
+<body>
+		$TABLE(table)$
+</body>
+<p style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px;"><strong>Operator Notes:</strong></p>
+
+<!--<table style="font-family:Arial;font-size:9pt;padding: 0px; margin:1px; width:90px">-->
+<table id="tableStyleLogEntries">
+$LOGENTRIES(Thresholdcrossing.info)$
+</table>
+<br>
+</html>
+

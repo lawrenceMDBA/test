@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<rootDir>%REGION_HOME%\Modules\ewSource\ovens</rootDir>
+		<workDir>%ROOT_DIR%\model</workDir>
+		<exportDir>%ROOT_DIR%\input</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<exportIdMap>IdExportEWSourceRR</exportIdMap>
+		<importDir>%ROOT_DIR%\output</importDir>
+		<importIdMap>IdImportEWSourceRR</importIdMap>
+		<importUnitConversionsId>ImportUnitConversions</importUnitConversionsId>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%\logs</dumpDir>
+		<diagnosticFile>%ROOT_DIR%\logs\sourcediag.xml</diagnosticFile>
+		<missVal>-99.0</missVal>
+		<convertDatum>true</convertDatum>
+		<timeZone>
+			<timeZoneName>GMT+10:00</timeZoneName>
+		</timeZone>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/input/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/logs/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/model/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/output/*.*</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportTimeSeriesActivity>
+				<exportFile>Rainfall.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_comb</parameterId>
+						<qualifierId>avg</qualifierId>
+						<locationSetId>ewsource_subareas.ovens</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="9am"/>
+						<relativeViewPeriod start="-2" end="7" startOverrulable="true" unit="day"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportTimeSeriesActivity>
+				<exportFile>PET.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportClimatology</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>PET_obs</parameterId>
+						<qualifierId>avg</qualifierId>
+						<locationSetId>ewsource_subareas.ovens</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<cycle unit="year"/>
+						<relativeViewPeriod start="-2" end="7" startOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportTimeSeriesActivity>
+				<exportFile>Flow.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>LevelToFlow</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>rated</qualifierId>
+						<locationSetId>ewSourceRR_sites_Qrated</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod start="-2" end="7" startOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>ewSourceRR_sites_Qobs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod start="-2" end="7" startOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>				
+					</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportRunFileActivity>
+				<exportFile>RunParameters.xml</exportFile>
+				<properties>
+					<string key="SourceOutputFile" value="source_output.csv"/>
+					<string key="ExpectedFile_Rainfall" value="silodataupdated.csv"/>
+					<string key="ExpectedFile_PET" value="AveragePET.csv"/>
+					<string key="ExpectedFile_Flow" value="Flow_DataSources.csv"/>
+				</properties>
+			</exportRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<description>Run PreAdapter</description>
+				<command>
+					<executable>$EWSOURCE_ADAPTER_PATH$</executable>
+				</command>
+				<arguments>
+					<argument>preadapter</argument>
+					<argument>%ROOT_DIR%\input\RunParameters.xml</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+			</executeActivity>
+			<executeActivity>
+				<description>Run Source</description>
+				<command>
+					<executable>$EWSOURCE_ADAPTER_PATH$</executable>
+				</command>
+				<arguments>
+					<argument>simulation</argument>
+					<argument>%ROOT_DIR%\input\RunParameters.xml</argument>
+					<argument>$EWSOURCE_EXE_PATH$</argument>
+					<argument>$EWSOURCE_RSP_PATH$</argument>
+					<argument>%ROOT_DIR%\model\source_output.csv</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+			</executeActivity>
+			<executeActivity>
+				<description>Run Post Adapter</description>
+				<command>
+					<executable>$EWSOURCE_ADAPTER_PATH$</executable>
+				</command>
+				<arguments>
+					<argument>postadapter</argument>
+					<argument>%ROOT_DIR%\input\RunParameters.xml</argument>
+				</arguments>
+				<timeOut>1200000</timeOut>
+			</executeActivity>
+		</executeActivities>
+		<importActivities>
+			<importTimeSeriesActivity>
+				<exportPlaceholderFile>true</exportPlaceholderFile>
+				<importFile>SourceOutputInPI.xml</importFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>Ovens_ewSourceRR_Hcst</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>ewSourceRR_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="midnight"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>Ovens_ewSourceRR_Hcst</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>unaccounted_diff</qualifierId>
+						<locationSetId>ewSourceRR_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="midnight"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importTimeSeriesActivity>
+		</importActivities>
+	</activities>
+</generalAdapterRun>

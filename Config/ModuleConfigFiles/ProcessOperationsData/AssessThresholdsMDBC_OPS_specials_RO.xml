@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Module instance to check the merged timeseries (from PreprocessThresholds_MDBC_OPS) for threshold violations. 
+For some timeseries a little extra processing is need. 
+For example, the orders are subtracted from the diversions because that is what the threshold SOFT_IF_EXCESS(QDIV)_GT actually looks at. 
+
+Each threshold is then checked separately per selected location and the result (the numerical flag) is stored in a timeseries. 
+In the case where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single timeseries. 
+This means that in the end only one timeseries with threshold flags is stored for each combination of type of data and location.  
+-->
+	<!--Input-->
+	<variable>
+		<variableId>H_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_dsYarrawonga</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_dsYarrawonga</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_EdwardOT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409008</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_EdwardOT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_409008</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_GulpaOT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409030</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_GulpaOT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_409030</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - extra calculation results - make sure these are temporary timeSeries with synchLevel 9 in final versions! -->
+	<variable>
+		<variableId>H_Dartmouth_AMJ</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>AprMayJun</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_Dartmouth_July</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>July</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>VPCT_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_Meninde</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_Meninde_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>Nov-Feb</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakeWet</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_425020</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakeWet_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>Nov-Feb</qualifierId>
+			<locationId>R_425020</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakePam</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_425021</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakePam_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>Nov-Feb</qualifierId>
+			<locationId>R_425021</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakeMenicaw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationId>R_425040</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_LakeMenicaw_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>Nov-Feb</qualifierId>
+			<locationId>R_425040</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - individual threshold crossings - make sure these are temporary timeSeries with synchLevel 9 in final versions! -->
+	<variable>
+		<variableId>H_thresh_soft_Dartmouth_AMJ</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_soft_Dartmouth_July</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_soft_Yarrawonga</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_soft_EdwardOT_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409008</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_soft_EdwardOT_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409008</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_soft_GulpaOT_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409030</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_soft_GulpaOT_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409030</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_thresh_soft_Meninde_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_soft_LakeWet_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp11</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425020</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_soft_LakePam_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp12</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425021</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_soft_LakeMenicaw_NovthruFeb</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>tmp13</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_425040</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Transformations - calc-->
+	<transformation id="Dartmouth_H_AprMayJun">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--03-31</startMonthDay>
+					<endMonthDay>--06-29</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>H_Dartmouth</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>H_Dartmouth_AMJ</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="Dartmouth_H_July">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--06-30</startMonthDay>
+					<endMonthDay>--07-30</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>H_Dartmouth</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>H_Dartmouth_July</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="Meninde_V_NovthruFeb">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--10-31</startMonthDay>
+					<endMonthDay>--02-28</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>V_Meninde</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>V_Meninde_NovthruFeb</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="LakeWet_H_NovthruFeb">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--10-31</startMonthDay>
+					<endMonthDay>--02-28</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>H_LakeWet</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>H_LakeWet_NovthruFeb</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="LakePam_H_NovthruFeb">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--10-31</startMonthDay>
+					<endMonthDay>--02-28</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>H_LakePam</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>H_LakePam_NovthruFeb</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="LakeMenicaw_H_NovthruFeb">
+		<periodTransformation>
+			<period>
+				<season>
+					<startMonthDay>--10-31</startMonthDay>
+					<endMonthDay>--02-28</endMonthDay>
+				</season>
+			</period>
+			<aggregation>
+				<instantaneous>
+					<inputVariable>
+						<variableId>H_LakeMenicaw</variableId>
+					</inputVariable>
+					<outputVariable>
+						<variableId>H_LakeMenicaw_NovthruFeb</variableId>
+					</outputVariable>
+				</instantaneous>
+			</aggregation>
+		</periodTransformation>
+	</transformation>
+	<transformation id="Dartmouth_VPCT">
+		<user>
+			<simple>
+				<expression>(V_Dartmouth / FSV)*100</expression>
+				<coefficientSetFunctions>
+					<coefficient id="FSV" value="@FSV@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>VPCT_Dartmouth</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--Transformations - thresholds temporary-->
+	<transformation id="Dartmouth_H_thresh_soft_AMJ">
+		<user>
+			<simple>
+				<expression>if ( H_Dartmouth_AMJ &gt;= H_S_SOFT_1, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_thresh_soft_Dartmouth_AMJ</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Dartmouth_H_thresh_soft_July">
+		<user>
+			<simple>
+				<expression>if ( H_Dartmouth_July &gt;=  H_S_SOFT_2, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id=" H_S_SOFT_2" value="@H_S_SOFT_2@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_thresh_soft_Dartmouth_July</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Yarrawonga_dH_thresh_soft">
+		<user>
+			<simple>
+				<limitVariable>
+					<variableId>Q_dsYarrawonga</variableId>
+				</limitVariable>
+				<expression>if (Q_dsYarrawonga &lt; RO_Q_GT_SOFT - 0.0001, if(dH_dsYarrawonga &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
+					<coefficient id="RO_Q_GT_SOFT" value="@RO_Q_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_thresh_soft_Yarrawonga</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EdwardOT_dH_thresh_soft1">
+		<user>
+			<simple>
+				<expression>if (H_EdwardOT &lt;= SO_H_GT_HARD, if(dH_EdwardOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_thresh_soft_EdwardOT_1</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EdwardOT_dH_thresh_soft2">
+		<user>
+			<simple>
+				<expression>if (H_EdwardOT &lt;= H_GT_HARD, if(dH_EdwardOT &gt;= dH_S_SOFT_2, 201, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="dH_S_SOFT_2" value="@dH_S_SOFT_2@"/>
+					<coefficient id="H_GT_HARD" value="@SO_H_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_thresh_soft_EdwardOT_2</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="GulpaOT_dH_thresh_soft1">
+		<user>
+			<simple>
+				<expression>if (H_GulpaOT &lt;= SO_H_GT_HARD, if(dH_GulpaOT &lt; dH_S_SOFT_1 - 0.0001, 201, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="dH_S_SOFT_1" value="@dH_S_SOFT_1@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_thresh_soft_GulpaOT_1</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="GulpaOT_dH_thresh_soft2">
+		<user>
+			<simple>
+				<expression>if (H_GulpaOT &lt;= SO_H_GT_HARD, if(dH_GulpaOT &gt;= dH_S_SOFT_2, 201, 1/0), 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="dH_S_SOFT_2" value="@dH_S_SOFT_2@"/>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_thresh_soft_GulpaOT_2</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Meninde_V_thresh_soft_NovthruFeb">
+		<user>
+			<simple>
+				<expression>if ( V_Meninde_NovthruFeb &gt; V_S_SOFT, 501, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_S_SOFT" value="@V_S_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>V_thresh_soft_Meninde_NovthruFeb</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LakeWet_H_thresh_soft_NovthruFeb">
+		<user>
+			<simple>
+				<expression>if ( H_LakeWet_NovthruFeb &gt; H_S_SOFT_1 + 0.0001, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_thresh_soft_LakeWet_NovthruFeb</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LakePam_H_thresh_soft_NovthruFeb">
+		<user>
+			<simple>
+				<expression>if ( H_LakePam_NovthruFeb &gt; H_S_SOFT_1 + 0.0001, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_thresh_soft_LakePam_NovthruFeb</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="LakeMenicaw_H_thresh_soft_NovthruFeb">
+		<user>
+			<simple>
+				<expression>if ( H_LakeMenicaw_NovthruFeb &gt; H_S_SOFT_1 + 0.0001, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_thresh_soft_LakeMenicaw_NovthruFeb</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

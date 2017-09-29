@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="global1">Global Value 1</defineGlobal>
+		<rowPerLocationHtmlTableFormat id="rowPerLocationHtml" tableStyle="tableStyle3">
+			<onlyWriteRowsWithCrossedThresholds>true</onlyWriteRowsWithCrossedThresholds>
+			<writeSingleTable enabled="true">
+				<timeStep id="8am_report"/>
+			</writeSingleTable>
+			<!-- If there is at least one THRESHOLDCROSSING function with keyword "ALL_", then all crossings in the view period or season will be listed -->
+			<!-- RowPerLocationHtmlTable has then one row per location and threshold crossing  -->
+			<column>
+				<header>Location</header>
+				<function>LOCATIONATTRIBUTE(shortname)</function>
+			</column>
+			<column>
+				<header>DO%</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;DO%_threshold)</backgroundColorFunction>
+				<function>MINVALUE(DOPCT_opo;2Decimal)</function>
+			</column>
+		</rowPerLocationHtmlTableFormat>
+		<dateFormat id="dateFormat1">
+			<pattern>dd-MMM-yyyy HH:mm</pattern>
+		</dateFormat>
+		<dateFormat id="dateFormat2">
+			<pattern>dd-MMM-yyyy</pattern>
+		</dateFormat>
+		<dateFormat id="dateFormat3">
+			<pattern>yyyy</pattern>
+		</dateFormat>
+		<numberFormat id="2Decimal">{0,number,###0.00}</numberFormat>
+		<units>system</units>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir>DailyThresholdCrossings</reportsRootSubDir>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<!-- need to set to false to enable email drop		<sendToLocalFileSystem>false</sendToLocalFileSystem>-->
+		<timeZone>
+			<timeZoneOffset>+10:00</timeZoneOffset>
+		</timeZone>
+		<inputVariable variableId="DOPCT_opo">
+    <timeSeriesSet>
+        <moduleInstanceId>ProcessDOopo</moduleInstanceId>
+        <valueType>scalar</valueType>
+        <parameterId>DO%_obs</parameterId>
+        <qualifierId>opo</qualifierId>
+				<locationSetId>threshold_sites_DO%</locationSetId>
+        <timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="DO%_threshold">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_DO%</parameterId>
+				<locationSetId>threshold_sites_DO%</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="0" start="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+	</declarations>
+	<!-- Since  writeTablePerCrossingDate=true, use scrubFolder=true to clear folder. Number of generated tables may differ every time the report is created  -->
+	<report scrubFolder="true">
+		<rowPerLocationHtmlTableInstance id="table" formatId="rowPerLocationHtml"/>
+		<template>dailythresholdcrossings_table_template.html</template>
+		<outputFileName>Email_ThresholdCrossings_Table.html</outputFileName>
+	</report>
+</reports>

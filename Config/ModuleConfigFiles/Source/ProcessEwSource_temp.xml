@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- This transformation merges Q_obs QORD_obs and Q_plan to generate long
+	forecast input timeseries file for River Operations Source model -->
+		<!-- This module should be removed once the new export to Source is operational -->
+	<variable>
+		<variableId>OPO_Q_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="730" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.longterm_8am</variableId>		
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD.longterm</locationSetId>
+			<!--<locationSetId>ewSourceRO_sites_OQORD</locationSetId>-->
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_plan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>			
+			<relativeViewPeriod unit="day" startOverrulable="true" start="14" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_8am_merged</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>			
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_obs_8am_merged_gapfilled</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>$AEP$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>			
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-30" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Simple merge of Q_obs + QORD_obs + Q_plan -->
+	<transformation id="Merge_8am_inst">
+		<!-- Merging Q_obs over QORD_obs over Q_plan -->
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_Q_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.longterm_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_plan_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_obs_8am_merged</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Gapfill_merged_8am_inst">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Q_obs_8am_merged</variableId>
+				</inputVariable>
+				<maxGapLength>14</maxGapLength>
+				<outputVariable>
+					<variableId>Q_obs_8am_merged_gapfilled</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<!-- Transformation for merging evaporation with seasonal evaporation timeseries -->
+	<!--
+	<variable>
+		<variableId>OPO_EVAP_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>$ET$</qualifierId>
+			<locationSetId>ewSourceRO_sites_OQORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="730" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	-->
+	<!-- Variable for Evaporation grid -->
+	<!--
+	<variable>
+		<variableId>ACCESSR_EVAP_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+				<valueType>grid</valueType>
+				<parameterId>EVAP_fcst</parameterId>
+				<locationId>NWP</locationId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_EVAP_fcst_scalar_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_OE</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESSR_EVAP_fcst_scalar_daily</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<locationSetId>ewSourceRO_sites_OE</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	-->
+</transformationModule>

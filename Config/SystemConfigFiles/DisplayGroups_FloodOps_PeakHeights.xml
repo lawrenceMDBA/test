@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<description>Preconfigured display for thresholds data</description>
+	<plot id="Qobs_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>flood.sites_qobs</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<displayGroup id="PeakHeights_R_401201A_flood" name="Peak Heights - Jingellic">
+		<nodeId>PeakHeights_R_401201A_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<display id="R_401201A_R_401201A" name="Forecast location - Jingellic">
+			<locationId>R_401201A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_401201A_R_401014" name="Support location - Pinegrove">
+			<locationId>R_401014</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_401201A_R_401229A" name="Support location - Cudgewa North">
+			<locationId>R_401229A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_401201A_R_401230A" name="Support location - Towong">
+			<locationId>R_401230A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_401201A_R_401549" name="Support location - Bringenbong">
+			<locationId>R_401549</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+	</displayGroup>
+	<displayGroup id="PeakHeights_R_403241A_flood" name="Peak Heights - PeechelbaUS">
+		<nodeId>PeakHeights_R_403241A_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<display id="R_403241A_R_403241A
+" name="Forecast location - Peechelba U/S">
+			<locationId>R_403241A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_403241A_R_403213A" name="Support location - 15 Mile Creek">
+			<locationId>R_403213A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_403241A_R_403242C" name="Support location - Wangaratta (Combined)">
+			<locationId>R_403242C</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+	</displayGroup>
+	<displayGroup id="PeakHeights_R_403242C_flood" name="Peak Heights - Wangaratta">
+		<nodeId>PeakHeights_R_403242C_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<display id="R_403242C_R_403242C
+" name="Forecast location - Wangaratta">
+			<locationId>R_403242C</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_403242C_R_403227A" name="Support location - Cheshunt">
+			<locationId>R_403227A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+		<display id="R_403242C_R_403230A" name="Support location - Rocky Point">
+			<locationId>R_403230A</locationId>
+			<plotId>Qobs_1h</plotId>
+		</display>
+	</displayGroup>
+</displayGroups>

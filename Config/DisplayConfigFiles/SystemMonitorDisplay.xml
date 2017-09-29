@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<systemMonitorDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/systemMonitorDisplay.xsd">
+	<description>Configuration of the import status tab of the system monitor</description>
+	<importStatus>
+		<tabName>Import Status</tabName>
+		<defaultTimeThreshold>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</defaultTimeThreshold>
+		<!-- One off or irregular imports -->
+		<extraTimeThreshold>
+			<dataFeedId>Ratings</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>Historical_Events</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>MDBC_OPS</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPO</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>Hydro_Daily</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>Hydro_Planning</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="day" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="day" value="1"/>
+				<color>white</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<!-- Telemetry from ETL -->
+		<extraTimeThreshold>
+			<dataFeedId>ETL_latest</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="second" value="3"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="9"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_archive</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24" />
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<!-- Constructing Authority Data -->	
+		<extraTimeThreshold>
+			<dataFeedId>ETL_GMW_SCADA</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_OPT_Telemetry</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_SA_Berri</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24" />
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_Snowy_Daily</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_Snowy_Telemetry</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_SA_Pump</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_SWC_Konc</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<!-- Telemetry from Hydstra -->
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPT</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPT.EC</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPT.C25</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPT2</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPC</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_OPC.C25</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>HYD_TSM</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="6"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<!-- BOM Access and other grids -->
+		<extraTimeThreshold>
+			<dataFeedId>BOM_ACCESSG</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="6" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="18" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>BOM_ACCESSR</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="6" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="18" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>BOM_ADFD</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="6" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="9" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>BOM_PME</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="6" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="9" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>BOM_AWAP</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="24" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="32" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<timeThreshold>
+				<periodLength value="0" unit="second"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="12" unit="hour"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="24" unit="hour"/>
+				<color>orange</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength value="32" unit="hour"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+	</importStatus>
+	<bulletinBoard>
+		<tabName>Bulletin Board</tabName>
+		<tabMnemonic>B</tabMnemonic>
+	</bulletinBoard>
+</systemMonitorDisplay>

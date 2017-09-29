@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filters version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/filters.xsd">
+	<timeSeriesSets id="Flood_Ops">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationSetId>flood.sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationSetId>flood.sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Flood_Ops_Hobs">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_hobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Flood_Ops_Pobs">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-7" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Flood_Ops_Qobs">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>flood.sites_qobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_qobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Flood_Ops_Vobs">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_H_capacity</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="URBS_upper_murray_mitta">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_reservoirs.upper_murray_mitta</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_fcst_sites_no_res.upper_murray_mitta</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release_scen</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="URBS_upper_murray_upper">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_reservoirs.upper_murray_upper</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_fcst_sites_no_res.upper_murray_upper</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release_scen</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_MUR1REL</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep times="08:00" timeZone="GMT+10"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="URBS_upper_murray_below">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_reservoirs.upper_murray_below</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>URBS_fcst_sites_no_res.upper_murray_below</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release_scen</parameterId>
+			<locationSetId>URBS_reservoirs_controlled.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="URBS_upper_murray_rain">
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFD</ensembleId>
+			<ensembleMemberId>URBS Local</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>OFFICIAL</ensembleId>
+			<ensembleMemberId>URBS Final</ensembleMemberId>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="URBS_upper_murray_rain_scenario">
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>IFDSCENARIO</ensembleId>
+			<ensembleMemberId>URBS Local Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Rainfall</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SCENARIO</ensembleId>
+			<ensembleMemberId>URBS Final Scenario</ensembleMemberId>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<!--Flood Operations sites (organised by catchment)-->
+	<filter id="Catchment_FloodOps" name="Structures">
+		<child foreignKey="Catchment_FloodOps_Dartmouth"/>
+		<child foreignKey="Catchment_FloodOps_Hume"/>
+		<child foreignKey="Catchment_FloodOps_Yarrawonga"/>
+	</filter>
+	<filter id="Catchment_FloodOps_Dartmouth" name="Dartmouth">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Dartmouth"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Catchment_FloodOps_Hume" name="Hume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Catchment_FloodOps_Yarrawonga" name="Yarrawonga">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="FLOOD_OPS" contains="Yarrawonga"/>
+		</locationConstraints>
+	</filter>
+	<!--Flood Operations sites (organised by parameter)-->
+	<filter id="Parameter_FloodOps" name="Parameters">
+		<child foreignKey="Parameter_FloodOps_Hobs"/>
+		<child foreignKey="Parameter_FloodOps_Pobs"/>
+		<child foreignKey="Parameter_FloodOps_Qobs"/>
+		<child foreignKey="Parameter_FloodOps_Vobs"/>
+	</filter>
+	<filter id="Parameter_FloodOps_Hobs" name="Water level">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops_Hobs</timeSeriesSetsId>
+	</filter>
+	<filter id="Parameter_FloodOps_Pobs" name="Precipitation">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops_Pobs</timeSeriesSetsId>
+	</filter>
+	<filter id="Parameter_FloodOps_Qobs" name="Flow">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops_Qobs</timeSeriesSetsId>
+	</filter>
+	<filter id="Parameter_FloodOps_Vobs" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>Flood_Ops_Vobs</timeSeriesSetsId>
+	</filter>
+	<!--URBS-->
+	<filter id="URBS" name="URBS">
+		<child foreignKey="URBS_input_mitta"/>
+		<child foreignKey="URBS_input_upper"/>
+		<child foreignKey="URBS_input_below"/>
+		<child foreignKey="URBS_input_rain"/>
+		<child foreignKey="URBS_input_rain_scenario"/>
+	</filter>
+	<filter id="URBS_input_mitta" name="Upper Murray - Mitta">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>URBS_upper_murray_mitta</timeSeriesSetsId>
+	</filter>
+	<filter id="URBS_input_upper" name="Upper Murray - Upper">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>URBS_upper_murray_upper</timeSeriesSetsId>
+	</filter>
+	<filter id="URBS_input_below" name="Upper Murray - Below">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>URBS_upper_murray_below</timeSeriesSetsId>
+	</filter>
+	<filter id="URBS_input_rain" name="URBS_input_rain">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>URBS_upper_murray_rain</timeSeriesSetsId>
+	</filter>
+	<filter id="URBS_input_rain_scenario" name="URBS_input_rain_scenario">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Upper Murray</mapExtentId>
+		<timeSeriesSetsId>URBS_upper_murray_rain_scenario</timeSeriesSetsId>
+	</filter>
+</filters>

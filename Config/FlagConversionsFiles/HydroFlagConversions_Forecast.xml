@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flagConversions xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/flagConversions.xsd">
+	<flagConversion>
+		<inputFlag>
+			<name>ORIGINAL_RELIABLE</name>
+			<value>0</value>
+		</inputFlag>
+		<outputFlag>
+			<name>8</name>
+			<value>8</value>
+			<description>Observed value retrieved from external data source. Value is valid, marked as original reliable as validation is yet to be done</description>
+		</outputFlag>
+	</flagConversion>
+	<defaultOuputFlag>
+		<name>8</name>
+		<value>8</value>
+		<description>The data value is the original value retrieved from an external source and it successfully passes all validation criteria set.</description>
+	</defaultOuputFlag>
+	<missingValueFlag>
+		<name>ORIGINAL_MISSING</name>
+		<value>9</value>
+	</missingValueFlag>
+</flagConversions>

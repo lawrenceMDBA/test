@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<!-- 	Custom Plot id below added to display Q along with QORD.xxx in the OPO data entry
+			display panel. The default DataEntry_ALL does not seems to display Q when
+			QROD.xx is part of data entry params along wiht Q
+	-->
+	<displayGroup id="Deniliquin.OPO" name="Processing Deniliquin sites">
+		<displayGroup id="Deniliquin.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Deniliquin">
+				<locationSetId>Deniliquin.sites</locationSetId>
+				<!-- <plotId>DataEntry_Deniliquin</plotId> -->
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Deniliquin.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Deniliquin">
+				<locationSetId>Deniliquin.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Deniliquin.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Deniliquin.Process_Hopo" name="Deniliquin water level">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_H">
+					<locationSetId>Deniliquin.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Deniliquin.Process_Qopo" name="Deniliquin discharge">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_Q">
+					<locationSetId>Deniliquin.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Deniliquin.Process_Qratedopo" name="Deniliquin rated discharge">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_Qrated">
+					<locationSetId>Deniliquin.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Deniliquin.Process_Vopo" name="Deniliquin storage">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_V">
+					<locationSetId>Deniliquin.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Deniliquin.Process_Popo" name="Deniliquin precipitation">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_P">
+					<locationSetId>Deniliquin.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 
+			<displayGroup id="Deniliquin.Process_EVAPopo" name="Deniliquin evaporation">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_EVAP">
+					<locationSetId>Deniliquin.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			-->
+			<displayGroup id="Deniliquin.Process_ECopo" name="Deniliquin electric conductivity">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_EC">
+					<locationSetId>Deniliquin.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Deniliquin.Process_DOopo" name="Deniliquin dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_DO">
+					<locationSetId>Deniliquin.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Deniliquin.Process_WTopo" name="Deniliquin water temperature">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_WT">
+					<locationSetId>Deniliquin.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!--<displayGroup id="Deniliquin.Process_ATopo" name="Deniliquin air temperature">
+				<singleLocationDisplays id="ImportProcess_Deniliquin_AT">
+					<locationSetId>Deniliquin.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>-->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

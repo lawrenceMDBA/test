@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Hume.Import_flood" name="Hume flood sites import">
+		<nodeId>Hume.Import_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="importflood_uppermurray">
+			<locationSetId>flood.sites_hume</locationSetId>
+			<plotId>Import_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Hume.DataEntry_flood" name="Hume flood sites data entry">
+		<nodeId>Hume.DataEntry_flood</nodeId>
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="dataentryflood_uppermurray">
+			<locationSetId>flood.sites_hume</locationSetId>
+			<plotId>DataEntry_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Hume.Process_flood" name="Hume flood storage sites QA">
+		<viewPermission>FloodOperations</viewPermission>
+		<singleLocationDisplays id="Process_Observed_FloodOps">
+			<locationSetId>flood.sites_hume_vobs</locationSetId>
+			<plotId>ImportProcess_All_flood</plotId>
+		</singleLocationDisplays>
+	</displayGroup>
+	<displayGroup id="Hume.Telemetry " name="Hume flood sites telemetry">
+		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="Hume.Process_Hflood" name="Hume water level">
+			<singleLocationDisplays id="ImportProcess_hume_H_flood">
+				<locationSetId>flood.sites_hume_hobs</locationSetId>
+				<plotId>ImportProcess_H_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hume.Process_Qflood" name="Hume flood sites discharge">
+			<singleLocationDisplays id="ImportProcess_hume_Q_flood">
+				<locationSetId>flood.sites_hume_qobs</locationSetId>
+				<plotId>ImportProcess_Q_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hume.Process_Pflood" name="Hume flood sites precipitation">
+			<singleLocationDisplays id="ImportProcess_hume_P_flood">
+				<locationSetId>flood.sites_hume_pobs</locationSetId>
+				<plotId>ImportProcess_P_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hume.Process_Vflood" name="Hume flood sites volume">
+			<singleLocationDisplays id="ImportProcess_hume_V_flood">
+				<locationSetId>flood.sites_hume_vobs</locationSetId>
+				<plotId>ImportProcess_V_flood</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

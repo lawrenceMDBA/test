@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive Soil Moisture Observed from BOM-->
+	<exportObserved>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>	
+				<netcdfExportActivity>
+					<fileName>SM_obs.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Daily Avg soil moisture data from BOM</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportAWRA</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationId>AWRA</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="day"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<!-- Uncomment the code below if need to archive the subcatchment values of SM -->
+				<!-- <netcdfExportActivity>
+					<fileName>SM_obs_catchment.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Daily Avg soil moisture data from BOM</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationSetId>URBS_subcatchments.only</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity> -->
+			</netcdfExportActivities>
+		</activities>
+	</exportObserved>
+</exportArchiveModule>

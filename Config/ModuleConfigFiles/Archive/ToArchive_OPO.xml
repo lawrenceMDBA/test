@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on Basin level. Export of observed data, forecaster notes and content reviewer forecasts-->
+	<!--The property BASIN is used as Archive Area ID, this is the Archive folder structure and the HyFS Basin ID-->
+	<exportObserved>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>WaterLevel_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Water Levels (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<thresholdGroupId>Waterlevel</thresholdGroupId>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessHopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_H</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Rated_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Rated Flows (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>LevelToFlow</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>rated</qualifierId>
+						<locationSetId>de.sites_H_rated</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_Q</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_Other_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (OPO Other, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>total</qualifierId>
+						<locationSetId>de.sites_Q.total</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>spill</qualifierId>
+						<locationSetId>de.sites_Q.spill</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>turb</qualifierId>
+						<locationSetId>de.sites_Q.turb</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>valves</qualifierId>
+						<locationSetId>de.sites_Q.valves</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>other</qualifierId>
+						<locationSetId>de.sites_Q.other</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_env_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (OPO env, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>env</qualifierId>
+						<locationSetId>de.sites_Q.env</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_OPO_instream.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (OPO instream, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>instream</qualifierId>
+						<locationSetId>de.sites_Q.instream</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_ivt_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (OPO ivt, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>ivt</qualifierId>
+						<locationSetId>de.sites_Q.ivt</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Obs_Inflow_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Flows (Inflow) (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>inflow</qualifierId>
+						<locationSetId>de.sites_Q.inflow</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Precipitation (OPO, QCed, 9am to 9am)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessPopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>P_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_P</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<aggregationPeriod unit="hour" start="-23" end="1"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Evaporation_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Evaporations (OPO, QCed, 9am to 9am)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EVAP_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>sites_EVAP_obs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EVAP_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>mlake</qualifierId>
+						<locationSetId>de.sites_EVAP</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EVAP_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>fao56</qualifierId>
+						<locationSetId>de.sites_EVAP</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Air_Temperature_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Air temperature in deg C (OPO, QC'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessATopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>AT_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_AT</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Conductivity_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Electrical conductivity (compensated) (OPO, QC'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessECopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EC_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_EC</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Dissolved_Oxygen_Obs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Observed Dissolved Oxygen (OPO, QC'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>DO_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_DO</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>DO_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>max</qualifierId>
+						<locationSetId>de.sites_DO</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>DO%_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_DO</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Electricity_Generation_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Electricity Generated (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessEGENopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EGEN_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_EGEN</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Storage_Volume_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Storage volume (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessVopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_V</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Water_Temperature_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Water Temperature (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>WT_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_WT</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>pH_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>pH (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>pH_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_pH</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<!-- NoGatesOpen -->
+				<netcdfExportActivity>
+					<fileName>No_of_GatesOpen_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>No of Gates Open (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>NoGatesOpen_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_Gates</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<!-- NoGatesOpen.rr and vs -->
+				<netcdfExportActivity>
+					<fileName>No_of_GatesOpen_rr_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>No of Gates Open (OPO RR, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>NoGatesOpen_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>rr</qualifierId>
+						<locationSetId>de.sites_Gates.rr</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>No_of_GatesOpen_vs_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>No of Gates Open (OPO VS, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>NoGatesOpen_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>vs</qualifierId>
+						<locationSetId>de.sites_Gates.vs</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Diversions_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Diversions (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QDIV_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_QDIV</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Water_Orders_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Water Orders (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QORD_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_QORD</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Water_Orders_mdbc_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Water Orders (OPO mdbc, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QORD_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>mdbc</qualifierId>
+						<locationSetId>de.sites_QORD.mdbc</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Water_Orders_longterm_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Water Orders (OPO longterm, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QORD_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<qualifierId>longterm</qualifierId>
+						<locationSetId>de.sites_QORD.longterm</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Turbidity_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Turbidity (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Turbidity_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_Turbidity</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Wind_OPO.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>RiverOps</sourceId>
+					<ncMetaData>
+						<title>Wind velocity and direction (OPO, qc'd)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>WindVel_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_WindVel</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>WindDir_obs</parameterId>
+						<qualifierId>opo</qualifierId>
+						<locationSetId>de.sites_WindDir</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportObserved>
+	<exportMessages>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+		</general>
+		<activities>
+			<forecasterNotesExportActivities>
+				<forecasterNotesExportActivity>
+					<areaId>$AREAID$</areaId>
+				</forecasterNotesExportActivity>
+			</forecasterNotesExportActivities>
+		</activities>
+	</exportMessages>
+</exportArchiveModule>

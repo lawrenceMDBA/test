@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="SouthOz.OPO" name="Processing SouthOz sites ">
+		<displayGroup id="SouthOz.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_SouthOz">
+				<locationSetId>SouthOz.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="SouthOz.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_SouthOz">
+				<locationSetId>SouthOz.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="SouthOz.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="SouthOz.Process_Hopo" name="SouthOz water level">
+				<singleLocationDisplays id="ImportProcess_SouthOz_H">
+					<locationSetId>SouthOz.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="SouthOz.Process_Qopo" name="SouthOz discharge">
+				<singleLocationDisplays id="ImportProcess_SouthOz_Q">
+					<locationSetId>SouthOz.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="SouthOz.Process_Qratedopo" name="SouthOz rated discharge">
+				<singleLocationDisplays id="ImportProcess_SouthOz_Qrated">
+					<locationSetId>SouthOz.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="SouthOz.Process_Popo" name="SouthOz precipitation">
+				<singleLocationDisplays id="ImportProcess_SouthOz_P">
+					<locationSetId>SouthOz.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="SouthOz.Process_EVAPopo" name="SouthOz evaporation">
+				<singleLocationDisplays id="ImportProcess_SouthOz_EVAP">
+					<locationSetId>SouthOz.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="SouthOz.Process_ECopo" name="SouthOz electric conductivity">
+				<singleLocationDisplays id="ImportProcess_SouthOz_EC">
+					<locationSetId>SouthOz.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

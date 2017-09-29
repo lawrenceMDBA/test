@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Hume.OPO" name="Processing Hume sites ">
+		<displayGroup id="Hume.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_hume">
+				<locationSetId>Hume.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hume.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_hume">
+				<locationSetId>Hume.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Hume.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Hume.Process_Hopo" name="Hume water level">
+				<singleLocationDisplays id="ImportProcess_hume_H">
+					<locationSetId>Hume.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_Qopo" name="Hume discharge">
+				<singleLocationDisplays id="ImportProcess_hume_Q">
+					<locationSetId>Hume.sites_H_not_rated</locationSetId>
+					<locationSetId>Hume.sites_Q</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_Qratedopo" name="Hume rated discharge">
+				<singleLocationDisplays id="ImportProcess_hume_Qrated">
+					<locationSetId>Hume.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_Vopo" name="Hume storage">
+				<singleLocationDisplays id="ImportProcess_hume_V">
+					<locationSetId>Hume.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_Popo" name="Hume precipitation">
+				<singleLocationDisplays id="ImportProcess_hume_P">
+					<locationSetId>Hume.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_EVAPopo" name="Hume evaporation">
+				<singleLocationDisplays id="ImportProcess_hume_EVAP">
+					<locationSetId>Hume.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hume.Process_ECopo" name="Hume electric conductivity">
+				<singleLocationDisplays id="ImportProcess_hume_EC">
+					<locationSetId>Hume.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Hume.Process_DOopo" name="Hume dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_hume_DO">
+					<locationSetId>Hume.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<displayGroup id="Hume.Process_WTopo" name="Hume water temperature">
+				<singleLocationDisplays id="ImportProcess_hume_WT">
+					<locationSetId>Hume.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!--<displayGroup id="Hume.Process_ATopo" name="Hume air temperature">
+				<singleLocationDisplays id="ImportProcess_hume_AT">
+					<locationSetId>Hume.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>-->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

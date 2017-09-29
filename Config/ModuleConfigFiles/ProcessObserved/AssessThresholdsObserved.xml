@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Module instance to check the calculated timeseries (from Import_Observed) and merged timeseries (from PreprocessThresholds_Observed) for threshold violations. 
+
+Each threshold is then checked separately per selected location and the result (the numerical flag) is stored in a timeseries. 
+In the case where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single timeseries. 
+This means that in the end only one timeseries with threshold flags is stored for each combination of type of data and location.  
+-->
+	<!--Input-->
+	<variable>
+		<variableId>DOPCT_opo</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - temp series with 0 converted to NaN for max threshold merge -make sure these are temporary timeSeries in final version! (synchlevel 9 is not automatically assigned)-->
+	<variable>
+		<variableId>DO_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output - worst threshold crossed, counts, etc.-->
+	<variable>
+		<variableId>DO_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_count</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ALL_threshold_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output - bookkeeping to ensure a maximum of one threshold report mail per day-->
+	<variable>
+		<variableId>DO_reports_sent</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Daily_Report_sent</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-1439" unit="minute"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="7"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_reports_trigger</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Daily_Report_trigger</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-1439" unit="minute"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="7"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Transformations - thresholds definitive (worst threshold crossed)-->
+	<transformation id="DO%_thresh_LTE">
+		<user>
+			<simple>
+				<expression>if ( DOPCT_opo &lt;= LTE, 805, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="LTE" value="@DOPCT_LTE_DOPCT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>DO_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--Transformations - thresholds count since -->
+	<transformation id="DO_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(DO_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>DO_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>DO_threshold_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>DO_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="DO_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(DO_threshold==0,1/0,DO_threshold)</expression>
+				<outputVariable>
+					<variableId>DO_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="ALL_thresh_max">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>DO_threshold_NaN</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="ALL_thresh_max_int">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</inputVariable>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<!--Transformations - bookkeeping for threshold trigger-->
+	<transformation id="DO_reports_sent_missing_check">
+		<user>
+			<simple>
+				<expression>if(isMissing(DO_reports_sent), 0, DO_reports_sent)</expression>
+				<outputVariable>
+					<variableId>DO_reports_sent</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_thresh_hits_check">
+		<user>
+			<simple>
+				<expression>if(DO_threshold_hit &gt;0, if(DO_reports_sent &lt; 1, 1, 0), 0)</expression>
+				<outputVariable>
+					<variableId>DO_reports_trigger</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_reports_sent_update">
+		<user>
+			<simple>
+				<expression>if(DO_reports_trigger &gt; 0, DO_reports_sent + 1, DO_reports_sent)</expression>
+				<outputVariable>
+					<variableId>DO_reports_sent</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

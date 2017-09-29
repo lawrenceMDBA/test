@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose daily hydrographic update from hourly series-->
+	<!-- Types of daily values are distinguished:
+_8am_inst: instantaenous values at 8am
+_8am_to_8am: daily mean values at 8am where the day is defined from 8am to 8am
+_midnight_to_midnight: daily mean values at 8am where the day is defined from midnight to midnight
+	-->
+	<!--Steps conducted:-->
+	<!--_hourly_aggr_daily_8am:_to_8am: 
+	instantaneousToMean aggregation from hourly to daily mean (at 8am), where the day is defined from 8am to 8am; result is reliable if fews than x% of input values are doubtful or missing-->
+	<!--_hourly_aggr_daily_midnight_to_midnight:
+	instantaneousToMean aggregation from hourly for daily mean (stamped at 8am), where the day is defined from midnight to midnight;result is reliable if fews than x% of input values are doubtful or missing-->
+	<!--_hourly_to_8am_inst: 
+	closest sample from hourly to 8am instantaneous daily series restricted by 4 hour max timewindow-->
+	<variable>
+		<variableId>HydroUpdate_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites_H_8am_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites_H_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_midnight_inst_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_midnight_inst_at_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites_H_midnight_inst</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="HydroUpdate_hourly_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>HydroUpdate_hourly</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>HydroUpdate_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="HydroUpdate_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>HydroUpdate_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>HydroUpdate_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="HydroUpdate_hourly_to_midnight_inst">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>HydroUpdate_hourly</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>HydroUpdate_midnight_inst_tmp</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closest</interpolationType>
+				<timeWindow unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>HydroUpdate_midnight_inst_tmp</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="HydroUpdate_copy_midnight_inst_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>HydroUpdate_midnight_inst_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>HydroUpdate_midnight_inst_at_8am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="16"/>
+				<outputVariable>
+					<variableId>HydroUpdate_midnight_inst_at_8am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="HydroUpdate_hourly_to_8am_inst">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>HydroUpdate_hourly</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>HydroUpdate_8am_inst</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closest</interpolationType>
+				<timeWindow unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>HydroUpdate_8am_inst</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+</transformationModule>

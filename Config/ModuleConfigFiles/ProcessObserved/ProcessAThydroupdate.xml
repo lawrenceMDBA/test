@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose daily hydrographic update from hourly series-->
+	<!-- Types of daily values are distinguished:
+_8am_inst: instantaenous values at 8am
+	-->
+	<!--Steps conducted:-->
+	<!--_hourly_to_8am_inst: 
+	closest sample from hourly to 8am instantaneous daily series restricted by 4 hour max timewindow-->
+	<variable>
+		<variableId>HydroUpdate_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites_AT_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>HydroUpdate_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAThydroupdate</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_obs</parameterId>
+			<qualifierId>hydrographic_update</qualifierId>
+			<locationSetId>sites_AT_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-45" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="HydroUpdate_hourly_to_8am_inst">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>HydroUpdate_hourly</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>HydroUpdate_8am_inst</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closest</interpolationType>
+				<timeWindow unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>HydroUpdate_8am_inst</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+</transformationModule>

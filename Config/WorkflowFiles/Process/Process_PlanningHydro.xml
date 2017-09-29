@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<!-- Process Q_plan -->
+	<activity>
+  		<properties>
+			<string key="PARAM" value="Q_plan"/>
+			<string key="AEP" value="min"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+	<activity>
+  		<properties>
+			<string key="PARAM" value="Q_plan"/>
+			<string key="AEP" value="aep90"/>	
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+		<activity>
+  		<properties>
+			<string key="PARAM" value="Q_plan"/>
+			<string key="AEP" value="aep75"/>	
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+		<activity>
+  		<properties>
+			<string key="PARAM" value="Q_plan"/>
+			<string key="AEP" value="aep50"/>	
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+	<!-- Process V_plan -->
+ 	<activity>
+ 		<properties>
+			<string key="PARAM" value="V_plan"/>
+			<string key="AEP" value="min"/>			
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+ 	<activity>
+ 		<properties>
+			<string key="PARAM" value="V_plan"/>
+			<string key="AEP" value="aep90"/>			
+		</properties>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+		<moduleConfigFileName>ProcessPlanningHydro</moduleConfigFileName>
+	</activity>
+</workflow>

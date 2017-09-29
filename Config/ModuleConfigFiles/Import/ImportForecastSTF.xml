@@ -1,0 +1,848 @@
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!-- import of short term streamflow forecast, product of the Bureau of Meteorology -->
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403242A_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403242C" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403242C" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403242C" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403242C" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403242C" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403242C" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<!--
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_403242A$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403242C" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403242C" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_403242C" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_403242C" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403242C" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403242C" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>23</skipFirstLinesCount>
+		</general>
+		-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403242C</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403242C</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403242C</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403242C</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403230A_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403230A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403230A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403230A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403230A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403230A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403230A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<!--
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_403230A$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403230A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403230A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_403230A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_403230A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403230A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403230A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime multiplier="14" unit="day"/>
+			<skipFirstLinesCount>18</skipFirstLinesCount>
+		</general>
+		-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403230A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403205_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403205C" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403205C" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403205C" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403205C" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403205C" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403205C" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<!--
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_403205$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403205C" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403205C" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_403205C" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_403205C" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403205C" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403205C" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime multiplier="14" unit="day"/>
+			<skipFirstLinesCount>18</skipFirstLinesCount>
+		</general>
+		-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403205C</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>401012_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_401012" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_401012" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_401012" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_401012" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_401012" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_401012" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<!--
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_401012$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_401012" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_401012" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_401012" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_401012" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_401012" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_401012" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime multiplier="14" unit="day"/>
+			<skipFirstLinesCount>18</skipFirstLinesCount>
+		</general>
+		-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>402205_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_402205A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_402205A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_402205A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_402205A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_402205A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_402205A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<!--
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_402205$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_402205A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_402205A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_402205A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_402205A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_402205A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_402205A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime multiplier="14" unit="day"/>
+			<skipFirstLinesCount>18</skipFirstLinesCount>
+		</general>
+		-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_402205A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>401220_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_401220B" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_401220B" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_401220B" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_401220B" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_401220B" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_401220B" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<!--
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<serverUrl>$BOM_URL_401220$</serverUrl>
+			<connectionTimeOutMillis>3000</connectionTimeOutMillis>
+			<user>$BOM_USER$</user>
+			<password>$BOM_PASS$</password>
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss+10:00"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_401220B" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_401220B" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/sec)" parameterId="Q_obs" locationId="R_401220B" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/sec)" parameterId="Q_fcst" locationId="R_401220B" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_401220B" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_401220B" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime multiplier="14" unit="day"/>
+			<skipFirstLinesCount>18</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_401220B</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	-->
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403241_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403241A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403241A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403241A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403241A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403241A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403241A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403241A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403241A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403241A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403241A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403233_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403233A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403233A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403233A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403233A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403233A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403233A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403233A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403233A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403233A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403233A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403222_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403222A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403222A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403222A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403222A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403222A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403222A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403222A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403222A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403222A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403222A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM$/STF</folder>
+			<fileNamePatternFilter>403213_*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$/STF</failedFolder>
+			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<table>
+				<dateTimeColumn name="Time" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<valueColumn name="Observed rainfall (mm/hour)" parameterId="P_obs" locationId="R_403213A" unit="mm/hr"/>
+				<valueColumn name="Forecast rainfall (mm/hour)" parameterId="P_fcst" locationId="R_403213A" unit="mm/hr"/>
+				<valueColumn name="Observed streamflow (m3/s)" parameterId="Q_obs" locationId="R_403213A" unit="m3/s"/>
+				<valueColumn name="Forecast streamflow (m3/s)" parameterId="Q_fcst" locationId="R_403213A" unit="m3/s"/>
+				<valueColumn name="Observed streamflow (ML/day)" parameterId="Q_obs" locationId="R_403213A" unit="ML/day"/>
+				<valueColumn name="Forecast streamflow (ML/day)" parameterId="Q_fcst" locationId="R_403213A" unit="ML/day"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdSTF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneName>AET</timeZoneName>
+			</importTimeZone>
+			<dataFeedId>BOM_STF</dataFeedId>
+			<expiryTime unit="day" multiplier="7"/>
+			<skipFirstLinesCount>24</skipFirstLinesCount>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>R_403213A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>
+<!--<folder>$IMPORT_FOLDER_BOM$/STF</folder>
+<fileNamePatternFilter>*403242A*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED$</failedFolder>
+			<backupFolder>$IMPORT_BACKUP$</backupFolder>-->

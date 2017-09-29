@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="VIC_Diversions.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="VIC_Diversions"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="VIC_Diversions.sites_Q">
+		<description>data entry sites with flow</description>
+		<locationSetId>VIC_Diversions.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/> -->
+<!-- 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not> -->
+			<!--</allValid>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="VIC_Diversions.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<locationSetId>VIC_Diversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="VIC_Diversions.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>VIC_Diversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="VIC_Diversions.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<locationSetId>VIC_Diversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>-->
+<!-- #######################
+Data entry sites to MDBC_OPS
+##########################-->
+	<!-- TODO: when idmapping is finished, go back to ...sites, also in parameetr specific sets-->
+	<locationSet id="VIC_Diversions2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>VIC_Diversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="VIC_Diversions"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="VIC_Diversions2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow</description>
+		<locationSetId>VIC_Diversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+ 				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q."/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRL"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QI"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QCR"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV"/>
+				</not>
+				<not>
+					<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QRTN"/>
+				</not>
+			</allValid>
+		</constraints>
+	</locationSet> -->
+	<!--<locationSet id="VIC_Diversions2MDBC_OPS.sites_QORD.mdbc">
+		<description>data entry sites with ordered flow (mdbc)</description>
+		<locationSetId>VIC_Diversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.mdbc"/>
+		</constraints>
+	</locationSet>-->
+	<locationSet id="VIC_Diversions2MDBC_OPS.sites_QORD">
+		<description>data entry sites with ordered flow (short term)</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>VIC_Diversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD"/>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="VIC_Diversions2MDBC_OPS.sites_QORD.longterm">
+		<description>data entry sites with ordered flow (long term)</description>
+		<locationSetId>VIC_Diversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QORD.longterm"/>
+		</constraints>
+	</locationSet>-->
+</locationSets>

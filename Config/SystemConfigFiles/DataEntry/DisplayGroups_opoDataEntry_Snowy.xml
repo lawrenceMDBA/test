@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Snowy.OPO" name="Processing Snowy sites ">
+		<displayGroup id="Snowy.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Snowy">
+				<locationSetId>Snowy.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Snowy.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Snowy">
+				<locationSetId>Snowy.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Snowy.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Snowy.Process_Hopo" name="Snowy water level">
+				<singleLocationDisplays id="ImportProcess_Snowy_H">
+					<locationSetId>Snowy.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Snowy.Process_Qopo" name="Discharge discharge">
+				<singleLocationDisplays id="ImportProcess_Snowy_Q">
+					<locationSetId>Snowy.sites_Q</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Snowy.Process_Vopo" name="Snowy storage">
+				<singleLocationDisplays id="ImportProcess_Snowy_V">
+					<locationSetId>Snowy.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Snowy.Process_QRL" name="Snowy storage release">
+				<singleLocationDisplays id="ImportProcess_Snowy_QRL">
+					<locationSetId>Snowy.sites_QRL</locationSetId>
+					<plotId>ImportProcess_QRL</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

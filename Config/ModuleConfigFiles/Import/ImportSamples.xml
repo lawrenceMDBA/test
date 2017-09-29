@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Delft FEWS Maas -->
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER$/samples</folder>
+			<fileNamePatternFilter>aw16Nov2016_MDBA.csv</fileNamePatternFilter>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+				<dateColumn name="Date (ddMMyy)" pattern="ddMMyy"/>
+				<timeColumn name="Time EST (HHmmss)" pattern="HHmmss"/>
+				<locationColumn name="Station Number"/>
+				<sampleIdColumn name="Sampling Number"/>
+				<valueColumn name="Turbidity (NTU)" parameterId="Turbidity_obs" unit="NTU"/>
+				<valueColumn name="Temperature (°C)" parameterId="WT_obs" unit="degrees C"/>
+				<valueColumn name="LDO% (Saturation)" parameterId="DO%_obs" unit="%"/>
+				<valueColumn name="DO (mg/L)" parameterId="DO_obs" unit="mg/L"/>
+				<valueColumn name="SpCond~ (EC uS/cm) Uncompensated" parameterId="EC_obs" unit="µS/cm"/>
+				<valueColumn name="pH" parameterId="pH_obs" unit="pH"/>
+			</table>
+			<maxLogWarnings>1000</maxLogWarnings>
+			<idMapId>IdImportSamples</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>generalCSV</dataFeedId>
+		</general>
+	</import>
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER$/samples</folder>
+			<fileNamePatternFilter>Murray RACC New Alerts*Weekly Report*.csv</fileNamePatternFilter>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<table>
+				<propertyColumn name="MURRAY RACC NEW RESULTS FOR WEEK UP TO 18 November 2016" key="description"/>
+				<locationColumn name="Site Code"/>
+				<sampleIdColumn name="Laboratory Report No"/>
+				<propertyColumn name="Date Report" key="datereport"/>
+				<dateColumn name="Date Sample" pattern="dd-MM-yy"/>
+				<parameterColumn name="Parameter"/>
+				<unitColumn name="Unit"/>
+				<valueColumn name="Sample value" time="08:00"/>
+				<qualifierColumn name="Sample Recreational Alert Level" prefix="Ralert_"/>
+				<qualifierColumn name="Sample Drinking Water Alert Level" prefix="DWalert_"/>
+				<qualifierColumn name="Livestock Alert Level" prefix="LSalert_"/>
+				<qualifierColumn name="Dominant Potential Toxic Cyanobacteria  present" prefix="CBalert_"/>
+				<commentColumn name="Comment"/>
+			</table>
+			<maxLogWarnings>1000</maxLogWarnings>
+			<idMapId>IdImportSamples</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<missingValue>-999</missingValue>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>generalCSV</dataFeedId>
+		</general>
+	</import>
+</timeSeriesImportRun>

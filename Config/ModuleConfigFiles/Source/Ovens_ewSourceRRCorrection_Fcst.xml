@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<errorModelSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/errorModelSets.xsd">
+	<errorModelSet>
+		<inputVariable variableId="Observed_403241A">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationId>R_403241A</locationId>
+				<locationId>R_403242C</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-30" end="5" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Forecast_403241A">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRR_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationId>R_403241A</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<autoOrderMethod>
+			<orderSelection>true</orderSelection>
+			<order_ar>10</order_ar>
+			<subtractMean>false</subtractMean>
+			<boxcoxTransformation>false</boxcoxTransformation>
+			<observedTimeSeriesId>Observed_403241A</observedTimeSeriesId>
+			<simulatedTimeSeriesId>Forecast_403241A</simulatedTimeSeriesId>
+			<outputTimeSeriesId>Corrected_403241A</outputTimeSeriesId>
+		</autoOrderMethod>
+		<interpolationOptions>
+			<interpolationType>linear</interpolationType>
+		</interpolationOptions>
+		<outputVariable variableId="Corrected_403241A">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRRCorrection_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>cor</qualifierId>
+				<locationId>R_403241A</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<relativeViewPeriod end="5" start="-30" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</outputVariable>
+	</errorModelSet>
+	<errorModelSet>
+		<inputVariable variableId="Observed_403242C">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationId>R_403242C</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-30" end="5" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Forecast_403242C">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRR_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationId>R_403242C</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<autoOrderMethod>
+			<orderSelection>true</orderSelection>
+			<order_ar>10</order_ar>
+			<subtractMean>false</subtractMean>
+			<boxcoxTransformation>false</boxcoxTransformation>
+			<observedTimeSeriesId>Observed_403242C</observedTimeSeriesId>
+			<simulatedTimeSeriesId>Forecast_403242C</simulatedTimeSeriesId>
+			<outputTimeSeriesId>Corrected_403242C</outputTimeSeriesId>
+		</autoOrderMethod>
+		<interpolationOptions>
+			<interpolationType>linear</interpolationType>
+		</interpolationOptions>
+		<outputVariable variableId="Corrected_403242C">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRRCorrection_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>cor</qualifierId>
+				<locationId>R_403242C</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<relativeViewPeriod end="5" start="-30" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</outputVariable>
+	</errorModelSet>
+	<errorModelSet>
+		<inputVariable variableId="Observed_403205C">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationId>R_403205C</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-30" end="5" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Forecast_403205C">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRR_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationId>R_403205C</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<relativeViewPeriod end="5" start="-30" startOverrulable="true" unit="day"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<autoOrderMethod>
+			<orderSelection>true</orderSelection>
+			<order_ar>10</order_ar>
+			<subtractMean>false</subtractMean>
+			<boxcoxTransformation>false</boxcoxTransformation>
+			<observedTimeSeriesId>Observed_403205C</observedTimeSeriesId>
+			<simulatedTimeSeriesId>Forecast_403205C</simulatedTimeSeriesId>
+			<outputTimeSeriesId>Corrected_403205C</outputTimeSeriesId>
+		</autoOrderMethod>
+		<interpolationOptions>
+			<interpolationType>linear</interpolationType>
+		</interpolationOptions>
+		<outputVariable variableId="Corrected_403205C">
+			<timeSeriesSet>
+				<moduleInstanceId>Ovens_ewSourceRRCorrection_Fcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>cor</qualifierId>
+				<locationId>R_403205C</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="midnight"/>
+				<relativeViewPeriod end="5" start="-30" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</outputVariable>
+	</errorModelSet>
+</errorModelSets>

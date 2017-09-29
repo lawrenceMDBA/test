@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="BMRegulators.OPO" name="Processing BM Regulators sites ">
+		<displayGroup id="BMRegulators.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_BMRegulators">
+				<locationSetId>BMRegulators.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="BMRegulators.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_BMRegulators">
+				<locationSetId>BMRegulators.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="BMRegulators.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="BMRegulators.Process_GatesOpenopo" name="BMRegulators GatesOpen">
+				<singleLocationDisplays id="ImportProcess_BMRegulators_GatesOpen">
+					<locationSetId>BMRegulators.sites_GatesOpen</locationSetId>
+					<plotId>ImportProcess_All</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

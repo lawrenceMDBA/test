@@ -1,0 +1,3236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- thresholds and counters as external historical with expiry time from workflow-->
+	<!-- Module instance to check the calculated timeseries (from Import_MDBC_OPS) and merged timeseries (from PreprocessThresholds_MDBC_OPS) for threshold violations. 
+For some timeseries a little extra processing is needed. 
+For example, the orders are subtracted from the discharges because that is what the threshold Q-QORD_GT_SOFT actually looks at. 
+
+Each threshold is then checked separately per selected location and the result (the numerical flag) is stored in a timeseries. 
+In the case where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single timeseries. 
+This means that in the end only one timeseries with threshold flags is stored for each combination of type of data and location.  
+-->
+	<!--Add transformations dV_thresh_hits and dV_thresh_count when required-->
+	<!--Input-->
+	<variable>
+		<variableId>H_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>threshold_sites_V</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_LT_relation_hard_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationRelationId>Q_LT_rel(Q)_HARD</locationRelationId>
+			<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_GT_relation_soft_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationRelationId>Q_GT_rel(Q)_SOFT</locationRelationId>
+			<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_calc</parameterId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_with_QORD_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EC_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>threshold_sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DOPCT_calc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_calc</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Set_dH_deltaH</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_dH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>Set_LT_Q_related_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>related</qualifierId>
+			<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Set_GT_Q_related_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>related</qualifierId>
+			<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Set_GT_Q_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Set_LT_Q_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--Input from assess specials - individual threshold crossings - make sure these are temporary timeSeries in final version! (synchlevel 9 is automatically assigned)-->
+	<variable>
+		<variableId>dH_thresh_hard_LakeVic</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_A4261093<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_MittaMitta_6</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_401211A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>dH_thresh_hard_Heywood_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>dH_thresh_hard_Heywood_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409016</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_Heywood_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409016</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>dH_thresh_hard_Doctors_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>dH_thresh_hard_Doctors_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409017</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_hard_Doctors_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409017</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_hard_LowDar_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_hard_LowDar_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_hard_LowDar_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_hard_LowDar_4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_hard_LowDar_5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_4</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp9</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_soft_LowDar_5</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409216A</locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_LowDar</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_LowDar_Apr</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_LowDar_JFM</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_LowDar_MaythruOct</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_LowDar_NovDec</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_JFM</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_Apr</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp8</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_NovDec</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp9</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_soft_LowDar_MaythruOct</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_425012<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_Mulwala</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409026<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_hard_Yarrawonga</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<!--<locationId>R_409722A<locationId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - extra calculation results-->
+	<variable>
+		<variableId>Q_delta</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - individual threshold crossings - make sure these are temporary timeSeries in final version! (synchlevel 9 is automatically assigned)-->
+	<!--<variable>
+		<variableId>H_threshold_tmp1_fsl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>H_threshold_tmp2_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_tmp3_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_tmp10_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_tmp4_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>tmp4</qualifierId>
+			<locationSetId>threshold_sites_H</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>H_threshold_tmp5_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>tmp5</qualifierId>
+			<locationSetId>threshold_sites_H</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>H_threshold_tmp6_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_tmp7_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>H_threshold_tmp8_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>tmp8</qualifierId>
+			<locationSetId>threshold_sites_H</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_tmp9_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>tmp9</qualifierId>
+			<locationSetId>threshold_sites_H</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+    <variable>
+		<variableId>dH_threshold_tmp1_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>threshold_sites_dH</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_tmp2_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>threshold_sites_dH</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly_tmp1_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--<variable>
+		<variableId>Q_rel_threshold_GT_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_rel_threshold_LT_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>tmp8</qualifierId>
+			<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_rel_threshold_GT_soft_dummy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>tmp7</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_rel_threshold_LT_hard_dummy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>tmp8</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>Q_threshold_tmp1_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_tmp2_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_tmp3_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>Q_threshold_tmp4_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_tmp5_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>Q_threshold_tmp5_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_tmp6_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp6</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_tmp1_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_tmp1_fsl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_tmp2_hard</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_tmp3_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_tmp4_soft</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_tmp5_none</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp5</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - temp series with 0 converted to NaN for max threshold merge -make sure these are temporary timeSeries in final version! (synchlevel 9 is not automatically assigned)-->
+	<variable>
+		<variableId>H_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_6day_rolling_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<!--<locationSetId>threshold_sites_dQ</locationSetId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>EC_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<locationSetId>threshold_sites_EC_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>DO_threshold_NaN</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NaN</qualifierId>
+			<!--<locationSetId>threshold_sites_all</locationSetId>-->
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output - worst threshold crossed, counts, etc.-->
+	<variable>
+		<variableId>H_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_6day_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly_4reporting</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>report</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_6day_rolling_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_6day_rolling_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hourly_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_24hourly_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_colemans_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<!--<locationSetId>threshold_sites_dQ%</locationSetId>-->
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--<variable>
+		<variableId>EC_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_EC_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--<variable>
+		<variableId>EC_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_EC_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--<variable>
+		<variableId>EC_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_EC_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>DO_threshold</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<!--<locationSetId>threshold_sites_all</locationSetId>-->
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_hit</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>crossing</qualifierId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_count</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ALL_threshold_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>threshold_sites_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Transformations - calc-->
+	<!--<transformation id="fill_Q_LT_relation_hard">
+		<user>
+			<simple>
+				<expression>Q_LT_relation_hard_calc</expression>
+				<outputVariable>
+					<variableId>Set_LT_Q_related_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="fill_Q_GT_relation_soft">
+		<user>
+			<simple>
+				<expression>Q_GT_relation_soft_calc</expression>
+				<outputVariable>
+					<variableId>Set_GT_Q_related_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="Q-QORD">
+		<user>
+			<simple>
+				<expression>Q_with_QORD_merge - QORD_merge</expression>
+				<outputVariable>
+					<variableId>Q_delta</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--Transformations - thresholds temporary (individual threshold crossings)-->
+	<!--<transformation id="H_thresh_fslGT">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt;= FSL_GT, 103, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="FSL_GT" value="@H_GT_FSL@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp1_fsl</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="H_thresh_hardGT">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt; SO_H_GT_HARD + 0.0001, 102, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SO_H_GT_HARD" value="@SO_H_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp2_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_hardGTE">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt;= H_GTE_HARD, 102, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_GTE_HARD" value="@H_GTE_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp10_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_hardLT">
+		<user>
+			<simple>
+				<expression>if ( H_calc &lt; H_LT_HARD - 0.0001, 102, 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="H_LT_HARD" value="@H_LT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp3_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="H_thresh_hardLTE">
+		<user>
+			<simple>
+				<expression>if ( H_calc &lt;= HARD_LTE, 102, 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="HARD_LTE" value="@H_LTE_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp9_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="H_thresh_softGT">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt; SOFT_GT + 0.0001, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SOFT_GT" value="@SO_H_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp4_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="H_thresh_softLT">
+		<user>
+			<simple>
+				<expression>if ( H_calc &lt; SOFT_LT, 101, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SOFT_LT" value="@H_LT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp5_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="H_thresh_softRANGE">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt; SO_H_RANGE_GT_SOFT + 0.0001, if ( H_calc &lt; SO_H_RANGE_LT_SOFT - 0.0001,  101, 1/0) , 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="SO_H_RANGE_GT_SOFT" value="@SO_H_RANGE_GT_SOFT@"/>
+					<coefficient id="SO_H_RANGE_LT_SOFT" value="@SO_H_RANGE_LT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp6_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="H_thresh_hardRANGE">
+		<user>
+			<simple>
+				<expression>if ( H_calc &gt; HARD_RANGE_GT, if ( H_calc &lt; HARD_RANGE_LT - 0.0001,  102, 1/0) , 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="HARD_RANGE_GT" value="@H_RANGE_GT_HARD@"/>
+					<coefficient id="HARD_RANGE_LT" value="@H_RANGE_LT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>H_threshold_tmp8_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_softGT">
+		<user>
+			<simple>
+				<expression>if ( Set_dH_deltaH &lt; SOFT_LT, 201, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SOFT_LT" value="@dH_LT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>dH_threshold_tmp1_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="Q_thresh_hardGT">
+		<user>
+			<simple>
+				<expression>if ( Q_merge &gt; Q_GT_HARD + 0.0001, 302, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp1_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_hardLT">
+		<user>
+			<simple>
+				<expression>if ( Q_merge &lt; Q_LT_HARD - 0.0001, 302, 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="Q_LT_HARD" value="@Q_LT_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp2_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="Q_rel_thresh_hardLT">
+		<user>
+			<simple>
+				<expression>if ( Set_LT_Q_hard &lt; Set_LT_Q_related_hard - 0.0001, 302, 1/0)</expression>
+				<outputVariable>
+					<variableId>Q_rel_threshold_LT_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<!-- RO and SO soft rules seperated by adding suffix SO_ -->
+	<transformation id="Q_thresh_softGT">
+		<user>
+			<simple>
+				<expression>if ( Q_merge &gt; SO_Q_GT_SOFT + 0.0001, 301, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SO_Q_GT_SOFT" value="@SO_Q_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp6_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_softLT">
+		<user>
+			<simple>
+				<expression>if ( Q_merge &lt; SO_Q_LT_SOFT - 0.0001, 301, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SO_Q_LT_SOFT" value="@SO_Q_LT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp3_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="Q-QORD_GT_SOFT">
+		<user>
+			<simple>
+				<expression>if ( Q_delta &gt; SOFT_GT, 301, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SOFT_GT" value="@Q-QORD_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp4_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q-QORD_LT_SOFT">
+		<user>
+			<simple>
+				<expression>if(Q_delta &lt; SOFT_LT, 301, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="SOFT_LT" value="@Q-QORD_LT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Q_threshold_tmp5_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_rel_thresh_softGT">
+		<user>
+			<simple>
+				<expression>if ( Set_GT_Q_soft &gt; Set_GT_Q_related_soft, 301, 1/0)</expression>
+				<outputVariable>
+					<variableId>Q_rel_threshold_GT_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="V_thresh_fslGT">
+		<user>
+			<simple>
+				<expression>if ( V_merge &gt;= V_GTE_FSL, 503, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_GTE_FSL" value="@V_GTE_FSL@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>V_threshold_tmp1_fsl</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_hardGTE">
+		<user>
+			<simple>
+				<expression>if ( V_merge &gt;= V_GTE_HARD, 502, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_GTE_HARD" value="@V_GTE_HARD@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>V_threshold_tmp2_hard</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_softGTE">
+		<user>
+			<simple>
+				<expression>if ( V_merge &gt; V_GT_SOFT + 0.0001, 501, 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_GT_SOFT" value="@V_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>V_threshold_tmp3_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_softRANGE">
+		<user>
+			<simple>
+				<expression>if ( V_merge &gt; V_RANGE_GT_SOFT, if ( V_merge &lt; V_RANGE_LT_SOFT, 501, 1/0) , 1/0) </expression>
+				<coefficientSetFunctions>
+					<coefficient id="V_RANGE_LT_SOFT" value="@V_RANGE_LT_SOFT@"/>
+					<coefficient id="V_RANGE_GT_SOFT" value="@V_RANGE_GT_SOFT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>V_threshold_tmp4_soft</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--Transformations - thresholds definitive (worst threshold crossed)-->
+	<transformation id="H_thresh_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_threshold_tmp3_hard</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>H_threshold_tmp8_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_threshold_tmp9_hard</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>H_threshold_tmp10_hard</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>H_threshold_tmp1_fsl</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>H_threshold_tmp4_soft</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>H_threshold_tmp5_soft</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>H_threshold_tmp6_soft</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="H_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_threshold_tmp3_hard</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>H_threshold_tmp8_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_threshold_tmp9_hard</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>H_threshold_tmp10_hard</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!-- Merge for daily threshold crossings-->
+	<transformation id="dH_thresh_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_LakeVic</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Heywood_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Doctors_2</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_LakeVic</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Heywood_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Doctors_2</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_6day_rolling_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Heywood_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_Doctors_3</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!-- Merge for hourly threshold crossings-->
+	<transformation id="dH_thresh_hourly_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_2</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_5</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_6</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_hourly_merge_4reporting">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_5</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_6</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_hourly_4reporting</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_24hourly_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_hard_MittaMitta_3</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_thresh_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_thresh_hard_Mulwala</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_Apr</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_JFM</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_MaythruOct</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_NovDec</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_Yarrawonga</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp1_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_soft_LowDar_Apr</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_soft_LowDar_JFM</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_soft_LowDar_MaythruOct</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_soft_LowDar_NovDec</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp3_soft</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>Q_threshold_tmp4_soft</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp5_soft</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>Q_threshold_tmp6_soft</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_thresh_hard_Mulwala</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_Apr</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_JFM</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_MaythruOct</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_LowDar_NovDec</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_hard_Yarrawonga</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp1_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dQ_thresh_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_5</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_soft_LowDar_5</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dQ_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dQ_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_1</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_2</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_3</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_4</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_hard_LowDar_5</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dQ_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="V_thresh_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_threshold_tmp1_fsl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_threshold_tmp3_soft</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_threshold_tmp4_soft</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="V_thresh_merge_4count">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_threshold_tmp2_hard</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_threshold_4count</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!--<transformation id="EC_thresh_GT">
+		<user>
+			<simple>
+				<expression>if ( EC_calc &gt; EC_GT_SAL , 704, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="EC_GT_SAL" value="@EC_GT_SAL@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>EC_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="DO%_thresh_LTE">
+		<user>
+			<simple>
+				<expression>if ( DOPCT_calc &lt;= DOPCT_LTE_DOPCT, 805, 1/0)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="DOPCT_LTE_DOPCT" value="@DOPCT_LTE_DOPCT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>DO_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--Transformations - thresholds count since -->
+	<transformation id="H_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(H_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>H_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(H_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>H_threshold_hit_4count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_hit_4count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_6day_rolling_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_6day_rolling &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_hourly_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_hourly &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_hourly_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_24hourly_hits">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_24hourly &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(Q_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>Q_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(Q_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>Q_threshold_hit_4count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(dQ_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dQ_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(dQ_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>dQ_threshold_hit_4count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(V_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>V_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_hits_4count">
+		<user>
+			<simple>
+				<expression>if(V_threshold_4count &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>V_threshold_hit_4count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="EC_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(EC_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>EC_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="DO_thresh_hits">
+		<user>
+			<simple>
+				<expression>if(DO_threshold &gt;0,1,0)</expression>
+				<outputVariable>
+					<variableId>DO_threshold_hit</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>H_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>H_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_6day_rolling_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_6day_rolling_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_heywood_Doctors_total_count">
+			<user>
+				<simple>
+					<expression>dH_threshold_count + dH_threshold_6day_rolling_count</expression>
+					<outputVariable>
+						<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+	</transformation>
+	<transformation id="dH_thresh_hourly_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_hourly_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_hourly_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_24hourly_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_24hourly_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_thresh_tot_count">
+			<user>
+				<simple>
+					<expression>dH_threshold_hourly_count + dH_threshold_24hourly_count</expression>
+					<outputVariable>
+						<variableId>dH_threshold_colemans_total_count</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+	</transformation>
+	<transformation id="Q_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>Q_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>Q_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dQ_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dQ_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>dQ_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="V_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>V_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>V_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<!--<transformation id="EC_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>EC_threshold_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>EC_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>-->
+	<transformation id="DO_thresh_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>DO_threshold_hit</variableId>
+				</inputVariable>
+				<intervalTimeStep id="June1"/>
+				<outputVariable>
+					<variableId>DO_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="H_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(H_threshold==0,1/0,H_threshold)</expression>
+				<outputVariable>
+					<variableId>H_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_6day_rolling_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_6day_rolling==0,1/0,dH_threshold_6day_rolling)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_6day_rolling_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_hourly_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_hourly==0,1/0,dH_threshold_hourly)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_hourly_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_24hourly_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold_24hourly==0,1/0,dH_threshold_24hourly)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_24hourly_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(dH_threshold==0,1/0,dH_threshold)</expression>
+				<outputVariable>
+					<variableId>dH_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(Q_threshold==0,1/0,Q_threshold)</expression>
+				<outputVariable>
+					<variableId>Q_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(dQ_threshold==0,1/0,dQ_threshold)</expression>
+				<outputVariable>
+					<variableId>dQ_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(V_threshold==0,1/0,V_threshold)</expression>
+				<outputVariable>
+					<variableId>V_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--<transformation id="EC_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(EC_threshold==0,1/0,EC_threshold)</expression>
+				<outputVariable>
+					<variableId>EC_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="DO_threshold_NaN">
+		<user>
+			<simple>
+				<expression>if(DO_threshold==0,1/0,DO_threshold)</expression>
+				<outputVariable>
+					<variableId>DO_threshold_NaN</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="ALL_thresh_max">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_threshold_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_6day_rolling_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_hourly_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_threshold_24hourly_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_threshold_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_threshold_NaN</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_threshold_NaN</variableId>
+				</inputVariable>
+				<!--<inputVariable>
+					<variableId>EC_threshold_NaN</variableId>
+				</inputVariable>-->
+				<inputVariable>
+					<variableId>DO_threshold_NaN</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="ALL_thresh_max_int">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</inputVariable>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>ALL_threshold_max</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+</transformationModule>

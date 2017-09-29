@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<!-- 
+		Exports MDBC Ops forecast to Hydstra for web publications
+		Only exports 7 days of forecast data. The age of available forecast must be
+		less than 1 day, this is to prevent old forecasts being exported to web 
+	-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA$</folder>
+			<exportFileName>
+				<name>ROWS2Hydstra_OpsForecast.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2Hydstra_OpsForecast</idMapId>
+			<omitMissingValues>true</omitMissingValues>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>

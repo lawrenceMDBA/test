@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ SA trade flow (see PrepareewSourceRO)-->
+	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
+	<!--+ Inflow: Climate (see PrepareewSourceRO_EVAP)-->
+	<!--+ Inflow: Flow (see PrepareewSourceRO_Qcomb)-->
+	<!--+ Water user demand: Q_plan-->
+	<!-- 	-  Merge Q_obs QORD_obs and Q_plan to generate long forecast input timeseries file -->
+	<!-- 	-  Prepare data for export to for River Operations Source model  -->
+	<!--+ Environmental Flow Orders (not included at this stage)-->
+	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
+	<!--========================================================================================-->
+	<!--Dummy Catchments to make modifier display work for catchment attributes-->
+	<variable>
+		<variableId>Dummy_Catchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ewSource_RO</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= QORD opo and hydro  ========= -->
+	<variable>
+		<variableId>OPO_Q</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-400" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.mdbc</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mdbc</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_QORD.longterm</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QORD_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>longterm</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="365" start="-30" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_hydro_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- ==========Q_Plan monthly statistics from attribute table -->
+	<variable>
+		<variableId>Cycle_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>index</parameterId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_min_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>min</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep90_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep75_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_monthly_stat_aep50_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_stat_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_stat_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_stat_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qplan_daily_stat_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_plan</parameterId>
+			<qualifierId>daily</qualifierId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= Q_plan fcst (temporary)  ========= -->
+	<variable>
+		<variableId>QORD_obs_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Q ORD: Qcomb resulting series-->
+	<variable>
+		<variableId>QORD_plan_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>QORD_plan_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_comb</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>SourceRO_sites_QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" startOverrulable="true" start="-400" end="730"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========================================================================================-->
+	<!--Water User Demands: Q_plan-->
+	<!--Merge all observations, select planning scenario (via modifiers) and merge all-->
+	<transformation id="QORD_obs_tmp">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_Q</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.mdbc</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_QORD.longterm</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_obs_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Gapfill_Q_obs">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>QORD_obs_tmp</variableId>
+				</inputVariable>
+				<maxGapLength>14</maxGapLength>
+				<outputVariable>
+					<variableId>QORD_obs</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<!--Step 3 Demand Flow Fcst: Yearly average (Q_plan, statistics)-->
+	<transformation id="Cycle_month">
+		<profile>
+			<timeSeries>
+				<inputProfile>
+					<data value="1" monthDay="--01-01"/>
+					<data value="2" monthDay="--02-01"/>
+					<data value="3" monthDay="--03-01"/>
+					<data value="4" monthDay="--04-01"/>
+					<data value="5" monthDay="--05-01"/>
+					<data value="6" monthDay="--06-01"/>
+					<data value="7" monthDay="--07-01"/>
+					<data value="8" monthDay="--08-01"/>
+					<data value="9" monthDay="--09-01"/>
+					<data value="10" monthDay="--10-01"/>
+					<data value="11" monthDay="--11-01"/>
+					<data value="12" monthDay="--12-01"/>
+					<timeZone>
+						<timeZoneOffset>+10:00</timeZoneOffset>
+					</timeZone>
+				</inputProfile>
+				<type>simple</type>
+				<outputVariable>
+					<variableId>Cycle_month</variableId>
+				</outputVariable>
+			</timeSeries>
+		</profile>
+	</transformation>	
+	<transformation id="Qplan_monthly_stat_min">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_MIN_QPLAN, if(Cycle_month==2, FEB_MIN_QPLAN, if(Cycle_month==3, MAR_MIN_QPLAN, if(Cycle_month==4, APR_MIN_QPLAN, if(Cycle_month==5, MAY_MIN_QPLAN, if(Cycle_month==6, JUN_MIN_QPLAN , if(Cycle_month==7, JUL_MIN_QPLAN , if(Cycle_month==8, AUG_MIN_QPLAN, if(Cycle_month==9, SEP_MIN_QPLAN, if(Cycle_month==10, OCT_MIN_QPLAN , if(Cycle_month==11, NOV_MIN_QPLAN , DEC_MIN_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_MIN_QPLAN" value="@JAN_MIN_QPLAN@"/>
+					<coefficient id="FEB_MIN_QPLAN" value="@FEB_MIN_QPLAN@"/>
+					<coefficient id="MAR_MIN_QPLAN" value="@MAR_MIN_QPLAN@"/>
+					<coefficient id="APR_MIN_QPLAN" value="@APR_MIN_QPLAN@"/>
+					<coefficient id="MAY_MIN_QPLAN" value="@MAY_MIN_QPLAN@"/>
+					<coefficient id="JUN_MIN_QPLAN" value="@JUN_MIN_QPLAN@"/>
+					<coefficient id="JUL_MIN_QPLAN" value="@JUL_MIN_QPLAN@"/>
+					<coefficient id="AUG_MIN_QPLAN" value="@AUG_MIN_QPLAN@"/>
+					<coefficient id="SEP_MIN_QPLAN" value="@SEP_MIN_QPLAN@"/>
+					<coefficient id="OCT_MIN_QPLAN" value="@OCT_MIN_QPLAN@"/>
+					<coefficient id="NOV_MIN_QPLAN" value="@NOV_MIN_QPLAN@"/>
+					<coefficient id="DEC_MIN_QPLAN" value="@DEC_MIN_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>	
+	<!-- Shift foward one month -->
+	<transformation id="Qplan_monthly_stat_min_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_min</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_min_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<!-- Disaggrigate to daily -->
+	<transformation id="Qplan_daily_stat_min">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_min_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_stat_min</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="Qplan_monthly_stat_aep90">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_90_QPLAN, if(Cycle_month==2, FEB_90_QPLAN, if(Cycle_month==3, MAR_90_QPLAN, if(Cycle_month==4, APR_90_QPLAN, if(Cycle_month==5, MAY_90_QPLAN, if(Cycle_month==6, JUN_90_QPLAN , if(Cycle_month==7, JUL_90_QPLAN , if(Cycle_month==8, AUG_90_QPLAN, if(Cycle_month==9, SEP_90_QPLAN, if(Cycle_month==10, OCT_90_QPLAN , if(Cycle_month==11, NOV_90_QPLAN , DEC_90_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_90_QPLAN" value="@JAN_90_QPLAN@"/>
+					<coefficient id="FEB_90_QPLAN" value="@FEB_90_QPLAN@"/>
+					<coefficient id="MAR_90_QPLAN" value="@MAR_90_QPLAN@"/>
+					<coefficient id="APR_90_QPLAN" value="@APR_90_QPLAN@"/>
+					<coefficient id="MAY_90_QPLAN" value="@MAY_90_QPLAN@"/>
+					<coefficient id="JUN_90_QPLAN" value="@JUN_90_QPLAN@"/>
+					<coefficient id="JUL_90_QPLAN" value="@JUL_90_QPLAN@"/>
+					<coefficient id="AUG_90_QPLAN" value="@AUG_90_QPLAN@"/>
+					<coefficient id="SEP_90_QPLAN" value="@SEP_90_QPLAN@"/>
+					<coefficient id="OCT_90_QPLAN" value="@OCT_90_QPLAN@"/>
+					<coefficient id="NOV_90_QPLAN" value="@NOV_90_QPLAN@"/>
+					<coefficient id="DEC_90_QPLAN" value="@DEC_90_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!-- Shift foward one month -->
+	<transformation id="Qplan_monthly_stat_aep90_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep90</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep90_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<!-- Disaggrigate to daily -->
+	<transformation id="Qplan_daily_stat_aep90">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep90_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_stat_aep90</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="Qplan_monthly_stat_aep75">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_75_QPLAN, if(Cycle_month==2, FEB_75_QPLAN, if(Cycle_month==3, MAR_75_QPLAN, if(Cycle_month==4, APR_75_QPLAN, if(Cycle_month==5, MAY_75_QPLAN, if(Cycle_month==6, JUN_75_QPLAN , if(Cycle_month==7, JUL_75_QPLAN , if(Cycle_month==8, AUG_75_QPLAN, if(Cycle_month==9, SEP_75_QPLAN, if(Cycle_month==10, OCT_75_QPLAN , if(Cycle_month==11, NOV_75_QPLAN , DEC_75_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_75_QPLAN" value="@JAN_75_QPLAN@"/>
+					<coefficient id="FEB_75_QPLAN" value="@FEB_75_QPLAN@"/>
+					<coefficient id="MAR_75_QPLAN" value="@MAR_75_QPLAN@"/>
+					<coefficient id="APR_75_QPLAN" value="@APR_75_QPLAN@"/>
+					<coefficient id="MAY_75_QPLAN" value="@MAY_75_QPLAN@"/>
+					<coefficient id="JUN_75_QPLAN" value="@JUN_75_QPLAN@"/>
+					<coefficient id="JUL_75_QPLAN" value="@JUL_75_QPLAN@"/>
+					<coefficient id="AUG_75_QPLAN" value="@AUG_75_QPLAN@"/>
+					<coefficient id="SEP_75_QPLAN" value="@SEP_75_QPLAN@"/>
+					<coefficient id="OCT_75_QPLAN" value="@OCT_75_QPLAN@"/>
+					<coefficient id="NOV_75_QPLAN" value="@NOV_75_QPLAN@"/>
+					<coefficient id="DEC_75_QPLAN" value="@DEC_75_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!-- Shift foward one month -->
+	<transformation id="Qplan_monthly_stat_aep75_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep75</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep75_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<!-- Disaggrigate to daily -->
+	<transformation id="Qplan_daily_stat_aep75">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep75_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_stat_aep75</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	
+	<transformation id="Qplan_monthly_stat_aep50">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_50_QPLAN, if(Cycle_month==2, FEB_50_QPLAN, if(Cycle_month==3, MAR_50_QPLAN, if(Cycle_month==4, APR_50_QPLAN, if(Cycle_month==5, MAY_50_QPLAN, if(Cycle_month==6, JUN_50_QPLAN , if(Cycle_month==7, JUL_50_QPLAN , if(Cycle_month==8, AUG_50_QPLAN, if(Cycle_month==9, SEP_50_QPLAN, if(Cycle_month==10, OCT_50_QPLAN , if(Cycle_month==11, NOV_50_QPLAN , DEC_50_QPLAN)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_50_QPLAN" value="@JAN_50_QPLAN@"/>
+					<coefficient id="FEB_50_QPLAN" value="@FEB_50_QPLAN@"/>
+					<coefficient id="MAR_50_QPLAN" value="@MAR_50_QPLAN@"/>
+					<coefficient id="APR_50_QPLAN" value="@APR_50_QPLAN@"/>
+					<coefficient id="MAY_50_QPLAN" value="@MAY_50_QPLAN@"/>
+					<coefficient id="JUN_50_QPLAN" value="@JUN_50_QPLAN@"/>
+					<coefficient id="JUL_50_QPLAN" value="@JUL_50_QPLAN@"/>
+					<coefficient id="AUG_50_QPLAN" value="@AUG_50_QPLAN@"/>
+					<coefficient id="SEP_50_QPLAN" value="@SEP_50_QPLAN@"/>
+					<coefficient id="OCT_50_QPLAN" value="@OCT_50_QPLAN@"/>
+					<coefficient id="NOV_50_QPLAN" value="@NOV_50_QPLAN@"/>
+					<coefficient id="DEC_50_QPLAN" value="@DEC_50_QPLAN@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!-- Shift foward one month -->
+	<transformation id="Qplan_monthly_stat_aep50_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep50</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Qplan_monthly_stat_aep50_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<!-- Disaggrigate to daily -->
+	<transformation id="Qplan_daily_stat_aep50">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>Qplan_monthly_stat_aep50_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qplan_daily_stat_aep50</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>	
+	
+	<!-- =====================Merge timeseries ===================-->
+	<transformation id="QORD_plan_min">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_min</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_stat_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_min</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep90">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep90</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_stat_aep90</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep75">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep75</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_stat_aep75</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="QORD_plan_aep50">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>QORD_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_hydro_aep50</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qplan_daily_stat_aep50</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>QORD_plan_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

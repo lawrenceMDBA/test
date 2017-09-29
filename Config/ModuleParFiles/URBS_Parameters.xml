@@ -1,0 +1,192 @@
+<parameters version="1.5" xmlns="http://www.wldelft.nl/fews/PI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_modelparameters.xsd">
+	<group id="Loss type" name="Loss type">
+		<model>Subcatchments</model>
+		<parameter id="URBS_LOSSTYPE" name="URBS Loss Model Type">
+			<description>[URBS_LOSSTYPE] ILCL, ILPR</description>
+			<stringValue>@URBS_LOSSTYPE@</stringValue>
+		</parameter>
+		<parameter id="URBS_IFRF" name="Infiltration Recovery (mm)">
+			<description>[URBS_IFRF] Infiltration recovery ranging from 0 to 100</description>
+			<dblValue>@URBS_IFRF@</dblValue>
+		</parameter>
+	</group>
+	<group id="Rainfall Runoff Parameters" name="Rainfall Runoff Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_IL" name="Initial Loss Rate (mm)">
+			<description>[URBS_IL] Initial Loss mm 0-100</description>
+			<dblValue>@URBS_IL@</dblValue>
+		</parameter>
+		<parameter id="URBS_CL" name="Continuing Loss Rate (mm/hr)">
+			<description>[URBS_CL] Continuing loss mm/hr 0-5</description>
+			<dblValue>@URBS_CL@</dblValue>
+		</parameter>
+		<parameter id="URBS_IF" name="Infiltration Capacity (mm)">
+			<description>[URBS_IF] Infiltration Capacity (mm) 0-500</description>
+			<dblValue>@URBS_IF@</dblValue>
+		</parameter>
+		<parameter id="URBS_PR" name="Proportional Runoff">
+			<description>[URBS_PR] Proportional Runoff</description>
+			<dblValue>@URBS_PR@</dblValue>
+		</parameter>
+	</group>
+	<group id="Catchment and Channel Routing Parameters" name="Catchment and Channel Routing Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_ALPHA" name="Alpha">
+			<description>[URBS_ALPHA] Channel|Catchment routing 0.03-0.2</description>
+			<dblValue>@URBS_ALPHA@</dblValue>
+		</parameter>
+		<parameter id="URBS_BETA" name="Beta">
+			<description>[URBS_BETA] Catchment Routing 1-9</description>
+			<dblValue>@URBS_BETA@</dblValue>
+		</parameter>
+		<parameter id="URBS_BASF" name="URBS_BASF">
+			<description>[URBS_BASF] Value can be either TRUE (default) or FALSE. If URBS_BASF=TRUE, the first discharge value of the inflow or recorded hydrographs is assumed to be the value of baseflow. If URBS_BASF=FALSE, the first discharge value is assumed part of the normal creek flow, and will be routed normally.</description>
+			<boolValue>@URBS_BASF@</boolValue>
+		</parameter>
+		<!--<parameter id="URBS_IBAS" name="URBS_IBAS">
+			<description>[URBS_IBAS] Value can be either TRUE (default) or FALSE. If URBS_IBAS=TRUE, flows are routed downstream from input points without baseflow</description>
+			<boolValue>@URBS_IBAS@</boolValue>
+		</parameter>-->
+		<parameter id="URBS_M" name="M">
+			<description>[URBS_M] Catchment routing exponent 0.6-1</description>
+			<dblValue>@URBS_M@</dblValue>
+		</parameter>
+		<!--<parameter id="URBS_SCAL" name="URBS_SCAL">
+			<description>[URBS_SCAL] Value can be either TRUE or FALSE (default). This environment variable only applies when URBS is performing a MATCHING RUN. When URBS_SCAL=FALSE, URBS matches the calculated hydrograph to the recorded values at each gauging station location only. If URBS_SCAL=TRUE, URBS will scale all hydrograph values upstream of a gauging station location in proportion to the ratio of recorded to calculated hydrograph values at the gauging station.</description>
+			<stringValue>@URBS_SCAL@</stringValue>
+		</parameter>-->
+		<parameter id="URBS_TRLS" name="Transmission Loss ML/km Varies">
+			<description>[URBS_TRLS] Transmission Loss ML/km Varies</description>
+			<dblValue>@URBS_TRLS@</dblValue>
+		</parameter>
+	</group>
+	<group id="RILM Rainfall Runoff Parameters" name="RILM Rainfall Runoff Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_ILMX" name="URBS_RESERVOIR_SITE_ID">
+			<description>[URBS_ILMX] Maximum initial loss ranging from 0 to 100</description>
+			<dblValue>@URBS_ILMX@</dblValue>
+		</parameter>
+		<parameter id="URBS_IFRF" name="Infiltration Recovery (mm)">
+			<description>[URBS_IFRF] Infiltration recovery ranging from 0 to 100</description>
+			<dblValue>@URBS_IFRF@</dblValue>
+		</parameter>
+		<parameter id="URBS_RF" name="Recovering IL Factor (mm)">
+			<description>[URBS_RF] Recovery factor ranging from 0 to 1</description>
+			<dblValue>@URBS_RF@</dblValue>
+		</parameter>
+		<parameter id="URBS_BF" name="Baseflow Scaling Factor">
+			<description>[URBS_BF] Baseflow Scaling Factor</description>
+			<dblValue>@URBS_BF@</dblValue>
+		</parameter>
+	</group>
+	<group id="Initial Dam Volumes and Levels" name="Initial Dam Volumes and Levels">
+		<model>Reservoirs</model>
+		<parameter id="URBS_ID" name="URBS name (VBF)">
+			<description>URBS name (VBF)</description>
+			<stringValue>@VBFNAME_URBS@</stringValue>
+		</parameter>
+		<parameter id="URBS_VALUE" name="Initial reservoir level">
+			<description>Initial reservoir level</description>
+			<dblValue>@INITIAL_RESERVOIR_LEVEL@</dblValue>
+		</parameter>
+	</group>
+	<group id="URBS MATCHES" name="URBS MATCHES">
+		<model>Matching</model>
+		<parameter id="URBS_MATCH_ID" name="URBS_MATCH_ID">
+			<description>Station used for matching</description>
+			<stringValue>@URBS_MATCHID@</stringValue>
+		</parameter>
+		<parameter id="URBS_MATCH_VALUE" name="URBS_MATCH_VALUE">
+			<description>Station used for matching</description>
+			<boolValue>@INCLUDE_MATCH_IN_URBS@</boolValue>
+		</parameter>
+	</group>
+	<!--<group id="Model Parameters" name="Model Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_N" name="N">
+			<description>[URBS_N] Channel routing exp 1/(km/h) 0.8-1</description>
+			<dblValue>@URBS_N@</dblValue>
+		</parameter>
+		<parameter id="URBS" name="URBS">
+			<description>[URBS] Value can be either URBS (default) or RORB. If URBS=URBS, the rainfall hyetograph is read in as discrete blocks of data.</description>
+			<stringValue>@URBS@</stringValue>
+		</parameter>
+		<parameter id="URBS_MUSK" name="URBS_MUSK">
+			<description>[URBS_MUSK] Value can be either TRUE or FALSE (default). If URBS_MUSK=TRUE, the Split Model will be used.</description>
+			<boolValue>@URBS_MUSK@</boolValue>
+		</parameter>
+		<parameter id="URBS_SPLT" name="URBS_SPLT">
+			<description>[URBS_SPLT] Value can be either TRUE or FALSE (default). This parameter will determine whether or not the Split Model is used, ie. whether the catchment and channel storages are "split" and defined by separate equations, or combined in one equation.</description>
+			<boolValue>@URBS_SPLT@</boolValue>
+		</parameter>
+		<parameter id="URBS_RATM" name="URBS_RATM">
+			<description>[URBS_RATM] Setting URBS_RATM to TRUE has the same effect as including the R keycharacter on the USES line of the catchment definition file. This invokes the rational method based sub-catchment smoothing routine</description>
+			<boolValue>@URBS_RATM@</boolValue>
+		</parameter>
+		<parameter id="URBS_SMTH" name="URBS_SMTH">
+			<description>[URBS_SMTH] Setting this environment variable to TRUE requests the URBS model to invoke the smoothing routing for DAM routing. This variable should be used with caution, as the causative factors behind the model instability should be first identified and understood.</description>
+			<boolValue>@URBS_SMTH@</boolValue>
+		</parameter>
+	</group>-->
+	<!--<group id="Data Parameters" name="Data Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_INTR" name="URBS_INTR">
+			<description>[URBS_INTR] Value can be either TRUE or FALSE (default). If URBS_INTR=FALSE, the rainfall-runoff values specified apply to the entire catchment upstream of a rainfall-runoff station. If URBS_INTR=TRUE, the rainfall-runoff values specified only apply to the catchment downstream of other rainfall-runoff stations.</description>
+			<boolValue>@URBS_INTR@</boolValue>
+		</parameter>
+		<parameter id="URBS_MINQ" name="URBS_MINQ">
+			<description>[URBS_MINQ] The value specifies a global catchment value for the maximum discharge capacity of the minor system (piped and channelised system). The value can also be entered in the DEFAULT PARAMETERS line of the catchment definition file. Its default value is infinity. Its value is in cumecs. 67</description>
+			<dblValue>@URBS_MINQ@</dblValue>
+		</parameter>
+		<parameter id="URBS_UIMP" name="URBS_UIMP">
+			<description>[URBS_UIMP] The value specifies the threshold fraction impervious, which when exceeded defines the extent of urbanised area. The value can also be entered in the DEFAULT PARAMETERS line of the catchment definition file. Its default value is 50%. Its value is given as a fraction.</description>
+			<dblValue>@URBS_UIMP@</dblValue>
+		</parameter>
+		<parameter id="URBS_ZERO" name="URBS_ZERO">
+			<description>[URBS_ZERO] Value can be either TRUE or FALSE (default). If URBS_ZERO=TRUE, URBS will match all recorded data (including zero values) to recorded data if a match is required, otherwise only recorded values greater than zero will be matched.</description>
+			<boolValue>@URBS_ZERO@</boolValue>
+		</parameter>
+	</group>-->
+	<!--<group id="Real Time Parameters" name="Real Time Parameters">
+		<model>Subcatchments</model>
+		<parameter id="URBS_REAL" name="URBS_REAL">
+			<description>[URBS_REAL] Value can be either TRUE (default) or FALSE. If URBS_REAL=TRUE, the URBS_FORE variable takes effect starting at the present time. If URBS_REAL=FALSE, the URBS_FORE variable takes effect starting offset hours after the time and date specified by the URBS_DATE and URBS_TIME variables, where offset is the value of URBS_OFFS in hours.</description>
+			<boolValue>@URBS_REAL@</boolValue>
+		</parameter>
+	</group>-->
+	<group id="URBS Directories" name="URBS Directories">
+		<model>Subcatchments</model>
+		<parameter id="URBS_BIN" name="Urbs binary files">
+			<description>[URBS_BIN] specifies where the URBS kernel urbs32.exe can be found.</description>
+			<stringValue>$MODULES_BIN$\urbs</stringValue><!--..\..\..\..\bin\urbs-->
+		</parameter>
+		<parameter id="URBS_RAIN" name="Rainfall station files">
+			<description>[URBS_RAIN] specifies where the rainfall files (.r) will be written to.</description>
+			<stringValue>..\to_urbs</stringValue>
+		</parameter>
+		<parameter id="URBS_RATS" name="Ratings">
+			<description>[URBS_RATS] specifies where ratings are stored.</description>
+			<stringValue>..\model</stringValue>
+		</parameter>
+		<parameter id="URBS_GAUG" name="Gauging station files">
+			<description>[URBS_GAUG] specifies where the gauging station files (.g) will be written to.</description>
+			<stringValue>..\to_urbs</stringValue>
+		</parameter>
+		<parameter id="URBS_INFS" name="Inflow files">
+			<description>[URBS_INFS] specifies where the inflow files (.i) will be written to.</description>
+			<stringValue>..\to_urbs</stringValue>
+		</parameter>
+		<parameter id="URBS_RETS" name="Results of the model">
+			<description>[URBS_RETS] specifies where the results of the model will be stored.</description>
+			<stringValue>..\from_urbs</stringValue>
+		</parameter>
+		<parameter id="URBS_HSTD" name="Hot start file">
+			<description>[URBS_HSTD] specifies where the hot start file should be stored.</description>
+			<stringValue>..\states</stringValue>
+		</parameter>
+		<parameter id="URBS_LOGD" name="Pre adapter messages">
+			<description>[URBS_LOGD] specifies where the pre adapter messages should be written to.</description>
+			<stringValue>..\logs</stringValue>
+		</parameter>
+	</group>
+</parameters>

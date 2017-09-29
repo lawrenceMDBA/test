@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
+	<parameterGroups>
+		<displayUnitConversionsId>ImportUnitConversions</displayUnitConversionsId>
+		<ratingCurveStageParameterId>H_obs</ratingCurveStageParameterId>
+		<ratingCurveDischargeParameterId>Q_obs</ratingCurveDischargeParameterId>
+		<parameterGroup id="Level">
+			<parameterType>instantaneous</parameterType>
+			<unit>m</unit>
+			<valueResolution>0.001</valueResolution>
+			<usesDatum>true</usesDatum>
+			<parameter id="H_obs" name="Water Level observed">
+				<shortName>H_obs</shortName>
+			</parameter>
+			<parameter id="H_calc" name="Water Level calculated">
+				<shortName>H_calc</shortName>
+			</parameter>
+			<parameter id="H_fcst" name="Water Level forecast">
+				<shortName>H_fcst</shortName>
+			</parameter>
+			<parameter id="Long.profile" name="Water Level(Long Profile)">
+				<shortName>Long Profile</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Level change">
+			<parameterType>instantaneous</parameterType>
+			<unit>m/d</unit>
+			<valueResolution>0.001</valueResolution>
+			<!--			<usesDatum>true</usesDatum>-->
+			<parameter id="dH" name="Water Level change">
+				<shortName>dH</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Flow">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML/day</unit>
+			<displayUnit>m3/s</displayUnit>
+			<valueResolution>.1</valueResolution>
+			<parameter id="Q_obs" name="Flow observed">
+				<shortName>Q_obs</shortName>
+			</parameter>
+			<parameter id="Q_cor" name="Flow observed (correlated)">
+				<shortName>Q_cor</shortName>
+			</parameter>
+			<parameter id="Q_calc" name="Flow calculated">
+				<shortName>Q_calc</shortName>
+			</parameter>
+			<parameter id="Q_fcst" name="Flow forecast">
+				<shortName>Q_fcst</shortName>
+			</parameter>
+			<parameter id="Q_comb" name="Flow combined observed and forecast">
+				<shortName>Q_comb</shortName>
+			</parameter>
+			<parameter id="Q_in_fcst" name="Flow forecast (inflow)">
+				<shortName>Q_in_fcst</shortName>
+			</parameter>
+			<parameter id="Q_out_fcst" name="Flow forecast (outflow)">
+				<shortName>Q_out_fcst</shortName>
+			</parameter>
+			<parameter id="Q_release" name="Flow reservoir outflow forecast">
+				<shortName>Q_release</shortName>
+			</parameter>
+			<parameter id="Q_release_scen" name="Flow reservoir outflow scenario forecast">
+				<shortName>Q_release_scen</shortName>
+			</parameter>
+			<parameter id="QI_obs" name="Inflow observed">
+				<shortName>QI_obs</shortName>
+			</parameter>
+			<parameter id="QI_calc" name="Inflow calculated">
+				<shortName>QI_calc</shortName>
+			</parameter>
+			<parameter id="QI_fcst" name="Inflow forecast">
+				<shortName>QI_fcst</shortName>
+			</parameter>
+			<parameter id="QI_est" name="Inflow Estimated">
+				<shortName>QI_est</shortName>
+			</parameter>
+			<parameter id="QORD_obs" name="Ordered Flow observed">
+				<shortName>QORD_obs</shortName>
+			</parameter>
+			<parameter id="QORD_calc" name="Ordered Flow calculated">
+				<shortName>QORD_calc</shortName>
+			</parameter>
+			<parameter id="QORD_fcst" name="Ordered Flow forecast">
+				<shortName>QORD_fcst</shortName>
+			</parameter>
+			<parameter id="QDIV_obs" name="Diversion Flow observed">
+				<shortName>QDIV_obs</shortName>
+			</parameter>
+			<parameter id="QDIV_calc" name="Diversion Flow calculated">
+				<shortName>QDIV_calc</shortName>
+			</parameter>
+			<parameter id="QDIV_fcst" name="Diversion Flow forecast">
+				<shortName>QDIV_fcst</shortName>
+			</parameter>
+			<parameter id="QRTN_obs" name="Return Flow observed">
+				<shortName>QRTN_obs</shortName>
+			</parameter>
+			<parameter id="QRTN_calc" name="Return Flow calculated">
+				<shortName>QRTN_calc</shortName>
+			</parameter>
+			<parameter id="QRTN_fcst" name="Return Flow forecast">
+				<shortName>QRTN_fcst</shortName>
+			</parameter>
+			<parameter id="QRL_obs" name="Release Flow observed">
+				<shortName>QRL_obs</shortName>
+			</parameter>
+			<parameter id="QRL_calc" name="Release Flow calculated">
+				<shortName>QRL_calc</shortName>
+			</parameter>
+			<parameter id="QRL_fcst" name="Release Flow forecast">
+				<shortName>QRL_fcst</shortName>
+			</parameter>
+			<parameter id="QL_obs" name="Loss observed">
+				<shortName>QL_obs</shortName>
+			</parameter>
+			<parameter id="QL_calc" name="Loss calculated">
+				<shortName>QL_calc</shortName>
+			</parameter>
+			<parameter id="QL_fcst" name="Loss forecast">
+				<shortName>QL_fcst</shortName>
+			</parameter>
+			<parameter id="QCR_obs" name="Flow Credit observed">
+				<shortName>QCR_obs</shortName>
+			</parameter>
+			<parameter id="QCR_calc" name="Flow Credit calculated">
+				<shortName>QCR_calc</shortName>
+			</parameter>
+			<parameter id="QCR_fcst" name="Flow Credit forecast">
+				<shortName>QCR_fcst</shortName>
+			</parameter>
+			<parameter id="QTrade" name="Trade Volume">
+				<shortName>QTrade</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Flow (monthly)">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML/month</unit>
+			<valueResolution>.1</valueResolution>
+			<parameter id="Q_trade" name="Trade Volume">
+				<shortName>Q_trade</shortName>
+			</parameter>
+			<!-- 
+			<parameter id="Q_trade_TLM" name="Trade Volume TLM">
+				<shortName>Q_trade_TLM</shortName>
+			</parameter>
+			<parameter id="Q_trade_CEHW" name="Trade Volume CEHW">
+				<shortName>Q_trade_CEHW</shortName>
+			</parameter>
+			<parameter id="Q_trade_SA_deferred" name="Trade Volume  SA_deferred">
+				<shortName>Q_trade_SA_deferred</shortName>
+			</parameter>
+			<parameter id="Q_trade_undelivered" name="Trade Volume  undelivered">
+				<shortName>Q_trade_undelivered</shortName>
+			</parameter>
+			 -->
+		</parameterGroup>
+		<parameterGroup id="Seasonal Patterns">
+			<parameterType>accumulative</parameterType>
+			<unit>ML</unit>
+			<displayUnit>GL</displayUnit>
+			<valueResolution>.1</valueResolution>
+			<parameter id="Q_plan" name="Flow planned">
+				<shortName>Q_plan</shortName>
+			</parameter>
+			<parameter id="QI_plan" name="Inflow planned">
+				<shortName>QI_plan</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Flow change">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML/day</unit>
+			<!-- <displayUnit>GL/day</displayUnit> -->
+			<valueResolution>1</valueResolution>
+			<parameter id="dQ" name="Flow rate change">
+				<shortName>dQ</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Storage Volume">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML</unit>
+			<!-- Disabled as this is making time series display plots to have 4 digit precision
+ 			<displayUnit>GL</displayUnit>
+			-->
+			<valueResolution>1</valueResolution>
+			<usesDatum/>
+			<parameter id="V_obs" name="Storage Volume observed">
+				<shortName>V_obs</shortName>
+			</parameter>
+			<parameter id="V_calc" name="Storage Volume calculated">
+				<shortName>V_calc</shortName>
+			</parameter>
+			<parameter id="V_fcst" name="Storage Volume forecast">
+				<shortName>V_fcst</shortName>
+			</parameter>
+			<parameter id="V_in_fcst" name="Storage Volume forecast (inflow)">
+				<shortName>V_in_fcst</shortName>
+			</parameter>
+			<parameter id="V_plan" name="Storage Volume planned">
+				<shortName>V_plan</shortName>
+			</parameter>
+			<parameter id="VL_obs" name="Storage Volume Loss observed">
+				<shortName>VL_obs</shortName>
+			</parameter>
+			<parameter id="VL_calc" name="Storage Volume Loss calculated">
+				<shortName>VL_calc</shortName>
+			</parameter>
+			<parameter id="VL_fcst" name="Storage Volume Loss forecast">
+				<shortName>VL_fcst</shortName>
+			</parameter>
+			<parameter id="V_undelivered" name="Undelivered volume">
+				<shortName>V_undel</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Storage Volume change">
+			<parameterType>instantaneous</parameterType>
+			<unit>ML/day</unit>
+			<!-- Disabled as this is making time series display plots to have 4 digit precision
+ 			<displayUnit>GL</displayUnit>
+			-->
+			<valueResolution>1</valueResolution>
+			<usesDatum/>
+			<parameter id="dV" name="Storage Volume change">
+				<shortName>dV</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Gate openings">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="NoGatesOpen_obs" name="No.Gates Open observed">
+				<shortName>NoGatesOpen_obs</shortName>
+			</parameter>
+			<parameter id="NoGatesOpen_calc" name="No.Gates Open calculated">
+				<shortName>NoGatesOpen_calc</shortName>
+			</parameter>
+			<parameter id="NoGatesOpen_fcst" name="No.Gates Open forecast">
+				<shortName>NoGatesOpen_fcst</shortName>
+			</parameter>
+			<parameter id="NoGatesOpen_plan" name="No.Gates Open planned">
+				<shortName>NoGatesOpen_plan</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Stop Logs">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="NoStopLogs_obs" name="No.Stop Logs observed">
+				<shortName>NoStopLogs_obs</shortName>
+			</parameter>
+			<parameter id="NoStopLogs_calc" name="No.Stop Logs calculated">
+				<shortName>NoStopLogs_calc</shortName>
+			</parameter>
+			<parameter id="NoStopLogs_fcst" name="No.Stop Logs forecast">
+				<shortName>NoStopLogs_fcst</shortName>
+			</parameter>
+			<parameter id="NoStopLogs_plan" name="No.Stop Logs planned">
+				<shortName>NoStopLogs_plan</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Precipitation">
+			<parameterType>accumulative</parameterType>
+			<unit>mm</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="P_obs" name="Precipitation observed">
+				<shortName>P_obs</shortName>
+			</parameter>
+			<parameter id="P_calc" name="Precipitation calculated">
+				<shortName>P_calc</shortName>
+			</parameter>
+			<parameter id="P_fcst" name="Precipitation forecast">
+				<shortName>P_fcst</shortName>
+			</parameter>
+			<parameter id="P_scen" name="Rainfall Forecast (Scenario)">
+				<shortName>P_scen</shortName>
+			</parameter>
+			<parameter id="P_comb" name="Precipitation combined observed and forecast">
+				<shortName>P_comb</shortName>
+			</parameter>
+			<parameter id="P_obs_avg" name="Precipitation average observed">
+				<shortName>P_obs_avg</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Evaporation">
+			<parameterType>accumulative</parameterType>
+			<unit>mm</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="EVAP_obs" name="Evaporation observed">
+				<shortName>EVAP_obs</shortName>
+			</parameter>
+			<parameter id="EVAP_calc" name="Evaporation calculated">
+				<shortName>EVAP_calc</shortName>
+			</parameter>
+			<parameter id="EVAP_fcst" name="Evaporation forecast">
+				<shortName>EVAP_fcst</shortName>
+			</parameter>
+			<parameter id="EVAP_comb" name="Evaporation combined observed and forecast">
+				<shortName>EVAP_comb</shortName>
+			</parameter>
+			<parameter id="PET_obs" name="Potential Evapo Transpiration observed ">
+				<shortName>PET_obs</shortName>
+			</parameter>
+		</parameterGroup>
+	<parameterGroup id="Losses">
+		<parameterType>accumulative</parameterType>
+		<unit>mm</unit>
+		<valueResolution>0.1</valueResolution>
+		<parameter id="IL" name="Initial Loss">
+			<shortName>IL</shortName>
+		</parameter>
+	</parameterGroup>
+		<parameterGroup id="Soil Moisture">
+			<parameterType>instantaneous</parameterType>
+			<unit>mm</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="SM_obs" name="Soil Moist. observed">
+				<shortName>SM_obs</shortName>
+			</parameter>
+			<parameter id="SM_calc" name="Soil Moist. calculated">
+				<shortName>SM_cals</shortName>
+			</parameter>
+			<parameter id="SM_fcst" name="Soil Moist. forecast">
+				<shortName>SM_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Temperature">
+			<parameterType>instantaneous</parameterType>
+			<unit>degrees C</unit>
+			<valueResolution>0.01</valueResolution>
+			<parameter id="AT_obs" name="Air Temperature observed">
+				<shortName>AT_obs</shortName>
+			</parameter>
+			<parameter id="AT_calc" name="Air Temperature calculated">
+				<shortName>AT_calc</shortName>
+			</parameter>
+			<parameter id="AT_fcst" name="Air Temperature forecast">
+				<shortName>AT_fcst</shortName>
+			</parameter>
+			<parameter id="AT_comb" name="Air Temperature Combined observed and ADFD">
+				<shortName>AT_comb</shortName>
+			</parameter>
+			<parameter id="WT_obs" name="Water Temperature observed">
+				<shortName>WT_obs</shortName>
+			</parameter>
+			<parameter id="WT_calc" name="Water Temperature calculated">
+				<shortName>WT_calc</shortName>
+			</parameter>
+			<parameter id="WT_fcst" name="Water Temperature forecast">
+				<shortName>WT_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Conductivity">
+			<parameterType>instantaneous</parameterType>
+			<unit>µS/cm</unit>
+			<valueResolution>0.1</valueResolution>
+			<parameter id="EC_obs" name="Electrical Conductivity observed">
+				<shortName>EC_obs</shortName>
+			</parameter>
+			<parameter id="EC_calc" name="Electrical Conductivity calculated">
+				<shortName>EC_calc</shortName>
+			</parameter>
+			<parameter id="EC_fcst" name="Electrical Conductivity forecast">
+				<shortName>EC_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Oxygen">
+			<parameterType>instantaneous</parameterType>
+			<unit>mg/L</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="DO_obs" name="Dissolved Oxygen observed">
+				<shortName>DO_obs</shortName>
+			</parameter>
+			<parameter id="DO_calc" name="Dissolved Oxygen calculated">
+				<shortName>DO_calc</shortName>
+			</parameter>
+			<parameter id="DO_fcst" name="Dissolved Oxygen forecast">
+				<shortName>DO_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="pH">
+			<parameterType>instantaneous</parameterType>
+			<unit>pH</unit>
+			<valueResolution>0.1</valueResolution>
+			<parameter id="pH_obs" name="pH observed">
+				<shortName>pH_obs</shortName>
+			</parameter>
+			<parameter id="pH_calc" name="pH calculated">
+				<shortName>pH_calc</shortName>
+			</parameter>
+			<parameter id="pH_fcst" name="pH forecast">
+				<shortName>pH_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Turbidity">
+			<parameterType>instantaneous</parameterType>
+			<unit>NTU</unit>
+			<valueResolution>0.01</valueResolution>
+			<parameter id="Turbidity_obs" name="Turbidity observed">
+				<shortName>Turbidity_obs</shortName>
+			</parameter>
+			<parameter id="Turbidity_calc" name="Turbidity calculated">
+				<shortName>Turbidity_calculated</shortName>
+			</parameter>
+			<parameter id="Turbidity_fcst" name="Turbidity forecast">
+				<shortName>Turbidity_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Bacteria">
+			<parameterType>instantaneous</parameterType>
+			<unit>mm3/l</unit>
+			<valueResolution>0.01</valueResolution>
+			<parameter id="Cyanobacteria_obs">
+				<shortName>Cyanobacteria_obs</shortName>
+			</parameter>
+			<parameter id="CyanobacteriaToxic_obs">
+				<shortName>CyanobacteriaToxic_obs</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Velocity">
+			<parameterType>instantaneous</parameterType>
+			<unit>km/h</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="WindVel_obs" name="Wind Velocity observed">
+				<shortName>WindVel_obs</shortName>
+			</parameter>
+			<parameter id="WindVel_calc" name="Wind Velocity calculated">
+				<shortName>WindVel_calc</shortName>
+			</parameter>
+			<parameter id="WindVel_fcst" name="Wind Velocity forecast">
+				<shortName>WindVel_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Direction">
+			<parameterType>instantaneous</parameterType>
+			<unit>degrees radius</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="WindDir_obs" name="Wind Direction observed">
+				<shortName>WindDir_obs</shortName>
+			</parameter>
+			<parameter id="WindDir_calc" name="Wind Direction calculated">
+				<shortName>WindDir_calc</shortName>
+			</parameter>
+			<parameter id="WindDir_fcst" name="Wind Direction forecast">
+				<shortName>WindDir_fcst</shortName>
+			</parameter>
+			<parameter id="FlowDir_obs" name="Flow Direction observed">
+				<shortName>FlowDir_obs</shortName>
+			</parameter>
+			<parameter id="FlowDir_calc" name="Flow Direction calculated">
+				<shortName>FlowDir_calc</shortName>
+			</parameter>
+			<parameter id="FlowDir_fcst" name="Flow Direction forecast">
+				<shortName>FlowDir_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Power">
+			<parameterType>instantaneous</parameterType>
+			<unit>MW</unit>
+			<valueResolution>0.1</valueResolution>
+			<parameter id="EGEN_obs" name="Electricity Generation observed">
+				<shortName>EGEN_obs</shortName>
+			</parameter>
+			<parameter id="EGEN_calc" name="Electricity Generation calculated">
+				<shortName>EGEN_calc</shortName>
+			</parameter>
+			<parameter id="EGEN_fcst" name="Electricity Generation forecast">
+				<shortName>EGEN_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Radiation">
+			<parameterType>instantaneous</parameterType>
+			<unit>watts/m2</unit>
+			<valueResolution>0.001</valueResolution>
+			<parameter id="Radiation_obs" name="Solar Radiation observed">
+				<shortName>Radiation_obs</shortName>
+			</parameter>
+			<parameter id="Radiation_calc" name="Solar Radiation calculated">
+				<shortName>Radiation_calc</shortName>
+			</parameter>
+			<parameter id="Radiation_fcst" name="Solar Radiation forecast">
+				<shortName>Radiation_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Occurence">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="Threshold_H_count" name="Nr. of level violations (June1st to now)">
+				<shortName>Threshold_H_count</shortName>
+			</parameter>
+			<parameter id="Threshold_dH_count" name="Nr. of level change violations (June1st to now)">
+				<shortName>Threshold_dH_count</shortName>
+			</parameter>
+			<parameter id="Threshold_Q_count" name="Nr. of flow violations (June1st to now)">
+				<shortName>Threshold_Q_count</shortName>
+			</parameter>
+			<parameter id="Threshold_dQ_count" name="Nr. of flow change violations (June1st to now)">
+				<shortName>Threshold_dQ_count</shortName>
+			</parameter>
+			<parameter id="Threshold_V_count" name="Nr. of storage violations (June1st to now)">
+				<shortName>Threshold_V_count</shortName>
+			</parameter>
+			<parameter id="Threshold_dV_count" name="Nr. of storage change violations (June1st to now)">
+				<shortName>Threshold_dV_count</shortName>
+			</parameter>
+			<parameter id="Threshold_EC_count" name="Nr. of salinity violations (June1st to now)">
+				<shortName>Threshold_EC_count</shortName>
+			</parameter>
+			<parameter id="Threshold_DO%_count" name="Nr. of dissolved oxygen violations (June1st to now)">
+				<shortName>Threshold_DO%_count</shortName>
+			</parameter>
+			<parameter id="Daily_Report_sent" name="Nr. of daily reports sent that day (should be max 1)">
+				<shortName>Daily_Report_sent</shortName>
+			</parameter>
+			<parameter id="Daily_Report_trigger" name="Nr. of daily reports to send (should be max 1)">
+				<shortName>Daily_Report_trigger</shortName>
+			</parameter>
+			<parameter id="index" name="index">
+				<shortName>index</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Alert level">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="Recreational_alert" name="Recreational_alert">
+				<shortName>Recreational_alert</shortName>
+			</parameter>
+			<parameter id="DrinkingWater_alert" name="DrinkingWater_alert">
+				<shortName>DrinkingWater_alert</shortName>
+			</parameter>
+			<parameter id="Livestock_alert" name="Livestock_alert">
+				<shortName>Livestock_alert</shortName>
+			</parameter>
+			<parameter id="Cyanobacteria_alert" name="Cyanobacteria_alert">
+				<shortName>Cyanobacteria_alert</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Misc">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>0.0001</valueResolution>
+			<parameter id="proportion" name="Undelivered proportion">
+				<shortName>prop</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Probability">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>0.1</valueResolution>
+			<parameter id="Prob_P" name="Chance of rain">
+				<shortName>Prob_P</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Percentage">
+			<parameterType>instantaneous</parameterType>
+			<unit>%</unit>
+			<valueResolution>0.01</valueResolution>
+			<parameter id="DO%_obs" name="% Dissolved Oxygen observed">
+				<shortName>DO%_obs</shortName>
+			</parameter>
+			<parameter id="DO%_calc" name="% Dissolved Oxygen calculated">
+				<shortName>DO%_calc</shortName>
+			</parameter>
+			<parameter id="DO%_fcst" name="% Dissolved Oxygen forecast">
+				<shortName>DO%_fcst</shortName>
+			</parameter>
+			<parameter id="V%_obs" name="% Storage Volume observed">
+				<shortName>V%_obs</shortName>
+			</parameter>
+			<parameter id="V%_calc" name="% Storage Volume calculated">
+				<shortName>V%_calc</shortName>
+			</parameter>
+			<parameter id="V%_fcst" name="% Storage Volume calculated">
+				<shortName>V%_fcst</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Threshold levels">
+			<parameterType>instantaneous</parameterType>
+			<unit>-</unit>
+			<valueResolution>1</valueResolution>
+			<parameter id="Threshold_H" name="Level threshold violation">
+				<shortName>Threshold_H</shortName>
+			</parameter>
+			<parameter id="Threshold_dH" name="Change of level threshold violation">
+				<shortName>Threshold_dH</shortName>
+			</parameter>
+			<parameter id="Threshold_Q" name="Flow threshold violation">
+				<shortName>Threshold_Q</shortName>
+			</parameter>
+			<parameter id="Threshold_dQ" name="Change of flow threshold violation">
+				<shortName>Threshold_dQ</shortName>
+			</parameter>
+			<parameter id="Threshold_V" name="Storage threshold violation">
+				<shortName>Threshold_V</shortName>
+			</parameter>
+			<parameter id="Threshold_dV" name="Change of storage threshold violation">
+				<shortName>Threshold_V</shortName>
+			</parameter>
+			<parameter id="Threshold_EC" name="Salinity threshold violation">
+				<shortName>Threshold_EC</shortName>
+			</parameter>
+			<parameter id="Threshold_DO%" name="Oxygen threshold violation">
+				<shortName>Threshold_DO%</shortName>
+			</parameter>
+			<parameter id="Threshold_ALL" name="Combined threshold violations">
+				<shortName>Threshold_ALL</shortName>
+			</parameter>
+			<!--<parameter id="Threshold_QDIV" name="Diversion threshold violation">
+				<shortName>Threshold_QDIV</shortName>
+			</parameter>
+			<parameter id="Threshold_QRL" name="Release threshold violation">
+				<shortName>Threshold_QRL</shortName>
+			</parameter>
+			<parameter id="Threshold_QO" name="Outlet threshold violation">
+				<shortName>Threshold_QO</shortName>
+			</parameter>
+			<parameter id="Threshold_Q_rel" name="Related discharge threshold violation">
+				<shortName>Threshold_Q_rel</shortName>
+			</parameter>-->
+		</parameterGroup>
+	</parameterGroups>
+</parameters>

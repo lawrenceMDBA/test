@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filters version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/filters.xsd">
+	<defaultFilterId>Telemetry_data</defaultFilterId>
+	<filter id="Telemetry_data" name="Telemetry (Real-Time)">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Telemetry_by_Catchments"/>
+		<child foreignKey="Telemetry"/>
+		<child foreignKey="Telemetry_Thresholds"/>
+	</filter>
+	<!-- Filters_OpsReach -->
+	<filter id="River_Operations" name="River Operations">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="MDBC_OPS_results"/>
+		<child foreignKey="MDBC_OPS_thresholds_SO"/>
+		<child foreignKey="MDBC_OPS_thresholds_RO"/>
+		<child foreignKey="ewSource_results"/>
+		<child foreignKey="Water_quality"/>
+	</filter>
+	<!-- Filters_DataEntry -->
+	<filter id="MobileDataEntry" name="Mobile data entry (demo)">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Menindee_DataEntry"/>
+	</filter>
+	<filter id="Data Entry" name="Data Entry Groups">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Dartmouth_DataEntry"/>
+		<child foreignKey="Hume_DataEntry"/>
+		<child foreignKey="Yarrawonga_DataEntry"/>
+		<child foreignKey="Menindee_DataEntry"/>
+		<child foreignKey="Leeton_DataEntry"/>
+		<child foreignKey="Snowy_DataEntry"/>
+		<child foreignKey="Deniliquin_DataEntry"/>
+		<child foreignKey="Mildura_DataEntry"/>
+		<child foreignKey="Tatura_DataEntry"/>
+		<child foreignKey="Torrumbarry_DataEntry"/>
+		<child foreignKey="SouthOz_DataEntry"/>
+		<child foreignKey="Goolwa_DataEntry"/>
+		<child foreignKey="SADiversions_DataEntry"/>
+		<child foreignKey="BMRegulators_DataEntry"/>
+		<child foreignKey="CCB_Diversions_DataEntry"/>
+		<child foreignKey="RMR_and_FMIT_DataEntry"/>
+		<child foreignKey="Mur(F-H)LowerDar(A-E)_DataEntry"/>
+		<child foreignKey="NSWDivs(ABCDE)_DataEntry"/>
+		<child foreignKey="VICDiversions_DataEntry"/>
+	</filter>
+	<!-- Filters_Catchment -->
+	<filter id="BoM_results_catchment" name="STF catchment">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="BoM_STF_calculated_results_OVENS_catchment"/>
+		<child foreignKey="BoM_STF_calculated_results_KIEWA_catchment"/>
+		<child foreignKey="BoM_STF_calculated_results_UPPERMURRAY_catchment"/>
+	</filter>
+	<filter id="MDBC_OPS_results_catchment" name="Operations catchment (from MDBC_OPS)">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="MDBS_OPS_calculated_results_OVENS_catchment"/>
+		<child foreignKey="MDBS_OPS_forecast_results_OVENS_catchment"/>
+		<child foreignKey="MDBS_OPS_calculated_results_KIEWA_catchment"/>
+		<child foreignKey="MDBS_OPS_forecast_results_KIEWA_catchment"/>
+	</filter>
+	<filter id="Hydro_catchment" name="Planning catchment (from Hydro)">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Hydro_planning_OVENS_catchment"/>
+		<child foreignKey="Hydro_planning_KIEWA_catchment"/>
+	</filter>
+	<filter id="Hydro" name="Planning (from Hydro)">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Hydro_planning_OVENS"/>
+		<child foreignKey="Hydro_planning_KIEWA"/>
+		<child foreignKey="Hydro_planning_YARRA"/>
+		<child foreignKey="Hydro_planning_EDWOPS"/>
+		<child foreignKey="Hydro_planning_MIDOPS"/>
+		<child foreignKey="Hydro_planning_ST_FLOOD"/>
+	</filter>
+	<!-- Filters_Reporting -->
+	<filter id="Reports" name="Reports">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="Hydro_calculated_by_reach"/>
+		<child foreignKey="Weekly_report"/>
+	</filter>
+	<!-- Filters_FloodOps-->
+	<filter id="Flood Ops" name="Flood Ops">
+		<viewPermission>FloodOperations</viewPermission>
+		<child foreignKey="Catchment_FloodOps"/>
+		<child foreignKey="Parameter_FloodOps"/>
+		<child foreignKey="URBS"/>
+	</filter>
+	<!-- Filters_Debug -->
+	<filter id="Debug" name="Debug">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="TestDataEntry"/>
+		<child foreignKey="Everything"/>
+		<child foreignKey="PreProcessThresholds"/>
+	</filter>
+</filters>

@@ -1,0 +1,1636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thresholdValueSets xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/thresholdValueSets.xsd">
+	<thresholdValueSet id="Levels" name="Water levels">
+		<description>Water levels</description>
+		<levelThresholdValue>
+			<levelThresholdId>Minor_Flooding</levelThresholdId>
+			<valueFunction>@FL_MINOR@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Moderate_Flooding</levelThresholdId>
+			<valueFunction>@FL_MODERATE@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Major_Flooding</levelThresholdId>
+			<valueFunction>@FL_MAJOR@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level</levelThresholdId>
+			<valueFunction>@FSL@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Surcharge_Level</levelThresholdId>
+			<valueFunction>@SURL@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="60" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>URBS_fcst_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="7" start="-14" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>-->
+	</thresholdValueSet>
+	<!--Threshold value sets for timeSeriesSets used in threshold assessment (objectives) - general thresholds-->
+	<thresholdValueSet id="Levels_objectives" name="Water levels (SOnO, RO)">
+		<description>Water levels (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level_up</levelThresholdId>
+			<valueFunction>@H_GT_FSL@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@SO_H_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@RO_H_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@H_GTE_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_down</levelThresholdId>
+			<valueFunction>@H_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_down</levelThresholdId>
+			<valueFunction>@H_LTE_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_range_up</levelThresholdId>
+			<valueFunction>@H_RANGE_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_range_up_switchoff</levelThresholdId>
+			<valueFunction>@H_RANGE_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_range_down</levelThresholdId>
+			<valueFunction>@H_RANGE_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_range_down_switchoff</levelThresholdId>
+			<valueFunction>@H_RANGE_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@RO_H_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@SO_H_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@H_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up</levelThresholdId>
+			<valueFunction>@RO_H_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up_switchoff</levelThresholdId>
+			<valueFunction>@RO_H_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up</levelThresholdId>
+			<valueFunction>@SO_H_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up_switchoff</levelThresholdId>
+			<valueFunction>@SO_H_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down</levelThresholdId>
+			<valueFunction>@RO_H_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down_switchoff</levelThresholdId>
+			<valueFunction>@RO_H_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down</levelThresholdId>
+			<valueFunction>@SO_H_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down_switchoff</levelThresholdId>
+			<valueFunction>@SO_H_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>threshold_sites_Water_Level</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Level changes_objectives" name="Water level changes (SOnO, RO)">
+		<description>Water level changes (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@dH_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_level_changes</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_level_changes</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_dH</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+	</thresholdValueSet>
+	<thresholdValueSet id="StorageVolume" name="Storage Volume">
+		<description>Storage Volume</description>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Volume</levelThresholdId>
+			<valueFunction>@FSV@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Surcharge_Volume</levelThresholdId>
+			<valueFunction>@SURV@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="60" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationSetId>flood.sites_vobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="StorageVolume_objectives" name="Storage Volume (SOnO, RO)">
+		<description>Storage Volume (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level_up</levelThresholdId>
+			<valueFunction>@V_GTE_FSL@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@V_GTE_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@V_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down</levelThresholdId>
+			<valueFunction>@V_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_down_switchoff</levelThresholdId>
+			<valueFunction>@V_RANGE_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up</levelThresholdId>
+			<valueFunction>@V_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_range_up_switchoff</levelThresholdId>
+			<valueFunction>@V_RANGE_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>threshold_sites_storage_volume</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Flow" name="Flow">
+		<description>Flow</description>
+		<!-- These timeseries sets defined below are used in River Ops status SSD display -->
+		<!--<levelThresholdValue>
+			<levelThresholdId>Hard_down</levelThresholdId>
+			<valueFunction>@Q_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@Q_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@RO_Q_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@SO_Q_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@RO_Q_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@SO_Q_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_4@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_3@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="60" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Flow_objectives" name="Flow (SOnO, RO)">
+		<description>Flow (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_down</levelThresholdId>
+			<valueFunction>@Q_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_up</levelThresholdId>
+			<valueFunction>@Q_GT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@RO_Q_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@SO_Q_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@RO_Q_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@SO_Q_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Flow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Flow minus order_objectives" name="Flow minus order (SOnO, RO)">
+		<description>Flow minus order (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_down</levelThresholdId>
+			<valueFunction>@Q-QCAP_LT_HARD@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_down</levelThresholdId>
+			<valueFunction>@Q-QCAP_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@Q-QORD_GT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_up</levelThresholdId>
+			<valueFunction>@Q-QORD_LT_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>delta</qualifierId>
+			<locationId>R_A4260502</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>threshold_sites_Q-QORD</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Salinity" name="Salinity">
+		<description>Salinity</description>
+		<levelThresholdValue>
+			<levelThresholdId>Salinity</levelThresholdId>
+			<valueFunction>@EC_GT_SAL@</valueFunction>
+		</levelThresholdValue>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_fcst</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-5" end="60" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Salinity_objectives" name="Salinity (SOnO, RO)">
+		<description>Salinity (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Salinity_up</levelThresholdId>
+			<valueFunction>@EC_GT_SAL@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_calc</parameterId>
+			<locationSetId>threshold_sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="DO%_objectives" name="DO% (SOnO, RO)">
+		<description>DO% (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>DO%_down</levelThresholdId>
+			<valueFunction>@DOPCT_LTE_DOPCT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_calc</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-365" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<!--Threshold value sets for timeSeriesSets used in threshold assessment (objectives) - special thresholds. These can't be properly displayed in the general timeSeries display. -->
+	<thresholdValueSet id="Levels_objectives_specials" name="Water levels (SOnO, RO)">
+		<description>Water levels (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@H_S_SOFT_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@H_S_SOFT_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@H_S_COND_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@H_S_COND_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@H_S_COND_3@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>threshold_sites_H_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>DecJan</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Level changes_objectives_specials" name="Water level changes (SOnO, RO)">
+		<description>Water level changes (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@dH_S_SOFT_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@dH_S_SOFT_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_4@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_5@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_6@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dH_S_HARD_1@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_dH_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<aggregationPeriod unit="hour" start="-23" end="0"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="StorageVolume_objectives_specials" name="Storage Volume (SOnO, RO)">
+		<description>Storage Volume (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@V_S_SOFT@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>threshold_sites_V_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="StorageVolume%_objectives_specials" name="Storage Volume % (SOnO, RO)">
+		<description>Storage Volume Percentage (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@V_S_COND_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@V_S_COND_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@V_S_COND_3@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Flow_objectives_specials" name="Flow (SOnO, RO)">
+		<description>Flow (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Soft_special</levelThresholdId>
+			<valueFunction>@Q_S_SOFT_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@Q_S_HARD_4@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Condition</levelThresholdId>
+			<valueFunction>@Q_S_COND_3@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_Q_special</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>JanFebMar</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>Apr</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>NovDec</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>May-Oct</qualifierId>
+			<locationId>R_425012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Flow changes_objectives_specials" name="Flow changes (SOnO, RO)">
+		<description>Flow changes (SOnO, RO)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dQ_S_HARD_1@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dQ_S_HARD_2@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dQ_S_HARD_3@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dQ_S_HARD_4@</valueFunction>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard_special</levelThresholdId>
+			<valueFunction>@dQ_S_HARD_5@</valueFunction>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dQ</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<!--Threshold value sets-->
+	<thresholdValueSet id="Threshold_ALL" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Active</levelThresholdId>
+			<value>1</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>RO</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_H" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>101</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>102</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level</levelThresholdId>
+			<value>103</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_dH" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>201</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>202</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>report</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!--<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_Q" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>301</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>302</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_V" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>501</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>502</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Volume</levelThresholdId>
+			<value>503</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_EC" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Salinity</levelThresholdId>
+			<value>704</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_EC</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_DO%" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>DO%</levelThresholdId>
+			<value>805</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="Threshold_dQ" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>401</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>402</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_RO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<!--<thresholdValueSet id="Threshold_dV" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>601</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>602</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level</levelThresholdId>
+			<value>603</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dV</parameterId>
+			<locationSetId>threshold_sites_dV</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>-->
+	<!--Threshold value sets for use in FloodOps - Specifically for Doctor's Point (Q) and Albury (H)-->
+	<thresholdValueSet id="FloodOps_flow" name="FloodOps flow thresholds">
+		<description>FloodOps flow thresholds (Doctor's Point) </description>
+		<levelThresholdValue>
+			<levelThresholdId>Channel_Capacity_Q</levelThresholdId>
+			<value>25000</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Minor_landholder_impact_Q</levelThresholdId>
+			<value>32000</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Considerable_landholder_impact_Q</levelThresholdId>
+			<value>40000</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="7" start="-14" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+	<thresholdValueSet id="FloodOps_level" name="FloodOps level thresholds">
+		<description>FloodOps level thresholds (Albury)</description>
+		<levelThresholdValue>
+			<levelThresholdId>Channel_Capacity_H</levelThresholdId>
+			<value>3.0</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Minor_landholder_impact_H</levelThresholdId>
+			<value>3.5</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Major_landholder_impact_H</levelThresholdId>
+			<value>4.1</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Major_flood_H</levelThresholdId>
+			<value>5.5</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Top_of_Albury</levelThresholdId>
+			<value>5.85</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="7" start="-14" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>secondary</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-5" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>
+</thresholdValueSets>

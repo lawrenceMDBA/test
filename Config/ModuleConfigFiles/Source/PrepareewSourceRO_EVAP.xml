@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ SA trade flow (see PrepareewSourceRO)-->
+	<!--+ Inflow: Rain (see Rainfall_1d_Forecast)-->
+	<!--+ Inflow: Climate (i.e. EVAP)-->
+	<!-- 	- merge OPO and long term forecast -->
+	<!-- 	- apply user defined multiplier on long term forecast (e.g. heat wave)-->
+	<!-- 	- Temperature fcst (ADFD) for comparison-->
+	<!-- 	-  interpolate gridded forecast to location based time series -->
+	<!--+ Inflow: Flow (see PrepareewSourceRO_Qcomb)-->
+	<!--+ Water user demand: Q_plan (see PrepareewSourceRO_QORD)-->
+	<!--+ Environmental Flow Orders (not included at this stage)-->
+	<!--+ Unaccounted differences (see ImportFromEWSourceRO)-->
+	<!--========================================================================================-->
+	<!--Dummy Subatchments to make modifier display work for subcatchment attributes-->
+	<variable>
+		<variableId>Dummy_Subcatchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationSetId>ewSourceRO_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= EVAP fcst - user input, obs and result ========= -->
+	<variable>
+		<variableId>EVAP_mod_input</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<locationRelationId>subcatchment</locationRelationId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" end="1" endOverrulable="true"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_fao56_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_mlake_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_comb_fao56</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_comb_mlake</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_comb</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>SourceRO_sites_EVAP</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= EVAP fcst temporary series ========= -->
+	<variable>
+		<variableId>Cycle_month</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>index</parameterId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_monthly_fao56</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_monthly_mlake</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_monthly_fao56_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_monthly_mlake_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_fcst_fao56</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_fcst_mlake</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= EVAP modifier temporary series ========= -->
+	<variable>
+		<variableId>constant_one</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_mod</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_fcst_fao56_modified</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>fao56</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_fcst_mlake_modified</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<qualifierId>mlake</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="400" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= AT_fcst ========= -->
+	<variable>
+		<variableId>ADFD_AT_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT_max_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>max</qualifierId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT_subcatchments</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewSourceRO_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT_max_subcatchments</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>ewSourceRO_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= AT_fcst temporary series ========= -->
+	<variable>
+		<variableId>ADFD_AT_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ADFD_AT_max_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>AT_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>ewSourceRO_sites_OP</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-7" end="14"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--EVAP - monthly cycle-->
+	<transformation id="Cycle_month">
+		<profile>
+			<timeSeries>
+				<inputProfile>
+					<data value="1" monthDay="--01-01"/>
+					<data value="2" monthDay="--02-01"/>
+					<data value="3" monthDay="--03-01"/>
+					<data value="4" monthDay="--04-01"/>
+					<data value="5" monthDay="--05-01"/>
+					<data value="6" monthDay="--06-01"/>
+					<data value="7" monthDay="--07-01"/>
+					<data value="8" monthDay="--08-01"/>
+					<data value="9" monthDay="--09-01"/>
+					<data value="10" monthDay="--10-01"/>
+					<data value="11" monthDay="--11-01"/>
+					<data value="12" monthDay="--12-01"/>
+					<timeZone>
+						<timeZoneOffset>+10:00</timeZoneOffset>
+					</timeZone>
+				</inputProfile>
+				<type>simple</type>
+				<outputVariable>
+					<variableId>Cycle_month</variableId>
+				</outputVariable>
+			</timeSeries>
+		</profile>
+	</transformation>
+	<transformation id="EVAP_monthly_fao56">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_640_EVAP, if(Cycle_month==2, FEB_640_EVAP, if(Cycle_month==3, MAR_640_EVAP, if(Cycle_month==4, APR_640_EVAP, if(Cycle_month==5, MAY_640_EVAP, if(Cycle_month==6, JUN_640_EVAP , if(Cycle_month==7, JUL_640_EVAP , if(Cycle_month==8, AUG_640_EVAP, if(Cycle_month==9, SEP_640_EVAP, if(Cycle_month==10, OCT_640_EVAP , if(Cycle_month==11, NOV_640_EVAP , DEC_640_EVAP)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_640_EVAP" value="@JAN_640_EVAP@"/>
+					<coefficient id="FEB_640_EVAP" value="@FEB_640_EVAP@"/>
+					<coefficient id="MAR_640_EVAP" value="@MAR_640_EVAP@"/>
+					<coefficient id="APR_640_EVAP" value="@APR_640_EVAP@"/>
+					<coefficient id="MAY_640_EVAP" value="@MAY_640_EVAP@"/>
+					<coefficient id="JUN_640_EVAP" value="@JUN_640_EVAP@"/>
+					<coefficient id="JUL_640_EVAP" value="@JUL_640_EVAP@"/>
+					<coefficient id="AUG_640_EVAP" value="@AUG_640_EVAP@"/>
+					<coefficient id="SEP_640_EVAP" value="@SEP_640_EVAP@"/>
+					<coefficient id="OCT_640_EVAP" value="@OCT_640_EVAP@"/>
+					<coefficient id="NOV_640_EVAP" value="@NOV_640_EVAP@"/>
+					<coefficient id="DEC_640_EVAP" value="@DEC_640_EVAP@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>EVAP_monthly_fao56</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_monthly_mlake">
+		<user>
+			<simple>
+				<expression>if(Cycle_month ==1,  JAN_650_EVAP, if(Cycle_month==2, FEB_650_EVAP, if(Cycle_month==3, MAR_650_EVAP, if(Cycle_month==4, APR_650_EVAP, if(Cycle_month==5, MAY_650_EVAP, if(Cycle_month==6, JUN_650_EVAP , if(Cycle_month==7, JUL_650_EVAP , if(Cycle_month==8, AUG_650_EVAP, if(Cycle_month==9, SEP_650_EVAP, if(Cycle_month==10, OCT_650_EVAP , if(Cycle_month==11, NOV_650_EVAP , DEC_650_EVAP)))))))))))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="JAN_650_EVAP" value="@JAN_650_EVAP@"/>
+					<coefficient id="FEB_650_EVAP" value="@FEB_650_EVAP@"/>
+					<coefficient id="MAR_650_EVAP" value="@MAR_650_EVAP@"/>
+					<coefficient id="APR_650_EVAP" value="@APR_650_EVAP@"/>
+					<coefficient id="MAY_650_EVAP" value="@MAY_650_EVAP@"/>
+					<coefficient id="JUN_650_EVAP" value="@JUN_650_EVAP@"/>
+					<coefficient id="JUL_650_EVAP" value="@JUL_650_EVAP@"/>
+					<coefficient id="AUG_650_EVAP" value="@AUG_650_EVAP@"/>
+					<coefficient id="SEP_650_EVAP" value="@SEP_650_EVAP@"/>
+					<coefficient id="OCT_650_EVAP" value="@OCT_650_EVAP@"/>
+					<coefficient id="NOV_650_EVAP" value="@NOV_650_EVAP@"/>
+					<coefficient id="DEC_650_EVAP" value="@DEC_650_EVAP@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>EVAP_monthly_mlake</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_monthly_fao56_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>EVAP_monthly_fao56</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>EVAP_monthly_fao56_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="EVAP_monthly_mlake_shift">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>EVAP_monthly_mlake</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>EVAP_monthly_mlake_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="EVAP_daily_fao56">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>EVAP_monthly_fao56_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_fcst_fao56</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="EVAP_daily_mlake">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>EVAP_monthly_mlake_shift</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_fcst_mlake</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<!-- EVAP - modifier (temporary results)-->
+	<transformation id="constant_one">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>constant_one</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_mod">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>EVAP_mod_input</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>constant_one</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_mod</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="EVAP_fcst_fao56_modified">
+		<user>
+			<simple>
+				<expression>EVAP_mod * EVAP_fcst_fao56</expression>
+				<outputVariable>
+					<variableId>EVAP_fcst_fao56_modified</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_fcst_mlake_modified">
+		<user>
+			<simple>
+				<expression>EVAP_mod * EVAP_fcst_mlake</expression>
+				<outputVariable>
+					<variableId>EVAP_fcst_mlake_modified</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--EVAP - comb -->
+	<transformation id="EVAP_comb_fao56">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>EVAP_fao56_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>EVAP_fcst_fao56_modified</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_comb_fao56</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="EVAP_comb_mlake">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>EVAP_mlake_obs</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>EVAP_fcst_mlake_modified</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_comb_mlake</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!--Step 1 Temperature: Compute sub-area averages from rainfall forecast products-->
+	<transformation id="ADFD_AT_tmp">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ADFD_AT_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ADFD_AT_tmp</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="ADFD_AT_max_tmp">
+		<interpolationSpatial>
+			<closestDistance>
+				<inputVariable>
+					<variableId>ADFD_AT_max_grid</variableId>
+				</inputVariable>
+				<searchRadius>100000</searchRadius>
+				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<outputVariable>
+					<variableId>ADFD_AT_max_tmp</variableId>
+				</outputVariable>
+			</closestDistance>
+		</interpolationSpatial>
+	</transformation>
+	<!--Step 2 Temperature: Sample original NWP subarea data to 8am dailyintervals-->
+	<transformation id="ADFD_AT">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>ADFD_AT_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>ADFD_AT</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closest</interpolationType>
+				<outputVariable>
+					<variableId>ADFD_AT</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="ADFD_AT_subcatchments">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ADFD_AT</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ADFD_AT_subcatchments</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="ADFD_AT_max">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>ADFD_AT_max_tmp</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>previousTimeStep</interpolationType>
+				<outputVariable>
+					<variableId>ADFD_AT_max</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="ADFD_AT_max_subcatchments">
+		<statisticsRelatedLocations>
+			<mean>
+				<inputVariable>
+					<variableId>ADFD_AT_max</variableId>
+				</inputVariable>
+				<locationRelationId>subcatchment</locationRelationId>
+				<outputVariable>
+					<variableId>ADFD_AT_max_subcatchments</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsRelatedLocations>
+	</transformation>
+</transformationModule>

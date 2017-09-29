@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="SStorage.OPO" name="Processing SStorage sites ">
+		<displayGroup id="SStorage.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_SStorage">
+				<locationSetId>SStorage.sites</locationSetId>
+				<plotId>DataEntry_Storage</plotId>
+				<!-- PlotId is defined in DisplayGroups_opoDataEntry_NStorage.xml file -->
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="SStorage.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_SStorage">
+				<locationSetId>SStorage.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

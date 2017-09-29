@@ -1,0 +1,23 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="SADiversions_OPO">
+		<nodes id="ObservedProcessing.SADiversions_OPO" name="SADiversions">
+			<node id="SADiversions.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>SADiversions.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="SADiversions.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>SADiversions.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+ 			<nodes id="SADiversions.Telemetry" name="Review Telemetry">
+				<node id="SADiversions.Process_Qopo" name="Flow(Diversions)">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>SADiversions.Process_Qopo</displayGroupId>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

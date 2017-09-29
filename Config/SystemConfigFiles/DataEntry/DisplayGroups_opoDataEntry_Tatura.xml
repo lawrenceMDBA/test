@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="Tatura.OPO" name="Processing Tatura sites ">
+		<displayGroup id="Tatura.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_Tatura">
+				<locationSetId>Tatura.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Tatura.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Tatura">
+				<locationSetId>Tatura.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="Tatura.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Tatura.Process_Hopo" name="Tatura water level">
+				<singleLocationDisplays id="ImportProcess_Tatura_H">
+					<locationSetId>Tatura.sites_H</locationSetId>
+					<plotId>ImportProcess_H</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Tatura.Process_Qopo" name="Tatura discharge">
+				<singleLocationDisplays id="ImportProcess_Tatura_Q">
+					<locationSetId>Tatura.sites_H_not_rated</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Tatura.Process_Qratedopo" name="Tatura rated discharge">
+				<singleLocationDisplays id="ImportProcess_Tatura_Qrated">
+					<locationSetId>Tatura.sites_H_rated</locationSetId>
+					<plotId>ImportProcess_Qrated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Tatura.Process_Vopo" name="Tatura storage">
+				<singleLocationDisplays id="ImportProcess_Tatura_V">
+					<locationSetId>Tatura.sites_V</locationSetId>
+					<plotId>ImportProcess_V</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Tatura.Process_Popo" name="Tatura precipitation">
+				<singleLocationDisplays id="ImportProcess_Tatura_P">
+					<locationSetId>Tatura.sites_P</locationSetId>
+					<plotId>ImportProcess_P</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 
+			<displayGroup id="Tatura.Process_EVAPopo" name="Tatura evaporation">
+				<singleLocationDisplays id="ImportProcess_Tatura_EVAP">
+					<locationSetId>Tatura.sites_EVAP</locationSetId>
+					<plotId>ImportProcess_EVAP</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			-->
+			<displayGroup id="Tatura.Process_ECopo" name="Tatura electric conductivity">
+				<singleLocationDisplays id="ImportProcess_Tatura_EC">
+					<locationSetId>Tatura.sites_EC</locationSetId>
+					<plotId>ImportProcess_EC</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<!-- 			<displayGroup id="Tatura.Process_DOopo" name="Tatura dissolved oxygen">
+				<singleLocationDisplays id="ImportProcess_Tatura_DO">
+					<locationSetId>Tatura.sites_DO</locationSetId>
+					<plotId>ImportProcess_DO</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<!-- 			<displayGroup id="Tatura.Process_WTopo" name="Tatura water temperature">
+				<singleLocationDisplays id="ImportProcess_Tatura_WT">
+					<locationSetId>Tatura.sites_WT</locationSetId>
+					<plotId>ImportProcess_WT</plotId>
+				</singleLocationDisplays>
+			</displayGroup> -->
+			<!--<displayGroup id="Tatura.Process_ATopo" name="Tatura air temperature">
+				<singleLocationDisplays id="ImportProcess_Tatura_AT">
+					<locationSetId>Tatura.sites_AT</locationSetId>
+					<plotId>ImportProcess_AT</plotId>
+				</singleLocationDisplays>
+			</displayGroup>-->
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

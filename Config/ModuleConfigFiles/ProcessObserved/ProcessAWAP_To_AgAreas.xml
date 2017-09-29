@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--Interpolates the gridded data to subcatchments for analysis in the spatial display.-->
+	<variable>
+		<variableId>AWAP_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedAWAP</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>AWAP</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWAP_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAWAP_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>awap</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod end="0" start="-5" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!--START OF THE COMPUTATIONS - Compute average over polygons using cookie cutter method-->
+	<transformation id="Interpolate_AWAP_to_AggregationAreas">
+		<interpolationSpatial>
+			<average>
+				<minimumValue>0</minimumValue>
+				<inputVariable>
+					<variableId>AWAP_grid</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>AWAP_AgAreas</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+</transformationModule>

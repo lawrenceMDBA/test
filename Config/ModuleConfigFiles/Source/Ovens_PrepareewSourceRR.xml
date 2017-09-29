@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>P.Obs.8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_P_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod start="-2" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.Obs.9am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_P_obs</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod start="-2" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.Obs.Subcatchment.9am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>ewsource_subareas.ovens</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod start="-2" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.AWAP</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedAWAP</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_obs</parameterId>
+			<locationId>AWAP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod start="0" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.AWAP.Subcatchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>awap</qualifierId>
+			<locationSetId>ewsource_subareas.ovens</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod start="0" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.ADFD</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>ADFD</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<relativeViewPeriod start="0" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.ADFD.Subcatchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewsource_subareas.ovens</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep multiplier="3" unit="hour"/>
+			<relativeViewPeriod start="0" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<synchLevel>9</synchLevel>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.ADFD.Subcatchment.9am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>adfd</qualifierId>
+			<locationSetId>ewsource_subareas.ovens</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod start="0" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P.ewSource</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Ovens_PrepareewSourceRR</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_comb</parameterId>
+			<qualifierId>avg</qualifierId>
+			<locationSetId>ewsource_subareas.ovens</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="9am"/>
+			<relativeViewPeriod start="-2" end="7" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Shift P.obs midnight2midnight 8am to 9am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>P.Obs.8am</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>P.Obs.9am</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestBackward</interpolationType>
+				<outputVariable>
+					<variableId>P.Obs.9am</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="Calculate subcatchment average observations">
+		<interpolationSpatial>
+			<average>
+				<inputVariable>
+					<variableId>P.Obs.9am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>P.Obs.Subcatchment.9am</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Calculate subcatchment average AWAP forecast">
+		<interpolationSpatial>
+			<average>
+				<inputVariable>
+					<variableId>P.AWAP</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>P.AWAP.Subcatchment</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Calculate subcatchment average ADFD forecast">
+		<interpolationSpatial>
+			<average>
+				<inputVariable>
+					<variableId>P.ADFD</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>P.ADFD.Subcatchment</variableId>
+				</outputVariable>
+			</average>
+		</interpolationSpatial>
+	</transformation>
+	<transformation id="Normalise timestep of ADFD forecast">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>P.ADFD.Subcatchment</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>P.ADFD.Subcatchment.9am</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<transformation id="Merge historical and forecast precipitation">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>P.AWAP.Subcatchment</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>P.Obs.Subcatchment.9am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>P.ADFD.Subcatchment.9am</variableId>
+				</inputVariable>
+				<fillGapConstant>0.0</fillGapConstant>
+				<outputVariable>
+					<variableId>P.ewSource</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

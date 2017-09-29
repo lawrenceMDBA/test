@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
+<!-- opo -->
+	<parameter internal="Q_obs" internalQualifier="opo" external="flow_observed"/>
+	<parameter internal="Q_obs" internalQualifier="rated" external="flow_rated"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="inflow" external="flow_inflow"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="total" external="flow_total"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="spill" external="flow_spillway"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="turb" external="flow_turbine"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="valves" external="flow_valves"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="env" external="flow_environmental"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="instream" external="flow_instream_credits"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="ivt" external="flow_ivt"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="other" external="flow_other"/>
+	<parameter internal="H_obs" internalQualifier="opo" external="level_observed"/>
+	<parameter internal="P_obs" internalQualifier="opo" external="precipitation_observed"/>
+	<parameter internal="EVAP_obs" internalQualifier="opo" external="evaporation"/>
+	<parameter internal="EVAP_obs" internalQualifier="opo" internalQualifier1="mlake" external="evaporation_morton_lake"/>
+	<parameter internal="EVAP_obs" internalQualifier="opo" internalQualifier1="fao56" external="evaporation_fao56"/>
+	<parameter internal="AT_obs" internalQualifier="opo" external="air_temperature"/>
+	<parameter internal="EC_obs" internalQualifier="opo" external="conductivity"/>
+	<parameter internal="DO_obs" internalQualifier="opo" external="dissolved_oxygen"/>
+	<parameter internal="DO_obs" internalQualifier="opo" internalQualifier1="max" external="dissolved_oxygen_max"/>
+	<parameter internal="DO%_obs" internalQualifier="opo" external="dissolved_oxygen_percent"/>
+	<parameter internal="EGEN_obs" internalQualifier="opo" external="electricity_generated"/>
+	<parameter internal="V_obs" internalQualifier="opo" external="storage_volume"/>
+	<parameter internal="WT_obs" internalQualifier="opo" external="water_temperature"/>
+	<parameter internal="pH_obs" internalQualifier="opo" external="pH"/>
+	<parameter internal="NoGatesOpen_obs" internalQualifier="opo" external="no_of_gates_open"/>
+	<parameter internal="NoGatesOpen_obs" internalQualifier="opo" internalQualifier1="rr" external="no_of_gates_open_rockramp"/>
+	<parameter internal="NoGatesOpen_obs" internalQualifier="opo" internalQualifier1="vs" external="no_of_gates_open_vslot"/>
+	<parameter internal="QDIV_obs" internalQualifier="opo" external="diversion"/>
+	<parameter internal="QORD_obs" internalQualifier="opo" external="water_order"/>
+	<parameter internal="QORD_obs" internalQualifier="opo" internalQualifier1="mdbc" external="water_order_mdbc"/>
+	<parameter internal="QORD_obs" internalQualifier="opo" internalQualifier1="longterm" external="water_order_longterm"/>
+	<parameter internal="WindDir_obs" internalQualifier="opo" external="wind_direction"/>
+	<parameter internal="WindVel_obs" internalQualifier="opo" external="wind_velocity"/>
+<!-- Fops -->
+	<parameter internal="Q_obs" internalQualifier="Fops" external="flow_observed"/>
+	<parameter internal="H_obs" internalQualifier="Fops" external="level_observed"/>
+	<parameter internal="P_obs" internalQualifier="Fops" external="precipitation_observed"/>
+	<parameter internal="V_obs" internalQualifier="Fops" external="volume_observed"/>
+<!-- NWP -->
+	<parameter internal="P_fcst" external="precipitation_forecast"/>
+	<parameter internal="P_fcst" internalQualifier="higher" external="precipitation_forecast_higher"/>
+	<parameter internal="P_fcst" internalQualifier="avg" external="precipitation_forecast_avg"/>
+	<parameter internal="P_fcst" internalQualifier="min" external="precipitation_forecast_min"/>
+	<parameter internal="P_fcst" internalQualifier="max" external="precipitation_forecast_max"/>
+	<parameter internal="SM_fcst" external="soil_moisture_forecast"/>
+	<parameter internal="SM_obs" external="soil_moisture_observed"/>
+<!-- URBS -->
+	<parameter internal="P_comb" external="forecast_rainfall"/>
+	<parameter internal="Q_fcst" external="forecast_flow"/>
+	<parameter internal="Q_in_fcst" external="forecast_inflow"/>
+	<parameter internal="Q_out_fcst" external="forecast_outflow"/>
+	<parameter internal="P_calc" internalQualifier="gross" external="forecast_gross_rainfall"/>
+	<parameter internal="P_calc" internalQualifier="net" external="forecast_net_rainfall"/>
+	<parameter internal="H_fcst" external="forecast_level"/>
+	<parameter internal="V_fcst" external="forecast_volume"/>
+</idMap>

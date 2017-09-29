@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>grib2</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_ACCESSR$</folder>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>true</deleteImportedFiles>
+			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdNWP</idMapId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<geoDatum>WGS 1984</geoDatum>
+			<dataFeedId>BOM_ACCESSR</dataFeedId>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="day" multiplier="2"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>SM_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>EVAP_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<externUnit cumulativeSum="true" parameterId="P_fcst" unit="mm"/>
+		<externUnit cumulativeSum="true" parameterId="EVAP_fcst" unit="mm"/>
+	</import>
+</timeSeriesImportRun>

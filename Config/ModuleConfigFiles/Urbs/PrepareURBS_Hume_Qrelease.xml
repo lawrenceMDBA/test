@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--Combines observed flow at Heywoods with Hume release forecast (user input)-->
+	<!-- Q - variables-->
+	<variable>
+		<variableId>Q_obs_1h_Fops_Heywoods</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_manual_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$RELEASE$</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_comb_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$RELEASE$</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>constant_zero_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$RELEASE$</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Q - transformations-->
+	<transformation id="constant_zero_Hume">
+		<user>
+			<simple>
+				<expression>0</expression>
+				<outputVariable>
+					<variableId>constant_zero_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Merge: Qrelease_comb_Hume">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_obs_1h_Fops_Heywoods</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qrelease_manual_Hume</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>constant_zero_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qrelease_comb_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>
