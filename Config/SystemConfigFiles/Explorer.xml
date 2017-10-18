@@ -6,8 +6,10 @@
 		<systemCaption>$EXPLORER_SYSTEMCAPTION$</systemCaption>
 		<systemHelpFile>$DOCUMENTS_ALWAYSVISIBLE_FOLDER$/Help.pdf</systemHelpFile>
 	</systemInformation>
-	<systemUnitsLabel>ML</systemUnitsLabel>
-	<displayUnitsLabel>GL</displayUnitsLabel>
+	<globalDatum>Elevation (AHD)</globalDatum> 
+	<systemUnitsLabel>ML/Day</systemUnitsLabel>
+	<displayUnitsLabel>m3/s</displayUnitsLabel>
+	<!-- <displayUnitsLabel>GL</displayUnitsLabel> -->
 	<units>system</units>
 	<dateTime>
 		<timeZoneName>AET</timeZoneName>
@@ -312,7 +314,7 @@
 	</map>
 	<explorerTasks>
 		<explorerTask name="Plots">
-			<iconFile>graph.gif</iconFile>
+			<iconFile>graph.png</iconFile>
 			<predefinedDisplay>time series dialog</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
@@ -503,6 +505,31 @@
 			<!-- <toolWindow>false</toolWindow> -->
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
+		<explorerTask name="Interval Statistics">
+			<iconFile>stat_interval.png</iconFile>
+			<predefinedDisplay>interval statistics</predefinedDisplay>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
+<explorerTask name="Events">
+    <iconFile>table.png</iconFile>
+    <mnemonic>T</mnemonic>
+    <taskClass>nl.wldelft.fews.gui.plugin.thresholdoverview.ThresholdOverviewDisplay</taskClass>
+    <toolbarTask>true</toolbarTask>
+    <menubarTask>true</menubarTask>
+    <allowMultipleInstances>false</allowMultipleInstances>
+    <loadAtStartup>false</loadAtStartup>
+</explorerTask>
+
+<explorerTask name="Document viewer">
+  <mnemonic>X</mnemonic>
+  <taskClass>nl.wldelft.fews.gui.plugin.information.ForecasterAidDocumentPanel</taskClass>
+  <toolbarTask>false</toolbarTask>
+  <menubarTask>false</menubarTask>
+  <toolWindow>true</toolWindow>
+  <loadAtStartup>true</loadAtStartup>
+</explorerTask>
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
