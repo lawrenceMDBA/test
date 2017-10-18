@@ -12,10 +12,10 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 	<variable>
 		<variableId>HydroUpdate_hourly</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<moduleInstanceId>ImportHydrographic</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -29,7 +29,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessVhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_V_8am_inst</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
