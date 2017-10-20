@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
-	<parameter external="EC_01" internal="EC_obs" internalQualifier="p01"/>
-	<parameter external="EC_10" internal="EC_obs" internalQualifier="p10"/>
-	<parameter external="EC_50" internal="EC_obs" internalQualifier="p50"/>
-	<parameter external="EC_90" internal="EC_obs" internalQualifier="p90"/>
-	<parameter external="EC_99" internal="EC_obs" internalQualifier="p99"/>
-	<!-- <locationIdPattern externalLocationPattern="*" internalLocationPattern="*" internalLocationSet="ewsource_subareas.upper_murray" /> --><locationIdFunction externalLocationFunction="@HYDSTRA_SITE_ID@" internalLocationSet="sites"/>
+	<parameter external="3000_01" internal="EC_obs" internalQualifier="p01"/>
+	<parameter external="3000_10" internal="EC_obs" internalQualifier="p10"/>
+	<parameter external="3000_25" internal="EC_obs" internalQualifier="p25"/>
+	<parameter external="3000_50" internal="EC_obs" internalQualifier="p50"/>
+	<parameter external="3000_75" internal="EC_obs" internalQualifier="p75"/>
+	<parameter external="3000_90" internal="EC_obs" internalQualifier="p90"/>
+	<parameter external="3000_99" internal="EC_obs" internalQualifier="p99"/>
+	<parameter external="400_01" internal="Q_obs" internalQualifier="p01"/>
+	<parameter external="400_10" internal="Q_obs" internalQualifier="p10"/>
+	<parameter external="400_25" internal="Q_obs" internalQualifier="p25"/>
+	<parameter external="400_50" internal="Q_obs" internalQualifier="p50"/>
+	<parameter external="400_75" internal="Q_obs" internalQualifier="p75"/>
+	<parameter external="400_90" internal="Q_obs" internalQualifier="p90"/>
+	<parameter external="400_99" internal="Q_obs" internalQualifier="p99"/>
+	<!-- 
+	<locationIdPattern externalLocationPattern="*" internalLocationPattern="*" internalLocationSet="ewsource_subareas.upper_murray" />
+	-->
+	<locationIdFunction externalLocationFunction="@HYDSTRA_SITE_ID@" internalLocationSet="sites"/>
 	<enableOneToOneMapping />
 </idMap>
