@@ -10,10 +10,10 @@ _8am_inst: instantaenous values at 8am
 	<variable>
 		<variableId>HydroUpdate_hourly</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<moduleInstanceId>ImportHydrographic</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>AT_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_AT_obs</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -27,7 +27,7 @@ _8am_inst: instantaenous values at 8am
 			<moduleInstanceId>ProcessAThydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>AT_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_AT_obs</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
