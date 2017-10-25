@@ -477,6 +477,17 @@
 			</allValid>
 		</constraints>
 	</locationSet>
+	<locationSet id="SourceRO_sites_QRL">
+		<description>ewSourceRO_sites with releases</description>
+		<sortingLocationAttributeId>EWSRC_Q_SEQ</sortingLocationAttributeId>
+		<locationSetId>ewSourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+				<attributeExists id="SOURCE_Q_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
 	<!-- Water order/demand sites (param QORD) -->
 	<locationSet id="SourceRO_sites_QORD">
 		<description>Source sites with water orders</description>
