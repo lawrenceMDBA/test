@@ -619,7 +619,8 @@
 				<locationSetId>flow-n-sal.sites_level</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<!-- <relativeForecastPeriod end="7" unit="day" /> --><externalForecastMaxAge unit="day" multiplier="1" />
+				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
+				<externalForecastMaxAge unit="day" multiplier="1" />
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
@@ -650,11 +651,13 @@
 				<locationSetId>flow-n-sal.sites_vol</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<!-- 				<relativeForecastPeriod start="0" end="7" unit="day"/> --><externalForecastMaxAge unit="day" multiplier="1"/>
+				<!-- 				
+				<relativeForecastPeriod start="0" end="7" unit="day"/>
+				-->
+				<externalForecastMaxAge unit="day" multiplier="1"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
-		<subplot>
 		<subplot>
 			<area>
 				<color>light cyan</color>
@@ -663,7 +666,7 @@
 					<valueType>scalar</valueType>
 					<parameterId>Q_obs</parameterId>
 					<qualifierId>p01</qualifierId>
-					<locationSetId>flow-n-sal.sites_sal</locationSetId>
+					<locationSetId>flow-n-sal.sites_flow</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
 					<cycle unit="year"/>
@@ -674,7 +677,7 @@
 					<valueType>scalar</valueType>
 					<parameterId>Q_obs</parameterId>
 					<qualifierId>p99</qualifierId>
-					<locationSetId>flow-n-sal.sites_sal</locationSetId>
+					<locationSetId>flow-n-sal.sites_flow</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
 					<cycle unit="year"/>
@@ -687,8 +690,8 @@
 					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>Q_obs</parameterId>
-					<qualifierId>p10</qualifierId>
-					<locationSetId>flow-n-sal.sites_sal</locationSetId>
+					<qualifierId>p25</qualifierId>
+					<locationSetId>flow-n-sal.sites_flow</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
 					<cycle unit="year"/>
@@ -698,8 +701,8 @@
 					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>Q_obs</parameterId>
-					<qualifierId>p90</qualifierId>
-					<locationSetId>flow-n-sal.sites_sal</locationSetId>
+					<qualifierId>p75</qualifierId>
+					<locationSetId>flow-n-sal.sites_flow</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
 					<cycle unit="year"/>
@@ -714,7 +717,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_obs</parameterId>
 				<qualifierId>p50</qualifierId>
-				<locationSetId>flow-n-sal.sites_sal</locationSetId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
 				<cycle unit="year"/>
@@ -737,7 +740,8 @@
 				<locationSetId>flow-n-sal.sites_flow</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<!-- <relativeForecastPeriod start="0" end="7" unit="day"/> --><externalForecastMaxAge unit="day" multiplier="1"/>
+				<!-- <relativeForecastPeriod start="0" end="7" unit="day"/> -->
+				<externalForecastMaxAge unit="day" multiplier="1"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
@@ -773,7 +777,7 @@
 					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>EC_obs</parameterId>
-					<qualifierId>p10</qualifierId>
+					<qualifierId>p25</qualifierId>
 					<locationSetId>flow-n-sal.sites_sal</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
@@ -784,7 +788,7 @@
 					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>EC_obs</parameterId>
-					<qualifierId>p90</qualifierId>
+					<qualifierId>p75</qualifierId>
 					<locationSetId>flow-n-sal.sites_sal</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep id="Monthly"/>
@@ -823,7 +827,8 @@
 				<locationSetId>flow-n-sal.sites_sal</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
-				<!-- <relativeForecastPeriod end="7" unit="day" /> --><externalForecastMaxAge unit="day" multiplier="1" />
+				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
+				<externalForecastMaxAge unit="day" multiplier="1" />
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
