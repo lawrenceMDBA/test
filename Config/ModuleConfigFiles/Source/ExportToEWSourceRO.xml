@@ -518,6 +518,19 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+		<!-- May be this should be included in preprocess source ?? -->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
 			<valueType>scalar</valueType>
