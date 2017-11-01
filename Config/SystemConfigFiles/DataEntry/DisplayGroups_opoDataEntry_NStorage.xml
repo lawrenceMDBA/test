@@ -16,6 +16,71 @@
 		</subplot>
 		<!-- V_obs -->
 		<subplot>
+			<area>
+				<color>light cyan</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>p01</qualifierId>
+					<locationSetId>de.sites_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="Monthly"/>
+					<cycle unit="year"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>p99</qualifierId>
+					<locationSetId>de.sites_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="Monthly"/>
+					<cycle unit="year"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>light blue</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>p25</qualifierId>
+					<locationSetId>de.sites_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="Monthly"/>
+					<cycle unit="year"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>p75</qualifierId>
+					<locationSetId>de.sites_V</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="Monthly"/>
+					<cycle unit="year"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<color>black</color>
+			<lineStyle>dashed;thick</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>p50</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<cycle unit="year"/>
+				<relativeViewPeriod unit="day" start="-365" end="0" startOverrulable="true" endOverrulable="false"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessVopo</moduleInstanceId>
 				<valueType>scalar</valueType>
