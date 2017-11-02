@@ -737,4 +737,30 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
+	<export>
+		<general>
+			<description>Export observed volume to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EC.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessECopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EC_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_EC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</export>
 </timeSeriesExportRun>
