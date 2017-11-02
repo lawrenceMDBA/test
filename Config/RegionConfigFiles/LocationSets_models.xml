@@ -480,7 +480,7 @@
 	<locationSet id="SourceRO_sites_QRL">
 		<description>ewSourceRO_sites with releases</description>
 		<sortingLocationAttributeId>EWSRC_Q_SEQ</sortingLocationAttributeId>
-		<locationSetId>ewSourceRO_sites</locationSetId>
+		<locationSetId>SourceRO_sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
@@ -521,6 +521,17 @@
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="V;"/>
 				<attributeExists id="SOURCE_V_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_sites_EC">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EC_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="EC;"/>
+				<attributeExists id="SOURCE_EC_SEQ"/>
 			</allValid>
 		</constraints>
 	</locationSet>
