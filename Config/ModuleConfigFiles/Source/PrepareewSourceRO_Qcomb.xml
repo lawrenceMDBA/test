@@ -253,6 +253,19 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>MDBC_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Shortterm_Qfcst</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
@@ -1075,6 +1088,9 @@
 				</input>
 				<input>
 					<variableId>Source_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>MDBC_Qfcst</variableId>
 				</input>
 				<attributeFunctionId>@SITE_Q_FCST_SELECT@_Qfcst</attributeFunctionId>
 				<output>
