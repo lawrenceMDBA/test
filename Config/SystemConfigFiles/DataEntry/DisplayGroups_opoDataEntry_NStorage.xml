@@ -16,6 +16,21 @@
 		</subplot>
 		<!-- V_obs -->
 		<subplot>
+			<color>black</color>
+			<lineStyle>dashed;thick</lineStyle>
+			<markerStyle>none</markerStyle>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>p50</qualifierId>
+				<locationSetId>de.sites_V</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<cycle unit="year"/>
+				<relativeViewPeriod unit="day" start="-365" end="0" startOverrulable="true" endOverrulable="false"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessVopo</moduleInstanceId>
 				<valueType>scalar</valueType>
