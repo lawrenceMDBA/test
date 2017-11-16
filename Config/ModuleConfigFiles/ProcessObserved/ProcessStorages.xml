@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Volume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>capacity</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>capacity</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Percentage_Full</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Dead_Storage</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>dead</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Active_Storage</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>active</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Storage_Capacity">
+		<user>
+			<simple>
+				<expression>FSV</expression>
+				<coefficientSetFunctions>
+					<coefficient id="FSV" value="@FSV@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>capacity</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Storage_Percentage_full">
+		<user>
+			<simple>
+				<expression>(Volume / FSV) * 100</expression>
+				<coefficientSetFunctions>
+					<coefficient id="FSV" value="@FSV@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Percentage_Full</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Dead_Storage">
+		<user>
+			<simple>
+				<expression>DS</expression>
+				<coefficientSetFunctions>
+					<coefficient id="DS" value="@DEAD_STORAGE@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Dead_Storage</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Active_Storage">
+		<user>
+			<simple>
+				<expression>Volume - DS</expression>
+				<coefficientSetFunctions>
+					<coefficient id="DS" value="@DEAD_STORAGE@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Active_Storage</variableId>
+				</outputVariable>
+			</simple>
+		</user>	
+	</transformation>
+</transformationModule>
