@@ -1129,6 +1129,19 @@
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="Storages_Full">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-6" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<!--<timeSeriesSets id="DataEntry_Gates">
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
@@ -2351,6 +2364,14 @@
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="VICDiversions"/>
 		</locationConstraints>
+	</filter>
+	<!-- Filter Id for use in PI web service call for updating the Storages Pdf-->
+	<filter id="Storages_%Full" name="Storages_%Full">
+		<child foreignKey="Storages_Percent_Full"/>
+	</filter>
+	<filter id="Storages_Percent_Full" name="Storages_Percent_Full">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>Storages_Full</timeSeriesSetsId>
 	</filter>
 	<filter id="NStorages_DataEntry" name="Northen Storages">
 		<child foreignKey="NStorages_DataEntry_V"/>
