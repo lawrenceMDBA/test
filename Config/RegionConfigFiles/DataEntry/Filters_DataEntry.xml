@@ -559,6 +559,19 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Storage_V">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-14" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="DataEntry_P">
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessPopo</moduleInstanceId>
@@ -2337,6 +2350,26 @@
 		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="VICDiversions"/>
+		</locationConstraints>
+	</filter>
+	<filter id="NStorages_DataEntry" name="Northen Storages">
+		<child foreignKey="NStorages_DataEntry_V"/>
+	</filter>
+	<filter id="NStorages_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="NStorage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SStorages_DataEntry" name="Southern Storages">
+		<child foreignKey="SStorages_DataEntry_V"/>
+	</filter>
+	<filter id="SStorages_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SStorage"/>
 		</locationConstraints>
 	</filter>
 	<filter id="BMRegulators_DataEntry" name="BMRegulators">
