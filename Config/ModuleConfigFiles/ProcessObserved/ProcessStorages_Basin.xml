@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>volume_valley</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>$LOC$</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>volume_basin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>$LOC$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>capacity_valley</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>capacity</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>$LOC$</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>capacity_basin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>capacity</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationId>$LOC$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>percentage_full_basin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>$LOC$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>dead_storage_valley</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>dead</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>$LOC$</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dead_storage_basin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>dead</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationId>$LOC$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>active_storage_basin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>active</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationId>$LOC$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Volume_Basin">
+		<statisticsRelatedLocations>
+			<sum>
+				<inputVariable>
+					<variableId>volume_valley</variableId>
+				</inputVariable>
+				<locationRelationId>Storages_Parent</locationRelationId>
+				<outputVariable>
+					<variableId>volume_basin</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Storage_Capacity_Basin">
+		<statisticsRelatedLocations>
+			<sum>
+				<inputVariable>
+					<variableId>capacity_valley</variableId>
+				</inputVariable>
+				<locationRelationId>Storages_Parent</locationRelationId>
+				<outputVariable>
+					<variableId>capacity_basin</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Precent_Full_Basin">
+		<user>
+			<simple>
+				<expression>(volume_basin / capacity_basin) * 100</expression>
+				<outputVariable>
+					<variableId>percentage_full_basin</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Dead_Storage_Basin">
+		<statisticsRelatedLocations>
+			<sum>
+				<inputVariable>
+					<variableId>dead_storage_valley</variableId>
+				</inputVariable>
+				<locationRelationId>Storages_Parent</locationRelationId>
+				<outputVariable>
+					<variableId>dead_storage_basin</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="Active_Storage">
+		<user>
+			<simple>
+				<expression>volume_basin - dead_storage_basin</expression>
+				<outputVariable>
+					<variableId>active_storage_basin</variableId>
+				</outputVariable>
+			</simple>
+		</user>	
+	</transformation>	
+</transformationModule>	
