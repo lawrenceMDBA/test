@@ -1129,7 +1129,7 @@
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
-	<timeSeriesSets id="Storages_Full">
+	<timeSeriesSets id="Storages_Full_Volume">
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessStorages</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1151,6 +1151,29 @@
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="1" start="-6" unit="day"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>display_web_pdf</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-14" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_LLAKES</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
 	<!--<timeSeriesSets id="DataEntry_Gates">
@@ -2379,7 +2402,7 @@
 	<!-- Filter Id for use in PI web service call for updating the Storages Pdf-->
 	<filter id="Storages_DataEntry_Percent_Full" name="Percent_Full_web">
 		<validationIconsVisible>true</validationIconsVisible>
-		<timeSeriesSetsId>Storages_Full</timeSeriesSetsId>
+		<timeSeriesSetsId>Storages_Full_Volume</timeSeriesSetsId>
 	</filter>
 	<filter id="NStorages_DataEntry" name="Northen Storages">
 		<child foreignKey="NStorages_DataEntry_V"/>
