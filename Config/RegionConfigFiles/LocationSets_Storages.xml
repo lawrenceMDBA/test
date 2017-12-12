@@ -88,6 +88,16 @@
 			</allValid>
 		</constraints>
 	</locationSet>
+	<!-- LocationSet for %Full -->
+	<locationSet id="Volume_Percent_Full">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="%Full;"/>
+			</allValid>
+		</constraints>
+	</locationSet>
 	<!-- Below are locationSets for Valleys (sites taht are grouped into a Valley/catchment) -->
 	<locationSet id="R_416000">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
