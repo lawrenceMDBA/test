@@ -73,6 +73,20 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<transformation id="Fill_gaps_volume">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Volume</variableId>
+				</inputVariable>
+				<maxGapLength>5</maxGapLength>
+				<outputVariable>
+					<variableId>Volume</variableId>
+				</outputVariable>
+				<outputComment>Gap_Filled</outputComment>
+			</linear>
+		</interpolationSerial>
+	</transformation>
 	<transformation id="Storage_Capacity">
 		<user>
 			<simple>
