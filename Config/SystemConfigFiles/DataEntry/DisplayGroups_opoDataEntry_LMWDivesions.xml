@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<displayGroup id="LMWDiversions.OPO" name="Processing SA Diversions">
+		<displayGroup id="LMWDiversions.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_LMWDiversions">
+				<locationSetId>LMWDiversions.sites</locationSetId>
+				<plotId>DataEntry_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="LMWDiversions.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_LMWDiversions">
+				<locationSetId>LMWDiversions.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="LMWDiversions.Telemetry" name="Telemetry">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="LMWDiversions.Process_Qopo" name="LMWDiversions">
+				<singleLocationDisplays id="ImportProcess_LMWDiversions_Q">
+					<locationSetId>LMWDiversions.sites_Q</locationSetId>
+					<plotId>ImportProcess_Q</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>
