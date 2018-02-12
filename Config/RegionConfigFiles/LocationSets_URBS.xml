@@ -501,6 +501,20 @@
 			<attributeExists id="MODEL_INFLOW"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="URBS_fcst_sites_model_inflow_from_mitta">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_model_inflow_from_upper">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="URBS_fcst_sites_qbc.upper_murray_mitta">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
