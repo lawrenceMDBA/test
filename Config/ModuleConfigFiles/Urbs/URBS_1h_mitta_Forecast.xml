@@ -68,16 +68,6 @@
 						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
-					<timeSeriesSet>
-						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>Q_out_fcst</parameterId>
-						<locationSetId>URBS_fcst_sites_model_inflow_from_upper</locationSetId>
-						<timeSeriesType>simulated forecasting</timeSeriesType>
-						<timeStep unit="hour"/>
-						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
-						<readWriteMode>read complete forecast</readWriteMode>
-					</timeSeriesSet>
 					<!-- all parameters below map to a .g file, so only one file (i.e. parameter) per location will come through (i.e the last to be exported)-->
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
