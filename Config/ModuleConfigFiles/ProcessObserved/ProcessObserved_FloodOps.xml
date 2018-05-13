@@ -11,20 +11,24 @@
 - Aggregate to hourly data (not_rated, step is obsolete)
 - Merge with Fops-->
 	<!--Processing of observed volume data for flood operations:
-- Level to flow conversion for hourly levels (capacity)
+- Level to volume conversion for hourly levels (capacity)
 - Sample neq raw to hourly data (not_capacity)
 - Merge with Fops-->
 	<!-- Processing of observed rainfall data for flood operations, including deaccumulation of tipping bucket values:
 - Sample sites with daily observations to 1 hourly series (keeping missings for the other 23 hours of the day)
 - Summation of neq raw to 1hour data for instantaneous sites 
 - Sample neq raw to 15min data for accumulative sites
-- Block fill series to enable deaccumulation by timestep. Without blockfill the step from missing value to registered measurement value will result in missing value during deaccumulation.
+- Block fill series to enable deaccumulation by timestep. Without blockfill the step from missing value to registered measurement value will result in 
+  missing value during   deaccumulation.
 - Deaccumulate, results in series with '0' for those time steps which de not have a measurement registration.
 - Correct for negative values due to resetting of tipping bucket. Note: any filling of the tipping bucket to the maximum capacity may be missed
 - Put missing values back in, using the transformation feature that a missing value in the multiplier array will result in a missing value for the result
 - Aggregate to hourly data
 - Merge with Fops
 - Interpolate Fops station rainfall to grid (inverse distance)-->
+	<!-- Calcuate observed storage inflow hydrograph:
+- Inflow (instantaneous) = Change in volume from previous timestep + volume relesed in the last hour or timestep
+- Inflow (12 hourly mean) rolling 12hr mean values	-->
 	<!-- H - variables-->
 	<variable>
 		<variableId>H_obs_neq_primary</variableId>
@@ -306,6 +310,162 @@
 			<locationSetId>flood.sites_vobs</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- Hume Inflow calculation variables -->
+	<variable>
+		<variableId>Hume_V_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_TimeShift_1h_V_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_release_Q_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Hume_Q_obs.inflow_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+<!-- 			<qualifierId>Fops</qualifierId> -->
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+ 	<variable>
+		<variableId>Hume_Q_obs.inflow_12h_mean_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>12h</qualifierId>
+			<qualifierId>mean</qualifierId>
+	<!-- 		<qualifierId>Fops</qualifierId> -->
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<aggregationPeriod start="-12" end="0" unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<!-- Dart Inflow calculation variables -->
+	<variable>
+		<variableId>Dart_V_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Dart_TimeShift_1h_V_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Dart_release_Q_obs_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Dart_Q_obs.inflow_1h_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+<!-- 			<qualifierId>Fops</qualifierId> -->
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="365"/>
+		</timeSeriesSet>
+	</variable>
+ 	<variable>
+		<variableId>Dart_Q_obs.inflow_12h_mean_Fops</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>12h</qualifierId>
+			<qualifierId>mean</qualifierId>
+	<!-- 		<qualifierId>Fops</qualifierId> -->
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<aggregationPeriod start="-12" end="0" unit="hour"/>
 			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 			<expiryTime unit="day" multiplier="365"/>
@@ -808,5 +968,80 @@
 				</outputVariable>
 			</accumulative>
 		</aggregation>
+	</transformation>
+	<!-- Q_obs.inflow transformation for storages -->
+	<!-- Hume -->
+	<transformation id="HumeTimeShiftConstant">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Hume_V_obs_1h_Fops</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Hume_TimeShift_1h_V_obs_1h_Fops</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Calculate Q_obs.inflow_1h">
+		<user>
+			<simple>
+				<expression>(Hume_V_obs_1h_Fops - Hume_TimeShift_1h_V_obs_1h_Fops) * 24 + Hume_release_Q_obs_1h_Fops</expression>
+				<outputVariable>
+					<variableId>Hume_Q_obs.inflow_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Hume_Calc_Mean_Inflow">
+		<statisticsSerial>
+			<mean>
+				<inputVariable>
+					<variableId>Hume_Q_obs.inflow_1h_Fops</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Hume_Q_obs.inflow_12h_mean_Fops</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsSerial>
+	</transformation>
+	<!-- Dart -->
+	<transformation id="DartTimeShiftConstant">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Dart_V_obs_1h_Fops</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Dart_TimeShift_1h_V_obs_1h_Fops</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Calculate Q_obs.inflow_1h">
+		<user>
+			<simple>
+				<expression>(Dart_V_obs_1h_Fops - Dart_TimeShift_1h_V_obs_1h_Fops) * 24 + Hume_release_Q_obs_1h_Fops</expression>
+				<outputVariable>
+					<variableId>Dart_Q_obs.inflow_1h_Fops</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Dart_Calc_Mean_Inflow">
+		<statisticsSerial>
+			<mean>
+				<inputVariable>
+					<variableId>Dart_Q_obs.inflow_1h_Fops</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Dart_Q_obs.inflow_12h_mean_Fops</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsSerial>
 	</transformation>
 </transformationModule>
