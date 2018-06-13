@@ -82,28 +82,32 @@
 		</extraTimeThreshold>
 		<!-- Telemetry from ETL -->
 		<extraTimeThreshold>
-			<dataFeedId>ETL_latest</dataFeedId>
+			<dataFeedId>ROWS_Flood_latest</dataFeedId>
 			<timeThreshold>
 				<periodLength unit="second" value="0"/>
 				<color>green</color>
 			</timeThreshold>
 			<timeThreshold>
-				<periodLength unit="second" value="3"/>
+				<periodLength unit="hour" value="1"/>
 				<color>yellow</color>
 			</timeThreshold>
 			<timeThreshold>
-				<periodLength unit="hour" value="9"/>
+				<periodLength unit="hour" value="2"/>
 				<color>red</color>
 			</timeThreshold>
 		</extraTimeThreshold>
 		<extraTimeThreshold>
-			<dataFeedId>ETL_archive</dataFeedId>
+			<dataFeedId>ROWS_Flood_archive</dataFeedId>
 			<timeThreshold>
 				<periodLength unit="second" value="0"/>
 				<color>green</color>
 			</timeThreshold>
 			<timeThreshold>
-				<periodLength unit="hour" value="24" />
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="2"/>
 				<color>red</color>
 			</timeThreshold>
 		</extraTimeThreshold>
@@ -124,7 +128,68 @@
 			</timeThreshold>
 		</extraTimeThreshold>
 		<extraTimeThreshold>
+			<dataFeedId>ETL_GMW_WML</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="12"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<!-- Telemetry Feeds -->
+		<extraTimeThreshold>
+			<dataFeedId>ETL_BOM_Telemetry</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
 			<dataFeedId>ETL_OPT_Telemetry</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_NSW_Telemetry</dataFeedId>
+			<timeThreshold>
+				<periodLength unit="second" value="0"/>
+				<color>green</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="1"/>
+				<color>yellow</color>
+			</timeThreshold>
+			<timeThreshold>
+				<periodLength unit="hour" value="24"/>
+				<color>red</color>
+			</timeThreshold>
+		</extraTimeThreshold>
+		<extraTimeThreshold>
+			<dataFeedId>ETL_Thiess_Telemetry</dataFeedId>
 			<timeThreshold>
 				<periodLength unit="second" value="0"/>
 				<color>green</color>

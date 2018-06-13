@@ -1,0 +1,23 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="LMWDiversions_OPO">
+		<nodes id="ObservedProcessing.LMWDiversions_OPO" name="LMW Urban WTP Diversions">
+			<node id="LMWDiversions.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>LMWDiversions.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="LMWDiversions.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>LMWDiversions.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+ 			<nodes id="LMWDiversions.Telemetry" name="Review Telemetry">
+				<node id="LMWDiversions.Process_Qopo" name="Flow(Diversions)">
+					<workflowId>Process_Observed</workflowId>
+					<displayGroupId>LMWDiversions.Process_Qopo</displayGroupId>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+		</nodes>
+	</group>
+</topologyGroup>

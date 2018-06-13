@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<!-- Volume (V_obs) is exported as a part of ExportObservedToHydstra module as we need unit conversion from ML to GL for the variables in this module-->
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_HYDSTRA$</folder>
+			<exportFileName>
+				<name>ROWS2Hydstra_storages.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2Hydstra_Observed</idMapId>
+			<unitConversionsId>StoragesUnitConversions</unitConversionsId>
+			<omitMissingValues>true</omitMissingValues>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>active</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>active_storage_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" unit="day" startOverrulable="true"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>dead</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>dead_storage_sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>dead</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>dead_storage_catchment_basin</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>Volume_Percent_Full</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" unit="day" startOverrulable="true"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>capacity</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>capacity</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>display_storages_catchment_basin</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>

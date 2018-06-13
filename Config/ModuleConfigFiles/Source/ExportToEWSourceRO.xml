@@ -499,7 +499,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_Q.csv</name>
+				<name>ROWS_2_SOURCE_Q_MIN.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -531,6 +531,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>PrepareewSourceRO - Q_comb (4 scenarios)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_Q_AEP90.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -542,6 +557,34 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+		<!-- May be this should be included in preprocess source ?? -->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>PrepareewSourceRO - Q_comb (4 scenarios)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_Q_AEP75.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -553,6 +596,34 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+		<!-- May be this should be included in preprocess source ?? -->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>PrepareewSourceRO - Q_comb (4 scenarios)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_Q_AEP50.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>		
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -560,6 +631,19 @@
 			<qualifierId>aep50</qualifierId>
 			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<!-- May be this should be included in preprocess source ?? -->
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
@@ -572,7 +656,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_DEMAND.csv</name>
+				<name>ROWS_2_SOURCE_DEMAND_MIN.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -591,6 +675,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Prepare SourceRO - Demand timeseries (sites_OQORD)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_DEMAND_AEP90.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -602,6 +701,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Prepare SourceRO - Demand timeseries (sites_OQORD)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_DEMAND_AEP75.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -613,6 +727,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Prepare SourceRO - Demand timeseries (sites_OQORD)</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_DEMAND_AEP50.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_QORD</moduleInstanceId>
 			<valueType>scalar</valueType>

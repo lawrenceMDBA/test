@@ -2,20 +2,24 @@
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<plot id="DataEntry_Storage">
 		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessHopo</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_obs</parameterId>
-				<qualifierId>opo</qualifierId>
-				<locationSetId>de.sites_H</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod end="1" start="-6" unit="day"/>
-				<readWriteMode>editing visible to all future task runs</readWriteMode>
-			</timeSeriesSet>
+			<line>
+				<axis>left</axis>	
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessHopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>H_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>de.sites_H</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
 		</subplot>
 		<!-- V_obs -->
 		<subplot>
+<<<<<<< working copy
 			<color>black</color>
 			<lineStyle>dashed;thick</lineStyle>
 			<markerStyle>none</markerStyle>
@@ -42,9 +46,133 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
+=======
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessVopo</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>sites_water_in_storages</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>			
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>display_storages_catchment_basin</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<aggregationPeriod start="-5" end="0" unit="day"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<!-- <line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>capacity</qualifierId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>sites_water_in_storages</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>capacity</qualifierId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>display_storages_catchment_basin</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<aggregationPeriod start="-5" end="0" unit="day"/>
+					<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line> -->
+			<!-- <line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>dead</qualifierId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>dead_storage_sites</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+ 			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>dead</qualifierId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>dead_storage_catchment_basin</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<aggregationPeriod start="-5" end="0" unit="day"/>
+					<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>  -->
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V_obs</parameterId>
+					<qualifierId>active</qualifierId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>active_storage_all</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+		<!-- V%_full -->
+		<subplot>
+			<line>
+				<axis>right</axis>	
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStorages</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>V%_obs</parameterId>
+					<qualifierId>opo</qualifierId>
+					<locationSetId>Volume_Percent_Full</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</line>
+>>>>>>> merge rev
 		</subplot>
 	</plot>
-
 	<displayGroup id="NStorage.OPO" name="Processing NStorage sites ">
 		<displayGroup id="NStorage.DataEntry" name="Data entry">
 			<viewPermission>RiverOperations</viewPermission>
