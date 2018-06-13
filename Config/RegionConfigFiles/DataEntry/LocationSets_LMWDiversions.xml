@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- data entry sites (all) -->
+	<locationSet id="LMWDiversions.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="LMWDiversions"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="LMWDiversions.sites_Q">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>LMWDiversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+		</constraints>
+	</locationSet>
+<!-- 	<locationSet id="LMWDiversions.sites_QDIV.urban">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>LMWDiversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="LMWDiversions.sites_QDIV.ind">
+		<description>data entry sites with flow diversion for industry</description>
+		<locationSetId>LMWDiversions.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+		</constraints>
+	</locationSet> -->
+	<!-- #######################
+	Data entry sites to MDBC_OPS
+	##########################-->
+	<!-- TODO: when idmapping is finished, go back to ...sites, also in parameetr specific sets-->
+	<locationSet id="LMWDiversions2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>LMWDiversions.sites</locationSetId>
+		<constraints>
+			<attributeExists id="DATA_ENTRY_PARAMS"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="LMWDiversions2MDBC_OPS.sites_Q">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>LMWDiversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q;"/>
+		</constraints>
+	</locationSet>
+<!-- 	<locationSet id="LMWDiversions2MDBC_OPS.sites_QDIV.urban">
+		<description>data entry sites with flow diversion for urban purposes</description>
+		<locationSetId>LMWDiversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.urban"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="LMWDiversions2MDBC_OPS.sites_QDIV.ind">
+		<description>data entry sites with flow diversion for industry</description>
+		<locationSetId>LMWDiversions2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="QDIV.ind"/>
+		</constraints>
+	</locationSet> -->
+</locationSets>

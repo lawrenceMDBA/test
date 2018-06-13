@@ -559,6 +559,19 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="DataEntry_Storage_V">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_water_in_storages</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-14" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="DataEntry_P">
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessPopo</moduleInstanceId>
@@ -1114,6 +1127,53 @@
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-1" end="0" unit="day"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="Storages_Full_Volume">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>display_web_pdf</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-6" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_LLAKES</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-6" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>display_web_pdf</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-14" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_LLAKES</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod start="-5" end="0" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
 	<!--<timeSeriesSets id="DataEntry_Gates">
@@ -2337,6 +2397,31 @@
 		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="VICDiversions"/>
+		</locationConstraints>
+	</filter>
+	<!-- Filter Id for use in PI web service call for updating the Storages Pdf-->
+	<filter id="Storages_DataEntry_Percent_Full" name="Percent_Full_web">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>Storages_Full_Volume</timeSeriesSetsId>
+	</filter>
+	<filter id="NStorages_DataEntry" name="Northen Storages">
+		<child foreignKey="NStorages_DataEntry_V"/>
+	</filter>
+	<filter id="NStorages_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="NStorage"/>
+		</locationConstraints>
+	</filter>
+	<filter id="SStorages_DataEntry" name="Southern Storages">
+		<child foreignKey="SStorages_DataEntry_V"/>
+	</filter>
+	<filter id="SStorages_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="SStorage"/>
 		</locationConstraints>
 	</filter>
 	<filter id="BMRegulators_DataEntry" name="BMRegulators">

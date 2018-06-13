@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<locationSet id="water_in_storages">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Storage"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_water_in_storages">
+	<!-- Locationset for individual storages that are not parents-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+            <allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<attributeExists id="Storages_Parent"/>
+				<not>
+					<attributeTextContains id="Storages_Parent" contains="BASIN"/>
+				</not>
+			</allValid>		
+		</constraints>
+	</locationSet>
+	<locationSet id="catchment_storages">
+	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
+	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="V;"/>
+				<attributeTextContains id="Storages_Parent" contains="BASIN"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="display_web_pdf">
+	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
+	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)
+	LLAKES is not a part of calculations for any of Northbasin or southbasin or wholebasin-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_water_in_storages</locationSetId>
+		<constraints>
+		   <allValid>
+				<not>
+				   <idContains contains="R_LKALEX"/>
+				</not>
+				<not>
+				   <idContains contains="R_LKALBERT"/>
+				</not>
+		   </allValid>
+		</constraints>		
+	</locationSet>
+	<locationSet id="display_storages_catchment_basin">
+	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
+	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)
+	LLAKES is not a part of calculations for any of Northbasin or southbasin or wholebasin-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>catchment_storages</locationSetId>
+		<locationId>R_LLAKES</locationId>
+		<locationId>R_WHOLEBASIN</locationId>
+	</locationSet>
+	<locationSet id="active_storage_all">
+	<!-- LocationSet to display sites (sites, catchments,Basins) that have active storage calculated -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="active;"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="dead_storage_sites">
+	<!-- LocationSet to display sites that have dead storage calculated -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites_water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="dead;"/>
+			</allValid>
+		</constraints>
+	</locationSet>	
+	<locationSet id="dead_storage_catchment_basin">
+	<!-- LocationSet to display (catchments,Basins) that have dead storage calculated -->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>display_storages_catchment_basin</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="dead;"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- LocationSet for %Full -->
+	<locationSet id="Volume_Percent_Full">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="%Full;"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- Below are locationSets for Valleys (sites taht are grouped into a Valley/catchment) -->
+	<locationSet id="R_416000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_416000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_LOWERDAR">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_LOWERDAR"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_418000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_418000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_419000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_419000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_421000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_421000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_412000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_412000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_410000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_410000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_405000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_405000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_404000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_404000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_406000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_406000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_407000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_407000"/>
+		</constraints>
+		</locationSet>
+	<locationSet id="R_403000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_403000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_422000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_422000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_401000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_401000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_A4261000">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_A4261000"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_LLAKES">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<attributeTextContains id="Storages_Parent" contains="R_LLAKES"/>
+		</constraints>
+	</locationSet>
+	<!-- Below are locationsets for Basins (group of valleys that form basins) -->
+	<locationSet id="R_NORTHBASIN">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextEquals id="Storages_Parent" equals="R_NORTHBASIN"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="R_SOUTHBASIN">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextEquals id="Storages_Parent" equals="R_SOUTHBASIN"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!-- LocationSet for the WholeBasin (Sites that adds up to WholeBasin (NB, SB and Lachlan)-->
+	<locationSet id="R_WHOLEBASIN">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>water_in_storages</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextEquals id="Storages_Parent" equals="R_WHOLEBASIN"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+</locationSets>

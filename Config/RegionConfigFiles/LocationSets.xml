@@ -19,6 +19,10 @@
 				<description>Relation to downstream site Usage: webreports</description>
 				<relatedLocationId>%DOWNSTREAM_SITE%</relatedLocationId>
 			</relation>
+			<relation id="Storages_Parent">
+				<description>Relation to sites and valleys</description>
+				<relatedLocationId>%Storages_Parent%</relatedLocationId>
+			</relation>
 			<attribute id="ROWS_SITE_ID">
 				<description>station identifier as used in ROWS. Usage: ratings report</description>
 				<text>%ROWS_SITE_ID%</text>
@@ -799,6 +803,10 @@
 			<attribute id="DAILY_FLOOD">
 				<description>Flood operations sites with daily data reading</description>
 				<text>%DAILY_FLOOD%</text>
+			</attribute>
+			<attribute id="Storages_Parent">
+				<description>site names in the catchment</description>
+				<text>%STORAGES_PARENT%</text>
 			</attribute>
 			<attributeFile>
 				<csvFile>ROWS_ops_DisplayLayout.csv</csvFile>
