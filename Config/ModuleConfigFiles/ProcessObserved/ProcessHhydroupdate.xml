@@ -16,10 +16,10 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 	<variable>
 		<variableId>HydroUpdate_hourly</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportObservedHydrographicUpdate</moduleInstanceId>
+			<moduleInstanceId>ImportHydrographic</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -33,7 +33,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_H_8am_inst</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -47,7 +47,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<qualifierId>8am</qualifierId>
 			<locationSetId>sites_H_8am_to_8am</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
@@ -63,7 +63,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_H_8am_to_8am</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -77,7 +77,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<qualifierId>midnight</qualifierId>
 			<locationSetId>sites_H_midnight_inst</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
@@ -92,7 +92,7 @@ _midnight_to_midnight: daily mean values at 8am where the day is defined from mi
 			<moduleInstanceId>ProcessHhydroupdate</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
-			<qualifierId>hydrographic_update</qualifierId>
+			<qualifierId>hyd</qualifierId>
 			<locationSetId>sites_H_midnight_inst</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
