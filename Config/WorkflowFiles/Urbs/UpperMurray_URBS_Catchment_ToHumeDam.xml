@@ -2,21 +2,26 @@
 <workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
 <!-- WF only to be run by other WFs, which will fill in the necessary property keys -->
 	<properties>
-		<string key="SUBCATCHMENT" value="upper"/>
-		<string key="USSUBCATCHMENT" value="mitta"/>
+		<string key="SUBCATCHMENT" value="ToHumeDam"/>
+		<string key="USSUBCATCHMENT2" value="ToJingellic"/>
+		<string key="USSUBCATCHMENT1" value="mittaToTallandoon"/>
+		<string key="SUBAREA" value="upper"/>
 		<string key="QOBSLOC" value="fcst_sites_no_res"/>
 	</properties>
 	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>upper_murray_upper_URBS_Forecast</moduleInstanceId>
-		<moduleConfigFileName>URBS_1h_qbc_Forecast</moduleConfigFileName>
+		<moduleInstanceId>upper_murray_ToHumeDam_URBS_Forecast</moduleInstanceId>
+		<moduleConfigFileName>URBS_1h_res_inflow_Forecast</moduleConfigFileName>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>upper_murray_upper_URBS_QtoH_Forecast</moduleInstanceId>
+		<moduleInstanceId>upper_murray_ToHumeDam_URBS_QtoH_Forecast</moduleInstanceId>
 		<moduleConfigFileName>FlowToLevel_Res_1h_URBS_Forecast</moduleConfigFileName>
 	</activity>
 	<activity>
 		<moduleInstanceId>MaxRelease_Hume_1h_URBS_Forecast</moduleInstanceId>
 	</activity>
+	<!--<activity>
+		<moduleInstanceId>URBS_1h_ungauged_Forecast</moduleInstanceId>
+	</activity>-->
 </workflow>

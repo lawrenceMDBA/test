@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<properties>
+		<string key="CATCHMENT" value="upper_murray"/>
+		<string key="ENSEMBLE" value="IFD"/>
+		<string key="ENSMEMBER" value="URBS Local"/>
+		<string key="RELEASE" value="Q_release"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<workflowId>UpperMurray_URBS_Catchment_MittaToTallandoon</workflowId>
+		<ensemble>
+			<ensembleId>IFD</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+</workflow>

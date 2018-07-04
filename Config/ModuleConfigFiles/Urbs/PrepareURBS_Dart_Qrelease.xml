@@ -26,7 +26,8 @@
 			<locationId>R_401224A</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -36,7 +37,7 @@
 			<valueType>scalar</valueType>
 			<parameterId>$RELEASE$</parameterId>
 			<locationId>R_401224A</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
