@@ -68,6 +68,26 @@
 						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT1$_URBS_Forecast</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>URBS_fcst_sites_$USSUBCATCHMENT1$_inflow</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT2$_URBS_Forecast</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>URBS_fcst_sites_$USSUBCATCHMENT2$_inflow</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
 					<!-- all parameters below map to a .g file, so only one file (i.e. parameter) per location will come through (i.e the last to be exported)-->
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
@@ -86,10 +106,10 @@
 						<valueType>scalar</valueType>
 						<parameterId>$RELEASE$</parameterId>
 						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
-						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
-						<readWriteMode>read complete forecast</readWriteMode>
+						<relativeViewPeriod unit="day" end="0" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
 						<ensembleId>main</ensembleId>
 					</timeSeriesSet>
 					<timeSeriesSet>
@@ -199,6 +219,16 @@
 						<valueType>scalar</valueType>
 						<parameterId>Q_fcst</parameterId>
 						<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>add originals</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>ungauged</qualifierId>
+						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
 						<timeSeriesType>simulated forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
 						<readWriteMode>add originals</readWriteMode>
