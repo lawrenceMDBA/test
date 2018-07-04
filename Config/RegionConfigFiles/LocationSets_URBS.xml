@@ -13,6 +13,13 @@
 			<attributeExists id="QRELEASE_URBSID"/>
 		</constraints>
 	</locationSet>
+	<!--<locationSet id="URBS_ungauged">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeExists id="UNGAUGED_ID"/>
+		</constraints>
+	</locationSet>-->
 	<locationSet id="URBS_matching">
 		<sortingLocationAttributeId>MATCHING_ORDER</sortingLocationAttributeId>
 		<csvFile>
@@ -48,25 +55,39 @@
 			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_upper_m"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_matching.upper_murray_mitta">
+	<locationSet id="URBS_matching.upper_murray_mittaToDartmouth">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_matching</locationSetId>
 		<constraints>
-			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_matching.upper_murray_upper">
+	<locationSet id="URBS_matching.upper_murray_mittaToTallandoon">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_matching</locationSetId>
 		<constraints>
-			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_matching.upper_murray_below">
+	<locationSet id="URBS_matching.upper_murray_ToJingellic">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_matching</locationSetId>
 		<constraints>
-			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_ToHumeDam">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_matching.upper_murray_belowHume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_matching</locationSetId>
+		<constraints>
+			<attributeTextContains id="URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_catchments">
@@ -306,16 +327,25 @@
 		<locationSetId>URBS_subareas.upper_murray</locationSetId>
 	</locationSet>
 	<locationSet id="URBS_subareas.upper_murray">
-		<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+		<!-- <locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
 		<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_below</locationSetId> -->
+		<locationSetId>URBS_subareas.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_ToHumeDam</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_belowHume</locationSetId>
 	</locationSet>
 	<locationSet id="URBS_subareas.upper_murray_m">
-		<locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
+		<!-- <locationSetId>URBS_subareas.upper_murray_mitta</locationSetId>
 		<locationSetId>URBS_subareas.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_subareas.upper_murray_below</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_below</locationSetId> -->
+		<locationSetId>URBS_subareas.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_subareas.upper_murray_ToHumeDam</locationSetId>
 	</locationSet>
-	<locationSet id="URBS_subareas.upper_murray_mitta">
+	<!-- <locationSet id="URBS_subareas.upper_murray_mitta">
 		<esriShapeFile>
 			<file>upperMurray_mitta_urbs_subareas</file>
 			<projectionFileAvailable>true</projectionFileAvailable>
@@ -350,8 +380,80 @@
 				<text>P.obs</text>
 			</attribute>
 		</esriShapeFile>
+	</locationSet> -->
+	<locationSet id="URBS_subareas.upper_murray_mittaToDartmouth">
+		<esriShapeFile>
+			<file>upperMurray_mittaToDartmouth_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_mittaToDartmouth_%Name%</id>
+			<name>upper_murray_mittaToDartmouth_%Name%</name>
+			<description>mittaToDartmouth (upper_murray)</description>
+			<shortName>upper_murray_mittaToDartmouth_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_mittaToDartmouth</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_mittaToDartmouth</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>mittaToDartmouth</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
 	</locationSet>
-	<locationSet id="URBS_subareas.upper_murray_upper">
+	<locationSet id="URBS_subareas.upper_murray_mittaToTallandoon">
+		<esriShapeFile>
+			<file>upperMurray_mittaToTallandoon_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_mittaToTallandoon_%Name%</id>
+			<name>upper_murray_mittaToTallandoon_%Name%</name>
+			<description>mittaToTallandoon (upper_murray)</description>
+			<shortName>upper_murray_mittaToTallandoon_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_mittaToTallandoon</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_mittaToTallandoon</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>mittaToTallandoon</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<!-- <locationSet id="URBS_subareas.upper_murray_upper">
 		<esriShapeFile>
 			<file>upperMurray_upper_urbs_subareas</file>
 			<projectionFileAvailable>true</projectionFileAvailable>
@@ -386,8 +488,80 @@
 				<text>P.obs</text>
 			</attribute>
 		</esriShapeFile>
+	</locationSet> -->
+	<locationSet id="URBS_subareas.upper_murray_ToJingellic">
+		<esriShapeFile>
+			<file>upperMurray_ToJingellic_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_ToJingellic_%Name%</id>
+			<name>upper_murray_ToJingellic_%Name%</name>
+			<description>ToJingellic (upper_murray)</description>
+			<shortName>upper_murray_ToJingellic_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_ToJingellic</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_ToJingellic</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>ToJingellic</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
 	</locationSet>
-	<locationSet id="URBS_subareas.upper_murray_below">
+	<locationSet id="URBS_subareas.upper_murray_ToHumeDam">
+		<esriShapeFile>
+			<file>upperMurray_ToHumeDam_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_ToHumeDam_%Name%</id>
+			<name>upper_murray_ToHumeDam_%Name%</name>
+			<description>ToHumeDam (upper_murray)</description>
+			<shortName>upper_murray_ToHumeDam_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_ToHumeDam</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_ToHumeDam</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>ToHumeDam</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<!-- <locationSet id="URBS_subareas.upper_murray_below">
 		<esriShapeFile>
 			<file>upperMurray_below_urbs_subareas</file>
 			<projectionFileAvailable>true</projectionFileAvailable>
@@ -412,6 +586,42 @@
 			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
 				<description>URBS catchment</description>
 				<text>below</text>
+			</attribute>
+			<attribute id="URBS_CATCHMENT" name="URBS catchment">
+				<description>URBS catchment</description>
+				<text>upper_murray</text>
+			</attribute>
+			<attribute id="URBS_INPUTPAR_PMERGED" name="URBS_inputPar_Pmerged">
+				<description>Fixed urbs parameter name</description>
+				<text>P.obs</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet> -->
+	<locationSet id="URBS_subareas.upper_murray_belowHume">
+		<esriShapeFile>
+			<file>upperMurray_belowHume_urbs_subareas</file>
+			<projectionFileAvailable>true</projectionFileAvailable>
+			<id>upper_murray_belowHume_%Name%</id>
+			<name>upper_murray_belowHume_%Name%</name>
+			<description>below (upper_murray)</description>
+			<shortName>upper_murray_belowHume_%Name%</shortName>
+			<relation id="subcatchment">
+				<relatedLocationId>upper_murray_belowHume</relatedLocationId>
+			</relation>
+			<relation id="catchment">
+				<relatedLocationId>upper_murray</relatedLocationId>
+			</relation>
+			<attribute id="URBS_SUBAREAID" name="SUBAREAID">
+				<description>Numeric identifier of sub area within sub catchment</description>
+				<text>%Name%</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT_ID" name="URBS sub-catchment Id">
+				<description>URBS catchment id</description>
+				<text>upper_murray_belowHume</text>
+			</attribute>
+			<attribute id="URBS_SUBCATCHMENT" name="URBS sub-catchment">
+				<description>URBS catchment</description>
+				<text>belowHume</text>
 			</attribute>
 			<attribute id="URBS_CATCHMENT" name="URBS catchment">
 				<description>URBS catchment</description>
@@ -462,29 +672,45 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_fcst.upper_murray">
-		<locationSetId>URBS_fcst.upper_murray_mitta</locationSetId>
-		<locationSetId>URBS_fcst.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_fcst.upper_murray_below</locationSetId>
+		<locationSetId>URBS_fcst.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_fcst.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_fcst.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_fcst.upper_murray_ToHumeDam</locationSetId>
+		<locationSetId>URBS_fcst.upper_murray_belowHume</locationSetId>
 	</locationSet>
-	<locationSet id="URBS_fcst.upper_murray_mitta">
+	<locationSet id="URBS_fcst.upper_murray_mittaToDartmouth">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst.upper_murray_upper">
+	<locationSet id="URBS_fcst.upper_murray_mittaToTallandoon">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst.upper_murray_below">
+	<locationSet id="URBS_fcst.upper_murray_ToJingellic">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_ToHumeDam">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst.upper_murray_belowHume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_fcst_sites_qbc">
@@ -501,60 +727,109 @@
 			<attributeExists id="MODEL_INFLOW"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_model_inflow_from_mitta">
+	<locationSet id="URBS_fcst_sites_mittaToDartmouth_inflow">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="MODEL_INFLOW" equals="mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_model_inflow_from_upper">
+		<locationSet id="URBS_fcst_sites_mittaToTallandoon_inflow">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="MODEL_INFLOW" equals="mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_qbc.upper_murray_mitta">
+	<locationSet id="URBS_fcst_sites_ToJingellic_inflow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
+		<constraints>
+			<attributeTextEquals id="MODEL_INFLOW" equals="ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_ToHumeDam_inflow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
+		<constraints>
+			<attributeTextEquals id="MODEL_INFLOW" equals="ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_belowHume_inflow">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
+		<constraints>
+			<attributeTextEquals id="MODEL_INFLOW" equals="belowHume"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_mittaToDartmouth">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_qbc.upper_murray_upper">
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_mittaToTallandoon">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_qbc.upper_murray_below">
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_ToJingellic">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_no_res.upper_murray_mitta">
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_ToHumeDam">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_qbc.upper_murray_belowHume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_qbc</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_mittaToDartmouth">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_no_res.upper_murray_upper">
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_mittaToTallandoon">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_fcst_sites_no_res.upper_murray_below">
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_ToJingellic">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_ToHumeDam">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_fcst_sites_no_res.upper_murray_belowHume">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_fcst_sites_no_res</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_rated.upper_murray_upper_m">
@@ -564,26 +839,40 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_rated.upper_murray">
-		<locationSetId>URBS_rated.upper_murray_mitta</locationSetId>
-		<locationSetId>URBS_rated.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_rated.upper_murray_below</locationSetId>
+		<locationSetId>URBS_rated.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_rated.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_rated.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_rated.upper_murray_ToHumeDam</locationSetId>
+		<locationSetId>URBS_rated.upper_murray_belowHume</locationSetId>
 	</locationSet>
-	<locationSet id="URBS_rated.upper_murray_mitta">
+	<locationSet id="URBS_rated.upper_murray_mittaToDartmouth">
 		<locationSetId>URBS_fcst_sites_rated</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_rated.upper_murray_upper">
+	<locationSet id="URBS_rated.upper_murray_mittaToTallandoon">
 		<locationSetId>URBS_fcst_sites_rated</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_rated.upper_murray_below">
+	<locationSet id="URBS_rated.upper_murray_ToJingellic">
 		<locationSetId>URBS_fcst_sites_rated</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_ToHumeDam">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_rated.upper_murray_belowHume">
+		<locationSetId>URBS_fcst_sites_rated</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_reservoirs.upper_murray_upper_m">
@@ -593,26 +882,40 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_reservoirs.upper_murray">
-		<locationSetId>URBS_reservoirs.upper_murray_mitta</locationSetId>
-		<locationSetId>URBS_reservoirs.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_reservoirs.upper_murray_below</locationSetId>
+		<locationSetId>URBS_reservoirs.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_reservoirs.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_reservoirs.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_reservoirs.upper_murray_ToHumeDam</locationSetId>
+		<locationSetId>URBS_reservoirs.upper_murray_belowHume</locationSetId>
 	</locationSet>
-	<locationSet id="URBS_reservoirs.upper_murray_mitta">
+	<locationSet id="URBS_reservoirs.upper_murray_mittaToDartmouth">
 		<locationSetId>URBS_reservoirs</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_reservoirs.upper_murray_upper">
+	<locationSet id="URBS_reservoirs.upper_murray_mittaToTallandoon">
 		<locationSetId>URBS_reservoirs</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_reservoirs.upper_murray_below">
+	<locationSet id="URBS_reservoirs.upper_murray_ToJingellic">
 		<locationSetId>URBS_reservoirs</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_ToHumeDam">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs.upper_murray_belowHume">
+		<locationSetId>URBS_reservoirs</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_reservoirs_controlled.upper_murray_upper_m">
@@ -622,26 +925,40 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_reservoirs_controlled.upper_murray">
-		<locationSetId>URBS_reservoirs_controlled.upper_murray_mitta</locationSetId>
-		<locationSetId>URBS_reservoirs_controlled.upper_murray_upper</locationSetId>
-		<locationSetId>URBS_reservoirs_controlled.upper_murray_below</locationSetId>
+		<locationSetId>URBS_reservoirs_controlled.upper_murray_mittaToDartmouth</locationSetId>
+		<locationSetId>URBS_reservoirs_controlled.upper_murray_mittaToTallandoon</locationSetId>
+		<locationSetId>URBS_reservoirs_controlled.upper_murray_ToJingellic</locationSetId>
+		<locationSetId>URBS_reservoirs_controlled.upper_murray_ToHumeDam</locationSetId>
+		<locationSetId>URBS_reservoirs_controlled.upper_murray_belowHume</locationSetId>
 	</locationSet>
-	<locationSet id="URBS_reservoirs_controlled.upper_murray_mitta">
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_mittaToDartmouth">
 		<locationSetId>URBS_reservoirs_controlled</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_mitta"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_reservoirs_controlled.upper_murray_upper">
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_mittaToTallandoon">
 		<locationSetId>URBS_reservoirs_controlled</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_upper"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_mittaToTallandoon"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="URBS_reservoirs_controlled.upper_murray_below">
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_ToJingellic">
 		<locationSetId>URBS_reservoirs_controlled</locationSetId>
 		<constraints>
-			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_below"/>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToJingellic"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_ToHumeDam">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextEquals id="OUT_URBS_SUBCATCHID" equals="upper_murray_ToHumeDam"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_reservoirs_controlled.upper_murray_belowHume">
+		<locationSetId>URBS_reservoirs_controlled</locationSetId>
+		<constraints>
+			<attributeTextContains id="OUT_URBS_SUBCATCHID" contains="upper_murray_belowHume"/>
 		</constraints>
 	</locationSet>
 </locationSets>
