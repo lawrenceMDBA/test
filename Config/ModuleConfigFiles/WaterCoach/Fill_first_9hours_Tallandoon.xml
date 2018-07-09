@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- tranformation to merge the Tallandoon simulated level with the Raw observed level to fill the first 9 hours of data with the raw observed data 
+     As the Simulated_Observed_Flow_Tallandoon module only calculates Tallandoon flow 9 hours after T0, the first 9 hours needs to be filled with the observed data
+     This module needs to be run only once after the first time Simulated_observed_Flow_Tallandoon is run	 -->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Tallandoon_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="90" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_Observed_H_Copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_simulated_Level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-1" end="90" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Tallandoon obs with Simulated obs">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Tallandoon_simulated_level</variableId>
+			 </inputVariable>
+			 <inputVariable>
+				<variableId>Tallandoon_Observed_H_Copy</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Tallandoon_simulated_level</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Tallandoon Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Tallandoon_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Tallandoon_simulated_Level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+</transformationModule>
