@@ -197,7 +197,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -210,6 +210,26 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>ungauged</qualifierId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -304,7 +324,7 @@
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>V_calc</parameterId>
+					<parameterId>V_obs</parameterId>
 					<qualifierId>Fops</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
@@ -398,7 +418,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
                                 <ensembleId>main</ensembleId>
@@ -413,6 +433,15 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -507,7 +536,7 @@
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>V_calc</parameterId>
+					<parameterId>V_obs</parameterId>
 					<qualifierId>Fops</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
@@ -714,7 +743,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release_scen</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -727,6 +756,15 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -821,7 +859,7 @@
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>V_calc</parameterId>
+					<parameterId>V_obs</parameterId>
 					<qualifierId>Fops</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
@@ -915,7 +953,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release_scen</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -928,6 +966,15 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<locationSetId>URBS_reservoirs_controlled</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceSetId>URBS_Forecast</moduleInstanceSetId>
@@ -1022,7 +1069,7 @@
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
-					<parameterId>V_calc</parameterId>
+					<parameterId>V_obs</parameterId>
 					<qualifierId>Fops</qualifierId>
 					<locationSetId>URBS_reservoirs</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
@@ -1640,7 +1687,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -2223,7 +2270,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationSetId>URBS_reservoirs_controlled</locationSetId>
-				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
@@ -2233,21 +2280,29 @@
 		<viewPermission>FloodOperations</viewPermission>
 		<displayGroup id="rainfallpolicy_upper_murray" name="Upper Murray (rainfall policy)">
 			<nodeId>rainfallpolicy_upper_murray</nodeId>
-			<display id="rainfallpolicy_upper_murray_mitta" name="Rainfall Forecast: Mitta">
-				<locationId>upper_murray_mitta</locationId>
+			<display id="rainfallpolicy_upper_murray_mittaToDartmouth" name="Rainfall Forecast: MittaToDartmouth">
+				<locationId>upper_murray_mittaToDartmouth</locationId>
 				<plotId>Rainfall_1h</plotId>
 			</display>
-			<display id="rainfallpolicy_upper_murray_upper" name="Rainfall Forecast: Upper">
-				<locationId>upper_murray_upper</locationId>
+			<display id="rainfallpolicy_upper_murray_mittaToTallandoon" name="Rainfall Forecast: MittaToTallandoon">
+				<locationId>upper_murray_mittaToTallandoon</locationId>
 				<plotId>Rainfall_1h</plotId>
 			</display>
-			<display id="rainfallpolicy_upper_murray_below" name="Rainfall Forecast: Below">
-				<locationId>upper_murray_below</locationId>
+			<display id="rainfallpolicy_upper_murray_ToJingellic" name="Rainfall Forecast: ToJingellic">
+				<locationId>upper_murray_ToJingellic</locationId>
+				<plotId>Rainfall_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_upper_murray_ToHumeDam" name="Rainfall Forecast: ToHumeDam">
+				<locationId>upper_murray_ToHumeDam</locationId>
+				<plotId>Rainfall_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_upper_murray_belowHume" name="Rainfall Forecast: BelowHume">
+				<locationId>upper_murray_belowHume</locationId>
 				<plotId>Rainfall_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_mitta" name="Upper Murray - mitta (run model)">
-			<nodeId>upper_murray_mitta</nodeId>
+		<displayGroup id="upper_murray_mittaToDartmouth" name="Upper Murray - mittaToDartmouth (run model)">
+			<nodeId>upper_murray_mittaToDartmouth</nodeId>
 			<display id="R_401216A_mitta" name="401216A - Jokers Ck">
 				<locationId>R_401216A</locationId>
 				<plotId>URBS_1h</plotId>
@@ -2260,6 +2315,17 @@
 				<locationId>R_401217A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
+			<display id="R_401224A_mitta" name="401224A - Dartmouth Dam">
+				<locationId>R_401224A</locationId>
+				<plotId>URBS_reservoir_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_mittaToTallandoon" name="Upper Murray - mittaToTallandoon (run model)">
+			<nodeId>upper_murray_mittaToTallandoon</nodeId>
+			<display id="R_401211A_mitta" name="401211A - Colemans">
+				<locationId>R_401211A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
 			<display id="R_401210A_mitta" name="401210A - Granite Flat">
 				<locationId>R_401210A</locationId>
 				<plotId>URBS_1h</plotId>
@@ -2268,21 +2334,13 @@
 				<locationId>R_401231A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
-			<display id="R_401224A_mitta" name="401224A - Dartmouth Dam">
-				<locationId>R_401224A</locationId>
-				<plotId>URBS_reservoir_1h</plotId>
-			</display>
-			<display id="R_401211A_mitta" name="401211A - Colemans">
-				<locationId>R_401211A</locationId>
-				<plotId>URBS_1h</plotId>
-			</display>
 			<display id="R_401204A_mitta" name="401204A - Tallandoon">
 				<locationId>R_401204A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_upper" name="Upper Murray - upper (run model)">
-			<nodeId>upper_murray_upper</nodeId>
+		<displayGroup id="upper_murray_ToJingellic" name="Upper Murray - ToJingellic (run model)">
+			<nodeId>upper_murray_ToJingellic</nodeId>
 			<display id="R_401012_upper" name="401012 - Biggara">
 				<locationId>R_401012</locationId>
 				<plotId>URBS_1h</plotId>
@@ -2311,6 +2369,17 @@
 				<locationId>R_401229A</locationId>
 				<plotId>URBS_1h</plotId>
 			</display>
+			<display id="R_401208A_upper" name="401208A - Berringama">
+				<locationId>R_401208A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+			<display id="R_401201A_upper" name="401201A - Jingellic">
+				<locationId>R_401201A</locationId>
+				<plotId>URBS_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_ToHumeDam" name="Upper Murray - ToHumeDam (run model)">
+			<nodeId>upper_murray_ToHumeDam</nodeId>
 			<display id="R_401201A_upper" name="401201A - Jingellic">
 				<locationId>R_401201A</locationId>
 				<plotId>URBS_1h</plotId>
@@ -2336,8 +2405,8 @@
 				<plotId>URBS_reservoir_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_below" name="Upper Murray - below (run model)">
-			<nodeId>upper_murray_below</nodeId>
+		<displayGroup id="upper_murray_BelowHume" name="Upper Murray - BelowHume (run model)">
+			<nodeId>upper_murray_BelowHume</nodeId>
 			<display id="R_409016_below" name="409016 - Heywoods">
 				<locationId>R_409016</locationId>
 				<plotId>URBS_1h</plotId>
@@ -2421,6 +2490,10 @@
 				<locationId>R_401229A</locationId>
 				<plotId>URBS_Official_1h</plotId>
 			</display>
+			<display id="official_R_401208A_upper" name="401208A - Berringama">
+				<locationId>R_401208A</locationId>
+				<plotId>URBS_Official_1h</plotId>
+			</display>
 			<display id="official_R_401201A_upper" name="401201A - Jingellic">
 				<locationId>R_401201A</locationId>
 				<plotId>URBS_Official_1h</plotId>
@@ -2468,16 +2541,24 @@
 		</displayGroup>
 		<displayGroup id="rainfallscenario_upper_murray" name="Upper Murray (rainfall policy)">
 			<nodeId>rainfallscenario_upper_murray</nodeId>
-			<display id="rainfallpolicy_scenario_upper_murray_mitta" name="Scenario Forecast: Mitta">
-				<locationId>upper_murray_mitta</locationId>
+			<display id="rainfallpolicy_scenario_upper_murray_mittaToDartmouth" name="Scenario Forecast: MittaToDartmouth">
+				<locationId>upper_murray_mittaToDartmouth</locationId>
 				<plotId>Rainfall_Scenario_1h</plotId>
 			</display>
-			<display id="rainfallpolicy_scenario_upper_murray_upper" name="Scenario Forecast: Upper">
-				<locationId>upper_murray_upper</locationId>
+			<display id="rainfallpolicy_scenario_upper_murray_mittaToTallandoon" name="Scenario Forecast: MittaToTallandoon">
+				<locationId>upper_murray_mittaToTallandoon</locationId>
 				<plotId>Rainfall_Scenario_1h</plotId>
 			</display>
-			<display id="rainfallpolicy_scenario_upper_murray_below" name="Scenario Forecast: Below">
-				<locationId>upper_murray_below</locationId>
+			<display id="rainfallpolicy_scenario_upper_murray_ToJingellic" name="Scenario Forecast: ToJingellic">
+				<locationId>upper_murray_ToJingellic</locationId>
+				<plotId>Rainfall_Scenario_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_scenario_upper_murray_ToHumeDam" name="Scenario Forecast: ToHumeDam">
+				<locationId>upper_murray_ToHumeDam</locationId>
+				<plotId>Rainfall_Scenario_1h</plotId>
+			</display>
+			<display id="rainfallpolicy_scenario_upper_murray_belowHume" name="Scenario Forecast: BelowHume">
+				<locationId>upper_murray_belowHume</locationId>
 				<plotId>Rainfall_Scenario_1h</plotId>
 			</display>
 		</displayGroup>
@@ -2541,6 +2622,10 @@
 			</display>
 			<display id="runscenario_R_401229A_upper" name="401229A - Cudgewa North">
 				<locationId>R_401229A</locationId>
+				<plotId>URBS_Scenario_IFD_1h</plotId>
+			</display>
+			<display id="runscenario_R_401208A_upper" name="401208A - Berringama">
+				<locationId>R_401208A</locationId>
 				<plotId>URBS_Scenario_IFD_1h</plotId>
 			</display>
 			<display id="runscenario_R_401201A_upper" name="401201A - Jingellic">
@@ -2650,6 +2735,10 @@
 				<locationId>R_401229A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
 			</display>
+			<display id="scenario_R_401208A_upper" name="401208A - Berringama">
+				<locationId>R_401208A</locationId>
+				<plotId>URBS_Scenario_1h</plotId>
+			</display>
 			<display id="scenario_R_401201A_upper" name="401201A - Jingellic">
 				<locationId>R_401201A</locationId>
 				<plotId>URBS_Scenario_1h</plotId>
@@ -2755,6 +2844,10 @@
 			</display>
 			<display id="runensemble_R_401229A_upper" name="401229A - Cudgewa North">
 				<locationId>R_401229A</locationId>
+				<plotId>URBS_Ensemble_1h</plotId>
+			</display>
+			<display id="runensemble_R_401208A_upper" name="401208A - Berringama">
+				<locationId>R_401208A</locationId>
 				<plotId>URBS_Ensemble_1h</plotId>
 			</display>
 			<display id="runensemble_R_401201A_upper" name="401201A - Jingellic">

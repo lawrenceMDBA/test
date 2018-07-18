@@ -72,7 +72,7 @@
 						<moduleInstanceId>$CATCHMENT$_$USSUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
 						<valueType>scalar</valueType>
 						<parameterId>Q_out_fcst</parameterId>
-						<locationSetId>URBS_fcst_sites_model_inflow_from_upper</locationSetId>
+						<locationSetId>URBS_fcst_sites_$USSUBCATCHMENT$_inflow</locationSetId>
 						<timeSeriesType>simulated forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
 						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
@@ -89,17 +89,6 @@
 						<timeStep unit="hour"/>
 						<relativeViewPeriod unit="day" end="0"/>
 						<readWriteMode>read only</readWriteMode>
-						<ensembleId>main</ensembleId>
-					</timeSeriesSet>
-					<timeSeriesSet>
-						<moduleInstanceId>User_Input</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>$RELEASE$</parameterId>
-						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-						<timeSeriesType>simulated forecasting</timeSeriesType>
-						<timeStep unit="hour"/>
-						<relativeViewPeriod unit="day" end="0" endOverrulable="true"/>
-						<readWriteMode>read complete forecast</readWriteMode>
 						<ensembleId>main</ensembleId>
 					</timeSeriesSet>
 					<timeSeriesSet>
@@ -209,24 +198,6 @@
 						<valueType>scalar</valueType>
 						<parameterId>Q_fcst</parameterId>
 						<locationSetId>URBS_fcst.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-						<timeSeriesType>simulated forecasting</timeSeriesType>
-						<timeStep unit="hour"/>
-						<readWriteMode>add originals</readWriteMode>
-					</timeSeriesSet>
-					<timeSeriesSet>
-						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>Q_in_fcst</parameterId>
-						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-						<timeSeriesType>simulated forecasting</timeSeriesType>
-						<timeStep unit="hour"/>
-						<readWriteMode>add originals</readWriteMode>
-					</timeSeriesSet>
-					<timeSeriesSet>
-						<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>Q_out_fcst</parameterId>
-						<locationSetId>URBS_reservoirs.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
 						<timeSeriesType>simulated forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
 						<readWriteMode>add originals</readWriteMode>

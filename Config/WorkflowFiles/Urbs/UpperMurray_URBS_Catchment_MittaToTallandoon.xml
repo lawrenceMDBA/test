@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1"><!-- WF only to be run by other WFs, which will fill in the necessary property keys -->
+	<properties>
+		<string key="SUBCATCHMENT" value="mittaToTallandoon"/>
+		<string key="USSUBCATCHMENT" value="mittaToDartmouth"/>
+		<string key="SUBAREA" value="mitta"/>
+		<string key="QOBSLOC" value="fcst_sites_no_res"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>upper_murray_mittaToTallandoon_URBS_Forecast</moduleInstanceId>
+		<moduleConfigFileName>URBS_1h_inflow_Forecast</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>upper_murray_mittaToTallandoon_URBS_QtoH_Forecast</moduleInstanceId>
+		<moduleConfigFileName>FlowToLevel_noRes_1h_URBS_Forecast</moduleConfigFileName>
+	</activity>
+	<!-- <activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>Simulated_Observed_Flow_Tallandoon</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+		<moduleConfigFileName>Fill_first_9hours_Tallandoon</moduleConfigFileName>
+	</activity> -->
+</workflow>
