@@ -756,7 +756,9 @@
 	<map externalLocation="LTWCUT3" externalParameter="41" internalLocation="R_LTWCUT3" internalParameter="NoGatesOpen_fcst"/>
 	<map externalLocation="LTWCUT4" externalParameter="41" internalLocation="R_LTWCUT4" internalParameter="NoGatesOpen_fcst"/>
 	<map externalLocation="LVIC" externalParameter="35" internalLocation="R_A4260553" internalParameter="H_fcst"/>
-	<map externalLocation="LVIC" externalParameter="36" internalLocation="R_A4260553" internalParameter="V_fcst"/>
+	<!-- commenting the below line as volume forecast is done for A4260553 in ops sheets but is published as A4261093 in river murray data page
+	The operators changes their forecast location to A4261093 on the OPS sheets when the level gets very low otherwise they forecast at A4260553 -->
+	<!-- <map externalLocation="LVIC" externalParameter="36" internalLocation="R_A4260553" internalParameter="V_fcst"/> -->
 	<map externalLocation="LVIC" externalParameter="1" internalLocation="R_A4260502" internalParameter="Q_fcst"/>
 	<map externalLocation="LVIC" externalParameter="5" internalLocation="R_A4260553" internalParameter="EC_fcst"/>
 	<map externalLocation="LVIC" externalParameter="320" internalLocation="R_A4260553" internalParameter="VL_fcst" internalQualifier="evap"/>
@@ -768,7 +770,8 @@
 	<map externalLocation="LVICMET" externalParameter="37" internalLocation="R_A4260904" internalParameter="P_fcst"/>
 	<map externalLocation="LVICOUT" externalParameter="35" internalLocation="R_A4260502" internalParameter="H_fcst"/>
 	<map externalLocation="LVICPON" externalParameter="35" internalLocation="R_A4261093" internalParameter="H_fcst"/>
-	<map externalLocation="LVICPON" externalParameter="36" internalLocation="R_A4261093" internalParameter="V_fcst"/>
+	<!-- mapping A4260553 (LVIC) to A4261093 (LVICPON) - Reason said in the above comment -->
+	<map externalLocation="LVIC" externalParameter="36" internalLocation="R_A4261093" internalParameter="V_fcst"/>
 	<map externalLocation="LVICPON" externalParameter="5" internalLocation="R_A4261093" internalParameter="EC_fcst"/>
 	<map externalLocation="MAINS" externalParameter="41" internalLocation="R_MAINS" internalParameter="NoGatesOpen_fcst"/>
 	<map externalLocation="MAMANAD" externalParameter="224" internalLocation="R_MAMANAD" internalParameter="QDIV_fcst" internalQualifier="urban"/>
