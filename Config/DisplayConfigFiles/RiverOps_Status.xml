@@ -48,7 +48,7 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
+<!-- 	<variable>
 		<variableId>H_hydro</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
@@ -60,7 +60,7 @@
 			<relativeViewPeriod end="0" start="-60" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-	</variable>
+	</variable> -->
 	<variable>
 		<variableId>H_MDBC_calc</variableId>
 		<timeSeriesSet>
@@ -295,6 +295,17 @@
 				</outputVariable>
 			</simple>
 		</merge>
+	</transformation>
+	<!-- For some reason Q_merge is in m3/s along with the input variables -->
+ 	<transformation id="m3/s to ML/Day">
+		<user>
+			<simple>
+				<expression>Q_merge * 86.4</expression>
+				<outputVariable>
+					<variableId>Q_merge</variableId>
+				</outputVariable>
+			</simple>
+		</user>
 	</transformation>
 	<scadaPanel id="ScadaDisplay_1" name="Upper Murray">
 		<svgFile>Upper_Murray.svg</svgFile>
@@ -842,6 +853,29 @@
 		</textComponentBehaviourDefinition>
 		<textComponentBehaviourDefinition>
 			<svgObjectId>Jingellic_Q</svgObjectId>
+			<leftSingleClickAction>
+				<openDisplay>
+					<timeSeriesDisplay>
+						<title>Level and Flow @ Jingellic_Q</title>
+						<variable>
+							<variableId>H_merge</variableId>
+							<locationId>R_401201A</locationId>
+						</variable>
+						<variable>
+							<variableId>Q_MDBC_calc</variableId>
+							<locationId>R_401201A</locationId>
+						</variable>
+						<variable>
+							<variableId>Q_opo</variableId>
+							<locationId>R_401201A</locationId>
+						</variable>
+						<variable>
+							<variableId>Q_merge</variableId>
+							<locationId>R_401201A</locationId>
+						</variable>
+					</timeSeriesDisplay>
+				</openDisplay>
+			</leftSingleClickAction>
 			<useThresholdWarningLevelColors>
 				<variable>
 					<variableId>H_merge</variableId>
@@ -853,7 +887,7 @@
 			</useThresholdWarningLevelColors>
 			<toolTip>
 				<variable>
-					<variableId>Q_merge</variableId>
+					<variableId>H_merge</variableId>
 					<locationId>R_401201A</locationId>
 				</variable>
 				<toolTipText>Flow at Murray @ Jingellic (%LASTVALUETIME(DF3)%)</toolTipText>
