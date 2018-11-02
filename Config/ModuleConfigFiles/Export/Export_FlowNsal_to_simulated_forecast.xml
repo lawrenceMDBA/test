@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+		<!-- Flow and salinity imported from OPS sheets as external forecating timeseries -->
+		<variable>
+			<variableId>H_ext_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="10" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>V_ext_fcst</variableId>	
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_vol</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>Q_ext_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="10" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>EC_ext_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeForecastPeriod start="0" end="7" unit="day" />
+				<externalForecastMaxAge unit="day" multiplier="1" />
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<!--- Flow and salinity copied to simulated forecasts before exporting to hydstra 
+		to ensure only one copy of the forecasts exported to hydstra is maintained -->
+		<variable>
+			<variableId>H_sim_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_level</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>V_sim_fcst</variableId>	
+				<timeSeriesSet>
+				<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_vol</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>Q_sim_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_flow</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<variable>
+			<variableId>EC_sim_fcst</variableId>
+			<timeSeriesSet>
+				<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EC_fcst</parameterId>
+				<locationSetId>flow-n-sal.sites_sal</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</variable>
+		<transformation id="Copy H_ext_fcst to H_sim_fcst">
+			<user>
+				<simple>
+					<expression>H_ext_fcst</expression>
+					<outputVariable>
+						<variableId>H_sim_fcst</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+		</transformation>
+		<transformation id="Copy V_ext_fcst to V_sim_fcst">
+			<user>
+				<simple>
+					<expression>V_ext_fcst</expression>
+					<outputVariable>
+						<variableId>V_sim_fcst</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+		</transformation>
+		<transformation id="Copy Q_ext_fcst to Q_sim_fcst">
+			<user>
+				<simple>
+					<expression>Q_ext_fcst</expression>
+					<outputVariable>
+						<variableId>Q_sim_fcst</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+		</transformation>
+		<transformation id="Copy EC_ext_fcst to EC_sim_fcst">
+			<user>
+				<simple>
+					<expression>EC_ext_fcst</expression>
+					<outputVariable>
+						<variableId>EC_sim_fcst</variableId>
+					</outputVariable>
+				</simple>
+			</user>
+		</transformation>
+</transformationModule>		
