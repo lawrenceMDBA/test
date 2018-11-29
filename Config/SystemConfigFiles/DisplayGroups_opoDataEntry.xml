@@ -321,7 +321,7 @@
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
-		<!-- Q.x_obs -->
+		<!-- Q_obs.turb -->
 		<subplot min="0.0">
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
@@ -339,6 +339,31 @@
 				<moduleInstanceId>ImportObserved</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>turb</qualifierId>
+				<locationSetId>de.sites_Q.turb</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<qualifierId>turb</qualifierId>
+				<locationSetId>de.sites_Q.turb</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
 				<qualifierId>opc</qualifierId>
 				<qualifierId>turb</qualifierId>
 				<locationSetId>de.sites_Q.turb</locationSetId>
@@ -360,6 +385,9 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
+		</subplot>
+		<!-- Q_obs.valves -->
+		<subplot min="0.0">
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -397,6 +425,9 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
+		</subplot>
+		<!-- Q_obs.spill -->
+		<subplot min="0.0">
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -2535,6 +2566,31 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<qualifierId>turb</qualifierId>
+				<locationSetId>de.sites_Q.turb</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opt</qualifierId>
+				<qualifierId>turb</qualifierId>
+				<locationSetId>de.sites_Q.turb</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportObserved</moduleInstanceId>
