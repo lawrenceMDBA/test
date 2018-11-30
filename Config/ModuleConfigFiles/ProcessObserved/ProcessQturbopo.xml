@@ -807,7 +807,7 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<nonEquidistantInputVariable>
 					<variableId>OPT_neq</variableId>
 				</nonEquidistantInputVariable>
-				<interpolationType>linearOrClosest</interpolationType>
+				<interpolationType>linear</interpolationType>
 				<outputVariable>
 					<variableId>OPT_15m</variableId>
 				</outputVariable>
@@ -845,7 +845,7 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 	</transformation>
 	<transformation id="OPT_15m_aggr_8am_to_8am">
 		<aggregation>
-			<accumulative>
+			<instantaneousToMean>
 				<inputVariable>
 					<variableId>OPT_15m</variableId>
 				</inputVariable>
@@ -857,7 +857,7 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<outputVariable>
 					<variableId>OPT_8am_to_8am_tmp</variableId>
 				</outputVariable>
-			</accumulative>
+			</instantaneousToMean>
 		</aggregation>
 	</transformation>
 	<transformation id="OPT_copy_mean_to_8am">
@@ -1179,9 +1179,9 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<inputVariable>
 					<variableId>Rated_Midnight_to_Midnight.sites_rated</variableId>
 				</inputVariable>
-				<inputVariable>
+			<!-- 	<inputVariable>
 					<variableId>OPO_historic_Midnight_to_Midnight.sites_rated</variableId>
-				</inputVariable>
+				</inputVariable> -->
 				<outputVariable>
 					<variableId>OPO_Midnight_to_Midnight.sites_rated</variableId>
 				</outputVariable>
@@ -1206,9 +1206,9 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<inputVariable>
 					<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
 				</inputVariable>
-				<inputVariable>
+			<!-- 	<inputVariable>
 					<variableId>OPO_historic_Midnight_to_Midnight.sites_not_rated</variableId>
-				</inputVariable>
+				</inputVariable> -->
 				<outputVariable>
 					<variableId>OPO_Midnight_to_Midnight.sites_not_rated</variableId>
 				</outputVariable>
@@ -1233,9 +1233,9 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<inputVariable>
 					<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
 				</inputVariable>
-				<inputVariable>
+  	                   <!--	<inputVariable>
 					<variableId>OPO_historic_midnight_inst_at_8am_not_rated</variableId>
-				</inputVariable>
+				</inputVariable> -->
 				<outputVariable>
 					<variableId>OPO_midnight_inst_at_8am_not_rated</variableId>
 				</outputVariable>
