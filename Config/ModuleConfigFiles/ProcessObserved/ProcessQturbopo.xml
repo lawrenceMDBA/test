@@ -1,25 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
-	<!-- Transformations to compose OPO series from OPT, OPC -->
+	<!-- Transformations to compose OPO series from OPT, OPC and OPT2-->
 	<!-- Types of daily values are distinguished:
-_8am_inst: instantaenous values at 8am	-->
+_8am_inst: instantaenous values at 8am
+_8am_to_8am: daily mean values at 8am where the day is defined from 8am to 8am
+_midnight_to_midnight: daily mean values at 8am where the day is defined from midnight to midnight-->
+	<!-- note that the aggregation results are temporary series having an aggregationperiod defined -->
+	<!-- the final result only has an 8am timestamp and a mean variable name, no qualifier to trace back its origin. Will need to use tooltip-->
 	<!--Steps conducted for OPT, OPC:-->
-	<!--_neq_to_8am_inst: 
+	<!-- _neq_to_15m: 
+samples nonEquidistant series to 15 minute or 15m series using closestOrLinear interpolation 
+(i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp)-->
+	<!--_15m_aggr_daily_midnight_to_midnight:
+instantaneousToMean aggregation from 15m for daily mean (stamped at 8am), where the day is defined from midnight to midnight;
+result is reliable if fews than x% of input values are doubtful or missing-->
+	<!-- _neq_to_8am_inst: 
 samples nonEquidistant series to 8am instantaneous daily series using closestOrLinear interpolation 
 (i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp) restricted by 4 hour max timewindow-->
 	<!--SelectPreferred_: 
-select preferred series (OPT, OPC,OPO) based on (modifiable) location attribute, default is OPT
+select preferred series (Rated, OPT, OPC, OPO) based on (modifiable) location attribute, default is OPT or Rated for sites with a rating curve. 
 OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
 	<!--Merge_OPO_Over_Selected(_OPT_OPC):
-Merges OPO over selected (not over OPT over OPC) series-->
-<!-- MDBA addtions: merging of opt over opc enabled and no selected trace -->
-	<!-- 
+Merges OPO over selected (not over OPT over OPC over Rated) series-->
+	<variable>
+		<variableId>OPO_historic_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_8am_inst.sites_rated</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_8am_inst.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>turb</qualifierId>
+			<locationSetId>sites_Q_8am_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--	<variable>
+		<variableId>OPO_historic_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_Midnight_to_Midnight.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<variable>
+		<variableId>OPO_historic_midnight_inst_at_8am_not_rated</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra flow data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Rated_8am_inst.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToFlow</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>rated</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Rated_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToFlow</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>rated</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--should have variable for Rated_midnight_inst? -->
 	<variable>
 		<variableId>OPT_neq</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
 			<qualifierId>opt</qualifierId>
 			<qualifierId>raw</qualifierId>
 			<locationSetId>sites</locationSetId>
@@ -32,9 +166,10 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>OPT_15m</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
 			<qualifierId>opt</qualifierId>
 			<qualifierId>15m</qualifierId>
 			<locationSetId>sites</locationSetId>
@@ -47,27 +182,201 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>OPT_8am_inst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
 			<qualifierId>opt</qualifierId>
-			<locationSetId>sites</locationSetId>
+			<locationSetId>sites_Q_8am_inst</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	-->
+	<variable>
+		<variableId>OPT_8am_inst.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_inst.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_8am_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT2_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Midnight_to_Midnight_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Midnight_to_Midnight</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_Midnight_to_Midnight.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<!-- disabled to stop empty location set error -->
+			<!-- 			<locationSetId>sites_Q_midnight_to_midnight_not_rated</locationSetId>-->
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- midnight_inst_not_rated. midnight_inst_rated will be handled by ProcessHopo? -->
+	<variable>
+		<variableId>OPT_midnight_inst_not_rated_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPT_midnight_inst_at_8am_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- xxx -->
 	<variable>
 		<variableId>OPC_neq</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
 			<qualifierId>opc</qualifierId>
 			<qualifierId>raw</qualifierId>
-			<qualifierId>turb</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="nonequidistant"/>
@@ -76,110 +385,30 @@ Merges OPO over selected (not over OPT over OPC) series-->
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>OPC_neq_fcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>raw</qualifierId>
-			<qualifierId>turb</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="nonequidistant"/>
-			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
-			<!--
-			<relativeForecastPeriod  start="0" end="30" startOverrulable="true" unit="day"/>
-			-->
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-<!-- 	<variable>
 		<variableId>OPC_15m</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>turb</qualifierId>
-			<qualifierId>15m</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
-<!-- 	<variable>
-		<variableId>OPC_15m_fcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>turb</qualifierId>
-			<qualifierId>15m</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
-	<variable>
-		<variableId>OPC_8am_inst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>turb</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>OPC_8am_inst_fcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>turb</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-<!-- 	<variable>
-		<variableId>Selected_8am_inst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
-	<variable>
-		<variableId>OPO_8am_inst</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
 			<qualifierId>turb</qualifierId>
-			<locationSetId>de.sites_Q.turb</locationSetId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>15m</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="minute" multiplier="15"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_8am_inst</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
@@ -187,21 +416,462 @@ Merges OPO over selected (not over OPT over OPC) series-->
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>OPO_8am_inst_fcst</variableId>
+		<variableId>OPC_8am_inst.sites_rated</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>opo</qualifierId>
+			<parameterId>Q_obs</parameterId>
 			<qualifierId>turb</qualifierId>
-			<locationSetId>de.sites_Q.turb</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--
+	<variable>
+		<variableId>OPC_8am_inst.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_8am_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_to_8am_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-24" end="0"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Midnight_to_Midnight_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Midnight_to_Midnight</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<!-- disabled to stop empty location set error -->
+			<!-- 			<locationSetId>sites_Q_midnight_to_midnight_not_rated</locationSetId>-->
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_midnight_inst_not_rated_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_midnight_inst_at_8am_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opc</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am_inst</qualifierId>
+			<locationSetId>sites_Q_8am_inst</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_inst.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am_inst</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_inst.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am_inst</qualifierId>
+			<locationSetId>sites_Q_8am_inst_not_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_Midnight_to_Midnight</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_Midnight_to_Midnight.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>mean</qualifierId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<!-- disabled to stop empty location set error -->
+			<!-- 			<locationSetId>sites_Q_midnight_to_midnight_not_rated</locationSetId>-->
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Selected_midnight_inst_at_8am_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>selected</qualifierId>
+			<qualifierId>8am_inst</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-32" end="-8"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_8am_inst_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_8am_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_Midnight_to_Midnight.sites_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_midnight_to_midnight_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_Midnight_to_Midnight.sites_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<!-- disabled to stop empty location set error -->
+			<!-- 			<locationSetId>sites_Q_midnight_to_midnight_not_rated</locationSetId>-->
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_midnight_inst_at_8am_not_rated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_midnight_inst_not_rated</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_to_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>turb</qualifierId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_Q_8am_to_8am</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="OPT_neq_to_15m">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linear</interpolationType>
+				<outputVariable>
+					<variableId>OPT_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_15m_aggr_midnight_to_midnight">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPT_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPT_Midnight_to_Midnight_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="copy_OPT_midnight_to_midnight">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPT_Midnight_to_Midnight_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPT_Midnight_to_Midnight</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPT_15m_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPT_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPT_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="OPT_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPT_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPT_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
 	<transformation id="OPT_neq_to_8am_inst">
 		<sample>
 			<nonEquidistant>
@@ -216,7 +886,109 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			</nonEquidistant>
 		</sample>
 	</transformation>
-	-->
+	<transformation id="OPT_neq_to_midnight_inst_not_rated">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPT_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPT_midnight_inst_not_rated_tmp</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPT_copy_midnight_inst_to_8am">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>OPT_midnight_inst_not_rated_tmp</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>OPT_midnight_inst_at_8am_not_rated</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestForward</interpolationType>
+				<timeWindow unit="hour" multiplier="16"/>
+				<outputVariable>
+					<variableId>OPT_midnight_inst_at_8am_not_rated</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neq_to_15min">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_15m</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_neg_aggr_8am_to_8am">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPC_neq</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPC_8am_to_8am_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="OPC_copy_mean_to_8am">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPC_8am_to_8am_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPC_8am_to_8am</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPC_15m_aggr_midnight_to_midnight">
+		<aggregation>
+			<instantaneousToMean>
+				<inputVariable>
+					<variableId>OPC_15m</variableId>
+				</inputVariable>
+				<validationRule>
+					<inputDoubtfulPercentage>30</inputDoubtfulPercentage>
+					<inputMissingPercentage>10</inputMissingPercentage>
+					<outputValueFlag>reliable</outputValueFlag>
+				</validationRule>
+				<outputVariable>
+					<variableId>OPC_Midnight_to_Midnight_tmp</variableId>
+				</outputVariable>
+			</instantaneousToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="copy_OPC_midnight_to_midnight">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPC_Midnight_to_Midnight_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPC_Midnight_to_Midnight</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
 	<transformation id="OPC_neq_to_8am_inst">
 		<sample>
 			<nonEquidistant>
@@ -231,81 +1003,296 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			</nonEquidistant>
 		</sample>
 	</transformation>
-	<transformation id="OPC_neq_to_8am_inst_fcst">
-		<sample>
-			<nonEquidistant>
-				<nonEquidistantInputVariable>
-					<variableId>OPC_neq_fcst</variableId>
-				</nonEquidistantInputVariable>
-				<interpolationType>linearOrClosest</interpolationType>
-				<maxGapLength unit="hour" multiplier="4"/>
-				<outputVariable>
-					<variableId>OPC_8am_inst_fcst</variableId>
-				</outputVariable>
-			</nonEquidistant>
-		</sample>
-	</transformation>
-<!--  	<transformation id="SelectPreferred_8am_inst">
+	<transformation id="SelectPreferred_8am_inst.sites_rated">
 		<merge>
 			<selectDataSource>
- 				<input>
-					<variableId>OPT_8am_inst</variableId>
+				<input>
+					<variableId>Rated_8am_inst.sites_rated</variableId>
 				</input>
 				<input>
-					<variableId>OPC_8am_inst</variableId>
+					<variableId>OPT_8am_inst.sites_rated</variableId>
 				</input>
 				<input>
-					<variableId>OPO_8am_inst</variableId>
-				</input>				
-				<attributeFunctionId>@WT_PREFERRED@_8am_inst</attributeFunctionId>
+					<variableId>OPC_8am_inst.sites_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_inst.sites_rated</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_8am_inst.sites_rated</attributeFunctionId>
 				<output>
-					<variableId>Selected_8am_inst</variableId>
+					<variableId>Selected_8am_inst.sites_rated</variableId>
 				</output>
 			</selectDataSource>
 		</merge>
-	</transformation> -->
-	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst">
+	</transformation>
+	<transformation id="SelectPreferred_8am_inst.sites_not_rated">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am_inst.sites_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_inst.sites_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am_inst.sites_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_inst.sites_not_rated</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_8am_inst.sites_not_rated</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am_inst.sites_not_rated</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="SelectPreferred_8am_to_8am">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_8am_to_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPC_8am_to_8am</variableId>
+				</input>
+				<input>
+					<variableId>OPO_8am_to_8am</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_@Q_TIMESTEP@</attributeFunctionId>
+				<output>
+					<variableId>Selected_8am_to_8am</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<!--Commented out, is only applied to dummy location anyway-->
+	<transformation id="SelectPreferred_midnight_to_midnight.sites_rated">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>Rated_Midnight_to_Midnight.sites_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPT_Midnight_to_Midnight.sites_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPC_Midnight_to_Midnight.sites_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_Midnight_to_Midnight.sites_rated</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_@Q_TIMESTEP@.sites_rated</attributeFunctionId>
+				<output>
+					<variableId>Selected_Midnight_to_Midnight.sites_rated</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="SelectPreferred_midnight_to_midnight.sites_not_rated">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_Midnight_to_Midnight.sites_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_Midnight_to_Midnight.sites_not_rated</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_@Q_TIMESTEP@.sites_not_rated</attributeFunctionId>
+				<output>
+					<variableId>Selected_Midnight_to_Midnight.sites_not_rated</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<!-- xxx -->
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC_OPT2)_8am_to_8am">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>OPO_8am_inst</variableId>
+					<variableId>OPO_8am_to_8am</variableId>
 				</inputVariable>
 				<!--
- 				<inputVariable>
-					<variableId>Selected_8am_inst</variableId>
-				</inputVariable>
+				This is disabled as modifier options is not available for Q_obs.turb
 				<inputVariable>
-					<variableId>OPT_8am_inst</variableId>
+					<variableId>Selected_8am_to_8am</variableId>
 				</inputVariable>
 				-->
 				<inputVariable>
-					<variableId>OPC_8am_inst</variableId>
+					<variableId>OPT_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPT2_8am_to_8am</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_historic_8am_to_8am</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>OPO_8am_inst</variableId>
+					<variableId>OPO_8am_to_8am</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst_fcst">
+	<transformation id="SelectPreferred_midnight_inst_at_8am_not_rated">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>OPT_midnight_inst_at_8am_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPC_midnight_inst_at_8am_not_rated</variableId>
+				</input>
+				<input>
+					<variableId>OPO_midnight_inst_at_8am_not_rated</variableId>
+				</input>
+				<attributeFunctionId>@Q_PREFERRED@_@Q_TIMESTEP@_at_8am_not_rated</attributeFunctionId>
+				<output>
+					<variableId>Selected_midnight_inst_at_8am_not_rated</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_midn_to_midn.sites_rated">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>OPO_8am_inst_fcst</variableId>
+					<variableId>OPO_Midnight_to_Midnight.sites_rated</variableId>
 				</inputVariable>
 				<!--
+				This is disabled as modifier option is not available for Q_obs.turb
 				<inputVariable>
-					<variableId>Selected_8am_inst_fcst</variableId>
-				</inputVariable>
-				<inputVariable>
-					<variableId>OPT_8am_inst-fcst</variableId>
+					<variableId>Selected_Midnight_to_Midnight.sites_rated</variableId>
 				</inputVariable>
 				-->
 				<inputVariable>
-					<variableId>OPC_8am_inst_fcst</variableId>
+					<variableId>OPT_Midnight_to_Midnight.sites_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_Midnight_to_Midnight.sites_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Rated_Midnight_to_Midnight.sites_rated</variableId>
+				</inputVariable>
+			<!-- 	<inputVariable>
+					<variableId>OPO_historic_Midnight_to_Midnight.sites_rated</variableId>
+				</inputVariable> -->
+				<outputVariable>
+					<variableId>OPO_Midnight_to_Midnight.sites_rated</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_midn_to_midn.sites_not_rated">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+				<!--
+				This is disabled as modifier options is not available for Q_obs.turb
+				<inputVariable>
+					<variableId>Selected_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+				-->
+				<inputVariable>
+					<variableId>OPT_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+			<!-- 	<inputVariable>
+					<variableId>OPO_historic_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable> -->
+				<outputVariable>
+					<variableId>OPO_Midnight_to_Midnight.sites_not_rated</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_midnight_inst_at_8am_not_rated">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_midnight_inst_at_8am_not_rated</variableId>
+				</inputVariable>
+				<!--
+				This is disabled as modifier options is not available for Q_obs.turb
+				<inputVariable>
+					<variableId>Selected_midnight_inst_at_8am_not_rated</variableId>
+				</inputVariable>
+				-->
+				<inputVariable>
+					<variableId>OPT_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_Midnight_to_Midnight.sites_not_rated</variableId>
+				</inputVariable>
+  	                   <!--	<inputVariable>
+					<variableId>OPO_historic_midnight_inst_at_8am_not_rated</variableId>
+				</inputVariable> -->
+				<outputVariable>
+					<variableId>OPO_midnight_inst_at_8am_not_rated</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst.sites_rated">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst.sites_rated</variableId>
+				</inputVariable>
+				<!--
+				<inputVariable>
+					<variableId>Selected_8am_inst.sites_rated</variableId>
+				</inputVariable>
+				-->
+				<inputVariable>
+					<variableId>OPT_8am_inst.sites_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst.sites_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Rated_8am_inst.sites_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_historic_8am_inst.sites_rated</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>OPO_8am_inst_fcst</variableId>
+					<variableId>OPO_8am_inst.sites_rated</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst.sites_not_rated">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst.sites_not_rated</variableId>
+				</inputVariable>
+				<!--
+				<inputVariable>
+					<variableId>Selected_8am_inst.sites_not_rated</variableId>
+				</inputVariable>
+				-->
+				<inputVariable>
+					<variableId>OPT_8am_inst.sites_not_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst.sites_not_rated</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_historic_8am_inst.sites_not_rated</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst.sites_not_rated</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
