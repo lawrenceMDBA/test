@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <permissions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/permissions.xsd" xmlns="http://www.wldelft.nl/fews"> 
+    <permission id="Guests">
+        <userGroup id=""/>
+    </permission>	
     <permission id="RiverOperations">
         <userGroup id="DataEntry"/>
     </permission>
@@ -14,6 +17,33 @@
         <userGroup id="Forecaster"/>
     </permission>
     <permission id="Administrators">
+        <userGroup id="Administrators"/>
+    </permission>
+	<!-- New permission groups -->
+    <permission id="AllowDataEditor">
+        <userGroup id="DataEntry"/>
+        <userGroup id="RiverOperators"/>
+        <userGroup id="Forecaster"/>
+        <userGroup id="Administrators"/>
+    </permission>
+    <permission id="AllowManualForecast">
+        <userGroup id="Forecaster"/>
+    </permission>
+    <permission id="AllowLabelEditor">
+        <userGroup id="DataEntry"/>
+        <userGroup id="RiverOperators"/>
+        <userGroup id="Forecaster"/>
+        <userGroup id="Administrators"/>
+    </permission>
+    <permission id="AllowCommentEditor">
+        <userGroup id="RiverOperators"/>
+        <userGroup id="Forecaster"/>
+        <userGroup id="Administrators"/>
+    </permission>
+    <permission id="AllowValueEditor">
+        <userGroup id="DataEntry"/>
+        <userGroup id="RiverOperators"/>
+        <userGroup id="Forecaster"/>
         <userGroup id="Administrators"/>
     </permission>
 </permissions>
