@@ -5,8 +5,10 @@
     </permission>	
     <permission id="RiverOperations">
         <userGroup id="DataEntry"/>
+		<userGroup id="RiverOperators"/>
     </permission>
     <permission id="FloodOperations">
+		<userGroup id="RiverOperators"/>
         <userGroup id="Forecaster"/>
     </permission>
     <permission id="WaterCoach">
@@ -19,7 +21,7 @@
     <permission id="Administrators">
         <userGroup id="Administrators"/>
     </permission>
-	<!-- New permission groups -->
+	<!-- TimeSeriesDisplayConfig.xml permission groups -->
     <permission id="AllowDataEditor">
         <userGroup id="DataEntry"/>
         <userGroup id="RiverOperators"/>

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<timeSeriesDisplay version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd">
+<timeSeriesDisplay version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ttp://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd"wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesDisplay.xsd">
 	<!-- defaultViewPeriod is 14 days back -->
 	<!--
 	Revision  20150401
 	parameters display config precisions changed
 	-->
+	<generalDisplayConfig>
+		<barMarginPercentage>50</barMarginPercentage>
+        <valueEditorPermission>AllowValueEditor</valueEditorPermission>
+        <labelEditorPermission>AllowLabelEditor</labelEditorPermission>
+        <commentEditorPermission>AllowCommentEditor</commentEditorPermission>
+		<maximumInterpolationGap>100</maximumInterpolationGap>
+	</generalDisplayConfig>
 	<defaultViewPeriod unit="day" start="-14" end="1"/>
 	<thresholdDisplayConfig>
 		<thresholdDisplayOptions id="Minor_Flooding">
