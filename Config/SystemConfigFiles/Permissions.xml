@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <permissions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/permissions.xsd" xmlns="http://www.wldelft.nl/fews"> 
     <permission id="Guests">
-        <userGroup id=""/>
+        <userGroup id="Guest"/>
     </permission>	
     <permission id="RiverOperations">
+        <userGroup id="Guest"/>
         <userGroup id="DataEntry"/>
 		<userGroup id="RiverOperators"/>
     </permission>
     <permission id="FloodOperations">
+        <userGroup id="Guest"/>
 		<userGroup id="RiverOperators"/>
         <userGroup id="Forecaster"/>
     </permission>
     <permission id="WaterCoach">
+        <userGroup id="Guest"/>
         <userGroup id="Forecaster"/>
     </permission>
     <permission id="Archive_Management">
@@ -19,6 +22,9 @@
         <userGroup id="Forecaster"/>
     </permission>
     <permission id="Administrators">
+        <userGroup id="Guest"/>
+		<userGroup id="RiverOperators"/>
+        <userGroup id="Forecaster"/>
         <userGroup id="Administrators"/>
     </permission>
 	<!-- TimeSeriesDisplayConfig.xml permission groups -->

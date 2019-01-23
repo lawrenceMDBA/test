@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflowDescriptors version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflowDescriptors.xsd">
 	<workflowDescriptor forecast="false" id="Import_test_data" name="Import Test Data" visible="true">
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Samples" name="Import Sample Data (csv file)" visible="true">
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="EWSourceRO_Rainfall_Forecast" name="Select rainfall Source RO" visible="true" autoApprove="true">
 		<description>Prepare rainfall for ewSource River Operations</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO" name="Prepare data for export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Prepare data for export to ewSource RO</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_EVAP" name="Prepare EVAP data for export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Prepare EVAP data for export to ewSource RO</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_Qcomb" name="Prepare Q_comb (Flow forecast) data for export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Prepare Qfcst data for export to ewSource RO</description>
 		<cardinalTimeStep id="8am"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_QORD" name="Prepare QORD (Water demands) data for export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Prepare QORD data for export to ewSource RO</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Prepare_EWSourceRO_Qtrade" name="Prepare Qtrade (SA daily trade) data for export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Prepare Qtrade data for export to ewSource RO</description>
 		<cardinalTimeStep id="Monthly"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToEWSourceRO" name="Export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Export OPO to ewSource RO</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Import_FromEWSourceRO" name="Import EWSource_RO Forecasts" visible="true" autoApprove="true">
 		<description>Import EWSource_RO Forecast</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Climatology" name="Import climatology data" visible="true">
 		<description>Import climatology (PET profiles)</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Data" name="Import all data (except MDBC_OPS)" visible="true">
 		<description>Import all available data from all sources</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Import_Forecast" name="Import NWPs and STF forecasts" visible="true" autoApprove="true">
 		<description>Import nwp data from various Bureau Forecasts; import STF from BoM</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="ImportAndProcess_AWRA_FloodOps" name="Import and process  AWRA data" visible="true" autoApprove="true">
 		<description>Import andqrocess AWRA data from ftp</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Hydstra_Fcst" name="Import Hydstra Forecasts" visible="true">
 		<description>Import forecast from Hydstra</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_MDBC_OPS" name="Import MDBC_OPS (Calculated and Forecasts)" visible="true" allowApprove="true" autoApprove="true">
 		<description>Import MDBC_OPS  (Calculated and Forecasts)</description>
 		<runExpiryTime unit="month" multiplier="18"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Hydro" name="Import Hydro" visible="true">
 		<description>Import data from Hydro (daily and seasonal planning)</description>
 		<runExpiryTime unit="day" multiplier="365"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Hydro_Planning" name="Import Hydro(Planning)" visible="true">
 		<description>Import data from Hydro (Seasonal Planning)</description>
 		<runExpiryTime unit="day" multiplier="365"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_PlanningHydro" name="Process Hydro(Planning)" visible="true">
 		<description>Process monthly to daily(Seasonal Planning)</description>
@@ -99,58 +99,58 @@
 	<workflowDescriptor forecast="false" id="Import_HistoricalEvents" name="Import Historical events from ROWS archive" visible="true">
 		<description>Import Historical events from ROWS archive</description>
 		<runExpiryTime unit="year" multiplier="20"/>
-		<!--		<viewPermission>RiverOperations</viewPermission>-->
+		<!--		<runPermission>RiverOperations</runPermission>-->
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Observed" name="Import observations" visible="true">
 		<description>Import measured data from external sources</description>
 		<cardinalTimeStep unit="hour"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_OPO_history" name="Import OPO history (one off)" visible="true">
 		<description>Import historical OPO data from hydstra (one off)</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Ratings" name="Import ratings" visible="true">
 		<description>Import ratings</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_PeriodicStatistics" name="Import periodic statistical data" visible="true">
 		<description>Import periodic statistical data</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Ovens_HydstraTSM_Fcst" name="Execute Hydstra TSM Ovens model" visible="true" autoApprove="true">
 		<description>Export Rainfall/Temp and run TSM Model and import output into FEWS</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Ovens_ewSourceRR" name="Execute ewSource Ovens Rainfall-Runoff model" visible="true" autoApprove="true">
 		<description>Run hindcast and forecast of ewSource Rainfall-Runoff model and correct forecast results</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_Observed" name="Quality Control/Processing OPO series" visible="true">
 		<description>Generate OPO series daily at 8am data (instantaneous, from 8am to 8am and midnight to midnight)</description>
 		<!-- <runExpiryTime unit="day" multiplier="365"/> -->
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_Storages_data" name="Process Storages Data" visible="true">
 		<description>Process Storages Data</description>
 		<!-- <runExpiryTime unit="day" multiplier="365"/> -->
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_NWP" name="Process NWP data" visible="true">
 		<description>Process NWP data into aggregation areas</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Combine_ACCESS_Forecast" name="Combine ACCESS Fcst" visible="true">
 		<description>PCombine ACCESSG and ACCESSR Forecasts</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 		<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Create ACCESSR Forecast from observations" visible="true">
 		<description>Create gridded ACCESSR data from observations for Flood Training</description>
@@ -160,37 +160,37 @@
 	<workflowDescriptor forecast="false" id="Process_AWAP" name="Process AWAP data" visible="true">
 		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas.</description>
 		<runExpiryTime unit="day" multiplier="365"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_HydrographicUpdate" name="Process hydrographic update" visible="true">
 		<description>Merge normalize to daily</description>
 		<runExpiryTime unit="day" multiplier="365"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Compact_FSSCache" name="Compact_FSSCache" visible="true">
 		<description>Rolling Barrel for FSS</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Database_Maintenance" name="Database_Maintenance (Daily)" visible="true">
 		<description>Amalgamate Import and processed observed timeseries blobs</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Database_Maintenance_Weekly" name="Database_Maintenance (Weekly)" visible="true">
 		<description>Amalgamate timeseries blobs generated by import observed and Process AWAP workflows</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Database_Maintenance_Monthly" name="Database_Maintenance (Monthly)" visible="true">
 		<description>Amalgamate timeseries blobs generated by import observed and Process AWAP workflows</description>
 		<runExpiryTime unit="day" multiplier="100"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_Ratings" name="Export ratings to PI-xml and HTML-report" visible="false">
 		<description>Export ratings to PI-xml</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToArchive" name="Export to Archive" visible="true">
 		<description>Export data to archive (OPO, NWP, Ratings, Config, Messages)</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToArchive_Snapshots" name="Export to Archive Snapshots" visible="true">
 		<description>Export Local datastore snapshot to archive</description>
@@ -198,58 +198,58 @@
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToMDBC_OPS" name="Export to MDBC_OPS" visible="true">
 		<description>Export OPO to MDBC_OPS</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToHydro" name="Export to Hydro" visible="true">
 		<description>Export data to HYDRO</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToHydstra" name="Export to Hydstra" visible="true">
 		<description>Export OPO data to HYDSTRA</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Export_ToHydstra_OpsForecast" name="Export Ops Forecast to Hydstra" visible="true" allowApprove="true" autoApprove="true">
 		<description>Exports Ops forecast data to HYDSTRA for web publication</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Execute_HDCalcSuite" name="Execute HDCalc Suite" visible="true">
 		<description>Water balance caclulations</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<!-- 	<workflowDescriptor forecast="false" id="Execute_HDCalcSuite_1" name="Execute HDCalc Suite(Test)" visible="true">
 		<description>Water balance caclulations(test)</description>
 	</workflowDescriptor> -->
 	<workflowDescriptor forecast="true" id="Prepare_WeeklyReport" name="Prepare Weekly Report" visible="true" allowApprove="true" autoApprove="true">
 		<description>Calculate data for the weekly report</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Export_WeeklyReport" name="Export Weekly Report" visible="true" allowApprove="true" autoApprove="true">
 		<description>Build and Export the weekly report</description>
 		<runExpiryTime unit="day" multiplier="30"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_FlowLevelReport" name="Export Flow Level Report" visible="true">
 		<description>Build and Export the flow level report</description>
 		<runExpiryTime unit="day" multiplier="30"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="DailyExport_ThresholdCrossingsReport" name="Export Threshold Crossings Email Report" visible="false" allowApprove="false" autoApprove="false">
 		<description>Build and Export the Daily Threshold Crossings report</description>
 		<cardinalTimeStep id="8am"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ThresholdCrossingsReport" name="Export Threshold Crossings Report" visible="true" allowApprove="false" autoApprove="false">
 		<description>Build and Export the Threshold Crossings report</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Prepare_Thresholds" name="Prepare Thresholds" visible="true" allowApprove="true" autoApprove="true">
 		<description>Prepare data for the Thresholds Display</description>
 		<runExpiryTime unit="month" multiplier="18"/>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Update_ModulesBin" name="Update software used" visible="true">
 		<description>Export software to modules_bin folder</description>
-		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>RiverOperations</runPermission>
 	</workflowDescriptor>
 	<!-- Generalised maintenance workflow -->
 	<workflowDescriptor forecast="false" id="Maintenance_Workflow" name="Maintenance Workflow" visible="true">
