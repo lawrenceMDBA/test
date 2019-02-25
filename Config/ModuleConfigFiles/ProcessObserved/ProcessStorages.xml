@@ -129,7 +129,7 @@
 	<transformation id="Active_Storage">
 		<user>
 			<simple>
-				<expression>Volume - DS</expression>
+				<expression>if (((Volume - DS) &gt;= 0), (Volume - DS), 0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="DS" value="@DEAD_STORAGE@"/>
 				</coefficientSetFunctions>

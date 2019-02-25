@@ -179,7 +179,7 @@
 	<transformation id="Active_Storage">
 		<user>
 			<simple>
-				<expression>volume_basin - dead_storage_basin</expression>
+				<expression>if (((volume_basin - dead_storage_basin) &gt;= 0), (volume_basin - dead_storage_basin), 0)</expression>
 				<outputVariable>
 					<variableId>active_storage_basin</variableId>
 				</outputVariable>
