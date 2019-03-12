@@ -2494,6 +2494,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="sites_Q_observed">
+		<!-- Needs to include sites containing Q.xxx in DATA_ENTRY_PARAM column -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
@@ -2519,14 +2520,19 @@
 			<attributeExists id="RATING"/>
 		</constraints>
 	</locationSet>
-	<!-- 	<locationSet id="sites_Q_midnight_to_midnight_not_rated">
+	<!-- The setup below is to avoid empty location set error in transformations -->
+	<locationSet id="sites_Q_midnight_to_midnight_not_rated">
+		<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
+		<locationId>R_ZROWS</locationId>
+	</locationSet>
+	<locationSet id="sites_Q_midnight_to_midnight_not_rated_tmp">
 		<locationSetId>sites_Q_midnight_to_midnight</locationSetId>
 		<constraints>
 			<not>
 				<attributeExists id="RATING"/>
 			</not>
 		</constraints>
-	</locationSet> -->
+	</locationSet>
 	<locationSet id="sites_Q_midnight_inst">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>

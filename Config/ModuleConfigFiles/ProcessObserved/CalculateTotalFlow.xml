@@ -86,9 +86,10 @@ Uses only the OPO(ProcessQopo) data generated. If any of the values are missing,
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
 			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
 			<qualifierId>tmp</qualifierId>
 			<locationSetId>de.sites_Q.total</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -107,7 +108,7 @@ Uses only the OPO(ProcessQopo) data generated. If any of the values are missing,
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Merge_OPO_Over_Calcualted_Q_obs.total">
+	<transformation id="Merge_OPO_Over_Calculated_Q_obs.total">
 		<merge>
 			<simple>
 				<inputVariable>
