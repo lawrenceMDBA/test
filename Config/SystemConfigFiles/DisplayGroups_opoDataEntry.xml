@@ -2872,6 +2872,60 @@
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>fao56</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_obs</parameterId>
+				<qualifierId>opc</qualifierId>
+				<qualifierId>fao56</qualifierId>
+				<qualifierId>raw</qualifierId>
+				<locationSetId>de.sites_EVAP</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="nonequidistant"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
 	</plot>
 	<plot id="ImportProcess_DO">
 		<subplot>
