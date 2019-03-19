@@ -803,7 +803,8 @@ Merges OPO over selected (not over OPT over OPC over Rated) series-->
 				<nonEquidistantInputVariable>
 					<variableId>OPT_neq</variableId>
 				</nonEquidistantInputVariable>
-				<interpolationType>linear</interpolationType>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="2"/>	
 				<outputVariable>
 					<variableId>OPT_15m</variableId>
 				</outputVariable>
