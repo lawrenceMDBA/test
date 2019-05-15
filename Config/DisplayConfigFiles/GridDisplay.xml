@@ -2024,7 +2024,8 @@
 	<gridPlotGroup id="NWP" name="NWP">
 		<viewPermission>RiverOperations</viewPermission>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
+				<!-- Not sure if this is correct -->
+<!-- 			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
 				<timeSeriesSet>
 					<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2048,7 +2049,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
-			</gridPlot>
+			</gridPlot> -->
 			<gridPlot id="ACCESSG.P_fcst" name="ACCESS-G (Accumulated Rainfall)">
 				<timeSeriesSet>
 					<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
@@ -2075,6 +2076,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="ACCESSG.P_fcst_AgAreas" name="ACCESS-G (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2154,6 +2156,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="ACCESSR.P_fcst_AgAreas" name="ACCESS-R (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2257,6 +2260,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="ADFD.P_fcst_AgAreas" name="ADFD (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2364,6 +2368,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="PME.P_fcst_AgAreas" name="PME (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2446,6 +2451,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="PME.P_fcst_min" name="PME (ensemble minimum)">
 				<timeSeriesSet>
@@ -2474,6 +2480,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<contourLinesColor>gray</contourLinesColor>
 			</gridPlot>
 			<gridPlot id="ADFD.P_fcst_ewSource" name="ADFD+obs (catchment average)">
 				<timeSeriesSet>
