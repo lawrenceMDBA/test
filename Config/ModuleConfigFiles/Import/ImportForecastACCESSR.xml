@@ -2,10 +2,10 @@
 <timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
 	<import>
 		<general>
-			<importType>grib2</importType>
+			<importType>grib</importType>
 			<folder>$IMPORT_FOLDER_FROM_BOM_ACCESSR$</folder>
 			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
-			<deleteImportedFiles>true</deleteImportedFiles>
+			<deleteImportedFiles>false</deleteImportedFiles>
 			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
 			<idMapId>IdNWP</idMapId>
 			<importTimeZone>
@@ -43,7 +43,7 @@
 			<timeStep multiplier="1" unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<externUnit cumulativeSum="true" parameterId="P_fcst" unit="mm"/>
+		<externUnit cumulativeSum="false" parameterId="P_fcst" unit="mm"/>
 		<externUnit cumulativeSum="true" parameterId="EVAP_fcst" unit="mm"/>
 	</import>
 </timeSeriesImportRun>
