@@ -152,11 +152,6 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
-		<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Create ACCESSR Forecast from observations" visible="true">
-		<description>Create gridded ACCESSR data from observations for Flood Training</description>
-		<cardinalTimeStep unit="hour"/>
-		<viewPermission>FloodOperations</viewPermission>
-	</workflowDescriptor>	
 	<workflowDescriptor forecast="false" id="Process_AWAP" name="Process AWAP data" visible="true">
 		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas.</description>
 		<runExpiryTime unit="day" multiplier="365"/>
@@ -470,8 +465,20 @@
 	<workflowDescriptor forecast="false" id="Export_ToArchive_FloodOps" name="Export flood event to Archive on local drive (excluding URBS model runs and modifiers)" visible="false">
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
+
 	<workflowDescriptor forecast="false" id="Update_ModulesBin_FloodOps" name="Update software used for Flood Ops" visible="true">
 		<description>Export software to modules_bin folder for Flood Ops</description>
 		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<!-- Watercoach preparationa and maintenance tasks -->
+	<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Watercoach: Generate ACCESSR grid from observations" visible="true">
+		<description>Create gridded ACCESSR data from observations for Flood Training</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Import_ERA5_Hindcast" name="Watercoach: Import ERA5 hindcast" visible="true">
+		<description>Import ERA5 hindcast from ECMWF as ACCESSR for Flood Training</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>Administrators</viewPermission>
 	</workflowDescriptor>
 </workflowDescriptors>

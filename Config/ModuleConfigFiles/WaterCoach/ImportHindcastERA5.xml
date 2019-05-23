@@ -2,12 +2,13 @@
 <timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
 	<import>
 		<general>
-			<importType>grib2</importType>
+			<importType>NETCDF-CF_GRID</importType>
 			<folder>$IMPORT_FOLDER_FROM_BOM_ACCESSR$</folder>
 			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
 			<deleteImportedFiles>true</deleteImportedFiles>
-			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
-			<idMapId>IdNWP</idMapId>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdImportERA5</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
 			<importTimeZone>
 				<timeZoneOffset>+00:00</timeZoneOffset>
 			</importTimeZone>
@@ -25,25 +26,7 @@
 			<timeStep multiplier="1" unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>SM_fcst</parameterId>
-			<locationId>NWP</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="1" unit="hour"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>EVAP_fcst</parameterId>
-			<locationId>NWP</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="1" unit="hour"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<externUnit cumulativeSum="true" parameterId="P_fcst" unit="mm"/>
+		<externUnit cumulativeSum="false" parameterId="P_fcst" unit="m"/>
 		<externUnit cumulativeSum="true" parameterId="EVAP_fcst" unit="mm"/>
 	</import>
 </timeSeriesImportRun>
