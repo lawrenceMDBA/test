@@ -96,24 +96,50 @@
 					</classBreaks>
 				</esriShapeLayer>
 			</layerGroup>
-			<openStreetMapLayer id="Open Street Map">
-				<description>Open Street Map</description>
-				<url>http://tile.openstreetmap.org</url>
-				<visible>false</visible>
-				<cacheDir>%REGION_HOME%/MapCache/OsmTiles</cacheDir>
-			</openStreetMapLayer>
-			<layer id="Satellite">
-				<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
-				<visible>false</visible>
-				<properties>
-					<string key="tileUrlPattern" value="http://h%RIGHT(QUAD_KEY,1)%.ortho.tiles.virtualearth.net/tiles/h%QUAD_KEY%.jpeg?g=1"/>
-					<string key="cacheDir" value="%REGION_HOME%/MapCache/Satellite"/>
-					<int key="minZoomLevel" value="2"/>
-					<int key="maxZoomLevel" value="17"/>
-					<int key="topZoomLevel" value="19"/>
+			<layerGroup id="WMS Layers">
+				<openStreetMapLayer id="Open Street Map">
+					<description>Open Street Map</description>
+					<url>http://tile.openstreetmap.org</url>
+					<visible>false</visible>
+					<cacheDir>%REGION_HOME%/MapCache/OsmTiles</cacheDir>
+				</openStreetMapLayer>
+				<layer id="Satellite">
+					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+					<visible>false</visible>
+					<properties>
+						<string key="tileUrlPattern" value="http://h%RIGHT(QUAD_KEY,1)%.ortho.tiles.virtualearth.net/tiles/h%QUAD_KEY%.jpeg?g=1"/>
+						<string key="cacheDir" value="%REGION_HOME%/MapCache/Satellite"/>
+						<int key="minZoomLevel" value="2"/>
+						<int key="maxZoomLevel" value="17"/>
+						<int key="topZoomLevel" value="19"/>
+						<int key="tileSize" value="256"/>
+					</properties>
+				</layer>
+				<layer id="World" name="ArcGIS World Topo Map">
+				  <className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+						<visible>false</visible>
+						<properties>
+							<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+							<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
+							<int key="minZoomLevel" value="1"/>
+							<int key="maxZoomLevel" value="19"/>
+							<int key="topZoomLevel" value="21"/>
+							<int key="tileSize" value="256"/>
+						</properties>
+				</layer>
+				<layer id="Canvas" name="ArcGIS Canvas World_Light_Gray_Base">
+					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+					<visible>false</visible>
+				  <properties>
+					<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+					<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
+					<int key="minZoomLevel" value="1"/>
+					<int key="maxZoomLevel" value="19"/>
+					<int key="topZoomLevel" value="21"/>
 					<int key="tileSize" value="256"/>
-				</properties>
-			</layer>
+				  </properties>
+				</layer>
+			</layerGroup>
 			<layerGroup id="Upper Murray Catchment">
 				<esriShapeLayer id="Mitta to Dartmouth subareas">
 					<description>Mitta to Dartmouth subareas</description>
@@ -2024,7 +2050,8 @@
 	<gridPlotGroup id="NWP" name="NWP">
 		<viewPermission>RiverOperations</viewPermission>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
+				<!-- Not sure if this is correct -->
+ 			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
 				<timeSeriesSet>
 					<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2075,6 +2102,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="ACCESSG.P_fcst_AgAreas" name="ACCESS-G (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2154,6 +2182,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="ACCESSR.P_fcst_AgAreas" name="ACCESS-R (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2257,6 +2286,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="ADFD.P_fcst_AgAreas" name="ADFD (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2364,6 +2394,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="PME.P_fcst_AgAreas" name="PME (Aggregation Areas)">
 				<timeSeriesSet>
@@ -2446,6 +2477,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="PME.P_fcst_min" name="PME (ensemble minimum)">
 				<timeSeriesSet>
@@ -2474,6 +2506,7 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 			<gridPlot id="ADFD.P_fcst_ewSource" name="ADFD+obs (catchment average)">
 				<timeSeriesSet>
