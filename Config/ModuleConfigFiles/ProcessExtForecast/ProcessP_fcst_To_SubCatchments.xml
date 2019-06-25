@@ -376,16 +376,18 @@
 	<!--START OF THE COMPUTATIONS - Compute average over polygons using coockie cutter method-->
 	<transformation id="Interpolate_ACCESS-G_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>ACCESSG_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>ACCESSG_P_subareas_3h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ACCESS-G">
@@ -415,16 +417,18 @@
 	</transformation>
 	<transformation id="Interpolate_ACCESS-R_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>ACCESSR_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>ACCESSR_P_subareas_1h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ACCESS-R">
@@ -442,16 +446,18 @@
 	</transformation>
 	<transformation id="Interpolate_ADFD_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>ADFD_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>ADFD_P_subareas_3h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ADFD">
@@ -481,16 +487,18 @@
 	</transformation>
 	<transformation id="Interpolate_ADFD_higher_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>ADFD_higher_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>ADFD_higher_P_subareas_1am</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_ADFD_higher">
@@ -520,16 +528,18 @@
 	</transformation>
 	<transformation id="Interpolate_PME_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>PME_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>PME_P_subareas_3h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME">
@@ -559,16 +569,18 @@
 	</transformation>
 	<transformation id="Interpolate_PME_min_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>PME_min_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>PME_min_P_subareas_3h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME_min">
@@ -598,16 +610,18 @@
 	</transformation>
 	<transformation id="Interpolate_PME_max_to_subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<inverseDistance>
 				<inputVariable>
 					<variableId>PME_max_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
+				<inverseDistancePower>2</inverseDistancePower>
+				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
 					<variableId>PME_max_P_subareas_3h</variableId>
 				</outputVariable>
-			</closestDistance>
+			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
 	<transformation id="SubCatchAverageRainfall_PME_max">
