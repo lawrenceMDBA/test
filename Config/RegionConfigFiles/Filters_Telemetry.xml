@@ -1338,6 +1338,7 @@
 	</timeSeriesSets>
 	<!-- Telemetry_data (Parent filter_id: Telemetry_data)-->
 	<filter id="Telemetry_by_Catchments" name="By Catchments">
+	        <child foreignKey="Catchment_Telemetry_Murray"/>
 		<child foreignKey="Catchment_Telemetry_UpperMurray"/>
 		<child foreignKey="Catchment_Telemetry_Kiewa"/>
 		<child foreignKey="Catchment_Telemetry_Ovens"/>
@@ -1349,6 +1350,14 @@
 		<child foreignKey="Catchment_Telemetry_Barwon-Darling"/>
 		<child foreignKey="Catchment_Telemetry_Lower-Darling"/>
 		<child foreignKey="Catchment_Telemetry_South-Australia"/>
+	</filter>
+	<filter id="Catchment_Telemetry_Murray" name="Murray">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray</mapExtentId>
+		<timeSeriesSetsId>Telemetry_Ops</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextEquals id="CATCHMENT" equals="Murray"/>
+		</locationConstraints>
 	</filter>
 	<filter id="Catchment_Telemetry_UpperMurray" name="Upper Murray">
 		<validationIconsVisible>true</validationIconsVisible>
