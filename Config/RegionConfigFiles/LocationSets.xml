@@ -1741,6 +1741,19 @@
 					<text>%SAMPLE_PARAMS%</text>
 				</attribute>
 			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_time_dependent_locations</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+			    <startDateTime>%START_DATE%</startDateTime>
+				<endDateTime>%END_DATE%</endDateTime>
+				<relation id="Time_Relation">
+					<relatedLocationId>%RELATED_SITE%</relatedLocationId>
+				</relation>
+				<attribute id="TIME_RELATION_DESC" name="Time Relation Desc">
+					<description>Time relation description</description>
+					<text>%TIME_REL_DESC%</text>
+				</attribute>
+			</attributeFile>			
 		</csvFile>
 	</locationSet>
 	<locationSet id="aggregation_areas">

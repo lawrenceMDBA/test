@@ -1,0 +1,2182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://pi.system.fews.wldelft.nl" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://pi.system.fews.wldelft.nl" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://pi.system.fews.wldelft.nl">
+<xsd:element name="getSystemTime">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getSystemTimeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:dateTime"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLastUpdateTime">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getLastUpdateTimeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:long"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="cancelTask">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="cancelTaskResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getSelectedFilterIds">
+<xsd:complexType/>
+</xsd:element>
+<xsd:complexType name="ArrayOfString">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="getSelectedFilterIdsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getColdStateIds">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getColdStateIdsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="updateDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="updateDataSetResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getAvailableStateTimes">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:complexType name="ArrayOfDateTime">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="dateTime" type="xsd:dateTime"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="getAvailableStateTimesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfDateTime"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDataSetCreationTime">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDataSetCreationTimeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:long"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getFilters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getFiltersResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleDataSetResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:base64Binary"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putModuleDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putModuleDataSetResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:complexType name="ArrayOfFloat">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="float" type="xsd:float"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="convertStageToDischarge">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="tns:ArrayOfFloat"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:long"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="convertStageToDischargeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleParameterSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleParameterSetResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="convertDischargeToStage">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="tns:ArrayOfFloat"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:long"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="convertDischargeToStageResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForSegment1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForSegment1Response">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="setSystemTime">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" type="xsd:dateTime"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="setSystemTimeResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="putModuleParameterSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putModuleParameterSetResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getTimeSeries">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in9" type="xsd:int"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in10" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getSelectedLocationIds">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getSelectedLocationIdsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="waitForTask">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="waitForTaskResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesHeaders">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in9" type="xsd:int"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in10" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesHeadersResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getClientConfigFile">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getClientConfigFileResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLastModificationTimeDataSets">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getLastModificationTimeDataSetsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:long"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putState">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putStateResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="saveDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="saveDataSetResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDisplayUnit">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDisplayUnitResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeZoneId">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeZoneIdResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLocations">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLocationsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleStateBinary">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getModuleStateBinaryResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:base64Binary"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getRatingCurves">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getRatingCurvesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="createTask">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="createTaskResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLogMessages1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLogMessages1Response">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getActiveSegmentId">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getActiveSegmentIdResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putLogMessage">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putLogMessageResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getTimeSeriesHeadersForFilter">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesHeadersForFilterResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getAllDataSetsIdsForNode">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getAllDataSetsIdsForNodeResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDescription">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDescriptionResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilter1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilter1Response">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilter2">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in9" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilter2Response">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="inverseConvertToDisplayUnitValue">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="inverseConvertToDisplayUnitValueResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getAllNodesWithDataset">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getAllNodesWithDatasetResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="runTask">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in9" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="runTaskResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putTimeSeriesBinary">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putTimeSeriesBinaryResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="putTimeSeriesForFilters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putTimeSeriesForFiltersResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getTimeSeriesForSegment">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForSegmentResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getEnsembleMemberIndices">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:complexType name="ArrayOfInt">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="int" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="getEnsembleMemberIndicesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfInt"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilter">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesForFilterResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="convertToDisplayUnitValue">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="convertToDisplayUnitValueResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfFloat"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getSelectedParameters">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getSelectedParametersResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="tns:ArrayOfString"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="uploadDataSets">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="uploadDataSetsResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getDataSetResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:base64Binary"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesBytes">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:dateTime"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in6" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in7" nillable="true" type="tns:ArrayOfString"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in8" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in9" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getTimeSeriesBytesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:base64Binary"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getParameters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getParametersResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putTimeSeries">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in2" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in3" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in4" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in5" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="putTimeSeriesResponse">
+<xsd:complexType/>
+</xsd:element>
+<xsd:element name="getLogMessages">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="getLogMessagesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="deleteDataSet">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="in1" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="deleteDataSetResponse">
+<xsd:complexType/>
+</xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getSelectedFilterIdsRequest">
+    <wsdl:part name="parameters" element="tns:getSelectedFilterIds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFiltersRequest">
+    <wsdl:part name="parameters" element="tns:getFilters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilter1Request">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilter1">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesBinaryRequest">
+    <wsdl:part name="parameters" element="tns:putTimeSeriesBinary">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeZoneIdRequest">
+    <wsdl:part name="parameters" element="tns:getTimeZoneId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runTaskResponse">
+    <wsdl:part name="parameters" element="tns:runTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataSetRequest">
+    <wsdl:part name="parameters" element="tns:getDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesResponse">
+    <wsdl:part name="parameters" element="tns:putTimeSeriesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateDataSetResponse">
+    <wsdl:part name="parameters" element="tns:updateDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSystemTimeResponse">
+    <wsdl:part name="parameters" element="tns:setSystemTimeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEnsembleMemberIndicesResponse">
+    <wsdl:part name="parameters" element="tns:getEnsembleMemberIndicesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleDataSetRequest">
+    <wsdl:part name="parameters" element="tns:getModuleDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="inverseConvertToDisplayUnitValueRequest">
+    <wsdl:part name="parameters" element="tns:inverseConvertToDisplayUnitValue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleStateBinaryRequest">
+    <wsdl:part name="parameters" element="tns:getModuleStateBinary">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDescriptionRequest">
+    <wsdl:part name="parameters" element="tns:getDescription">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putStateRequest">
+    <wsdl:part name="parameters" element="tns:putState">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLocationsResponse">
+    <wsdl:part name="parameters" element="tns:getLocationsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelectedParametersResponse">
+    <wsdl:part name="parameters" element="tns:getSelectedParametersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesForFiltersResponse">
+    <wsdl:part name="parameters" element="tns:putTimeSeriesForFiltersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTaskRequest">
+    <wsdl:part name="parameters" element="tns:createTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putLogMessageResponse">
+    <wsdl:part name="parameters" element="tns:putLogMessageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertToDisplayUnitValueResponse">
+    <wsdl:part name="parameters" element="tns:convertToDisplayUnitValueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveDataSetResponse">
+    <wsdl:part name="parameters" element="tns:saveDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLogMessages1Response">
+    <wsdl:part name="parameters" element="tns:getLogMessages1Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilterRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putModuleDataSetRequest">
+    <wsdl:part name="parameters" element="tns:putModuleDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesForFiltersRequest">
+    <wsdl:part name="parameters" element="tns:putTimeSeriesForFilters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilter2Request">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilter2">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveDataSetRequest">
+    <wsdl:part name="parameters" element="tns:saveDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putStateResponse">
+    <wsdl:part name="parameters" element="tns:putStateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataSetCreationTimeResponse">
+    <wsdl:part name="parameters" element="tns:getDataSetCreationTimeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertDischargeToStageRequest">
+    <wsdl:part name="parameters" element="tns:convertDischargeToStage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getColdStateIdsRequest">
+    <wsdl:part name="parameters" element="tns:getColdStateIds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRatingCurvesRequest">
+    <wsdl:part name="parameters" element="tns:getRatingCurves">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleParameterSetRequest">
+    <wsdl:part name="parameters" element="tns:getModuleParameterSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesBytesResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesBytesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataSetResponse">
+    <wsdl:part name="parameters" element="tns:getDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDescriptionResponse">
+    <wsdl:part name="parameters" element="tns:getDescriptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSystemTimeRequest">
+    <wsdl:part name="parameters" element="tns:setSystemTime">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleParameterSetResponse">
+    <wsdl:part name="parameters" element="tns:getModuleParameterSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForSegmentRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForSegment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTaskResponse">
+    <wsdl:part name="parameters" element="tns:createTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableStateTimesResponse">
+    <wsdl:part name="parameters" element="tns:getAvailableStateTimesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeZoneIdResponse">
+    <wsdl:part name="parameters" element="tns:getTimeZoneIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForSegment1Response">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForSegment1Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilter2Response">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilter2Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertDischargeToStageResponse">
+    <wsdl:part name="parameters" element="tns:convertDischargeToStageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastModificationTimeDataSetsRequest">
+    <wsdl:part name="parameters" element="tns:getLastModificationTimeDataSets">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemTimeRequest">
+    <wsdl:part name="parameters" element="tns:getSystemTime">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleStateBinaryResponse">
+    <wsdl:part name="parameters" element="tns:getModuleStateBinaryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEnsembleMemberIndicesRequest">
+    <wsdl:part name="parameters" element="tns:getEnsembleMemberIndices">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDataSetRequest">
+    <wsdl:part name="parameters" element="tns:deleteDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelectedFilterIdsResponse">
+    <wsdl:part name="parameters" element="tns:getSelectedFilterIdsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putModuleParameterSetResponse">
+    <wsdl:part name="parameters" element="tns:putModuleParameterSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClientConfigFileRequest">
+    <wsdl:part name="parameters" element="tns:getClientConfigFile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getModuleDataSetResponse">
+    <wsdl:part name="parameters" element="tns:getModuleDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDisplayUnitRequest">
+    <wsdl:part name="parameters" element="tns:getDisplayUnit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertStageToDischargeResponse">
+    <wsdl:part name="parameters" element="tns:convertStageToDischargeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putModuleParameterSetRequest">
+    <wsdl:part name="parameters" element="tns:putModuleParameterSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLogMessagesResponse">
+    <wsdl:part name="parameters" element="tns:getLogMessagesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFiltersResponse">
+    <wsdl:part name="parameters" element="tns:getFiltersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLocationsRequest">
+    <wsdl:part name="parameters" element="tns:getLocations">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesHeadersResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesHeadersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getClientConfigFileResponse">
+    <wsdl:part name="parameters" element="tns:getClientConfigFileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveSegmentIdResponse">
+    <wsdl:part name="parameters" element="tns:getActiveSegmentIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllDataSetsIdsForNodeResponse">
+    <wsdl:part name="parameters" element="tns:getAllDataSetsIdsForNodeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertStageToDischargeRequest">
+    <wsdl:part name="parameters" element="tns:convertStageToDischarge">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putLogMessageRequest">
+    <wsdl:part name="parameters" element="tns:putLogMessage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLogMessagesRequest">
+    <wsdl:part name="parameters" element="tns:getLogMessages">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getParametersResponse">
+    <wsdl:part name="parameters" element="tns:getParametersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableStateTimesRequest">
+    <wsdl:part name="parameters" element="tns:getAvailableStateTimes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForSegmentResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForSegmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="waitForTaskResponse">
+    <wsdl:part name="parameters" element="tns:waitForTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="inverseConvertToDisplayUnitValueResponse">
+    <wsdl:part name="parameters" element="tns:inverseConvertToDisplayUnitValueResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelectedParametersRequest">
+    <wsdl:part name="parameters" element="tns:getSelectedParameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesHeadersRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesHeaders">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelectedLocationIdsResponse">
+    <wsdl:part name="parameters" element="tns:getSelectedLocationIdsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDataSetResponse">
+    <wsdl:part name="parameters" element="tns:deleteDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUpdateTimeResponse">
+    <wsdl:part name="parameters" element="tns:getLastUpdateTimeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getColdStateIdsResponse">
+    <wsdl:part name="parameters" element="tns:getColdStateIdsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSelectedLocationIdsRequest">
+    <wsdl:part name="parameters" element="tns:getSelectedLocationIds">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDataSetCreationTimeRequest">
+    <wsdl:part name="parameters" element="tns:getDataSetCreationTime">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="convertToDisplayUnitValueRequest">
+    <wsdl:part name="parameters" element="tns:convertToDisplayUnitValue">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateDataSetRequest">
+    <wsdl:part name="parameters" element="tns:updateDataSet">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadDataSetsResponse">
+    <wsdl:part name="parameters" element="tns:uploadDataSetsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRatingCurvesResponse">
+    <wsdl:part name="parameters" element="tns:getRatingCurvesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLogMessages1Request">
+    <wsdl:part name="parameters" element="tns:getLogMessages1">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getParametersRequest">
+    <wsdl:part name="parameters" element="tns:getParameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesHeadersForFilterRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesHeadersForFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllDataSetsIdsForNodeRequest">
+    <wsdl:part name="parameters" element="tns:getAllDataSetsIdsForNode">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemTimeResponse">
+    <wsdl:part name="parameters" element="tns:getSystemTimeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="waitForTaskRequest">
+    <wsdl:part name="parameters" element="tns:waitForTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllNodesWithDatasetResponse">
+    <wsdl:part name="parameters" element="tns:getAllNodesWithDatasetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uploadDataSetsRequest">
+    <wsdl:part name="parameters" element="tns:uploadDataSets">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTaskResponse">
+    <wsdl:part name="parameters" element="tns:cancelTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeries">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilter1Response">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilter1Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDisplayUnitResponse">
+    <wsdl:part name="parameters" element="tns:getDisplayUnitResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActiveSegmentIdRequest">
+    <wsdl:part name="parameters" element="tns:getActiveSegmentId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runTaskRequest">
+    <wsdl:part name="parameters" element="tns:runTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesRequest">
+    <wsdl:part name="parameters" element="tns:putTimeSeries">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllNodesWithDatasetRequest">
+    <wsdl:part name="parameters" element="tns:getAllNodesWithDataset">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastUpdateTimeRequest">
+    <wsdl:part name="parameters" element="tns:getLastUpdateTime">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForFilterResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForFilterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesForSegment1Request">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesForSegment1">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTaskRequest">
+    <wsdl:part name="parameters" element="tns:cancelTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putModuleDataSetResponse">
+    <wsdl:part name="parameters" element="tns:putModuleDataSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesHeadersForFilterResponse">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesHeadersForFilterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTimeSeriesBytesRequest">
+    <wsdl:part name="parameters" element="tns:getTimeSeriesBytes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastModificationTimeDataSetsResponse">
+    <wsdl:part name="parameters" element="tns:getLastModificationTimeDataSetsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putTimeSeriesBinaryResponse">
+    <wsdl:part name="parameters" element="tns:putTimeSeriesBinaryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Region_Home/FewsPiServicePortType">
+    <wsdl:operation name="getSystemTime">
+      <wsdl:input name="getSystemTimeRequest" message="tns:getSystemTimeRequest">
+    </wsdl:input>
+      <wsdl:output name="getSystemTimeResponse" message="tns:getSystemTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUpdateTime">
+      <wsdl:input name="getLastUpdateTimeRequest" message="tns:getLastUpdateTimeRequest">
+    </wsdl:input>
+      <wsdl:output name="getLastUpdateTimeResponse" message="tns:getLastUpdateTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTask">
+      <wsdl:input name="cancelTaskRequest" message="tns:cancelTaskRequest">
+    </wsdl:input>
+      <wsdl:output name="cancelTaskResponse" message="tns:cancelTaskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedFilterIds">
+      <wsdl:input name="getSelectedFilterIdsRequest" message="tns:getSelectedFilterIdsRequest">
+    </wsdl:input>
+      <wsdl:output name="getSelectedFilterIdsResponse" message="tns:getSelectedFilterIdsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getColdStateIds">
+      <wsdl:input name="getColdStateIdsRequest" message="tns:getColdStateIdsRequest">
+    </wsdl:input>
+      <wsdl:output name="getColdStateIdsResponse" message="tns:getColdStateIdsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDataSet">
+      <wsdl:input name="updateDataSetRequest" message="tns:updateDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="updateDataSetResponse" message="tns:updateDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableStateTimes">
+      <wsdl:input name="getAvailableStateTimesRequest" message="tns:getAvailableStateTimesRequest">
+    </wsdl:input>
+      <wsdl:output name="getAvailableStateTimesResponse" message="tns:getAvailableStateTimesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSetCreationTime">
+      <wsdl:input name="getDataSetCreationTimeRequest" message="tns:getDataSetCreationTimeRequest">
+    </wsdl:input>
+      <wsdl:output name="getDataSetCreationTimeResponse" message="tns:getDataSetCreationTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFilters">
+      <wsdl:input name="getFiltersRequest" message="tns:getFiltersRequest">
+    </wsdl:input>
+      <wsdl:output name="getFiltersResponse" message="tns:getFiltersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleDataSet">
+      <wsdl:input name="getModuleDataSetRequest" message="tns:getModuleDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="getModuleDataSetResponse" message="tns:getModuleDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putModuleDataSet">
+      <wsdl:input name="putModuleDataSetRequest" message="tns:putModuleDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="putModuleDataSetResponse" message="tns:putModuleDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertStageToDischarge">
+      <wsdl:input name="convertStageToDischargeRequest" message="tns:convertStageToDischargeRequest">
+    </wsdl:input>
+      <wsdl:output name="convertStageToDischargeResponse" message="tns:convertStageToDischargeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleParameterSet">
+      <wsdl:input name="getModuleParameterSetRequest" message="tns:getModuleParameterSetRequest">
+    </wsdl:input>
+      <wsdl:output name="getModuleParameterSetResponse" message="tns:getModuleParameterSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertDischargeToStage">
+      <wsdl:input name="convertDischargeToStageRequest" message="tns:convertDischargeToStageRequest">
+    </wsdl:input>
+      <wsdl:output name="convertDischargeToStageResponse" message="tns:convertDischargeToStageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForSegment1">
+      <wsdl:input name="getTimeSeriesForSegment1Request" message="tns:getTimeSeriesForSegment1Request">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesForSegment1Response" message="tns:getTimeSeriesForSegment1Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSystemTime">
+      <wsdl:input name="setSystemTimeRequest" message="tns:setSystemTimeRequest">
+    </wsdl:input>
+      <wsdl:output name="setSystemTimeResponse" message="tns:setSystemTimeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putModuleParameterSet">
+      <wsdl:input name="putModuleParameterSetRequest" message="tns:putModuleParameterSetRequest">
+    </wsdl:input>
+      <wsdl:output name="putModuleParameterSetResponse" message="tns:putModuleParameterSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeries">
+      <wsdl:input name="getTimeSeriesRequest" message="tns:getTimeSeriesRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesResponse" message="tns:getTimeSeriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedLocationIds">
+      <wsdl:input name="getSelectedLocationIdsRequest" message="tns:getSelectedLocationIdsRequest">
+    </wsdl:input>
+      <wsdl:output name="getSelectedLocationIdsResponse" message="tns:getSelectedLocationIdsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="waitForTask">
+      <wsdl:input name="waitForTaskRequest" message="tns:waitForTaskRequest">
+    </wsdl:input>
+      <wsdl:output name="waitForTaskResponse" message="tns:waitForTaskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesHeaders">
+      <wsdl:input name="getTimeSeriesHeadersRequest" message="tns:getTimeSeriesHeadersRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesHeadersResponse" message="tns:getTimeSeriesHeadersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClientConfigFile">
+      <wsdl:input name="getClientConfigFileRequest" message="tns:getClientConfigFileRequest">
+    </wsdl:input>
+      <wsdl:output name="getClientConfigFileResponse" message="tns:getClientConfigFileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastModificationTimeDataSets">
+      <wsdl:input name="getLastModificationTimeDataSetsRequest" message="tns:getLastModificationTimeDataSetsRequest">
+    </wsdl:input>
+      <wsdl:output name="getLastModificationTimeDataSetsResponse" message="tns:getLastModificationTimeDataSetsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putState">
+      <wsdl:input name="putStateRequest" message="tns:putStateRequest">
+    </wsdl:input>
+      <wsdl:output name="putStateResponse" message="tns:putStateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveDataSet">
+      <wsdl:input name="saveDataSetRequest" message="tns:saveDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="saveDataSetResponse" message="tns:saveDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDisplayUnit">
+      <wsdl:input name="getDisplayUnitRequest" message="tns:getDisplayUnitRequest">
+    </wsdl:input>
+      <wsdl:output name="getDisplayUnitResponse" message="tns:getDisplayUnitResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeZoneId">
+      <wsdl:input name="getTimeZoneIdRequest" message="tns:getTimeZoneIdRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeZoneIdResponse" message="tns:getTimeZoneIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <wsdl:input name="getLocationsRequest" message="tns:getLocationsRequest">
+    </wsdl:input>
+      <wsdl:output name="getLocationsResponse" message="tns:getLocationsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleStateBinary">
+      <wsdl:input name="getModuleStateBinaryRequest" message="tns:getModuleStateBinaryRequest">
+    </wsdl:input>
+      <wsdl:output name="getModuleStateBinaryResponse" message="tns:getModuleStateBinaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRatingCurves">
+      <wsdl:input name="getRatingCurvesRequest" message="tns:getRatingCurvesRequest">
+    </wsdl:input>
+      <wsdl:output name="getRatingCurvesResponse" message="tns:getRatingCurvesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTask">
+      <wsdl:input name="createTaskRequest" message="tns:createTaskRequest">
+    </wsdl:input>
+      <wsdl:output name="createTaskResponse" message="tns:createTaskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessages1">
+      <wsdl:input name="getLogMessages1Request" message="tns:getLogMessages1Request">
+    </wsdl:input>
+      <wsdl:output name="getLogMessages1Response" message="tns:getLogMessages1Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveSegmentId">
+      <wsdl:input name="getActiveSegmentIdRequest" message="tns:getActiveSegmentIdRequest">
+    </wsdl:input>
+      <wsdl:output name="getActiveSegmentIdResponse" message="tns:getActiveSegmentIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putLogMessage">
+      <wsdl:input name="putLogMessageRequest" message="tns:putLogMessageRequest">
+    </wsdl:input>
+      <wsdl:output name="putLogMessageResponse" message="tns:putLogMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesHeadersForFilter">
+      <wsdl:input name="getTimeSeriesHeadersForFilterRequest" message="tns:getTimeSeriesHeadersForFilterRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesHeadersForFilterResponse" message="tns:getTimeSeriesHeadersForFilterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDataSetsIdsForNode">
+      <wsdl:input name="getAllDataSetsIdsForNodeRequest" message="tns:getAllDataSetsIdsForNodeRequest">
+    </wsdl:input>
+      <wsdl:output name="getAllDataSetsIdsForNodeResponse" message="tns:getAllDataSetsIdsForNodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDescription">
+      <wsdl:input name="getDescriptionRequest" message="tns:getDescriptionRequest">
+    </wsdl:input>
+      <wsdl:output name="getDescriptionResponse" message="tns:getDescriptionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter1">
+      <wsdl:input name="getTimeSeriesForFilter1Request" message="tns:getTimeSeriesForFilter1Request">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilter1Response" message="tns:getTimeSeriesForFilter1Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter2">
+      <wsdl:input name="getTimeSeriesForFilter2Request" message="tns:getTimeSeriesForFilter2Request">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilter2Response" message="tns:getTimeSeriesForFilter2Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="inverseConvertToDisplayUnitValue">
+      <wsdl:input name="inverseConvertToDisplayUnitValueRequest" message="tns:inverseConvertToDisplayUnitValueRequest">
+    </wsdl:input>
+      <wsdl:output name="inverseConvertToDisplayUnitValueResponse" message="tns:inverseConvertToDisplayUnitValueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllNodesWithDataset">
+      <wsdl:input name="getAllNodesWithDatasetRequest" message="tns:getAllNodesWithDatasetRequest">
+    </wsdl:input>
+      <wsdl:output name="getAllNodesWithDatasetResponse" message="tns:getAllNodesWithDatasetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runTask">
+      <wsdl:input name="runTaskRequest" message="tns:runTaskRequest">
+    </wsdl:input>
+      <wsdl:output name="runTaskResponse" message="tns:runTaskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeriesBinary">
+      <wsdl:input name="putTimeSeriesBinaryRequest" message="tns:putTimeSeriesBinaryRequest">
+    </wsdl:input>
+      <wsdl:output name="putTimeSeriesBinaryResponse" message="tns:putTimeSeriesBinaryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeriesForFilters">
+      <wsdl:input name="putTimeSeriesForFiltersRequest" message="tns:putTimeSeriesForFiltersRequest">
+    </wsdl:input>
+      <wsdl:output name="putTimeSeriesForFiltersResponse" message="tns:putTimeSeriesForFiltersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForSegment">
+      <wsdl:input name="getTimeSeriesForSegmentRequest" message="tns:getTimeSeriesForSegmentRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesForSegmentResponse" message="tns:getTimeSeriesForSegmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnsembleMemberIndices">
+      <wsdl:input name="getEnsembleMemberIndicesRequest" message="tns:getEnsembleMemberIndicesRequest">
+    </wsdl:input>
+      <wsdl:output name="getEnsembleMemberIndicesResponse" message="tns:getEnsembleMemberIndicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter">
+      <wsdl:input name="getTimeSeriesForFilterRequest" message="tns:getTimeSeriesForFilterRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilterResponse" message="tns:getTimeSeriesForFilterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertToDisplayUnitValue">
+      <wsdl:input name="convertToDisplayUnitValueRequest" message="tns:convertToDisplayUnitValueRequest">
+    </wsdl:input>
+      <wsdl:output name="convertToDisplayUnitValueResponse" message="tns:convertToDisplayUnitValueResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedParameters">
+      <wsdl:input name="getSelectedParametersRequest" message="tns:getSelectedParametersRequest">
+    </wsdl:input>
+      <wsdl:output name="getSelectedParametersResponse" message="tns:getSelectedParametersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadDataSets">
+      <wsdl:input name="uploadDataSetsRequest" message="tns:uploadDataSetsRequest">
+    </wsdl:input>
+      <wsdl:output name="uploadDataSetsResponse" message="tns:uploadDataSetsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSet">
+      <wsdl:input name="getDataSetRequest" message="tns:getDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="getDataSetResponse" message="tns:getDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesBytes">
+      <wsdl:input name="getTimeSeriesBytesRequest" message="tns:getTimeSeriesBytesRequest">
+    </wsdl:input>
+      <wsdl:output name="getTimeSeriesBytesResponse" message="tns:getTimeSeriesBytesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParameters">
+      <wsdl:input name="getParametersRequest" message="tns:getParametersRequest">
+    </wsdl:input>
+      <wsdl:output name="getParametersResponse" message="tns:getParametersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeries">
+      <wsdl:input name="putTimeSeriesRequest" message="tns:putTimeSeriesRequest">
+    </wsdl:input>
+      <wsdl:output name="putTimeSeriesResponse" message="tns:putTimeSeriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessages">
+      <wsdl:input name="getLogMessagesRequest" message="tns:getLogMessagesRequest">
+    </wsdl:input>
+      <wsdl:output name="getLogMessagesResponse" message="tns:getLogMessagesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDataSet">
+      <wsdl:input name="deleteDataSetRequest" message="tns:deleteDataSetRequest">
+    </wsdl:input>
+      <wsdl:output name="deleteDataSetResponse" message="tns:deleteDataSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Region_Home/FewsPiServiceHttpBinding" type="tns:Region_Home/FewsPiServicePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getSystemTime">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSystemTimeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSystemTimeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastUpdateTime">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLastUpdateTimeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastUpdateTimeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTask">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelTaskRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelTaskResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedFilterIds">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSelectedFilterIdsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSelectedFilterIdsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getColdStateIds">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getColdStateIdsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getColdStateIdsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="updateDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableStateTimes">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAvailableStateTimesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableStateTimesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSetCreationTime">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDataSetCreationTimeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDataSetCreationTimeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFilters">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getFiltersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFiltersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getModuleDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getModuleDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putModuleDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putModuleDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putModuleDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertStageToDischarge">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="convertStageToDischargeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertStageToDischargeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleParameterSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getModuleParameterSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getModuleParameterSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertDischargeToStage">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="convertDischargeToStageRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertDischargeToStageResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForSegment1">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesForSegment1Request">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesForSegment1Response">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSystemTime">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="setSystemTimeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setSystemTimeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putModuleParameterSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putModuleParameterSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putModuleParameterSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeries">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedLocationIds">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSelectedLocationIdsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSelectedLocationIdsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="waitForTask">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="waitForTaskRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="waitForTaskResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesHeaders">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesHeadersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesHeadersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClientConfigFile">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getClientConfigFileRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClientConfigFileResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastModificationTimeDataSets">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLastModificationTimeDataSetsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastModificationTimeDataSetsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putState">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putStateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putStateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="saveDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDisplayUnit">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDisplayUnitRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDisplayUnitResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeZoneId">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeZoneIdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeZoneIdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLocationsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLocationsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModuleStateBinary">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getModuleStateBinaryRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getModuleStateBinaryResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRatingCurves">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getRatingCurvesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRatingCurvesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTask">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createTaskRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTaskResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessages1">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLogMessages1Request">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLogMessages1Response">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveSegmentId">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getActiveSegmentIdRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActiveSegmentIdResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putLogMessage">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putLogMessageRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putLogMessageResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesHeadersForFilter">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesHeadersForFilterRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesHeadersForFilterResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDataSetsIdsForNode">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAllDataSetsIdsForNodeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllDataSetsIdsForNodeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDescription">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDescriptionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDescriptionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter1">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesForFilter1Request">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilter1Response">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter2">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesForFilter2Request">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilter2Response">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="inverseConvertToDisplayUnitValue">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="inverseConvertToDisplayUnitValueRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="inverseConvertToDisplayUnitValueResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllNodesWithDataset">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAllNodesWithDatasetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllNodesWithDatasetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runTask">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="runTaskRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="runTaskResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeriesBinary">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putTimeSeriesBinaryRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putTimeSeriesBinaryResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeriesForFilters">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putTimeSeriesForFiltersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putTimeSeriesForFiltersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForSegment">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesForSegmentRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesForSegmentResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEnsembleMemberIndices">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getEnsembleMemberIndicesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEnsembleMemberIndicesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesForFilter">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesForFilterRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesForFilterResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="convertToDisplayUnitValue">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="convertToDisplayUnitValueRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertToDisplayUnitValueResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelectedParameters">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSelectedParametersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSelectedParametersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadDataSets">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="uploadDataSetsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="uploadDataSetsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTimeSeriesBytes">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getTimeSeriesBytesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTimeSeriesBytesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParameters">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getParametersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getParametersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putTimeSeries">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="putTimeSeriesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putTimeSeriesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessages">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLogMessagesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLogMessagesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDataSet">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="deleteDataSetRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteDataSetResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Region_Home/FewsPiService">
+    <wsdl:port name="Region_Home/FewsPiServiceHttpPort" binding="tns:Region_Home/FewsPiServiceHttpBinding">
+      <wsdlsoap:address location="http://localhost:2001/Region_Home/FewsPiService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
