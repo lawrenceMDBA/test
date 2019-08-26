@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="SDF_Ensemble_plot">
+		<subplot>
+			<line>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>mean</qualifierId>
+					<locationId>R_Queanbeyan</locationId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<area>
+				<color>royal blue4</color>
+				<opaquenessPercentage>60</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>min</qualifierId>
+					<locationId>R_Queanbeyan</locationId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>royal blue4</color>
+				<opaquenessPercentage>30</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>max</qualifierId>
+					<locationId>R_Queanbeyan</locationId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>royal blue4</color>
+				<opaquenessPercentage>20</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p25</qualifierId>
+					<locationId>R_Queanbeyan</locationId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>green</color>
+				<opaquenessPercentage>30</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p99</qualifierId>
+					<locationId>R_Queanbeyan</locationId>
+					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+		    </area>
+		</subplot>
+	</plot>
+	<displayGroup name="SDF Ensemble" id="SDF_Ensemble">
+		<viewPermission>RiverOperations</viewPermission>
+		<displayGroup id="SDF_Ensemble_Q" name="Flow SDF Ensemble">
+			<singleLocationDisplays>
+				<locationId>R_Queanbeyan</locationId>
+				<plotId>SDF_Ensemble_plot</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>
