@@ -280,7 +280,7 @@
 					Parameters to be exported to Source River Ops model 
 				</description>
 				<text>%SOURCE_PARAMS%</text>
-			</attribute>			
+			</attribute>
 			<attribute id="SOURCE_SEQ">
 				<description>
 					Indicates the order in which the sites are exported to Source River Ops model 
@@ -1711,8 +1711,7 @@
 				<attribute id="SOURCE_QORD_SEQ" name="Source QORD Seq">
 					<description>Order/Demand site sequence</description>
 					<text>%QORD_SEQ%</text>
-				</attribute>			
-
+				</attribute>
 				<attribute id="SOURCE_H_SEQ" name="Source H Seq">
 					<description>Water level site sequence</description>
 					<text>%H_SEQ%</text>
@@ -2708,6 +2707,10 @@
 		<constraints>
 			<attributeTextEquals equals="Y" id="DO_OBS"/>
 		</constraints>
+	</locationSet>
+	<locationSet id="sites_Turbidity_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
 	</locationSet>
 	<locationSet id="sites_EC_obs">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -4017,7 +4020,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="Jin2Doc.ops_display_reservoir">
-	<!-- Jingelling to Doctors Pt Overview Plot -->
+		<!-- Jingelling to Doctors Pt Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>ops_display_reservoir</locationSetId>
 		<constraints>
@@ -4040,7 +4043,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="Hin2Tall.ops_display_reservoir">
-	<!-- Hinnomungie to Tallandoon Overview Plot -->
+		<!-- Hinnomungie to Tallandoon Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>ops_display_reservoir</locationSetId>
 		<constraints>

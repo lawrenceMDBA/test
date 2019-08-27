@@ -131,7 +131,7 @@
 	<qualifier id="secondary" name="secondary"/>
 	<qualifier id="stf"/>
 	<qualifier id="urbs"/>
-	<qualifier id="req" name="req'd"/>	
+	<qualifier id="req" name="req'd"/>
 	<!--Evap-->
 	<qualifier id="fao56" name="FAO 56"/>
 	<qualifier id="mlake" name="Morton's Lake"/>
@@ -157,7 +157,7 @@
 	<qualifier id="p50" name="50% Percentile"/>
 	<qualifier id="p75" name="75% Percentile"/>
 	<qualifier id="p90" name="90% Percentile"/>
-	<qualifier id="p99" name="99% Percentile"/>	
+	<qualifier id="p99" name="99% Percentile"/>
 	<!--Added for flood ops-->
 	<qualifier id="Valve" name="Valve release"/>
 	<qualifier id="Hydro" name="Hydro release"/>
@@ -196,6 +196,9 @@
 	<qualifier id="TS12"/>
 	<qualifier id="shift"/>
 	<qualifier id="constant"/>
+	<!--Template_test-->
+	<qualifier id="copy" name="copy"/>
+	<qualifier id="template" name="template"/>
 	<csvFile>
 		<file>ROWS_samples_alertlevels.csv</file>
 		<id>Ralert_%qualifierId%</id>
@@ -255,12 +258,12 @@
 				<attributeExists id="_drinkingwater"/>
 			</constraints>
 		</qualifierNode>
-	<qualifierNode id="livestock alert levels">
+		<qualifierNode id="livestock alert levels">
 			<constraints>
 				<attributeExists id="_livestock"/>
 			</constraints>
 		</qualifierNode>
-	<qualifierNode id="cyanobacteria alert levels">
+		<qualifierNode id="cyanobacteria alert levels">
 			<constraints>
 				<attributeExists id="_cyanobacteria"/>
 			</constraints>

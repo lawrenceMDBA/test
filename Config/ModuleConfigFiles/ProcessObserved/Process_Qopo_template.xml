@@ -12,66 +12,33 @@ select preferred series (OPT, OPC,OPO) based on (modifiable) location attribute,
 OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
 	<!--Merge_OPO_Over_Selected(_OPT_OPC):
 Merges OPO over selected (not over OPT over OPC) series-->
-	<!-- MDBA addtions: merging of opt over opc enabled and no selected trace -->
-	<!-- 
 	<variable>
-		<variableId>OPT_neq</variableId>
+		<variableId>OPO_historic_8am</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<description>Import Hydstra flow order data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opt</qualifierId>
-			<qualifierId>raw</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="nonequidistant"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>OPT_15m</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opt</qualifierId>
-			<qualifierId>15m</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="minute" multiplier="15"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>OPT_8am_inst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opt</qualifierId>
-			<locationSetId>sites</locationSetId>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_$HIST_LOCSET_PARAM$_obs</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	-->
 	<variable>
 		<variableId>OPC_neq</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>$PARAM$_obs</parameterId>
 			<qualifierId>opc</qualifierId>
 			<qualifierId>raw</qualifierId>
-			<qualifierId>total</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="nonequidistant"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -80,75 +47,37 @@ Merges OPO over selected (not over OPT over OPC) series-->
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
+			<parameterId>$PARAM$_fcst</parameterId>
 			<qualifierId>opc</qualifierId>
 			<qualifierId>raw</qualifierId>
-			<qualifierId>total</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="nonequidistant"/>
 			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
-			<!--
-			<relativeForecastPeriod  start="0" end="30" startOverrulable="true" unit="day"/>
-			-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!-- 	<variable>
-		<variableId>OPC_15m</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>valves</qualifierId>
-			<qualifierId>15m</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
-	<!-- 	<variable>
-		<variableId>OPC_15m_fcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportObserved</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>opc</qualifierId>
-			<qualifierId>valves</qualifierId>
-			<qualifierId>15m</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
 	<variable>
 		<variableId>OPC_8am_inst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>$PARAM$_obs</parameterId>
 			<qualifierId>opc</qualifierId>
-			<qualifierId>total</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
 		<variableId>OPC_8am_inst_fcst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
+			<parameterId>$PARAM$_fcst</parameterId>
 			<qualifierId>opc</qualifierId>
-			<qualifierId>total</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
@@ -156,67 +85,66 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!-- 	<variable>
-		<variableId>Selected_8am_inst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
 	<variable>
 		<variableId>OPO_8am_inst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>$PARAM$_obs</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>de.sites_Q.total</locationSetId>
+			<qualifierId>template</qualifierId>
+			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>copy</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
 		<variableId>OPO_8am_inst_fcst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
+			<parameterId>$PARAM$_fcst</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>de.sites_Q.total</locationSetId>
+			<qualifierId>template</qualifierId>
+			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--
-	<transformation id="OPT_neq_to_8am_inst">
-		<sample>
-			<nonEquidistant>
-				<nonEquidistantInputVariable>
-					<variableId>OPT_neq</variableId>
-				</nonEquidistantInputVariable>
-				<interpolationType>linearOrClosest</interpolationType>
-				<maxGapLength unit="hour" multiplier="4"/>
-				<outputVariable>
-					<variableId>OPT_8am_inst</variableId>
-				</outputVariable>
-			</nonEquidistant>
-		</sample>
-	</transformation>
-	-->
+	<variable>
+		<variableId>OPO_8am_inst_fcst_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$MODULE_INSTANCE_ID$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_fcst</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>copy</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<transformation id="OPC_neq_to_8am_inst">
 		<sample>
 			<nonEquidistant>
@@ -245,44 +173,44 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			</nonEquidistant>
 		</sample>
 	</transformation>
-	<!--  	<transformation id="SelectPreferred_8am_inst">
-		<merge>
-			<selectDataSource>
- 				<input>
-					<variableId>OPT_8am_inst</variableId>
-				</input>
-				<input>
-					<variableId>OPC_8am_inst</variableId>
-				</input>
-				<input>
-					<variableId>OPO_8am_inst</variableId>
-				</input>				
-				<attributeFunctionId>@WT_PREFERRED@_8am_inst</attributeFunctionId>
-				<output>
-					<variableId>Selected_8am_inst</variableId>
-				</output>
-			</selectDataSource>
-		</merge>
-	</transformation> -->
-	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst">
+	<transformation id="OPO_8am_inst_copy">
 		<merge>
 			<simple>
 				<inputVariable>
 					<variableId>OPO_8am_inst</variableId>
 				</inputVariable>
-				<!--
- 				<inputVariable>
-					<variableId>Selected_8am_inst</variableId>
-				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_copy</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst">
+		<merge>
+			<simple>
 				<inputVariable>
-					<variableId>OPT_8am_inst</variableId>
+					<variableId>OPO_8am_inst_copy</variableId>
 				</inputVariable>
-				-->
 				<inputVariable>
 					<variableId>OPC_8am_inst</variableId>
 				</inputVariable>
+				<inputVariable>
+					<variableId>OPO_historic_8am</variableId>
+				</inputVariable>
 				<outputVariable>
 					<variableId>OPO_8am_inst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPO_8am_inst_fcst_copy">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_fcst_copy</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
@@ -291,16 +219,8 @@ Merges OPO over selected (not over OPT over OPC) series-->
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>OPO_8am_inst_fcst</variableId>
+					<variableId>OPO_8am_inst_fcst_copy</variableId>
 				</inputVariable>
-				<!--
-				<inputVariable>
-					<variableId>Selected_8am_inst_fcst</variableId>
-				</inputVariable>
-				<inputVariable>
-					<variableId>OPT_8am_inst-fcst</variableId>
-				</inputVariable>
-				-->
 				<inputVariable>
 					<variableId>OPC_8am_inst_fcst</variableId>
 				</inputVariable>
