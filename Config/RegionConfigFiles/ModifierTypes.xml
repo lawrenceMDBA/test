@@ -65,7 +65,7 @@
 			<locationId>R_401569</locationId>
 		</timeSeries>
 		<defaultStartTime>time zero</defaultStartTime>
-		<defaultEndTime>time zero</defaultEndTime>		
+		<defaultEndTime>time zero</defaultEndTime>
 		<offsetDefaultEndTime unit="day" multiplier="10"/>
 		<defaultValidTime/>
 		<resolveInWorkflow>true</resolveInWorkflow>
@@ -700,14 +700,43 @@
 					</conditionalSelection>
 					<comment>The model is calibrated using the initial loss / continuous loss model (ILCL option) - this is default</comment>
 				</attribute>
-				<attribute id="URBS_IL">
-					<comment>Default 0mm, calibration range 0 - 90mm, see summary report in Documents Overview.</comment>
-				</attribute>
 				<attribute id="URBS_CL">
 					<comment>Default XXX, calibration range XXX-XXX. The model is calibrated using the initial loss / continuous loss model (ILCL option), see summary report in Documents Overview.</comment>
 				</attribute>
 				<attribute id="URBS_PR">
 					<comment>Default 0.25, calibration range 0.15-0.35</comment>
+				</attribute>
+				<attribute id="URBS_LOSSSOURCE">
+					<conditionalSelection>
+						<option value="AWRA_IL">
+							<disabledAttributeId>URBS_IL</disabledAttributeId>
+							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
+						</option>
+						<option value="User_IL">
+							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
+						</option>
+					</conditionalSelection>
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_IL_AWRA">
+					<readOnly>true</readOnly>
+					<timeSeriesValueClosestToStateSelectionStartTime>
+						<timeSeriesSet>
+							<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+							<valueType>scalar</valueType>
+							<parameterId>IL</parameterId>
+							<qualifierId>AWRA-L RZ</qualifierId>
+							<locationSetId>URBS_subcatchments.only</locationSetId>
+							<timeSeriesType>external historical</timeSeriesType>
+							<timeStep id="8am"/>
+							<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+							<readWriteMode>read only</readWriteMode>
+						</timeSeriesSet>
+					</timeSeriesValueClosestToStateSelectionStartTime>
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_IL">
+					<comment>Default 0mm, calibration range 0 - 90mm, see summary report in Documents Overview.</comment>
 				</attribute>
 				<attribute id="URBS_IF">
 					<comment>Default unlimited (10000000000)</comment>
@@ -721,13 +750,14 @@
 				<attribute id="URBS_IFRF">
 					<comment>Default 0</comment>
 				</attribute>
-				<panelLayout>
+				<!--<panelLayout>
 					<tableLayout id="URBS_ILCL">
 						<title>Uniform Initial Loss/Continuous Loss</title>
+						<attributeId>AWRA_IL</attributeId>
 						<attributeId>URBS_IL</attributeId>
 						<attributeId>URBS_CL</attributeId>
 					</tableLayout>
-				</panelLayout>
+				</panelLayout>-->
 				<summaryFunction>IL=@URBS_IL@ CL=@URBS_CL@</summaryFunction>
 			</modifiableGroup>
 			<modifiableGroup name="URBS Routing">
@@ -809,7 +839,7 @@
 				</panelLayout>
 				<summaryFunction>initial_level @VBFNAME_URBS@ =@INITIAL_RESERVOIR_LEVEL@</summaryFunction>
 			</modifiableGroup>
-			<template id="ILCL" name="IL/Continuous Loss">
+			<!--<template id="ILCL" name="IL/Continuous Loss">
 				<panel>
 					<panelId>URBS_ILCL</panelId>
 					<position row="1" column="1"/>
@@ -826,7 +856,7 @@
 					<panelId>URBS_Reservoirs</panelId>
 					<position row="4" column="1"/>
 				</panel>
-			</template>
+			</template>-->
 		</locationAttributeModifier>
 	</attributeModifiers>
 	<modifiersGroup id="None">

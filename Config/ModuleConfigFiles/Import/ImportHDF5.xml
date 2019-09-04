@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NETCDF-CF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER$\fromBOM\HDF5</folder>
+			<fileNamePatternFilter>*.hdf5</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdImportHDF5</idMapId>
+			<importTimeZone>
+				<timeZoneOffset>+00:00</timeZoneOffset>
+			</importTimeZone>
+			<geoDatum>WGS 1984</geoDatum>
+			<dataFeedId>BOM_HDF5</dataFeedId>
+			<synchLevel>6</synchLevel>
+			<expiryTime unit="day" multiplier="2"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportHDF5</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>H570730</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="month"/>
+			<readWriteMode>add originals</readWriteMode>
+			<expiryTime unit="day" multiplier="90"/>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

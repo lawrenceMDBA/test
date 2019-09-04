@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
-	<!-- average values-->
+	<!--*************** Variables ***************-->
+	<!-- input variable-->
 	<variable>
-		<variableId>Grid_RZ_mm</variableId>
+		<variableId>AWRAL_check</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportAWRA</moduleInstanceId>
 			<valueType>grid</valueType>
@@ -11,12 +12,59 @@
 			<locationId>AWRA</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="day"/>
-			<relativeViewPeriod unit="day" start="-7" end="-1" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
+			<relativeViewPeriod unit="day" start="-1" end="-1" startOverrulable="false" endOverrulable="false"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+		<checkMissing>true</checkMissing>
 	</variable>
 	<variable>
-		<variableId>Grid_RZ_mm_8am</variableId>
+		<variableId>AWRAL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportAWRA</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>SM_obs</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>AWRA</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="day"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- temporary variables -->
+	<variable>
+		<variableId>AWRAL_dummy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>SM_obs</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>AWRA</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="day"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="false" endOverrulable="false"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<checkMissing>true</checkMissing>
+	</variable>
+	<variable>
+		<variableId>AWRAL.URBS.subareas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>SM_obs</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationSetId>URBS_subareas</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<checkMissing>true</checkMissing>
+	</variable>
+	<!-- output variables -->
+	<variable>
+		<variableId>AWRAL_8am</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>grid</valueType>
@@ -25,13 +73,13 @@
 			<locationId>AWRA</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-7" end="-1" startOverrulable="true" endOverrulable="true"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="false" endOverrulable="false"/>
 			<readWriteMode>add originals</readWriteMode>
 			<expiryTime unit="day" multiplier="90"/>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>SubCatchments_RZ_mm</variableId>
+		<variableId>AWRAL.URBS.subcatchments</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -40,79 +88,93 @@
 			<locationSetId>URBS_subcatchments.only</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-7" end="-1" startOverrulable="true" endOverrulable="true"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
-			<expiryTime unit="year" multiplier="1"/>
+			<expiryTime unit="day" multiplier="90"/>
 		</timeSeriesSet>
+		<checkMissing>true</checkMissing>
 	</variable>
 	<variable>
-		<variableId>SubAreas_RZ_mm</variableId>
+		<variableId>URBS.subcatchments_IL_log</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>SM_obs</parameterId>
+			<parameterId>IL</parameterId>
 			<qualifierId>AWRA-L RZ</qualifierId>
-			<locationSetId>URBS_subareas</locationSetId>
+			<locationSetId>URBS_subcatchments.il_awral_log</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-7" end="-1" startOverrulable="true" endOverrulable="true"/>
+			<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 			<expiryTime unit="day" multiplier="90"/>
 		</timeSeriesSet>
 	</variable>
-	<!--Interpolate all grids to scalars-->
-	<transformation id="Sample AWRA to 8am">
+	<!--*************** Transformations ***************-->
+	<!-- AWRAL.URBS.subareas used to be calculated based on interpolation > closestDistance  (searchRadius 100000, distanceGeoDatum UTM55S)-->
+	<!-- AWRAL.URBS.subcatchments is calculated based on subareas-->
+	<transformation id="AWRAL_dummy">
+		<user>
+			<simple>
+				<expression>AWRAL_check</expression>
+				<outputVariable>
+					<variableId>AWRAL_dummy</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="AWRAL_8am">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
-					<variableId>Grid_RZ_mm</variableId>
+					<variableId>AWRAL</variableId>
 				</equidistantInputVariable>
 				<timeReferenceInputVariable>
-					<variableId>Grid_RZ_mm_8am</variableId>
+					<variableId>AWRAL_8am</variableId>
 				</timeReferenceInputVariable>
 				<interpolationType>closest</interpolationType>
 				<outputVariable>
-					<variableId>Grid_RZ_mm_8am</variableId>
+					<variableId>AWRAL_8am</variableId>
 				</outputVariable>
 			</equidistant>
 		</sample>
 	</transformation>
-	<!-- SDK: temporary transformation to transform AWRA data from the website (0-1) to 0-100%. Should be removed when data in mm is supplied by BoM -->
-	<!-- <transformation id="multiply AWRA to 100%">
-		<user>
-			<simple>
-				<expression>100 * Grid_RZ_mm_8am</expression>
-				<outputVariable>
-					<variableId>Grid_RZ_mm_8am</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation> -->
-	<transformation id="SubCatchments_RZ_mm">
+	<transformation id="AWRAL.URBS.subareas">
 		<interpolationSpatial>
-			<closestDistance>
+			<average>
 				<inputVariable>
-					<variableId>Grid_RZ_mm_8am</variableId>
+					<variableId>AWRAL_8am</variableId>
 				</inputVariable>
-				<searchRadius>100000</searchRadius>
-				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
-					<variableId>SubAreas_RZ_mm</variableId>
+					<variableId>AWRAL.URBS.subareas</variableId>
 				</outputVariable>
-			</closestDistance>
+			</average>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="SubAreas_RZ_mm">
+	<transformation id="AWRAL.URBS.subcatchments">
 		<statisticsRelatedLocations>
 			<mean>
 				<inputVariable>
-					<variableId>SubAreas_RZ_mm</variableId>
+					<variableId>AWRAL.URBS.subareas</variableId>
 				</inputVariable>
 				<locationRelationId>subcatchment</locationRelationId>
 				<outputVariable>
-					<variableId>SubCatchments_RZ_mm</variableId>
+					<variableId>AWRAL.URBS.subcatchments</variableId>
 				</outputVariable>
 			</mean>
 		</statisticsRelatedLocations>
+	</transformation>
+	<transformation id="URBS.subcatchments_IL_log">
+		<user>
+			<simple>
+				<expression>LOG_C * ln(AWRAL.URBS.subcatchments) + LOG_B</expression>
+				<coefficientSetFunctions>
+					<coefficient id="LOG_C" value="@LOG_C@"/>
+					<coefficient id="LOG_B" value="@LOG_B@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>URBS.subcatchments_IL_log</variableId>
+				</outputVariable>
+			</simple>
+		</user>
 	</transformation>
 </transformationModule>
