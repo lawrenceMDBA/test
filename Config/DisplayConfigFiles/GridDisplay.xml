@@ -116,28 +116,28 @@
 					</properties>
 				</layer>
 				<layer id="World" name="ArcGIS World Topo Map">
-				  <className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
-						<visible>false</visible>
-						<properties>
-							<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-							<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
-							<int key="minZoomLevel" value="1"/>
-							<int key="maxZoomLevel" value="19"/>
-							<int key="topZoomLevel" value="21"/>
-							<int key="tileSize" value="256"/>
-						</properties>
+					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+					<visible>false</visible>
+					<properties>
+						<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+						<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
+						<int key="minZoomLevel" value="1"/>
+						<int key="maxZoomLevel" value="19"/>
+						<int key="topZoomLevel" value="21"/>
+						<int key="tileSize" value="256"/>
+					</properties>
 				</layer>
 				<layer id="Canvas" name="ArcGIS Canvas World_Light_Gray_Base">
 					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
 					<visible>false</visible>
-				  <properties>
-					<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-					<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
-					<int key="minZoomLevel" value="1"/>
-					<int key="maxZoomLevel" value="19"/>
-					<int key="topZoomLevel" value="21"/>
-					<int key="tileSize" value="256"/>
-				  </properties>
+					<properties>
+						<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+						<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
+						<int key="minZoomLevel" value="1"/>
+						<int key="maxZoomLevel" value="19"/>
+						<int key="topZoomLevel" value="21"/>
+						<int key="tileSize" value="256"/>
+					</properties>
 				</layer>
 			</layerGroup>
 			<layerGroup id="Upper Murray Catchment">
@@ -2050,8 +2050,8 @@
 	<gridPlotGroup id="NWP" name="NWP">
 		<viewPermission>RiverOperations</viewPermission>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-				<!-- Not sure if this is correct -->
- 			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
+			<!-- Not sure if this is correct -->
+			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
 				<timeSeriesSet>
 					<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2924,8 +2924,11 @@
 	<gridPlotGroup id="NWP (Flood ops)" name="NWP (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
 		<gridPlotGroup id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
-			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
 				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 						<valueType>grid</valueType>
@@ -2934,20 +2937,7 @@
 						<locationId>AWRA</locationId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<dataLayer>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>SM_obs</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationSetId>URBS_subareas</locationSetId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
@@ -2965,11 +2955,33 @@
 						<locationSetId>URBS_subcatchments.only</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
 				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
+			<gridPlot id="AWRA-L Root Zone (mm)" name="Initial loss based on AWRA-L - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<circleSizeFunction>10</circleSizeFunction>
+					<circleBorderSize>2</circleBorderSize>
+					<circleBorderColor>red</circleBorderColor>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>IL</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationSetId>URBS_subcatchments.only</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>IL</classBreaksId>
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
