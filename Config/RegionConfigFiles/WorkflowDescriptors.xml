@@ -75,7 +75,13 @@
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="ImportAndProcess_AWRA_FloodOps" name="Import and process  AWRA data" visible="true" autoApprove="false">
+	<workflowDescriptor forecast="true" id="Import_SDF_Forecast" name="Import SDF forecasts" visible="true" autoApprove="true">
+		<description>Import SDF from BoM</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="3"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_AWRA_FloodOps" name="Import and process  AWRA data" visible="true" autoApprove="true">
 		<description>Import and process AWRA data from ftp</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
@@ -121,6 +127,11 @@
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Observed" name="Import observations" visible="true">
 		<description>Import measured data from external sources</description>
+		<cardinalTimeStep unit="hour"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Import_SDF_Observed" name="Import SDF observations" visible="true">
+		<description>Import SDF observed data from BOM</description>
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
