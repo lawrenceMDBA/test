@@ -2,7 +2,7 @@
 <generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
 	<general>
 		<piVersion>1.10</piVersion>
-		<rootDir>%REGION_HOME%/Modules/urbs\$CATCHMENT$\$SUBCATCHMENT$</rootDir>
+		<rootDir>%REGION_HOME%/Modules/urbs/$CATCHMENT$/$SUBCATCHMENT$</rootDir>
 		<workDir>%ROOT_DIR%\model</workDir>
 		<exportDir>%ROOT_DIR%\to_urbs</exportDir>
 		<exportDataSetDir>%REGION_HOME%\Modules</exportDataSetDir>
@@ -102,17 +102,6 @@
 						<ensembleId>main</ensembleId>
 					</timeSeriesSet>
 					<timeSeriesSet>
-						<moduleInstanceId>User_Input</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>$RELEASE$</parameterId>
-						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
-						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep unit="hour"/>
-						<relativeViewPeriod unit="day" end="0" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-						<ensembleId>main</ensembleId>
-					</timeSeriesSet>
-					<timeSeriesSet>
 						<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 						<valueType>scalar</valueType>
 						<parameterId>Q_obs</parameterId>
@@ -123,6 +112,32 @@
 						<relativeViewPeriod unit="day" end="0"/>
 						<readWriteMode>read only</readWriteMode>
 						<ensembleId>main</ensembleId>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>User_Input</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>$RELEASE$</parameterId>
+						<locationSetId>URBS_reservoirs_controlled.$CATCHMENT$_$SUBCATCHMENT$</locationSetId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod unit="day" end="0" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+						<ensembleId>main</ensembleId>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportTimeSeriesActivity>
+				<exportFile>params_series.xml</exportFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>URBS_1h_Subcatchment_Preprocessing</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>IL</parameterId>
+						<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+						<timeSeriesType>temporary</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="hour" end="0" startOverrulable="true" endOverrulable="false"/>
+						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
 				</timeSeriesSets>
 			</exportTimeSeriesActivity>

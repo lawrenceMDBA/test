@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!-- Transformation description:
+Copy the correct time series value to a dummy timeseriesset that needs to be exported to URBS as time dependent parameters
+-->
+	<!-- ============ input variables ===================-->
+	<variable>
+		<variableId>AWRA_IL_orig</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>IL</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="hour" start="-48" end="0" startOverrulable="true" endOverrulable="false"/>
+			<readWriteMode>read only</readWriteMode>
+			<!--<delay unit="day"/>-->
+		</timeSeriesSet>
+	</variable>
+	<!-- ============ output variables (temporary) ===================-->
+	<variable>
+		<variableId>User_IL_hour</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>URBS_1h_Subcatchment_Preprocessing</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>IL</parameterId>
+			<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="hour" start="-48" end="0" startOverrulable="true" endOverrulable="false"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWRA_IL_hour</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>URBS_1h_Subcatchment_Preprocessing</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>IL</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="hour" start="-48" end="0" startOverrulable="true" endOverrulable="false"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>AWRA_IL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>URBS_1h_Subcatchment_Preprocessing</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>IL</parameterId>
+			<qualifierId>AWRA-L RZ</qualifierId>
+			<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="hour" start="-48" end="0" startOverrulable="true" endOverrulable="false"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Select_IL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>URBS_1h_Subcatchment_Preprocessing</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>IL</parameterId>
+			<locationId>$CATCHMENT$_$SUBCATCHMENT$</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="hour" start="-48" end="0" startOverrulable="true" endOverrulable="false"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="User_IL_hour">
+		<user>
+			<simple>
+				<expression>IL</expression>
+				<coefficientSetFunctions>
+					<coefficient id="IL" value="@URBS_IL@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>User_IL_hour</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="AWRA_IL_hour">
+		<disaggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>AWRA_IL_orig</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>AWRA_IL_hour</variableId>
+				</outputVariable>
+			</meanToMean>
+		</disaggregation>
+	</transformation>
+	<transformation id="AWRA_IL">
+		<aggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>AWRA_IL_hour</variableId>
+				</inputVariable>
+				<ignoreMissings>true</ignoreMissings>
+				<outputVariable>
+					<variableId>AWRA_IL</variableId>
+				</outputVariable>
+			</meanToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="Select_IL">
+		<merge>
+			<selectDataSource>
+				<input>
+					<variableId>User_IL_hour</variableId>
+				</input>
+				<input>
+					<variableId>AWRA_IL</variableId>
+				</input>
+				<attributeFunctionId>@URBS_LOSSSOURCE@</attributeFunctionId>
+				<output>
+					<variableId>Select_IL</variableId>
+				</output>
+			</selectDataSource>
+		</merge>
+	</transformation>
+	<transformation id="Select_IL merged">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Select_IL</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>User_IL_hour</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Select_IL</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>
