@@ -229,7 +229,7 @@
 			<lowerValue>90</lowerValue>
 			<lowerValue>100</lowerValue>
 		</classBreaks>
-				<classBreaks id="Evaporation">
+		<classBreaks id="Evaporation">
 			<missingValueColor>gray</missingValueColor>
 			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
 			<break lowerValue="0" color="FEFEFE"/>
@@ -2157,7 +2157,9 @@
 		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Hcst">
 			<description>[Historical]</description>
 		</moduleInstanceIdMapping>
-		<moduleInstanceIdMapping id="ewSource_Fcst">
+		<!-- SDK: changed because it was throwing an error -->
+		<!--<moduleInstanceIdMapping id="ewSource_Fcst">-->
+		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Fcst">
 			<description>[Forecast]</description>
 		</moduleInstanceIdMapping>
 		<moduleInstanceIdMapping id="ImportFromHydstraTSM_Fcst">
