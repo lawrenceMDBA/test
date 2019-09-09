@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modifierTypes xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/modifierTypes.xsd">
+<!-- markUnreliableModifier allows the user to set an expirty time (i.e. modifier is not "forever" and cannot be "forgotten" -->
+<!-- markUnreliableModifier marked data will still be archived (while with missingValueModifier this is not the case) -->
 	<timeSeriesModifier id="OPO_modification" name="OPO modification">
 		<timeSeries>
 			<qualifierId>opo</qualifierId>
@@ -118,6 +120,22 @@
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
 	</timeSeriesModifier>
+	<markUnreliableModifier id="Raingauge" name="Set raingauge to unreliable">
+		<expiryTime unit="day" multiplier="365"/>
+		<timeSeries>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<offsetDefaultStartTime unit="day" multiplier="-7"/>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="30"/>
+	</markUnreliableModifier>
 	<moduleParameterModifier id="baseflow" name="BASEFLOW">
 		<filter>
 			<moduleParameterId>CONSTANT_BASE_FLOW</moduleParameterId>
@@ -729,7 +747,7 @@
 							<locationSetId>URBS_subcatchments.only</locationSetId>
 							<timeSeriesType>external historical</timeSeriesType>
 							<timeStep id="8am"/>
-							<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+							<relativeViewPeriod unit="day" start="-14" end="0"/>
 							<readWriteMode>read only</readWriteMode>
 						</timeSeriesSet>
 					</timeSeriesValueClosestToStateSelectionStartTime>
@@ -908,6 +926,7 @@
 	</modifiersGroup>
 	<modifiersGroup id="FloodOps">
 		<modifierId>rating</modifierId>
+		<modifierId>Raingauge</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="Rainfall Policy">
 		<modifierId>Rainfall Policy</modifierId>
