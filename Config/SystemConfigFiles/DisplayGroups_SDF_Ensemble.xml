@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
-	<plot id="SDF_Ensemble_plot">
+	<plot id="SDF_Q_Ensemble_import">
 		<subplot>
 			<line>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="SDF_Q_Ensemble_process">
+		<subplot>
+			<line>
+				<color>blue</color>
 				<timeSeriesSet>
 					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
-					<qualifierId>mean</qualifierId>
+					<qualifierId>median</qualifierId>
 					<locationId>R_401026</locationId>
-					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 					<readWriteMode>add originals</readWriteMode>
 				</timeSeriesSet>
 			</line>
-			<area>
-				<color>royal blue4</color>
-				<opaquenessPercentage>60</opaquenessPercentage>
+			<line>
+				<color>orange</color>
 				<timeSeriesSet>
 					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -26,15 +44,13 @@
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>min</qualifierId>
 					<locationId>R_401026</locationId>
-					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
-					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
-					<readWriteMode>add originals</readWriteMode>
+					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
-			</area>
-			<area>
-				<color>royal blue4</color>
-				<opaquenessPercentage>30</opaquenessPercentage>
+			</line>
+			<line>
+				<color>red</color>
 				<timeSeriesSet>
 					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -42,12 +58,11 @@
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>max</qualifierId>
 					<locationId>R_401026</locationId>
-					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
-					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
-					<readWriteMode>add originals</readWriteMode>
+					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
-			</area>
+			</line>
 			<area>
 				<color>royal blue4</color>
 				<opaquenessPercentage>20</opaquenessPercentage>
@@ -58,10 +73,9 @@
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p25</qualifierId>
 					<locationId>R_401026</locationId>
-					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
-					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
-					<readWriteMode>add originals</readWriteMode>
+					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</area>
 			<area>
@@ -74,21 +88,117 @@
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p99</qualifierId>
 					<locationId>R_401026</locationId>
-					<timeSeriesType>simulated forecasting</timeSeriesType>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+		</subplot>
+	</plot>
+	<plot id="SDF_Q_Ensemble">
+		<subplot>
+			<line>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<color>blue</color>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>median</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 					<readWriteMode>add originals</readWriteMode>
 				</timeSeriesSet>
-		    </area>
+			</line>
+			<area>
+				<color>light blue</color>
+				<opaquenessPercentage>10</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>min</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>royal blue4</color>
+				<opaquenessPercentage>20</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p25</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>green</color>
+				<opaquenessPercentage>30</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p99</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<color>dark green</color>
+				<opaquenessPercentage>40</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>max</qualifierId>
+					<locationId>R_401026</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
 		</subplot>
 	</plot>
-	<displayGroup name="SDF Ensemble" id="SDF_Ensemble">
+	<displayGroup name="SDF Q Ensemble" id="SDF_Q_Ensemble">
+		<nodeId>SDF_Ensemble</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
-		<displayGroup id="SDF_Ensemble_Q" name="Flow SDF Ensemble">
-			<singleLocationDisplays>
-				<locationId>R_401026</locationId>
-				<plotId>SDF_Ensemble_plot</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
+		<display id="SDF_Q_Ensemble_import" name="Flow SDF Ensemble (imported)">
+			<plotId>SDF_Q_Ensemble_import</plotId>
+		</display>
+		<display id="SDF_Q_Ensemble_process" name="Flow SDF Ensemble (processed)">
+			<plotId>SDF_Q_Ensemble_process</plotId>
+		</display>
+		<display id="SDF_Q_Ensemble" name="Flow SDF Ensemble (all)">
+			<plotId>SDF_Q_Ensemble</plotId>
+		</display>
 	</displayGroup>
 </displayGroups>
