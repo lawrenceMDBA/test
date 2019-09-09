@@ -2,14 +2,14 @@
 <transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
 	<!--input variable-->
 	<variable>
-		<variableId>SDF_Ensemble</variableId>
+		<variableId>SDF_Q_Ensemble</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
@@ -17,22 +17,22 @@
 	</variable>
 	<!--output variables-->
 	<variable>
-		<variableId>SDF_Ensemble_median</variableId>
+		<variableId>SDF_Q_Ensemble_median</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
-			<qualifierId>mean</qualifierId>
+			<qualifierId>median</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+			<relativeForecastPeriod unit="hour" start="0" end="96"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>SDF_Ensemble_min</variableId>
+		<variableId>SDF_Q_Ensemble_min</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -40,14 +40,13 @@
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>min</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>SDF_Ensemble_max</variableId>
+		<variableId>SDF_Q_Ensemble_max</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -55,14 +54,13 @@
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>max</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>SDF_Ensemble_25percentile</variableId>
+		<variableId>SDF_Q_Ensemble_25percentile</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -70,14 +68,13 @@
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p25</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>SDF_Ensemble_99percentile</variableId>
+		<variableId>SDF_Q_Ensemble_99percentile</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -85,72 +82,71 @@
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p99</qualifierId>
 			<locationId>R_401026</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<transformation id="statistics ensemble median">
+	<transformation id="SDF_Q_Ensemble_median">
 		<statisticsEnsemble>
 			<mean>
 				<inputVariable>
-					<variableId>SDF_Ensemble</variableId>
+					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>SDF_Ensemble_median</variableId>
+					<variableId>SDF_Q_Ensemble_median</variableId>
 				</outputVariable>
 			</mean>
 		</statisticsEnsemble>
 	</transformation>
-	<transformation id="statistics ensemble min">
+	<transformation id="SDF_Q_Ensemble_min">
 		<statisticsEnsemble>
 			<min>
 				<inputVariable>
-					<variableId>SDF_Ensemble</variableId>
+					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>SDF_Ensemble_min</variableId>
+					<variableId>SDF_Q_Ensemble_min</variableId>
 				</outputVariable>
 			</min>
 		</statisticsEnsemble>
 	</transformation>
-	<transformation id="statistics ensemble max">
+	<transformation id="SDF_Q_Ensemble_max">
 		<statisticsEnsemble>
 			<max>
 				<inputVariable>
-					<variableId>SDF_Ensemble</variableId>
+					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>SDF_Ensemble_max</variableId>
+					<variableId>SDF_Q_Ensemble_max</variableId>
 				</outputVariable>
 			</max>
 		</statisticsEnsemble>
 	</transformation>
-	<transformation id="statistics ensemble percentile">
+	<transformation id="SDF_Q_Ensemble_25percentile">
 		<statisticsEnsemble>
 			<percentileNonExceedence>
 				<inputVariable>
-					<variableId>SDF_Ensemble</variableId>
+					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>
 				<value>25</value>
 				<outputVariable>
-					<variableId>SDF_Ensemble_25percentile</variableId>
+					<variableId>SDF_Q_Ensemble_25percentile</variableId>
 				</outputVariable>
-    		</percentileNonExceedence>
-	    </statisticsEnsemble>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
 	</transformation>
-	<transformation id="statistics ensemble percentile">
+	<transformation id="SDF_Q_Ensemble_99percentile">
 		<statisticsEnsemble>
-			<percentileNonExceedence>
+<percentileNonExceedence>
 				<inputVariable>
-					<variableId>SDF_Ensemble</variableId>
+					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>
 				<value>99</value>
 				<outputVariable>
-					<variableId>SDF_Ensemble_99percentile</variableId>
+					<variableId>SDF_Q_Ensemble_99percentile</variableId>
 				</outputVariable>
-    		</percentileNonExceedence>
-	    </statisticsEnsemble>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
 	</transformation>
 </transformationModule>
