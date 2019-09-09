@@ -355,6 +355,10 @@
 			<workflowId>Export_FlowLevelReport</workflowId>
 			<localRun>true</localRun>
 		</node>
+		<node id="Prepare_Thresholds" name="Prepare Thresholds">
+			<workflowId>Prepare_Thresholds</workflowId>
+			<localRun>true</localRun>
+		</node>
 		<node id="Export_ThresholdCrossingsReport" name="Export threshold crossings HTML report">
 			<workflowId>Export_ThresholdCrossingsReport</workflowId>
 			<localRun>true</localRun>
@@ -384,7 +388,7 @@
 		</node>
 		<node id="SDF_Ensemble" name="BOM SDF Ensemble">
 			<workflowId>Import_SDF_Forecast</workflowId>
-			<displayGroupId>SDF_Ensemble_Q</displayGroupId>
+			<displayGroupId>SDF_Q_Ensemble</displayGroupId>
 			<localRun>false</localRun>
 		</node>
 		<viewPermission>RiverOperations</viewPermission>
@@ -555,15 +559,19 @@
 				<workflowId>ImportAndProcess_AWRA_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
+				<displayGroupId>upper_murray_awra_il</displayGroupId>
 				<graceTime unit="hour" multiplier="6"/>
 				<mainPanel>grid display</mainPanel>
-				<toolWindow>document selection panel</toolWindow>
+				<toolWindow>plot overview</toolWindow>
 				<localRun>false</localRun>
 			</node>
 			<node id="ImportAndProcess_Observed_flood_latest" name="Import and process latest observations">
 				<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+				<coldState unit="day" multiplier="10"/>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
+				<displayGroupId>ImportProcess_flood</displayGroupId>
+				<defaultModifierId>Raingauge</defaultModifierId>
 				<visibleModifierGroup>FloodOps</visibleModifierGroup>
 				<graceTime unit="day" multiplier="1"/>
 				<localRun>false</localRun>
