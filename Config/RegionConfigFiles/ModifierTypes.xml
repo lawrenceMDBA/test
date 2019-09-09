@@ -132,9 +132,7 @@
 			<timeStep unit="hour"/>
 		</timeSeries>
 		<defaultStartTime>start run</defaultStartTime>
-		<offsetDefaultStartTime unit="day" multiplier="-7"/>
 		<defaultEndTime>time zero</defaultEndTime>
-		<offsetDefaultEndTime unit="day" multiplier="30"/>
 	</markUnreliableModifier>
 	<moduleParameterModifier id="baseflow" name="BASEFLOW">
 		<filter>
@@ -926,7 +924,9 @@
 	</modifiersGroup>
 	<modifiersGroup id="FloodOps">
 		<modifierId>rating</modifierId>
-		<modifierId>Raingauge</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="FOPS_grid_Source">
+		<modifierId>FOPS_grid_Source</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="Rainfall Policy">
 		<modifierId>Rainfall Policy</modifierId>

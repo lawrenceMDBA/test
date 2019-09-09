@@ -2,6 +2,7 @@
 <gridDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/gridDisplay.xsd">
 	<title>Spatial Display</title>
 	<defaults>
+		<!--<modifiedColor>gray86</modifiedColor>-->
 		<geoMap>
 			<geoDatum>WGS 1984</geoDatum>
 			<projection>mercator</projection>
@@ -2849,7 +2850,7 @@
 			</dataLayer>
 			<dataLayer>
 				<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-				<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+				<visibleInSpatialDisplay>false</visibleInSpatialDisplay>
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2876,7 +2877,7 @@
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep unit="hour"/>
 					<relativeViewPeriod end="0" start="-6" unit="day"/>
-					<readWriteMode>read only</readWriteMode>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
 				</timeSeriesSet>
 			</dataLayer>
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
