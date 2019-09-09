@@ -2798,6 +2798,18 @@
 	</gridPlotGroup>
 	<gridPlotGroup id="Observation (Flood ops)" name="Observations (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
+		<gridPlot id="Sentinel-2b" name="Sentinel satellite data">
+				<wmsLayer>
+					<url>https://ows.services.dea.ga.gov.au?</url>
+					<wmsVersion>1.3.0</wmsVersion>
+					<wmsLayerName>s2b_nrt_granule_nbar_t</wmsLayerName>
+					<imageFormat>png</imageFormat>
+					<vendorParameter name="Styles" value="ndwi"/>
+					<dateTimeParameter name="time" format="yyyy-MM-dd'T'HH:mm:ss'Z'" timeZone="GMT"/>
+					<timeStep unit="day" multiplier="1" timeZone="GMT"/>
+<relativeViewPeriod start="-7" end="-1" unit="day"/>
+				</wmsLayer>
+			</gridPlot>
 		<gridPlot id="H_Fops" name="Water level (Fops)">
 			<dataLayer>
 				<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
