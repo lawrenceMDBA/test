@@ -118,6 +118,22 @@
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
 	</timeSeriesModifier>
+	<markUnreliableModifier id="FOPS_grid_Source" name="Set raingauges for FOPS to unreliable">
+		<expiryTime unit="day" multiplier="365"/>
+		<timeSeries>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<offsetDefaultStartTime unit="day" multiplier="-2"/>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="7"/>
+	</markUnreliableModifier>
 	<moduleParameterModifier id="baseflow" name="BASEFLOW">
 		<filter>
 			<moduleParameterId>CONSTANT_BASE_FLOW</moduleParameterId>
@@ -908,6 +924,10 @@
 	</modifiersGroup>
 	<modifiersGroup id="FloodOps">
 		<modifierId>rating</modifierId>
+		<modifierId>FOPS_grid_Source</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="FOPS_grid_Source">
+		<modifierId>FOPS_grid_Source</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="Rainfall Policy">
 		<modifierId>Rainfall Policy</modifierId>
