@@ -1772,7 +1772,7 @@ Doctors Point Rule:
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Doctors_daily_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Doctors_6days_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>

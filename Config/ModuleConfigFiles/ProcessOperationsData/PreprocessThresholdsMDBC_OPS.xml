@@ -6,6 +6,15 @@ The parameters that have at least one threshold associated with them are: H, V, 
 Per parameter and selected location the observed, calculated and forecasted timeseries are merged, in that order of preference. 
 For the diversions and orders also a merge of subtypes (irrig, urban, total, saline, ind, envpump, envstruct and st, lt, mdbc respectively) is done. 
 The subtypes are assumed to be non-overlapping so no data is lost. -->
+	<!-- The dH rate of fall for Heywoods and Doctors Point needs to be calculated from hourly data (Currently it is calculated using daily 8am data).
+Calculate the Maximum rate of fall within a 24 hour period. (the hourly data for the 24 hour period (8am - 7am) should be used )
+Calculate the 6 day rolling average of rate off fall
+Heywoods Rule:
+ a. Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+ b. When Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.249m
+Doctors Point Rule:
+ a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+ b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
 	<!--Variables input-->
 	<variable>
 		<variableId>H_calc</variableId>
@@ -253,6 +262,127 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables Heywood and Doctors Point-->
+	<variable>
+		<variableId>H_hourly_Heywood</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_hourly_Heywood_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_hourly_Doctors</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_hourly_Doctors_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_streak</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>streak</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_24hmin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_24hmin</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<!--Variables output - merges-->
@@ -573,6 +703,71 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 				</outputVariable>
 			</simple>
 		</merge>
+	</transformation>
+	<!-- H - transformations - Heywood and Doctors point-->
+	<transformation id="dH_hourly_Heywood">
+		<user>
+			<simple>
+				<expression>if(H_hourly_Heywood - H_hourly_Heywood_delay1h &lt; 0,H_hourly_Heywood - H_hourly_Heywood_delay1h,0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_streak">
+		<user>
+			<simple>
+				<expression>if(dH_hourly_Heywood &lt; 0, dH_hourly_Heywood + PREVIOUS_OUTPUT_VALUE, 0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_streak</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_24hmin">
+		<statisticsSerial>
+			<min>
+				<inputVariable>
+					<variableId>dH_hourly_Heywood_streak</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_24hmin</variableId>
+				</outputVariable>
+			</min>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="dH_hourly_Doctors">
+		<user>
+			<simple>
+				<expression>H_hourly_Doctors - H_hourly_Doctors_delay1h</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_24hmin">
+		<statisticsSerial>
+			<min>
+				<inputVariable>
+					<variableId>dH_hourly_Doctors</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_24hmin</variableId>
+				</outputVariable>
+			</min>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_24hmin">
+		<user>
+			<simple>
+				<expression>if(dH_hourly_Doctors_24hmin &lt; 0,dH_hourly_Doctors_24hmin,0) </expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_24hmin</variableId>
+				</outputVariable>
+			</simple>
+		</user>
 	</transformation>
 </transformationModule>
 <!-- moved aggregation to 24 h for Colemans to xx_specials_SO, since it's only done for this single location -->
