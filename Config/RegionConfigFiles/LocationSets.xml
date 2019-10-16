@@ -1250,121 +1250,6 @@
 				</attribute>
 			</attributeFile>
 			<attributeFile>
-				<csvFile>ROWS_ewsource_sites_idmap</csvFile>
-				<id>%ROWS_SITE_ID%</id>
-				<relation id="catchment">
-					<relatedLocationId>ewSource_RO</relatedLocationId>
-				</relation>
-				<attribute id="1_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%1_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="5_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%5_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="35_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%35_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="36_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%36_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="37_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%37_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="38_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%38_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="50_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%50_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="51_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%51_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="60_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%60_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="63_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%63_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="70_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%70_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="79_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%79_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="87_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%87_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="204_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%204_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="206_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%206_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="211_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%211_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="212_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%212_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="223_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%223_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="224_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%224_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="278_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%278_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="414_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%414_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="457_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%457_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="466_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%466_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="490_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%490_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="536_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%536_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="640_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%640_EWSRC_ID%</text>
-				</attribute>
-				<attribute id="650_EWSRC_ID" name="ewSource ID">
-					<description>ewSource ID (includes parameter ID)</description>
-					<text>%650_EWSRC_ID%</text>
-				</attribute>
-			</attributeFile>
-			<attributeFile>
 				<csvFile>ROWS_ewsource_evap_tables</csvFile>
 				<id>%ROWS_SITE_ID%</id>
 				<relation id="subcatchment">
@@ -1704,6 +1589,9 @@
 			<attributeFile>
 				<csvFile>ROWS_ewsource_export_seq</csvFile>
 				<id>%ROWS_SITE_ID%</id>
+				<relation id="catchment">
+					<relatedLocationId>ewSource_RO</relatedLocationId>
+				</relation>
 				<attribute id="SOURCE_Q_SEQ" name="Source Q Seq">
 					<description>Flow site sequence</description>
 					<text>%Q_SEQ%</text>
