@@ -1249,7 +1249,8 @@
 					<text>I</text>
 				</attribute>
 			</attributeFile>
-			<attributeFile>
+			<!-- The below csv file is to removed. Just leaving it here for a while to test if commenting this breaks anything in the system -->
+			<!-- <attributeFile>
 				<csvFile>ROWS_ewsource_sites_idmap</csvFile>
 				<id>%ROWS_SITE_ID%</id>
 				<relation id="catchment">
@@ -1363,7 +1364,7 @@
 					<description>ewSource ID (includes parameter ID)</description>
 					<text>%650_EWSRC_ID%</text>
 				</attribute>
-			</attributeFile>
+			</attributeFile> -->
 			<attributeFile>
 				<csvFile>ROWS_ewsource_evap_tables</csvFile>
 				<id>%ROWS_SITE_ID%</id>
@@ -1704,6 +1705,9 @@
 			<attributeFile>
 				<csvFile>ROWS_ewsource_export_seq</csvFile>
 				<id>%ROWS_SITE_ID%</id>
+				<relation id="catchment">
+					<relatedLocationId>ewSource_RO</relatedLocationId>
+				</relation>
 				<attribute id="SOURCE_Q_SEQ" name="Source Q Seq">
 					<description>Flow site sequence</description>
 					<text>%Q_SEQ%</text>
