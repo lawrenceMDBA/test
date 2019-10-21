@@ -269,6 +269,22 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_Fall_Heywood_24hmax</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_Heywood_weekly_rolling</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -325,6 +341,22 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Fall_Doctors_24hmax</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -1237,7 +1269,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Heywood</variableId>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Heywood_weekly_rolling</variableId>
@@ -1249,7 +1281,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Heywood</variableId>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Heywood_6days_rolling</variableId>
@@ -1261,7 +1293,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Doctors</variableId>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Doctors_weekly_rolling</variableId>
@@ -1273,7 +1305,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Doctors</variableId>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Doctors_6days_rolling</variableId>
@@ -1721,7 +1753,7 @@ Doctors Point Rule:
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Heywood_24hmin &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Fall_Heywood_24hmax &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
 					<coefficient id="Q_GT_HARD" value="25000"/>
@@ -1755,7 +1787,7 @@ Doctors Point Rule:
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Doctors_24min &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Fall_Doctors_24hmax &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
