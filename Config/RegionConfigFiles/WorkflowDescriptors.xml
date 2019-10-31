@@ -434,6 +434,12 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Generate_simulated_obs_flood_training_Initial" name="Generate simulated intial values for flood training" visible="true">
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+		<workflowDescriptor forecast="false" id="Generate_simulated_obs_flood_training" name="Generate intial values for flood training" visible="true">
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_ToFloodsheets" name="Export all data to Flood Ops Spreadsheet" visible="true">
 		<runExpiryTime unit="day" multiplier="365"/>
 		<viewPermission>FloodOperations</viewPermission>
@@ -480,5 +486,13 @@
 		<description>Import ERA5 hindcast from ECMWF as ACCESSR for Flood Training</description>
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>Administrators</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="copy_raw_timeseries" name="Copy Raw timeseries floodops" visible="true">
+		<description>Copy the raw data before generating the simulated observed</description>
+		<viewPermission>FloodOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Dam_Initial_value" name="Copy dartInitial value" visible="true">
+		<description>Copy dart Hume and Yarra Initial values to use in PREVIOUS_OUTPUT_VALUE</description>
+		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
 </workflowDescriptors>

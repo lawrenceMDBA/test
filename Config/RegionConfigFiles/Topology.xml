@@ -688,6 +688,19 @@
 				<localRun>true</localRun>
 				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
 			</node>
+			<node id="Yarrawonga Releases" name="Yarrawonga Releases (Modifier)">
+				<previousNodeId>upper_murray_belowHume_training</previousNodeId>
+				<workflowId>Export_ToFloodsheets_yarrawonga</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<displayGroupId>Yarrawonga.DataEntry_flood</displayGroupId>
+				<defaultModifierId>Yarra_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>Yarra_R</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>modifiers panel</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
 			<node id="saveofficial_upper_murray_training" name="Save Upper Murray Forecast">
 				<previousNodeId>rainfallpolicy_upper_murray_training</previousNodeId>
 				<workflowId>UpperMurray_URBS_Official_Archive</workflowId>

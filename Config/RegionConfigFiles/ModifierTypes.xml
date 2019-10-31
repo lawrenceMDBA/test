@@ -27,6 +27,21 @@
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
 	</timeSeriesModifier>
+		<timeSeriesModifier id="Yarra_Release_Forecast" name="Yarra Release Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_409025</locationId>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
 	<timeSeriesModifier id="Hume_Release_Forecast" name="Hume Release Forecast">
 		<timeSeries>
 			<moduleInstanceId>User_Input</moduleInstanceId>
@@ -109,6 +124,21 @@
 			<parameterId>Q_release_scen</parameterId>
 			<qualifierId>manual</qualifierId>
 			<locationId>R_401224A</locationId>
+		</timeSeries>
+		<defaultStartTime>time zero</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Yarra_Release_Scenario" name="Yarra Release Scenario">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_release_scen</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_409025</locationId>
 		</timeSeries>
 		<defaultStartTime>time zero</defaultStartTime>
 		<defaultEndTime>time zero</defaultEndTime>
@@ -894,6 +924,10 @@
 		<modifierId>Hume_Release_Forecast</modifierId>
 		<modifierId>KP_Release_Forecast</modifierId>
 		<modifierId>Dart_Release_Forecast</modifierId>
+		<modifierId>Yarra_Release_Forecast</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="Yarra_R">
+		<modifierId>Yarra_Release_Forecast</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="URBS_R_Scen">
 		<modifierId>Rainfall Scenario</modifierId>
@@ -901,6 +935,7 @@
 		<modifierId>Hume_Release_Scenario</modifierId>
 		<modifierId>KP_Release_Scenario</modifierId>
 		<modifierId>Dart_Release_Scenario</modifierId>
+		<modifierId>Yarra_Release_Forecast</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="URBS_R_All">
 		<modifierId>Rainfall Policy</modifierId>
@@ -909,5 +944,6 @@
 		<modifierId>Hume_Release_Forecast</modifierId>
 		<modifierId>KP_Release_Forecast</modifierId>
 		<modifierId>Dart_Release_Forecast</modifierId>
+		<modifierId>Yarra_Release_Forecast</modifierId>
 	</modifiersGroup>
 </modifierTypes>
