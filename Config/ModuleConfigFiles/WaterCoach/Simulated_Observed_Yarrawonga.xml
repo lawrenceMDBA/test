@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Transformation to calculate
+   - New Hume volumes (Hume_Simulated_Vol) based on manual releases entered by the user 
+   - Hume inflow is calculated by  using historic values of hume vilume, tallandoon and heywoods
+   - Hume new volume is calculated by adding inflows to prev timestep volume and subtracting the new tallandoon and heywoods values-->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Yarraus_Observed_H_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_Observed_V_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_simulated_vol</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_raw_Vol_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Corowa_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409002</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Corowa_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409002</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Corowa_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409002</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_48</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp1</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_46</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_35</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_32</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp4</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_historic_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_historic_shift_82</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Yarrawonga</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp1</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_historic_shift_67</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Yarrawonga</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_historic_shift_55</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Yarrawonga</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Yarrawonga</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarra_Release</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_manual_Yarra</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>constant_zero_Yarra</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_comb_Yarra</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Yarrawonga</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarrads_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarrads_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarrads_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>yarrads_historic_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>yarrads_historic_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Lookup_Yarraus_obs_volume">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Yarraus_Observed_H_raw</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_Storage_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>Yarraus_Observed_V_raw</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Yarraus Volume shift 1hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Yarraus_Observed_V_raw</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Yarraus_raw_Vol_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="StageToDischarge_Yarrads">
+		<stageDischarge>
+			<ratingCurve>
+				<stage>
+					<variableId>yarrads_historic_level</variableId>
+				</stage>
+				<discharge>
+					<variableId>yarrads_historic_flow</variableId>
+				</discharge>
+			</ratingCurve>
+		</stageDischarge>
+	</transformation>
+	<transformation id="Heywoods historic shift 82hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_historic_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>82</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_historic_shift_82</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods historic shift 67hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_historic_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>67</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_historic_shift_67</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods historic shift 55hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_historic_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>55</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_historic_shift_55</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+		<transformation id="Doctors Simulated shift 32">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>48</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_32</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Doctors Simulated shift 35">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>48</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_35</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Doctors Simulated shift 46">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>48</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_46</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Doctors Simulated shift 48">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>48</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_48</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Yarra Release Copy ">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Yarra_Release</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Qrelease_comb_Yarra</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="constant_zero_Yarra">
+		<user>
+			<simple>
+				<expression>0</expression>
+				<outputVariable>
+					<variableId>constant_zero_Yarra</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Yarra_release_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Qrelease_comb_Yarra</variableId>
+				</inputVariable>			
+				<inputVariable>
+					<variableId>Qrelease_manual_Yarra</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>constant_zero_Yarra</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qrelease_comb_Yarra</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Yarrads simulated observed">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Qrelease_comb_Yarra</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Yarrads_simulated_flow</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Yarraus Inflow">
+		<user>
+			<simple>
+				<expression>((Yarraus_Observed_V_raw - Yarraus_raw_Vol_shift) * 24) + (yarrads_historic_flow) - (if (Heywoods_historic_flow &gt; 170000, Heywoods_historic_shift_55, if (Heywoods_historic_flow &gt; 110000, Heywoods_historic_shift_67, if (Heywoods_historic_flow &lt;= 75000, Heywoods_historic_shift_82, Heywoods_historic_flow)))) </expression>
+				<outputVariable>
+					<variableId>Yarraus_inflow</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Yarraus simulated Volume">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE + ((Yarraus_inflow + (if (Heywoods_historic_flow &gt; 170000, Heywoods_historic_shift_55, if (Heywoods_historic_flow &gt; 110000, Heywoods_historic_shift_67, if (Heywoods_historic_flow &lt;= 75000, Heywoods_historic_shift_82, Heywoods_historic_flow)))) - Qrelease_comb_Yarra)/24)</expression>
+				<outputVariable>
+					<variableId>Yarraus_simulated_vol</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Yarraus simulated Volume above FSV">
+		<user>
+			<simple>
+				<expression>if (Yarraus_simulated_vol &gt;= 132110, 132110, Yarraus_simulated_vol)</expression>
+				<outputVariable>
+					<variableId>Yarraus_simulated_vol</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Lookup_Level_Yarraus">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Yarraus_simulated_vol</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Storage_Height_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>Yarraus_simulated_level</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+    <transformation id="Yarraus Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Yarraus_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Yarraus_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+	<transformation id="Lookup_Level_Yarrads">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Yarrads_simulated_flow</variableId>
+				</discharge>
+				<stage>
+					<variableId>Yarrads_simulated_level</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="Yarrads Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Yarrads_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Yarrads_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+	<transformation id="Corowa Simulated Flow">
+		<user>
+			<simple>
+				<expression>(if (Doctors_simulated_flow &gt; 200000, Doctors_simulated_shift_32, if (Doctors_simulated_flow &gt; 175000, Doctors_simulated_shift_35, if (Doctors_simulated_flow &gt; 120000, Doctors_simulated_shift_46, if (Doctors_simulated_flow &lt;= 75000, Doctors_simulated_shift_48, Doctors_simulated_flow)))))</expression>
+				<outputVariable>
+					<variableId>Corowa_simulated_flow</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Lookup_Level_Corowa">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Corowa_simulated_flow</variableId>
+				</discharge>
+				<stage>
+					<variableId>Corowa_simulated_level</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="Corowa Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Corowa_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Corowa_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+</transformationModule>

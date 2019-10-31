@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Transformation to copy 
+       - Initial value to the dartmouth simulated volume timeseries to use as PREVIOUS_OUTPUT_VALUE in the volume calculations
+	   - run from the workflow "Dam_initial_value and this workflow needs to run before stepping forward to set the intial values -->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Yarra_Observed_H_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarra_Observed_V_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarra_Initial_Volume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-25" end="0" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Lookup_Yarra_obs_volume">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Yarra_Observed_H_raw</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_Storage_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>Yarra_Observed_V_raw</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Dartmouth simulated observed">
+		<user>
+			<simple>
+				<expression>Yarra_Observed_V_raw</expression>
+				<outputVariable>
+					<variableId>Yarra_Initial_Volume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

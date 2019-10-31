@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1"><!-- WF only to be run by other WFs, which will fill in the necessary property keys -->
+	<!-- workflow to copy the inital voulmes of dartmouth and Hume to use in the PREVIOUS_OUTPUT_VALUE for the first time when the transformation is run to calculate new volumes-->
+	<!-- this workflow should run first before stepping forward in watercoach -->
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ImportObserved</moduleInstanceId>
+		<moduleConfigFileName>Dartmouth_Initial</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ImportObserved</moduleInstanceId>
+		<moduleConfigFileName>Hume_Initial</moduleConfigFileName>
+	</activity>
+		<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>ImportObserved</moduleInstanceId>
+		<moduleConfigFileName>Yarrawonga_Initial</moduleConfigFileName>
+	</activity>
+</workflow>

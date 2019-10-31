@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This transformation is to copy the timeseries imported (H_obs.primary) to (H_obs.opt.raw) timeseries to use in the waterbalance calulations assuming that for the flood training, hourly data will be extracted out of hydstra.
+	 This module needs to be run while creating the LDS for the flood scenario. i.e., this raw data needs to exist in the LDS supplied to the Flood scenario
+     General Info: After performing the water balance calculations, the newly generated timeseries is copied back to (H_obs.primary) in the indivdual WB calculation modules. This modified H_obs.primary is then used to create t the Fops data. 
+-->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Tallandoon_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Colemans_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Albury_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Corowa_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409002</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Dart_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarrads_Observed</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="90"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Colemans_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Albury_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Corowa_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409002</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Dart_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarraus_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Yarrads_Observed_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409025</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-90" end="90" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Tallandoon_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Tallandoon_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Tallandoon_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Colemans_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Colemans_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Colemans_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Doctors_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Doctors_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Doctors_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Heywoods_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Heywoods_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Heywoods_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Albury_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Albury_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Albury_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Corowa_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Corowa_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Corowa_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Dart_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Dart_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Dart_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Hume_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Hume_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Hume_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Yarraus_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Yarraus_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Yarraus_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Yarraus_raw">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Yarrads_Observed</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Yarrads_Observed_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+</transformationModule>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Transformation to calculate
+   - New Hume volumes (Hume_Simulated_Vol) based on manual releases entered by the user 
+   - Hume inflow is calculated by  using historic values of hume vilume, tallandoon and heywoods
+   - Hume new volume is calculated by adding inflows to prev timestep volume and subtracting the new tallandoon and heywoods values-->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<variable>
+		<variableId>Hume_Observed_H_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Observed_V_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Simulated_Vol</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Simulated_Level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Simulated_Level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-90" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_raw_Vol_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_Simulated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_Simulated</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_simulated_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_Observed_historic</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Tallandoon_Observed_historic_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>shift</qualifierId>
+			<locationId>R_401204A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" startOverrulable="true" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Q_obs.inflow_1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Hume</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-7" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_observed_historic</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Lookup_Hume_obs_volume">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hume_Observed_H_raw</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_Storage_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>Hume_Observed_V_raw</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Hume Volume shift 1hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Hume_Observed_V_raw</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Hume_raw_Vol_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Tallandoon Observed shift 10hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Tallandoon_Simulated</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Tallandoon_simulated_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Tallandoon Historic shift 10hr forward">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Tallandoon_Observed_historic</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Tallandoon_Observed_historic_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Tallandoon fill flows">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Tallandoon_simulated_shift</variableId>
+			 </inputVariable>
+			 <inputVariable>
+				<variableId>Tallandoon_Observed_historic_shift</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Tallandoon_simulated_shift</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Hume Inflow">
+		<user>
+			<simple>
+				<expression>((Hume_Observed_V_raw - Hume_raw_Vol_shift) * 24) - (Tallandoon_Observed_historic_shift) + (Heywoods_observed_historic)</expression>
+				<outputVariable>
+					<variableId>Hume_Q_obs.inflow_1h</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Hume simulated Volume">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE + ((Hume_Q_obs.inflow_1h + Tallandoon_simulated_shift - Heywoods_Simulated)/24)</expression>
+				<outputVariable>
+					<variableId>Hume_Simulated_Vol</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Lookup_Level">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>Hume_Simulated_Vol</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Storage_Height_Table</coefficientSetId>
+				<coefficientSetFile>CapacityTables</coefficientSetFile>
+				<output>
+					<variableId>Hume_Simulated_Level</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Hume Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Hume_Simulated_Level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Hume_Simulated_Level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+</transformationModule>

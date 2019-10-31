@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Transformation to calculate
+   - New Heywoods flow based on the new manual releases at Hume
+   - New Doctors flow based on the new heywoods flow 10 hours earlier if heywoods <= 60,000 and 7hrs earlier if heywoods <= 70,000 and 3 hrs earlier if heywoods <=110,000 
+   - New albury flow based on the new doctors flow 3 hrs earlier if doctors flow <=70,000 and 1 hr earlier if doctors > 70,000 -->
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Doctors variables -->
+	<variable>
+		<variableId>Doctors_observed_H_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_observed_Q_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_3hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Doctors_simulated_shift_1hr</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp1</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Heywoods variables -->
+	<variable>
+		<variableId>Heywoods_observed_H_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_observed_Q_raw</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-90" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_raw_shift_10hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Heywoods_raw_shift_7hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Heywoods_raw_shift_3hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<!-- Hume Variables -->
+	<variable>
+		<variableId>Hume_Release</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_manual_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>constant_zero_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareURBS_Qrelease</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>tmp</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Hume_Release_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_simulated_shift_10hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp10</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Heywoods_simulated_shift_7hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp7</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+    <variable>
+		<variableId>Heywoods_simulated_shift_3hrs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Simulated_Observed_Flow_Doctors</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Albury variables -->
+	<variable>
+		<variableId>Albury_simulated_level</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Albury_simulated_level_nonequi</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>primary</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Albury_simulated_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>raw</qualifierId>
+			<locationId>R_409001</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="-1" end="0" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="StageToDischarge_Doctors">
+		<stageDischarge>
+			<ratingCurve>
+				<stage>
+					<variableId>Doctors_observed_H_raw</variableId>
+				</stage>
+				<discharge>
+					<variableId>Doctors_observed_Q_raw</variableId>
+				</discharge>
+			</ratingCurve>
+		</stageDischarge>
+	</transformation>
+	<transformation id="StageToDischarge_Heywoods">
+		<stageDischarge>
+			<ratingCurve>
+				<stage>
+					<variableId>Heywoods_observed_H_raw</variableId>
+				</stage>
+				<discharge>
+					<variableId>Heywoods_observed_Q_raw</variableId>
+				</discharge>
+			</ratingCurve>
+		</stageDischarge>
+	</transformation>
+	<transformation id="Heywoods Observed shift 10hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_observed_Q_raw</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_raw_shift_10hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods Observed shift 7hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_observed_Q_raw</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_raw_shift_7hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods Observed shift 3hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_observed_Q_raw</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_raw_shift_3hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Hume Release Copy ">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Hume_Release</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Hume_Release_copy</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="constant_zero_Hume">
+		<user>
+			<simple>
+				<expression>0</expression>
+				<outputVariable>
+					<variableId>constant_zero_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Hume_release_merge">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Hume_Release_copy</variableId>
+				</inputVariable>			
+				<inputVariable>
+					<variableId>Qrelease_manual_Hume</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>constant_zero_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Hume_Release_copy</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Heywoods simulated observed">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Hume_Release_copy</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Heywoods_simulated_flow</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+	<transformation id="Heywoods simulated shift 10hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>10</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_simulated_shift_10hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods simulated shift 7hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>7</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_simulated_shift_7hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Heywoods simulated shift 3hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Heywoods_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Heywoods_simulated_shift_3hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Doctors simulated observed 10hrs">
+		<user>
+			<simple>
+				<!--<expression>if (Heywoods_observed &lt;=  60000, (Doctors_observed - Heywoods_shift_10hrs + Hume_Release_shift_10hrs), Heywoods_observed)</expression>-->
+				<expression>if (Heywoods_observed_Q_raw &gt; 70000, Doctors_observed_Q_raw - Heywoods_raw_shift_3hrs + Heywoods_simulated_shift_3hrs, if (Heywoods_observed_Q_raw &gt; 60000, Doctors_observed_Q_raw - Heywoods_raw_shift_7hrs + Heywoods_simulated_shift_7hrs, if(Heywoods_observed_Q_raw &lt;=  60000, Doctors_observed_Q_raw - Heywoods_raw_shift_10hrs + Heywoods_simulated_shift_10hrs, Heywoods_observed_Q_raw)))</expression>
+				<outputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DischargeToStage Doctors">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Doctors_simulated_flow</variableId>
+				</discharge>
+				<stage>
+					<variableId>Doctors_simulated_level</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="DischargeToStage Heywoods">
+		<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Heywoods_simulated_flow</variableId>
+				</discharge>
+				<stage>
+					<variableId>Heywoods_simulated_level</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="Doctors Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Doctors_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Doctors_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+	<transformation id="Heywoods Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Heywoods_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Heywoods_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation> 
+	<transformation id="Doctors Observed shift 3hrs forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>3</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_3hrs</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Doctors Observed shift 1hr forwards">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Doctors_simulated_flow</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Doctors_simulated_shift_1hr</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="Albury Simulated Flow">
+		<user>
+			<simple>
+				<expression>if (Doctors_simulated_flow &lt;= 70000, Doctors_simulated_shift_3hrs, if (Doctors_simulated_flow &gt; 70000, Doctors_simulated_shift_1hr, Doctors_simulated_flow))</expression>
+				<outputVariable>
+					<variableId>Albury_simulated_flow</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Albury simulated level">
+	   	<dischargeStage>
+			<ratingCurve>
+				<discharge>
+					<variableId>Albury_simulated_flow</variableId>
+				</discharge>
+				<stage>
+					<variableId>Albury_simulated_level</variableId>
+				</stage>
+			</ratingCurve>
+		</dischargeStage>
+	</transformation>
+	<transformation id="Albury Simulated H">
+	   <merge>
+		  <simple>
+			 <inputVariable>
+				<variableId>Albury_simulated_level</variableId>
+			 </inputVariable>
+			 <outputVariable>
+				<variableId>Albury_simulated_level_nonequi</variableId>
+			 </outputVariable>
+		  </simple>
+	   </merge>
+	</transformation>
+</transformationModule>
