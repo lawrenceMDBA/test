@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+		<locationSet id="EWV.sites_tmp">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<!--<sortByName>false</sortByName>-->
+		<locationId>R_404210D</locationId>
+		<locationId>R_405232C</locationId>
+		<locationId>R_406202C</locationId>
+		<locationId>R_GUNFORE</locationId>
+		<locationId>R_407779A</locationId>
+		<locationId>R_407209A</locationId>
+		<locationId>R_CCPUMP</locationId>
+		<locationId>R_414230A</locationId>
+		<locationId>R_414231A</locationId>
+		<locationId>R_HATTAHS</locationId>
+		<locationId>R_WALPUMP</locationId>
+		<locationId>R_407224D</locationId>
+	</locationSet>
+	<locationSet id="EWV.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY" contains="EWV"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_H">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="H"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.instream">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+		<locationSet id="EWV.sites_Q.wenv">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.wenv"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.ivt">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.env">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.trib">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.trib"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.env_use">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.inflow">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.return">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.return"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV.sites_Q.model_use">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.model_use"/>
+			</allValid>
+			</constraints>
+		</locationSet>
+	<locationSet id="EWV.sites_Q.pump">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.pump"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<!--<locationSet id="EWV.sites_Q.direct">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.direct"/>
+			</allValid>
+		</constraints>
+	</locationSet>-->
+	<!-- #######################
+		Data entry sites to MDBC_OPS
+	##########################-->
+	<locationSet id="EWV2MDBC_OPS.sites">
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="TO_MDBC_OPS" contains="EWV"/>
+			<attributeExists id="HYDSTRA_SITE_ID"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.instream">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.wenv">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.wenv"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.ivt">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.env">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.trib">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.trib"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.env_use">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.inflow">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.return">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.return"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.model_use">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.model_use"/>
+			</allValid>
+		</constraints>
+		</locationSet>
+		<locationSet id="EWV2MDBC_OPS.sites_Q.pump">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.pump"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+</locationSets>
