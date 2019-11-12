@@ -3,7 +3,11 @@
 	<locationSet id="water_in_storages">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<constraints>
-			<attributeTextContains id="DATA_ENTRY" contains="Storage"/>
+		    <anyValid>
+			 <attributeTextContains id="DATA_ENTRY" contains="Storage"/>
+			 <attributeTextContains id="DATA_ENTRY" contains="LachlanV"/>
+			 <attributeTextContains id="DATA_ENTRY" contains="Whole_Basin"/>
+		   </anyValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="sites_water_in_storages">

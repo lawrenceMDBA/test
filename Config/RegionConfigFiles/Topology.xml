@@ -90,14 +90,19 @@
 			<groupId>Mur(F-H)LowerDar(A-E)_OPO</groupId>
 			<groupId>NSWDivs(ABCDE)_OPO</groupId>
 			<groupId>VIC_Diversions_OPO</groupId>
-			<groupId>IVT_OPO</groupId>
 		</nodes>
-		<nodes name="Monthly Data Entry" id="QTrade_OPO">
+		<!--<nodes name="Monthly Data Entry" id="QTrade_OPO">
 			<node id="QSATrade_DataEntry" name="Data entry">
 				<localRun>false</localRun>
 			</node>
+		</nodes>-->
+		<nodes name="Environmental Watering" id="EW_OPO">
+			<groupId>EWV_OPO</groupId>
+			<groupId>EWN_OPO</groupId>
+			<!--<groupId>SA_OPO</groupId>-->
+			<!--<groupId>QLD_OPO</groupId>-->
 		</nodes>
-		<nodes name="Environmental Watering Data Entry" id="TLM_OPO">
+		<nodes name="TLM Data Entry" id="TLM_OPO">
 			<groupId>BMRegulators_OPO</groupId>
 			<groupId>Gunbower_OPO</groupId>
 			<groupId>KP_Sites_OPO</groupId>
@@ -109,7 +114,9 @@
 		</nodes>
 		<nodes name="Water in Storages Data Entry" id="Storages_OPO">
 			<groupId>NStorage_OPO</groupId>
+			<groupId>LachlanV_OPO</groupId>
 			<groupId>SStorage_OPO</groupId>
+			<groupId>Whole_Basin_OPO</groupId>
 		</nodes>
 		<node id="HydrographicUpdate" name="Apply HydroGraphic Update">
 			<workflowId>Process_HydrographicUpdate</workflowId>
