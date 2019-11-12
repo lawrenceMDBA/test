@@ -1,0 +1,16 @@
+<topologyGroup xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/topologyGroup.xsd">
+	<group id="EWV_OPO">
+		<nodes id="ObservedProcessing.EWV_OPO" name="EWV Daily Accounts">
+			<node id="EWV.DataEntry" name="Data entry">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>EWV.DataEntry</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+			<node id="EWV.Process" name="Quality Control">
+				<workflowId>Process_Observed</workflowId>
+				<displayGroupId>EWV.Process</displayGroupId>
+				<localRun>false</localRun>
+			</node>
+		</nodes>
+	</group>
+</topologyGroup>

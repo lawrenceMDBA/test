@@ -2561,6 +2561,26 @@
 			<attributeTextContains id="DATA_ENTRY" contains="SStorage"/>
 		</locationConstraints>
 	</filter>
+	<filter id="LachlanV_DataEntry" name="Lachlan Valley">
+		<child foreignKey="LachlanV_DataEntry_V"/>
+	</filter>
+	<filter id="LachlanV_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="LachlanV"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Whole_Basin_DataEntry" name="Whole Basin">
+		<child foreignKey="Whole_Basin_DataEntry_V"/>
+	</filter>
+	<filter id="Whole_Basin_DataEntry_V" name="Volume">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Storage_V</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Whole_Basin"/>
+		</locationConstraints>
+	</filter>
 	<filter id="BMRegulators_DataEntry" name="BMRegulators">
 		<child foreignKey="BMRegulators_DataEntry_GatesOpen"/>
 	</filter>
