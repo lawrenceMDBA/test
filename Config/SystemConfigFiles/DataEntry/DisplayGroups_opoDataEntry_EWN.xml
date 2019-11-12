@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_EWN">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>EWN.sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>EWN.sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>ivt</qualifierId>
+				<locationSetId>de.sites_Q.ivt</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>env</qualifierId>
+				<locationSetId>de.sites_Q.env</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>wenv</qualifierId>
+				<locationSetId>de.sites_Q.wenv</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>return</qualifierId>
+				<locationSetId>de.sites_Q.return</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>de.sites_Q.total</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>instream</qualifierId>
+				<locationSetId>EWN.sites_Q.instream</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>inflow</qualifierId>
+				<locationSetId>EWN.sites_Q.inflow</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mdbc</qualifierId>
+				<locationSetId>de.sites_QORD.mdbc</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="7" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>shortterm</qualifierId>
+				<locationSetId>de.sites_QORD.shortterm</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="4" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QORD_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>longterm</qualifierId>
+				<locationSetId>de.sites_QORD.longterm</locationSetId>
+				<timeSeriesType>external forecasting</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="7" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+		</subplot>
+		<subplot>
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QRTN_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>irrig</qualifierId>
+				<locationSetId>de.sites_QRTN.irrig</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+		</subplot>
+	</plot>
+	<displayGroup id="EWN.OPO" name="Processing EWN sites ">
+		<displayGroup id="EWN.DataEntry" name="Data entry">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="dataentry_EWN">
+				<locationSetId>EWN.sites</locationSetId>
+				<plotId>DataEntry_EWN</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="EWN.Process" name="Create OPO">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ImportProcess_Snowy">
+				<locationSetId>EWN.sites</locationSetId>
+				<plotId>ImportProcess_All</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>
