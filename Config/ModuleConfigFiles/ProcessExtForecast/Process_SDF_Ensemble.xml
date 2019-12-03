@@ -4,16 +4,16 @@
 	<variable>
 		<variableId>SDF_Q_Ensemble</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>sdf</qualifierId>
-			<locationId>R_401026</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-			<ensembleId>SWIFT</ensembleId>
-		</timeSeriesSet>
+	<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+	<valueType>scalar</valueType>
+	<parameterId>Q_fcst</parameterId>
+	<qualifierId>sdf</qualifierId>
+	<locationSetId>SourceRO_sites_Q</locationSetId>
+	<timeSeriesType>external forecasting</timeSeriesType>
+	<timeStep unit="hour"/>
+	<readWriteMode>read complete forecast</readWriteMode>
+	<ensembleId>SWIFT</ensembleId>
+</timeSeriesSet>
 	</variable>
 	<!--output variables-->
 	<variable>
@@ -24,7 +24,7 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>median</qualifierId>
-			<locationId>R_401026</locationId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeForecastPeriod unit="hour" start="0" end="96"/>
@@ -39,7 +39,7 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>min</qualifierId>
-			<locationId>R_401026</locationId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -53,7 +53,7 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>max</qualifierId>
-			<locationId>R_401026</locationId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -67,7 +67,7 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p25</qualifierId>
-			<locationId>R_401026</locationId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -81,7 +81,7 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p99</qualifierId>
-			<locationId>R_401026</locationId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -138,7 +138,7 @@
 	</transformation>
 	<transformation id="SDF_Q_Ensemble_99percentile">
 		<statisticsEnsemble>
-<percentileNonExceedence>
+			<percentileNonExceedence>
 				<inputVariable>
 					<variableId>SDF_Q_Ensemble</variableId>
 				</inputVariable>

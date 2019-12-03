@@ -362,6 +362,7 @@
 				<attribute id="SITE_Q_FCST_SELECT">
 					<selection>
 						<predefined>
+							<option>SDF</option>
 							<option>STF</option>
 							<option>Trend</option>
 							<option>Pulse</option>
@@ -371,6 +372,15 @@
 						</predefined>
 					</selection>
 					<conditionalSelection>
+						<option value="SDF">
+							<disabledAttributeId>SITE_Q_TREND_BASEQ</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_TREND_FACTOR</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_RISE</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_PEAKQ</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_PEAKT</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_RECEDE</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_BASEQ</disabledAttributeId>
+						</option>
 						<option value="STF">
 							<disabledAttributeId>SITE_Q_TREND_BASEQ</disabledAttributeId>
 							<disabledAttributeId>SITE_Q_TREND_FACTOR</disabledAttributeId>
@@ -724,10 +734,10 @@
 				</attribute>
 				<attribute id="URBS_LOSSSOURCE">
 					<conditionalSelection>
-						<option value="AWRA_IL">
+						<!--						<option value="AWRA_IL">
 							<disabledAttributeId>URBS_IL</disabledAttributeId>
 							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
-						</option>
+						</option>-->
 						<option value="User_IL">
 							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
 						</option>

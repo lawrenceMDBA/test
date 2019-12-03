@@ -187,6 +187,15 @@
 					<lineColor>gold3</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
+				<esriShapeLayer id="To Jingellic subareas SWIFT">
+					<description>To Jingellic subareas (SWIFT)</description>
+					<file>VIC_SWIFT_Subarea_uppermurray</file>
+					<projectionFileAvailable>true</projectionFileAvailable>
+					<visible>true</visible>
+					<maxScale>1:10000</maxScale>
+					<lineColor>forest green</lineColor>
+					<lineWidth value="2"/>
+				</esriShapeLayer>
 			</layerGroup>
 			<layerGroup id="Ovens Catchment">
 				<esriShapeLayer id="GridPrecipitationOvens">
@@ -198,8 +207,17 @@
 					<lineColor>red</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
+				<esriShapeLayer id="Ovens Catchment Map">
+					<description>Catchment</description>
+					<file>Ovens_Catchment</file>
+					<geoDatum>WGS 1984</geoDatum>
+					<visible>false</visible>
+					<maxScale>1:50000</maxScale>
+					<lineColor>goldenrod4</lineColor>
+					<lineWidth value="1"/>
+				</esriShapeLayer>
 				<esriShapeLayer id="SourceModelSubcatchments">
-					<description>Source Subcatchments</description>
+					<description>Subcatchments (Source)</description>
 					<file>ovens_ewSource_subcatchments</file>
 					<projectionFileAvailable>true</projectionFileAvailable>
 					<visible>false</visible>
@@ -207,14 +225,14 @@
 					<lineColor>FFFF00</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
-				<esriShapeLayer id="Ovens Catchment Map">
-					<description>Ovens Catchment Map</description>
-					<file>Ovens_Catchment</file>
+				<esriShapeLayer id="Ovens Catchment Map SWIFT">
+					<description>Subareas (SWIFT)</description>
+					<file>VIC_SWIFT_Subarea_ovens</file>
 					<geoDatum>WGS 1984</geoDatum>
-					<visible>false</visible>
-					<maxScale>1:50000</maxScale>
-					<lineColor>goldenrod4</lineColor>
-					<lineWidth value="1"/>
+					<visible>true</visible>
+					<maxScale>1:10000</maxScale>
+					<lineColor>antique white4</lineColor>
+					<lineWidth value="2"/>
 				</esriShapeLayer>
 			</layerGroup>
 			<layerGroup id="Administration">
@@ -2937,6 +2955,24 @@
 	<gridPlotGroup id="NWP (Flood ops)" name="NWP (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
 		<gridPlotGroup id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - as imported">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportAWRA</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationId>AWRA</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="day"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
 			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - subcatchments">
 				<mapExtentId>Upper Murray</mapExtentId>
 				<dataLayer>

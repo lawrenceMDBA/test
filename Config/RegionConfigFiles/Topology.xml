@@ -40,6 +40,11 @@
 			<workflowId>Import_Forecast</workflowId>
 			<localRun>false</localRun>
 		</node>
+		<node id="SDF_Ensemble" name="Import and process SDF Ensemble forecast">
+			<workflowId>Import_SDF_Forecast</workflowId>
+			<displayGroupId>SDF_Q_Ensemble</displayGroupId>
+			<localRun>false</localRun>
+		</node>
 		<node id="Import_Samples" name="Import Water quality data">
 			<workflowId>Import_Samples</workflowId>
 			<mainPanel>web browser display</mainPanel>
@@ -384,11 +389,6 @@
 		</node>
 		<node id="Ovens_ewSourceRR" name="Run ewSource RR Forecast (Ovens)">
 			<workflowId>Ovens_ewSourceRR</workflowId>
-			<localRun>false</localRun>
-		</node>
-		<node id="SDF_Ensemble" name="BOM SDF Ensemble">
-			<workflowId>Import_SDF_Forecast</workflowId>
-			<displayGroupId>SDF_Q_Ensemble</displayGroupId>
 			<localRun>false</localRun>
 		</node>
 		<viewPermission>RiverOperations</viewPermission>
