@@ -8,6 +8,9 @@
 	<generalDisplayConfig>
 		<barMarginPercentage>50</barMarginPercentage>
 		<maximumInterpolationGap>100</maximumInterpolationGap>
+		<valueEditorPermission>DataEditors</valueEditorPermission>
+		<labelEditorPermission>DataEditors</labelEditorPermission>
+		<commentEditorPermission>DataEditors</commentEditorPermission>
 	</generalDisplayConfig>
 	<defaultViewPeriod unit="day" start="-14" end="1"/>
 	<thresholdDisplayConfig>
@@ -209,6 +212,23 @@
 			<lowerValue>270</lowerValue>
 			<lowerValue>300</lowerValue>
 		</classBreaks>
+		<classBreaks id="IL">
+			<missingValueColor>gray</missingValueColor>
+			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
+			<lowerColor>white</lowerColor>
+			<upperColor>orange</upperColor>
+			<lowerValue>0</lowerValue>
+			<lowerValue>10</lowerValue>
+			<lowerValue>20</lowerValue>
+			<lowerValue>30</lowerValue>
+			<lowerValue>40</lowerValue>
+			<lowerValue>50</lowerValue>
+			<lowerValue>60</lowerValue>
+			<lowerValue>70</lowerValue>
+			<lowerValue>80</lowerValue>
+			<lowerValue>90</lowerValue>
+			<lowerValue>100</lowerValue>
+		</classBreaks>
 		<classBreaks id="Evaporation">
 			<missingValueColor>gray</missingValueColor>
 			<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
@@ -324,7 +344,7 @@
 		</timeMarkerDisplayOptions>
 	</timeMarkersDisplayConfig>
 	<ratingCurveDisplayConfig>
-	<stageAxisOrientation>vertical</stageAxisOrientation>
+		<stageAxisOrientation>vertical</stageAxisOrientation>
 	</ratingCurveDisplayConfig>
 	<parametersDisplayConfig>
 		<parameterDisplayOptions id="EVAP_obs">
@@ -2137,7 +2157,9 @@
 		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Hcst">
 			<description>[Historical]</description>
 		</moduleInstanceIdMapping>
-		<moduleInstanceIdMapping id="ewSource_Fcst">
+		<!-- SDK: changed because it was throwing an error -->
+		<!--<moduleInstanceIdMapping id="ewSource_Fcst">-->
+		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Fcst">
 			<description>[Forecast]</description>
 		</moduleInstanceIdMapping>
 		<moduleInstanceIdMapping id="ImportFromHydstraTSM_Fcst">
@@ -2337,7 +2359,7 @@
 		<searchAndSelectForecasts/>
 		<setTimeSeriesVisibility/>
 	</buttonSettings>
-		<!--
+	<!--
 		<missingValueColor>gray</missingValueColor>
 		<missingValueOpaquenessPercentage>75</missingValueOpaquenessPercentage>
 		<lowerColor>white</lowerColor>

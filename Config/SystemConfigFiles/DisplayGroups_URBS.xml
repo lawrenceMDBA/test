@@ -284,8 +284,8 @@
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>IFD</ensembleId>
-				</timeSeriesSet>	
-            </line>				
+				</timeSeriesSet>
+			</line>
 			<line>
 				<axis>right</axis>
 				<timeSeriesSet>
@@ -299,7 +299,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>IFD</ensembleId>
 				</timeSeriesSet>
-			</line>			
+			</line>
 		</subplot>
 		<subplot>
 			<line>
@@ -446,8 +446,8 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep unit="hour"/>
 				<readWriteMode>read complete forecast</readWriteMode>
-                <ensembleId>main</ensembleId>
-                <ensembleMemberIndex>0</ensembleMemberIndex>
+				<ensembleId>main</ensembleId>
+				<ensembleMemberIndex>0</ensembleMemberIndex>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>User_Input</moduleInstanceId>
@@ -506,7 +506,7 @@
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>OFFICIAL</ensembleId>
-				</timeSeriesSet>	
+				</timeSeriesSet>
 			</line>
 			<line>
 				<axis>right</axis>
@@ -521,7 +521,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>IFD</ensembleId>
 				</timeSeriesSet>
-			</line>						
+			</line>
 		</subplot>
 		<subplot>
 			<line>
@@ -839,7 +839,7 @@
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>IFDSCENARIO</ensembleId>
-				</timeSeriesSet>	
+				</timeSeriesSet>
 			</line>
 			<line>
 				<axis>right</axis>
@@ -854,7 +854,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>IFDSCENARIO</ensembleId>
 				</timeSeriesSet>
-			</line>			
+			</line>
 		</subplot>
 		<subplot>
 			<line>
@@ -1074,7 +1074,7 @@
 					<readWriteMode>read complete forecast</readWriteMode>
 					<ensembleId>SCENARIO</ensembleId>
 				</timeSeriesSet>
-			</line>			
+			</line>
 		</subplot>
 		<subplot>
 			<line>
@@ -2331,6 +2331,40 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
+	<plot id="URBS_AWRA_il">
+		<subplot>
+			<line>
+				<axis>left</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>IL</parameterId>
+					<qualifierId>AWRA-L RZ</qualifierId>
+					<locationSetId>URBS_subcatchments.il_awral_log</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<lineStyle>none</lineStyle>
+				<markerStyle>circle</markerStyle>
+				<axis>right</axis>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>SM_obs</parameterId>
+					<qualifierId>AWRA-L RZ</qualifierId>
+					<locationSetId>URBS_subcatchments.il_awral_log</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep times="08:00" timeZone="GMT+10"/>
+					<relativeViewPeriod unit="day" start="-1" end="1" startOverrulable="true" endOverrulable="true"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
 	<displayGroup id="upper_murray_URBS" name="URBS: Upper Murray">
 		<viewPermission>FloodOperations</viewPermission>
 		<displayGroup id="rainfallpolicy_upper_murray" name="Upper Murray (rainfall policy)">
@@ -2978,6 +3012,29 @@
 			<display id="ssdensemble_R_409001_upper_murray" name="409001 - Albury">
 				<locationId>R_409001</locationId>
 				<plotId>URBS_SSD_Ensemble_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_awra_il" name="Upper Murray (initial loss based on AWRA-L)">
+			<nodeId>ImportAndProcess_AWRA_FloodOps</nodeId>
+			<display id="upper_murray_mittaToDartmouth_awra_il" name="mittaToDartmouth (MittaToColemans)">
+				<locationId>upper_murray_mittaToDartmouth</locationId>
+				<plotId>URBS_AWRA_il</plotId>
+			</display>
+			<display id="upper_murray_mittaToTallandoon_awra_il" name="mittaToTallandoon">
+				<locationId>upper_murray_mittaToTallandoon</locationId>
+				<plotId>URBS_AWRA_il</plotId>
+			</display>
+			<display id="upper_murray_ToJingellic_awra_il" name="ToJingellic">
+				<locationId>upper_murray_ToJingellic</locationId>
+				<plotId>URBS_AWRA_il</plotId>
+			</display>
+			<display id="upper_murray_ToHumeDam_awra_il" name="ToHumeDam">
+				<locationId>upper_murray_ToHumeDam</locationId>
+				<plotId>URBS_AWRA_il</plotId>
+			</display>
+			<display id="upper_murray_belowHume_awra_il" name="belowHume">
+				<locationId>upper_murray_belowHume</locationId>
+				<plotId>URBS_AWRA_il</plotId>
 			</display>
 		</displayGroup>
 	</displayGroup>

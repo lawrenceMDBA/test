@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modifierTypes xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/modifierTypes.xsd">
+	<!-- markUnreliableModifier allows the user to set an expirty time (i.e. modifier is not "forever" and cannot be "forgotten" -->
+	<!-- markUnreliableModifier marked data will still be archived (while with missingValueModifier this is not the case) -->
 	<timeSeriesModifier id="OPO_modification" name="OPO modification">
 		<timeSeries>
 			<qualifierId>opo</qualifierId>
@@ -65,7 +67,7 @@
 			<locationId>R_401569</locationId>
 		</timeSeries>
 		<defaultStartTime>time zero</defaultStartTime>
-		<defaultEndTime>time zero</defaultEndTime>		
+		<defaultEndTime>time zero</defaultEndTime>
 		<offsetDefaultEndTime unit="day" multiplier="10"/>
 		<defaultValidTime/>
 		<resolveInWorkflow>true</resolveInWorkflow>
@@ -118,6 +120,20 @@
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
 	</timeSeriesModifier>
+	<markUnreliableModifier id="Raingauge" name="Set raingauge to unreliable">
+		<expiryTime unit="day" multiplier="365"/>
+		<timeSeries>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+	</markUnreliableModifier>
 	<moduleParameterModifier id="baseflow" name="BASEFLOW">
 		<filter>
 			<moduleParameterId>CONSTANT_BASE_FLOW</moduleParameterId>
@@ -346,6 +362,7 @@
 				<attribute id="SITE_Q_FCST_SELECT">
 					<selection>
 						<predefined>
+							<option>SDF</option>
 							<option>STF</option>
 							<option>Trend</option>
 							<option>Pulse</option>
@@ -355,6 +372,15 @@
 						</predefined>
 					</selection>
 					<conditionalSelection>
+						<option value="SDF">
+							<disabledAttributeId>SITE_Q_TREND_BASEQ</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_TREND_FACTOR</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_RISE</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_PEAKQ</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_PEAKT</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_RECEDE</disabledAttributeId>
+							<disabledAttributeId>SITE_Q_PULSE_BASEQ</disabledAttributeId>
+						</option>
 						<option value="STF">
 							<disabledAttributeId>SITE_Q_TREND_BASEQ</disabledAttributeId>
 							<disabledAttributeId>SITE_Q_TREND_FACTOR</disabledAttributeId>
@@ -700,14 +726,43 @@
 					</conditionalSelection>
 					<comment>The model is calibrated using the initial loss / continuous loss model (ILCL option) - this is default</comment>
 				</attribute>
-				<attribute id="URBS_IL">
-					<comment>Default 0mm, calibration range 0 - 90mm, see summary report in Documents Overview.</comment>
-				</attribute>
 				<attribute id="URBS_CL">
 					<comment>Default XXX, calibration range XXX-XXX. The model is calibrated using the initial loss / continuous loss model (ILCL option), see summary report in Documents Overview.</comment>
 				</attribute>
 				<attribute id="URBS_PR">
 					<comment>Default 0.25, calibration range 0.15-0.35</comment>
+				</attribute>
+				<attribute id="URBS_LOSSSOURCE">
+					<conditionalSelection>
+						<!--						<option value="AWRA_IL">
+							<disabledAttributeId>URBS_IL</disabledAttributeId>
+							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
+						</option>-->
+						<option value="User_IL">
+							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
+						</option>
+					</conditionalSelection>
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_IL_AWRA">
+					<readOnly>true</readOnly>
+					<timeSeriesValueClosestToStateSelectionStartTime>
+						<timeSeriesSet>
+							<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+							<valueType>scalar</valueType>
+							<parameterId>IL</parameterId>
+							<qualifierId>AWRA-L RZ</qualifierId>
+							<locationSetId>URBS_subcatchments.only</locationSetId>
+							<timeSeriesType>external historical</timeSeriesType>
+							<timeStep id="8am"/>
+							<relativeViewPeriod unit="day" start="-14" end="0"/>
+							<readWriteMode>read only</readWriteMode>
+						</timeSeriesSet>
+					</timeSeriesValueClosestToStateSelectionStartTime>
+					<comment>No advice</comment>
+				</attribute>
+				<attribute id="URBS_IL">
+					<comment>Default 0mm, calibration range 0 - 90mm, see summary report in Documents Overview.</comment>
 				</attribute>
 				<attribute id="URBS_IF">
 					<comment>Default unlimited (10000000000)</comment>
@@ -721,13 +776,14 @@
 				<attribute id="URBS_IFRF">
 					<comment>Default 0</comment>
 				</attribute>
-				<panelLayout>
+				<!--<panelLayout>
 					<tableLayout id="URBS_ILCL">
 						<title>Uniform Initial Loss/Continuous Loss</title>
+						<attributeId>AWRA_IL</attributeId>
 						<attributeId>URBS_IL</attributeId>
 						<attributeId>URBS_CL</attributeId>
 					</tableLayout>
-				</panelLayout>
+				</panelLayout>-->
 				<summaryFunction>IL=@URBS_IL@ CL=@URBS_CL@</summaryFunction>
 			</modifiableGroup>
 			<modifiableGroup name="URBS Routing">
@@ -809,7 +865,7 @@
 				</panelLayout>
 				<summaryFunction>initial_level @VBFNAME_URBS@ =@INITIAL_RESERVOIR_LEVEL@</summaryFunction>
 			</modifiableGroup>
-			<template id="ILCL" name="IL/Continuous Loss">
+			<!--<template id="ILCL" name="IL/Continuous Loss">
 				<panel>
 					<panelId>URBS_ILCL</panelId>
 					<position row="1" column="1"/>
@@ -826,11 +882,13 @@
 					<panelId>URBS_Reservoirs</panelId>
 					<position row="4" column="1"/>
 				</panel>
-			</template>
+			</template>-->
 		</locationAttributeModifier>
 	</attributeModifiers>
 	<modifiersGroup id="None">
-		<modifierId> </modifierId>
+		<!-- SDK: bug in 2018.02, JIRA issue FEWS-21390-->
+		<!--<modifierId> </modifierId>-->
+		<modifierId>rating</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="P_OPO">
 		<modifierId>P_select_OPO</modifierId>
@@ -874,8 +932,9 @@
 		<modifierId>EC_select_OPO</modifierId>
 		<modifierId>EVAP_select_OPO</modifierId>
 	</modifiersGroup>
-		<modifiersGroup id="FloodOps">
+	<modifiersGroup id="FloodOps">
 		<modifierId>rating</modifierId>
+		<modifierId>Raingauge</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="Rainfall Policy">
 		<modifierId>Rainfall Policy</modifierId>
