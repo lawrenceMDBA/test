@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>NETCDF-CF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF_Obs</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401026</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>

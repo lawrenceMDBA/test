@@ -89,7 +89,7 @@
 			<allValid>
 				<!-- <attributeExists id="JAN_MIN_QPLAN"/> -->
 				<attributeTextEndsWith postfix="_1" id="SOURCE_ID"/>
-			</allValid>			
+			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="SourceRO_sites_Q_Plan">
@@ -98,10 +98,9 @@
 		<constraints>
 			<allValid>
 				<attributeExists id="SOURCE_ID"/>
-			</allValid>			
+			</allValid>
 		</constraints>
 	</locationSet>
-
 	<locationSet id="ewSourceRO_sites_EVAPfcst">
 		<description>ewSourceRO_sites with evap forecast</description>
 		<locationSetId>SourceRO_sites</locationSetId>
@@ -449,9 +448,6 @@
 			<allValid>
 				<attributeTextContains id="SOURCE_PARAMS" contains="Q;"/>
 				<attributeExists id="SOURCE_Q_SEQ"/>
-			<!-- 	<not>
-					<attributeTextContains id="SOURCE_PARAMS" contains="QORD;"/>
-				</not> -->
 			</allValid>
 		</constraints>
 	</locationSet>
@@ -653,5 +649,68 @@
 		<constraints>
 			<attributeTextContains id="MODEL_TYPE" contains="TSM"/>
 		</constraints>
+	</locationSet>
+	<!-- SWIFT Catchments-->
+	<locationSet id="VIC_SWIFT_subareas">
+		<esriShapeFile>
+			<file>VIC_SWIFT_Subarea.shp</file>
+			<geoDatum>GDA94</geoDatum>
+			<id>%SUBCATCHID%_%SUBAREAID%</id>
+			<name>%SUBAREAID%</name>
+			<description>%SUBCATCHM% (%CATCHMENT%, %REGION%)</description>
+			<x>%X_CENTROID%</x>
+			<y>%Y_CENTROID%</y>
+			<attribute id="SWIFT_SUBAREAID" name="Swift sub areaid">
+				<description>Swift Numeric identifier of sub area within sub catchment</description>
+				<text>%SUBAREAID%</text>
+			</attribute>
+			<attribute id="SWIFT_SUBCATCHMENT_ID" name="Swift sub-catchment Id">
+				<description>Swift catchment id</description>
+				<text>%SUBCATCHID%</text>
+			</attribute>
+			<attribute id="SWIFT_SUBCATCHMENT" name="Swift sub-catchment">
+				<description>Swift sub catchment</description>
+				<text>%SUBCATCHM%</text>
+			</attribute>
+			<attribute id="SWIFT_CATCHMENT" name="Swift catchment">
+				<description>Swift catchment</description>
+				<text>%CATCHMENT%</text>
+			</attribute>
+			<attribute id="REGION" name="Region">
+				<description>Associated region</description>
+				<text>%REGION%</text>
+			</attribute>
+		</esriShapeFile>
+	</locationSet>
+	<locationSet id="VIC_SWIFT_subareas_oven">
+		<esriShapeFile>
+			<file>VIC_SWIFT_Subarea_ovens.shp</file>
+			<geoDatum>GDA94</geoDatum>
+			<id>%SUBCATCHID%_%SUBAREAID%_oven</id>
+			<name>%SUBAREAID%</name>
+			<description>%SUBCATCHM% (%CATCHMENT%, %REGION%)</description>
+			<x>%X_CENTROID%</x>
+			<y>%Y_CENTROID%</y>
+			<attribute id="SWIFT_SUBAREAID" name="Swift sub areaid">
+				<description>Swift Numeric identifier of sub area within sub catchment</description>
+				<text>%SUBAREAID%</text>
+			</attribute>
+			<attribute id="SWIFT_SUBCATCHMENT_ID" name="Swift sub-catchment Id">
+				<description>Swift catchment id</description>
+				<text>%SUBCATCHID%</text>
+			</attribute>
+			<attribute id="SWIFT_SUBCATCHMENT" name="Swift sub-catchment">
+				<description>Swift sub catchment</description>
+				<text>%SUBCATCHM%</text>
+			</attribute>
+			<attribute id="SWIFT_CATCHMENT" name="Swift catchment">
+				<description>Swift catchment</description>
+				<text>%CATCHMENT%</text>
+			</attribute>
+			<attribute id="REGION" name="Region">
+				<description>Associated region</description>
+				<text>%REGION%</text>
+			</attribute>
+		</esriShapeFile>
 	</locationSet>
 </locationSets>

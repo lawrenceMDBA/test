@@ -37,6 +37,10 @@
 				<description>station identifier as used in Hydstra telemetry database. Usage: idmaps</description>
 				<text>%HYDSTRA_SITE_ID%</text>
 			</attribute>
+			<attribute id="SDF_SITE_ID">
+				<description>station identifier as used in SDF BoM forecast. Usage: idmaps</description>
+				<text>%SDF_SITE_ID%</text>
+			</attribute>			
 			<attribute id="SHORT_NAME">
 				<description>station name. Usage: ratings report</description>
 				<text>%SHORT_NAME%</text>
@@ -1599,8 +1603,7 @@
 				<attribute id="SOURCE_QORD_SEQ" name="Source QORD Seq">
 					<description>Order/Demand site sequence</description>
 					<text>%QORD_SEQ%</text>
-				</attribute>			
-
+				</attribute>	
 				<attribute id="SOURCE_H_SEQ" name="Source H Seq">
 					<description>Water level site sequence</description>
 					<text>%H_SEQ%</text>
@@ -1629,6 +1632,20 @@
 					<text>%SAMPLE_PARAMS%</text>
 				</attribute>
 			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_time_dependent_locations</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<dateTimePattern>yyyy-MM-dd</dateTimePattern>
+				<startDateTime>%START_DATE%</startDateTime>
+				<endDateTime>%END_DATE%</endDateTime>
+<!--				<relation id="time_relation">
+					<description>Relation to sites at different times</description>
+					<relatedLocationId>%RELATED_SITE%</relatedLocationId>
+				</relation>
+-->				<attribute id="TIME_RWL_DESC" name="Time Relation Description">
+					<text>%TIME_REL_DESC%</text>
+				</attribute>
+			</attributeFile>			
 		</csvFile>
 	</locationSet>
 	<locationSet id="aggregation_areas">
@@ -2596,6 +2613,10 @@
 		<constraints>
 			<attributeTextEquals equals="Y" id="DO_OBS"/>
 		</constraints>
+	</locationSet>
+	<locationSet id="sites_Turbidity_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
 	</locationSet>
 	<locationSet id="sites_EC_obs">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>

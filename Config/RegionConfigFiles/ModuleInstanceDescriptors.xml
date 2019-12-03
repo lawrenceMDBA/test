@@ -4,6 +4,8 @@
 	<moduleInstanceDescriptor id="PeakHeights_Correlation">
 		<description>Dummy for correlation results</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportRatings_export">
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
 		<description>Exports Rainfall data in CSV format to HydstraTSM</description>
 	</moduleInstanceDescriptor>
@@ -75,6 +77,12 @@
 	<moduleInstanceDescriptor id="ImportForecastADFD">
 		<description>Import ADFD</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportBOMSDF_Flow">
+		<description>Import BOM SSF Flow</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportBOMSDF_Rain">
+		<description>Import BOM SSF Rain</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportForecastADFD_ftp">
 		<description>Import ADFD from ftp</description>
 	</moduleInstanceDescriptor>
@@ -87,6 +95,7 @@
 	<moduleInstanceDescriptor id="ImportForecastPME_ftp">
 		<description>Import PME from ftp</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHDF5"/>
 	<moduleInstanceDescriptor id="ImportAWRA">
 		<description>Import AWRA</description>
 	</moduleInstanceDescriptor>
@@ -359,6 +368,9 @@
 	<moduleInstanceDescriptor id="ProcessAWRA">
 		<description>Process AWRA data (daily grids) into URVS catchements (for display)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Process_SDF_Ensemble">
+		<description>Process SDF Ensembles into meadian, min, max percentile for display</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="CreateACCESSRGrid">
 		<description>Create ACCESSR grid from observations for Flood Training</description>
 	</moduleInstanceDescriptor>
@@ -484,6 +496,7 @@
 	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments_from_Archive">
 		<description>Process NWP data to URBS subcatchments (for data retrieved from Archive)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="URBS_1h_Subcatchment_Preprocessing"/>
 	<moduleInstanceDescriptor id="PrepareUrbs_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
@@ -520,6 +533,11 @@
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Scenario_Ensemble_Forecast">
 		<description>upper_murray Rainfall Ensemble Scenario member Forecast</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_mittaToDartmouth_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_mittaToTallandoon_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToHumeDam_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToJingellic_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_BelowHume_URBS_Preprocessing"/>
 	<moduleInstanceDescriptor id="upper_murray_upper_m_URBS_Forecast">
 		<description>URBS General Adapter upper_murray_upper_m</description>
 	</moduleInstanceDescriptor>
