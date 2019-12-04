@@ -2,6 +2,7 @@
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<plot id="SDF_Q_Ensemble_import">
 		<subplot>
+			<!--<locationSetId>SourceRO_sites_Qfcst</locationSetId>-->
 			<line>
 				<visibleInLegend>false</visibleInLegend>
 				<timeSeriesSet>
@@ -9,11 +10,26 @@
 					<valueType>scalar</valueType>
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="nonequidistant"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+					<!--<ensembleMemberId>0</ensembleMemberId>-->
+				</timeSeriesSet>
+			</line>
+			<line>
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
-					<ensembleId>main</ensembleId>
+					<ensembleId>SWIFT</ensembleId>
 					<!--<ensembleMemberId>0</ensembleMemberId>-->
 				</timeSeriesSet>
 			</line>
@@ -21,6 +37,7 @@
 	</plot>
 	<plot id="SDF_Q_Ensemble_process">
 		<subplot>
+			<!--<locationSetId>SourceRO_sites_Qfcst</locationSetId>-->
 			<line>
 				<color>blue</color>
 				<timeSeriesSet>
@@ -29,11 +46,10 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>median</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
-					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
-					<readWriteMode>add originals</readWriteMode>
+					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 			</line>
 			<line>
@@ -44,7 +60,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>min</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -58,7 +74,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>max</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -73,7 +89,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p25</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -88,7 +104,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p99</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -98,6 +114,7 @@
 	</plot>
 	<plot id="SDF_Q_Ensemble">
 		<subplot>
+			<!--<locationSetId>SourceRO_sites_Qfcst</locationSetId>-->
 			<line>
 				<visibleInLegend>false</visibleInLegend>
 				<timeSeriesSet>
@@ -105,7 +122,7 @@
 					<valueType>scalar</valueType>
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -120,7 +137,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>median</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
@@ -136,7 +153,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>min</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -151,7 +168,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p25</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -166,7 +183,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>p99</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
@@ -181,7 +198,7 @@
 					<parameterId>Q_fcst</parameterId>
 					<qualifierId>sdf</qualifierId>
 					<qualifierId>max</qualifierId>
-					<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+					<locationId>R_401201A</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour"/>
 					<readWriteMode>read complete forecast</readWriteMode>
