@@ -186,71 +186,71 @@
 	<timeSeriesSets id="BoM_SDF_Plots">
 		<!--imported SDF ensemble produced by the Bureau of Meteorology-->
 		<timeSeriesSet>
-			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>median</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>min</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>max</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p25</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<ensembleId>SWIFT</ensembleId>
 		</timeSeriesSet>
 		<timeSeriesSet>
-			<moduleInstanceId>Process_SDF_Ensemble</moduleInstanceId>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>
 			<qualifierId>p99</qualifierId>
-			<locationSetId>SourceRO_sites_Qfcst</locationSetId>
+			<locationSetId>sdf_sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
@@ -260,7 +260,7 @@
 	<timeSeriesSets id="BoM_SWIFT_Plots">
 		<!--imported SWIFT produced by the Bureau of Meteorology-->
 		<timeSeriesSet>
-			<moduleInstanceId>ImportBOMSDF_Flow</moduleInstanceId>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>sdf</qualifierId>

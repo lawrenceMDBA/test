@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--input variable-->
+	<!--<locationSetId>SourceRO_sites_Q</locationSetId>-->
+	<variable>
+		<variableId>SDF_Q_Ensemble</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<!--output variables-->
+	<variable>
+		<variableId>SDF_Q_Ensemble_median</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>median</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeForecastPeriod unit="hour" start="0" end="24" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_10percentile</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p10</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_25percentile</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p25</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_75percentile</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p75</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>SDF_Q_Ensemble_90percentile</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p90</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="SDF_Q_Ensemble_median">
+		<statisticsEnsemble>
+			<mean>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_median</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_min">
+		<statisticsEnsemble>
+			<min>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_min</variableId>
+				</outputVariable>
+			</min>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_max">
+		<statisticsEnsemble>
+			<max>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_max</variableId>
+				</outputVariable>
+			</max>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_10percentile">
+		<statisticsEnsemble>
+			<percentileNonExceedence>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<value>10</value>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_10percentile</variableId>
+				</outputVariable>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_25percentile">
+		<statisticsEnsemble>
+			<percentileNonExceedence>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<value>25</value>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_25percentile</variableId>
+				</outputVariable>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_75percentile">
+		<statisticsEnsemble>
+			<percentileNonExceedence>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<value>75</value>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_75percentile</variableId>
+				</outputVariable>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
+	</transformation>
+	<transformation id="SDF_Q_Ensemble_90percentile">
+		<statisticsEnsemble>
+			<percentileNonExceedence>
+				<inputVariable>
+					<variableId>SDF_Q_Ensemble</variableId>
+				</inputVariable>
+				<value>90</value>
+				<outputVariable>
+					<variableId>SDF_Q_Ensemble_90percentile</variableId>
+				</outputVariable>
+			</percentileNonExceedence>
+		</statisticsEnsemble>
+	</transformation>
+</transformationModule>

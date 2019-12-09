@@ -581,6 +581,14 @@
 			<attributeTextContains id="MODEL_TYPE" contains="STF"/>
 		</constraints>
 	</locationSet>
+	<!-- SDF (seven day forecast) model sites from BoM SWIFT stream flow forecast model-->
+	<locationSet id="sdf_sites">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="SDF_SITE_ID"/>
+		</constraints>
+	</locationSet>
 	<!-- TSM sites-->
 	<locationSet id="tsm_sites">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
