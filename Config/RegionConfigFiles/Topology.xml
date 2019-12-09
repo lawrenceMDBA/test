@@ -40,15 +40,22 @@
 			<workflowId>Import_Forecast</workflowId>
 			<localRun>false</localRun>
 		</node>
-		<node id="SDF_Ensemble" name="Import and process SDF Ensemble forecast">
-			<workflowId>Import_SDF_Forecast</workflowId>
-			<displayGroupId>SDF_Q_Ensemble</displayGroupId>
+		<node id="Import_SDF" name="Import and process SDF (SevenDayForecast)">
+			<workflowId>Import_SDF</workflowId>
+			<displayGroupId>SDF_Q_process</displayGroupId>
 			<localRun>false</localRun>
+		</node>
+		<node id="Import_SDF_Q" name="   View imported SDF">
+			<displayGroupId>SDF_Q_import</displayGroupId>
+		</node>
+		<node id="Process_SDF_Q" name="   View imported and processed SDF">
+			<displayGroupId>SDF_Q</displayGroupId>
 		</node>
 		<node id="Import_Samples" name="Import Water quality data">
 			<workflowId>Import_Samples</workflowId>
 			<mainPanel>web browser display</mainPanel>
-			<url>https://publicwiki.deltares.nl/display/FEWSDOC/18+Sample+Viewer</url>
+			<url>https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html 
+ </url>
 			<localRun>false</localRun>
 		</node>
 		<node id="Import_Ratings" name="Import Ratings">
@@ -111,7 +118,7 @@
 			<groupId>BMRegulators_OPO</groupId>
 			<groupId>Gunbower_OPO</groupId>
 			<groupId>KP_Sites_OPO</groupId>
-	           <!-- <groupId>Millewa_OPO</groupId>
+			<!-- <groupId>Millewa_OPO</groupId>
 			<groupId>Hatta_OPO</groupId>
 			<groupId>Chowilla_OPO</groupId>
 			<groupId>Mulcra_OPO</groupId>
