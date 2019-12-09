@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>generalCSV</importType>
+			<folder>$IMPORT_FOLDER_GAUGINGS$</folder>
+			<fileNamePatternFilter>*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_GAUGINGS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<table>
+				<locationColumn name="STN"/>
+				<dateColumn name="MEAS_DATE" pattern="d/MM/yyyy"/>
+				<timeColumn name="START_TIME" pattern="hhmm.ss"/>
+				<skippedColumn name="END_TIME"/>
+				<valueColumn name="M_GH" parameterId="M_GH"/>
+				<valueColumn name="FLOW" parameterId="FLOW"/>
+				<skippedColumn name="QUALITY"/>
+			</table>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdGaugings</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<dataFeedId>gaugings</dataFeedId>
+			<expiryTime unit="year" multiplier="20"/>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>gauging</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>gauging</qualifierId>
+			<locationId>R_409017</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+			</import>
+</timeSeriesImportRun>
