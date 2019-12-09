@@ -44,20 +44,6 @@
 				</timeSeriesSet>
 			</line>
 			<line>
-				<!--Ens obs-->
-				<timeSeriesSet>
-					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>Q_obs</parameterId>
-					<qualifierId>sdf</qualifierId>
-					<qualifierId>ensemble</qualifierId>
-					<locationSetId>sdf_sites</locationSetId>
-					<timeSeriesType>external historical</timeSeriesType>
-					<timeStep unit="hour"/>
-					<readWriteMode>add originals</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
 				<!--median-->
 				<color>blue</color>
 				<timeSeriesSet>
@@ -172,61 +158,6 @@
 	<plot id="SDF_Q_import">
 		<subplot>
 			<line>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>Q_fcst</parameterId>
-					<qualifierId>sdf</qualifierId>
-					<locationSetId>sdf_sites</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>Q_obs</parameterId>
-					<qualifierId>sdf</qualifierId>
-					<locationSetId>sdf_sites</locationSetId>
-					<timeSeriesType>external historical</timeSeriesType>
-					<timeStep unit="hour"/>
-					<readWriteMode>add originals</readWriteMode>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<visibleInLegend>false</visibleInLegend>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>Q_fcst</parameterId>
-					<qualifierId>sdf</qualifierId>
-					<locationSetId>sdf_sites</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour"/>
-					<readWriteMode>read complete forecast</readWriteMode>
-					<ensembleId>SWIFT</ensembleId>
-				</timeSeriesSet>
-			</line>
-			<line>
-				<timeSeriesSet>
-					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>Q_obs</parameterId>
-					<qualifierId>sdf</qualifierId>
-					<qualifierId>ensemble</qualifierId>
-					<locationSetId>sdf_sites</locationSetId>
-					<timeSeriesType>external historical</timeSeriesType>
-					<timeStep unit="hour"/>
-					<readWriteMode>add originals</readWriteMode>
-				</timeSeriesSet>
-			</line>
-		</subplot>
-	</plot>
-	<plot id="SDF_Q_process">
-		<subplot>
-			<line>
 				<!--Det fcst-->
 				<timeSeriesSet>
 					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
@@ -253,13 +184,44 @@
 				</timeSeriesSet>
 			</line>
 			<line>
-				<!--Ens obs-->
+				<!--Ens fcst-->
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="SDF_Q_process">
+		<subplot>
+			<line>
+				<!--Det fcst-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Det obs-->
 				<timeSeriesSet>
 					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>Q_obs</parameterId>
 					<qualifierId>sdf</qualifierId>
-					<qualifierId>ensemble</qualifierId>
 					<locationSetId>sdf_sites</locationSetId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep unit="hour"/>
