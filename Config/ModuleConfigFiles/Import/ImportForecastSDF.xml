@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<!-- import of SDF forecast flow data -->
+	<import>
+		<general>
+			<importType>NETCDF-STF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Deterministic-Forecast-Flow*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-STF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Ensemble-Forecast-Flow*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</import>
+	<!-- import of SDF observed flow data -->
+	<!-- only the "deterministic" observed data is imported, the "ensemble" observed data is the same and ignored -->
+	<import>
+		<general>
+			<importType>NETCDF-CF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Deterministic-Observed-Flow*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<!-- import of SDF forecast rain data (not used at the moment)-->
+	<import>
+		<general>
+			<importType>NETCDF-STF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Deterministic-Forecast-Rain*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401026</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401016</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-STF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Ensemble-Forecast-Rain*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401026</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401016</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</import>
+	<!-- import of SDF observed rain data (not used at the moment)-->
+	<import>
+		<general>
+			<importType>NETCDF-CF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Deterministic-Observed-Rain*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401026</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+	<import>
+		<general>
+			<importType>NETCDF-CF_TIMESERIES</importType>
+			<folder>$IMPORT_FOLDER_FROM_BOM_SSF$</folder>
+			<fileNamePatternFilter>SWIFT-Ensemble-Observed-Rain*</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_BOM$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<idMapId>IdSDF</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401026</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationId>R_401012</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>add originals</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>
