@@ -846,6 +846,17 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
 			<qualifierId>opt</qualifierId>
 			<qualifierId>raw</qualifierId>
@@ -857,7 +868,29 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
 			<parameterId>V_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
 			<qualifierId>opt</qualifierId>
 			<qualifierId>raw</qualifierId>
 			<locationSetId>sites</locationSetId>
@@ -1551,6 +1584,17 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opt2</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
 			<qualifierId>opt</qualifierId>
 			<qualifierId>raw</qualifierId>
@@ -1719,13 +1763,13 @@
 		</timeSeriesSet>
 	</import>
 	<!-- ETL Opt (NSW, Thiess etc) Telemetry data -->
-	<import>
+	<!--<import>
 		<general>
 			<importType>generalCSV</importType>
 			<folder>$IMPORT_FOLDER_FROM_ETL$/OPT</folder>
 			<fileNamePatternFilter>*_OPT_*.Translated.csv</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_ETL$/OPT</failedFolder>
-			<!-- <backupFolder>$IMPORT_BACKUP$/STF</backupFolder> -->
+			<backupFolder>$IMPORT_BACKUP$/STF</backupFolder>
 			<table>
 				<locationColumn/>
 				<skippedColumn/>
@@ -1820,5 +1864,5 @@
 			<timeStep unit="nonequidistant"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-	</import>
+	</import> -->
 </timeSeriesImportRun>
