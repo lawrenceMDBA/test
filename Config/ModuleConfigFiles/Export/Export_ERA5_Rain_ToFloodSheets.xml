@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timeSeriesExportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesExportRun.xsd">
+	<export>
+		<general>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_FLOOD_OPS$</folder>
+			<exportFileName>
+				<name>ROWStoFloodOps_ERA5_Rain.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2FloodSheets_Forecast</idMapId>
+			<omitMissingValues>true</omitMissingValues>
+			<exportTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_ERA_To_FloodSites</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>era5</qualifierId>
+			<locationSetId>flood.sites_pobs</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</export>
+</timeSeriesExportRun>
