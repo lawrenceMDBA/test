@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
+	<properties>
+		<string key="ENSEMBLE" value="ENSEMBLE"/>
+	</properties>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+		<ensemble>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+		<ensemble>
+			<ensembleId>ENSEMBLE</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
+	</activity>
+</workflow>
