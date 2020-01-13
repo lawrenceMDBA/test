@@ -146,12 +146,12 @@
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="true" id="Combine_ACCESS_Forecast" name="Combine ACCESS Fcst" visible="true">
+<!-- 	<workflowDescriptor forecast="true" id="Combine_ACCESS_Forecast" name="Combine ACCESS Fcst" visible="true">
 		<description>PCombine ACCESSG and ACCESSR Forecasts</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="7"/>
 		<viewPermission>RiverOperations</viewPermission>
-	</workflowDescriptor>
+	</workflowDescriptor> -->
 	<workflowDescriptor forecast="false" id="Process_AWAP" name="Process AWAP data" visible="true">
 		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas.</description>
 		<runExpiryTime unit="day" multiplier="365"/>
@@ -471,11 +471,11 @@
 		<viewPermission>FloodOperations</viewPermission>
 	</workflowDescriptor>
 	<!-- Watercoach preparationa and maintenance tasks -->
-	<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Watercoach: Generate ACCESSR grid from observations" visible="true">
+<!-- 	<workflowDescriptor forecast="true" id="Create_ACCESSR_fromObs" name="Watercoach: Generate ACCESSR grid from observations" visible="true">
 		<description>Create gridded ACCESSR data from observations for Flood Training</description>
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>FloodOperations</viewPermission>
-	</workflowDescriptor>
+	</workflowDescriptor> -->
 	<workflowDescriptor forecast="true" id="Import_ERA5_Hindcast" name="Watercoach: Import ERA5 hindcast" visible="true">
 		<description>Import ERA5 hindcast from ECMWF as ACCESSR for Flood Training</description>
 		<cardinalTimeStep unit="hour"/>

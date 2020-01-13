@@ -27,31 +27,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESS-R_grid</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="1" unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESS-R_AgAreas</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
-			<locationSetId>aggregation_areas</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_grid</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>

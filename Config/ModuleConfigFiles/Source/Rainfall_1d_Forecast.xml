@@ -46,18 +46,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_grid</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_P_grid</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
@@ -98,20 +86,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_scalar</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
-			<locationSetId>SourceRO_sites_P</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod unit="day" start="-7" end="14"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_P_scalar</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
@@ -146,20 +120,6 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
-			<locationSetId>SourceRO_sites_P</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-7" end="14"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESSR</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
 			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>
@@ -372,20 +332,6 @@
 			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="Interpolate_ACCESSR_to_scalar">
-		<interpolationSpatial>
-			<closestDistance>
-				<inputVariable>
-					<variableId>ACCESSR_P_grid</variableId>
-				</inputVariable>
-				<searchRadius>100000</searchRadius>
-				<distanceGeoDatum>UTM55S</distanceGeoDatum>
-				<outputVariable>
-					<variableId>ACCESSR_P_scalar</variableId>
-				</outputVariable>
-			</closestDistance>
-		</interpolationSpatial>
-	</transformation>
 	<transformation id="Interpolate_ADFD_to_scalar">
 		<interpolationSpatial>
 			<closestDistance>
@@ -423,18 +369,6 @@
 				</inputVariable>
 				<outputVariable>
 					<variableId>ACCESSG</variableId>
-				</outputVariable>
-			</accumulative>
-		</aggregation>
-	</transformation>
-	<transformation id="ACCESSR">
-		<aggregation>
-			<accumulative>
-				<inputVariable>
-					<variableId>ACCESSR_P_scalar</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>ACCESSR</variableId>
 				</outputVariable>
 			</accumulative>
 		</aggregation>
@@ -479,9 +413,6 @@
 			<selectDataSource>
 				<input>
 					<variableId>ACCESSG</variableId>
-				</input>
-				<input>
-					<variableId>ACCESSR</variableId>
 				</input>
 				<input>
 					<variableId>ADFD</variableId>

@@ -33,27 +33,6 @@
 					</timeSeriesSet>
 				</netcdfExportActivity>
 				<netcdfExportActivity>
-					<fileName>Precipitation_Fcst_ACCESSR.nc</fileName>
-					<areaId>mdba</areaId>
-					<sourceId>ACCESSR</sourceId>
-					<ncMetaData>
-						<title>Precipitation forecast (ACCESSR)</title>
-						<institution>Murray Darling Basin Authority</institution>
-						<source>ROWS (Delft-FEWS)</source>
-					</ncMetaData>
-					<includeComments>true</includeComments>
-					<includeFlags>true</includeFlags>
-					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-						<valueType>grid</valueType>
-						<parameterId>P_fcst</parameterId>
-						<locationId>NWP</locationId>
-						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
-						<readWriteMode>read complete forecast</readWriteMode>
-					</timeSeriesSet>
-				</netcdfExportActivity>
-				<netcdfExportActivity>
 					<fileName>Precipitation_Fcst_ADFD.nc</fileName>
 					<areaId>mdba</areaId>
 					<sourceId>ADFD</sourceId>
@@ -163,28 +142,7 @@
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</netcdfExportActivity>
- 				<netcdfExportActivity>
-					<fileName>Soil_Moisture_Fcst_ACCESSR.nc</fileName>
-					<areaId>mdba</areaId>
-					<sourceId>ACCESSR</sourceId>
-					<ncMetaData>
-						<title>Soil moisture forecast (ACCESSR)</title>
-						<institution>Murray Darling Basin Authority</institution>
-						<source>ROWS (Delft-FEWS)</source>
-					</ncMetaData>
-					<includeComments>true</includeComments>
-					<includeFlags>true</includeFlags>
-					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-						<valueType>grid</valueType>
-						<parameterId>SM_fcst</parameterId>
-						<locationId>NWP</locationId>
-						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
-						<readWriteMode>read complete forecast</readWriteMode>
-					</timeSeriesSet>
-				</netcdfExportActivity>
-			</netcdfExportActivities>
+ 			</netcdfExportActivities>
 		</activities>
 	</exportExternalForecast>
 </exportArchiveModule>

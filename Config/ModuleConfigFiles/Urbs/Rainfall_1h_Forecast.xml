@@ -28,18 +28,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_grid</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>P_fcst</parameterId>
-			<locationId>$ACCESSR_GRID$</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_P_grid</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
@@ -193,19 +181,6 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESSR</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -464,20 +439,6 @@
 			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="Interpolate_ACCESSR_to_UrbsSubAreas">
-		<interpolationSpatial>
-			<closestDistance>
-				<inputVariable>
-					<variableId>ACCESSR_P_grid</variableId>
-				</inputVariable>
-				<searchRadius>100000</searchRadius>
-				<distanceGeoDatum>UTM55S</distanceGeoDatum>
-				<outputVariable>
-					<variableId>ACCESSR</variableId>
-				</outputVariable>
-			</closestDistance>
-		</interpolationSpatial>
-	</transformation>
 	<transformation id="Interpolate_ADFD_to_UrbsSubAreas">
 		<interpolationSpatial>
 			<closestDistance>
@@ -627,9 +588,6 @@
 			<selectDataSource>
 				<input>
 					<variableId>ACCESSG</variableId>
-				</input>
-				<input>
-					<variableId>ACCESSR</variableId>
 				</input>
 				<input>
 					<variableId>ADFD</variableId>

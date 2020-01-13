@@ -28,18 +28,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_grid</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>P_fcst</parameterId>
-			<locationId>$ACCESSR_GRID$</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>ADFD_P_grid</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
@@ -124,19 +112,6 @@
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
 			<qualifierId>accessg</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESSR</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
 			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -453,21 +428,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Subareas_Merged_Forecast_ENS_2</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_comb</parameterId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-			<ensembleId>$ENSEMBLE$</ensembleId>
-			<ensembleMemberId>ACCESSR</ensembleMemberId>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>Subareas_Merged_Forecast_ENS_3</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
@@ -593,20 +553,6 @@
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
 					<variableId>ACCESSG_P_UrbsSubAreas</variableId>
-				</outputVariable>
-			</closestDistance>
-		</interpolationSpatial>
-	</transformation>
-	<transformation id="Interpolate_ACCESSR_to_UrbsSubAreas">
-		<interpolationSpatial>
-			<closestDistance>
-				<inputVariable>
-					<variableId>ACCESSR_P_grid</variableId>
-				</inputVariable>
-				<searchRadius>100000</searchRadius>
-				<distanceGeoDatum>UTM55S</distanceGeoDatum>
-				<outputVariable>
-					<variableId>ACCESSR</variableId>
 				</outputVariable>
 			</closestDistance>
 		</interpolationSpatial>
@@ -762,9 +708,6 @@
 					<variableId>ACCESSG</variableId>
 				</input>
 				<input>
-					<variableId>ACCESSR</variableId>
-				</input>
-				<input>
 					<variableId>ADFD</variableId>
 				</input>
 				<input>
@@ -807,9 +750,6 @@
 			<selectDataSource>
 				<input>
 					<variableId>ACCESSG</variableId>
-				</input>
-				<input>
-					<variableId>ACCESSR</variableId>
 				</input>
 				<input>
 					<variableId>ADFD</variableId>
@@ -1053,34 +993,6 @@
 				<defaultValue>0</defaultValue>
 				<outputVariable>
 					<variableId>Subareas_Merged_Forecast_ENS_1</variableId>
-				</outputVariable>
-			</default>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="Merge Observed and ACCESS_R: NWP $ENSEMBLE$ 2">
-		<merge>
-			<simple>
-				<inputVariable>
-					<variableId>Gauges</variableId>
-				</inputVariable>
-				<inputVariable>
-					<variableId>ACCESSR</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Subareas_Merged_Forecast_ENS_2</variableId>
-				</outputVariable>
-			</simple>
-		</merge>
-	</transformation>
-	<transformation id="Fill_gaps_with_zero_Ens_2">
-		<interpolationSerial>
-			<default>
-				<inputVariable>
-					<variableId>Subareas_Merged_Forecast_ENS_2</variableId>
-				</inputVariable>
-				<defaultValue>0</defaultValue>
-				<outputVariable>
-					<variableId>Subareas_Merged_Forecast_ENS_2</variableId>
 				</outputVariable>
 			</default>
 		</interpolationSerial>
