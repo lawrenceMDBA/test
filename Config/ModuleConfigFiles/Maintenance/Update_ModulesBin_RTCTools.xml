@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
 	<general>
-		<rootDir>$MODULES_BIN$</rootDir>
+		<rootDir>%REGION_HOME%/Modules/rtctools2/</rootDir>
 		<workDir>%ROOT_DIR%</workDir>
 		<exportDir>%ROOT_DIR%</exportDir>
 		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
@@ -13,12 +13,6 @@
 	</general>
 	<activities>
 		<exportActivities>
-			<exportDataSetActivity>
-				<moduleInstanceId>modules_bin_delft-adapters</moduleInstanceId>
-			</exportDataSetActivity>
-			<exportDataSetActivity>
-				<moduleInstanceId>modules_bin_urbs</moduleInstanceId>
-			</exportDataSetActivity>
 			<exportDataSetActivity>
 				<moduleInstanceId>modules_bin_rtctools</moduleInstanceId>
 			</exportDataSetActivity>

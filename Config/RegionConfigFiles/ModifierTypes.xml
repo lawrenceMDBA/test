@@ -44,6 +44,36 @@
 		<resolveInPlots>true</resolveInPlots>
 		<editInPlots>true</editInPlots>
 	</timeSeriesModifier>
+	<timeSeriesModifier id="Hume_Inflow_Forecast" name="Hume Inflow Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_in_fcst</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401027</locationId>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
+	<timeSeriesModifier id="Hume_Keiwa_Forecast" name="Keiwa Forecast">
+		<timeSeries>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_402222A</locationId>
+		</timeSeries>
+		<defaultStartTime>start run</defaultStartTime>
+		<defaultEndTime>time zero</defaultEndTime>
+		<offsetDefaultEndTime unit="day" multiplier="10"/>
+		<defaultValidTime/>
+		<resolveInWorkflow>true</resolveInWorkflow>
+		<resolveInPlots>true</resolveInPlots>
+		<editInPlots>true</editInPlots>
+	</timeSeriesModifier>
 	<timeSeriesModifier id="Hume_Release_Scenario" name="Hume Release Scenario">
 		<timeSeries>
 			<moduleInstanceId>User_Input</moduleInstanceId>
@@ -883,6 +913,102 @@
 					<position row="4" column="1"/>
 				</panel>
 			</template>-->
+</locationAttributeModifier>
+		<locationAttributeModifier id="RTCTools_R" name="RTCTools Goals parameters">
+			<expiryTime unit="day" multiplier="14"/>
+			<modifiableGroup name="RTCTools Optimization Goals Parametrs">
+				<locationId>R_401027</locationId>
+				<attribute id="use_surcharge_max">
+					<visible>true</visible>
+					<comment>Keep water volumes below crest height and above surcharge, Default true</comment>
+				</attribute>
+				<attribute id="priority_surcharge_max">
+					<visible>true</visible>
+					<comment>Keep water volumes below crest height and above surcharge, Default 4</comment>
+				</attribute>
+				<attribute id="use_fullsupply_max">
+					<visible>false</visible>
+					<comment>Further reduce maximum reservoir volume to full supply level, Default False</comment>
+				</attribute>
+				<attribute id="priority_fullsupply_max">
+					<visible>false</visible>
+					<comment>Further reduce maximum reservoir volume to full supply level, Default 8</comment>
+				</attribute>
+				<attribute id="use_track_release_timeseries">
+					<visible>true</visible>
+					<comment>Apply user defined release scheme, Default true</comment>
+				</attribute>
+				<attribute id="priority_track_release_timeseries">
+					<visible>true</visible>
+					<comment>Priority of user defined release scheme, Default 10</comment>
+				</attribute>
+				<attribute id="downstream_location">
+					<readOnly>true</readOnly>
+					<comment>Location where downstream flow target applies</comment>
+				</attribute>
+				<attribute id="downstreamflow_target_min">
+					<visible>true</visible>
+					<comment>Minimum flow requested at downstream target location, Default 11</comment>
+				</attribute>
+				<attribute id="downstreamflow_target_max">
+					<visible>true</visible>
+					<comment>Maximum flow acceptable at downstream target location, Default 11</comment>
+				</attribute>
+				<attribute id="use_downstreamflow_target_range">
+					<visible>true</visible>
+					<comment>Preserve discharge range at downstream location, Default true</comment>
+				</attribute>
+				<attribute id="priority_downstreamflow_target_range">
+					<visible>true</visible>
+					<comment>Priority of downstream flow target range, Default 11</comment>
+				</attribute>
+				<attribute id="use_minimize_Qspill">
+					<visible>true</visible>
+					<comment>Minimize Q_spill as part of reservoir release, Default true</comment>
+				</attribute>
+				<attribute id="priority_minimize_Qspill">
+					<visible>true</visible>
+					<comment>Priority of spill minimiation, Default 12</comment>
+				</attribute>
+				<attribute id="use_minimize_Qout">
+					<visible>true</visible>
+					<comment>Minimize total reservoir outflow, useful in in draught situations, Default false</comment>
+				</attribute>
+				<attribute id="priority_minimize_Qout">
+					<visible>true</visible>
+					<comment>Priority of outflow minimization, Default 50</comment>
+				</attribute>
+				<attribute id="use_smoothen_Qturbine">
+					<visible>false</visible>
+					<comment>Smoothen operation of the turbine over time , Default true</comment>
+				</attribute>
+				<attribute id="priority_smoothen_Qturbine">
+					<visible>false</visible>
+					<comment>Priority to smoothen operation of the turbine over time, Default 1</comment>
+				</attribute>
+				<panelLayout>
+					<tableLayout id="RTC_GOALS">
+						<title>RTCTools Goals parameters</title>
+						<attributeId>use_surcharge_max</attributeId>
+						<attributeId>priority_surcharge_max</attributeId>
+						<attributeId>use_fullsupply_max</attributeId>
+						<attributeId>priority_fullsupply_max</attributeId>
+						<attributeId>downstream_location</attributeId>
+						<attributeId>downstreamflow_target_min</attributeId>
+						<attributeId>downstreamflow_target_max</attributeId>
+						<attributeId>use_downstreamflow_target_range</attributeId>
+						<attributeId>priority_downstreamflow_target_range</attributeId>
+						<attributeId>use_track_release_timeseries</attributeId>
+						<attributeId>priority_track_release_timeseries</attributeId>
+						<attributeId>use_minimize_Qout</attributeId>
+						<attributeId>priority_minimize_Qout</attributeId>
+						<attributeId>use_minimize_Qspill</attributeId>
+						<attributeId>priority_minimize_Qspill</attributeId>
+						<attributeId>use_smoothen_Qturbine</attributeId>
+						<attributeId>priority_smoothen_Qturbine</attributeId>
+					</tableLayout>
+				</panelLayout>
+			</modifiableGroup>
 		</locationAttributeModifier>
 	</attributeModifiers>
 	<modifiersGroup id="None">
@@ -953,6 +1079,17 @@
 		<modifierId>Hume_Release_Forecast</modifierId>
 		<modifierId>KP_Release_Forecast</modifierId>
 		<modifierId>Dart_Release_Forecast</modifierId>
+	</modifiersGroup>
+<modifiersGroup id="RTCTools_S">
+		<modifierId>Hume_Release_Forecast</modifierId>
+		<modifierId>Hume_Inflow_Forecast</modifierId>
+		<modifierId>Hume_Keiwa_Forecast</modifierId>
+	</modifiersGroup>
+	<modifiersGroup id="RTCTools_O">
+		<modifierId>Hume_Release_Forecast</modifierId>
+		<modifierId>Hume_Inflow_Forecast</modifierId>
+		<modifierId>Hume_Keiwa_Forecast</modifierId>
+		<modifierId>RTCTools_R</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="URBS_R_Scen">
 		<modifierId>Rainfall Scenario</modifierId>

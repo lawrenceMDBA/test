@@ -494,7 +494,7 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="Update_ModulesBin_flood_training" name="Prepare URBS modules folder">
+			<node id="Update_ModulesBin_flood_training" name="Prepare modules folder (URBS and RTC-Tools)">
 				<workflowId>Update_ModulesBin_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
@@ -536,7 +536,7 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="Update_ModulesBin_flood" name="Prepare URBS modules folder">
+			<node id="Update_ModulesBin_flood" name="Prepare modules folder (URBS and RTC-Tools)">
 				<workflowId>Update_ModulesBin_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
@@ -1004,6 +1004,89 @@
 				<mainPanel>time series dialog</mainPanel>
 				<toolWindow>plot overview</toolWindow>
 				<localRun>true</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<visibleModifierGroup>None</visibleModifierGroup>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
+		</nodes>
+		<nodes id="RTCTools" name="RTCTools (Upper Murray)">
+			<node id="upper_murray_HumeDam_Sim_Local" name="   Run HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Simulation</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Sim_Official" name="Save HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Simulation</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Sim_Ensemble" name="Run Ensemble HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Ensemble</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Sim_Ensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Local" name="   Run HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Optimization</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Official" name="Save HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Optimization</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Ensemble" name="Run Ensemble HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Ensemble</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Opt_Ensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
 				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
 			</node>
 			<visibleModifierGroup>None</visibleModifierGroup>

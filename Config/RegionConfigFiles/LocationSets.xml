@@ -1628,12 +1628,70 @@
 					<text>%SAMPLE_PARAMS%</text>
 				</attribute>
 			</attributeFile>
-			<attributeFile>
+						<attributeFile>
 				<csvFile>ROWS_Locations_sdf</csvFile>
 				<id>%ROWS_SITE_ID%</id>
 				<attribute id="SDF_SITE_ID">
 					<description>station identifier as used in SDF BoM forecast. Usage: idmaps</description>
 					<text>%SDF_SITE_ID%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_rtctools_parameters</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="reservoir_name" name="Reservoir Name">
+					<text>%reservoir_name%</text>
+				</attribute>
+				<attribute id="downstream_location" name="Downstream Target Location">	
+					<text>%downstream_location%</text>
+				</attribute>
+				<attribute id="use_surcharge_max" name="Use Surcharge Target Waterlevel">
+					<boolean>%use_surcharge_max%</boolean>
+				</attribute>
+				<attribute id="priority_surcharge_max" name="Priority Surcharge Target Waterlevel">
+					<number>%priority_surcharge_max%</number>
+				</attribute>
+				<attribute id="use_fullsupply_max" name="Use Full Supply Target Waterlevel">
+					<boolean>%use_fullsupply_max%</boolean>
+				</attribute>
+				<attribute id="priority_fullsupply_max" name="Priority  Full Supply Target Waterlevel">
+					<number>%priority_fullsupply_max%</number>
+				</attribute>
+				<attribute id="use_downstreamflow_target_range" name="Use Downstream Flow Target">
+					<boolean>%use_downstreamflow_target_range%</boolean>
+				</attribute>
+				<attribute id="priority_downstreamflow_target_range" name="Priority Downstream Discharge Target">
+					<number>%priority_downstreamflow_target_range%</number>
+				</attribute>
+				<attribute id="downstreamflow_target_min" name="Minimum Downstream Flow Target [m3/s]">
+					<number>%downstreamflow_target_min%</number>
+				</attribute>
+				<attribute id="downstreamflow_target_max" name="Maximum Downstream Flow Target [m3/s]">
+					<number>%downstreamflow_target_max%</number>
+				</attribute>
+				<attribute id="use_track_release_timeseries" name="Use Release Scenario Target">
+					<boolean>%use_track_release_timeseries%</boolean>
+				</attribute>
+				<attribute id="priority_track_release_timeseries" name="Priority Release Scenario Target">
+					<number>%priority_track_release_timeseries%</number>
+				</attribute>
+				<attribute id="use_minimize_Qout" name="Use Minimize Release">
+					<boolean>%use_minimize_Qout%</boolean>
+				</attribute>
+				<attribute id="priority_minimize_Qout" name="Priority Minimize Release">
+					<number>%priority_minimize_Qout%</number>
+				</attribute>
+				<attribute id="use_minimize_Qspill" name="Use Minimize Spill">
+					<boolean>%use_minimize_Qspill%</boolean>
+				</attribute>
+				<attribute id="priority_minimize_Qspill" name="Priority Minimize Spill">
+					<number>%priority_minimize_Qspill%</number>
+				</attribute>
+				<attribute id="use_smoothen_Qturbine" name="Use Smooth Turbines">
+					<boolean>%use_smoothen_Qturbine%</boolean>
+				</attribute>
+				<attribute id="priority_smoothen_Qturbine" name="Priority Smooth Turbines">
+					<number>%priority_smoothen_Qturbine%</number>
 				</attribute>
 			</attributeFile>
 		</csvFile>
