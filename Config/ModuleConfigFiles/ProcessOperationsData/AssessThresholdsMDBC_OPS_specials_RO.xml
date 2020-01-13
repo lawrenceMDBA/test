@@ -598,9 +598,9 @@ This means that in the end only one timeseries with threshold flags is stored fo
 	<transformation id="Dartmouth_H_thresh_soft_July">
 		<user>
 			<simple>
-				<expression>if ( H_Dartmouth_July &gt;=  H_S_SOFT_2, 101, 1/0)</expression>
+				<expression>if ( H_Dartmouth_July &gt;= H_S_SOFT_2, 101, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id=" H_S_SOFT_2" value="@H_S_SOFT_2@"/>
+					<coefficient id="H_S_SOFT_2" value="@H_S_SOFT_2@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>H_thresh_soft_Dartmouth_July</variableId>
