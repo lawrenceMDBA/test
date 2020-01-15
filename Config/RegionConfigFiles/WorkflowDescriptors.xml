@@ -286,6 +286,18 @@
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Prepare_MonthlyReport" name="Prepare monthly input for Weekly Report" visible="true" allowApprove="true" autoApprove="true">
+		<description>Calculate data for the monthly input for the weekly report</description>
+		<cardinalTimeStep id="Monthly"/>
+		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>WorkflowRunners</runPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="Export_MonthlyReport" name="Export monthly input for Weekly Report" visible="true" allowApprove="true" autoApprove="true">
+		<description>Build and Export the monthly input for the weekly report</description>
+		<runExpiryTime unit="day" multiplier="30"/>
+		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>WorkflowRunners</runPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Export_FlowLevelReport" name="Export Flow Level Report" visible="true">
 		<description>Build and Export the flow level report</description>
 		<runExpiryTime unit="day" multiplier="30"/>

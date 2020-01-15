@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+  		<TITLE>Weekly report MDBA</TITLE>
+
+  		<!-- Style data (copied from css files) -->
+		<style type="text/css">
+
+		/* Body div element */
+
+		div.body {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			background-color: #FFFFFF;
+			}
+
+		 /* Breadcrumb */
+
+   		 table#breadcrumb {
+        	background-color:#FFFFFF;
+        	border: solid #000000 0px;
+        	font-family: Arial, Verdana, Helvetica, sans-serif;
+        	}
+	   	table#breadcrumb td {
+        	padding: 0px;
+        	border: solid #000000 0px;
+        	font-size: 11px;
+        	}
+
+        /* Table */
+
+/* tableStyle3 */
+
+table#tableStyle3 {
+	background-color:#FFFFFF;
+	border-collapse: collapse;
+	border: solid #000000 2px;
+	margin-left: 0pt;
+        font-family: Arial,Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	}
+	table#tableStyle3 td {
+		font-size: 11px;
+		padding: 2px;
+        	border: solid #000000 1px;
+	}
+	table#tableStyle3 th {
+		padding: 4px;
+		font-size: 11px;
+	        border: solid #000000 1px;
+	        color: #000066;
+	        background-color: #C0C0C0;
+	}
+	.tableStyle3_data {
+		text-align: center;
+		font-size: 11px;
+    		color: #000000;
+    		background-color: #FFFFFF;
+	}
+	.tableStyle3_data_datamax {
+		text-align: center;
+		font-size: 11px;
+    		color: #000000;
+    		background-color: #FFFFFF;
+	}
+	.tableStyle3_data_green {
+			text-align: center;
+			font-size: 9px;
+	    		color: #000000;
+	    		background-color: #FFFFFF;
+	}
+	.tableStyle3_data_yellow {
+				text-align: center;
+				font-size: 9px;
+		    		color: #000000;
+		    		background-color: #FFFF00;
+	}
+	.tableStyle3_data_orange {
+				text-align: center;
+				font-size: 9px;
+		    		color: #000000;
+		    		background-color: #F87A17;
+	}
+	.tableStyle3_warning {
+		color: #000000;
+		text-align: left;
+		background-color: #CCCCCC;
+		font-size: 11px;
+		color: #FFFFFF;
+	}
+	.tableStyle3_threshold {
+		text-align: center;
+		font-size: 11px;
+		font-weight: bold;
+    		color: #FFFFFF;
+    		background-color: #FF0000;
+	}
+	.tableStyle3_thresholds_0 {
+				background-color: #ffffff;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_1 {
+				background-color: #3333ff;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_2 {
+				background-color: #ffff00;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_3 {
+				background-color: #ff6600;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_4 {
+				background-color: #ff0000;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_5 {
+				background-color: #cc6600;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_6 {
+				background-color: #FF0000;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_7 {
+				background-color: #C000C0;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_NaN {
+				background-color: #acaba9;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_thresholds_NaN_NoThresholdDefinition {
+				background-color: #ffffff;
+				text-align: center;
+				font-size: 9px;
+	}
+	.tableStyle3_leftcol {
+		text-align: center;
+		font-size: 11px;
+	    	color: #000000;
+	    	background-color: #FFFFFF;
+	}
+	.tableStyle3_hist {
+		text-align: center;
+		font-size: 11px;
+		font-style: italic;
+	    	color: #000000;
+	    	background-color: #FFFFFF;
+	}
+	.tableStyle3_forc {
+		text-align: center;
+		font-size: 11px;
+	    	color: #000000;
+	    	background-color: #FFFFFF;
+	}
+	.tableStyle3_beforeT0 {
+		text-align: center;
+		font-size: 11px;
+	}
+	.tableStyle3_firstAfterT0 {
+		text-align: center;
+		font-size: 11px;
+	}
+	.tableStyle3_afterT0 {
+		text-align: center;
+		font-size: 11px;
+	}
+
+		</style>
+
+	</head>
+
+<body>
+<h1>Monthly report for the month of $INDEXTIME(0;StorageMDBA_V_mean;MonthYear)$  </h1>
+    <p style="font-family: Arial; font-size: 11pt; padding: 0px; margin: 0px;">
+        <strong>Estimated evaporative losses (pan method) from the MDBA storages for the month of $INDEXTIME(0;StorageMDBA_V_mean;MonthYear)$</strong>
+    </p>
+<table border="0">
+	<tbody>
+		<tr>
+		$TABLE(EVAP_pan)$
+	</tbody>
+</table>
+</br>
+    <p style="font-family: Arial; font-size: 11pt; padding: 0px; margin: 0px;">
+        <strong>Estimated evaporative losses (Morton's lake) from the MDBA storages for the month of $INDEXTIME(0;StorageMDBA_V_mean;MonthYear)$</strong>
+    </p>
+<table border="0">
+	<tbody>
+		<tr>
+		$TABLE(EVAP_mlake)$
+	</tbody>
+</table>
+
+
+</body></html>
