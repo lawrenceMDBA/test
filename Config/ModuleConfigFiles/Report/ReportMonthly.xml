@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--1. Evap losses in reservoirs and lakes
+locationsSets: wr.sites_mdbastorage & wr.sites_majorstatestorages (wr.sites_allstorages)
+
+Output: 
+Storage level at wednesday 8am.
+Storage volume at wednesday 8am.
+Storage percent of max storage at wednesday 8am.
+Active storage at wednesday 8am. 
+Change in storage compared to past wednesday at wednesday 8am.
+-->
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="ForecastingRegion">Murray-Darling</defineGlobal>
+		<chartFormat id="chartFormat1">
+			<includeTime0>false</includeTime0>
+			<leftAxis>
+				<min>0</min>
+				<!--				<max>100000</max>-->
+				<format>##0</format>
+			</leftAxis>
+			<includeLegend>true</includeLegend>
+			<season>
+				<startMonthDay>--06-01</startMonthDay>
+				<endMonthDay>--05-31</endMonthDay>
+			</season>
+			<titleFontSize>12</titleFontSize>
+		</chartFormat>
+		<chartFormat id="chartFormat2">
+			<includeTime0>false</includeTime0>
+			<leftAxis>
+				<min>0</min>
+				<!--				<max>100000</max>-->
+				<caption>GL</caption>
+				<format>##0</format>
+			</leftAxis>
+			<includeLegend>true</includeLegend>
+			<season>
+				<startMonthDay>--06-01</startMonthDay>
+				<endMonthDay>--05-31</endMonthDay>
+			</season>
+			<titleFontSize>12</titleFontSize>
+		</chartFormat>
+		<dateFormat id="dateFormat1">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>dd/MM/yyyy HH:mm z</pattern>
+		</dateFormat>
+		<dateFormat id="MonthYear">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>MMMM yyyy</pattern>
+		</dateFormat>
+		<dateFormat id="ISOdate">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>yyyy-MM-dd</pattern>
+		</dateFormat>
+		<dateFormat id="HourMinute">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>HH:mm</pattern>
+		</dateFormat>
+		<dateFormat id="ISOdatetime">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>yyyy-MM-dd HH:mm</pattern>
+		</dateFormat>
+		<numberFormat id="no_decimals">{0,number,###0}</numberFormat>
+		<numberFormat id="1_decimal">{0,number,###0.0}</numberFormat>
+		<numberFormat id="2_decimals">{0,number,###0.00}</numberFormat>
+		<numberFormat id="numberFormatThreshold">{0,number,0.00}</numberFormat>
+		<generatePdf>false</generatePdf>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir/>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<inputVariable variableId="StorageMDBA_V_mean">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_GL</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_net_pan">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_net</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_loss_pan">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_loss_pan_%">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_net_mlake">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_net</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_loss_mlake">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StorageMDBA_EVAP_loss_mlake_%">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+	</declarations>
+	<report scrubFolder="false">
+		<rowPerLocationHtmlTable id="EVAP_pan" tableStyle="tableStyle3">
+			<column>
+				<header>Storage</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;StorageMDBA_V_mean)</function>
+			</column>
+			<column>
+				<header>Net pan evaporation depth [mm]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_net_pan ; no_decimals)</function>
+			</column>
+			<column>
+				<header>*Approximate (net) pan evaporative loss [GL]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_loss_pan ; 1_decimal)</function>
+			</column>
+			<column>
+				<header>Average storage volume [GL]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_V_mean ; no_decimals)</function>
+			</column>
+			<column>
+				<header>Percentage net pan evaporative loss [%]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_loss_pan_% ; 1_decimal)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<rowPerLocationHtmlTable id="EVAP_mlake" tableStyle="tableStyle3">
+			<column>
+				<header>Storage</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;StorageMDBA_V_mean)</function>
+			</column>
+			<column>
+				<header>Net mlake evaporation depth [mm]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_net_mlake ; no_decimals)</function>
+			</column>
+			<column>
+				<header>*Approximate (net) mlake evaporative loss [GL]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_loss_mlake ; 1_decimal)</function>
+			</column>
+			<column>
+				<header>Average storage volume [GL]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_V_mean ; no_decimals)</function>
+			</column>
+			<column>
+				<header>Percentage net mlake evaporative loss [%]</header>
+				<format>_data</format>
+				<width>80</width>
+				<function>INDEXVALUE(0;StorageMDBA_EVAP_loss_mlake_% ; 1_decimal)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<template>monthlyreport_template.html</template>
+		<outputFileName>report_monthly.html</outputFileName>
+	</report>
+</reports>

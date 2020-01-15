@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<variable>
+		<variableId>H</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_surfacearea</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_surfacearea</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_Victoria</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_A4260553</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Victoria_outlet</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationRelationId>OUTLET</locationRelationId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Victoria</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Menindee</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="Lookup_SurfaceArea">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>H</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_SurfaceArea_Table</coefficientSetId>
+				<coefficientSetFile>SurfaceAreaTables</coefficientSetFile>
+				<output>
+					<variableId>A</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Lookup_SurfaceArea_Victoria">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>H_Victoria</variableId>
+				</input>
+				<coefficientSetId>Reservoirs_Height_SurfaceArea_Table</coefficientSetId>
+				<coefficientSetFile>SurfaceAreaTables</coefficientSetFile>
+				<output>
+					<variableId>A_Victoria_outlet</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Lookup_SurfaceArea_Victoria">
+		<user>
+			<simple>
+				<expression>A_Victoria_outlet</expression>
+				<outputVariable>
+					<variableId>A_Victoria</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="A_Menindee">
+		<statisticsRelatedLocations>
+			<sum>
+				<inputVariable>
+					<variableId>A</variableId>
+				</inputVariable>
+				<locationRelationId>LAKE_GROUP</locationRelationId>
+				<outputVariable>
+					<variableId>A_Menindee</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsRelatedLocations>
+	</transformation>
+</transformationModule>

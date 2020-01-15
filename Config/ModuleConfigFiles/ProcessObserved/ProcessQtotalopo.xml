@@ -12,7 +12,7 @@ select preferred series (OPT, OPC,OPO) based on (modifiable) location attribute,
 OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
 	<!--Merge_OPO_Over_Selected(_OPT_OPC):
 Merges OPO over selected (not over OPT over OPC) series-->
-<!-- MDBA addtions: merging of opt over opc enabled and no selected trace -->
+	<!-- MDBA addtions: merging of opt over opc enabled and no selected trace -->
 	<!-- 
 	<variable>
 		<variableId>OPT_neq</variableId>
@@ -94,7 +94,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-<!-- 	<variable>
+	<!-- 	<variable>
 		<variableId>OPC_15m</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
@@ -110,7 +110,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable> -->
-<!-- 	<variable>
+	<!-- 	<variable>
 		<variableId>OPC_15m_fcst</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
@@ -156,7 +156,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-<!-- 	<variable>
+	<!-- 	<variable>
 		<variableId>Selected_8am_inst</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
@@ -245,7 +245,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			</nonEquidistant>
 		</sample>
 	</transformation>
-<!--  	<transformation id="SelectPreferred_8am_inst">
+	<!--  	<transformation id="SelectPreferred_8am_inst">
 		<merge>
 			<selectDataSource>
  				<input>

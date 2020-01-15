@@ -167,28 +167,28 @@
 				</properties>
 			</layer>
 			<layer id="World" name="ArcGIS World Topo Map">
-			  <className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
-					<visible>false</visible>
-					<properties>
-						<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-						<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
-						<int key="minZoomLevel" value="1"/>
-						<int key="maxZoomLevel" value="19"/>
-						<int key="topZoomLevel" value="21"/>
-						<int key="tileSize" value="256"/>
-					</properties>
+				<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+				<visible>false</visible>
+				<properties>
+					<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+					<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
+					<int key="minZoomLevel" value="1"/>
+					<int key="maxZoomLevel" value="19"/>
+					<int key="topZoomLevel" value="21"/>
+					<int key="tileSize" value="256"/>
+				</properties>
 			</layer>
 			<layer id="Canvas" name="ArcGIS Canvas World_Light_Gray_Base">
 				<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
 				<visible>false</visible>
-			  <properties>
-				<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-				<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
-				<int key="minZoomLevel" value="1"/>
-				<int key="maxZoomLevel" value="19"/>
-				<int key="topZoomLevel" value="21"/>
-				<int key="tileSize" value="256"/>
-			  </properties>
+				<properties>
+					<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+					<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
+					<int key="minZoomLevel" value="1"/>
+					<int key="maxZoomLevel" value="19"/>
+					<int key="topZoomLevel" value="21"/>
+					<int key="tileSize" value="256"/>
+				</properties>
 			</layer>
 		</layerGroup>
 		<layerGroup id="Upper Murray Catchment">
@@ -210,7 +210,7 @@
 				<lineColor>purple</lineColor>
 				<lineWidth value="2"/>
 			</esriShapeLayer>
-				<esriShapeLayer id="Mitta to Tallandoon subareas">
+			<esriShapeLayer id="Mitta to Tallandoon subareas">
 				<description>Mitta to Tallandoon subareas</description>
 				<file>upperMurray_mittaToTallandoon_urbs_subareas</file>
 				<projectionFileAvailable>true</projectionFileAvailable>
@@ -246,6 +246,15 @@
 				<lineColor>gold3</lineColor>
 				<lineWidth value="2"/>
 			</esriShapeLayer>
+			<esriShapeLayer id="To Jingellic subareas SWIFT">
+				<description>To Jingellic subareas (SWIFT)</description>
+				<file>VIC_SWIFT_Subarea_uppermurray</file>
+				<projectionFileAvailable>true</projectionFileAvailable>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>forest green</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
 		</layerGroup>
 		<layerGroup id="Ovens Catchment">
 			<esriShapeLayer id="GridPrecipitationOvens">
@@ -257,8 +266,17 @@
 				<lineColor>dark khaki</lineColor>
 				<lineWidth value="2"/>
 			</esriShapeLayer>
+			<esriShapeLayer id="Ovens Catchment Map URBS">
+				<description>Catchment</description>
+				<file>Ovens_Catchment</file>
+				<geoDatum>WGS 1984</geoDatum>
+				<visible>true</visible>
+				<maxScale>1:10000</maxScale>
+				<lineColor>dark khaki</lineColor>
+				<lineWidth value="2"/>
+			</esriShapeLayer>
 			<esriShapeLayer id="SourceModelSubcatchments">
-				<description>Source Subcatchments</description>
+				<description>Subcatchments (Source)</description>
 				<file>ovens_ewSource_subcatchments</file>
 				<projectionFileAvailable>true</projectionFileAvailable>
 				<visible>true</visible>
@@ -266,13 +284,13 @@
 				<lineColor>beige</lineColor>
 				<lineWidth value="2"/>
 			</esriShapeLayer>
-			<esriShapeLayer id="Ovens Catchment Map">
-				<description>Ovens Catchment Map</description>
-				<file>Ovens_Catchment</file>
+			<esriShapeLayer id="Ovens Catchment Map SWIFT">
+				<description>Subareas (SWIFT)</description>
+				<file>VIC_SWIFT_Subarea_ovens</file>
 				<geoDatum>WGS 1984</geoDatum>
 				<visible>true</visible>
 				<maxScale>1:10000</maxScale>
-				<lineColor>dark khaki</lineColor>
+				<lineColor>antique white4</lineColor>
 				<lineWidth value="2"/>
 			</esriShapeLayer>
 		</layerGroup>
@@ -542,7 +560,7 @@
 			<iconFile>stats.png</iconFile>
 			<predefinedDisplay>interval statistics</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>        
+			<menubarTask>true</menubarTask>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Separator">
@@ -599,6 +617,28 @@
 			<menubarTask>false</menubarTask>
 			<toolWindow>true</toolWindow>
 			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		<explorerTask name="Separator">
+			<separator/>
+		</explorerTask>
+		<!--<explorerTask name="Threshold Display">
+			<displayConfigFileName>ThresholdDisplay</displayConfigFileName>
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<toolWindow>false</toolWindow>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>-->
+		<explorerTask name="Events">
+			<iconFile>warninglevel1.gif</iconFile>
+			<mnemonic>T</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.thresholdeventsviewer.ThresholdEventsTableViewer</taskClass>
+			<!--2019.02-->
+			<!--<displayConfigFileName>ThresholdEventsDisplay</displayConfigFileName>-->
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<allowMultipleInstances>false</allowMultipleInstances>
+			<accelerator>Ctrl E</accelerator>
+			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 	</explorerTasks>
 	<panelHeaderLabels>

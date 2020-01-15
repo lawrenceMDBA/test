@@ -2,6 +2,7 @@
 <gridDisplay xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/gridDisplay.xsd">
 	<title>Spatial Display</title>
 	<defaults>
+		<!--<modifiedColor>gray86</modifiedColor>-->
 		<geoMap>
 			<geoDatum>WGS 1984</geoDatum>
 			<projection>mercator</projection>
@@ -116,28 +117,28 @@
 					</properties>
 				</layer>
 				<layer id="World" name="ArcGIS World Topo Map">
-				  <className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
-						<visible>false</visible>
-						<properties>
-							<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-							<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
-							<int key="minZoomLevel" value="1"/>
-							<int key="maxZoomLevel" value="19"/>
-							<int key="topZoomLevel" value="21"/>
-							<int key="tileSize" value="256"/>
-						</properties>
+					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
+					<visible>false</visible>
+					<properties>
+						<string key="tileUrlPattern" value="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+						<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_topo"/>
+						<int key="minZoomLevel" value="1"/>
+						<int key="maxZoomLevel" value="19"/>
+						<int key="topZoomLevel" value="21"/>
+						<int key="tileSize" value="256"/>
+					</properties>
 				</layer>
 				<layer id="Canvas" name="ArcGIS Canvas World_Light_Gray_Base">
 					<className>nl.wldelft.libx.openmap.GenericTileServerLayer</className>
 					<visible>false</visible>
-				  <properties>
-					<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
-					<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
-					<int key="minZoomLevel" value="1"/>
-					<int key="maxZoomLevel" value="19"/>
-					<int key="topZoomLevel" value="21"/>
-					<int key="tileSize" value="256"/>
-				  </properties>
+					<properties>
+						<string key="tileUrlPattern" value="http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/%ZOOM%/%ROW%/%COLUMN%"/>
+						<string key="cacheDir" value="%REGION_HOME%/mapcache/Esri_Canvas_World_Light_Gray_Base"/>
+						<int key="minZoomLevel" value="1"/>
+						<int key="maxZoomLevel" value="19"/>
+						<int key="topZoomLevel" value="21"/>
+						<int key="tileSize" value="256"/>
+					</properties>
 				</layer>
 			</layerGroup>
 			<layerGroup id="Upper Murray Catchment">
@@ -186,6 +187,15 @@
 					<lineColor>gold3</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
+				<esriShapeLayer id="To Jingellic subareas SWIFT">
+					<description>To Jingellic subareas (SWIFT)</description>
+					<file>VIC_SWIFT_Subarea_uppermurray</file>
+					<projectionFileAvailable>true</projectionFileAvailable>
+					<visible>true</visible>
+					<maxScale>1:10000</maxScale>
+					<lineColor>forest green</lineColor>
+					<lineWidth value="2"/>
+				</esriShapeLayer>
 			</layerGroup>
 			<layerGroup id="Ovens Catchment">
 				<esriShapeLayer id="GridPrecipitationOvens">
@@ -197,8 +207,17 @@
 					<lineColor>red</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
+				<esriShapeLayer id="Ovens Catchment Map">
+					<description>Catchment</description>
+					<file>Ovens_Catchment</file>
+					<geoDatum>WGS 1984</geoDatum>
+					<visible>false</visible>
+					<maxScale>1:50000</maxScale>
+					<lineColor>goldenrod4</lineColor>
+					<lineWidth value="1"/>
+				</esriShapeLayer>
 				<esriShapeLayer id="SourceModelSubcatchments">
-					<description>Source Subcatchments</description>
+					<description>Subcatchments (Source)</description>
 					<file>ovens_ewSource_subcatchments</file>
 					<projectionFileAvailable>true</projectionFileAvailable>
 					<visible>false</visible>
@@ -206,14 +225,14 @@
 					<lineColor>FFFF00</lineColor>
 					<lineWidth value="1"/>
 				</esriShapeLayer>
-				<esriShapeLayer id="Ovens Catchment Map">
-					<description>Ovens Catchment Map</description>
-					<file>Ovens_Catchment</file>
+				<esriShapeLayer id="Ovens Catchment Map SWIFT">
+					<description>Subareas (SWIFT)</description>
+					<file>VIC_SWIFT_Subarea_ovens</file>
 					<geoDatum>WGS 1984</geoDatum>
-					<visible>false</visible>
-					<maxScale>1:50000</maxScale>
-					<lineColor>goldenrod4</lineColor>
-					<lineWidth value="1"/>
+					<visible>true</visible>
+					<maxScale>1:10000</maxScale>
+					<lineColor>antique white4</lineColor>
+					<lineWidth value="2"/>
 				</esriShapeLayer>
 			</layerGroup>
 			<layerGroup id="Administration">
@@ -2050,8 +2069,8 @@
 	<gridPlotGroup id="NWP" name="NWP">
 		<viewPermission>RiverOperations</viewPermission>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-				<!-- Not sure if this is correct -->
- 			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
+			<!-- Not sure if this is correct -->
+			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
 				<timeSeriesSet>
 					<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2798,6 +2817,18 @@
 	</gridPlotGroup>
 	<gridPlotGroup id="Observation (Flood ops)" name="Observations (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
+		<gridPlot id="Sentinel-2b" name="Sentinel satellite data">
+			<wmsLayer>
+				<url>https://ows.services.dea.ga.gov.au?</url>
+				<wmsVersion>1.3.0</wmsVersion>
+				<wmsLayerName>s2b_nrt_granule_nbar_t</wmsLayerName>
+				<imageFormat>png</imageFormat>
+				<vendorParameter name="Styles" value="ndwi"/>
+				<dateTimeParameter name="time" format="yyyy-MM-dd'T'HH:mm:ss'Z'" timeZone="GMT"/>
+				<timeStep unit="day" multiplier="1" timeZone="GMT"/>
+				<relativeViewPeriod start="-7" end="-1" unit="day"/>
+			</wmsLayer>
+		</gridPlot>
 		<gridPlot id="H_Fops" name="Water level (Fops)">
 			<dataLayer>
 				<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
@@ -2837,7 +2868,7 @@
 			</dataLayer>
 			<dataLayer>
 				<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-				<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+				<visibleInSpatialDisplay>false</visibleInSpatialDisplay>
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
 					<valueType>scalar</valueType>
@@ -2864,7 +2895,7 @@
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep unit="hour"/>
 					<relativeViewPeriod end="0" start="-6" unit="day"/>
-					<readWriteMode>read only</readWriteMode>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
 				</timeSeriesSet>
 			</dataLayer>
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
@@ -2924,8 +2955,29 @@
 	<gridPlotGroup id="NWP (Flood ops)" name="NWP (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
 		<gridPlotGroup id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
-			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - as imported">
+				<mapExtentId>Upper Murray</mapExtentId>
 				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportAWRA</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationId>AWRA</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="day"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
 						<valueType>grid</valueType>
@@ -2934,20 +2986,7 @@
 						<locationId>AWRA</locationId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<dataLayer>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>SM_obs</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationSetId>URBS_subareas</locationSetId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
@@ -2965,11 +3004,33 @@
 						<locationSetId>URBS_subcatchments.only</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
 				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
+			<gridPlot id="AWRA-L Root Zone (mm)" name="Initial loss based on AWRA-L - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<circleSizeFunction>10</circleSizeFunction>
+					<circleBorderSize>2</circleBorderSize>
+					<circleBorderColor>red</circleBorderColor>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>IL</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationSetId>URBS_subcatchments.only</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>IL</classBreaksId>
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation">

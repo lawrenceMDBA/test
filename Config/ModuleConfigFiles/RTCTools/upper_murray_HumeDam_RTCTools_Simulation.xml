@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<piVersion>1.8</piVersion>
+		<rootDir>%REGION_HOME%/Modules/rtctools2/</rootDir>
+		<workDir>%ROOT_DIR%</workDir>
+		<exportDir>%ROOT_DIR%/input</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<exportUnitConversionsId>RTCToolsExportUnitConversions</exportUnitConversionsId>
+		<importDir>%ROOT_DIR%/output</importDir>
+		<importUnitConversionsId>RTCToolsImportUnitConversions</importUnitConversionsId>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/output/diag.xml</diagnosticFile>
+	</general>
+	<activities>
+		<startUpActivities>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/input/*.</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/output/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/model/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/debug/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/src/*.*</filter>
+			</purgeActivity>
+			<purgeActivity>
+				<filter>%ROOT_DIR%/*.txt</filter>
+			</purgeActivity>
+		</startUpActivities>
+		<exportActivities>
+			<exportTimeSeriesActivity>
+				<exportFile>timeseries_import.xml</exportFile>
+				<exportBinFile>false</exportBinFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_in_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationId>R_402222A</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_release</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>shift_t6</qualifierId>
+						<locationId>R_402222A</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="6" unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_release</parameterId>
+						<qualifierId>shift_t3</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="3" unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_obs</parameterId>
+						<qualifierId>shift_t5</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="5" unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_obs</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QTURB_obs</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QSPILL_obs</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</exportTimeSeriesActivity>
+			<exportDataSetActivity>
+				<moduleInstanceId>upper_murray_HumeDam_RTCTools</moduleInstanceId>
+			</exportDataSetActivity>
+			<exportParameterActivity>
+				<fileName>rtcParameterConfig</fileName>
+				<templateLocationLooping>
+					<locationModelLoop>
+						<locationId>R_401027</locationId>
+						<model>Goals</model>
+					</locationModelLoop>
+				</templateLocationLooping>
+				<moduleInstanceId>upper_murray_HumeDam_RTCTools</moduleInstanceId>
+			</exportParameterActivity>
+			<exportCustomFormatRunFileActivity>
+				<templateFile>%ROOT_DIR%/venv/Scripts/activate.template</templateFile>
+				<exportFile>%ROOT_DIR%//venv/Scripts/activate.bat</exportFile>
+			</exportCustomFormatRunFileActivity>
+		</exportActivities>
+		<executeActivities>
+			<executeActivity>
+				<command>
+					<executable>%ROOT_DIR%/runRTC2_sim.bat</executable>
+				</command>
+				<timeOut>7200000</timeOut>
+			</executeActivity>
+		</executeActivities>
+		<importActivities>
+			<importTimeSeriesActivity>
+				<importFile>timeseries_export.xml</importFile>
+				<timeSeriesSets>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_out_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QTURB_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QSPILL_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QBOTT_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationId>R_409017</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t3</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t5</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t6</qualifierId>
+						<locationId>R_402222A</locationId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep unit="hour"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</timeSeriesSets>
+			</importTimeSeriesActivity>
+		</importActivities>
+	</activities>
+</generalAdapterRun>
