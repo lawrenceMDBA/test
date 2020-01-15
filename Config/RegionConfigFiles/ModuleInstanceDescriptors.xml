@@ -4,6 +4,8 @@
 	<moduleInstanceDescriptor id="PeakHeights_Correlation">
 		<description>Dummy for correlation results</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportRatings_export">
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
 		<description>Exports Rainfall data in CSV format to HydstraTSM</description>
 	</moduleInstanceDescriptor>
@@ -75,6 +77,12 @@
 	<moduleInstanceDescriptor id="ImportForecastADFD">
 		<description>Import ADFD</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastSDF">
+		<description>Import BoM SDF (SevenDayForecast)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedSDF">
+		<description>Import BoM SDF (SevenDayForecast) observations</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportForecastADFD_ftp">
 		<description>Import ADFD from ftp</description>
 	</moduleInstanceDescriptor>
@@ -87,6 +95,7 @@
 	<moduleInstanceDescriptor id="ImportForecastPME_ftp">
 		<description>Import PME from ftp</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHDF5"/>
 	<moduleInstanceDescriptor id="ImportAWRA">
 		<description>Import AWRA</description>
 	</moduleInstanceDescriptor>
@@ -123,6 +132,9 @@
 	<moduleInstanceDescriptor id="ImportSamples">
 		<description>Import Sample data (csv files)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGaugings">
+		<description>Import Gaugings</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportRatings">
 		<description>Import Ratings</description>
 	</moduleInstanceDescriptor>
@@ -146,6 +158,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PreProcessWeeklyReportData">
 		<description>Preprocessing of weekly report data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PreProcessMonthlyReportData">
+		<description>Preprocessing of monthly input into weekly report (EVAP loss both for Morton's Lake and pan method)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="PrepareewSourceRO">
 		<description>Prepare data to export to ewSource_RO</description>
@@ -341,6 +356,9 @@
 	<moduleInstanceDescriptor id="StorageToLevel_Fcst">
 		<description>Applies capacity table to convert V fcst to H</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="LevelToArea">
+		<description>Applies SurfaceArea table to convert H to A</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessP_fcst_To_AgAreas">
 		<description>Process forecast rainfall products into rainfall  aggregation areas (for display)</description>
 	</moduleInstanceDescriptor>
@@ -359,6 +377,9 @@
 	<moduleInstanceDescriptor id="ProcessAWRA">
 		<description>Process AWRA data (daily grids) into URVS catchements (for display)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessSDF">
+		<description>Process SDF Ensembles into meadian, min, max percentile (for display)</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="CreateACCESSRGrid">
 		<description>Create ACCESSR grid from observations for Flood Training</description>
 	</moduleInstanceDescriptor>
@@ -376,6 +397,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ReportWeekly">
 		<description>Generate weekly report</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ReportMonthly">
+		<description>Generate monthly input for weekly report</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ReportFlowLevel">
 		<description>Generate weekly report</description>
@@ -484,6 +508,7 @@
 	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments_from_Archive">
 		<description>Process NWP data to URBS subcatchments (for data retrieved from Archive)</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="URBS_1h_Subcatchment_Preprocessing"/>
 	<moduleInstanceDescriptor id="PrepareUrbs_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
@@ -520,6 +545,11 @@
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Scenario_Ensemble_Forecast">
 		<description>upper_murray Rainfall Ensemble Scenario member Forecast</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_mittaToDartmouth_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_mittaToTallandoon_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToHumeDam_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToJingellic_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_BelowHume_URBS_Preprocessing"/>
 	<moduleInstanceDescriptor id="upper_murray_upper_m_URBS_Forecast">
 		<description>URBS General Adapter upper_murray_upper_m</description>
 	</moduleInstanceDescriptor>
@@ -616,8 +646,29 @@
 	<moduleInstanceDescriptor id="Update_ModulesBin_FloodOps">
 		<description>Module to extract software to Modules_Bin folder</description>
 	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Update_ModulesBin_RTCTools">
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ToArchive_flow-n-sal_Fcst">
 		<description>Export flow-n-sal forecasts to archive</description>
+	</moduleInstanceDescriptor>
+	<!--RTCTools module instance IDs-->
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools">
+		<description>RTCTools Simulation Hume Dam</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareRTCTools_HumeDam_Simulation">
+		<description>PreProcess Simulation RTCTools Hume Dam</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools_Simulation">
+		<description>RTCTools Simulation Hume Dam</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PrepareRTCTools_HumeDam_Optimization">
+		<description>PreProcess Optimization RTCTools Hume Dam</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools_Optimization">
+		<description>RTCTools Optimization Hume Dam</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="modules_bin_rtctools">
+		<description>RTCTools binaries</description>
 	</moduleInstanceDescriptor>
 	<!--Flood Ops Dummy module for moduledataset -->
 	<moduleInstanceDescriptor id="modules_bin_delft-adapters">

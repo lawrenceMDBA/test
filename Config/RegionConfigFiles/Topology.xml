@@ -40,10 +40,22 @@
 			<workflowId>Import_Forecast</workflowId>
 			<localRun>false</localRun>
 		</node>
+		<node id="Import_SDF" name="Import and process SDF (SevenDayForecast)">
+			<workflowId>Import_SDF</workflowId>
+			<displayGroupId>SDF_Q_process</displayGroupId>
+			<localRun>false</localRun>
+		</node>
+		<node id="Import_SDF_Q" name="   View imported SDF">
+			<displayGroupId>SDF_Q_import</displayGroupId>
+		</node>
+		<node id="Process_SDF_Q" name="   View imported and processed SDF">
+			<displayGroupId>SDF_Q</displayGroupId>
+		</node>
 		<node id="Import_Samples" name="Import Water quality data">
 			<workflowId>Import_Samples</workflowId>
 			<mainPanel>web browser display</mainPanel>
-			<url>https://publicwiki.deltares.nl/display/FEWSDOC/18+Sample+Viewer</url>
+			<url>https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html 
+ </url>
 			<localRun>false</localRun>
 		</node>
 		<node id="Import_Ratings" name="Import Ratings">
@@ -106,7 +118,7 @@
 			<groupId>BMRegulators_OPO</groupId>
 			<groupId>Gunbower_OPO</groupId>
 			<groupId>KP_Sites_OPO</groupId>
-	           <!-- <groupId>Millewa_OPO</groupId>
+			<!-- <groupId>Millewa_OPO</groupId>
 			<groupId>Hatta_OPO</groupId>
 			<groupId>Chowilla_OPO</groupId>
 			<groupId>Mulcra_OPO</groupId>
@@ -319,6 +331,10 @@
 			<workflowId>Prepare_WeeklyReport</workflowId>
 			<localRun>true</localRun>
 		</node>
+		<node id="Prepare_MonthlyReport" name="Generate monthly Data for Weekly Report">
+			<workflowId>Prepare_MonthlyReport</workflowId>
+			<localRun>true</localRun>
+		</node>
 		<nodes id="Report_review" name="Review">
 			<node id="Review_allstorages" name="All Major Storages">
 				<displayGroupId>wr_allstorages</displayGroupId>
@@ -358,8 +374,16 @@
 			<workflowId>Export_WeeklyReport</workflowId>
 			<localRun>false</localRun>
 		</node>
+		<node id="Export_MonthlyReport" name="Export monthly input for Weekly Report">
+			<workflowId>Export_MonthlyReport</workflowId>
+			<localRun>false</localRun>
+		</node>
 		<node id="Export_FlowLevelReport" name="Export River flow and level report">
 			<workflowId>Export_FlowLevelReport</workflowId>
+			<localRun>true</localRun>
+		</node>
+		<node id="Prepare_Thresholds" name="Prepare Thresholds">
+			<workflowId>Prepare_Thresholds</workflowId>
 			<localRun>true</localRun>
 		</node>
 		<node id="Export_ThresholdCrossingsReport" name="Export threshold crossings HTML report">
@@ -478,7 +502,7 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="Update_ModulesBin_flood_training" name="Prepare URBS modules folder">
+			<node id="Update_ModulesBin_flood_training" name="Prepare modules folder (URBS and RTC-Tools)">
 				<workflowId>Update_ModulesBin_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
@@ -520,7 +544,7 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="Update_ModulesBin_flood" name="Prepare URBS modules folder">
+			<node id="Update_ModulesBin_flood" name="Prepare modules folder (URBS and RTC-Tools)">
 				<workflowId>Update_ModulesBin_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
@@ -550,22 +574,26 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>false</localRun>
 			</node>
-			<node id="ImportAndProcess_AWRA_FloodOps" name="Import and process AWRA data">
-				<workflowId>ImportAndProcess_AWRA_FloodOps</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
-				<filterId>Parameter_FloodOps</filterId>
-				<graceTime unit="hour" multiplier="6"/>
-				<mainPanel>grid display</mainPanel>
-				<toolWindow>document selection panel</toolWindow>
-				<localRun>false</localRun>
-			</node>
 			<visibleModifierGroup>None</visibleModifierGroup>
 		</nodes>
 		<nodes id="ObservedProcessing_flood" name="Observations ">
-			<node id="ImportAndProcess_Observed_flood_latest" name="Import and process latest observations">
-				<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+			<node id="ImportAndProcess_AWRA_FloodOps" name="Import and process AWRA-L data">
+				<workflowId>ImportAndProcess_AWRA_FloodOps</workflowId>
 				<mapExtentId>Upper Murray</mapExtentId>
 				<filterId>Parameter_FloodOps</filterId>
+				<displayGroupId>upper_murray_awra_il</displayGroupId>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>grid display</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+			</node>
+			<node id="ImportAndProcess_Observed_flood_latest" name="Import and process latest observations">
+				<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
+				<coldState unit="day" multiplier="10"/>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps</filterId>
+				<displayGroupId>ImportProcess_flood</displayGroupId>
+				<defaultModifierId>Raingauge</defaultModifierId>
 				<visibleModifierGroup>FloodOps</visibleModifierGroup>
 				<graceTime unit="day" multiplier="1"/>
 				<localRun>false</localRun>
@@ -990,6 +1018,89 @@
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
+		<nodes id="RTCTools" name="RTCTools (Upper Murray)">
+			<node id="upper_murray_HumeDam_Sim_Local" name="   Run HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Simulation</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Sim_Official" name="Save HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Simulation</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Sim_Ensemble" name="Run Ensemble HumeDam Simulation">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Ensemble</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Sim_Ensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Local" name="   Run HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Optimization</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>true</localRun>
+				<showRunApprovedForecastButton>false</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Official" name="Save HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Official</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Optimization</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<node id="upper_murray_HumeDam_Opt_Ensemble" name="Run Ensemble HumeDam Optimization">
+				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Ensemble</workflowId>
+				<mapExtentId>Upper Murray</mapExtentId>
+				<filterId>Parameter_FloodOps_Hobs</filterId>
+				<displayGroupId>upper_murray_HumeDam_Opt_Ensemble</displayGroupId>
+				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
+				<visibleModifierGroup>RTCTools_O</visibleModifierGroup>
+				<graceTime unit="hour" multiplier="6"/>
+				<mainPanel>time series dialog</mainPanel>
+				<toolWindow>plot overview</toolWindow>
+				<localRun>false</localRun>
+				<showRunApprovedForecastButton>true</showRunApprovedForecastButton>
+			</node>
+			<visibleModifierGroup>None</visibleModifierGroup>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
+		</nodes>
 		<nodes id="FloodOps" name="Flood Operations">
 			<workflowId>Export_ToFloodsheets</workflowId>
 			<node id="Export_ToFloodsheets_hume" name="Export to Hume Floodsheet">
@@ -1114,7 +1225,7 @@
 		<node id="WIS" name="Water In Storages">
 			<workflowId>Export_Ratings</workflowId>
 			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
-		</node>	
+		</node>
 		<viewPermission>RiverOperations</viewPermission>
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>
