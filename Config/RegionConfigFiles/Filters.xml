@@ -100,4 +100,15 @@
 		<child foreignKey="Everything"/>
 		<child foreignKey="PreProcessThresholds"/>
 	</filter>
+	<filter id="Debug_EVAP_loss" name="Debug_EVAP_loss">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="LevelToArea"/>
+		<child foreignKey="EvapNetMlake"/>
+		<child foreignKey="EvapLossMlake"/>
+		<child foreignKey="EvapCalcPan"/>
+		<child foreignKey="EvapNetPan"/>
+		<child foreignKey="EvapLossPan"/>
+		<child foreignKey="EvapLossMonthly"/>
+		<child foreignKey="EvapLossReport"/>
+	</filter>
 </filters>

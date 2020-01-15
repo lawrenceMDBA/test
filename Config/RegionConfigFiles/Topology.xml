@@ -331,6 +331,10 @@
 			<workflowId>Prepare_WeeklyReport</workflowId>
 			<localRun>true</localRun>
 		</node>
+		<node id="Prepare_MonthlyReport" name="Generate monthly Data for Weekly Report">
+			<workflowId>Prepare_MonthlyReport</workflowId>
+			<localRun>true</localRun>
+		</node>
 		<nodes id="Report_review" name="Review">
 			<node id="Review_allstorages" name="All Major Storages">
 				<displayGroupId>wr_allstorages</displayGroupId>
@@ -368,6 +372,10 @@
 		</nodes>
 		<node id="Export_WeeklyReport" name="Export Weekly Report">
 			<workflowId>Export_WeeklyReport</workflowId>
+			<localRun>false</localRun>
+		</node>
+		<node id="Export_MonthlyReport" name="Export monthly input for Weekly Report">
+			<workflowId>Export_MonthlyReport</workflowId>
 			<localRun>false</localRun>
 		</node>
 		<node id="Export_FlowLevelReport" name="Export River flow and level report">
@@ -1217,7 +1225,7 @@
 		<node id="WIS" name="Water In Storages">
 			<workflowId>Export_Ratings</workflowId>
 			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
-		</node>	
+		</node>
 		<viewPermission>RiverOperations</viewPermission>
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>

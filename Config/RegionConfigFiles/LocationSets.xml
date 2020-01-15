@@ -1628,7 +1628,7 @@
 					<text>%SAMPLE_PARAMS%</text>
 				</attribute>
 			</attributeFile>
-						<attributeFile>
+			<attributeFile>
 				<csvFile>ROWS_Locations_sdf</csvFile>
 				<id>%ROWS_SITE_ID%</id>
 				<attribute id="SDF_SITE_ID">
@@ -1637,12 +1637,58 @@
 				</attribute>
 			</attributeFile>
 			<attributeFile>
+				<csvFile>ROWS_Locations_evaploss</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="MET_MLAKE">
+					<relatedLocationId>%MET_MLAKE%</relatedLocationId>
+				</relation>
+				<relation id="MET_PAN">
+					<relatedLocationId>%MET_PAN%</relatedLocationId>
+				</relation>
+				<relation id="STORAGE">
+					<relatedLocationId>%STORAGE%</relatedLocationId>
+				</relation>
+				<relation id="OUTLET">
+					<relatedLocationId>%OUTLET%</relatedLocationId>
+				</relation>
+				<relation id="LAKE_GROUP">
+					<relatedLocationId>%LAKE_GROUP%</relatedLocationId>
+				</relation>
+				<attribute id="SURFACE_AREA">
+					<description>Boolean: Y/N</description>
+					<text>%SURFACE_AREA%</text>
+				</attribute>
+				<attribute id="MET_MLAKE">
+					<text>%MET_MLAKE%</text>
+				</attribute>
+				<attribute id="MET_PAN">
+					<text>%MET_PAN%</text>
+				</attribute>
+				<attribute id="MLAKE_MET">
+					<description>Boolean: Y/N</description>
+					<text>%MLAKE_MET%</text>
+				</attribute>
+				<attribute id="PAN_MET">
+					<description>Boolean: Y/N</description>
+					<text>%PAN_MET%</text>
+				</attribute>
+				<attribute id="PAN_FACTOR">
+					<number>%PAN_FACTOR%</number>
+				</attribute>
+				<attribute id="REPORT_NAME">
+					<text>%REPORT_NAME%</text>
+				</attribute>
+				<attribute id="REPORT_SEQ">
+					<number>%REPORT_SEQ%</number>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
 				<csvFile>ROWS_rtctools_parameters</csvFile>
 				<id>%ROWS_SITE_ID%</id>
 				<attribute id="reservoir_name" name="Reservoir Name">
 					<text>%reservoir_name%</text>
 				</attribute>
-				<attribute id="downstream_location" name="Downstream Target Location">	
+				<attribute id="downstream_location" name="Downstream Target Location">
 					<text>%downstream_location%</text>
 				</attribute>
 				<attribute id="use_surcharge_max" name="Use Surcharge Target Waterlevel">
@@ -2371,6 +2417,30 @@
 			<attributeTextEquals equals="Y" id="P_OBS"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="sites_EVAP_loss">
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="MET_MLAKE"/>
+				<attributeExists id="MET_PAN"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EVAP_pan">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="PAN_MET"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EVAP_Mlake">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="MLAKE_MET"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="sites_H_obs">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -2444,6 +2514,13 @@
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_surfacearea">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="SURFACE_AREA" contains="Y"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="sites_Q_observed">
