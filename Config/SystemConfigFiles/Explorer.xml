@@ -190,7 +190,15 @@
 					<int key="tileSize" value="256"/>
 				</properties>
 			</layer>
-		</layerGroup>
+			<wmsLayer id="Bushfire"><!--https://hotspots.dea.ga.gov.au/-->
+            <url>https://sentinel.ga.gov.au/geoserver/public/wms?</url>
+            <wmsLayerName>public:hotspot_current</wmsLayerName>
+            <imageFormat>png</imageFormat>
+            <transparent>true</transparent>
+            <visible>false</visible>
+            <cacheDir>$mapLayersCacheDir$</cacheDir>
+</wmsLayer>
+				</layerGroup>
 		<layerGroup id="Upper Murray Catchment">
 			<esriShapeLayer id="GridPrecipitationUpperM">
 				<description>GridPrecipitationUpperM</description>
