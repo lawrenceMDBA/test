@@ -20,7 +20,12 @@
 		<multipleNodesDirectory nodeIdPrefix="WaterCoach">$DOCUMENTS_WATERCOACH_FOLDER$</multipleNodesDirectory>
 	</forecasterHelperDirectories>
 	<enableAutoRun>false</enableAutoRun>
-	<nodes id="GeneralDocumentation" name="Documentation (general)">
+		<nodes name="Daily Data Entry" id="Daily_OPO_test">
+			<groupId>StateAllocations_OPO</groupId>
+			<mainPanel>time series dialog</mainPanel>
+			<toolWindow>plot overview</toolWindow>
+		</nodes>
+			<nodes id="GeneralDocumentation" name="Documentation (general)">
 		<node id="ROWSgui" name="ROWS user interface">
 			<toolWindow>document selection panel</toolWindow>
 		</node>
@@ -92,6 +97,7 @@
 			<groupId>Goolwa_OPO</groupId>
 			<groupId>SouthOz_OPO</groupId>
 			<groupId>SADiversions_OPO</groupId>
+			<groupId>StateAllocations_OPO</groupId>
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>

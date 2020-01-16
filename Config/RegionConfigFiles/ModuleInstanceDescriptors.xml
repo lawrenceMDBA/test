@@ -4,6 +4,7 @@
 	<moduleInstanceDescriptor id="PeakHeights_Correlation">
 		<description>Dummy for correlation results</description>
 	</moduleInstanceDescriptor>
+	<!--Export-->
 	<moduleInstanceDescriptor id="ExportRatings_export">
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
@@ -38,6 +39,7 @@
 	<moduleInstanceDescriptor id="ExecuteHydstraTSM_Fcst">
 		<description>Runs HydstraTSM model</description>
 	</moduleInstanceDescriptor>
+	<!--Import-->
 	<moduleInstanceDescriptor id="ImportClimatology">
 		<description>Import PET profiles</description>
 	</moduleInstanceDescriptor>
@@ -153,6 +155,7 @@
 	<moduleInstanceDescriptor id="ImportFromHydstraTSM_Fcst">
 		<description>Import HydstraTSM output</description>
 	</moduleInstanceDescriptor>
+	<!--Process-->
 	<moduleInstanceDescriptor id="PostprocessHydstraTSM_Fcst">
 		<description>Postprocessing to HydstraTSM Forecast, creates daily series</description>
 	</moduleInstanceDescriptor>
@@ -293,6 +296,9 @@
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessQDIVopo">
 		<description>Snap observed QDIV to daily, merge and create OPO series</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessStateAllocations">
+		<description>Copy through previous state allocations if no new data entry available</description>
 	</moduleInstanceDescriptor>
 	<!-- Id below not used anymore -->
 	<moduleInstanceDescriptor id="ProcessQRLopo">

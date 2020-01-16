@@ -81,7 +81,7 @@ locationsSets: wr.sites_barrages-->
 			<includeTime0>false</includeTime0>
 			<leftAxis>
 				<min>0</min>
-<!--				<max>100000</max>-->
+				<!--				<max>100000</max>-->
 				<format>##0</format>
 			</leftAxis>
 			<includeLegend>true</includeLegend>
@@ -91,11 +91,11 @@ locationsSets: wr.sites_barrages-->
 			</season>
 			<titleFontSize>12</titleFontSize>
 		</chartFormat>
-	<chartFormat id="chartFormat2">
+		<chartFormat id="chartFormat2">
 			<includeTime0>false</includeTime0>
 			<leftAxis>
 				<min>0</min>
-<!--				<max>100000</max>-->
+				<!--				<max>100000</max>-->
 				<caption>GL</caption>
 				<format>##0</format>
 			</leftAxis>
@@ -105,7 +105,13 @@ locationsSets: wr.sites_barrages-->
 				<endMonthDay>--05-31</endMonthDay>
 			</season>
 			<titleFontSize>12</titleFontSize>
-		</chartFormat>	
+		</chartFormat>
+		<dateFormat id="ReadableDate">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>dd MMM yyyy</pattern>
+		</dateFormat>
 		<dateFormat id="dateFormat1">
 			<timeZone>
 				<timeZoneName>CET</timeZoneName>
@@ -130,15 +136,16 @@ locationsSets: wr.sites_barrages-->
 			</timeZone>
 			<pattern>yyyy-MM-dd HH:mm</pattern>
 		</dateFormat>
-		<numberFormat id="numberFormat1">{0,number,###0.00}</numberFormat>
-		<numberFormat id="numberFormat2">{0,number,###0}</numberFormat>
-		<numberFormat id="numberFormat3">{0,number,###0.0}</numberFormat>
+		<numberFormat id="2_decimals">{0,number,###0.00}</numberFormat>
+		<numberFormat id="no_decimals">{0,number,###0}</numberFormat>
+		<numberFormat id="1_decimal">{0,number,###0.0}</numberFormat>
 		<numberFormat id="numberFormatThreshold">{0,number,0.00}</numberFormat>
 		<generatePdf>false</generatePdf>
 		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
 		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
 		<reportsRootSubDir/>
 		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<!--1. Water in storage -->
 		<inputVariable variableId="StorageMDBA_H_weekly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -263,6 +270,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--2. Snowy Mountains scheme-->
 		<inputVariable variableId="Snowy_V_active">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -317,6 +325,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--3. Major Diversions from Murray and Lower Darling (GL) -->
 		<inputVariable variableId="DiversionsNSW_QDIV_thisweek">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -373,6 +382,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--4. Flow to South Australia-->
 		<inputVariable variableId="FlowToSA_Q_thisweek">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -428,6 +438,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--5. Salinity (EC) -->
 		<inputVariable variableId="Salinity_EC_weekly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -468,6 +479,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--6. River levels and flows-->
 		<inputVariable variableId="Murray_H_weekly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -663,6 +675,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--7. Weirs and locks-->
 		<inputVariable variableId="WeirsLocks_H_delta_weekly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -690,6 +703,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--8. Lower lakes (SA) -->
 		<inputVariable variableId="LowerLakes_H_average_5d">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -705,6 +719,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--9. Barrages-->
 		<inputVariable variableId="Barrages_H_ahd_weekly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -756,83 +771,306 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		
-	<inputVariable variableId="MurraySystemInflow_5daymovavg">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>mov_avg</qualifierId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-5" end="0"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</inputVariable>
-	<inputVariable variableId="MurraySystemInflow_5daymovavg_delayed">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>mov_avg</qualifierId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-5" end="0"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-			<delay unit="day" multiplier="365"/>
-		</timeSeriesSet>
-	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_monthly">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_monthly_delayed">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-			<delay unit="day" multiplier="365"/>
-		</timeSeriesSet>
-	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_10year_monthly_avg">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>10yr_avg</qualifierId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</inputVariable>
-	<inputVariable variableId="MurraySystemInflow_monthly_long_term_avg">
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>lta</qualifierId>
-			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<cycle unit="year"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</inputVariable>
-
+		<inputVariable variableId="MurraySystemInflow_5daymovavg">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="day" start="-5" end="0"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="MurraySystemInflow_5daymovavg_delayed">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="day" start="-5" end="0"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<delay unit="day" multiplier="365"/>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="MurraySystemInflow_monthly">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="month"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="MurraySystemInflow_monthly_delayed">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="month"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<delay unit="day" multiplier="365"/>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="MurraySystemInflow_10year_monthly_avg">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<qualifierId>10yr_avg</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="month"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="MurraySystemInflow_monthly_long_term_avg">
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_calc</parameterId>
+				<qualifierId>lta</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep unit="month"/>
+				<cycle unit="year"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<!--10. State Allocations-->
+		<inputVariable variableId="StateAllocations_NSW_HS">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationSetId>de.sites_Allocations.NSW</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_GS">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>GS</qualifierId>
+				<locationSetId>de.sites_Allocations.NSW</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_HR">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>HR</qualifierId>
+				<locationSetId>de.sites_Allocations.VIC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_LR">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>LR</qualifierId>
+				<locationSetId>de.sites_Allocations.VIC</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_SA_HS">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>SA</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationSetId>de.sites_Allocations.SA</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_HS_MurrayValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationId>R_401000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_GS_MurrayValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>GS</qualifierId>
+				<locationId>R_401000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_HS_MurrumbidgeeValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationId>R_410000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_GS_MurrumbidgeeValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>GS</qualifierId>
+				<locationId>R_410000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_HS_LowerDarling">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationId>R_LOWERDAR</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_NSW_GS_LowerDarling">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>NSW</qualifierId>
+				<qualifierId>GS</qualifierId>
+				<locationId>R_LOWERDAR</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_HR_MurrayValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>HR</qualifierId>
+				<locationId>R_401000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_LR_MurrayValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>LR</qualifierId>
+				<locationId>R_401000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_HR_GoulburnValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>HR</qualifierId>
+				<locationId>R_405000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_VIC_LR_GoulburnValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>VIC</qualifierId>
+				<qualifierId>LR</qualifierId>
+				<locationId>R_405000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="StateAllocations_SA_HS_MurrayValley">
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Allocations</parameterId>
+				<qualifierId>SA</qualifierId>
+				<qualifierId>HS</qualifierId>
+				<locationId>R_401000</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="-1" end="0" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
 	</declarations>
 	<report scrubFolder="false">
 		<chart formatId="chartFormat1" height="600" id="MurraySystemInflows" width="900">
@@ -861,49 +1099,49 @@ locationsSets: wr.sites_barrages-->
 				<header>Full supply level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSL ;; numberFormat1)</function>
+				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Full supply volume (ML)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSV ;; numberFormat2)</function>
+				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageMDBA_H_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;StorageMDBA_H_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (%)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_percent ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_percent ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Dead storage (ML)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(DEAD_STORAGE ;; numberFormat2)</function>
+				<function>LOCATIONATTRIBUTE(DEAD_STORAGE ;; no_decimals)</function>
 			</column>
 			<column>
 				<header>Active storage (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_active ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_active ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Change in total storage for the week (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_delta ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Storages_State" tableStyle="tableStyle3">
@@ -917,49 +1155,49 @@ locationsSets: wr.sites_barrages-->
 				<header>Full supply level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSL ;; numberFormat1)</function>
+				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Full supply volume (ML)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSV ;; numberFormat2)</function>
+				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageState_H_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;StorageState_H_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageState_V_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageState_V_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (%)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageState_V_percent ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageState_V_percent ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Dead storage (ML)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(DEAD_STORAGE ;; numberFormat2)</function>
+				<function>LOCATIONATTRIBUTE(DEAD_STORAGE ;; no_decimals)</function>
 			</column>
 			<column>
 				<header>Active storage (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageState_V_active ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageState_V_active ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Change in total storage for the week (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;StorageState_V_delta ; numberFormat2)</function>
+				<function>INDEXVALUE(0;StorageState_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Snowy_storage" tableStyle="tableStyle3">
@@ -973,13 +1211,13 @@ locationsSets: wr.sites_barrages-->
 				<header>Active storage (GL)</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(-1;Snowy_V_active ; numberFormat2)</function>
+				<function>INDEXVALUE(-1;Snowy_V_active ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Weekly change (GL)</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(-1;Snowy_V_delta ; numberFormat2)</function>
+				<function>INDEXVALUE(-1;Snowy_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Snowy_diversion" tableStyle="tableStyle3">
@@ -993,13 +1231,13 @@ locationsSets: wr.sites_barrages-->
 				<header>This week</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Snowy_QDIV_thisweek ; numberFormat2)</function>
+				<function>INDEXVALUE(-1;Snowy_QDIV_thisweek ; no_decimals)</function>
 			</column>
 			<column>
 				<header>From May 1</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Snowy_QDIV_fromMay1_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(-1;Snowy_QDIV_fromMay1_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Diversions_NSW" tableStyle="tableStyle3">
@@ -1013,13 +1251,13 @@ locationsSets: wr.sites_barrages-->
 				<header>This week</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsNSW_QDIV_thisweek ; numberFormat3)</function>
+				<function>INDEXVALUE(0;DiversionsNSW_QDIV_thisweek ; 1_decimal)</function>
 			</column>
 			<column>
 				<header>From July 1</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsNSW_QDIV_fromJuly1_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0;DiversionsNSW_QDIV_fromJuly1_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Diversions_Vic" tableStyle="tableStyle3">
@@ -1033,13 +1271,13 @@ locationsSets: wr.sites_barrages-->
 				<header>This week</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsVic_QDIV_thisweek ; numberFormat3)</function>
+				<function>INDEXVALUE(0;DiversionsVic_QDIV_thisweek ; 1_decimal)</function>
 			</column>
 			<column>
 				<header>From July 1</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsVic_QDIV_fromJuly1_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0;DiversionsVic_QDIV_fromJuly1_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="FlowtoSA" tableStyle="tableStyle3">
@@ -1053,25 +1291,25 @@ locationsSets: wr.sites_barrages-->
 				<header>Flow this week (GL/week)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; numberFormat3)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Average daily flow this week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_average_thisweek ; numberFormat3)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_average_thisweek ; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow so far this month (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;numberFormat3)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow last month (GL)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly ; numberFormat3)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly ; 1_decimal)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Salinity" tableStyle="tableStyle3">
@@ -1085,19 +1323,19 @@ locationsSets: wr.sites_barrages-->
 				<header>Current</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Salinity_EC_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Salinity_EC_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Average over the last week</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Salinity_EC_average_thisweek ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Salinity_EC_average_thisweek ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Average since August 1 </header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Salinity_EC_average_fromAugust1_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Salinity_EC_average_fromAugust1_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Rivers_Murray" tableStyle="tableStyle3">
@@ -1111,43 +1349,43 @@ locationsSets: wr.sites_barrages-->
 				<header>Minor Flood Stage (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE( FL_MINOR;; numberFormat3)</function>
+				<function>LOCATIONATTRIBUTE( FL_MINOR;; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Gauge height local (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Murray_H_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; Murray_H_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Gauge height AHD (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Murray_H_ahd_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; Murray_H_ahd_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Flow (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Murray_Q_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Murray_Q_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Trend</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Murray_H_trend_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Murray_H_trend_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow this week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Murray_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Murray_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow last week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Murray_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(-1;Murray_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Rivers_Tributaries" tableStyle="tableStyle3">
@@ -1161,43 +1399,43 @@ locationsSets: wr.sites_barrages-->
 				<header>Minor Flood Stage (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE( FL_MINOR;; numberFormat3)</function>
+				<function>LOCATIONATTRIBUTE( FL_MINOR;; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Gauge height local (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Tributaries_H_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; Tributaries_H_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Gauge height AHD (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Tributaries_H_ahd_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; Tributaries_H_ahd_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Flow (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Tributaries_Q_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Tributaries_Q_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Trend</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Tributaries_H_trend_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Tributaries_H_trend_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow this week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;Tributaries_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(0;Tributaries_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow last week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Tributaries_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(-1;Tributaries_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Rivers_NatInflowHume" tableStyle="tableStyle3">
@@ -1211,43 +1449,43 @@ locationsSets: wr.sites_barrages-->
 				<header>Minor Flood Stage (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE( FL_MINOR;; numberFormat3)</function>
+				<function>LOCATIONATTRIBUTE( FL_MINOR;; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Gauge height local (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; NatInflowHume_H_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; NatInflowHume_H_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Gauge height AHD (m)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; NatInflowHume_H_ahd_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; NatInflowHume_H_ahd_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Flow (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;NatInflowHume_Q_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;NatInflowHume_Q_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Trend</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;NatInflowHume_H_trend_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;NatInflowHume_H_trend_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow this week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;NatInflowHume_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(0;NatInflowHume_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Average flow last week (GL/day)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;NatInflowHume_Q_average_thisweek ; numberFormat1)</function>
+				<function>INDEXVALUE(-1;NatInflowHume_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="WeirsLocks" tableStyle="tableStyle3">
@@ -1261,19 +1499,19 @@ locationsSets: wr.sites_barrages-->
 				<header>Full supply level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSL ;; numberFormat1)</function>
+				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
 			</column>
 			<column>
 				<header>u/s</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;WeirsLocks_H_delta_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;WeirsLocks_H_delta_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>d/s</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;WeirsLocks_H_ds_delta_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0;WeirsLocks_H_ds_delta_weekly ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="LowerLakes" tableStyle="tableStyle3">
@@ -1281,7 +1519,7 @@ locationsSets: wr.sites_barrages-->
 				<header>Lake Alexandria average level for the past 5 days (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0;LowerLakes_H_average_5d ; numberFormat1)</function>
+				<function>INDEXVALUE(0;LowerLakes_H_average_5d ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Barrages" tableStyle="tableStyle3">
@@ -1301,25 +1539,79 @@ locationsSets: wr.sites_barrages-->
 				<header>Level (m AHD)</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_H_ahd_weekly ; numberFormat1)</function>
+				<function>INDEXVALUE(0; Barrages_H_ahd_weekly ; 2_decimals)</function>
 			</column>
 			<column>
 				<header>No. open</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Barrages_GatesOpen_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Rock ramp</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_vs_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Barrages_GatesOpen_vs_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Vertical slot</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_rr_weekly ; numberFormat2)</function>
+				<function>INDEXVALUE(0; Barrages_GatesOpen_rr_weekly ; no_decimals)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<rowPerLocationHtmlTable id="StateAllocations_NSW" tableStyle="tableStyle3">
+			<column>
+				<header>Location</header>
+				<format>_data</format>
+				<width>250</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_NSW_HS)</function>
+			</column>
+			<column>
+				<header>High Security</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0; StateAllocations_NSW_HS; no_decimals)</function>
+			</column>
+			<column>
+				<header>General Security</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0; StateAllocations_NSW_GS; no_decimals)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<rowPerLocationHtmlTable id="StateAllocations_VIC" tableStyle="tableStyle3">
+			<column>
+				<header>Location</header>
+				<format>_data</format>
+				<width>250</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_VIC_HR)</function>
+			</column>
+			<column>
+				<header>High Reliability</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0; StateAllocations_VIC_HR; no_decimals)</function>
+			</column>
+			<column>
+				<header>Low Reliability</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0; StateAllocations_VIC_LR; no_decimals)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<rowPerLocationHtmlTable id="StateAllocations_SA" tableStyle="tableStyle3">
+			<column>
+				<header>Location</header>
+				<format>_data</format>
+				<width>250</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_SA_HS)</function>
+			</column>
+			<column>
+				<header>High Security</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0; StateAllocations_SA_HS; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<template>weeklyreport_template.html</template>
