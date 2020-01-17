@@ -68,6 +68,13 @@
 		<runExpiryTime unit="day" multiplier="3"/>
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
+	<!-- GSMaP -->
+	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP" name="Import and process GSMaP data" visible="true" autoApprove="true">
+		<description>Import and process GSMaP data from ftp</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="3"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Hydstra_Fcst" name="Import Hydstra Forecasts" visible="true">
 		<description>Import forecast from Hydstra</description>
 		<cardinalTimeStep unit="hour"/>

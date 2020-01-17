@@ -2047,21 +2047,23 @@
 			</gridPlot>
 		</gridPlotGroup>
 	</gridPlotGroup>
-	<gridPlotGroup id="NWP" name="NWP Climate Forecasts">
-		<viewPermission>GuestUsers</viewPermission>
-		<gridPlotGroup id="NWP_P" name="Precipitation">
-				<!-- Not sure if this is correct -->
- 			<gridPlot id="NWP.P_fcst_ewSource" name="NWP (ewSource)">
+	<gridPlotGroup id="SatObs" name="Satellite Observation">
+		<viewPermission>RiverOperations</viewPermission>
+		<gridPlotGroup id="GSMaP" name="JAXA Global Rainfall Watch (GSMaP)">
+			<gridPlot id="GSMaP_NOW" name="Realtime Nowcast">
 				<timeSeriesSet>
-					<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
-					<valueType>scalar</valueType>
-					<parameterId>P_comb</parameterId>
-					<locationSetId>ewsource_subareas.ovens</locationSetId>
-					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour"/>
-					<relativeViewPeriod end="7" start="-7" unit="day"/>
-					<readWriteMode>read complete forecast</readWriteMode>
+					<description>Import GSMaP Satellite Observations</description>
+					<moduleInstanceId>ImportGSMaP</moduleInstanceId>
+					<valueType>grid</valueType>
+					<parameterId>P_obs</parameterId>
+					<locationId>GSMaP_Pricip</locationId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep multiplier="1" unit="hour"/>
+					<relativeViewPeriod start="-5" end="0" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
 				</timeSeriesSet>
+				<numberOfRecentForecasts>3</numberOfRecentForecasts>
+				<gapBetweenThumbnails>2</gapBetweenThumbnails>
 				<movieFrameDurationMillis>500</movieFrameDurationMillis>
 				<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
 				<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
@@ -2075,7 +2077,98 @@
 				<movingAccumulationTimeSpan multiplier="7" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
+			<gridPlot id="GSMaP_NRT_Hourly" name="Gauge Corrected 1hr Rainfall">
+				<timeSeriesSet>
+					<description>Import GSMaP Satellite Observations</description>
+					<moduleInstanceId>ImportGSMaP</moduleInstanceId>
+					<valueType>grid</valueType>
+					<parameterId>P_obs</parameterId>
+					<locationId>GSMaP_Pricip</locationId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep multiplier="1" unit="hour"/>
+					<relativeViewPeriod start="-5" end="0" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<numberOfRecentForecasts>3</numberOfRecentForecasts>
+				<gapBetweenThumbnails>2</gapBetweenThumbnails>
+				<movieFrameDurationMillis>500</movieFrameDurationMillis>
+				<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
+				<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
+				<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
+				<movingAccumulationTimeSpan multiplier="24" unit="hour"/>
+				<movingAccumulationTimeSpan multiplier="2" unit="day"/>
+				<movingAccumulationTimeSpan multiplier="3" unit="day"/>
+				<movingAccumulationTimeSpan multiplier="4" unit="day"/>
+				<movingAccumulationTimeSpan multiplier="5" unit="day"/>
+				<classBreaksId>Rainfall</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
+			</gridPlot>
+		</gridPlotGroup>
+		<gridPlotGroup id="GSMaP" name="JAXA Drought Indicator (SPI)">
+			<gridPlot id="GSMaP_SPI_Monthly" name="GSMaP Monthly">
+				<timeSeriesSet>
+					<description>Import GSMaP Satellite Observations</description>
+					<moduleInstanceId>ImportGSMaP</moduleInstanceId>
+					<valueType>grid</valueType>
+					<parameterId>SPI_calc</parameterId>
+					<qualifierId>monthly</qualifierId>
+			        <locationId>GSMaP_SPI</locationId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep multiplier="1" unit="month"/>
+					<relativeViewPeriod start="-360" end="0" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<numberOfRecentForecasts>3</numberOfRecentForecasts>
+				<gapBetweenThumbnails>2</gapBetweenThumbnails>
+				<movieFrameDurationMillis>2000</movieFrameDurationMillis>
+				<classBreaksId>GSMaP_SPI</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
+			</gridPlot>
+			<gridPlot id="GSMaP_SPI_2_Monthly" name="GSMaP 2-Monthly">
+				<timeSeriesSet>
+					<description>Import GSMaP Satellite Observations</description>
+					<moduleInstanceId>ImportGSMaP</moduleInstanceId>
+					<valueType>grid</valueType>
+					<parameterId>SPI_calc</parameterId>
+					<qualifierId>2monthly</qualifierId>
+			        <locationId>GSMaP_SPI</locationId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep multiplier="1" unit="month"/>
+					<relativeViewPeriod start="-360" end="0" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<numberOfRecentForecasts>3</numberOfRecentForecasts>
+				<gapBetweenThumbnails>2</gapBetweenThumbnails>
+				<movieFrameDurationMillis>2000</movieFrameDurationMillis>
+				<classBreaksId>GSMaP_SPI</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
+			</gridPlot>
+			<gridPlot id="GSMaP_SPI_3_Monthly" name="GSMaP 3-Monthly">
+				<timeSeriesSet>
+					<description>Import GSMaP Satellite Observations</description>
+					<moduleInstanceId>ImportGSMaP</moduleInstanceId>
+					<valueType>grid</valueType>
+					<parameterId>SPI_calc</parameterId>
+					<qualifierId>3monthly</qualifierId>
+			        <locationId>GSMaP_SPI</locationId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep multiplier="1" unit="month"/>
+					<relativeViewPeriod start="-360" end="0" unit="day"/>
+					<readWriteMode>read only</readWriteMode>
+				</timeSeriesSet>
+				<numberOfRecentForecasts>3</numberOfRecentForecasts>
+				<gapBetweenThumbnails>2</gapBetweenThumbnails>
+				<movieFrameDurationMillis>2000</movieFrameDurationMillis>
+				<classBreaksId>GSMaP_SPI</classBreaksId>
+				<!-- <contourLinesColor>gray</contourLinesColor> -->
+			</gridPlot>
+		</gridPlotGroup>
+	</gridPlotGroup>		
+	<gridPlotGroup id="NWP" name="NWP Grided Forecasts">
+		<viewPermission>RiverOperations</viewPermission>
+		<gridPlotGroup id="NWP_P" name="Precipitation">
 			<gridPlot id="ACCESSG.P_fcst" name="ACCESS-G (Accumulated Rainfall)">
 				<timeSeriesSet>
 					<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
