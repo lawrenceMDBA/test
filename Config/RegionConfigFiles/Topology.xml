@@ -1111,25 +1111,20 @@
  			<workflowId>Export_Ratings</workflowId>
  			<localRun>true</localRun>
  		</node>
--		<node id="WIS" name="Water In Storages">
--			<workflowId>Export_Ratings</workflowId>
-+		<viewPermission>RiverOperations</viewPermission>
-+		<visibleModifierGroup>ROWS</visibleModifierGroup>
-+	</nodes>
-+	<nodes id="OpsDashboard" name="Operations Dashboard">
-+		<node id="WIS_Dash" name="Water In Storages">
+		<viewPermission>RiverOperations</viewPermission>
+		<visibleModifierGroup>ROWS</visibleModifierGroup>
+	</nodes>
+	<nodes id="OpsDashboard" name="Operations Dashboard">
+		<node id="WIS_Dash" name="Water In Storages">
  			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
-+		</node>
-+		<node id="PBI_Dash" name="PBI_Dashboard">
-+			<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
- 		</node>	
+		</node>
  		<visibleModifierGroup>ROWS</visibleModifierGroup>
  	</nodes>
-	<nodes id="Development" name="Development">
-+		<node id="PBI_Dash" name="PBI_Dashboard">
-+			<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
+	<nodes id="Development" name="Development Dashboard">
+		<node id="PBI_Dash" name="PBI_Dashboard">
+			<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
  		</node>	
  		<visibleModifierGroup>ROWS</visibleModifierGroup>
-+		<viewPermission>Administrators</viewPermission>
+		<viewPermission>Administrators</viewPermission>
  	</nodes>
 </topology>
