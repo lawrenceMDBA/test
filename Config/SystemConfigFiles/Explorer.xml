@@ -487,6 +487,16 @@
 			<toolWindow>true</toolWindow>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
+		<!--
+		<explorerTask name="Dashboards">
+			<iconFile>tree.png</iconFile>
+			<predefinedDisplay>topology tree</predefinedDisplay>
+			<toolbarTask>false</toolbarTask>
+			<menubarTask>false</menubarTask>
+			<toolWindow>true</toolWindow>
+			<loadAtStartup>true</loadAtStartup>
+		</explorerTask>
+		-->
 		<explorerTask name="Run Info">
 			<taskClass>nl.wldelft.fews.gui.plugin.runinfo.RunInfoPanel</taskClass>
 			<toolbarTask>false</toolbarTask>
@@ -548,6 +558,14 @@
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
+<explorerTask name="Ensemble exceedence analysis">
+  <iconFile>exceedence.png</iconFile>
+  <arguments>statisticalFunction ensemblePercentileExceedence</arguments>
+  <taskClass>nl.wldelft.fews.gui.plugin.timeseries.TimeSeriesDialog</taskClass>
+  <toolbarTask>true</toolbarTask>
+  <menubarTask>true</menubarTask>
+</explorerTask>
+
 		<explorerTask name="River Murray System">
 			<arguments>RMSystemStatus</arguments>
 			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
