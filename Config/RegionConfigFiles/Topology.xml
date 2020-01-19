@@ -1116,15 +1116,21 @@
 	</nodes>
 	<nodes id="OpsDashboard" name="Operations Dashboard">
 		<node id="WIS_Dash" name="Water In Storages">
- 			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
+			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
 		</node>
  		<visibleModifierGroup>ROWS</visibleModifierGroup>
  	</nodes>
 	<nodes id="Development" name="Development Dashboard">
 		<node id="PBI_Dash" name="PBI_Dashboard">
 			<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
+ 		</node>
+		<node id="ShinyApp_io_Dash" name="ShinyApps.io Flights Dashboard">
+			<url>https://mdba.shinyapps.io/TestShinyApp/</url>
+ 		</node>
+		<node id="ShinyApp_Dash" name="Local Flights Dashboard">
+			<mainPanel>web browser display</mainPanel>
+			<url>http://rowststmc100:8888</url>
  		</node>	
- 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 		<viewPermission>Administrators</viewPermission>
  	</nodes>
 </topology>
