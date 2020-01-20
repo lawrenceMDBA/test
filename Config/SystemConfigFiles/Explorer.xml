@@ -374,6 +374,7 @@
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl M</accelerator>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Manual Workflow">
@@ -383,6 +384,7 @@
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl W</accelerator>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Forecast Management">
@@ -391,6 +393,7 @@
 			<predefinedDisplay>forecast management</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="System Monitor">
@@ -399,6 +402,7 @@
 			<taskClass>nl.wldelft.fews.gui.plugin.systemmonitor.SystemMonitorDialog</taskClass>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>false</menubarTask>
+			<permission>RiverOperations</permission>
 		</explorerTask>
 		<explorerTask name="Archive Catalogue">
 			<mnemonic>A</mnemonic>
@@ -406,6 +410,7 @@
 			<toolbarTask>false</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl A</accelerator>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Topology">
@@ -415,6 +420,7 @@
 			<toolbarTask>false</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl I</accelerator>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="What-if">
@@ -443,6 +449,7 @@
 			<predefinedDisplay>workflow navigator</predefinedDisplay>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
+			<permission>RiverOperations</permission>
 			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Separator">
@@ -535,7 +542,7 @@
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
 			<accelerator>ctrl T</accelerator>
-			<!-- <toolWindow>false</toolWindow> -->
+			<permission>RiverOperations</permission>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
 		<explorerTask name="Interval Statistics">
@@ -548,6 +555,13 @@
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
+                <explorerTask name="Ensemble exceedence analysis">
+                       <iconFile>exceedence.png</iconFile>
+                       <arguments>statisticalFunction ensemblePercentileExceedence</arguments>
+                       <taskClass>nl.wldelft.fews.gui.plugin.timeseries.TimeSeriesDialog</taskClass>
+                       <toolbarTask>true</toolbarTask>
+                       <menubarTask>true</menubarTask>
+                </explorerTask>
 		<explorerTask name="River Murray System">
 			<arguments>RMSystemStatus</arguments>
 			<taskClass>nl.wldelft.fews.gui.plugin.scada.ScadaDisplay</taskClass>
