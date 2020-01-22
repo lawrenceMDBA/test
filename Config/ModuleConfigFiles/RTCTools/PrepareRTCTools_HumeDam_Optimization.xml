@@ -159,20 +159,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Qtributary_shift_t6_Kiewa</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>shift_t6</qualifierId>
-			<locationId>R_402222A</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>Qtributary_temp_Kiewa</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
@@ -199,48 +185,7 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Qrelease_shift_t3_Hume</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_release</parameterId>
-			<qualifierId>shift_t3</qualifierId>
-			<locationId>R_401027</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>Qrelease_temp_Hume</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_release</parameterId>
-			<locationId>R_401027</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Qconflu_shift_t5_Hume</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>shift_t5</qualifierId>
-			<locationId>R_401027</locationId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Qconflu_temp_Hume</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -440,20 +385,6 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Qtributary_delay_Kiewa">
-		<timeShift>
-			<constant>
-				<inputVariable>
-					<variableId>Qtributary_interp_Kiewa</variableId>
-				</inputVariable>
-				<direction>forward</direction>
-				<numberOfTimeSteps>6</numberOfTimeSteps>
-				<outputVariable>
-					<variableId>Qtributary_shift_t6_Kiewa</variableId>
-				</outputVariable>
-			</constant>
-		</timeShift>
-	</transformation>
 	<transformation id="Qrelease_merge_Hume">
 		<merge>
 			<simple>
@@ -468,82 +399,6 @@
 				</outputVariable>
 			</simple>
 		</merge>
-	</transformation>
-	<!--<transformation id="Qrelease_interp_Hume">
-		<interpolationSerial>
-			<linear>
-				<inputVariable>
-					<variableId>Qrelease_temp_Hume</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Qrelease_temp_Hume</variableId>
-				</outputVariable>
-			</linear>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="Qrelease_extrap_Hume">
-		<interpolationSerial>
-			<extrapolateConstant>
-				<inputVariable>
-					<variableId>Qrelease_temp_Hume</variableId>
-				</inputVariable>
-				<extrapolateDirection>both</extrapolateDirection>
-				<outputVariable>
-					<variableId>Qrelease_temp_Hume</variableId>
-				</outputVariable>
-			</extrapolateConstant>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="Qrelease_default_Hume">
-		<interpolationSerial>
-			<default>
-				<inputVariable>
-					<variableId>Qrelease_temp_Hume</variableId>
-				</inputVariable>
-				<defaultValue>5000</defaultValue>
-				<outputVariable>
-					<variableId>Qrelease_interp_Hume</variableId>
-				</outputVariable>
-			</default>
-		</interpolationSerial>
-	</transformation>-->
-	<transformation id="Qrelease_delay_Hume">
-		<timeShift>
-			<constant>
-				<inputVariable>
-					<variableId>Qrelease_interp_Hume</variableId>
-				</inputVariable>
-				<direction>forward</direction>
-				<numberOfTimeSteps>3</numberOfTimeSteps>
-				<outputVariable>
-					<variableId>Qrelease_shift_t3_Hume</variableId>
-				</outputVariable>
-			</constant>
-		</timeShift>
-	</transformation>
-	<transformation id="Qconflu_calc_Hume">
-		<user>
-			<simple>
-				<expression>Qrelease_shift_t3_Hume + Qtributary_shift_t6_Kiewa</expression>
-				<outputVariable>
-					<variableId>Qconflu_temp_Hume</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Qconflu_shift_Hume">
-		<timeShift>
-			<constant>
-				<inputVariable>
-					<variableId>Qconflu_temp_Hume</variableId>
-				</inputVariable>
-				<direction>forward</direction>
-				<numberOfTimeSteps>5</numberOfTimeSteps>
-				<outputVariable>
-					<variableId>Qconflu_shift_t5_Hume</variableId>
-				</outputVariable>
-			</constant>
-		</timeShift>
 	</transformation>
 	<transformation id="V_interp_Hume">
 		<interpolationSerial>
