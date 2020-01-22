@@ -44,7 +44,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>OPC_8am_inst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<moduleInstanceId>$RESULT_MOD_INST$</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_obs</parameterId>
 			<qualifierId>opc</qualifierId>
@@ -59,7 +59,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>OPO_8am_inst</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<moduleInstanceId>$RESULT_MOD_INST$</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_obs</parameterId>
 			<qualifierId>opo</qualifierId>
@@ -75,7 +75,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>Cycle_month</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<moduleInstanceId>$RESULT_MOD_INST$</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>index</parameterId>
 			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
@@ -89,7 +89,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 	<variable>
 		<variableId>EVAP_monthly_$SOURCE$</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<moduleInstanceId>$RESULT_MOD_INST$</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>EVAP_fcst</parameterId>
 			<qualifierId>$SOURCE$</qualifierId>
@@ -141,7 +141,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 				</outputVariable>
 			</timeSeries>
 		</profile>
-	</transformation>	
+	</transformation>
 	<transformation id="EVAP_monthly_$SOURCE$">
 		<!-- 
 		Figures in attribute tables are applicable for the month (daily average values) starting from 1st of the month at 00:00 hrs, however, FEWS assumes the monthly 
@@ -183,7 +183,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			</meanToMean>
 		</disaggregation>
 	</transformation>
-	<!--  -->	
+	<!--  -->
 	<transformation id="OPC_neq_to_OPC_8am_inst">
 		<sample>
 			<nonEquidistant>
