@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<!-- to ensure that units are properly returned, the headers of the results (using dummy external historical series) are included in the export to RTC-Tools-->
 	<general>
 		<piVersion>1.8</piVersion>
 		<rootDir>%REGION_HOME%/Modules/RTCTools2/</rootDir>
@@ -26,7 +27,7 @@
 			</purgeActivity>
 			<purgeActivity>
 				<filter>%ROOT_DIR%/debug/*.*</filter>
-			</purgeActivity>			
+			</purgeActivity>
 			<purgeActivity>
 				<filter>%ROOT_DIR%/src/*.*</filter>
 			</purgeActivity>
@@ -99,9 +100,115 @@
 						<relativeViewPeriod start="0" end="0" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_out_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QTURB_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QSPILL_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>QBOTT_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_fcst</parameterId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationId>R_409017</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t3</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t5</qualifierId>
+						<locationId>R_401027</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>upper_murray_HumeDam_RTCTools_Optimization</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>shift_t6</qualifierId>
+						<locationId>R_402222A</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep unit="hour"/>
+						<relativeViewPeriod start="0" end="0" unit="day"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
 				</timeSeriesSets>
 				<checkMissing>true</checkMissing>
 			</exportTimeSeriesActivity>
+			<!--<exportDataSetActivity>
+				<moduleInstanceId>modules_bin_RTCTools</moduleInstanceId>
+			</exportDataSetActivity>-->
 			<exportDataSetActivity>
 				<moduleInstanceId>upper_murray_HumeDam_RTCTools</moduleInstanceId>
 			</exportDataSetActivity>
