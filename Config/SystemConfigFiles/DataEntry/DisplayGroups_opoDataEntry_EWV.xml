@@ -2,18 +2,7 @@
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<plot id="DataEntry_EWV">
 		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessQopo</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
-				<qualifierId>opo</qualifierId>
-				<locationSetId>EWV.sites</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod end="1" start="-6" unit="day"/>
-				<readWriteMode>editing visible to all future task runs</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
+		<timeSeriesSet>
 				<moduleInstanceId>ProcessHopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>H_obs</parameterId>
@@ -24,14 +13,35 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
-		</subplot>
-		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_obs</parameterId>
 				<qualifierId>opo</qualifierId>
-				<qualifierId>ivt</qualifierId>
+				<locationSetId>EWV.sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<!--<timeSeriesSet>
+				<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>H_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>EWV.sites</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>-->
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_ivt</parameterId>
+				<qualifierId>opo</qualifierId>
 				<locationSetId>de.sites_Q.ivt</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
@@ -41,10 +51,10 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
+				<parameterId>Q_env</parameterId>
 				<qualifierId>opo</qualifierId>
-				<qualifierId>env</qualifierId>
-				<locationSetId>de.sites_Q.env</locationSetId>
+				<qualifierId>credit</qualifierId>
+				<locationSetId>de.sites_Q.env.credit</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
@@ -53,10 +63,10 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
+				<parameterId>Q_env</parameterId>
 				<qualifierId>opo</qualifierId>
-				<qualifierId>wenv</qualifierId>
-				<locationSetId>de.sites_Q.wenv</locationSetId>
+				<qualifierId>mur_bypass</qualifierId>
+				<locationSetId>de.sites_Q.env.mur_bypass</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
@@ -65,10 +75,10 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
+				<parameterId>Q_env</parameterId>
 				<qualifierId>opo</qualifierId>
-				<qualifierId>trib</qualifierId>
-				<locationSetId>de.sites_Q.trib</locationSetId>
+				<qualifierId>ent_use</qualifierId>
+				<locationSetId>de.sites_Q.env.ent_use</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
@@ -77,10 +87,34 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
+				<parameterId>Q_env</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>sa_delivery</qualifierId>
+				<locationSetId>de.sites_Q.env.sa_delivery</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_env</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>loss</qualifierId>
+				<locationSetId>de.sites_Q.env.loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_env</parameterId>
 				<qualifierId>opo</qualifierId>
 				<qualifierId>env_use</qualifierId>
-				<locationSetId>de.sites_Q.env_use</locationSetId>
+				<locationSetId>de.sites_Q.env.env_use</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>

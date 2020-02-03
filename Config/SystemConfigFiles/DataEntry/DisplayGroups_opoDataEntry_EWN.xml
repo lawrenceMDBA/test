@@ -2,10 +2,10 @@
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<plot id="DataEntry_EWN">
 		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessQopo</moduleInstanceId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>Q_obs</parameterId>
+				<parameterId>H_obs</parameterId>
 				<qualifierId>opo</qualifierId>
 				<locationSetId>EWN.sites</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
@@ -14,9 +14,9 @@
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
-			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>H_obs</parameterId>
+				<parameterId>Q_obs</parameterId>
 				<qualifierId>opo</qualifierId>
 				<locationSetId>EWN.sites</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
@@ -50,7 +50,7 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
-			<timeSeriesSet>
+			<!--<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_obs</parameterId>
@@ -61,7 +61,7 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
-			</timeSeriesSet>
+			</timeSeriesSet>-->
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -86,7 +86,7 @@
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
-			<timeSeriesSet>
+			<!--<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_obs</parameterId>
@@ -97,7 +97,7 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="1" start="-6" unit="day"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
-			</timeSeriesSet>
+			</timeSeriesSet>-->
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
