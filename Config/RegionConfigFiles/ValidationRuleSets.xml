@@ -1342,9 +1342,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_ivt</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>ivt</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -1462,16 +1461,16 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</validationRuleSet>
-	<validationRuleSet validationRuleSetId="VALIDATION_Q.instream_Missing" timeZone="0">
+	<validationRuleSet validationRuleSetId="VALIDATION_Q.credit_Missing" timeZone="0">
 		<extremeValues>
 			<hardMin constantLimit="-9"/>
 		</extremeValues>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_env</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>instream</qualifierId>
+			<qualifierId>credit</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
