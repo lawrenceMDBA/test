@@ -829,10 +829,10 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_env</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>instream</qualifierId>			
-			<locationSetId>SourceRO_sites_instream_credits</locationSetId>
+			<qualifierId>credit</qualifierId>			
+			<locationSetId>SourceRO_sites_credits</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
@@ -898,7 +898,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW.csv</name>
+				<name>ROWS_2_SOURCE_EWV_GMW_Flow.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -917,6 +917,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (ivt) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_IVT.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -928,6 +943,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (Credit to Murray) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_credit.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -940,6 +970,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (Mur Bypass) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_mur_bypass.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -952,6 +997,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (entitlement use) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_ent_use.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -964,6 +1024,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (Sa delivery) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_sa_deliv.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -976,6 +1051,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (loss) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_loss.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -988,6 +1078,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (environmental use) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_env_use.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1000,18 +1105,21 @@
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>inflow</qualifierId>
-			<locationSetId>SourceRO_EWsites_Q_inflow</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
-		</timeSeriesSet>
+	</export>
+	<export>
+		<general>
+			<description>Export Env Watering data (return) from GMW to Source</description>
+			<exportType>csv</exportType>
+			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
+			<exportFileName>
+				<name>ROWS_2_SOURCE_EWV_GMW_return.csv</name>
+			</exportFileName>
+			<idMapId>IdmapROWS2EWSourceRO</idMapId>
+			<exportMissingValueString></exportMissingValueString>
+			<exportTimeZone>
+				<timeZoneOffset>+02:00</timeZoneOffset>
+			</exportTimeZone>
+		</general>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
