@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd" version="1.1">
-<!-- Export of current rating curves through <exportRatingCurveActivity> of the General Adapter -->
 	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ExportRatings</moduleInstanceId>
+		<moduleInstanceId>PrepareRTCTools_HumeDam_Simulation</moduleInstanceId>
+		<ensemble>
+			<ensembleId>IFD</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
 	</activity>
 	<activity>
 		<runIndependent>true</runIndependent>
-		<moduleInstanceId>ReportRatings</moduleInstanceId>
+		<moduleInstanceId>upper_murray_HumeDam_RTCTools_Simulation</moduleInstanceId>
+		<ensemble>
+			<ensembleId>IFD</ensembleId>
+			<runInLoop>true</runInLoop>
+		</ensemble>
 	</activity>
 </workflow>
