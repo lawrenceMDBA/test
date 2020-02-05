@@ -85,7 +85,7 @@
 		<!--		<viewPermission>RiverOperations</viewPermission>-->
 	</workflowDescriptor>
 	<!-- Import external forcasts-->
-	<workflowDescriptor forecast="true" id="Import_Forecast" name="Import NWPs and STF forecasts" visible="true" autoApprove="true">
+	<workflowDescriptor forecast="false" id="Import_Forecast" name="Import NWPs and STF forecasts" visible="true" autoApprove="false">
 		<description>Import nwp data from various Bureau Forecasts; import STF from BoM</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
@@ -239,7 +239,7 @@
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
-	<workflowDescriptor forecast="false" id="Export_ToEWSourceRO" name="ewSource: Export to ewSource River Operations" visible="true" autoApprove="true">
+	<workflowDescriptor forecast="true" id="Export_ToEWSourceRO" name="ewSource: Export to ewSource River Operations" visible="true" autoApprove="true">
 		<description>Export OPO to ewSource RO</description>
 		<cardinalTimeStep unit="hour"/>
 		<viewPermission>RiverOperations</viewPermission>
@@ -420,6 +420,12 @@
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Prepare_Thresholds" name="Prepare Thresholds" visible="true" allowApprove="true" autoApprove="true">
 		<description>Prepare data for the Thresholds Display</description>
+		<runExpiryTime unit="month" multiplier="18"/>
+		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>WorkflowRunners</runPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="false" id="Review_ThresholdCrossingsReport" name="Review Thresholds for Weekly Report" visible="true" allowApprove="true" autoApprove="true">
+		<description>Prepare data for OPO review of threshold crossings</description>
 		<runExpiryTime unit="month" multiplier="18"/>
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
