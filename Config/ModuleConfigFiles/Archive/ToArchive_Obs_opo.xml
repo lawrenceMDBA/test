@@ -168,11 +168,11 @@
 					</timeSeriesSet>
 				</netcdfExportActivity>
 				<netcdfExportActivity>
-					<fileName>Flow_Obs_OPO_instream.nc</fileName>
+					<fileName>Flow_Obs_OPO_credit.nc</fileName>
 					<areaId>$AREAID$</areaId>
 					<sourceId>$SOURCEID$</sourceId>
 					<ncMetaData>
-						<title>Observed Flows (OPO instream, qc'd)</title>
+						<title>Observed Flows (OPO credit, qc'd)</title>
 						<institution>Murray-Darling Basin Authority</institution>
 						<source>ROWS (Delft-FEWS)</source>
 					</ncMetaData>
@@ -181,10 +181,10 @@
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessQopo</moduleInstanceId>
 						<valueType>scalar</valueType>
-						<parameterId>Q_obs</parameterId>
+						<parameterId>Q_env</parameterId>
 						<qualifierId>opo</qualifierId>
-						<qualifierId>instream</qualifierId>
-						<locationSetId>de.sites_Q.instream</locationSetId>
+						<qualifierId>credit</qualifierId>
+						<locationSetId>de.sites_Q.credit</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
 						<readWriteMode>read only</readWriteMode>
@@ -204,9 +204,8 @@
 					<timeSeriesSet>
 						<moduleInstanceId>ProcessQopo</moduleInstanceId>
 						<valueType>scalar</valueType>
-						<parameterId>Q_obs</parameterId>
+						<parameterId>Q_ivt</parameterId>
 						<qualifierId>opo</qualifierId>
-						<qualifierId>ivt</qualifierId>
 						<locationSetId>de.sites_Q.ivt</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
 						<timeStep id="8am"/>
