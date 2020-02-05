@@ -15,6 +15,7 @@
 		<locationId>R_HATTAHS</locationId>
 		<locationId>R_WALPUMP</locationId>
 		<locationId>R_407224D</locationId>
+		<locationId>R_409710A</locationId>
 	</locationSet>
 	<locationSet id="EWV.sites">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
@@ -41,7 +42,87 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-		<locationSet id="EWV.sites_Q.wenv">
+	<locationSet id="de.sites_Q.env">
+		<description>data entry sites with enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.env.credit">
+		<description>data entry sites without enviromental flow component</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.credit;"/>
+		</constraints>	
+	</locationSet>
+	<locationSet id="de.sites_Q.env.mur_bypass">
+		<description>data entry sites with Tributary flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.mur_bypass;"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Q.env.ent_use">
+		<description>data entry sites with Tributary flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ent_use;"/>
+		</constraints>	
+	</locationSet>
+	<locationSet id="de.sites_Q.env.sa_delivery">
+		<description>data entry sites with Tributary flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.sa_delivery;"/>
+		</constraints>		
+	</locationSet>
+	<locationSet id="de.sites_Q.env.loss">
+		<description>data entry sites with Tributary flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.loss;"/>
+		</constraints>		
+	</locationSet>
+	<locationSet id="de.sites_Q.env.env_use">
+		<description>data entry sites with modelled enviromental use flows</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use;"/>
+		</constraints>
+		</locationSet>			
+	<locationSet id="de.sites_Q.model_use">
+		<description>data entry sites with hybrid event modelled data</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.model_use;"/>
+		</constraints>
+		</locationSet>				
+	<locationSet id="de.sites_Q.pump">
+		<description>data entry sites with pumped enviromental flow</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.pump"/>
+		</constraints>
+		</locationSet>
+	<locationSet id="de.sites_Q.return">
+		<description>data entry sites with enviromental flow return</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.return"/>
+		</constraints>
+	</locationSet>
+		<!--<locationSet id="EWV.sites_Q.wenv">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -49,7 +130,7 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.wenv"/>
 			</allValid>
 		</constraints>
-	</locationSet>
+	</locationSet>-->
 	<locationSet id="EWV.sites_Q.ivt">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
@@ -59,7 +140,7 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-	<locationSet id="EWV.sites_Q.env">
+	<!--<locationSet id="EWV.sites_Q.env">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -67,8 +148,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env"/>
 			</allValid>
 		</constraints>
-	</locationSet>
-	<locationSet id="EWV.sites_Q.trib">
+	</locationSet>-->
+	<!--<locationSet id="EWV.sites_Q.trib">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -76,8 +157,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.trib"/>
 			</allValid>
 		</constraints>
-	</locationSet>
-	<locationSet id="EWV.sites_Q.env_use">
+	</locationSet>-->
+	<!--<locationSet id="EWV.sites_Q.env_use">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -85,8 +166,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use"/>
 			</allValid>
 		</constraints>
-	</locationSet>
-	<locationSet id="EWV.sites_Q.inflow">
+	</locationSet>-->
+	<!--<locationSet id="EWV.sites_Q.inflow">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -94,8 +175,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow"/>
 			</allValid>
 		</constraints>
-	</locationSet>
-	<locationSet id="EWV.sites_Q.return">
+	</locationSet>-->
+	<!--<locationSet id="EWV.sites_Q.return">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -103,8 +184,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.return"/>
 			</allValid>
 		</constraints>
-	</locationSet>
-	<locationSet id="EWV.sites_Q.model_use">
+	</locationSet>-->
+	<!--locationSet id="EWV.sites_Q.model_use">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -112,8 +193,8 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.model_use"/>
 			</allValid>
 			</constraints>
-		</locationSet>
-	<locationSet id="EWV.sites_Q.pump">
+		</locationSet>-->
+	<!--<locationSet id="EWV.sites_Q.pump">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
 		<constraints>
@@ -121,7 +202,7 @@
 				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.pump"/>
 			</allValid>
 		</constraints>
-	</locationSet>
+	</locationSet>-->
 	<!--<locationSet id="EWV.sites_Q.direct">
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV.sites</locationSetId>
@@ -152,13 +233,23 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-	<locationSet id="EWV2MDBC_OPS.sites_Q.wenv">
+	<locationSet id="EWV2MDBC_OPS.sites_Q.credit">
 		<description>Flow credit data entry sites</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
 		<constraints>
 			<allValid>
-				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.wenv"/>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.credit"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.non_credit">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.non_credit"/>
 			</allValid>
 		</constraints>
 	</locationSet>
@@ -182,23 +273,33 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-	<locationSet id="EWV2MDBC_OPS.sites_Q.trib">
+	<locationSet id="EWV2MDBC_OPS.sites_Q.Loss">
 		<description>Flow credit data entry sites</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
 		<constraints>
 			<allValid>
-				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.trib"/>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.Loss"/>
 			</allValid>
 		</constraints>
 	</locationSet>
-	<locationSet id="EWV2MDBC_OPS.sites_Q.env_use">
+	<locationSet id="EWV2MDBC_OPS.sites_Q.sa_delivery">
 		<description>Flow credit data entry sites</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
 		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
 		<constraints>
 			<allValid>
-				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use"/>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.sa_delivery"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="EWV2MDBC_OPS.sites_Q.use">
+		<description>Flow credit data entry sites</description>
+		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
+		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.use"/>
 			</allValid>
 		</constraints>
 	</locationSet>
