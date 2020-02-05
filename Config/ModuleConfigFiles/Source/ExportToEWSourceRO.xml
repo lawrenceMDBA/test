@@ -520,13 +520,12 @@
 		</timeSeriesSet>
 		<!-- May be this should be included in preprocess source ?? -->
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
+			<qualifierId>min</qualifierId>
 			<locationSetId>SourceRO_sites_QRL</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
@@ -559,13 +558,12 @@
 		</timeSeriesSet>
 		<!-- May be this should be included in preprocess source ?? -->
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
+			<qualifierId>aep90</qualifierId>
 			<locationSetId>SourceRO_sites_QRL</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
@@ -598,13 +596,12 @@
 		</timeSeriesSet>
 		<!-- May be this should be included in preprocess source ?? -->
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
+			<qualifierId>aep75</qualifierId>
 			<locationSetId>SourceRO_sites_QRL</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
@@ -637,13 +634,12 @@
 		</timeSeriesSet>
 		<!-- May be this should be included in preprocess source ?? -->
 		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<qualifierId>total</qualifierId>
+			<qualifierId>aep50</qualifierId>
 			<locationSetId>SourceRO_sites_QRL</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
@@ -894,37 +890,11 @@
 	</export>
 	<export>
 		<general>
-			<description>Export Env Watering data from GMW to Source</description>
-			<exportType>csv</exportType>
-			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
-			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_Flow.csv</name>
-			</exportFileName>
-			<idMapId>IdmapROWS2EWSourceRO</idMapId>
-			<exportMissingValueString></exportMissingValueString>
-			<exportTimeZone>
-				<timeZoneOffset>+02:00</timeZoneOffset>
-			</exportTimeZone>
-		</general>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<locationSetId>SourceRO_EWsites_Q</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</export>
-	<export>
-		<general>
 			<description>Export Env Watering data (ivt) from GMW to Source</description>
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_IVT.csv</name>
+				<name>ROWS_2_SOURCE_IVT.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -941,7 +911,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -950,7 +920,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_credit.csv</name>
+				<name>ROWS_2_SOURCE_credit.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -968,7 +938,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -977,7 +947,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_mur_bypass.csv</name>
+				<name>ROWS_2_SOURCE_mur_bypass.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -995,7 +965,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -1004,7 +974,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_ent_use.csv</name>
+				<name>ROWS_2_SOURCE_ent_use.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -1022,7 +992,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -1031,7 +1001,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_sa_deliv.csv</name>
+				<name>ROWS_2_SOURCE_sa_deliv.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -1049,7 +1019,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -1058,7 +1028,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_loss.csv</name>
+				<name>ROWS_2_SOURCE_loss.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -1076,7 +1046,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -1085,7 +1055,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_env_use.csv</name>
+				<name>ROWS_2_SOURCE_env_use.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -1103,7 +1073,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 	<export>
@@ -1112,7 +1082,7 @@
 			<exportType>csv</exportType>
 			<folder>$EXPORT_FOLDER_TO_EWSRC_RO$</folder>
 			<exportFileName>
-				<name>ROWS_2_SOURCE_EWV_GMW_return.csv</name>
+				<name>ROWS_2_SOURCE_return.csv</name>
 			</exportFileName>
 			<idMapId>IdmapROWS2EWSourceRO</idMapId>
 			<exportMissingValueString></exportMissingValueString>
@@ -1130,7 +1100,7 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>editing visible to all future task runs</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
 </timeSeriesExportRun>
