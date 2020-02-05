@@ -42,7 +42,8 @@ data generated in module ProcessObserved_FloodOps
 	Each parameter is stored in a separate file-->
 	<!--Export_ToArchive_FloodOps_NWP (sources=ACCESSG, ACCESSR, ADFD, PME)
 <archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/external_forecasts/<sourceId>_<T0>
-Current NWP forecasts processed to smaller grid-->
+Current NWP forecasts processed to smaller grid
+TODO: is this still required?-->
 	<!-- **********************************
 Archiving all simulated data (FloodOps)
 ToArchive_Fcst_* is included with the official forecast-->
@@ -90,7 +91,7 @@ ToArchive_Fcst_* is included with the official forecast-->
 	<activity>
 		<properties>
 			<string key="SOURCEID" value="PME"/>
-			<string key="LOCATIONID" value="PME_Grid"/>
+			<string key="LOCATIONID" value="ADFD"/>
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_NWP_PME</moduleInstanceId>
@@ -114,8 +115,10 @@ ToArchive_Fcst_* is included with the official forecast-->
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ToArchive_Obs_Fops</moduleInstanceId>
 	</activity>
-	<activity>
+<!--This workflow is deprecated, now archive all NWP on original grid and only tag the ones you want to keep-->
+<!--With this, the WaterCoach workflows can use "normal" processing MFs-->
+<!--	<activity>
 		<runIndependent>false</runIndependent>
 		<workflowId>Export_ToArchive_FloodOps_NWP</workflowId>
 	</activity>
-</workflow>
+--></workflow>
