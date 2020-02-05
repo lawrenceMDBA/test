@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fews-master-config xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/synchronisationConfiguration.xsd">
+
+   <queueconnection>
+      <factory jndi="ConnectionFactory"/>
+   </queueconnection>
+
+	<mc id="aumurotmc00">
+	   <jndicontext factory="org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+		provider="tcp://rowststmc00.prod.local:61616?wireFormat.maxInactivityDuration=600000&amp;jms.prefetchPolicy.queuePrefetch=1"
+		prefixes=""/>
+	   <queue>
+		  <root jndi="dynamicQueues/au/mu/ro/t/mc00/"/>
+		  <synch jndi="External/JMSQueue/FSIncoming" timeout="600"/>
+	   </queue>
+	</mc>
+
+   <synchronisation>
+	<messaging maxrecords="1000" maxlobdata="30000000"/>
+	<processor maxlistsize="500000"/>
+     	<schema location="nl/wldelft/fews/master/data/synchdata/synchronisation_schema.xsd"/>
+   </synchronisation>
+   
+</fews-master-config>
+
