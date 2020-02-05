@@ -4,7 +4,121 @@
 	<plot id="RTCTools_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_release</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_out_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>QTURB_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>QSPILL_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>QBOTT_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<axis>left</axis>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>V_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+			<axis>right</axis>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>H_fcst</parameterId>
+				<locationId>R_401027</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationId>R_402222A</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<locationId>R_409017</locationId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+				<ensembleId>IFD</ensembleId>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="RTCTools_Official_reservoir_1h">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -14,7 +128,7 @@
 				<ensembleId>OFFICIAL</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationId>R_401027</locationId>
@@ -24,7 +138,7 @@
 				<ensembleId>OFFICIAL</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_out_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -36,7 +150,7 @@
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QTURB_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -46,7 +160,7 @@
 				<ensembleId>OFFICIAL</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QSPILL_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -56,7 +170,7 @@
 				<ensembleId>OFFICIAL</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QBOTT_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -69,7 +183,7 @@
 		<subplot>
 			<axis>left</axis>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>V_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -80,7 +194,7 @@
 			</timeSeriesSet>
 			<axis>right</axis>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>H_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -92,7 +206,7 @@
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_fcst</parameterId>
 				<locationId>R_402222A</locationId>
@@ -104,7 +218,7 @@
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_fcst</parameterId>
 				<locationId>R_409017</locationId>
@@ -118,7 +232,7 @@
 	<plot id="RTCTools_reservoir_1h_ensemble">
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -128,7 +242,7 @@
 				<ensembleId>ENSEMBLE</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_release</parameterId>
 				<locationId>R_401027</locationId>
@@ -138,7 +252,7 @@
 				<ensembleId>ENSEMBLE</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_out_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -150,7 +264,7 @@
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QTURB_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -160,7 +274,7 @@
 				<ensembleId>ENSEMBLE</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QSPILL_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -170,7 +284,7 @@
 				<ensembleId>ENSEMBLE</ensembleId>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>QBOTT_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -183,7 +297,7 @@
 		<subplot>
 			<axis>left</axis>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>V_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -194,7 +308,7 @@
 			</timeSeriesSet>
 			<axis>right</axis>
 			<timeSeriesSet>
-				<moduleInstanceSetId>RTCTools_HumeDam</moduleInstanceSetId>
+				<moduleInstanceSetId>RTCTools_Forecast</moduleInstanceSetId>
 				<valueType>scalar</valueType>
 				<parameterId>H_fcst</parameterId>
 				<locationId>R_401027</locationId>
@@ -207,22 +321,32 @@
 	</plot>
 	<displayGroup id="upper_murray_RTCTools" name="RTCTools: Upper Murray">
 		<viewPermission>FloodOperations</viewPermission>
-		<displayGroup id="upper_murray_HumeDam_Simulation" name="Upper Murray - HumeDam (run simulation model)">
+		<displayGroup id="upper_murray_Simulation" name="Upper Murray - HumeDam (simulation, local)">
 			<display id="R_401027" name="401027 - HUME DAM">
 				<plotId>RTCTools_reservoir_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_HumeDam_Sim_Ensemble" name="Upper Murray - HumeDam (run simulation model)">
+		<displayGroup id="upper_murray_official_Simulation" name="Upper Murray - HumeDam (simulation, official)">
+			<display id="R_401027" name="401027 - HUME DAM">
+				<plotId>RTCTools_Official_reservoir_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_Simulation_Ensemble" name="Upper Murray - HumeDam (simulation, ensemble)">
 			<display id="R_401027" name="401027 - HUME DAM">
 				<plotId>RTCTools_reservoir_1h_ensemble</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_HumeDam_Optimization" name="Upper Murray - HumeDam (run optimization model)">
+		<displayGroup id="upper_murray_Optimization" name="Upper Murray - HumeDam (optimization, local)">
 			<display id="R_401027" name="401027 - HUME DAM">
 				<plotId>RTCTools_reservoir_1h</plotId>
 			</display>
 		</displayGroup>
-		<displayGroup id="upper_murray_HumeDam_Opt_Ensemble" name="Upper Murray - HumeDam (run optimization model)">
+		<displayGroup id="upper_murray_official_Optimization" name="Upper Murray - HumeDam (optimization, official)">
+			<display id="R_401027" name="401027 - HUME DAM">
+				<plotId>RTCTools_Official_reservoir_1h</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="upper_murray_Optimisation_Ensemble" name="Upper Murray - HumeDam (optimization, ensemble)">
 			<display id="R_401027" name="401027 - HUME DAM">
 				<plotId>RTCTools_reservoir_1h_ensemble</plotId>
 			</display>

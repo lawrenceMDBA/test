@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
-	<!--Archive activities on Basin level. Export of observed data, forecaster notes and content reviewer forecasts-->
-	<!--The property BASIN is used as Archive Area ID, this is the Archive folder structure and the HyFS Basin ID-->
 	<exportSimulated>
 		<general>
 			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
@@ -12,7 +10,7 @@
 			<netcdfExportActivities>
 				<netcdfExportActivity>
 					<fileName>WaterLevel_Fcst.nc</fileName>
-					<sourceId>FlownSal_Fcst</sourceId>
+					<sourceId>$SOURCEID$</sourceId>
 					<ncMetaData>
 						<title>Forecast Water Levels (MDBC_OPS)</title>
 						<institution>Murray-Darling Basin Authority</institution>
@@ -32,7 +30,7 @@
 				</netcdfExportActivity>
 				<netcdfExportActivity>
 					<fileName>Flow_Fcst.nc</fileName>
-					<sourceId>FlownSal_Fcst</sourceId>
+					<sourceId>$SOURCEID$</sourceId>
 					<ncMetaData>
 						<title>Flows Forecast (MDBC_OPS)</title>
 						<institution>Murray-Darling Basin Authority</institution>
@@ -52,7 +50,7 @@
 				</netcdfExportActivity>
 				<netcdfExportActivity>
 					<fileName>Volume_Fcst.nc</fileName>
-					<sourceId>FlownSal_Fcst</sourceId>
+					<sourceId>$SOURCEID$</sourceId>
 					<ncMetaData>
 						<title>Volume Forecast (MDBC_OPS)</title>
 						<institution>Murray-Darling Basin Authority</institution>
@@ -72,7 +70,7 @@
 				</netcdfExportActivity>
 				<netcdfExportActivity>
 					<fileName>EC_Fcst.nc</fileName>
-					<sourceId>FlownSal_Fcst</sourceId>
+					<sourceId>$SOURCEID$</sourceId>
 					<ncMetaData>
 						<title>Electrical Conductivity Forecast (MDBC_OPS)</title>
 						<institution>Murray-Darling Basin Authority</institution>
