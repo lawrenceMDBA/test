@@ -531,6 +531,117 @@
 			</allValid>
 		</constraints>
 	</locationSet>
+	<!-- env watering sites -->
+	<locationSet id="SourceRO_EWsites_Q">
+		<description>Source sites with volume</description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="SOURCE_PARAMS" contains="Q;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_credit">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.credit;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_ivt">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ivt;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_loss">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.loss;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_sa_del">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.sa_delivery;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_env_use">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_ent_use">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.ent_use;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_mur_bypass">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.mur_bypass;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_inflow">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.inflow;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="SourceRO_EWsites_Q_return">
+		<description>SourceRO_sites with electrical conductivity </description>
+		<sortingLocationAttributeId>SOURCE_EW_SEQ</sortingLocationAttributeId>
+		<locationSetId>SourceRO_sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.return;"/>
+				<attributeExists id="SOURCE_EW_SEQ"/>
+			</allValid>
+		</constraints>
+	</locationSet>
 	<!-- End of Source River Ops model locationSets -->
 	<!-- ewsource  RR-->
 	<locationSet id="ewsource_subareas.upper_murray">
