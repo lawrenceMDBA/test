@@ -15,6 +15,163 @@ Heywoods Rule:
 Doctors Point Rule:
  a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
  b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
+	<!--Create timeseries for all Threshold_sites and parameter combinations. The default value will be 1. These timeseries will be used to ignore certain timesteps from the threshold count. -->
+	<variable>
+		<variableId>H_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_exclusion</parameterId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_exclusion</parameterId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_exclusion</parameterId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_exclusion</parameterId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_exclusion</parameterId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_exclusion</parameterId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_exclusion</parameterId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_exclusion</parameterId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<!--Variables input-->
 	<variable>
 		<variableId>H_calc</variableId>
@@ -841,6 +998,157 @@ Doctors Point Rule:
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Transformations - create threshold exclusion timeseries (create default and merge with existing timeseries)-->
+	<transformation id="H_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>H_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>Q_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dQ_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dQ_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dQ_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dQ_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="V_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>V_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="DO_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>DO_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>DO_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>DO_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>DO_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
 	<!--Transformations-->
 	<transformation id="merge_H_neq">
 		<merge>
