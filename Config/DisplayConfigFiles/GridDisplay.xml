@@ -2131,7 +2131,7 @@
 					<valueType>grid</valueType>
 					<parameterId>SPI_calc</parameterId>
 					<qualifierId>monthly</qualifierId>
-			        <locationId>GSMaP_SPI</locationId>
+					<locationId>GSMaP_SPI</locationId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep multiplier="1" unit="month"/>
 					<relativeViewPeriod start="-360" end="0" unit="day"/>
@@ -2150,7 +2150,7 @@
 					<valueType>grid</valueType>
 					<parameterId>SPI_calc</parameterId>
 					<qualifierId>2monthly</qualifierId>
-			        <locationId>GSMaP_SPI</locationId>
+					<locationId>GSMaP_SPI</locationId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep multiplier="1" unit="month"/>
 					<relativeViewPeriod start="-360" end="0" unit="day"/>
@@ -2169,7 +2169,7 @@
 					<valueType>grid</valueType>
 					<parameterId>SPI_calc</parameterId>
 					<qualifierId>3monthly</qualifierId>
-			        <locationId>GSMaP_SPI</locationId>
+					<locationId>GSMaP_SPI</locationId>
 					<timeSeriesType>external historical</timeSeriesType>
 					<timeStep multiplier="1" unit="month"/>
 					<relativeViewPeriod start="-360" end="0" unit="day"/>
@@ -2182,7 +2182,7 @@
 				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
 		</gridPlotGroup>
-	</gridPlotGroup>		
+	</gridPlotGroup>
 	<gridPlotGroup id="NWP" name="NWP Grided Forecasts">
 		<gridPlotGroup id="NWP_P" name="Precipitation">
 			<gridPlot id="ACCESSG.P_fcst" name="ACCESS-G (Accumulated Rainfall)">
@@ -2940,6 +2940,86 @@
 			</dataLayer>
 			<classBreaksId>WaterLevel</classBreaksId>
 		</gridPlot>
+		<gridPlotGroup id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - as imported">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationId>AWRA</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="-2" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
+			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationId>AWRA</locationId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<circleSizeFunction>25</circleSizeFunction>
+					<circleBorderSize>5</circleBorderSize>
+					<circleBorderColor>steel blue4</circleBorderColor>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>SM_obs</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationSetId>URBS_subcatchments.only</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>SoilMoisture</classBreaksId>
+			</gridPlot>
+			<gridPlot id="AWRA-L Root Zone (mm)" name="Initial loss based on AWRA-L - subcatchments">
+				<mapExtentId>Upper Murray</mapExtentId>
+				<dataLayer>
+					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
+					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
+					<circleSizeFunction>10</circleSizeFunction>
+					<circleBorderSize>2</circleBorderSize>
+					<circleBorderColor>red</circleBorderColor>
+					<timeSeriesSet>
+						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>IL</parameterId>
+						<qualifierId>AWRA-L RZ</qualifierId>
+						<locationSetId>URBS_subcatchments.only</locationSetId>
+						<timeSeriesType>external historical</timeSeriesType>
+						<timeStep id="8am"/>
+						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
+						<readWriteMode>read only</readWriteMode>
+					</timeSeriesSet>
+				</dataLayer>
+				<classBreaksId>IL</classBreaksId>
+			</gridPlot>
+		</gridPlotGroup>
 		<gridPlot id="P_Fops" name="Precipitation (Fops)">
 			<dataLayer>
 				<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
@@ -3044,86 +3124,6 @@
 	</gridPlotGroup>
 	<gridPlotGroup id="NWP (Flood ops)" name="NWP (Flood ops)">
 		<viewPermission>FloodOperations</viewPermission>
-		<gridPlotGroup id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm)">
-			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - as imported">
-				<mapExtentId>Upper Murray</mapExtentId>
-				<dataLayer>
-					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>grid</valueType>
-						<parameterId>SM_obs</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationId>AWRA</locationId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="-2" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<classBreaksId>SoilMoisture</classBreaksId>
-			</gridPlot>
-			<gridPlot id="AWRA-L Root Zone (mm)" name="AWRA-L Root Zone (mm) - subcatchments">
-				<mapExtentId>Upper Murray</mapExtentId>
-				<dataLayer>
-					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>grid</valueType>
-						<parameterId>SM_obs</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationId>AWRA</locationId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<dataLayer>
-					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
-					<circleSizeFunction>25</circleSizeFunction>
-					<circleBorderSize>5</circleBorderSize>
-					<circleBorderColor>steel blue4</circleBorderColor>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>SM_obs</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationSetId>URBS_subcatchments.only</locationSetId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<classBreaksId>SoilMoisture</classBreaksId>
-			</gridPlot>
-			<gridPlot id="AWRA-L Root Zone (mm)" name="Initial loss based on AWRA-L - subcatchments">
-				<mapExtentId>Upper Murray</mapExtentId>
-				<dataLayer>
-					<visibleInTimeSeriesDisplay>true</visibleInTimeSeriesDisplay>
-					<visibleInSpatialDisplay>true</visibleInSpatialDisplay>
-					<circleSizeFunction>10</circleSizeFunction>
-					<circleBorderSize>2</circleBorderSize>
-					<circleBorderColor>red</circleBorderColor>
-					<timeSeriesSet>
-						<moduleInstanceId>ProcessAWRA</moduleInstanceId>
-						<valueType>scalar</valueType>
-						<parameterId>IL</parameterId>
-						<qualifierId>AWRA-L RZ</qualifierId>
-						<locationSetId>URBS_subcatchments.only</locationSetId>
-						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep id="8am"/>
-						<relativeViewPeriod unit="day" start="-30" end="1" startOverrulable="true" endOverrulable="true"/>
-						<readWriteMode>read only</readWriteMode>
-					</timeSeriesSet>
-				</dataLayer>
-				<classBreaksId>IL</classBreaksId>
-			</gridPlot>
-		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
 			<gridPlot id="FloodOps_ACCESSG.P_fcst" name="ACCESS-G">
 				<dataLayer>

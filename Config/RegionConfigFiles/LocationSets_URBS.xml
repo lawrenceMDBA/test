@@ -248,16 +248,16 @@
 					<description>[URBS_LOSSTYPE] The type of continuing loss model used: ILCL is for a loss rate independent of rainfall and ILPR is for a runoff factor.</description>
 					<text>%URBS_LOSSTYPE%</text>
 				</attribute>
-				<attribute id="URBS_LOSSSOURCE" name="Initial Loss Type">
-					<description>Source of the continuing loss model used: can be AWRA_IL or User_IL</description>
+<!--				<attribute id="URBS_LOSSSOURCE" name="Initial Loss Type">
+					<description>Source of the continuing loss model used: User_IL</description>
 					<text>%URBS_LOSSSOURCE%</text>
 				</attribute>
-				<attribute id="URBS_IL" name="Initial Loss (mm)">
-					<description>[URBS_IL] Initial rainfall loss.</description>
+-->				<attribute id="URBS_IL" name="Initial Loss (mm)">
+					<description>[URBS_IL] Initial rainfall loss. Copy the AWRA-L initial loss here, or use a different estimate.</description>
 					<number>%URBS_IL%</number>
 				</attribute>
-				<attribute id="URBS_IL_AWRA" name="AWRA-Initial Loss (mm)">
-					<description>Estimated Initial rainfall loss from AWRA correlation</description>
+				<attribute id="URBS_IL_AWRA" name="Initial loss guidance (AWRA-L)">
+					<description>Estimated Initial rainfall loss based on correlation with AWRA-L (guidance)</description>
 					<number>%URBS_IL_AWRA%</number>
 				</attribute>
 				<attribute id="URBS_CL" name="Continuing Loss (mm/hr)">
