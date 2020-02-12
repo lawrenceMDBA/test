@@ -74,9 +74,10 @@
 		</node>
 		<node id="Import_Samples" name="Import Water quality data">
 			<workflowId>Import_Samples</workflowId>
-			<mainPanel>web browser display</mainPanel>
-			<url>https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html 
- </url>
+			<localRun>false</localRun>
+		</node>
+		<node id="Import_Gaugings" name="Import Rating curve gaugings">
+			<workflowId>Import_Gaugings</workflowId>
 			<localRun>false</localRun>
 		</node>
 		<node id="Import_Ratings" name="Import Ratings">
@@ -927,22 +928,22 @@
 		<node id="ShinyApp_Dash" name="Local Flights Dashboard">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowststmc100:8888</url>
- 		</node>	
+		</node>
 		<viewPermission>Administrators</viewPermission>
- 	</nodes>
+	</nodes>
 	<nodes id="Admin" name="System Admin">
 		<node id="rowsprdmc100" name="ROWS Prod AI">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
- 		</node>
+		</node>
 		<node id="rowsprdarc100" name="ROWS Archive Server">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowsprdarc100.prod.local:8080/deltares-archive-server/</url>
- 		</node>
+		</node>
 		<node id="rowsprdarc100_thredds" name="ROWS Thredds Server">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowsprdarc100.prod.local:8080/thredds/catalog.html</url>
- 		</node>		
+		</node>
 		<node id="rowststmc100" name="ROWS Test AI">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
