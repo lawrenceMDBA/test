@@ -286,9 +286,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_ivt</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>ivt</qualifierId>
 			<locationSetId>de.sites_Q.ivt</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -393,10 +392,10 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_env</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>instream</qualifierId>
-			<locationSetId>de.sites_Q.instream</locationSetId>
+			<qualifierId>credit</qualifierId>
+			<locationSetId>de.sites_Q.credit</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-1" end="0" unit="day"/>
@@ -855,9 +854,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_ivt</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>ivt</qualifierId>
 			<locationSetId>de.sites_Q.ivt</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -962,14 +960,14 @@
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
-	<timeSeriesSets id="DataEntry_Q.instream">
+	<timeSeriesSets id="DataEntry_Q.credit">
 		<timeSeriesSet>
 			<moduleInstanceId>ImportObserved</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_env</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>instream</qualifierId>
-			<locationSetId>de.sites_Q.instream</locationSetId>
+			<qualifierId>credit</qualifierId>
+			<locationSetId>de.sites_Q.credit</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="-1" end="0" unit="day"/>
@@ -1526,7 +1524,7 @@
 		<child foreignKey="Yarrawonga_DataEntry_Q"/>
 		<child foreignKey="Yarrawonga_DataEntry_QDIV.irrig"/>
 		<child foreignKey="Yarrawonga_DataEntry_QDIV.total"/>
-		<child foreignKey="Yarrawonga_DataEntry_Q.instream"/>
+		<child foreignKey="Yarrawonga_DataEntry_Q.credit"/>
 		<child foreignKey="Yarrawonga_DataEntry_Q.ivt"/>
 		<child foreignKey="Yarrawonga_DataEntry_Q.env"/>
 		<!--<child foreignKey="Yarrawonga_DataEntry_QORD.shortterm"/>-->
@@ -1590,9 +1588,9 @@
 			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
 		</locationConstraints>
 	</filter>
-	<filter id="Yarrawonga_DataEntry_Q.instream" name="Release Flow">
+	<filter id="Yarrawonga_DataEntry_Q.credit" name="Release Flow">
 		<validationIconsVisible>true</validationIconsVisible>
-		<timeSeriesSetsId>DataEntry_Q.instream</timeSeriesSetsId>
+		<timeSeriesSetsId>DataEntry_Q.credit</timeSeriesSetsId>
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="Yarrawonga"/>
 		</locationConstraints>
@@ -1673,7 +1671,7 @@
 		<child foreignKey="Torrumbarry_DataEntry_DOpct"/>
 		<child foreignKey="Torrumbarry_DataEntry_Q"/>
 		<child foreignKey="Torrumbarry_DataEntry_QDIV.irrig"/>
-		<child foreignKey="Torrumbarry_DataEntry_Q.instream"/>
+		<child foreignKey="Torrumbarry_DataEntry_Q.credit"/>
 		<child foreignKey="Torrumbarry_DataEntry_Q.ivt"/>
 		<child foreignKey="Torrumbarry_DataEntry_Q.env"/>
 		<child foreignKey="Torrumbarry_DataEntry_pH"/>
@@ -1744,9 +1742,9 @@
 			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
 		</locationConstraints>
 	</filter>
-	<filter id="Torrumbarry_DataEntry_Q.instream" name="Release Flow">
+	<filter id="Torrumbarry_DataEntry_Q.credit" name="Release Flow">
 		<validationIconsVisible>true</validationIconsVisible>
-		<timeSeriesSetsId>DataEntry_Q.instream</timeSeriesSetsId>
+		<timeSeriesSetsId>DataEntry_Q.credit</timeSeriesSetsId>
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="Torrumbarry"/>
 		</locationConstraints>

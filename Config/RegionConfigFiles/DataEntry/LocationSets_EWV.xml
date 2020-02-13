@@ -33,15 +33,6 @@
 			</allValid>
 		</constraints>
 	</locationSet>
-	<locationSet id="EWV.sites_Q.instream">
-		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
-		<locationSetId>EWV.sites</locationSetId>
-		<constraints>
-			<allValid>
-				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
-			</allValid>
-		</constraints>
-	</locationSet>
 	<locationSet id="de.sites_Q.env">
 		<description>data entry sites with enviromental flow</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
@@ -221,16 +212,6 @@
 		<constraints>
 			<attributeTextContains id="TO_MDBC_OPS" contains="EWV"/>
 			<attributeExists id="HYDSTRA_SITE_ID"/>
-		</constraints>
-	</locationSet>
-	<locationSet id="EWV2MDBC_OPS.sites_Q.instream">
-		<description>Flow credit data entry sites</description>
-		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
-		<locationSetId>EWV2MDBC_OPS.sites</locationSetId>
-		<constraints>
-			<allValid>
-				<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.instream"/>
-			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="EWV2MDBC_OPS.sites_Q.credit">
