@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+    <!-- Transformation to copy Q_obs.opo.total to temporary timeseries
+	to export to source as different parameters min, aep50, aep75, aep90-->
+	<variable>
+		<variableId>Observed_total_flow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_aep50</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>aep50</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_aep75</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>aep75</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_aep90</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ExportToEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>aep90</qualifierId>
+			<locationSetId>SourceRO_sites_QRL</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--Copy Q-obs.opo.total to the different aep and min-->
+	<transformation id="Q_min">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Observed_total_flow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_min</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_aep50">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Observed_total_flow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_aep50</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_aep75">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Observed_total_flow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_aep75</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_aep90">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Observed_total_flow</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_aep90</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>
