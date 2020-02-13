@@ -190,15 +190,16 @@
 					<int key="tileSize" value="256"/>
 				</properties>
 			</layer>
-			<wmsLayer id="Bushfire"><!--https://hotspots.dea.ga.gov.au/-->
-            <url>https://sentinel.ga.gov.au/geoserver/public/wms?</url>
-            <wmsLayerName>public:hotspot_current</wmsLayerName>
-            <imageFormat>png</imageFormat>
-            <transparent>true</transparent>
-            <visible>false</visible>
-            <cacheDir>$mapLayersCacheDir$</cacheDir>
-</wmsLayer>
-				</layerGroup>
+			<wmsLayer id="Bushfire">
+				<!--https://hotspots.dea.ga.gov.au/-->
+				<url>https://sentinel.ga.gov.au/geoserver/public/wms?</url>
+				<wmsLayerName>public:hotspot_current</wmsLayerName>
+				<imageFormat>png</imageFormat>
+				<transparent>true</transparent>
+				<visible>false</visible>
+				<cacheDir>$mapLayersCacheDir$</cacheDir>
+			</wmsLayer>
+		</layerGroup>
 		<layerGroup id="Upper Murray Catchment">
 			<esriShapeLayer id="GridPrecipitationUpperM">
 				<description>GridPrecipitationUpperM</description>
@@ -392,6 +393,18 @@
 			<accelerator>ctrl G</accelerator>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
+		<explorerTask name="Threshold Display">
+			<iconFile>warninglevel1.gif</iconFile>
+			<mnemonic>E</mnemonic>
+			<taskClass>nl.wldelft.fews.gui.plugin.thresholdeventsviewer.ThresholdEventsTableViewer</taskClass>
+			<!--2019.02-->
+			<!--<displayConfigFileName>ThresholdEventsDisplay</displayConfigFileName>-->
+			<toolbarTask>true</toolbarTask>
+			<menubarTask>true</menubarTask>
+			<allowMultipleInstances>false</allowMultipleInstances>
+			<accelerator>ctrl E</accelerator>
+			<loadAtStartup>false</loadAtStartup>
+		</explorerTask>
 		<explorerTask name="Modifiers">
 			<iconFile>wrench.png</iconFile>
 			<mnemonic>M</mnemonic>
@@ -509,7 +522,6 @@
 			<taskClass>nl.wldelft.fews.gui.plugin.webbrowser.WebBrowserDisplay</taskClass>
 			<toolbarTask>true</toolbarTask>
 			<menubarTask>true</menubarTask>
-			<allowMultipleInstances>true</allowMultipleInstances>
 			<accelerator>ctrl H</accelerator>
 			<loadAtStartup>true</loadAtStartup>
 		</explorerTask>
@@ -582,7 +594,7 @@
 		<explorerTask name="Separator">
 			<separator/>
 		</explorerTask>
-<!--         <explorerTask name="Ensemble exceedence analysis">
+		<!--         <explorerTask name="Ensemble exceedence analysis">
                <iconFile>exceedence.png</iconFile>
                <arguments>statisticalFunction ensemblePercentileExceedence</arguments>
                <taskClass>nl.wldelft.fews.gui.plugin.timeseries.TimeSeriesDialog</taskClass>
@@ -644,25 +656,6 @@
 		</explorerTask>
 		<explorerTask name="Separator">
 			<separator/>
-		</explorerTask>
-		<!--<explorerTask name="Threshold Display">
-			<displayConfigFileName>ThresholdDisplay</displayConfigFileName>
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-			<toolWindow>false</toolWindow>
-			<loadAtStartup>false</loadAtStartup>
-		</explorerTask>-->
-		<explorerTask name="Events">
-			<iconFile>warninglevel1.gif</iconFile>
-			<mnemonic>T</mnemonic>
-			<taskClass>nl.wldelft.fews.gui.plugin.thresholdeventsviewer.ThresholdEventsTableViewer</taskClass>
-			<!--2019.02-->
-			<!--<displayConfigFileName>ThresholdEventsDisplay</displayConfigFileName>-->
-			<toolbarTask>true</toolbarTask>
-			<menubarTask>true</menubarTask>
-			<allowMultipleInstances>false</allowMultipleInstances>
-			<accelerator>Ctrl E</accelerator>
-			<loadAtStartup>false</loadAtStartup>
 		</explorerTask>
 	</explorerTasks>
 	<panelHeaderLabels>

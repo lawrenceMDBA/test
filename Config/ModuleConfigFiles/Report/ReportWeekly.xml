@@ -106,6 +106,12 @@ locationsSets: wr.sites_barrages-->
 			</season>
 			<titleFontSize>12</titleFontSize>
 		</chartFormat>
+		<dateFormat id="LongDate">
+			<timeZone>
+				<timeZoneName>CET</timeZoneName>
+			</timeZone>
+			<pattern>EEEE dd MMM yyyy</pattern>
+		</dateFormat>
 		<dateFormat id="ReadableDate">
 			<timeZone>
 				<timeZoneName>CET</timeZoneName>
@@ -303,7 +309,7 @@ locationsSets: wr.sites_barrages-->
 				<valueType>scalar</valueType>
 				<parameterId>QDIV_calc</parameterId>
 				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_snowystorage</locationSetId>
+				<locationSetId>wr.sites_snowydiversion</locationSetId>
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="tue_8am"/>
 				<aggregationPeriod unit="day" start="-7" end="0"/>
@@ -318,7 +324,7 @@ locationsSets: wr.sites_barrages-->
 				<parameterId>QDIV_calc</parameterId>
 				<qualifierId>total</qualifierId>
 				<qualifierId>fromMay1</qualifierId>
-				<locationSetId>wr.sites_snowystorage</locationSetId>
+				<locationSetId>wr.sites_snowydiversion</locationSetId>
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="tue_8am"/>
 				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
@@ -1088,7 +1094,7 @@ locationsSets: wr.sites_barrages-->
 			<timeSeries label="long term average" lineStyle="dashdot" preferredColor="black" markerStyle="none">MurraySystemInflow_monthly_long_term_avg</timeSeries>
 			<fileName>MurraySystemInflows_monthly</fileName>
 		</chart>
-		<rowPerLocationHtmlTable id="Storages_MDBA" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Storages_MDBA_notused" tableStyle="tableStyle3">
 			<column>
 				<header>MDBA Storages</header>
 				<format>_data</format>
@@ -1144,7 +1150,45 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(0;StorageMDBA_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Storages_State" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Storages_MDBA" tableStyle="tableStyle3">
+			<column>
+				<header>MDBA Storages</header>
+				<format>_data</format>
+				<width>250</width>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;StorageMDBA_H_weekly)</function>
+			</column>
+			<column>
+				<header>Full supply level (m AHD)</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
+			</column>
+			<column>
+				<header>Full supply volume (ML)</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
+			</column>
+			<column>
+				<header>Current storage volume (GL)</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; no_decimals)</function>
+			</column>
+			<column>
+				<header>Current storage volume (%)</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0;StorageMDBA_V_percent ; no_decimals)</function>
+			</column>
+			<column>
+				<header>Change in total storage for the week (GL)</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>INDEXVALUE(0;StorageMDBA_V_delta ; no_decimals)</function>
+			</column>
+		</rowPerLocationHtmlTable>
+		<rowPerLocationHtmlTable id="Storages_State_notused" tableStyle="tableStyle3">
 			<column>
 				<header>Major Stage Storages</header>
 				<format>_data</format>
@@ -1205,7 +1249,7 @@ locationsSets: wr.sites_barrages-->
 				<header>Storage</header>
 				<format>_data</format>
 				<width>250</width>
-				<function>LOCATIONNAME(Snowy_V_active)</function>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;Snowy_V_active)</function>
 			</column>
 			<column>
 				<header>Active storage (GL)</header>
@@ -1225,7 +1269,7 @@ locationsSets: wr.sites_barrages-->
 				<header>Diversion (GL)</header>
 				<format>_data</format>
 				<width>250</width>
-				<function>LOCATIONNAME(Snowy_QDIV_thisweek)</function>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;Snowy_QDIV_thisweek)</function>
 			</column>
 			<column>
 				<header>This week</header>
@@ -1242,10 +1286,10 @@ locationsSets: wr.sites_barrages-->
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Diversions_NSW" tableStyle="tableStyle3">
 			<column>
-				<header>Diversions</header>
+				<header>New South Wales</header>
 				<format>_data</format>
 				<width>250</width>
-				<function>LOCATIONNAME(DiversionsNSW_QDIV_thisweek)</function>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsNSW_QDIV_thisweek)</function>
 			</column>
 			<column>
 				<header>This week</header>
@@ -1262,10 +1306,10 @@ locationsSets: wr.sites_barrages-->
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Diversions_Vic" tableStyle="tableStyle3">
 			<column>
-				<header>Diversions</header>
+				<header>Victoria</header>
 				<format>_data</format>
 				<width>250</width>
-				<function>LOCATIONNAME(DiversionsVic_QDIV_thisweek)</function>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsVic_QDIV_thisweek)</function>
 			</column>
 			<column>
 				<header>This week</header>
@@ -1282,37 +1326,31 @@ locationsSets: wr.sites_barrages-->
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="FlowtoSA" tableStyle="tableStyle3">
 			<column>
-				<header>Entitlement this month</header>
+				<header>Entitlement this month *</header>
 				<format>_data</format>
-				<width>250</width>
-				<function>LOCATIONNAME(FlowToSA_Q_thisweek)</function>
+				<width>80</width>
+				<function>INDEXVALUE(0;FlowToSA_Q_thisweek;1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow this week (GL/week)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; 1_decimal)</function>
-			</column>
-			<column>
-				<header>Average daily flow this week (GL/day)</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_average_thisweek ; 1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow so far this month (GL)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow last month (GL)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly ; 1_decimal)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Salinity" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Salinity_notused" tableStyle="tableStyle3">
 			<column>
 				<header> </header>
 				<format>_data</format>
@@ -1338,7 +1376,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(0; Salinity_EC_average_fromAugust1_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Rivers_Murray" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Rivers_Murray_notused" tableStyle="tableStyle3">
 			<column>
 				<header>River Murray</header>
 				<format>_data</format>
@@ -1388,7 +1426,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(-1;Murray_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Rivers_Tributaries" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Rivers_Tributaries_notused" tableStyle="tableStyle3">
 			<column>
 				<header>Tributaries</header>
 				<format>_data</format>
@@ -1438,7 +1476,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(-1;Tributaries_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Rivers_NatInflowHume" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Rivers_NatInflowHume_notused" tableStyle="tableStyle3">
 			<column>
 				<header> </header>
 				<format>_data</format>
@@ -1488,7 +1526,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(-1;NatInflowHume_Q_average_thisweek ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="WeirsLocks" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="WeirsLocks_notused" tableStyle="tableStyle3">
 			<column>
 				<header>Murray</header>
 				<format>_data</format>
@@ -1514,7 +1552,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(0;WeirsLocks_H_ds_delta_weekly ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="LowerLakes" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="LowerLakes_notused" tableStyle="tableStyle3">
 			<column>
 				<header>Lake Alexandria average level for the past 5 days (m AHD)</header>
 				<format>_data</format>
@@ -1522,7 +1560,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(0;LowerLakes_H_average_5d ; 2_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Barrages" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Barrages_notused" tableStyle="tableStyle3">
 			<column>
 				<header> </header>
 				<format>_data</format>
