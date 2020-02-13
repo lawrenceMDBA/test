@@ -75,7 +75,7 @@
 	</plot>
 	<plot id="ewSource_Prepare_Data_EVAP">
 		<subplot>
- 			<timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceId>ProcessATopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>AT_obs</parameterId>
@@ -122,7 +122,7 @@
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
-		<subplot>		
+		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -907,6 +907,7 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
+	<displayGroup name="Source: prepare">
 	<displayGroup id="ewSource_rainfall" name="Prepare Rainfall Data">
 		<nodeId>ewSource_Rainfall</nodeId>
 		<viewPermission>RiverOperations</viewPermission>
@@ -962,5 +963,6 @@
 			<locationSetId>ewSourceRO_sites</locationSetId>
 			<plotId>ewSource_Import_default</plotId>
 		</singleLocationDisplays>
+	</displayGroup>
 	</displayGroup>
 </displayGroups>
