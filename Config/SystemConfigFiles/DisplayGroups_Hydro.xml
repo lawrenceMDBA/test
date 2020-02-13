@@ -1211,6 +1211,119 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
+	<plot id="wr_evap">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>V_GL</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_net</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_net</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<aggregationPeriod unit="day" start="-7" end="0"/>
+				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>fromJuly1</qualifierId>
+				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
 	<displayGroup name="all" id="Hydro_results_all">
 		<viewPermission>RiverOperations</viewPermission>
 		<singleLocationDisplays>
@@ -1250,31 +1363,31 @@
 				<plotId>wr_flowtosa</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="Salinity/EC" id="wr_salinity">
+		<displayGroup name="Salinity/EC (not used)" id="wr_salinity">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_salinity</locationSetId>
 				<plotId>wr_salinity</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="River levels and flows" id="wr_allriverlevelflows">
+		<displayGroup name="River levels and flows (not used)" id="wr_allriverlevelflows">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_allriverlevelflows</locationSetId>
 				<plotId>wr_allriverlevelflows</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="Murray Weirs and Locks" id="wr_murrayweirs">
+		<displayGroup name="Murray Weirs and Locks (not used)" id="wr_murrayweirs">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_murrayweirs</locationSetId>
 				<plotId>wr_murrayweirs</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="Lower lakes, SA" id="wr_lowerlakes">
+		<displayGroup name="Lower lakes, SA (not used)" id="wr_lowerlakes">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_lowerlakes</locationSetId>
 				<plotId>wr_lowerlakes</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="Barrages" id="wr_barrages">
+		<displayGroup name="Barrages (not used)" id="wr_barrages">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_barrages</locationSetId>
 				<plotId>wr_barrages</plotId>
@@ -1290,6 +1403,12 @@
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_vicdiversion_table</locationSetId>
 				<plotId>wr_vicdiversion</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup name="EVAP (monthly input for weekly report)" id="wr_evap">
+			<singleLocationDisplays>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<plotId>wr_evap</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 	</displayGroup>

@@ -8,6 +8,7 @@
 			<folder>$IMPORT_FOLDER_FROM_MDBC_OPS$</folder>
 			<fileNamePatternFilter>*calc*.csv</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_MDBC_OPS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
 			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
 			<logWarningsForUnmappableLocations>false</logWarningsForUnmappableLocations>
 			<logWarningsForUnmappableParameters>false</logWarningsForUnmappableParameters>
@@ -426,6 +427,15 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
 			<parameterId>QDIV_calc</parameterId>
 			<qualifierId>pump</qualifierId>
 			<qualifierId>env</qualifierId>
@@ -510,6 +520,7 @@
 			<folder>$IMPORT_FOLDER_FROM_MDBC_OPS$</folder>
 			<fileNamePatternFilter>*forecast*</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_MDBC_OPS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
 			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
 			<logWarningsForUnmappableLocations>false</logWarningsForUnmappableLocations>
 			<logWarningsForUnmappableParameters>false</logWarningsForUnmappableParameters>
@@ -589,8 +600,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>inflow</qualifierId>
+			<parameterId>Q_in_fcst</parameterId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep id="8am"/>

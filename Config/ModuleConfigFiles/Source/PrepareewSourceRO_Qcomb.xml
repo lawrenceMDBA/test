@@ -528,8 +528,7 @@
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
-			<ensembleId>SWIFT</ensembleId>
-			<ensembleMemberIndex>0</ensembleMemberIndex>
+			<ensembleId>main</ensembleId>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -1658,7 +1657,7 @@ It appears the provided value in the attributes are not representative - it is u
 			</simple>
 		</merge>
 	</transformation>
-	<!--Step 2 Flow Fcst: Aggregate (instantaneous) STF and URBS series to daily-->
+	<!--Step 2 Flow Fcst: Aggregate (instantaneous) SDF, STF and URBS series to daily-->
 	<transformation id="SDF_Qfcst">
 		<aggregation>
 			<instantaneous>
