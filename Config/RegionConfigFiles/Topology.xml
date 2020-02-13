@@ -1119,7 +1119,11 @@
 			<mainPanel>web browser display</mainPanel>
 			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
 		</node>
-		<nodes id="earth_nullschool_net" name="Global Weather Animation">
+		<nodes id="GlobalWeather" name="Global Weather Animation">
+			<node id="windy.com_1" name="ECMWF Forecast">
+				<mainPanel>web browser display</mainPanel>
+				<url>https://www.windy.com/?-25.661,135.703,5,i:pressure,m:dfGaj3b</url>
+			</node>
 			<node id="earth_nullschool_net_1" name="Total Pricipitable Water">
 				<mainPanel>web browser display</mainPanel>
 				<url>https://earth.nullschool.net/#current/wind/isobaric/1000hPa/overlay=total_precipitable_water/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
