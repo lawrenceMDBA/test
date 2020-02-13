@@ -11,7 +11,7 @@
 				<locationSetId>HYDRO_sites</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="Monthly"/>
-				<relativeViewPeriod unit="day" start="-1" end="360" />
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
@@ -22,7 +22,7 @@
 				<locationSetId>HYDRO_sites</locationSetId>
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="Monthly"/>
-				<relativeViewPeriod unit="day" start="-1" end="360" />
+				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
@@ -74,7 +74,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -144,7 +144,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -218,7 +218,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -245,7 +245,7 @@
 		</subplot>
 	</plot>
 	<plot id="HydroSeasonal_Q_plan.demand">
-	<!-- Demand display nodes -->
+		<!-- Demand display nodes -->
 		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
@@ -295,7 +295,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -360,7 +360,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ImportPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -438,7 +438,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -503,7 +503,7 @@
 				<relativeViewPeriod unit="day" start="-1" end="360"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
-<!-- 			<timeSeriesSet>
+			<!-- 			<timeSeriesSet>
 				<moduleInstanceId>ProcessPlanningHydro</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_plan</parameterId>
@@ -531,6 +531,7 @@
 			</timeSeriesSet> -->
 		</subplot>
 	</plot>
+	<displayGroup name="Hydro Seasonal">
 	<displayGroup id="HydroSeasonalMonthly_Q_plan" name="Monthly flow">
 		<singleLocationDisplays>
 			<locationSetId>SourceRO_sites_Q</locationSetId>
@@ -567,5 +568,6 @@
 			<locationSetId>SourceRO_sites</locationSetId>
 			<plotId>CategoryPlot</plotId>
 		</singleLocationDisplays>
+	</displayGroup>
 	</displayGroup>
 </displayGroups>
