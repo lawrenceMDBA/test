@@ -1692,6 +1692,9 @@
 				<attribute id="STATE_ALLOCATION">
 					<text>%STATE_ALLOCATION%</text>
 				</attribute>
+				<attribute id="SNOWY_TABLE">
+					<text>%SNOWY_TABLE%</text>
+				</attribute>
 			</attributeFile>
 			<attributeFile>
 				<csvFile>ROWS_rtctools_parameters</csvFile>
@@ -2824,28 +2827,28 @@
 	</locationSet>
 	<!-- web report sites-->
 	<locationSet id="wr.sites_all">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="REPORT_WEEKLY"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2855,33 +2858,46 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_majorstatestorages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="major_state_storages"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_allstorages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_mdbastorage</locationSetId>
 		<locationSetId>wr.sites_majorstatestorages</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_snowystorage">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
-			<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+			<allValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+				<attributeTextContains id="SNOWY_TABLE" contains="storage"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_snowydiversion">
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+				<attributeTextContains id="SNOWY_TABLE" contains="diversion"/>
+			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2891,21 +2907,21 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2915,88 +2931,88 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_alldiversions">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_nswdiversion</locationSetId>
 		<locationSetId>wr.sites_vicdiversion</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_flowtosa">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="flow_to_sa"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_salinity">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="salinity"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_rivermurray">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="river_murray"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_tributaries">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="tributaries"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_natinflowhume">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nat_inflow_hume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_allriverlevelflows">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_rivermurray</locationSetId>
 		<locationSetId>wr.sites_tributaries</locationSetId>
 		<locationSetId>wr.sites_natinflowhume</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_murrayweirs">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="murray_weirs"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_murrayweirs_usds">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_murrayweirs</locationSetId>
 		<constraints>
 			<attributeExists id="DS"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_lowerlakes">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="lower_lakes"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_barrages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="barrages"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_murray_system_inflow">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="murray_system_inflow"/>
