@@ -61,22 +61,22 @@
 			<workflowId>Import_Forecast</workflowId>
 			<localRun>false</localRun>
 		</node>
-		<node id="Import_SDF" name="Import and process SDF (SevenDayForecast)">
+		<nodes id="Import_SDF" name="Import and process SDF (SevenDayForecast)">
 			<workflowId>Import_SDF</workflowId>
+			<node id="Import_SDF_Q" name="   View imported SDF">
+				<displayGroupId>SDF_Q_import</displayGroupId>
+			</node>
+			<node id="Process_SDF_Q" name="   View imported and processed SDF">
+				<displayGroupId>SDF_Q</displayGroupId>
+			</node>
 			<displayGroupId>SDF_Q_process</displayGroupId>
-			<localRun>false</localRun>
-		</node>
-		<node id="Import_SDF_Q" name="   View imported SDF">
-			<displayGroupId>SDF_Q_import</displayGroupId>
-		</node>
-		<node id="Process_SDF_Q" name="   View imported and processed SDF">
-			<displayGroupId>SDF_Q</displayGroupId>
-		</node>
+		</nodes>
 		<node id="Import_Samples" name="Import Water quality data">
 			<workflowId>Import_Samples</workflowId>
-			<mainPanel>web browser display</mainPanel>
-			<url>https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html 
- </url>
+			<localRun>false</localRun>
+		</node>
+		<node id="Import_Gaugings" name="Import Rating curve gaugings">
+			<workflowId>Import_Gaugings</workflowId>
 			<localRun>false</localRun>
 		</node>
 		<node id="Import_Ratings" name="Import Ratings">
@@ -370,10 +370,6 @@
 			<workflowId>Prepare_WeeklyReport</workflowId>
 			<localRun>true</localRun>
 		</node>
-		<node id="Prepare_MonthlyReport" name="Generate monthly Data for Weekly Report">
-			<workflowId>Prepare_MonthlyReport</workflowId>
-			<localRun>true</localRun>
-		</node>
 		<nodes id="Report_review" name="Review">
 			<node id="Review_allstorages" name="All Major Storages">
 				<displayGroupId>wr_allstorages</displayGroupId>
@@ -384,19 +380,19 @@
 			<node id="Review_alldiversions" name="All Diversions">
 				<displayGroupId>wr_alldiversions</displayGroupId>
 			</node>
-			<node id="Review_salinity" name="Salinity">
+			<node id="Review_salinity" name="(not used) Salinity ">
 				<displayGroupId>wr_salinity</displayGroupId>
 			</node>
-			<node id="Review_allriverlevelflows" name="River Levels and Flows">
+			<node id="Review_allriverlevelflows" name="(not used) River Levels and Flows">
 				<displayGroupId>wr_allriverlevelflows</displayGroupId>
 			</node>
-			<node id="Review_murrayweirs" name="Murray Weirs and Locks">
+			<node id="Review_murrayweirs" name="(not used) Murray Weirs and Locks">
 				<displayGroupId>wr_murrayweirs</displayGroupId>
 			</node>
-			<node id="Review_lowerlakes" name="Lower Lakes">
+			<node id="Review_lowerlakes" name="(not used) Lower Lakes">
 				<displayGroupId>wr_lowerlakes</displayGroupId>
 			</node>
-			<node id="Review_barrages" name="Barrages">
+			<node id="Review_barrages" name="(not used) Barrages">
 				<displayGroupId>wr_barrages</displayGroupId>
 			</node>
 			<node id="Review_flowtosa" name="Flow to South Australie">
@@ -408,7 +404,17 @@
 			<node id="Review_vicdiversion" name="VIC Diversion">
 				<displayGroupId>wr_vicdiversion</displayGroupId>
 			</node>
+			<node id="Review_systeminflows" name="System Inflows">
+				<displayGroupId>wr_systeminflows</displayGroupId>
+			</node>
+			<node id="Review_evap" name="EVAP">
+				<displayGroupId>wr_evap</displayGroupId>
+			</node>
 		</nodes>
+		<node id="Prepare_MonthlyReport" name="Generate monthly Data for Weekly Report">
+			<workflowId>Prepare_MonthlyReport</workflowId>
+			<localRun>true</localRun>
+		</node>
 		<node id="Export_WeeklyReport" name="Export Weekly Report">
 			<workflowId>Export_WeeklyReport</workflowId>
 			<localRun>false</localRun>

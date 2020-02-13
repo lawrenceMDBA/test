@@ -113,20 +113,13 @@ Copy the correct time series value to a dummy timeseriesset that needs to be exp
 		</aggregation>
 	</transformation>
 	<transformation id="Select_IL">
-		<merge>
-			<selectDataSource>
-				<input>
-					<variableId>User_IL_hour</variableId>
-				</input>
-				<input>
-					<variableId>AWRA_IL</variableId>
-				</input>
-				<attributeFunctionId>@URBS_LOSSSOURCE@</attributeFunctionId>
-				<output>
-					<variableId>Select_IL</variableId>
-				</output>
-			</selectDataSource>
-		</merge>
+		<user><simple>
+			<expression>User_IL_hour</expression>
+			<outputVariable>
+				<variableId>Select_IL</variableId>
+			</outputVariable>
+		</simple>
+		</user>
 	</transformation>
 	<transformation id="Select_IL merged">
 		<merge>

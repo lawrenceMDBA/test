@@ -778,18 +778,14 @@
 				<attribute id="URBS_PR">
 					<comment>Default 0.25, calibration range 0.15-0.35</comment>
 				</attribute>
-				<attribute id="URBS_LOSSSOURCE">
+<!--				<attribute id="URBS_LOSSSOURCE">
 					<conditionalSelection>
-						<!--						<option value="AWRA_IL">
-							<disabledAttributeId>URBS_IL</disabledAttributeId>
-							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
-						</option>-->
 						<option value="User_IL">
 							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
 						</option>
 					</conditionalSelection>
 					<comment>No advice</comment>
-				</attribute>
+				</attribute>-->
 				<attribute id="URBS_IL_AWRA">
 					<readOnly>true</readOnly>
 					<timeSeriesValueClosestToStateSelectionStartTime>
@@ -822,14 +818,6 @@
 				<attribute id="URBS_IFRF">
 					<comment>Default 0</comment>
 				</attribute>
-				<!--<panelLayout>
-					<tableLayout id="URBS_ILCL">
-						<title>Uniform Initial Loss/Continuous Loss</title>
-						<attributeId>AWRA_IL</attributeId>
-						<attributeId>URBS_IL</attributeId>
-						<attributeId>URBS_CL</attributeId>
-					</tableLayout>
-				</panelLayout>-->
 				<summaryFunction>IL=@URBS_IL@ CL=@URBS_CL@</summaryFunction>
 			</modifiableGroup>
 			<modifiableGroup name="URBS Routing">
@@ -929,7 +917,7 @@
 					<position row="4" column="1"/>
 				</panel>
 			</template>-->
-</locationAttributeModifier>
+		</locationAttributeModifier>
 		<locationAttributeModifier id="RTCTools_R" name="RTCTools Goals parameters">
 			<expiryTime unit="day" multiplier="14"/>
 			<modifiableGroup name="RTCTools Optimization Goals Parametrs">
@@ -1096,7 +1084,7 @@
 		<modifierId>KP_Release_Forecast</modifierId>
 		<modifierId>Dart_Release_Forecast</modifierId>
 	</modifiersGroup>
-<modifiersGroup id="RTCTools_S">
+	<modifiersGroup id="RTCTools_S">
 		<modifierId>Hume_Release_Forecast</modifierId>
 		<modifierId>Hume_Inflow_Forecast</modifierId>
 		<modifierId>Hume_Keiwa_Forecast</modifierId>
