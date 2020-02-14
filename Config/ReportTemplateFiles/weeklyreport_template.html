@@ -40,13 +40,13 @@ table#tableStyle3 {
 	border-collapse: collapse;
 	border: solid #000000 2px;
 	margin-left: 0pt;
-        font-family: Arial,Verdana, Helvetica, sans-serif;
+    font-family: Arial,Verdana, Helvetica, sans-serif;
 	font-size: 11px;
 	}
 	table#tableStyle3 td {
 		font-size: 11px;
 		padding: 2px;
-        	border: solid #000000 1px;
+        border: solid #000000 1px;
 	}
 	table#tableStyle3 th {
 		padding: 4px;
@@ -55,11 +55,21 @@ table#tableStyle3 {
 	        color: #000066;
 	        background-color: #C0C0C0;
 	}
-	.tableStyle3_data {
-		text-align: center;
+	.tableStyle3_name {
+		text-align: left;
 		font-size: 11px;
-    		color: #000000;
-    		background-color: #FFFFFF;
+		padding-left: 2px;
+		margin-left:20px;
+    	color: #000000;
+    	background-color: #FFFFFF;
+	}
+	.tableStyle3_data {
+		text-align: right;
+		font-size: 11px;
+    	padding-right: 40px;
+    	margin-right:40px;
+    	color: #000000;
+    	background-color: #FFFFFF;
 	}
 	.tableStyle3_data_datamax {
 		text-align: center;
@@ -186,11 +196,17 @@ table#tableStyle3 {
 	</head>
 
 <body>
-<h1>Weekly report for the week ending $INDEXTIME(0;StorageMDBA_H_weekly; LongDate)$  </h1>
+<p style="font-family: Arial; font-size: 14pt; padding: 0px; margin: 0px;">
+	<strong>Weekly report for the week ending $INDEXTIME(0;StorageMDBA_H_weekly; LongDate)$  </strong>
+	</p
 
-<p style="font-family: Arial; font-size: 11pt; padding: 0px; margin: 0px;">
+<p style="font-family: Arial; font-size: 11pt; padding: 0.5cm; margin: 0px;">
 	<strong>Water in Storage</strong>
-	<a name="Storage_Week_Ending">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a name="Storage_Week_Ending">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	Week ending $INDEXTIME(0;StorageMDBA_H_weekly;LongDate)$</a>
 </p>
@@ -202,28 +218,26 @@ table#tableStyle3 {
 </table>
 <br />
 
-<p style="font-family:Arial;font-size:11pt;padding-top: 1cm; margin:0pt;">
+<p style="font-family:Arial;font-size:11pt;padding-top: 0.5cm; margin:0pt;">
 	<strong>Snowy Mountains Scheme </strong>
-	<a name="Snowy_Week_Ending">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Snowy diversions for week ending $INDEXTIME(-1;Snowy_V_active;ReadableDate)$</a>
+</p>
+<p style="font-family:Arial;font-size:11pt;padding-top: 0cm; margin:0pt;">
+Snowy diversions for week ending $INDEXTIME(-1;Snowy_V_active;ReadableDate)$
 </p>
 <table border="0">
 	<tbody>
 		<tr>
-			<td>
-				$TABLE(Snowy_storage)$
-			</td>
 			<td>
 				$TABLE(Snowy_diversion)$
 			</td>
 		</tr>
 	</tbody>
 </table>
-<p style="font-family:Arial;font-size:11pt;color:red;padding-top: 0pt; margin:0pt;">
+<p style="font-family:Arial;font-size:8pt;color:red;padding-top: 0pt; margin:0pt;">
 	TODO: Add link to Snowy website
 </p>
 
-<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
 	<strong>Major Diversions from Murray and Lower Darling (GL) *</strong>
 </p>
 <table border="0">
@@ -247,7 +261,7 @@ table#tableStyle3 {
 	<tbody>
 	<tr>
 	<td width="277" valign="top">
-		<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
+		<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
 			<strong>Flow to South Australia (GL)</strong>
 		</p>
 		<p style="font-family: Arial; font-size: 8pt;padding: 0px; margin:0px;">
@@ -261,93 +275,64 @@ table#tableStyle3 {
 </table>
 <br />
 
-<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
 	<strong>Salinity (EC) (µSiemens/cm at 25° C)</strong>
 </p>
-<p style="font-family:Arial;font-size:11pt;color:red;padding-top: 0pt; margin:0pt;">
-	TODO: add links to River Murray Data (replacing EC table)
+<p style="font-family: Arial; font-size: 8pt;padding-top: 0cm; margin:0pt;">
+	<a href="https://riverdata.mdba.gov.au/system-view">https://riverdata.mdba.gov.au/system-view</a>
 </p>
-<br />
-
-<p style="font-family: Arial; font-size: 11pt;page-break-before: always; padding-top: 1cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
 	<strong>River Levels and Flows</strong>
-	<br />
 </p>
-<p style="font-family: Arial; font-size: 8pt;padding: 0px; margin:0px;">
-        (i.e. Pre Dartmouth &amp; Snowy Mountains scheme)
+<p style="font-family: Arial; font-size: 8pt;padding-top: 0cm; margin:0pt;">
+	<a href="https://riverdata.mdba.gov.au/system-view">https://riverdata.mdba.gov.au/system-view</a>
 </p>
-<p style="font-family:Arial;font-size:11pt;color:red;padding-top: 0pt; margin:0pt;">
-	TODO: add link to River Data site (replacing river levels and flow table)
-</p>
-<br />
-
-<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
 	<strong>Weirs and Locks</strong>
-	<span style="font-family: Arial; font-size: 8pt;padding: 0px; margin:0px;">Pool levels above or below Full Supply Level (FSL)
 </p>
-<p style="font-family:Arial;font-size:11pt;color:red;padding-top: 0pt; margin:0pt;">
-	TODO: add link to South Aus weekly report and DEWNR website (replacing locks and weir table)
+<p style="font-family: Arial; font-size: 8pt;padding-top: 0cm; margin:0pt;">
+	<a href="https://www.waterconnect.sa.gov.au/River-Murray/SitePages/River%20Murray%20Flow%20Reports.aspx">https://www.waterconnect.sa.gov.au/River-Murray/SitePages/River%20Murray%20Flow%20Reports.aspx</a>
 </p>
-
-
 <br />
 
-    <p><span style="font-family: Arial; font-size: 11pt;">
-        <strong>Lower Lakes</strong></span>
-        <span style="font-family: Arial; font-size: 8pt;padding: 0px; margin:0px;"><strong>FSL = 0.75 m AHD</strong>
-    </p>
-	<p style="font-family:Arial;font-size:11pt;color:red;padding-top: 0pt; margin:0pt;">
-        TODO: add link to SA weekly report (replacing Lower Lakes table)
-        <br />
-        TODO: Put the lower lakes levels in the weekly report word document (action MDBA)
-    </p>
-<br />
+<p style="font-family: Arial; font-size: 11pt;page-break-before: always; padding-top: 0cm; margin:0pt;"></p>
+<img src="$CHART(MurraySystemInflows)$"></img></td>
 
-	<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
-        <strong>Barrages </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family: Arial; font-size: 10pt;padding: 0px; margin:0px;">Fishways at Barrages</p>
+<p style="font-family: Arial; font-size: 11pt; padding-top: 0.5cm; margin:0pt;"></p>
+<img src="$CHART(MurraySystemInflows_monthly)$"></img></td>
 
-
-    <p style="font-family: Arial; font-size: 8pt; padding: 0px; margin: 0px;">
-        AHD = Level relative to Australian Height Datum, i.e. height above sea level
-    </p>
-
-	<br />
-
-		<p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
         <strong>State Allocations (as at $INDEXTIME(0;StateAllocations_NSW_HS_MurrayValley;ReadableDate)$) </strong></p>
 <table border="0">
 <tbody>
 <tr>
-<strong>NSW State Allocations</strong>
-$TABLE(StateAllocations_NSW)$
-	<br />
-<strong>VIC State Allocations</strong>
-$TABLE(StateAllocations_VIC)$
-	<br />
-<strong>SA State Allocations</strong>
-$TABLE(StateAllocations_SA)$
+<p style="font-family: Arial; font-size: 11pt;padding-top: 0.2cm; margin:0pt;">
+
+<table border="0">
+	<tbody>
+	<tr>
+		<td style="vertical-align:top">
+			<p style="font-family: Arial; font-size: 8pt;padding-top: 0cm; margin:0pt;"><strong>NSW State Allocations</strong></p>
+			$TABLE(StateAllocations_NSW)$
+		</td>
+		<td style="vertical-align:top">
+			<p style="font-family: Arial; font-size: 8pt;padding-top: 0cm; margin:0pt;"><strong>VIC State Allocations</strong></p>
+			$TABLE(StateAllocations_VIC)$
+			<p style="font-family: Arial; font-size: 8pt;padding-top: 0.2cm; margin:0pt;"><strong>SA  State Allocations</strong></p>
+			$TABLE(StateAllocations_SA)$
+		</td>
+	</tr>
+	</tbody>
+</table>
+
 </tbody>
 </table>
-	<br />
 
-<p style="font-family: Arial; font-size: 11pt;padding-top: 0cm; margin:0pt;">
+<p style="font-family: Arial; font-size: 8pt;padding-top: 0.5cm; margin:0pt;">
 NSW: <a href="https://www.industry.nsw.gov.au/water/allocations-availability/allocations/summary">https://www.industry.nsw.gov.au/water/allocations-availability/allocations/summary</a>
 <br />
 VIC: <a href="http://nvrm.net.au/seasonal-determinations/current">http://nvrm.net.au/seasonal-determinations/current</a>
 <br />
 SA: <a href="http://www.environment.sa.gov.au/managing-natural-resources/river-murray">http://www.environment.sa.gov.au/managing-natural-resources/river-murray</a>
-<br />
 </p>
-
-    <p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
-Murray System Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows) - 5 day rolling average
-    </p>
-
-<img src="$CHART(MurraySystemInflows)$"></img></td>
-
-    <p style="font-family: Arial; font-size: 11pt;padding-top: 1cm; margin:0pt;">
-Murray System Monthly Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows)
-    </p>
-<img src="$CHART(MurraySystemInflows_monthly)$"></img></td>
-
 </body></html>

@@ -1079,14 +1079,14 @@ locationsSets: wr.sites_barrages-->
 		</inputVariable>
 	</declarations>
 	<report scrubFolder="false">
-		<chart formatId="chartFormat1" height="600" id="MurraySystemInflows" width="900">
+		<chart formatId="chartFormat1" height="300" id="MurraySystemInflows" width="600">
 			<title>Murray System Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows) - 5 dag rolling average</title>
 			<timeSeries label="this year" preferredColor="navy" markerStyle="none">MurraySystemInflow_5daymovavg</timeSeries>
 			<timeSeries label="last year" preferredColor="magenta" markerStyle="none">MurraySystemInflow_5daymovavg_delayed</timeSeries>
 			<timeSeries label="long term average" lineStyle="dashed" preferredColor="purple" markerStyle="none">MurraySystemInflow_monthly_long_term_avg</timeSeries>
 			<fileName>MurraySystemInflows</fileName>
 		</chart>
-		<chart formatId="chartFormat1" height="600" id="MurraySystemInflows_monthly" width="900">
+		<chart formatId="chartFormat1" height="300" id="MurraySystemInflows_monthly" width="600">
 			<title>Murray System Monthly Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows)</title>
 			<timeSeries label="this year" markerSize="2" markerStyle="triangleup" preferredColor="blue">MurraySystemInflow_monthly</timeSeries>
 			<timeSeries label="last year" preferredColor="magenta" markerStyle="none">MurraySystemInflow_monthly_delayed</timeSeries>
@@ -1153,38 +1153,38 @@ locationsSets: wr.sites_barrages-->
 		<rowPerLocationHtmlTable id="Storages_MDBA" tableStyle="tableStyle3">
 			<column>
 				<header>MDBA Storages</header>
-				<format>_data</format>
+				<format>_name</format>
 				<width>250</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME;StorageMDBA_H_weekly)</function>
 			</column>
 			<column>
 				<header>Full supply level (m AHD)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>85</width>
 				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
 			</column>
 			<column>
 				<header>Full supply volume (ML)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>85</width>
 				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (GL)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>85</width>
 				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (%)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>85</width>
 				<function>INDEXVALUE(0;StorageMDBA_V_percent ; no_decimals)</function>
 			</column>
 			<column>
 				<header>Change in total storage for the week (GL)</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>85</width>
 				<function>INDEXVALUE(0;StorageMDBA_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
@@ -1244,7 +1244,7 @@ locationsSets: wr.sites_barrages-->
 				<function>INDEXVALUE(0;StorageState_V_delta ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Snowy_storage" tableStyle="tableStyle3">
+		<rowPerLocationHtmlTable id="Snowy_storage_notused" tableStyle="tableStyle3">
 			<column>
 				<header>Storage</header>
 				<format>_data</format>
@@ -1267,7 +1267,7 @@ locationsSets: wr.sites_barrages-->
 		<rowPerLocationHtmlTable id="Snowy_diversion" tableStyle="tableStyle3">
 			<column>
 				<header>Diversion (GL)</header>
-				<format>_data</format>
+				<format>_name</format>
 				<width>250</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME;Snowy_QDIV_thisweek)</function>
 			</column>
@@ -1287,7 +1287,7 @@ locationsSets: wr.sites_barrages-->
 		<rowPerLocationHtmlTable id="Diversions_NSW" tableStyle="tableStyle3">
 			<column>
 				<header>New South Wales</header>
-				<format>_data</format>
+				<format>_name</format>
 				<width>250</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsNSW_QDIV_thisweek)</function>
 			</column>
@@ -1307,7 +1307,7 @@ locationsSets: wr.sites_barrages-->
 		<rowPerLocationHtmlTable id="Diversions_Vic" tableStyle="tableStyle3">
 			<column>
 				<header>Victoria</header>
-				<format>_data</format>
+				<format>_name</format>
 				<width>250</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsVic_QDIV_thisweek)</function>
 			</column>
@@ -1601,54 +1601,54 @@ locationsSets: wr.sites_barrages-->
 		<rowPerLocationHtmlTable id="StateAllocations_NSW" tableStyle="tableStyle3">
 			<column>
 				<header>Location</header>
-				<format>_data</format>
-				<width>250</width>
+				<format>_name</format>
+				<width>120</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_NSW_HS)</function>
 			</column>
 			<column>
 				<header>High Security</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>60</width>
 				<function>INDEXVALUE(0; StateAllocations_NSW_HS; no_decimals)</function>
 			</column>
 			<column>
 				<header>General Security</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>60</width>
 				<function>INDEXVALUE(0; StateAllocations_NSW_GS; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="StateAllocations_VIC" tableStyle="tableStyle3">
 			<column>
 				<header>Location</header>
-				<format>_data</format>
-				<width>250</width>
+				<format>_name</format>
+				<width>120</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_VIC_HR)</function>
 			</column>
 			<column>
 				<header>High Reliability</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>60</width>
 				<function>INDEXVALUE(0; StateAllocations_VIC_HR; no_decimals)</function>
 			</column>
 			<column>
 				<header>Low Reliability</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>60</width>
 				<function>INDEXVALUE(0; StateAllocations_VIC_LR; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="StateAllocations_SA" tableStyle="tableStyle3">
 			<column>
 				<header>Location</header>
-				<format>_data</format>
-				<width>250</width>
+				<format>_name</format>
+				<width>120</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME; StateAllocations_SA_HS)</function>
 			</column>
 			<column>
 				<header>High Security</header>
 				<format>_data</format>
-				<width>40</width>
+				<width>130</width>
 				<function>INDEXVALUE(0; StateAllocations_SA_HS; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
