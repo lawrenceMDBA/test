@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
-  <activity>
-    <runIndependent>true</runIndependent>
-    <moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
-	<moduleConfigFileName>Import_Inflows_Period_Statistics</moduleConfigFileName>
-  </activity>
-</workflow>
+<timeSeriesImportRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/timeSeriesImportRun.xsd">
+	<import>
+		<general>
+			<importType>csv</importType>
+			<folder>$IMPORT_FOLDER_FROM_PERIOD_STATISTICS$</folder>
+			<fileNamePatternFilter>*Average*.csv</fileNamePatternFilter>
+			<failedFolder>$IMPORT_FAILED_FROM_PERIOD_STATISTICS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
+			<logWarningsForUnmappableTimeSeries>true</logWarningsForUnmappableTimeSeries>
+			<idMapId>IdmapPeriodicStatistic</idMapId>
+			<unitConversionsId>ImportUnitConversions</unitConversionsId>
+			<importTimeZone>
+				<timeZoneOffset>+10:00</timeZoneOffset>
+			</importTimeZone>
+			<expiryTime unit="day" multiplier="365"/>
+		</general>
+		<!-- Long Term Average Murray system inflows -->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<!-- 10 year Average Murray system inflows -->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>10yr_avg</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</import>
+</timeSeriesImportRun>
