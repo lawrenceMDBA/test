@@ -91,18 +91,18 @@ locationsSets: wr.sites_barrages-->
 			</season>
 			<titleFontSize>12</titleFontSize>
 		</chartFormat>
-	<chartFormat id="chartFormat2">
+		<chartFormat id="chartFormat2">
 			<includeTime0>false</includeTime0>
 			<leftAxis>
 				<min>0</min>
 <!--				<max>100000</max>-->
-				<caption>GL</caption>
+				<caption>FLow (GL)</caption>
 				<format>##0</format>
 			</leftAxis>
 			<includeLegend>true</includeLegend>
 			<season>
 				<startMonthDay>--06-01</startMonthDay>
-				<endMonthDay>--05-31</endMonthDay>
+				<endMonthDay>--04-30</endMonthDay>
 			</season>
 			<titleFontSize>12</titleFontSize>
 		</chartFormat>	
@@ -761,93 +761,109 @@ locationsSets: wr.sites_barrages-->
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
 			<qualifierId>mov_avg</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<aggregationPeriod unit="day" start="-5" end="0"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</inputVariable>
 	<inputVariable variableId="MurraySystemInflow_5daymovavg_delayed">
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
 			<qualifierId>mov_avg</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<aggregationPeriod unit="day" start="-5" end="0"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<readWriteMode>add originals</readWriteMode>
 			<delay unit="day" multiplier="365"/>
 		</timeSeriesSet>
 	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_monthly">
+	<inputVariable variableId="MurraySystemInflow_daily_lta">
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<qualifierId>daily</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<cycle unit="year"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_monthly_delayed">
+	<inputVariable variableId="MurraySystemInflow_monthly">
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-			<delay unit="day" multiplier="365"/>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly" />
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</inputVariable>
-<inputVariable variableId="MurraySystemInflow_10year_monthly_avg">
+	<inputVariable variableId="MurraySystemInflow_monthly_delayed">
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>report</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly" />
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</inputVariable>
+	<inputVariable variableId="MurraySystemInflow_10year_monthly_avg">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
 			<qualifierId>10yr_avg</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</inputVariable>
 	<inputVariable variableId="MurraySystemInflow_monthly_long_term_avg">
 		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>Q_in_calc</parameterId>
 			<qualifierId>lta</qualifierId>
 			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep unit="month"/>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
 			<cycle unit="year"/>
-			<readWriteMode>read complete forecast</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</inputVariable>
-
 	</declarations>
 	<report scrubFolder="false">
 		<chart formatId="chartFormat1" height="600" id="MurraySystemInflows" width="900">
-			<title>Murray System Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows) - 5 dag rolling average</title>
-			<timeSeries label="this year" preferredColor="navy" markerStyle="none">MurraySystemInflow_5daymovavg</timeSeries>
-			<timeSeries label="last year" preferredColor="magenta" markerStyle="none">MurraySystemInflow_5daymovavg_delayed</timeSeries>
-			<timeSeries label="long term average" lineStyle="dashed" preferredColor="purple" markerStyle="none">MurraySystemInflow_monthly_long_term_avg</timeSeries>
+			<title>Murray System Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows) - 5 day rolling average</title>
+			<timeSeries label="this year" lineStyle="solid;thick" preferredColor="navy" markerStyle="none">MurraySystemInflow_5daymovavg</timeSeries>
+			<timeSeries label="last year" lineStyle="solid;thick" preferredColor="magenta" markerStyle="none">MurraySystemInflow_5daymovavg_delayed</timeSeries>
+			<timeSeries label="long term average" lineStyle="dashed;thick" preferredColor="purple" markerStyle="none">MurraySystemInflow_daily_lta</timeSeries>
 			<fileName>MurraySystemInflows</fileName>
 		</chart>
-		<chart formatId="chartFormat1" height="600" id="MurraySystemInflows_monthly" width="900">
+		<chart formatId="chartFormat2" height="600" id="MurraySystemInflows_monthly" width="900">
 			<title>Murray System Monthly Inflows (excl.Snowy, Darling, Inter-valley trade and Env.Inflows)</title>
-			<timeSeries label="this year" markerSize="2" markerStyle="triangleup" preferredColor="blue">MurraySystemInflow_monthly</timeSeries>
-			<timeSeries label="last year" preferredColor="magenta" markerStyle="none">MurraySystemInflow_monthly_delayed</timeSeries>
-			<timeSeries label="10 yr avg" lineStyle="dashed" preferredColor="green" markerStyle="none">MurraySystemInflow_10year_monthly_avg</timeSeries>
-			<timeSeries label="long term average" lineStyle="dashdot" preferredColor="black" markerStyle="none">MurraySystemInflow_monthly_long_term_avg</timeSeries>
+			<timeSeries label="this year" lineStyle="solid;thick" markerStyle="none" preferredColor="blue">MurraySystemInflow_monthly</timeSeries>
+			<timeSeries label="last year" lineStyle="solid;thick" markerStyle="none" preferredColor="magenta">MurraySystemInflow_monthly_delayed</timeSeries>
+			<timeSeries label="10 yr avg" lineStyle="dashed;thick" preferredColor="green" markerStyle="none">MurraySystemInflow_10year_monthly_avg</timeSeries>
+			<timeSeries label="long term average" lineStyle="dotted;thick" preferredColor="black" markerStyle="none">MurraySystemInflow_monthly_long_term_avg</timeSeries>
 			<fileName>MurraySystemInflows_monthly</fileName>
 		</chart>
 		<rowPerLocationHtmlTable id="Storages_MDBA" tableStyle="tableStyle3">

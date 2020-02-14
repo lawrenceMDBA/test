@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transforamtion module to calculate 
+	  1. 5 day rolling average murray system inflows
+	  2. calculate daily long term averages from monthly long term averages
+	  3. Calculate monthly inflow totals from daily inflows and convert to GL
+	  The daily inflows data (used in the 5 day rolling calculations) is imported from MDBC_OPS (ST_FLOOD sheet) 
+	  The LTA monthly values (used in calculating LTA daily values) is imported as a csv file, the values change only once a year or so 
+	  and is obtained from the PeriodStatistics spreadsheets by operators.-->
+	<variable>
+		<variableId>SYSTNET_INFLOW</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-730" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>5day_avg_Inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>SYSTNET_INFLOW_midnight</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>midnight</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="midnight"/>
+			<relativeViewPeriod start="-730" end="0" unit="day"/>		
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Monthly_Inflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly" />
+			<relativeViewPeriod start="-730" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Monthly_Inflow_shift_1</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>shift_t1</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly" />
+			<relativeViewPeriod start="-730" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Monthly_Inflow_GL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly" />
+			<relativeViewPeriod start="-730" end="10" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+   <!--	Shifting the timeseries 12 steps forward to plot the previous 
+        years monhtly inflow on the same plot (Delay function is not 
+		working on the monthly timestep, so shifting the timeseries) -->
+	<variable>
+		<variableId>Monthly_Inflow_shift_12</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>monthly</qualifierId>
+			<qualifierId>report</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly" />
+			<relativeViewPeriod start="-730" end="730" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<expiryTime unit="day" multiplier="2"/>
+		</timeSeriesSet>
+	</variable>	
+	<variable>
+		<variableId>Long_term_average_monthly_GL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<cycle unit="year"/>
+			<relativeViewPeriod start="-500" end="120" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- shifting the Monthly LTA one ts forward. The LTA values are stored as the values for the first of the month
+	These values when disaggregated (Accumulative) will be disaggregated against the prev month.
+	So timeshifting the values forward to make sure that the values are disaggregated against the correct month
+	Eg: without time shifting, july month values will be disaggregared to june daily values, to avoid that shifting it 
+	one timestep forward so that the july monlth values are disaggregated to july daily values. -->
+	<variable>
+		<variableId>Long_term_average_monthly_GL_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<qualifierId>shift_t1</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod start="-400" end="150" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Long_term_average_monthly_ML</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Long_term_average_daily</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_calc</parameterId>
+			<qualifierId>lta</qualifierId>
+			<qualifierId>daily</qualifierId>
+			<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<cycle unit="year"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<transformation id="5day_avg_Inflow">
+		<aggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>SYSTNET_INFLOW</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>5day_avg_Inflow</variableId>
+				</outputVariable>
+			</meanToMean>
+		</aggregation>
+	</transformation>
+	<!-- closestBackward option: This shifts the values for eg: 08:00 20/06/2019 to 00:00 21/06/2019. But, this works
+	                             well with the aggregation accumulative and gets the totals from 1st of the month to
+								 end of the month.
+		 closestForward option:  This shifts the values for eg: 08:00 20/06/2019 to 00:00 20/06/2019. But, this does not
+		                         work with the aggregation accumulative and gets the totals from 2nd of the month to
+								 1st of the next month.
+		 so choosing closestBackward as the interpolation type in order to get the correct monthly totals -->
+	<transformation id="SYSTNET_INFLOW_midnight">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>SYSTNET_INFLOW</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>SYSTNET_INFLOW_midnight</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestBackward</interpolationType>
+				<outputVariable>
+					<variableId>SYSTNET_INFLOW_midnight</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="Monthly_inflow">
+		<aggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>SYSTNET_INFLOW_midnight</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Monthly_Inflow</variableId>
+				</outputVariable>
+			</accumulative>
+		</aggregation>
+	</transformation>
+	<!-- Shift the monthly totals one step backwards as aggregation accumulative totals the values for june and puts
+	 it against july, but we want the june totals to go against june -->
+	<transformation id="monthly_inflow_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Monthly_Inflow</variableId>
+				</inputVariable>
+				<direction>backward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Monthly_Inflow_shift_1</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="monthly_inflow_GL">
+		<user>
+			<simple>
+				<expression>(Monthly_Inflow_shift_1/1000)</expression>
+				<outputVariable>
+					<variableId>Monthly_Inflow_GL</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="monthly_inflow_shift_12">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Monthly_Inflow_GL</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>12</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Monthly_Inflow_shift_12</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="lta_monthly_shift_1">
+		<timeShift>
+			<constant>
+				<inputVariable>
+					<variableId>Long_term_average_monthly_GL</variableId>
+				</inputVariable>
+				<direction>forward</direction>
+				<numberOfTimeSteps>1</numberOfTimeSteps>
+				<outputVariable>
+					<variableId>Long_term_average_monthly_GL_shift</variableId>
+				</outputVariable>
+			</constant>
+		</timeShift>
+	</transformation>
+	<transformation id="monthly_long_term_average_ML">
+		<user>
+			<simple>
+				<expression>(Long_term_average_monthly_GL_shift*1000)</expression>
+				<outputVariable>
+					<variableId>Long_term_average_monthly_ML</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="daily_long_term_average">
+		<disaggregation>
+			<accumulative>
+				<inputVariable>
+					<variableId>Long_term_average_monthly_ML</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Long_term_average_daily</variableId>
+				</outputVariable>
+			</accumulative>
+		</disaggregation>
+	</transformation>
+</transformationModule>
