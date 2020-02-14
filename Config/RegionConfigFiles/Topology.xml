@@ -1116,8 +1116,25 @@
 	</nodes>
 	<nodes id="OpsDashboard" name="Operations Dashboard">
 		<node id="WIS_Dash" name="Water In Storages">
-			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
+			<mainPanel>web browser display</mainPanel>
 		</node>
+		<node id="WIS_Dash_1" name="Daily System Inflows">
+			<url>http://rowsprdpiws100.prod.local:8080/WIS/Daily_Inflows.html</url>
+		</node>
+		<node id="WIS_Dash_2" name="Monthly System Inflows">
+			<url>http://rowsprdpiws100.prod.local:8080/WIS/Monthly_Inflows.html</url>
+		</node>
+		<nodes id="earth_nullschool_net" name="Animated Global Weather Forecast">
+			<node id="earth_nullschool_net_1" name="Windy.com">
+				<mainPanel>web browser display</mainPanel>
+				<url>https://www.windy.com/?-27.547,142.690,5</url>
+			</node>
+			<node id="earth_nullschool_net_2" name="3h Accumulated Pricipitation">
+				<mainPanel>web browser display</mainPanel>
+				<url>https://earth.nullschool.net/#current/wind/surface/level/overlay=precip_3hr/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
+			</node>
+		</nodes>
+		<!-- <mainPanel>web browser display</mainPanel> -->
  		<visibleModifierGroup>ROWS</visibleModifierGroup>
  	</nodes>
 	<nodes id="Development" name="Development-Dashboard">
@@ -1134,6 +1151,25 @@
 		<node id="ShinyApp_Dash" name="Local Flights Dashboard">
 			<mainPanel>web browser display</mainPanel>
 			<url>http://rowststmc100:8888</url>
+ 		</node>	
+		<viewPermission>Administrators</viewPermission>
+ 	</nodes>
+	<nodes id="Admin" name="System Admin">
+		<node id="rowsprdmc100" name="ROWS Prod AI">
+			<mainPanel>web browser display</mainPanel>
+			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
+ 		</node>
+		<node id="rowsprdarc100" name="ROWS Archive Server">
+			<mainPanel>web browser display</mainPanel>
+			<url>http://rowsprdarc100.prod.local:8080/deltares-archive-server/</url>
+ 		</node>
+		<node id="rowsprdarc100_thredds" name="ROWS Thredds Server">
+			<mainPanel>web browser display</mainPanel>
+			<url>http://rowsprdarc100.prod.local:8080/thredds/catalog.html</url>
+ 		</node>		
+		<node id="rowststmc100" name="ROWS Test AI">
+			<mainPanel>web browser display</mainPanel>
+			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
  		</node>	
 		<viewPermission>Administrators</viewPermission>
  	</nodes>

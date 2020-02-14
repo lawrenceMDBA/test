@@ -275,9 +275,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_ivt</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>ivt</qualifierId>
 			<locationSetId>de2MDBC_OPS.sites_Q.ivt</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -395,10 +394,10 @@
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessQopo</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
+			<parameterId>Q_env</parameterId>
 			<qualifierId>opo</qualifierId>
-			<qualifierId>instream</qualifierId>
-			<locationSetId>de2MDBC_OPS.sites_Q.instream</locationSetId>
+			<qualifierId>credit</qualifierId>
+			<locationSetId>de2MDBC_OPS.sites_Q.credit</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-30" unit="day"/>
@@ -520,6 +519,78 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_env</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mur_bypass</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_mur_bypass</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_env</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>sa_delivery</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_sa_del</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_env</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>env_use</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_env_use</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_env</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>ent_use</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_ent_use</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_env</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>loss</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-30" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>return</qualifierId>
+			<locationSetId>SourceRO_EWsites_Q_return</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="78" unit="week" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</export>
