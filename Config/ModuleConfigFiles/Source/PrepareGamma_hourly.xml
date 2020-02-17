@@ -52,7 +52,7 @@
 			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<relativeViewPeriod start="-400" end="0" unit="day" startOverrulable="true"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -66,7 +66,7 @@
 			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="0" unit="day" startOverrulable="true"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -128,22 +128,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-1" end="0" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>Gamma_Qfcst_rise_initial</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
@@ -154,22 +138,7 @@
 			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="-1" end="0" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="1" end="17520" unit="hour" startOverrulable="true"/>
+			<relativeViewPeriod start="-1" end="1" unit="hour" startOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -181,6 +150,39 @@
 			<parameterId>Q_fcst</parameterId>
 			<qualifierId>Gamma</qualifierId>
 			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial_complete2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp3</qualifierId>
 			<locationSetId>SourceRO_sites_Q</locationSetId>
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="1"/>
@@ -294,16 +296,6 @@
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_default">
-		<user>
-			<simple>
-				<expression>0</expression>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
 	<transformation id="Gamma_Qfcst_rise_initial">
 		<user>
 			<simple>
@@ -314,45 +306,52 @@
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial (merge)">
-		<merge>
-			<simple>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</inputVariable>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</outputVariable>
-			</simple>
-		</merge>
-	</transformation>
 	<transformation id="Gamma_Qfcst_rise_initial_ext (block)">
 		<interpolationSerial>
-			<block>
+			<extrapolateConstant>
 				<inputVariable>
 					<variableId>Gamma_Qfcst_rise_initial</variableId>
 				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
 				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
+					<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
 				</outputVariable>
-			</block>
+			</extrapolateConstant>
 		</interpolationSerial>
 	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_ext (default)">
+	<transformation id="Gamma_Qfcst_rise_initial_ext (interpolation)">
 		<interpolationSerial>
 			<default>
 				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
+					<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
 				</inputVariable>
 				<defaultValue>0</defaultValue>
+				<extrapolateDirection>end</extrapolateDirection>
 				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
+					<variableId>Gamma_Qfcst_rise_initial_complete2</variableId>
 				</outputVariable>
 			</default>
 		</interpolationSerial>
+	</transformation>
+	<!--<transformation id="Gamma_Qfcst_rise_receding">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete2*((5-Gamma_Qfcst_z)/5)</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="Gamma_Qfcst_rise_constant">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete2</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
 	</transformation>
 	<transformation id="phi_alpha">
 		<user>
@@ -386,7 +385,7 @@
 	<transformation id="Gamma_Qfcst">
 		<user>
 			<simple>
-				<expression>Gamma_Qfcst_rise_initial_complete + Gamma_peak_value* (Gamma_Qfcst_z^alpha)*(exp((1-Gamma_Qfcst_z)*alpha))</expression>
+				<expression>Gamma_Qfcst_rise_initial_complete3 + Gamma_peak_value* (Gamma_Qfcst_z^alpha)*(exp((1-Gamma_Qfcst_z)*alpha))</expression>
 				<coefficientSetFunctions>
 					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
 				</coefficientSetFunctions>
