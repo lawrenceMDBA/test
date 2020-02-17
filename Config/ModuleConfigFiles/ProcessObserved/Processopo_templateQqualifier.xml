@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- Transformations to compose OPO series from OPT, OPC -->
+	<!-- Types of daily values are distinguished:
+_8am_inst: instantaenous values at 8am	-->
+	<!--Steps conducted for OPT, OPC:-->
+	<!--_neq_to_8am_inst: 
+samples nonEquidistant series to 8am instantaneous daily series using closestOrLinear interpolation 
+(i.e. linear interpolation when an input value is available beyond the target timestamp, else closest input value before target timestamp) restricted by 4 hour max timewindow-->
+	<!--SelectPreferred_: 
+select preferred series (OPT, OPC,OPO) based on (modifiable) location attribute, default is OPT
+OPO can be selected when all telemetry traces are unreliable and the site has to be entered manually-->
+	<!--Merge_OPO_Over_Selected(_OPT_OPC):
+Merges OPO over selected (not over OPT over OPC) series-->
+	<!--Input-->
+	<variable>
+		<variableId>OPC_neq</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_neq_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_fcst</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output-->
+	<variable>
+		<variableId>OPC_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$SRC_MOD_INST$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPC_8am_inst_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$SRC_MOD_INST$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_fcst</parameterId>
+			<qualifierId>opc</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$RESULT_MOD_INST_OBS$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<qualifierId>copy</qualifierId>
+			<locationSetId>$RESULT_LOC_SET$</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$RESULT_MOD_INST_OBS$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>$RESULT_LOC_SET$</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="$OP_END_DAY$" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst_fcst_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$RESULT_MOD_INST_FCST$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_fcst</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<qualifierId>copy</qualifierId>
+			<locationSetId>$RESULT_LOC_SET$</locationSetId>
+			<timeSeriesType>temporary external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst_fcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$RESULT_MOD_INST_FCST$</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>$PARAM$_fcst</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>$PARAM_QUALIFIER$</qualifierId>
+			<locationSetId>$RESULT_LOC_SET$</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="30" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<transformation id="OPC_8am_inst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPC_8am_inst_fcst">
+		<sample>
+			<nonEquidistant>
+				<nonEquidistantInputVariable>
+					<variableId>OPC_neq_fcst</variableId>
+				</nonEquidistantInputVariable>
+				<interpolationType>linearOrClosest</interpolationType>
+				<maxGapLength unit="hour" multiplier="4"/>
+				<outputVariable>
+					<variableId>OPC_8am_inst_fcst</variableId>
+				</outputVariable>
+			</nonEquidistant>
+		</sample>
+	</transformation>
+	<transformation id="OPO_8am_inst_copy">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_copy</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPO_8am_inst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst_copy</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPO_8am_inst_fcst_copy">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_fcst_copy</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPO_8am_inst_fcst">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst_fcst_copy</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>OPC_8am_inst_fcst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_fcst</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+</transformationModule>

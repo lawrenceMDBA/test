@@ -7,6 +7,7 @@
 	<!-- 	- merge OPO, short term (manual) forecast and long term forecast -->
 	<!-- 	> Trend Flow Forcast (manual)-->
 	<!-- 	- Rise to trend target,vaintain for forecast length-->
+	<!-- 	> Gamma function hydrograph Flow Forcast (manual) (see PrepareGamma.xml)-->
 	<!-- 	> Pulse Flow Forcast (manual)-->
 	<!-- 	- Flow until peak: Flow(n+1) = (Pulse rising flow) – Flow(n)) * (1 – Pulse rising rate) + Flow(n)-->
 	<!-- 	- Flow at peak: Flow(peak) = Pulse peak flow-->
@@ -34,8 +35,21 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--========= Q fcst ========= -->
-	<!--Q fcst: manual shortterm forecast-->
+	<!--Step 1: Q obs-->
+	<variable>
+		<variableId>Gauges_Qobs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>Gauges_Qobs_extend</variableId>
 		<timeSeriesSet>
@@ -50,6 +64,126 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Step 1: Input shortterm forecasts-->
+	<variable>
+		<variableId>SDF_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>STF_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MDBC_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Source_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Step 1: Process input shortterm forecasts (temporary)-->
+	<variable>
+		<variableId>SDF_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>STF_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>stf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>urbs</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Step 2: Manual shortterm forecast-->
 	<variable>
 		<variableId>Trend_Qfcst_initial</variableId>
 		<timeSeriesSet>
@@ -75,308 +209,6 @@
 			<timeSeriesType>simulated forecasting</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="0" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial_ext</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial_complete</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="0" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial_ext_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="1" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_serial_initial_complete_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>initial</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_z</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>z</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_z_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>z</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-1" end="0" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-1" end="0" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="1" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="-1" end="1" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_ext_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="1" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_rise_initial_complete_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<qualifierId>rise</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>phi_alpha</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>phi_alpha</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>alpha</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>alpha</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>phi_alpha_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>phi_alpha</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>alpha_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Gamma</parameterId>
-			<qualifierId>alpha</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Gamma_Qfcst_h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>Gamma</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
@@ -502,139 +334,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: other input series (fcst and obs)-->
-	<variable>
-		<variableId>Gauges_Qobs</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>SDF_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>sdf</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-			<ensembleId>main</ensembleId>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>STF_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>URBS_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Source_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>default</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBC_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Shortterm_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--Q fcst: other input series (temporary series)-->
-	<variable>
-		<variableId>SDF_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>sdf</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>STF_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>stf</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>URBS_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>urbs</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--Q fcst: Qplan Hydro and statistics-->
+	<!--Step 3: Input Qplan-->
 	<variable>
 		<variableId>Qplan_hydro_min</variableId>
 		<timeSeriesSet>
@@ -691,7 +391,7 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: Qplan statistics - Monthly timestep (temporary)-->
+	<!--Step 3: Qplan statistics - Monthly timestep (temporary)-->
 	<variable>
 		<variableId>Cycle_month</variableId>
 		<timeSeriesSet>
@@ -882,7 +582,20 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: Qcomb resulting series-->
+	<!--Step 4: Qcomb resulting shortterm and longterm series-->
+	<variable>
+		<variableId>Shortterm_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>Qcomb_min</variableId>
 		<timeSeriesSet>
@@ -944,7 +657,44 @@
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
 	<!--========================================================================================-->
 	<!--Inflow: Flow-->
-	<!--Step 1 Flow Fcst: Generate Manual Forecaster Series-->
+	<!--Step 1 Flow Fcst: Aggregate (instantaneous) SDF, STF and URBS series to daily-->
+	<transformation id="SDF_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>SDF_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SDF_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="STF_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>STF_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>STF_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="URBS_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>URBS_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>URBS_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<!--Step 2 Flow Fcst: Generate Manual Forecaster Series-->
 	<transformation id="Gauges_Qobs_extend">
 		<interpolationSerial>
 			<extrapolateConstant>
@@ -991,517 +741,6 @@
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Trend_Qfcst</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial">
-		<user>
-			<simple>
-				<expression>0</expression>
-				<outputVariable>
-					<variableId>Gamma_serial_initial</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial_ext">
-		<user>
-			<simple>
-				<expression>PREVIOUS_OUTPUT_VALUE + 24</expression>
-				<outputVariable>
-					<variableId>Gamma_serial_initial_ext</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial_ext2">
-		<user>
-			<simple>
-				<!--unit=days, conversion *24 is needed to unit h. t max (hours) is equal to 5* Gamma peak time in hours-->
-				<expression>if(Gamma_serial_initial_ext &gt; 5*24*Gamma_peak_time, 5*24*Gamma_peak_time, Gamma_serial_initial_ext)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_serial_initial_ext</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_z">
-		<user>
-			<simple>
-				<expression>Gamma_serial_initial_complete/(5*24*Gamma_peak_time)*5</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_z</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial_h">
-		<user>
-			<simple>
-				<expression>Gamma_serial_initial</expression>
-				<outputVariable>
-					<variableId>Gamma_serial_initial_h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial_ext_h">
-		<user>
-			<simple>
-				<expression>PREVIOUS_OUTPUT_VALUE + 1</expression>
-				<outputVariable>
-					<variableId>Gamma_serial_initial_ext_h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_serial_initial_ext2_h">
-		<user>
-			<simple>
-				<!--unit=hours, t max (hours) is equal to 5* Gamma peak time in hours-->
-				<expression>if(Gamma_serial_initial_ext_h &gt; 5*24*Gamma_peak_time, 5*24*Gamma_peak_time, Gamma_serial_initial_ext_h)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_serial_initial_ext_h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_z_h">
-		<user>
-			<simple>
-				<expression>Gamma_serial_initial_complete_h/(5*24*Gamma_peak_time)*5</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_z_h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial">
-		<user>
-			<simple>
-				<expression>0</expression>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial">
-		<user>
-			<simple>
-				<expression>Gauges_Qobs_extend</expression>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_default">
-		<merge>
-			<simple>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</inputVariable>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_default</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</outputVariable>
-			</simple>
-		</merge>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_ext">
-		<interpolationSerial>
-			<block>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
-				</outputVariable>
-			</block>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_ext2">
-		<interpolationSerial>
-			<default>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
-				</inputVariable>
-				<defaultValue>0</defaultValue>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_ext</variableId>
-				</outputVariable>
-			</default>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="Gamma_Qfcst_rise_initial_ext2_h">
-		<interpolationSerial>
-			<default>
-				<inputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_complete_h</variableId>
-				</outputVariable>
-			</default>
-		</interpolationSerial>
-	</transformation>
-	<transformation id="phi_alpha">
-		<user>
-			<simple>
-				<!--Phi_Alpha = (Qp * tp) / (Cv * A)
-
-In this formula, 
-Qp - the peak flow rate Qp (Gamma_peak_value) needs to be converted to units of "cfs /inch" (this is the peak value of the unit hydrograph in cfs for a 1-inch rainfall depth). 
-A - drainage area A needs to be defined in acres
-tp - time to peak tp in hours
-Cv  - equals 1.008 for volumes measured in cfs * hrs, drainage area in acres, and the unit storm as 1-inch.
-
-It appears the provided value in the attributes are not representative - it is unclear how the conversion should take place of the provided Qp value. As it stands, with just a direct conversion from ML/day to cfs, the resulting value of Phi_Alpha is not of the right order, messing up the lookup for alpha.-->
-				<expression>((Gamma_peak_time*24)*(Gamma_peak_value/2.45))/(1.008*catchment_area*640)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
-					<!--unit=ML/day, so conversion 1/2.45 is needed to cfs-->
-					<coefficient id="catchment_area" value="@SITE_Q_AREA@"/>
-					<!--catchment area in Acres. In that case 1.008 value for Cv is needed-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>phi_alpha</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="alpha">
-		<lookup>
-			<simple>
-				<input>
-					<variableId>phi_alpha</variableId>
-				</input>
-				<coefficientSet>
-					<interpolationType>linear</interpolationType>
-					<extrapolationType>extrapolate</extrapolationType>
-					<lookupTable>
-						<lookupTableRow input="0.368" output="1.00"/>
-						<lookupTableRow input="0.418" output="1.25"/>
-						<lookupTableRow input="0.463" output="1.50"/>
-						<lookupTableRow input="0.503" output="1.75"/>
-						<lookupTableRow input="0.541" output="2.00"/>
-						<lookupTableRow input="0.577" output="2.25"/>
-						<lookupTableRow input="0.610" output="2.50"/>
-						<lookupTableRow input="0.642" output="2.75"/>
-						<lookupTableRow input="0.672" output="3.00"/>
-						<lookupTableRow input="0.729" output="3.50"/>
-						<lookupTableRow input="0.781" output="4.00"/>
-						<lookupTableRow input="0.831" output="4.50"/>
-						<lookupTableRow input="0.877" output="5.00"/>
-						<lookupTableRow input="0.922" output="5.50"/>
-						<lookupTableRow input="0.964" output="6.00"/>
-						<lookupTableRow input="1.004" output="6.50"/>
-						<lookupTableRow input="1.043" output="7.00"/>
-						<lookupTableRow input="1.080" output="7.50"/>
-						<lookupTableRow input="1.117" output="8.00"/>
-						<lookupTableRow input="1.152" output="8.50"/>
-						<lookupTableRow input="1.186" output="9.00"/>
-						<lookupTableRow input="1.219" output="9.50"/>
-						<lookupTableRow input="1.251" output="10.00"/>
-						<lookupTableRow input="1.283" output="10.50"/>
-						<lookupTableRow input="1.313" output="11.00"/>
-						<lookupTableRow input="1.343" output="11.50"/>
-						<lookupTableRow input="1.372" output="12.00"/>
-						<lookupTableRow input="1.401" output="12.50"/>
-						<lookupTableRow input="1.429" output="13.00"/>
-						<lookupTableRow input="1.457" output="13.50"/>
-						<lookupTableRow input="1.484" output="14.00"/>
-						<lookupTableRow input="1.510" output="14.50"/>
-						<lookupTableRow input="1.537" output="15.00"/>
-						<lookupTableRow input="1.562" output="15.50"/>
-						<lookupTableRow input="1.587" output="16.00"/>
-						<lookupTableRow input="1.612" output="16.50"/>
-						<lookupTableRow input="1.637" output="17.00"/>
-						<lookupTableRow input="1.661" output="17.50"/>
-						<lookupTableRow input="1.685" output="18.00"/>
-						<lookupTableRow input="1.708" output="18.50"/>
-						<lookupTableRow input="1.731" output="19.00"/>
-						<lookupTableRow input="1.754" output="19.50"/>
-						<lookupTableRow input="1.777" output="20.00"/>
-						<lookupTableRow input="1.799" output="20.50"/>
-						<lookupTableRow input="1.821" output="21.00"/>
-						<lookupTableRow input="1.843" output="21.50"/>
-						<lookupTableRow input="1.864" output="22.00"/>
-						<lookupTableRow input="1.885" output="22.50"/>
-						<lookupTableRow input="1.906" output="23.00"/>
-						<lookupTableRow input="1.927" output="23.50"/>
-						<lookupTableRow input="1.948" output="24.00"/>
-						<lookupTableRow input="1.968" output="24.50"/>
-						<lookupTableRow input="1.988" output="25.00"/>
-						<lookupTableRow input="2.008" output="25.50"/>
-						<lookupTableRow input="2.028" output="26.00"/>
-						<lookupTableRow input="2.047" output="26.50"/>
-						<lookupTableRow input="2.067" output="27.00"/>
-						<lookupTableRow input="2.086" output="27.50"/>
-						<lookupTableRow input="2.105" output="28.00"/>
-						<lookupTableRow input="2.124" output="28.50"/>
-						<lookupTableRow input="2.142" output="29.00"/>
-						<lookupTableRow input="2.161" output="29.50"/>
-						<lookupTableRow input="2.179" output="30.00"/>
-						<lookupTableRow input="2.197" output="30.50"/>
-						<lookupTableRow input="2.215" output="31.00"/>
-						<lookupTableRow input="2.233" output="31.50"/>
-						<lookupTableRow input="2.251" output="32.00"/>
-						<lookupTableRow input="2.268" output="32.50"/>
-						<lookupTableRow input="2.286" output="33.00"/>
-						<lookupTableRow input="2.303" output="33.50"/>
-						<lookupTableRow input="2.321" output="34.00"/>
-						<lookupTableRow input="2.338" output="34.50"/>
-						<lookupTableRow input="2.355" output="35.00"/>
-						<lookupTableRow input="2.371" output="35.50"/>
-						<lookupTableRow input="2.388" output="36.00"/>
-						<lookupTableRow input="2.405" output="36.50"/>
-						<lookupTableRow input="2.421" output="37.00"/>
-						<lookupTableRow input="2.438" output="37.50"/>
-						<lookupTableRow input="2.454" output="38.00"/>
-						<lookupTableRow input="2.470" output="38.50"/>
-						<lookupTableRow input="2.486" output="39.00"/>
-						<lookupTableRow input="2.502" output="39.50"/>
-						<lookupTableRow input="2.518" output="40.00"/>
-						<lookupTableRow input="2.534" output="40.50"/>
-						<lookupTableRow input="2.549" output="41.00"/>
-						<lookupTableRow input="2.565" output="41.50"/>
-						<lookupTableRow input="2.580" output="42.00"/>
-						<lookupTableRow input="2.596" output="42.50"/>
-						<lookupTableRow input="2.611" output="43.00"/>
-						<lookupTableRow input="2.626" output="43.50"/>
-						<lookupTableRow input="2.641" output="44.00"/>
-						<lookupTableRow input="2.656" output="44.50"/>
-						<lookupTableRow input="2.671" output="45.00"/>
-						<lookupTableRow input="2.686" output="45.50"/>
-						<lookupTableRow input="2.701" output="46.00"/>
-						<lookupTableRow input="2.716" output="46.50"/>
-						<lookupTableRow input="2.730" output="47.00"/>
-						<lookupTableRow input="2.745" output="47.50"/>
-						<lookupTableRow input="2.759" output="48.00"/>
-						<lookupTableRow input="2.774" output="48.50"/>
-						<lookupTableRow input="2.788" output="49.00"/>
-						<lookupTableRow input="2.802" output="49.50"/>
-						<lookupTableRow input="2.816" output="50.00"/>
-						<lookupTableRow input="2.830" output="50.50"/>
-						<lookupTableRow input="2.844" output="51.00"/>
-						<lookupTableRow input="2.858" output="51.50"/>
-						<lookupTableRow input="2.872" output="52.00"/>
-						<lookupTableRow input="2.886" output="52.50"/>
-						<lookupTableRow input="2.900" output="53.00"/>
-						<lookupTableRow input="2.913" output="53.50"/>
-						<lookupTableRow input="2.927" output="54.00"/>
-						<lookupTableRow input="2.941" output="54.50"/>
-						<lookupTableRow input="2.954" output="55.00"/>
-						<lookupTableRow input="2.968" output="55.50"/>
-						<lookupTableRow input="2.981" output="56.00"/>
-						<lookupTableRow input="2.994" output="56.50"/>
-						<lookupTableRow input="3.008" output="57.00"/>
-					</lookupTable>
-				</coefficientSet>
-				<output>
-					<variableId>alpha</variableId>
-				</output>
-			</simple>
-		</lookup>
-	</transformation>
-	<transformation id="phi_alpha_h">
-		<user>
-			<simple>
-				<expression>((Gamma_peak_time*24)*(Gamma_peak_value/2.45))/(1.008*catchment_area*640)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
-					<!--unit=days, conversion *24 is needed to unit h-->
-					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
-					<!--unit=ML/day, so conversion 1/2.45 is needed to cfs-->
-					<coefficient id="catchment_area" value="@SITE_Q_AREA@"/>
-					<!--catchment area in Acres? In that case 1.008 value for Cv is needed-->
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>phi_alpha_h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="alpha_h">
-		<lookup>
-			<simple>
-				<input>
-					<variableId>phi_alpha_h</variableId>
-				</input>
-				<coefficientSet>
-					<interpolationType>linear</interpolationType>
-					<extrapolationType>extrapolate</extrapolationType>
-					<lookupTable>
-						<lookupTableRow input="0.368" output="1.00"/>
-						<lookupTableRow input="0.418" output="1.25"/>
-						<lookupTableRow input="0.463" output="1.50"/>
-						<lookupTableRow input="0.503" output="1.75"/>
-						<lookupTableRow input="0.541" output="2.00"/>
-						<lookupTableRow input="0.577" output="2.25"/>
-						<lookupTableRow input="0.610" output="2.50"/>
-						<lookupTableRow input="0.642" output="2.75"/>
-						<lookupTableRow input="0.672" output="3.00"/>
-						<lookupTableRow input="0.729" output="3.50"/>
-						<lookupTableRow input="0.781" output="4.00"/>
-						<lookupTableRow input="0.831" output="4.50"/>
-						<lookupTableRow input="0.877" output="5.00"/>
-						<lookupTableRow input="0.922" output="5.50"/>
-						<lookupTableRow input="0.964" output="6.00"/>
-						<lookupTableRow input="1.004" output="6.50"/>
-						<lookupTableRow input="1.043" output="7.00"/>
-						<lookupTableRow input="1.080" output="7.50"/>
-						<lookupTableRow input="1.117" output="8.00"/>
-						<lookupTableRow input="1.152" output="8.50"/>
-						<lookupTableRow input="1.186" output="9.00"/>
-						<lookupTableRow input="1.219" output="9.50"/>
-						<lookupTableRow input="1.251" output="10.00"/>
-						<lookupTableRow input="1.283" output="10.50"/>
-						<lookupTableRow input="1.313" output="11.00"/>
-						<lookupTableRow input="1.343" output="11.50"/>
-						<lookupTableRow input="1.372" output="12.00"/>
-						<lookupTableRow input="1.401" output="12.50"/>
-						<lookupTableRow input="1.429" output="13.00"/>
-						<lookupTableRow input="1.457" output="13.50"/>
-						<lookupTableRow input="1.484" output="14.00"/>
-						<lookupTableRow input="1.510" output="14.50"/>
-						<lookupTableRow input="1.537" output="15.00"/>
-						<lookupTableRow input="1.562" output="15.50"/>
-						<lookupTableRow input="1.587" output="16.00"/>
-						<lookupTableRow input="1.612" output="16.50"/>
-						<lookupTableRow input="1.637" output="17.00"/>
-						<lookupTableRow input="1.661" output="17.50"/>
-						<lookupTableRow input="1.685" output="18.00"/>
-						<lookupTableRow input="1.708" output="18.50"/>
-						<lookupTableRow input="1.731" output="19.00"/>
-						<lookupTableRow input="1.754" output="19.50"/>
-						<lookupTableRow input="1.777" output="20.00"/>
-						<lookupTableRow input="1.799" output="20.50"/>
-						<lookupTableRow input="1.821" output="21.00"/>
-						<lookupTableRow input="1.843" output="21.50"/>
-						<lookupTableRow input="1.864" output="22.00"/>
-						<lookupTableRow input="1.885" output="22.50"/>
-						<lookupTableRow input="1.906" output="23.00"/>
-						<lookupTableRow input="1.927" output="23.50"/>
-						<lookupTableRow input="1.948" output="24.00"/>
-						<lookupTableRow input="1.968" output="24.50"/>
-						<lookupTableRow input="1.988" output="25.00"/>
-						<lookupTableRow input="2.008" output="25.50"/>
-						<lookupTableRow input="2.028" output="26.00"/>
-						<lookupTableRow input="2.047" output="26.50"/>
-						<lookupTableRow input="2.067" output="27.00"/>
-						<lookupTableRow input="2.086" output="27.50"/>
-						<lookupTableRow input="2.105" output="28.00"/>
-						<lookupTableRow input="2.124" output="28.50"/>
-						<lookupTableRow input="2.142" output="29.00"/>
-						<lookupTableRow input="2.161" output="29.50"/>
-						<lookupTableRow input="2.179" output="30.00"/>
-						<lookupTableRow input="2.197" output="30.50"/>
-						<lookupTableRow input="2.215" output="31.00"/>
-						<lookupTableRow input="2.233" output="31.50"/>
-						<lookupTableRow input="2.251" output="32.00"/>
-						<lookupTableRow input="2.268" output="32.50"/>
-						<lookupTableRow input="2.286" output="33.00"/>
-						<lookupTableRow input="2.303" output="33.50"/>
-						<lookupTableRow input="2.321" output="34.00"/>
-						<lookupTableRow input="2.338" output="34.50"/>
-						<lookupTableRow input="2.355" output="35.00"/>
-						<lookupTableRow input="2.371" output="35.50"/>
-						<lookupTableRow input="2.388" output="36.00"/>
-						<lookupTableRow input="2.405" output="36.50"/>
-						<lookupTableRow input="2.421" output="37.00"/>
-						<lookupTableRow input="2.438" output="37.50"/>
-						<lookupTableRow input="2.454" output="38.00"/>
-						<lookupTableRow input="2.470" output="38.50"/>
-						<lookupTableRow input="2.486" output="39.00"/>
-						<lookupTableRow input="2.502" output="39.50"/>
-						<lookupTableRow input="2.518" output="40.00"/>
-						<lookupTableRow input="2.534" output="40.50"/>
-						<lookupTableRow input="2.549" output="41.00"/>
-						<lookupTableRow input="2.565" output="41.50"/>
-						<lookupTableRow input="2.580" output="42.00"/>
-						<lookupTableRow input="2.596" output="42.50"/>
-						<lookupTableRow input="2.611" output="43.00"/>
-						<lookupTableRow input="2.626" output="43.50"/>
-						<lookupTableRow input="2.641" output="44.00"/>
-						<lookupTableRow input="2.656" output="44.50"/>
-						<lookupTableRow input="2.671" output="45.00"/>
-						<lookupTableRow input="2.686" output="45.50"/>
-						<lookupTableRow input="2.701" output="46.00"/>
-						<lookupTableRow input="2.716" output="46.50"/>
-						<lookupTableRow input="2.730" output="47.00"/>
-						<lookupTableRow input="2.745" output="47.50"/>
-						<lookupTableRow input="2.759" output="48.00"/>
-						<lookupTableRow input="2.774" output="48.50"/>
-						<lookupTableRow input="2.788" output="49.00"/>
-						<lookupTableRow input="2.802" output="49.50"/>
-						<lookupTableRow input="2.816" output="50.00"/>
-						<lookupTableRow input="2.830" output="50.50"/>
-						<lookupTableRow input="2.844" output="51.00"/>
-						<lookupTableRow input="2.858" output="51.50"/>
-						<lookupTableRow input="2.872" output="52.00"/>
-						<lookupTableRow input="2.886" output="52.50"/>
-						<lookupTableRow input="2.900" output="53.00"/>
-						<lookupTableRow input="2.913" output="53.50"/>
-						<lookupTableRow input="2.927" output="54.00"/>
-						<lookupTableRow input="2.941" output="54.50"/>
-						<lookupTableRow input="2.954" output="55.00"/>
-						<lookupTableRow input="2.968" output="55.50"/>
-						<lookupTableRow input="2.981" output="56.00"/>
-						<lookupTableRow input="2.994" output="56.50"/>
-						<lookupTableRow input="3.008" output="57.00"/>
-					</lookupTable>
-				</coefficientSet>
-				<output>
-					<variableId>alpha_h</variableId>
-				</output>
-			</simple>
-		</lookup>
-	</transformation>
-	<transformation id="Gamma_Qfcst">
-		<user>
-			<simple>
-				<expression>Gamma_Qfcst_rise_initial_complete + Gamma_peak_value* (Gamma_Qfcst_z^alpha)*(exp((1-Gamma_Qfcst_z)*alpha))</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_Qfcst</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="Gamma_Qfcst_h">
-		<user>
-			<simple>
-				<expression>Gamma_Qfcst_rise_initial_complete_h + Gamma_peak_value* (Gamma_Qfcst_z_h^alpha_h)*(exp((1-Gamma_Qfcst_z_h)*alpha_h))</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_h</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -1656,43 +895,6 @@ It appears the provided value in the attributes are not representative - it is u
 				</outputVariable>
 			</simple>
 		</merge>
-	</transformation>
-	<!--Step 2 Flow Fcst: Aggregate (instantaneous) SDF, STF and URBS series to daily-->
-	<transformation id="SDF_Qfcst">
-		<aggregation>
-			<instantaneous>
-				<inputVariable>
-					<variableId>SDF_hourly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>SDF_Qfcst</variableId>
-				</outputVariable>
-			</instantaneous>
-		</aggregation>
-	</transformation>
-	<transformation id="STF_Qfcst">
-		<aggregation>
-			<instantaneous>
-				<inputVariable>
-					<variableId>STF_hourly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>STF_Qfcst</variableId>
-				</outputVariable>
-			</instantaneous>
-		</aggregation>
-	</transformation>
-	<transformation id="URBS_Qfcst">
-		<aggregation>
-			<instantaneous>
-				<inputVariable>
-					<variableId>URBS_hourly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>URBS_Qfcst</variableId>
-				</outputVariable>
-			</instantaneous>
-		</aggregation>
 	</transformation>
 	<!--Step 3 Flow Fcst: Yearly average (Q_plan, statistics)-->
 	<transformation id="Cycle_month">
@@ -1927,7 +1129,19 @@ It appears the provided value in the attributes are not representative - it is u
 		<merge>
 			<selectDataSource>
 				<input>
+					<variableId>Gamma_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>MDBC_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Pulse_Qfcst</variableId>
+				</input>
+				<input>
 					<variableId>SDF_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Source_Qfcst</variableId>
 				</input>
 				<input>
 					<variableId>STF_Qfcst</variableId>
@@ -1936,19 +1150,7 @@ It appears the provided value in the attributes are not representative - it is u
 					<variableId>Trend_Qfcst</variableId>
 				</input>
 				<input>
-					<variableId>Pulse_Qfcst</variableId>
-				</input>
-				<input>
 					<variableId>URBS_Qfcst</variableId>
-				</input>
-				<input>
-					<variableId>Source_Qfcst</variableId>
-				</input>
-				<input>
-					<variableId>MDBC_Qfcst</variableId>
-				</input>
-				<input>
-					<variableId>Gamma_Qfcst</variableId>
 				</input>
 				<attributeFunctionId>@SITE_Q_FCST_SELECT@_Qfcst</attributeFunctionId>
 				<output>
