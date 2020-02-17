@@ -45,7 +45,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessEVAPfao</moduleInstanceId>
-		<moduleConfigFileName>ProcessEVAP_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateEVAP</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -56,7 +56,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessEVAPmlake</moduleInstanceId>
-		<moduleConfigFileName>ProcessEVAP_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateEVAP</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -67,7 +67,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessECopo</moduleInstanceId>
-		<moduleConfigFileName>Process_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -78,7 +78,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessWTopo</moduleInstanceId>
-		<moduleConfigFileName>Process_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -89,7 +89,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessATopo</moduleInstanceId>
-		<moduleConfigFileName>Process_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -100,7 +100,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessDOopo</moduleInstanceId>
-		<moduleConfigFileName>Process_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -111,24 +111,41 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
-		<moduleConfigFileName>Process_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcesspHopo</moduleInstanceId>
 	</activity>
+
 	<activity>
+		<properties>
+			<string key="PARAM" value="WindDir"/>
+			<string key="RESULT_MOD_INST" value="ProcessWindDiropo"/>
+		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
 	</activity>
 	<activity>
+		<properties>
+			<string key="PARAM" value="WindVel"/>
+			<string key="RESULT_MOD_INST" value="ProcessWindVelopo"/>
+		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+				<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
 	</activity>
 	<activity>
+		<properties>
+			<string key="PARAM" value="NoGatesOpen"/>
+			<string key="RESULT_MOD_INST" value="ProcessGatesOpenopo"/>
+		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
 	</activity>
+
 	<activity>
 		<properties>
 			<string key="PARAM" value="QDIV"/>
@@ -138,7 +155,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qopo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -149,21 +166,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qopo_template</moduleConfigFileName>
-	</activity>
-	<activity>
-		<properties>
-			<string key="PARAM" value="QORD"/>
-			<string key="PARAM_QUALIFIER" value="mdbc"/>
-			<string key="OP_END_DAY" value="30"/>
-			<string key="RESULT_LOC_SET" value="sites"/>
-			<string key="SRC_MOD_INST" value="ProcessQORDopo"/>
-			<string key="RESULT_MOD_INST_OBS" value="ProcessQORDopo"/>
-			<string key="RESULT_MOD_INST_FCST" value="ProcessQORDopo"/>
-		</properties>
-		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessQORDmdbcopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qa_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -175,7 +178,7 @@
 		<!--This should not be used in the future-->
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qopo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -189,7 +192,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQinflowopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qa_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -203,7 +206,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQvalvesopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qa_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
@@ -221,7 +224,7 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQspillopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qa_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
 	</activity>
 	<activity>
 		<properties>
@@ -235,7 +238,21 @@
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQtotalopo</moduleInstanceId>
-		<moduleConfigFileName>Process_Qa_opo_template</moduleConfigFileName>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="QORD"/>
+			<string key="PARAM_QUALIFIER" value="mdbc"/>
+			<string key="OP_END_DAY" value="30"/>
+			<string key="RESULT_LOC_SET" value="sites"/>
+			<string key="SRC_MOD_INST" value="ProcessQORDopo"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQORDopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ProcessQORDopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQORDmdbcopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
