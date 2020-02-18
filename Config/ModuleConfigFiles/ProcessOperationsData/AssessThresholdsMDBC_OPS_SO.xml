@@ -8,6 +8,22 @@
   - Where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single ts. 
     ie, i the end only one timeseries with threshold flags is stored for each combination of type of data and location.   -->
 	<!--Add transformations dV_thresh_hits and dV_thresh_count when required-->
+	<!--Exclude SO threshold violations from countL
+The SO "counted" timeseries (generated in PreprocessThresholdsMDBC_OPS) for all SO Threshold_sites and parameter 
+    combinations are used in this module: If these timeseries are set to 0 by the operator, any threshold violations for that 
+    location/parameter combination will not be counted. The following parameters are supported:
+    - H
+    - dH
+    - Q
+    - dQ
+    - V
+    - DO%
+The implementation is set up for the 8am (daily) threshold violations. dH threshold have some specials (not just daily, also 
+    mov_avg, hourly, etc). These are currently not affected.
+The implementation (in general) takes the results of the *_4count 'merge' transformation (that combines all the threshold 
+    violation timeseries per parameter) and sets the value to 0 if the  SO "counted" timeseries are 0.
+Note1: The thresholds violations themselves are not removed, they will just not be counted. 
+Note2: Thuis is implemented for the SO threshold crossings, not for the RO-->
 	<!--Input-->
 	<variable>
 		<variableId>H_calc</variableId>
@@ -695,11 +711,12 @@
 	<!--Input from preprocess thresholds mdbc_ops
 Exclusion timeseries for all Threshold_sites and parameter combinations (1= counted)-->
 	<variable>
-		<variableId>H_threshold_exclusion</variableId>
+		<variableId>H_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_H_exclusion</parameterId>
+			<parameterId>Threshold_H_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_H_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -708,11 +725,12 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_exclusion</variableId>
+		<variableId>dH_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH_exclusion</parameterId>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dH_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -721,11 +739,12 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Q_threshold_exclusion</variableId>
+		<variableId>Q_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q_exclusion</parameterId>
+			<parameterId>Threshold_Q_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_Q_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -734,11 +753,12 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dQ_threshold_exclusion</variableId>
+		<variableId>dQ_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<parameterId>Threshold_dQ_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dQ_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -747,11 +767,12 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>V_threshold_exclusion</variableId>
+		<variableId>V_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_V_exclusion</parameterId>
+			<parameterId>Threshold_V_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_V_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -760,11 +781,11 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>DO_threshold_exclusion</variableId>
+		<variableId>DO_threshold_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<parameterId>Threshold_DO%_counted</parameterId>
 			<locationSetId>threshold_sites_DO%</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -1170,6 +1191,36 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_DO%</parameterId>
+			<!--<locationSetId>threshold_sites_all</locationSetId>-->
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_4count_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>count</qualifierId>
+			<!--<locationSetId>threshold_sites_all</locationSetId>-->
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_threshold_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%</parameterId>
+			<qualifierId>count</qualifierId>
 			<!--<locationSetId>threshold_sites_all</locationSetId>-->
 			<locationSetId>threshold_sites_DO%</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
@@ -2070,7 +2121,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="H_threshold_4count">
 		<user>
 			<simple>
-				<expression>if(H_threshold_exclusion == 1, H_threshold_4count_tmp, 0)</expression>
+				<expression>if(H_threshold_counted == 1, H_threshold_4count_tmp, 0)</expression>
 				<outputVariable>
 					<variableId>H_threshold_4count</variableId>
 				</outputVariable>
@@ -2170,7 +2221,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="Q_threshold_4count">
 		<user>
 			<simple>
-				<expression>if(Q_threshold_exclusion == 1, Q_threshold_4count_tmp, 0)</expression>
+				<expression>if(Q_threshold_counted == 1, Q_threshold_4count_tmp, 0)</expression>
 				<outputVariable>
 					<variableId>Q_threshold_4count</variableId>
 				</outputVariable>
@@ -2243,7 +2294,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="dQ_threshold_4count">
 		<user>
 			<simple>
-				<expression>if(dQ_threshold_exclusion == 1, dQ_threshold_4count_tmp, 0)</expression>
+				<expression>if(dQ_threshold_counted == 1, dQ_threshold_4count_tmp, 0)</expression>
 				<outputVariable>
 					<variableId>dQ_threshold_4count</variableId>
 				</outputVariable>
@@ -2286,7 +2337,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="V_threshold_4count">
 		<user>
 			<simple>
-				<expression>if(V_threshold_exclusion == 1, V_threshold_4count_tmp, 0)</expression>
+				<expression>if(V_threshold_counted == 1, V_threshold_4count_tmp, 0)</expression>
 				<outputVariable>
 					<variableId>V_threshold_4count</variableId>
 				</outputVariable>
@@ -2302,6 +2353,28 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>DO_threshold</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_threshold_4count_tmp">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>DO_threshold</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>DO_threshold_4count_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="DO_threshold_4count">
+		<user>
+			<simple>
+				<expression>if(DO_threshold_counted == 1, DO_threshold_4count_tmp, 0)</expression>
+				<outputVariable>
+					<variableId>DO_threshold_4count</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -2346,7 +2419,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="dH_threshold_4count">
 		<user>
 			<simple>
-				<expression>if(dH_threshold_exclusion == 1, dH_threshold_4count_tmp, 0)</expression>
+				<expression>if(dH_threshold_counted == 1, dH_threshold_4count_tmp, 0)</expression>
 				<outputVariable>
 					<variableId>dH_threshold_4count</variableId>
 				</outputVariable>
@@ -2565,7 +2638,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 	<transformation id="DO_threshold_hit">
 		<user>
 			<simple>
-				<expression>if(DO_threshold &gt;0,1,0)</expression>
+				<expression>if(DO_threshold_4count &gt;0,1,0)</expression>
 				<outputVariable>
 					<variableId>DO_threshold_hit</variableId>
 				</outputVariable>
@@ -2697,7 +2770,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="DO_threshold_count_tmp">
+	<transformation id="DO_threshold_count">
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
@@ -2705,20 +2778,10 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 				</inputVariable>
 				<intervalTimeStep id="June1"/>
 				<outputVariable>
-					<variableId>DO_threshold_count_tmp</variableId>
+					<variableId>DO_threshold_count</variableId>
 				</outputVariable>
 			</sumInterval>
 		</accumulation>
-	</transformation>
-	<transformation id="DO_threshold_count">
-		<user>
-			<simple>
-				<expression>if(DO_threshold_exclusion == 1, DO_threshold_count_tmp, 0)</expression>
-				<outputVariable>
-					<variableId>DO_threshold_count</variableId>
-				</outputVariable>
-			</simple>
-		</user>
 	</transformation>
 	<!-- thresholds - replace 0 with NaN-->
 	<transformation id="H_threshold_NaN">
