@@ -142,12 +142,12 @@
 	<workflowDescriptor forecast="false" id="Process_Observed" name="Process: Quality Control/Processing OPO series" visible="true">
 		<description>Generate OPO series daily at 8am data (instantaneous, from 8am to 8am and midnight to midnight)</description>
 		<!-- <runExpiryTime unit="day" multiplier="365"/> -->
+		<viewPermission>RiverOperations</viewPermission>
+		<runPermission>WorkflowRunners</runPermission>
+	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Import_Inflows_Period_Statistics" name="Import Inflows Period Statistics" visible="true">
 		<description>Import Inflows periodic statistical data</description>
 		<viewPermission>RiverOperations</viewPermission>
-	</workflowDescriptor>
-		<viewPermission>RiverOperations</viewPermission>
-		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Process_Observed_Template" name="TEMPLATE_TEST Quality Control/Processing OPO series" visible="true">
 		<description>Generate OPO series daily at 8am data (instantaneous, from 8am to 8am and midnight to midnight)</description>
