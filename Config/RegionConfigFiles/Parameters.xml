@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parameters version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
 	<enumerations>
-		<enumeration id="Threshold_Exclusion">
+		<enumeration id="Threshold_Counted">
 			<value code="0" label="NOT counted"/>
 			<value code="1" label="counted"/>
 		</enumeration>
@@ -585,25 +585,25 @@
 				<shortName>index</shortName>
 			</parameter>
 		</parameterGroup>
-		<parameterGroup id="Threshold_Exclusion">
-			<enumerationId>Threshold_Exclusion</enumerationId>
-			<parameter id="Threshold_H_exclusion" name="Exclusion for level violations count">
-				<shortName>Threshold_H_exclusion</shortName>
+		<parameterGroup id="Threshold_Counted">
+			<enumerationId>Threshold_Counted</enumerationId>
+			<parameter id="Threshold_H_counted" name="Counted for level violations count">
+				<shortName>Threshold_H_counted</shortName>
 			</parameter>
-			<parameter id="Threshold_dH_exclusion" name="Exclusion for level change violations count">
-				<shortName>Threshold_dH_exclusion</shortName>
+			<parameter id="Threshold_dH_counted" name="Counted for level change violations count">
+				<shortName>Threshold_dH_counted</shortName>
 			</parameter>
-			<parameter id="Threshold_Q_exclusion" name="Exclusion for flow violations count">
-				<shortName>Threshold_Q_exclusion</shortName>
+			<parameter id="Threshold_Q_counted" name="Counted for flow violations count">
+				<shortName>Threshold_Q_counted</shortName>
 			</parameter>
-			<parameter id="Threshold_dQ_exclusion" name="Exclusion for flow change violations count">
-				<shortName>Threshold_dQ_exclusion</shortName>
+			<parameter id="Threshold_dQ_counted" name="Counted for flow change violations count">
+				<shortName>Threshold_dQ_counted</shortName>
 			</parameter>
-			<parameter id="Threshold_V_exclusion" name="Exclusion for storage violations count">
-				<shortName>Threshold_V_exclusion</shortName>
+			<parameter id="Threshold_V_counted" name="Counted for storage violations count">
+				<shortName>Threshold_V_counted</shortName>
 			</parameter>
-			<parameter id="Threshold_DO%_exclusion" name="Exclusion for dissolved oxygen violations count">
-				<shortName>Threshold_DO%_exclusion</shortName>
+			<parameter id="Threshold_DO%_counted" name="Counted for dissolved oxygen violations count">
+				<shortName>Threshold_DO%_counted</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Alert level">

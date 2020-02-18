@@ -15,13 +15,16 @@ Heywoods Rule:
 Doctors Point Rule:
  a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
  b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
-	<!--Create timeseries for all Threshold_sites and parameter combinations. The default value will be 1. These timeseries will be used to ignore certain timesteps from the threshold count. -->
+	<!--Create "counted" timeseries for all SO Threshold_sites and parameter combinations. The default value will be 1 (counted). These timeseries will be 
+used to ignore certain timesteps from the threshold count: If these timeseries are set to 0 by the operator, any threshold violations will not be counted. 
+Note: The thresholds violations themselves are not removed, they will just not be counted. The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 	<variable>
-		<variableId>H_thresh_excl</variableId>
+		<variableId>H_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_H_exclusion</parameterId>
+			<parameterId>Threshold_H_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_H_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -30,11 +33,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_excl</variableId>
+		<variableId>dH_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH_exclusion</parameterId>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dH_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -43,11 +47,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Q_thresh_excl</variableId>
+		<variableId>Q_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q_exclusion</parameterId>
+			<parameterId>Threshold_Q_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_Q_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -56,11 +61,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dQ_thresh_excl</variableId>
+		<variableId>dQ_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<parameterId>Threshold_dQ_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dQ_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -69,11 +75,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>V_thresh_excl</variableId>
+		<variableId>V_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_V_exclusion</parameterId>
+			<parameterId>Threshold_V_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_V_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -82,11 +89,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>DO_thresh_excl</variableId>
+		<variableId>DO_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<parameterId>Threshold_DO%_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_DO%</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -95,11 +103,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_thresh_excl_tmp</variableId>
+		<variableId>H_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_H_exclusion</parameterId>
+			<parameterId>Threshold_H_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_H_SO</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -108,11 +117,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_excl_tmp</variableId>
+		<variableId>dH_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH_exclusion</parameterId>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dH_SO</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -121,11 +131,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Q_thresh_excl_tmp</variableId>
+		<variableId>Q_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q_exclusion</parameterId>
+			<parameterId>Threshold_Q_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_Q_SO</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -134,11 +145,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dQ_thresh_excl_tmp</variableId>
+		<variableId>dQ_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<parameterId>Threshold_dQ_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_dQ_SO</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -147,11 +159,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>V_thresh_excl_tmp</variableId>
+		<variableId>V_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_V_exclusion</parameterId>
+			<parameterId>Threshold_V_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_V_SO</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -160,11 +173,12 @@ Doctors Point Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>DO_thresh_excl_tmp</variableId>
+		<variableId>DO_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<parameterId>Threshold_DO%_counted</parameterId>
+			<qualifierId>SO</qualifierId>
 			<locationSetId>threshold_sites_DO%</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -947,153 +961,153 @@ Doctors Point Rule:
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Transformations - create threshold exclusion timeseries (create default and merge with existing timeseries)-->
-	<transformation id="H_thresh_excl_tmp">
+	<!--Transformations - create threshold "counted" timeseries (create default and merge with existing timeseries) - if these timeseries are set to 0, any threshold violations will not be counted-->
+	<transformation id="H_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>H_thresh_excl_tmp</variableId>
+					<variableId>H_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="H_thresh_excl">
+	<transformation id="H_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>H_thresh_excl</variableId>
+					<variableId>H_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>H_thresh_excl_tmp</variableId>
+					<variableId>H_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>H_thresh_excl</variableId>
+					<variableId>H_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="dH_thresh_excl_tmp">
+	<transformation id="dH_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>dH_thresh_excl_tmp</variableId>
+					<variableId>dH_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_thresh_excl">
+	<transformation id="dH_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>dH_thresh_excl</variableId>
+					<variableId>dH_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>dH_thresh_excl_tmp</variableId>
+					<variableId>dH_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_thresh_excl</variableId>
+					<variableId>dH_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="Q_thresh_excl_tmp">
+	<transformation id="Q_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>Q_thresh_excl_tmp</variableId>
+					<variableId>Q_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Q_thresh_excl">
+	<transformation id="Q_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>Q_thresh_excl</variableId>
+					<variableId>Q_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>Q_thresh_excl_tmp</variableId>
+					<variableId>Q_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>Q_thresh_excl</variableId>
+					<variableId>Q_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="dQ_thresh_excl_tmp">
+	<transformation id="dQ_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>dQ_thresh_excl_tmp</variableId>
+					<variableId>dQ_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dQ_thresh_excl">
+	<transformation id="dQ_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>dQ_thresh_excl</variableId>
+					<variableId>dQ_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>dQ_thresh_excl_tmp</variableId>
+					<variableId>dQ_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dQ_thresh_excl</variableId>
+					<variableId>dQ_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="V_thresh_excl_tmp">
+	<transformation id="V_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>V_thresh_excl_tmp</variableId>
+					<variableId>V_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="V_thresh_excl">
+	<transformation id="V_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>V_thresh_excl</variableId>
+					<variableId>V_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>V_thresh_excl_tmp</variableId>
+					<variableId>V_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>V_thresh_excl</variableId>
+					<variableId>V_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="DO_thresh_excl_tmp">
+	<transformation id="DO_thresh_counted_tmp">
 		<user>
 			<simple>
 				<expression>1</expression>
 				<outputVariable>
-					<variableId>DO_thresh_excl_tmp</variableId>
+					<variableId>DO_thresh_counted_tmp</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="DO_thresh_excl">
+	<transformation id="DO_thresh_counted">
 		<merge>
 			<simple>
 				<inputVariable>
-					<variableId>DO_thresh_excl</variableId>
+					<variableId>DO_thresh_counted</variableId>
 				</inputVariable>
 				<inputVariable>
-					<variableId>DO_thresh_excl_tmp</variableId>
+					<variableId>DO_thresh_counted_tmp</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>DO_thresh_excl</variableId>
+					<variableId>DO_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
