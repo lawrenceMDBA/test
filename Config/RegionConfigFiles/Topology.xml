@@ -1125,7 +1125,7 @@
 			<mainPanel>web browser display</mainPanel>
 			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
 		</node>
-		<nodes id="GlobalWeather" name="Global Weather Animation">
+		<nodes id="GlobalWeather" name="Global Weather Animation (Current)">
 			<node id="windy.com_1" name="Windy.com - Wind Speed">
 				<mainPanel>web browser display</mainPanel>
 				<url>https://www.windy.com/?-25.661,135.703,5,i:pressure</url>
@@ -1145,6 +1145,10 @@
 				<mainPanel>web browser display</mainPanel>
 				<url>https://earth.nullschool.net/#current/wind/surface/level/overlay=precip_3hr/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
 			</node>
+			<node id="bom_satview" name="BOMSatellite Viewer">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://satview.bom.gov.au/</url>
+			</node>			
 		</nodes>
 		<nodes id="BOM_climate" name="BOM Climate Maps">
 			<node id="Bom_climate_rain" name="Rainfall Latest">
