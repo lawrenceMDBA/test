@@ -6,7 +6,173 @@ The parameters that have at least one threshold associated with them are: H, V, 
 Per parameter and selected location the observed, calculated and forecasted timeseries are merged, in that order of preference. 
 For the diversions and orders also a merge of subtypes (irrig, urban, total, saline, ind, envpump, envstruct and st, lt, mdbc respectively) is done. 
 The subtypes are assumed to be non-overlapping so no data is lost. -->
-	<!--Variables input-->
+	<!-- The dH rate of fall for Heywoods and Doctors Point needs to be calculated from hourly data (Currently it is calculated using daily 8am data).
+Calculate the Maximum rate of fall within a 24 hour period. (the hourly data for the 24 hour period (8am - 7am) should be used )
+Calculate the 6 day rolling average of rate off fall
+Heywoods Rule:
+ a. Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+ b. When Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.249m
+Doctors Point Rule:
+ a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+ b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
+	<!--Create timeseries for all Threshold_sites and parameter combinations. The default value will be 1. These timeseries will be used to ignore certain timesteps from the threshold count. -->
+	<variable>
+		<variableId>H_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_exclusion</parameterId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_exclusion</parameterId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_exclusion</parameterId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_exclusion</parameterId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_thresh_excl</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_exclusion</parameterId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_exclusion</parameterId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_exclusion</parameterId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_exclusion</parameterId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_exclusion</parameterId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_thresh_excl_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_DO%_exclusion</parameterId>
+			<locationSetId>threshold_sites_DO%</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Input-->
 	<variable>
 		<variableId>H_calc</variableId>
 		<timeSeriesSet>
@@ -214,7 +380,7 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Variables - neq to hourly-->
+	<!--Througpput - neq to hourly-->
 	<variable>
 		<variableId>H_merge_neq</variableId>
 		<timeSeriesSet>
@@ -242,6 +408,20 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>H_merge_hourly_block</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>block</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>H_merge_hourly_delay1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -253,47 +433,6 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 			<delay unit="hour"/>
-		</timeSeriesSet>
-	</variable>
-	<!--Variables output - merges-->
-	<variable>
-		<variableId>V_merge</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>V_merge_delay24h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-			<delay unit="day"/>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Q_merge</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -311,6 +450,47 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>V_merge_delay24h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="day"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Output-->
+	<variable>
+		<variableId>V_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_merge</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>QORD_merge</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -323,7 +503,59 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Variables output-->
+	<variable>
+		<variableId>dH</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dQ</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dV</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dV</parameterId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>H</variableId>
 		<timeSeriesSet>
@@ -363,61 +595,511 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Input Heywood -->
 	<variable>
-		<variableId>dH</variableId>
+		<variableId>H_merge_hourly_Heywood</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Heywood_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Heywood_block</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>block</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Heywood_block_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>block</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Output Heywood -->
+	<variable>
+		<variableId>H_merge_daily_Heywood</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_daily_1h_Heywood</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>1h</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_direction</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dV</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dV</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dQ</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dQ</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dH_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>delta</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<qualifierId>direction</qualifierId>
+			<locationId>R_409016</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Transformations-->
-	<transformation id="merge_H_neq">
+	<variable>
+		<variableId>dH_hourly_Heywood_moving_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_moving_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_moving_dH_Fall</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Fall_Heywood_24hmax</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Input Doctors Point-->
+	<variable>
+		<variableId>H_merge_hourly_Doctors</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Doctors_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Doctors_block</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>block</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_hourly_Doctors_block_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>block</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<!--Output Doctors Point-->
+	<variable>
+		<variableId>H_merge_daily_Doctors</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>H_merge_daily_1h_Doctors</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>1h</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_direction</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>direction</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_moving_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_moving_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_moving_dH_Fall</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Fall_Doctors_24hmax</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Transformations - create threshold exclusion timeseries (create default and merge with existing timeseries)-->
+	<transformation id="H_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>H_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>H_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>H_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Q_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>Q_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Q_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Q_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Q_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Q_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dQ_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dQ_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dQ_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dQ_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dQ_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dQ_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="V_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>V_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="V_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>V_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>V_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="DO_thresh_excl_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>DO_thresh_excl_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="DO_thresh_excl">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>DO_thresh_excl</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>DO_thresh_excl_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>DO_thresh_excl</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<!--Throughput-->
+	<transformation id="H_merge_neq">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -435,7 +1117,7 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="H_neq_to_hourly">
+	<transformation id="H_merge_hourly">
 		<aggregation>
 			<instantaneous>
 				<inputVariable>
@@ -447,7 +1129,20 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			</instantaneous>
 		</aggregation>
 	</transformation>
-	<transformation id="merge_V">
+	<transformation id="H_merge_hourly_block">
+		<interpolationSerial>
+			<block>
+				<inputVariable>
+					<variableId>H_merge_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>H_merge_hourly_block</variableId>
+				</outputVariable>
+			</block>
+		</interpolationSerial>
+	</transformation>
+	<!--Output-->
+	<transformation id="V_merge">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -465,7 +1160,7 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="merge_Q">
+	<transformation id="Q_merge">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -483,7 +1178,7 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="merge_QORD">
+	<transformation id="QORD_merge">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -573,6 +1268,172 @@ The subtypes are assumed to be non-overlapping so no data is lost. -->
 				</outputVariable>
 			</simple>
 		</merge>
+	</transformation>
+	<!--Output - Heywood-->
+	<transformation id="H_merge_daily_Heywood">
+		<user>
+			<simple>
+				<expression>H_merge_hourly_Heywood_block</expression>
+				<outputVariable>
+					<variableId>H_merge_daily_Heywood</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_merge_daily_1h_Heywood">
+		<user>
+			<simple>
+				<expression>H_merge_daily_Heywood</expression>
+				<outputVariable>
+					<variableId>H_merge_daily_1h_Heywood</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_direction">
+		<user>
+			<simple>
+				<expression>if(H_merge_hourly_Heywood_block - H_merge_hourly_Heywood_block_delay1h &gt; 0, 1, if(H_merge_hourly_Heywood_block - H_merge_hourly_Heywood_block_delay1h &lt; 0, -1, 0))</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_direction</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_moving_max">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Heywood), max(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_moving_max</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_moving_min">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Heywood), if(dH_hourly_Heywood_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Heywood_block), H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_moving_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_moving_dH_Fall">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Heywood), dH_hourly_Heywood_moving_min - dH_hourly_Heywood_moving_max, 0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_moving_dH_Fall</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Heywood_moving_dH_Fall_min">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Heywood), min(PREVIOUS_OUTPUT_VALUE, dH_hourly_Heywood_moving_dH_Fall), 0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_Fall_Heywood_24hmax">
+		<statisticsSerial>
+			<min>
+				<inputVariable>
+					<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
+				</outputVariable>
+			</min>
+		</statisticsSerial>
+	</transformation>
+	<!--Output - Doctors point-->
+	<transformation id="H_merge_daily_Doctors">
+		<user>
+			<simple>
+				<expression>H_merge_hourly_Doctors_block</expression>
+				<outputVariable>
+					<variableId>H_merge_daily_Doctors</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="H_merge_daily_1h_Doctors">
+		<user>
+			<simple>
+				<expression>H_merge_daily_Doctors</expression>
+				<outputVariable>
+					<variableId>H_merge_daily_1h_Doctors</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_direction">
+		<user>
+			<simple>
+				<expression>if(H_merge_hourly_Doctors_block - H_merge_hourly_Doctors_block_delay1h &gt; 0, 1, if(H_merge_hourly_Doctors_block - H_merge_hourly_Heywood_block_delay1h &lt; 0, -1, 0))</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_direction</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_moving_max">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Doctors), max(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Doctors_block), H_merge_daily_1h_Heywood)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_moving_max</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_moving_min">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Doctors), if(dH_hourly_Doctors_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Doctors_block), H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_moving_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_moving_dH_Fall">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Doctors), dH_hourly_Doctors_moving_min - dH_hourly_Heywood_moving_max, 0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_moving_dH_Fall</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_Doctors_moving_dH_Fall_min">
+		<user>
+			<simple>
+				<expression>if(isMissing(H_merge_daily_1h_Doctors), min(PREVIOUS_OUTPUT_VALUE, dH_hourly_Doctors_moving_dH_Fall), 0)</expression>
+				<outputVariable>
+					<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_Fall_Doctors_24hmax">
+		<statisticsSerial>
+			<min>
+				<inputVariable>
+					<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
+				</outputVariable>
+			</min>
+		</statisticsSerial>
 	</transformation>
 </transformationModule>
 <!-- moved aggregation to 24 h for Colemans to xx_specials_SO, since it's only done for this single location -->

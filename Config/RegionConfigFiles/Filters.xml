@@ -48,6 +48,10 @@
 		<child foreignKey="Flow_Sal_Fcst"/>
 	</filter>
 	<!-- Filters_Catchment -->
+	<filter id="BoM_SDF" name="SDF ensemble">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="BoM_SDF_ensemble"/>
+	</filter>
 	<filter id="BoM_results_catchment" name="STF catchment">
 		<viewPermission>RiverOperations</viewPermission>
 		<child foreignKey="BoM_STF_calculated_results_OVENS_catchment"/>
@@ -94,5 +98,16 @@
 		<child foreignKey="TestDataEntry"/>
 		<child foreignKey="Everything"/>
 		<child foreignKey="PreProcessThresholds"/>
+	</filter>
+	<filter id="Debug_EVAP_loss" name="Debug_EVAP_loss">
+		<viewPermission>RiverOperations</viewPermission>
+		<child foreignKey="LevelToArea"/>
+		<child foreignKey="EvapNetMlake"/>
+		<child foreignKey="EvapLossMlake"/>
+		<child foreignKey="EvapCalcPan"/>
+		<child foreignKey="EvapNetPan"/>
+		<child foreignKey="EvapLossPan"/>
+		<child foreignKey="EvapLossMonthly"/>
+		<child foreignKey="EvapLossReport"/>
 	</filter>
 </filters>

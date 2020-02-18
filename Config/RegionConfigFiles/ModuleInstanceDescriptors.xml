@@ -1,104 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <moduleInstanceDescriptors version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/moduleInstanceDescriptors.xsd">
-	<!--Correlation-->
-	<moduleInstanceDescriptor id="PeakHeights_Correlation">
-		<description>Dummy for correlation results</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
-		<description>Exports Rainfall data in CSV format to HydstraTSM</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportWeeklyReport"/>
-	<moduleInstanceDescriptor id="ExportRatings"/>
-	<moduleInstanceDescriptor id="ExportObservedToHydro">
-		<description>Export observed data to Hydro</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportObservedToHydstra">
-		<description>Export observed (OPO) data to Hydstra</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportStoragesDataToHydstra">
-		<description>Export Storages (OPO) data to Hydstra</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportOpsForecastToHydstra">
-		<description>Export Ops forecast to Hydstra</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportCalculatedToHydro">
-		<description>Export calculated data to Hydro</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportForecastToHydro">
-		<description>Export forecast data to Hydro</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportObservedToMDBC_OPS">
-		<description>Export all data to MDBC_OPS</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportObservedToMDBC_OPS_Menindee">
-		<description>Export Menindee data to MDBC_OPS</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExecuteHydstraTSM_Fcst">
-		<description>Runs HydstraTSM model</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportClimatology">
-		<description>Import PET profiles</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FromArchiveExternalForecasts">
-		<description>Import external forecast (NWP) downloaded from archive</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FromArchiveObservations">
-		<description>Import observations(OPO) downloaded from archive</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FromArchiveRatings">
-		<description>Import ratings downloaded from archive</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FromArchiveMessages">
-		<description>Import messages downloaded from archive</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FromArchiveSimulations">
-		<description>Import simulations downloaded from archive</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportArchivedHistoricalEvents">
-		<description>Import archived Historical events</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportArchivedHistoricalEventsFromFile">
-		<description>Import archived Historical events from file</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastACCESSG">
-		<description>Import ACCESSG</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastACCESSG_ftp">
-		<description>Import ACCESSG from ftp</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastACCESSR">
-		<description>Import ACCESSR</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastACCESSR_ftp">
-		<description>Import ACCESSR from ftp</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastADFD">
-		<description>Import ADFD</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastADFD_ftp">
-		<description>Import ADFD from ftp</description>
-	</moduleInstanceDescriptor>
+<!--Import observed-->
 	<moduleInstanceDescriptor id="ImportObservedAWAP">
 		<description>Import AWAP</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastPME">
-		<description>Import PME</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportForecastPME_ftp">
-		<description>Import PME from ftp</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportAWRA">
 		<description>Import AWRA</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportAWRA_ftp">
-		<description>Import AWRA from ftp</description>
+	<moduleInstanceDescriptor id="ImportGSMaP">
+		<description>Import GSMap Satellite Observiation products</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObserved">
+		<description>Import Observed series from hydstra (OPT, OPC, OPT2, Daily)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedOPO">
+		<description>Import OPO data from Hydstra (one off)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedFloodOpsLatest">
+		<description>Import recent observed data for use in flood operations from local disc after manual download</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedFloodOpsArchive">
+		<description>Import observed data for use in flood operations from the last few weeks from local disc after manual download</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportArchivedHistoricalEventsFromFile">
+		<description>Import archived Historical events from file</description>
+	</moduleInstanceDescriptor>
+	<!--Import ratings, climatology, etc-->
+	<moduleInstanceDescriptor id="ImportSamples">
+		<description>Import Sample data (csv files)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportGaugings">
+		<description>Import Gaugings</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportRatings">
+		<description>Import Ratings</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHydrographic">
+		<description>Import hydographic data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportPeriodicStatistics">
+		<description>Import/update periodic statistical data</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportClimatology">
+		<description>Import PET profiles</description>
+	</moduleInstanceDescriptor>
+	<!--Import forecast-->
+	<moduleInstanceDescriptor id="ImportForecastACCESSG">
+		<description>Import ACCESSG</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastACCESSR">
+		<description>Import ACCESSR</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastADFD">
+		<description>Import ADFD</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastPME">
+		<description>Import PME</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHDF5"/>
+	<moduleInstanceDescriptor id="ImportForecastSDF">
+		<description>Import BoM SDF (SevenDayForecast)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedSDF">
+		<description>Import BoM SDF (SevenDayForecast) observations</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportForecastSTF">
 		<description>Import STF</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportGSMaP">
-		<description>Import GSMap Satellite Observiation products</description>
-	</moduleInstanceDescriptor>
+	<!--Import external system (MDBA)-->
 	<moduleInstanceDescriptor id="ImportMDBC_OPS">
 		<description>Import Calcualted and Forecasts from MDBC_OPS</description>
 	</moduleInstanceDescriptor>
@@ -120,92 +89,41 @@
 	<moduleInstanceDescriptor id="ImportCalculatedHydroTo8am">
 		<description>Shift imported calculated Hydro data from midnight to 8am</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObserved">
-		<description>Import Observed series from hydstra (OPT, OPC, OPT2, Daily)</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportSamples">
-		<description>Import Sample data (csv files)</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportRatings">
-		<description>Import Ratings</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportRatings_local">
-		<description>Import Ratings from local Import folder</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportHydrographic">
-		<description>Import hydographic data</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportPeriodicStatistics">
-		<description>Import/update periodic statistical data</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObservedOPO">
-		<description>Import OPO data from Hydstra (one off)</description>
-	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ImportFromHydstraTSM_Fcst">
 		<description>Import HydstraTSM output</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PostprocessHydstraTSM_Fcst">
-		<description>Postprocessing to HydstraTSM Forecast, creates daily series</description>
+	<!--Process observed-->
+	<moduleInstanceDescriptor id="ProcessStorages">
+		<description>Process storages data for water in storages</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreProcessWeeklyReportData">
-		<description>Preprocessing of weekly report data</description>
+	<moduleInstanceDescriptor id="LevelToFlow">
+		<description>Applies rating to convert H to Q</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareewSourceRO">
-		<description>Prepare data to export to ewSource_RO</description>
+	<moduleInstanceDescriptor id="LevelToFlow_Calc">
+		<description>Applies rating to convert H to Q</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareewSourceRO_EVAP">
-		<description>Prepare EVAP data to export to ewSource_RO</description>
+	<moduleInstanceDescriptor id="FlowToLevel_Fcst">
+		<description>Applies rating to convert Q fcst to H</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareewSourceRO_Qcomb">
-		<description>Prepare Q_fcst data to export to ewSource_RO</description>
+	<moduleInstanceDescriptor id="LevelToStorage">
+		<description>Applies capacity table to convert H to V</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareewSourceRO_QORD">
-		<description>Prepare QORD data to export to ewSource_RO</description>
+	<moduleInstanceDescriptor id="LevelToStorage_Calc">
+		<description>Applies capacity table to convert H to V</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade_forecastlength"/>
-	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade">
-		<description>Manual enter underlivered, deferred and trade flows, process to Daily QSA Trade Adjustment</description>
+	<moduleInstanceDescriptor id="StorageToLevel_Fcst">
+		<description>Applies capacity table to convert V fcst to H</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ewSource_Rainfall_Forecast">
-		<description>Prepare rainfall data to export to ewSource_RO</description>
+	<moduleInstanceDescriptor id="LevelToArea">
+		<description>Applies SurfaceArea table to convert H to A</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExportToEWSourceRO">
-		<description>Export data to ewSource_RO</description>
+	<moduleInstanceDescriptor id="ProcessAWAP_To_AgAreas">
+		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas (for display)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportFromEWSourceRO">
-		<description>Import Forecasts from EWSource_RO</description>
+	<moduleInstanceDescriptor id="ProcessAWRA">
+		<description>Process AWRA data (daily grids) into URVS catchements (for display)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Ovens_PrepareewSourceRR">
-		<description>CombineRainfall</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Fcst">
-		<description>SourceOvensForecast</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Ovens_ewSourceRRCorrection_Fcst"/>
-	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Hcst">
-		<description>SourceHistoricalSimulation</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareHydstraTSM">
-		<description>Combines Gridded Rainfall (PME) and Temperature (ADFD) with the Observed series</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreprocessThresholdsMDBC_OPS">
-		<description>Combines OPO series and calculated and forecasted MDBC_OPS series for use in the Threshold Display.</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_SO">
-		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for general SOnO thresholds.</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_specials_SO">
-		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for very specific SOnO thresholds.</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_RO">
-		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for general RO thresholds.</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_specials_RO">
-		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for very specific RO thresholds.</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="AssessThresholdsObserved">
-		<description>Does additional processing on Observed series for use in the Daily threshold report for general thresholds.</description>
-	</moduleInstanceDescriptor>
+	<!--Process observed opo-->
 	<moduleInstanceDescriptor id="ProcessHopo">
 		<description>Normalize observed water levels to daily, merge and create OPO series</description>
 	</moduleInstanceDescriptor>
@@ -282,13 +200,16 @@
 	<moduleInstanceDescriptor id="ProcessQDIVopo">
 		<description>Snap observed QDIV to daily, merge and create OPO series</description>
 	</moduleInstanceDescriptor>
-	<!-- Id below not used anymore -->
 	<moduleInstanceDescriptor id="ProcessQRLopo">
 		<description>Snap observed QRL to daily, merge and create OPO series</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessStateAllocations">
+		<description>Copy through previous state allocations if no new data entry available</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="QC_SpatialHomogeneityCheck">
 		<description>Secondary validation on rainfall OPO</description>
 	</moduleInstanceDescriptor>
+	<!--Process observed hydroupdate-->
 	<moduleInstanceDescriptor id="ProcessHhydroupdate">
 		<description>Normalize hydrographic update water levels hourly to daily</description>
 	</moduleInstanceDescriptor>
@@ -316,39 +237,24 @@
 	<moduleInstanceDescriptor id="ProcessDOhydroupdate">
 		<description>Snap hydrographic update dissolved oxygen hourly to daily</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessStorages">
-		<description>Process storages data for water in storages</description>
+	<!--Process forecast-->
+	<moduleInstanceDescriptor id="PreProcess_FloodOps">
+		<description>PreProcess observed Precip data for flood ops sites</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="LevelToFlow">
-		<description>Applies rating to convert H to Q</description>
+	<moduleInstanceDescriptor id="ProcessObserved_FloodOps">
+		<description>Process observed data for flood ops sites</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="LevelToFlow_Calc">
-		<description>Applies rating to convert H to Q</description>
+	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments">
+		<description>Process NWP data to URBS subcatchments</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="FlowToLevel_Fcst">
-		<description>Applies rating to convert Q fcst to H</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PrepareURBS_Qrelease_forecastlength"/>
-	<moduleInstanceDescriptor id="PrepareURBS_Qrelease">
-		<description>Combines observed flow at Heywoods with Hume release forecast (user input)</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="MaxRelease_Hume_1h_URBS_Forecast">
-		<description>calculates the maximum theoretical release based on the simulated dam water level</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="LevelToStorage">
-		<description>Applies capacity table to convert H to V</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="LevelToStorage_Calc">
-		<description>Applies capacity table to convert H to V</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="StorageToLevel_Fcst">
-		<description>Applies capacity table to convert V fcst to H</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessP_fcst_To_AgAreas">
-		<description>Process forecast rainfall products into rainfall  aggregation areas (for display)</description>
+	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments_from_Archive">
+		<description>Process NWP data to URBS subcatchments (for data retrieved from Archive)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="Process_Access_Forecast">
 		<description>Combine ACCESSG and ACCESSR into single trace (for display and Urbs model run)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessP_fcst_To_AgAreas">
+		<description>Process forecast rainfall products into rainfall  aggregation areas (for display)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ProcessP_fcst_To_TSMSites">
 		<description>Process forecast rainfall products into TSM sites (for Hydstra model run)</description>
@@ -356,29 +262,15 @@
 	<moduleInstanceDescriptor id="ProcessAT_fcst_To_TSMSites">
 		<description>Process forecast water temperature products into TSM sites (for Hydstra model run)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessAWAP_To_AgAreas">
-		<description>Process AWAP data (daily observed rainfall grids) into aggregation areas (for display)</description>
+	<moduleInstanceDescriptor id="ProcessSDF">
+		<description>Process SDF Ensembles into meadian, min, max percentile (for display)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessAWRA">
-		<description>Process AWRA data (daily grids) into URVS catchements (for display)</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="CreateACCESSRGrid">
-		<description>Create ACCESSR grid from observations for Flood Training</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessNWP_To_Archive">
-		<description>Process NWP gridded data into smaller grids for archiving</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_qualifier">
-		<description>Process NWP gridded data into smaller grids for archiving</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_1h">
-		<description>Process NWP gridded data into smaller grids for archiving</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_1AM">
-		<description>Process NWP gridded data into smaller grids for archiving</description>
-	</moduleInstanceDescriptor>
+	<!--Process report-->
 	<moduleInstanceDescriptor id="ReportWeekly">
 		<description>Generate weekly report</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ReportMonthly">
+		<description>Generate monthly input for weekly report</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ReportFlowLevel">
 		<description>Generate weekly report</description>
@@ -398,55 +290,101 @@
 	<moduleInstanceDescriptor id="ReportThresholdCrossings_RO">
 		<description>Generate HTML report with RO threshold crossings</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_Configuration">
-		<description>Export configuration to archive</description>
+	<moduleInstanceDescriptor id="PreProcessWeeklyReportData">
+		<description>Preprocessing of weekly report data</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_Messages">
-		<description>Export messages (operator notes) to archive</description>
+	<moduleInstanceDescriptor id="PreProcessMonthlyReportData">
+		<description>Preprocessing of monthly input into weekly report (EVAP loss both for Morton's Lake and pan method)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_Ratings">
-		<description>Export ratings to archive</description>
+	<moduleInstanceDescriptor id="PreprocessThresholdsMDBC_OPS">
+		<description>Combines OPO series and calculated and forecasted MDBC_OPS series for use in the Threshold Display.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_Snapshots">
-		<description>Export Snapshots to archive</description>
+	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_SO">
+		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for general SOnO thresholds.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_OPO">
-		<description>Export OPO series to archive</description>
+	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_specials_SO">
+		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for very specific SOnO thresholds.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_AWRA">
-		<description>Export Observed Soil Moisture from BOM</description>
+	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_RO">
+		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for general RO thresholds.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_NWP">
-		<description>Export NWP forecasts to archive</description>
+	<moduleInstanceDescriptor id="AssessThresholdsMDBC_OPS_specials_RO">
+		<description>Does additional processing on MDBC_OPS series for use in the Threshold Display for very specific RO thresholds.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="SchematicStatusDisplay">
-		<description>Export NWP forecasts to archive</description>
+	<moduleInstanceDescriptor id="AssessThresholdsObserved">
+		<description>Does additional processing on Observed series for use in the Daily threshold report for general thresholds.</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExecuteHDCalcSuite">
-		<description>Water balance calculations conducted from Hydro database</description>
+	<!--Process archive-->
+	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_3h">
+		<description>Process NWP gridded data into smaller grids for archiving</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ExecuteHDCalcSuite_1">
-		<description>Water balance calculations conducted from Hydro database(Test)</description>
+	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_1h">
+		<description>Process NWP gridded data into smaller grids for archiving</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_1am">
+		<description>Process NWP gridded data into smaller grids for archiving</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ProcessNWP_To_Archive_qualifier">
+		<description>Process NWP gridded data into smaller grids for archiving</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="CreateLongProfile">
 		<description>Create river profile</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Amalgamate_ImportData">
-		<description>Amalgamate Import_Observed timeseries blobs</description>
+	<!--Source (Model)-->
+	<moduleInstanceDescriptor id="PrepareewSourceRO">
+		<description>Prepare data to export to ewSource_RO</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Amalgamate_ImportData_Weekly">
-		<description>Weekly timeseries blobs amalgamation</description>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_EVAP">
+		<description>Prepare EVAP data to export to ewSource_RO</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Amalgamate_ImportData_Monthly">
-		<description>Monthly timeseries blobs amalgamation</description>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qcomb">
+		<description>Prepare Q_fcst data to export to ewSource_RO</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Amalgamate_ImportData_Orphans">
-		<description>orphan timeseries blobs amalgamation</description>
+	<moduleInstanceDescriptor id="PrepareGamma_daily"/>
+	<moduleInstanceDescriptor id="PrepareGamma_hourly"/>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_QORD">
+		<description>Prepare QORD data to export to ewSource_RO</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="Update_ModulesBin">
-		<description>Module to extract software to Modules_Bin folder</description>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade_forecastlength"/>
+	<moduleInstanceDescriptor id="PrepareewSourceRO_Qtrade">
+		<description>Manual enter underlivered, deferred and trade flows, process to Daily QSA Trade Adjustment</description>
 	</moduleInstanceDescriptor>
-	<!--Dummy module for moduledatasets-->
+	<moduleInstanceDescriptor id="ewSource_Rainfall_Forecast">
+		<description>Prepare rainfall data to export to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportToEWSourceRO">
+		<description>Export data to ewSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportFromEWSourceRO">
+		<description>Import Forecasts from EWSource_RO</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Ovens_PrepareewSourceRR">
+		<description>CombineRainfall</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Fcst">
+		<description>SourceOvensForecast</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="Ovens_ewSourceRRCorrection_Fcst"/>
+	<moduleInstanceDescriptor id="Ovens_ewSourceRR_Hcst">
+		<description>SourceHistoricalSimulation</description>
+	</moduleInstanceDescriptor>
+	<!--HydstraTSM; Hydro (Models)-->
+	<moduleInstanceDescriptor id="PrepareHydstraTSM">
+		<description>Combines Gridded Rainfall (PME) and Temperature (ADFD) with the Observed series</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExecuteHydstraTSM_Fcst">
+		<description>Runs HydstraTSM model</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="PostprocessHydstraTSM_Fcst">
+		<description>Postprocessing to HydstraTSM Forecast, creates daily series</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExecuteHDCalcSuite">
+		<description>Water balance calculations conducted from Hydro database</description>
+	</moduleInstanceDescriptor>
+	<!--Moduledatasets, inaries and other placheholder files for models-->
+	<moduleInstanceDescriptor id="ovens_ewSource_Forecast">
+		<description>Ovens Source model</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="modules_bin_ewSource">
 		<description>ewSource software</description>
 	</moduleInstanceDescriptor>
@@ -460,7 +398,7 @@
 		<description>ewSource model adapter</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="modules_bin_jdbc">
-		<description>jdbc software</description>
+		<description>jdbc software (embedded web browser)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="modules_bin_ToHydroDB">
 		<description>Hydro batch file</description>
@@ -471,25 +409,37 @@
 	<moduleInstanceDescriptor id="modules_bin_HydstraTSM">
 		<description>Hydstra ini files</description>
 	</moduleInstanceDescriptor>
-	<!--FLOOD ops module instance IDs-->
+	<moduleInstanceDescriptor id="modules_bin_delft-adapters">
+		<description>Delft-FEWS model adapters</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="modules_bin_urbs">
+		<description>URBS software</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="URBS_State">
+		<description>Placeholder URBS state</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="URBS_Parameters">
+		<description>URBS parameters template</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="SchematicStatusDisplay">
+		<description>used in ThresholdValueSets</description>
+	</moduleInstanceDescriptor>
+	<!--URBS - release input-->
 	<moduleInstanceDescriptor id="User_Input">
 		<description>Dummy module instance for reservoir release modifier</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="PreProcess_FloodOps">
-		<description>PreProcess observed Precip data for flood ops sites</description>
+	<moduleInstanceDescriptor id="PrepareURBS_Qrelease_forecastlength"/>
+	<moduleInstanceDescriptor id="PrepareURBS_Qrelease">
+		<description>Combines observed flow at Heywoods with Hume release forecast (user input)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessObserved_FloodOps">
-		<description>Process observed data for flood ops sites</description>
+	<moduleInstanceDescriptor id="MaxRelease_Hume_1h_URBS_Forecast">
+		<description>calculates the maximum theoretical release based on the simulated dam water level</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments">
-		<description>Process NWP data to URBS subcatchments</description>
-	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ProcessP_fcst_To_SubCatchments_from_Archive">
-		<description>Process NWP data to URBS subcatchments (for data retrieved from Archive)</description>
-	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="URBS_1h_Subcatchment_Preprocessing"/>
 	<moduleInstanceDescriptor id="PrepareUrbs_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
+	<!--URBS - rainfall-->
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Forecast">
 		<description>Prepare URBS input</description>
 	</moduleInstanceDescriptor>
@@ -523,6 +473,16 @@
 	<moduleInstanceDescriptor id="upper_murray_Rainfall_Scenario_Ensemble_Forecast">
 		<description>upper_murray Rainfall Ensemble Scenario member Forecast</description>
 	</moduleInstanceDescriptor>
+	<!--URBS - processing-->
+	<moduleInstanceDescriptor id="upper_murray_mittaToDartmouth_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_mittaToTallandoon_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToHumeDam_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_ToJingellic_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="upper_murray_BelowHume_URBS_Preprocessing"/>
+	<moduleInstanceDescriptor id="URBS_1h_ungauged_Forecast">
+		<description>Module to calculate the total ungauged catchment contribution to HUME</description>
+	</moduleInstanceDescriptor>
+	<!--URBS -->
 	<moduleInstanceDescriptor id="upper_murray_upper_m_URBS_Forecast">
 		<description>URBS General Adapter upper_murray_upper_m</description>
 	</moduleInstanceDescriptor>
@@ -559,81 +519,213 @@
 	<moduleInstanceDescriptor id="upper_murray_belowHume_URBS_QtoH_Forecast">
 		<description>URBS Flow To Level Transformation upper_murray_below</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="URBS_1h_ungauged_Forecast">
-		<description>Module to calculate the total ungauged catchment contribution to HUME</description>
+	<!--RTCTools-->
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools">
+		<description>RTCTools Simulation Hume Dam</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="URBS_State">
-		<description>Placeholder URBS state</description>
+	<moduleInstanceDescriptor id="PrepareRTCTools_HumeDam_Simulation">
+		<description>PreProcess Simulation RTCTools Hume Dam</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="URBS_Parameters">
-		<description>URBS parameters template</description>
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools_Simulation">
+		<description>RTCTools Simulation Hume Dam</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObservedFloodOpsLatest_ftp">
-		<description>Import recent observed data for use in flood operations from ftp</description>
+	<moduleInstanceDescriptor id="PrepareRTCTools_HumeDam_Optimization">
+		<description>PreProcess Optimization RTCTools Hume Dam</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObservedFloodOpsLatest">
-		<description>Import recent observed data for use in flood operations from local disc after manual download</description>
+	<moduleInstanceDescriptor id="upper_murray_HumeDam_RTCTools_Optimization">
+		<description>RTCTools Optimization Hume Dam</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObservedFloodOpsArchive_ftp">
-		<description>Import observed data for use in flood operations from the last few weeks from ftp</description>
+	<moduleInstanceDescriptor id="modules_bin_rtctools">
+		<description>RTCTools binaries</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ImportObservedFloodOpsArchive">
-		<description>Import observed data for use in flood operations from the last few weeks from local disc after manual download</description>
+	<!--Correlations-->
+	<moduleInstanceDescriptor id="PeakHeights_Correlation">
+		<description>Dummy for correlation results</description>
 	</moduleInstanceDescriptor>
+	<!--Export-->
+	<moduleInstanceDescriptor id="ExportToHydstraTSM_Fcst">
+		<description>Exports Rainfall data in CSV format to HydstraTSM</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportWeeklyReport"/>
+	<moduleInstanceDescriptor id="ExportRatings"/>
+	<moduleInstanceDescriptor id="ExportObservedToHydro">
+		<description>Export observed data to Hydro</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportObservedToHydstra">
+		<description>Export observed (OPO) data to Hydstra</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportStoragesDataToHydstra">
+		<description>Export Storages (OPO) data to Hydstra</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportOpsForecastToHydstra">
+		<description>Export Ops forecast to Hydstra</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportCalculatedToHydro">
+		<description>Export calculated data to Hydro</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportForecastToHydro">
+		<description>Export forecast data to Hydro</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportObservedToMDBC_OPS">
+		<description>Export all data to MDBC_OPS</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ExportObservedToMDBC_OPS_Menindee">
+		<description>Export Menindee data to MDBC_OPS</description>
+	</moduleInstanceDescriptor>
+	<!--Export FloodSheets - Templates-->
 	<moduleInstanceDescriptor id="ExportForecastToFloodsheets_HPQ_new">
-		<description>Export H,Q forecast for hume dam to Flood Ops spreadsheet</description>
+		<description>Export H,Q forecast for hume dam to Flood Ops spreadsheet  (template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_HPQ_new">
-		<description>Export H,Q observed for hume dam to Flood Ops spreadsheet</description>
+		<description>Export H,Q observed for hume dam to Flood Ops spreadsheet (template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_HPQ">
-		<description>Export H,P,Q observed for all flood sites to Flood Ops spreadsheet</description>
+		<description>Export H,P,Q observed for all flood sites to Flood Ops spreadsheet (template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_HPQV">
-		<description>Export H,P,Q,V observed for all flood sites to Flood Ops spreadsheet</description>
+		<description>Export H,P,Q,V observed for all flood sites to Flood Ops spreadsheet (template)</description>
 	</moduleInstanceDescriptor>
+	<!--Export FloodSheets - derived-->
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets">
-		<description>Export data for Hume flood sites to Flood Ops spreadsheet</description>
+		<description>Export data for Hume flood sites to Flood Ops spreadsheet (based on Template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportForecastToFloodsheets_hume">
-		<description>Export data for Hume to Flood Ops spreadsheet</description>
+		<description>Export data for Hume to Flood Ops spreadsheet (based on Template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_hume">
-		<description>Export data for Hume flood sites to Flood Ops spreadsheet</description>
+		<description>Export data for Hume flood sites to Flood Ops spreadsheet (based on Template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_dartmouth">
-		<description>Export data for Dartmouth flood sites to Flood Ops spreadsheet</description>
+		<description>Export data for Dartmouth flood sites to Flood Ops spreadsheet (based on Template)</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ExportObservedToFloodsheets_yarrawonga">
-		<description>Export data for Yarrawonga flood sites to Flood Ops spreadsheet</description>
+		<description>Export data for Yarrawonga flood sites to Flood Ops spreadsheet (based on Template)</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_FloodOps_NWP">
-		<description>Export NWP forecasts to archive</description>
+	<!--Archive Export-->
+	<moduleInstanceDescriptor id="ToArchive_Fcst_URBS">
+		<description>Export simulated forecast to archive - URBS</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_FloodOps_Observations">
-		<description>Export observations to archive</description>
+	<moduleInstanceDescriptor id="ToArchive_Fcst_RTCTools">
+		<description>Export simulated forecast to archive - RTC-Tools</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_FloodOps_URBS">
-		<description>Export URBS simulation results to archive</description>
+	<moduleInstanceDescriptor id="ToArchive_Input_Source">
+		<description>Export model input (observed and forecast) to archive - Source</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Fcst_Source">
+		<description>Export simulated forecast to archive - Source</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Fcst_MDBCOPS">
+		<description>Export simulated forecast to archive - MDBC_OPS (Flow-n-Sal)</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Obs_Fops">
+		<description>Export observations to archive - Fops</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Obs_opo">
+		<description>Export observations to archive - opo</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Obs_AWRA">
+		<description>Export observations to archive - Soil Moisture from BoM</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Prod_Reports"/>
+	<moduleInstanceDescriptor id="ToArchive_NWP_ACCESSG">
+		<description>Export NWP forecasts to archive - ACCESSG</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_NWP_ACCESSR">
+		<description>Export NWP forecasts to archive - ACCESSR</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_NWP_ADFD">
+		<description>Export NWP forecasts to archive-  ADFD</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_NWP_PME">
+		<description>Export NWP forecasts to archive - PME</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Sys_Configuration">
+		<description>Export system information to archive - config</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Sys_Messages">
+		<description>Export system information to archive - messages (operator notes) </description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Sys_Ratings">
+		<description>Export system information to archive - ratings</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ToArchive_Sys_Snapshots">
+		<description>Export system information to archive - snapshot</description>
+	</moduleInstanceDescriptor>
+	<!--Archive Import-->
+	<moduleInstanceDescriptor id="FromArchiveExternalForecasts">
+		<description>Import external forecast (NWP) downloaded from archive</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="FromArchiveObservations">
+		<description>Import observations(OPO) downloaded from archive</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="FromArchiveRatings">
+		<description>Import ratings downloaded from archive</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="FromArchiveMessages">
+		<description>Import messages downloaded from archive</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="FromArchiveSimulations">
+		<description>Import simulations downloaded from archive</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="FromArchiveHistoricalEvents">
+		<description>Import archived Historical events</description>
+	</moduleInstanceDescriptor>
+	<!-- Maintenance-->
+	<moduleInstanceDescriptor id="Update_ModulesBin">
+		<description>Module to extract software to Modules_Bin folder</description>
 	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="Update_ModulesBin_FloodOps">
 		<description>Module to extract software to Modules_Bin folder</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ToArchive_flow-n-sal_Fcst">
-		<description>Export flow-n-sal forecasts to archive</description>
+	<moduleInstanceDescriptor id="Update_ModulesBin_RTCTools">
 	</moduleInstanceDescriptor>
-	<!--Flood Ops Dummy module for moduledataset -->
-	<moduleInstanceDescriptor id="modules_bin_delft-adapters">
-		<description>Delft-FEWS model adapters</description>
+	<moduleInstanceDescriptor id="Amalgamate_ImportData">
+		<description>Amalgamate Import_Observed timeseries blobs</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="modules_bin_urbs">
-		<description>URBS software</description>
+	<moduleInstanceDescriptor id="Amalgamate_ImportData_Weekly">
+		<description>Weekly timeseries blobs amalgamation</description>
 	</moduleInstanceDescriptor>
-	<moduleInstanceDescriptor id="ovens_ewSource_Forecast">
-		<description>Ovens Source model</description>
+	<moduleInstanceDescriptor id="Amalgamate_ImportData_Monthly">
+		<description>Monthly timeseries blobs amalgamation</description>
 	</moduleInstanceDescriptor>
-	<!-- Maintenance modules -->
+	<moduleInstanceDescriptor id="Amalgamate_ImportData_Orphans">
+		<description>orphan timeseries blobs amalgamation</description>
+	</moduleInstanceDescriptor>
 	<moduleInstanceDescriptor id="ChangeTimeSeriesModuleInstanceId">
 		<description>Change timeSeries moduleInstanceId</description>
+	</moduleInstanceDescriptor>
+	<!-- WaterCoach - creation of training-->
+	<moduleInstanceDescriptor id="CreateACCESSRGrid">
+		<description>Create ACCESSR grid from observations for Flood Training</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportHindcastERA5"/>
+	<!-- Development / test-->
+	<moduleInstanceDescriptor id="ExecuteHDCalcSuite_1">
+		<description>Water balance calculations conducted from Hydro database(Test)</description>
+	</moduleInstanceDescriptor>
+	<!-- _can_be_deleted-->
+	<moduleInstanceDescriptor id="ImportAWRA_ftp">
+		<description>Import AWRA from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastACCESSG_ftp">
+		<description>Import ACCESSG from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastACCESSR_ftp">
+		<description>Import ACCESSR from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastADFD_ftp">
+		<description>Import ADFD from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportForecastPME_ftp">
+		<description>Import PME from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedFloodOpsArchive_ftp">
+		<description>Import observed data for use in flood operations from the last few weeks from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportObservedFloodOpsLatest_ftp">
+		<description>Import recent observed data for use in flood operations from ftp</description>
+	</moduleInstanceDescriptor>
+	<moduleInstanceDescriptor id="ImportRatings_local">
+		<description>Import Ratings from local Import folder</description>
 	</moduleInstanceDescriptor>
 </moduleInstanceDescriptors>

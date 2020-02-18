@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on areaId level. Export of external forecasts-->
+	<!--Delft-FEWS external forecasts will be stored in -->
+	<!--<archiveFolder>/<yyyy>/<MM>/<areaId>/<dd> /external_forecasts/<sourceId>_<ExtForecastTime>-->
+	<exportExternalForecast>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ACCESSG.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>ACCESSG</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ACCESSG)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>ACCESSG_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep multiplier="3" unit="hour"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ACCESSR.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>ACCESSR</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ACCESSR)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>ACCESSR_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep multiplier="1" unit="hour"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ADFD.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>ADFD</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ADFD)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>ADFD_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour" multiplier="3"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ADFD_higher.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>ADFD_higher</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ADFD higher)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<qualifierId>higher</qualifierId>
+						<locationId>ADFD_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep id="1am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_PME.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>PME</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (PME)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<qualifierId>avg</qualifierId>
+						<locationId>PME_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour" multiplier="3"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_PME_min.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>PME_min</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (PME min)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<qualifierId>min</qualifierId>
+						<locationId>PME_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour" multiplier="3"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_PME_max.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>PME_max</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (PME max)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS-Flood (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastPME</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<qualifierId>max</qualifierId>
+						<locationId>PME_archive</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour" multiplier="3"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportExternalForecast>
+</exportArchiveModule>

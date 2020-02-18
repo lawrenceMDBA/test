@@ -646,27 +646,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>EC_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>DO%_calc</parameterId>
+			<parameterId>dH</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -729,7 +709,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
+			<parameterId>dV</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -739,49 +719,363 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>dQ</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QORD_calc</parameterId>
-			<locationSetId>threshold_sites_Q-QORD</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="LevelToArea">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_surfacearea</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_surfacearea</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationRelationId>OUTLET</locationRelationId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapNetMlake">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_Mlake</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_Mlake</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapLossMlake">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapCalcPan">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapNetPan">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapLossPan">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapLossMonthly">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="EvapLossReport">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP%_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP%_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="everything">
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>EC_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>DO%_calc</parameterId>
+			<parameterId>dH</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -844,7 +1138,7 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
+			<parameterId>dV</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -854,18 +1148,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
+			<parameterId>dQ</parameterId>
 			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QORD_calc</parameterId>
-			<locationSetId>threshold_sites_Q-QORD</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-365" startOverrulable="true" unit="day"/>
@@ -2206,6 +2490,46 @@
 		<validationIconsVisible>true</validationIconsVisible>
 		<mapExtentId/>
 		<timeSeriesSetsId>TestDataEntry</timeSeriesSetsId>
+	</filter>
+	<filter id="LevelToArea" name="LevelToArea">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>LevelToArea</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapNetMlake" name="EvapNetMlake">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapNetMlake</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapLossMlake" name="EvapLossMlake">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapLossMlake</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapCalcPan" name="EvapCalcPan">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapCalcPan</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapNetPan" name="EvapNetPan">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapNetPan</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapLossPan" name="EvapLossPan">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapLossPan</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapLossMonthly" name="EvapLossMonthly">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapLossMonthly</timeSeriesSetsId>
+	</filter>
+	<filter id="EvapLossReport" name="EvapLossReport">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId/>
+		<timeSeriesSetsId>EvapLossReport</timeSeriesSetsId>
 	</filter>
 	<filter id="Telemetry" name="Telemetry (All)">
 		<validationIconsVisible>true</validationIconsVisible>

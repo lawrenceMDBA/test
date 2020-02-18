@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ Gamma function -->
+	<!--Phi_Alpha = (Qp * tp) / (Cv * A), with:-->
+	<!--   Qp - peak flow rate [cfs /inch], i.e. peak of unit hydrograph in cfs for a 1-inch rainfall -->
+	<!--   A   - drainage area [acres]-->
+	<!--   tp  - time to peak [hours]-->
+	<!--   Cv - constant = 1.008 for the units: volume [cfs * hrs], A [acres], and the unit storm of 1-inch.-->
+	<!--   > Gamma_serial_initial_ext2-->
+	<!--   - expression: unit=days, conversion *24 is needed to unit h. 
+                       t max (hours) is equal to 5* Gamma peak time in hours-->
+	<!--   - coefficientSet: unit=days, conversion *24 is needed to unit h-->
+	<!--   > Gamma_Qfcst_z (daily/hourly)-->
+	<!--   - coefficientSet: unit=days, conversion *24 is needed to unit h-->
+	<!--   > phi_alpha -->
+	<!--   - expression: Phi_Alpha = (Qp * tp) / (Cv * A), with: 
+        Qp - the peak flow rate Qp (Gamma_peak_value) needs to be converted to units of "cfs /inch" 
+               (this is the peak value of the unit hydrograph in cfs for a 1-inch rainfall depth). 
+        A - drainage area A needs to be defined in acres
+        tp - time to peak tp in hours
+        Cv  - equals 1.008 for volumes measured in cfs * hrs, drainage area in acres, and the unit storm as 1-inch.	  
+        It appears the provided value in the attributes are not representative - it is unclear how the conversion should 
+        take place of the provided Qp value. As it stands, with just a direct conversion from ML/day to cfs, the 
+        resulting value of Phi_Alpha is not of the right order, messing up the lookup for alpha.-->
+	<!--   - coefficientSet: 
+         unit=days, conversion *24 is needed to unit h
+         unit=ML/day, so conversion 1/2.45 is needed to cfs
+         catchment area in Acres. In that case 1.008 value for Cv is needed-->
+	<!--========================================================================================-->
+	<!--Dummy Subatchments to make modifier display work for subcatchment attributes-->
+	<variable>
+		<variableId>Dummy_Subcatchment</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>Process_Access_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationSetId>ewSourceRO_subcatchments</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--========= Q fcst ========= -->
+	<!--Step 1: Q obs-->
+	<variable>
+		<variableId>Gauges_Qobs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="0" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gauges_Qobs_extend</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Gamma hourly-->
+	<variable>
+		<variableId>Gamma_serial_initial</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>initial</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="0" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_serial_initial_ext</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>initial</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="1" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_serial_initial_complete</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>initial</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_z</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>z</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="-1" end="1" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial_complete2</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp2</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<qualifierId>rise</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>phi_alpha</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>phi_alpha</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>alpha</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>alpha</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<relativeViewPeriod start="0" end="17520" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--Observed-->
+	<transformation id="Gauges_Qobs_extend">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Gauges_Qobs</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>Gauges_Qobs_extend</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<!--Gamma function (hourly)-->
+	<transformation id="Gamma_serial_initial">
+		<user>
+			<simple>
+				<expression>0</expression>
+				<outputVariable>
+					<variableId>Gamma_serial_initial</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_serial_initial_ext">
+		<user>
+			<simple>
+				<expression>PREVIOUS_OUTPUT_VALUE + 1</expression>
+				<outputVariable>
+					<variableId>Gamma_serial_initial_ext</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_serial_initial_ext2">
+		<user>
+			<simple>
+				<expression>if(Gamma_serial_initial_ext &gt; 5*24*Gamma_peak_time, 5*24*Gamma_peak_time, Gamma_serial_initial_ext)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Gamma_serial_initial_ext</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_Qfcst_z">
+		<user>
+			<simple>
+				<expression>Gamma_serial_initial_complete/(5*24*Gamma_peak_time)*5</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_z</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_Qfcst_rise_initial">
+		<user>
+			<simple>
+				<expression>Gauges_Qobs_extend</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_Qfcst_rise_initial_ext (block)">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Gamma_Qfcst_rise_initial</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Gamma_Qfcst_rise_initial_ext (interpolation)">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete</variableId>
+				</inputVariable>
+				<defaultValue>0</defaultValue>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete2</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<!--<transformation id="Gamma_Qfcst_rise_receding">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete2*((5-Gamma_Qfcst_z)/5)</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
+	<transformation id="Gamma_Qfcst_rise_constant">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete2</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="phi_alpha">
+		<user>
+			<simple>
+				<expression>((Gamma_peak_time*24)*(Gamma_peak_value/2.45))/(1.008*catchment_area*640)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
+					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+					<coefficient id="catchment_area" value="@SITE_Q_AREA@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>phi_alpha</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="alpha">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>phi_alpha</variableId>
+				</input>
+				<coefficientSetId>Gamma_phi_alpha_Table</coefficientSetId>
+				<coefficientSetFile>GammaFunctionTables</coefficientSetFile>
+				<output>
+					<variableId>alpha</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="Gamma_Qfcst">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete3 + Gamma_peak_value* (Gamma_Qfcst_z^alpha)*(exp((1-Gamma_Qfcst_z)*alpha))</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Gamma_peak_value" value="@SITE_Q_PULSE_PEAKQ@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Gamma_Qfcst</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="SDF_Q">
+		<subplot>
+			<line>
+				<!--Det fcst-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Det obs-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_obs</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Ens fcst-->
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--median-->
+				<color>blue</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>median</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--min-->
+				<color>orange</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>min</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--max-->
+				<color>red</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>max</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<area>
+				<!--p90-->
+				<color>steel blue1</color>
+				<opaquenessPercentage>20</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p90</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p75-->
+				<color>steel blue2</color>
+				<opaquenessPercentage>30</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p75</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p25-->
+				<color>steel blue3</color>
+				<opaquenessPercentage>40</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p25</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p10-->
+				<color>steel blue4</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p10</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+		</subplot>
+	</plot>
+	<plot id="SDF_Q_import">
+		<subplot>
+			<line>
+				<!--Det fcst-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Det obs-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_obs</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Ens fcst-->
+				<visibleInLegend>false</visibleInLegend>
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+					<ensembleId>SWIFT</ensembleId>
+				</timeSeriesSet>
+			</line>
+		</subplot>
+	</plot>
+	<plot id="SDF_Q_process">
+		<subplot>
+			<line>
+				<!--Det fcst-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--Det obs-->
+				<timeSeriesSet>
+					<moduleInstanceId>ImportObservedSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_obs</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--median-->
+				<color>blue</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>median</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<relativeViewPeriod unit="hour" start="-240" startOverrulable="false" end="360" endOverrulable="true"/>
+					<readWriteMode>add originals</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--min-->
+				<color>orange</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>min</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<line>
+				<!--max-->
+				<color>red</color>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>max</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</line>
+			<area>
+				<!--p10-->
+				<color>steel blue1</color>
+				<opaquenessPercentage>50</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p10</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p25-->
+				<color>steel blue2</color>
+				<opaquenessPercentage>40</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p25</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p75-->
+				<color>steel blue3</color>
+				<opaquenessPercentage>30</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p75</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+			<area>
+				<!--p90-->
+				<color>steel blue4</color>
+				<opaquenessPercentage>20</opaquenessPercentage>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessSDF</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Q_fcst</parameterId>
+					<qualifierId>sdf</qualifierId>
+					<qualifierId>p90</qualifierId>
+					<locationSetId>sdf_sites</locationSetId>
+					<timeSeriesType>external forecasting</timeSeriesType>
+					<timeStep unit="hour"/>
+					<readWriteMode>read complete forecast</readWriteMode>
+				</timeSeriesSet>
+			</area>
+		</subplot>
+	</plot>
+	<displayGroup name="Import: SDF (Seven Day Forecast BoM)">
+		<displayGroup name="SDF Q (All)" id="SDF_Q">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="SDF_Q">
+				<locationSetId>sdf_sites</locationSetId>
+				<plotId>SDF_Q</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup name="SDF Q (Import)" id="SDF_Q_import">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="SDF_Q_import">
+				<locationSetId>sdf_sites</locationSetId>
+				<plotId>SDF_Q_import</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup name="SDF Q (Process)" id="SDF_Q_process">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="SDF_Q_process">
+				<locationSetId>sdf_sites</locationSetId>
+				<plotId>SDF_Q_process</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

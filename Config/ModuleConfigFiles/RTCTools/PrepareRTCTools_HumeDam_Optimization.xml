@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!--Combines observed flow at Heywoods with Hume release forecast (user input)-->
+	<!-- Q - variables input-->
+	<variable>
+		<variableId>Qinflow_manual_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qinflow_fcst_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>upper_murray_ToHumeDam_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qtributary_manual_Kiewa</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_402222A</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qtributary_obs_Kiewa</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_402222A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qtributary_fcst_Kiewa</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>upper_murray_belowHume_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402222A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_manual_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>User_Input</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<qualifierId>manual</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_obs_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_obs_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>Fops</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<!-- Q - variables transformations-->
+	<variable>
+		<variableId>Qinflow_interp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qinflow_temp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_in_fcst</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qtributary_interp_Kiewa</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402222A</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qtributary_temp_Kiewa</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationId>R_402222A</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_interp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qrelease_temp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_release</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="49" startOverrulable="true" endOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_temp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_init_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qturb_temp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QTURB_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qturb_init_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QTURB_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qspill_temp_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QSPILL_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Qspill_init_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareRTCTools_HumeDam_Optimization</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QSPILL_obs</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="0" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Q - transformations-->
+	<transformation id="Qinflow_merge_man_fcst_Hume">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Qinflow_manual_Hume</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qinflow_fcst_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Qinflow_interp_Hume">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qinflow_extrap_Hume">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</inputVariable>
+				<extrapolateDirection>both</extrapolateDirection>
+				<outputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qinflow_Default_Hume">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Qinflow_temp_Hume</variableId>
+				</inputVariable>
+				<defaultValue>5000</defaultValue>
+				<outputVariable>
+					<variableId>Qinflow_interp_Hume</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qtributary_merge_man_obs_fcst_Kiewa">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Qtributary_manual_Kiewa</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qtributary_obs_Kiewa</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qtributary_fcst_Kiewa</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="Qtributary_interp_Kiewa">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qtributary_extrap_Kiewa">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</inputVariable>
+				<extrapolateDirection>both</extrapolateDirection>
+				<outputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qtributary_default_Kiewa">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Qtributary_temp_Kiewa</variableId>
+				</inputVariable>
+				<defaultValue>2000</defaultValue>
+				<outputVariable>
+					<variableId>Qtributary_interp_Kiewa</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qrelease_merge_Hume">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>Qrelease_manual_Hume</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>Qrelease_obs_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qrelease_interp_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="V_interp_Hume">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>V_obs_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_temp_Hume</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="V_extrap_Hume">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>V_temp_Hume</variableId>
+				</inputVariable>
+				<extrapolateDirection>both</extrapolateDirection>
+				<outputVariable>
+					<variableId>V_temp_Hume</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="V_Default_Hume">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>V_temp_Hume</variableId>
+				</inputVariable>
+				<defaultValue>2706344</defaultValue>
+				<outputVariable>
+					<variableId>V_init_Hume</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qturb_calc_Hume">
+		<user>
+			<simple>
+				<expression>max(Qrelease_obs_Hume, 10931)</expression>
+				<outputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qturb_interp_Hume">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qturb_extrap_Hume">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</inputVariable>
+				<extrapolateDirection>both</extrapolateDirection>
+				<outputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qturb_Default_Hume">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Qturb_temp_Hume</variableId>
+				</inputVariable>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>Qturb_init_Hume</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qspill_calc_Hume">
+		<user>
+			<simple>
+				<expression>max(Qrelease_obs_Hume-10931, 0)</expression>
+				<outputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Qspill_interp_Hume">
+		<interpolationSerial>
+			<linear>
+				<inputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</outputVariable>
+			</linear>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qspill_extrap_Hume">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</inputVariable>
+				<extrapolateDirection>both</extrapolateDirection>
+				<outputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="Qspill_Default_Hume">
+		<interpolationSerial>
+			<default>
+				<inputVariable>
+					<variableId>Qspill_temp_Hume</variableId>
+				</inputVariable>
+				<defaultValue>0</defaultValue>
+				<outputVariable>
+					<variableId>Qspill_init_Hume</variableId>
+				</outputVariable>
+			</default>
+		</interpolationSerial>
+	</transformation>
+</transformationModule>

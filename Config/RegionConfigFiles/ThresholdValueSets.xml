@@ -5,6 +5,7 @@
 		<levelThresholdValue>
 			<levelThresholdId>Minor_Flooding</levelThresholdId>
 			<valueFunction>@FL_MINOR@</valueFunction>
+			<visibleInEventsDisplay>true</visibleInEventsDisplay>
 		</levelThresholdValue>
 		<levelThresholdValue>
 			<levelThresholdId>Moderate_Flooding</levelThresholdId>
@@ -1257,28 +1258,6 @@
 			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-		<!--<timeSeriesSet>
-			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>RO</qualifierId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-		<timeSeriesSet>
-			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>-->
 	</thresholdValueSet>
 	<thresholdValueSet id="Threshold_Q" name="Flags">
 		<description>Thresholds</description>
@@ -1451,31 +1430,6 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</thresholdValueSet>
-	<!--<thresholdValueSet id="Threshold_dV" name="Flags">
-		<description>Thresholds</description>
-		<levelThresholdValue>
-			<levelThresholdId>Soft</levelThresholdId>
-			<value>601</value>
-		</levelThresholdValue>
-		<levelThresholdValue>
-			<levelThresholdId>Hard</levelThresholdId>
-			<value>602</value>
-		</levelThresholdValue>
-		<levelThresholdValue>
-			<levelThresholdId>Full_Supply_Level</levelThresholdId>
-			<value>603</value>
-		</levelThresholdValue>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dV</parameterId>
-			<locationSetId>threshold_sites_dV</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</thresholdValueSet>-->
 	<!--Threshold value sets for use in FloodOps - Specifically for Doctor's Point (Q) and Albury (H)-->
 	<thresholdValueSet id="FloodOps_flow" name="FloodOps flow thresholds">
 		<description>FloodOps flow thresholds (Doctor's Point) </description>
@@ -1633,4 +1587,52 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</thresholdValueSet>
+	<eventTimeViewPeriod unit="week" start="-52" end="52"/>
 </thresholdValueSets>
+<!--<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>RO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_all</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>-->
+<!--<thresholdValueSet id="Threshold_dV" name="Flags">
+		<description>Thresholds</description>
+		<levelThresholdValue>
+			<levelThresholdId>Soft</levelThresholdId>
+			<value>601</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Hard</levelThresholdId>
+			<value>602</value>
+		</levelThresholdValue>
+		<levelThresholdValue>
+			<levelThresholdId>Full_Supply_Level</levelThresholdId>
+			<value>603</value>
+		</levelThresholdValue>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dV</parameterId>
+			<locationSetId>threshold_sites_dV</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="2" start="-2" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</thresholdValueSet>-->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
+	<general>
+		<rootDir>%REGION_HOME%/Modules/rtctools2/</rootDir>
+		<workDir>%ROOT_DIR%</workDir>
+		<exportDir>%ROOT_DIR%</exportDir>
+		<exportDataSetDir>%ROOT_DIR%</exportDataSetDir>
+		<importDir>%ROOT_DIR%/output</importDir>
+		<dumpFileDir>$GA_DUMPFILEDIR$</dumpFileDir>
+		<dumpDir>%ROOT_DIR%</dumpDir>
+		<diagnosticFile>%ROOT_DIR%/test.xml</diagnosticFile>
+		<convertDatum>true</convertDatum>
+	</general>
+	<activities>
+		<exportActivities>
+			<exportDataSetActivity>
+				<moduleInstanceId>modules_bin_rtctools</moduleInstanceId>
+			</exportDataSetActivity>
+		</exportActivities>
+	</activities>
+</generalAdapterRun>

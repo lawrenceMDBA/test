@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
-	<!--ToArchive_FloodOps_URBS is run with every official forecast-->
+	<!-- **********************************
+To be called from Export_ToArchive only (requires properties)
+-->
+<!--TODO: deprecated?-->
+	<!--ProcessNWP_To_Archive_* 
+Copy current NWP forecasts on smaller grid-->
+	<!--ToArchive_NWP_* (sources=ACCESSG, ACCESSR, ADFD, PME)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/external_forecasts/<sourceId>_<T0>
+Current NWP forecasts processed to smaller grid-->
+	<!-- ### Preprocessing ###-->
 	<activity>
 		<properties>
 			<string key="NWP" value="ACCESSG"/>
@@ -8,7 +17,7 @@
 			<string key="NWP_GRID_ARCHIVE" value="ACCESSG_archive"/>
 		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessNWP_To_Archive</moduleInstanceId>
+		<moduleInstanceId>ProcessNWP_To_Archive_3h</moduleInstanceId>
 	</activity>
 	<activity>
 		<properties>
@@ -26,7 +35,7 @@
 			<string key="NWP_GRID_ARCHIVE" value="ADFD_archive"/>
 		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessNWP_To_Archive</moduleInstanceId>
+		<moduleInstanceId>ProcessNWP_To_Archive_3h</moduleInstanceId>
 	</activity>
 	<activity>
 		<properties>
@@ -36,7 +45,7 @@
 			<string key="QUALIFIER" value="higher"/>
 		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessNWP_To_Archive_1AM</moduleInstanceId>
+		<moduleInstanceId>ProcessNWP_To_Archive_1am</moduleInstanceId>
 	</activity>
 	<activity>
 		<properties>
@@ -68,11 +77,37 @@
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessNWP_To_Archive_qualifier</moduleInstanceId>
 	</activity>
+	<!-- ### Archiving ###-->
 	<activity>
 		<properties>
-			<string key="AREAID" value="mdba"/>
+			<string key="SOURCEID" value="ACCESSG"/>
+			<string key="LOCATIONID" value="ACCESSG_archive"/>
 		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_FloodOps_NWP</moduleInstanceId>
+		<moduleInstanceId>ToArchive_NWP_ACCESSG</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="ACCESSR"/>
+			<string key="LOCATIONID" value="ACCESSR_archive"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_ACCESSR</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="ADFD"/>
+			<string key="LOCATIONID" value="ADFD_archive"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_ADFD</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="PME"/>
+			<string key="LOCATIONID" value="PME_archive"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_PME</moduleInstanceId>
 	</activity>
 </workflow>

@@ -7,6 +7,7 @@
 	<!-- 	- merge OPO, short term (manual) forecast and long term forecast -->
 	<!-- 	> Trend Flow Forcast (manual)-->
 	<!-- 	- Rise to trend target,vaintain for forecast length-->
+	<!-- 	> Gamma function hydrograph Flow Forcast (manual) (see PrepareGamma.xml)-->
 	<!-- 	> Pulse Flow Forcast (manual)-->
 	<!-- 	- Flow until peak: Flow(n+1) = (Pulse rising flow) – Flow(n)) * (1 – Pulse rising rate) + Flow(n)-->
 	<!-- 	- Flow at peak: Flow(peak) = Pulse peak flow-->
@@ -34,8 +35,21 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--========= Q fcst ========= -->
-	<!--Q fcst: manual shortterm forecast-->
+	<!--Step 1: Q obs-->
+	<variable>
+		<variableId>Gauges_Qobs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>Gauges_Qobs_extend</variableId>
 		<timeSeriesSet>
@@ -50,6 +64,126 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Step 1: Input shortterm forecasts-->
+	<variable>
+		<variableId>SDF_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>main</ensembleId>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>STF_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>Gamma</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MDBC_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Source_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>default</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_hourly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Step 1: Process input shortterm forecasts (temporary)-->
+	<variable>
+		<variableId>SDF_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>STF_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>stf</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>URBS_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>urbs</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Step 2: Manual shortterm forecast-->
 	<variable>
 		<variableId>Trend_Qfcst_initial</variableId>
 		<timeSeriesSet>
@@ -200,112 +334,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: other input series (fcst and obs)-->
-	<variable>
-		<variableId>Gauges_Qobs</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessQopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="1" unit="day" startOverrulable="true"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>STF_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastSTF</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>URBS_hourly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_$SUBCATCHMENT$_URBS_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Source_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>default</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBC_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<!-- <locationSetId>HYDRO_fcst_sites_Q</locationSetId> -->
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Shortterm_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--Q fcst: other input series (temporary series)-->
-	<variable>
-		<variableId>STF_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>stf</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>URBS_Qfcst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_fcst</parameterId>
-			<qualifierId>urbs</qualifierId>
-			<locationSetId>SourceRO_sites_Q</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--Q fcst: Qplan Hydro and statistics-->
+	<!--Step 3: Input Qplan-->
 	<variable>
 		<variableId>Qplan_hydro_min</variableId>
 		<timeSeriesSet>
@@ -362,7 +391,7 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: Qplan statistics - Monthly timestep (temporary)-->
+	<!--Step 3: Qplan statistics - Monthly timestep (temporary)-->
 	<variable>
 		<variableId>Cycle_month</variableId>
 		<timeSeriesSet>
@@ -553,7 +582,20 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Q fcst: Qcomb resulting series-->
+	<!--Step 4: Qcomb resulting shortterm and longterm series-->
+	<variable>
+		<variableId>Shortterm_Qfcst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-400" end="730" unit="day" startOverrulable="true" endOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>Qcomb_min</variableId>
 		<timeSeriesSet>
@@ -615,7 +657,44 @@
 	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
 	<!--========================================================================================-->
 	<!--Inflow: Flow-->
-	<!--Step 1 Flow Fcst: Generate Manual Forecaster Series-->
+	<!--Step 1 Flow Fcst: Aggregate (instantaneous) SDF, STF and URBS series to daily-->
+	<transformation id="SDF_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>SDF_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>SDF_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="STF_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>STF_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>STF_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<transformation id="URBS_Qfcst">
+		<aggregation>
+			<instantaneous>
+				<inputVariable>
+					<variableId>URBS_hourly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>URBS_Qfcst</variableId>
+				</outputVariable>
+			</instantaneous>
+		</aggregation>
+	</transformation>
+	<!--Step 2 Flow Fcst: Generate Manual Forecaster Series-->
 	<transformation id="Gauges_Qobs_extend">
 		<interpolationSerial>
 			<extrapolateConstant>
@@ -816,31 +895,6 @@
 				</outputVariable>
 			</simple>
 		</merge>
-	</transformation>
-	<!--Step 2 Flow Fcst: Aggregate (instantaneous) STF and URBS series to daily-->
-	<transformation id="STF_Qfcst">
-		<aggregation>
-			<instantaneous>
-				<inputVariable>
-					<variableId>STF_hourly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>STF_Qfcst</variableId>
-				</outputVariable>
-			</instantaneous>
-		</aggregation>
-	</transformation>
-	<transformation id="URBS_Qfcst">
-		<aggregation>
-			<instantaneous>
-				<inputVariable>
-					<variableId>URBS_hourly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>URBS_Qfcst</variableId>
-				</outputVariable>
-			</instantaneous>
-		</aggregation>
 	</transformation>
 	<!--Step 3 Flow Fcst: Yearly average (Q_plan, statistics)-->
 	<transformation id="Cycle_month">
@@ -1075,22 +1129,28 @@
 		<merge>
 			<selectDataSource>
 				<input>
+					<variableId>Gamma_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>MDBC_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Pulse_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>SDF_Qfcst</variableId>
+				</input>
+				<input>
+					<variableId>Source_Qfcst</variableId>
+				</input>
+				<input>
 					<variableId>STF_Qfcst</variableId>
 				</input>
 				<input>
 					<variableId>Trend_Qfcst</variableId>
 				</input>
 				<input>
-					<variableId>Pulse_Qfcst</variableId>
-				</input>
-				<input>
 					<variableId>URBS_Qfcst</variableId>
-				</input>
-				<input>
-					<variableId>Source_Qfcst</variableId>
-				</input>
-				<input>
-					<variableId>MDBC_Qfcst</variableId>
 				</input>
 				<attributeFunctionId>@SITE_Q_FCST_SELECT@_Qfcst</attributeFunctionId>
 				<output>
