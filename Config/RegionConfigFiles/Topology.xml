@@ -372,6 +372,7 @@
 	<nodes id="Reporting" name="Reporting">
 		<node id="Prepare_WeeklyReport" name="Generate Data Weekly Report">
 			<workflowId>Prepare_WeeklyReport</workflowId>
+			<displayGroupId>H_value</displayGroupId>
 			<localRun>true</localRun>
 		</node>
 		<nodes id="Report_review" name="Review">
@@ -428,49 +429,105 @@
 			<workflowId>Export_FlowLevelReport</workflowId>
 			<localRun>true</localRun>
 		</node>
-		<nodes name="Prepare Thresholds Review" id="Prepare_Thresholds_Review">
-			<groupId>BALRANALD_WEIR_DS_Threshold_Review</groupId>
-			<groupId>BURTUNDY_Threshold_Review</groupId>
-			<groupId>COLEMANS_Threshold_Review</groupId>
-			<groupId>DOCTOR'S_POINT_Threshold_Review</groupId>
-			<groupId>DS_YARRAWONGA_WEIR_Threshold_Review</groupId>
-			<groupId>EDWARD_AT_DENILIQUIN_Threshold_Review</groupId>
-			<groupId>EDWARD_R_AT_MOULAMEIN_Threshold_Review</groupId>
-			<groupId>EDWARD_R_AT_OFFTAKE_Threshold_Review</groupId>
-			<groupId>EDWARD_R_AT_TOONALOOK_Threshold_Review</groupId>
-			<groupId>EDWARD_R_DS_STEVEN_Threshold_Review</groupId>
-			<groupId>FRENCHMANINLET_REG_Threshold_Review</groupId>
-			<groupId>GOULBURN_AT_MCCOY_Threshold_Review</groupId>
-			<groupId>GULPA_CK_AT_OFFTAKE_Threshold_Review</groupId>
-			<groupId>HEYWOODS_Threshold_Review</groupId>
-			<groupId>HUME_DAM_Threshold_Review</groupId>
-			<groupId>LAKE_VICTORIA_LAKE_CENTRE_Threshold_Review</groupId>
-			<groupId>LT_MERRAN_FRANK__BR_Threshold_Review</groupId>
-			<groupId>MERRAN_CK_US_WAK_JN_Threshold_Review</groupId>
-			<groupId>MULWALA_Threshold_Review</groupId>
-			<groupId>MURRAY_AT_MERBEIN_PS_Threshold_Review</groupId>
-			<groupId>MURRAY_R_AT_BARHAM_Threshold_Review</groupId>
-			<groupId>MURRAY_R_AT_GULPA_Threshold_Review</groupId>
-			<groupId>NIEMUR_AT_MALLAN_SCH_Threshold_Review</groupId>
-			<groupId>NIEMUR_R_BARH-MLN_RD_Threshold_Review</groupId>
-			<groupId>R_MURRAY_DS_LOCK_9_Threshold_Review</groupId>
-			<groupId>RUFUS_R_DS_OUTLET_Threshold_Review</groupId>
-			<groupId>SWAN_HILL_Threshold_Review</groupId>
-			<groupId>TALLANDOON_Threshold_Review</groupId>
-			<groupId>TOCUMWAL_Threshold_Review</groupId>
-			<groupId>WAKOOL_AT_STONEY_XING_Threshold_Review</groupId>
-			<groupId>WAKOOL_R_GEEGEE_BR_2_Threshold_Review</groupId>
-			<groupId>WEIR_32_Threshold_Review</groupId>
-			<groupId>WENTWORTH_MURRAY_COMPONENT_Threshold_Review</groupId>
-			<groupId>YARRAWONGA_AT_OFFTAKE_Threshold_Review</groupId>
-			<groupId>YARRAWONGA_WEIR_HG_Threshold_Review</groupId>
+		<nodes id="Prepare_Thresholds" name="Prepare Thresholds">
+			<workflowId>Prepare_Thresholds</workflowId>
+			<localRun>true</localRun>
+			<node id="H_value" name="H_value">
+				<displayGroupId>H_value</displayGroupId>
+			</node>
+			<node id="dH_value" name="dH_value">
+				<displayGroupId>dH_value</displayGroupId>
+			</node>
+			<node id="Q_value" name="Q_value">
+				<displayGroupId>Q_value</displayGroupId>
+			</node>
+			<node id="dQ_value" name="dQ_value">
+				<displayGroupId>dQ_value</displayGroupId>
+			</node>
+			<node id="V_value" name="V_value">
+				<displayGroupId>V_value</displayGroupId>
+			</node>
+			<node id="dV_value" name="dV_value">
+				<displayGroupId>dV_value</displayGroupId>
+			</node>
+			<node id="EC_value" name="EC_value">
+				<displayGroupId>EC_value</displayGroupId>
+			</node>
+			<node id="DO_value" name="DO_value">
+				<displayGroupId>DO_value</displayGroupId>
+			</node>
+		</nodes>
+		<nodes name="Review Thresholds prepared" id="Prepare_Thresholds_Review">
+			<node id="H_review" name="H_review">
+				<workflowId>Prepare_Thresholds</workflowId>
+				<displayGroupId>H_review</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>true</localRun>
+			</node>
+			<node id="dH_review" name="dH_review">
+				<workflowId>Prepare_Thresholds</workflowId>
+				<displayGroupId>dH_review</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>true</localRun>
+			</node>
+			<node id="Q_review" name="Q_review">
+				<workflowId>Prepare_Thresholds</workflowId>
+				<displayGroupId>Q_review</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>true</localRun>
+			</node>
+			<node id="V_review" name="V_review">
+				<workflowId>Prepare_Thresholds</workflowId>
+				<displayGroupId>V_review</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>true</localRun>
+			</node>
+			<node id="DO_review" name="DO_review">
+				<workflowId>Prepare_Thresholds</workflowId>
+				<displayGroupId>DO_review</displayGroupId>
+				<mainPanel>time series dialog</mainPanel>
+				<localRun>true</localRun>
+			</node>
+			<nodes id="Threshold_Review_per_site">
+				<groupId>BALRANALD_WEIR_DS_Threshold_Review</groupId>
+				<groupId>BURTUNDY_Threshold_Review</groupId>
+				<groupId>COLEMANS_Threshold_Review</groupId>
+				<groupId>DOCTOR'S_POINT_Threshold_Review</groupId>
+				<groupId>DS_YARRAWONGA_WEIR_Threshold_Review</groupId>
+				<groupId>EDWARD_AT_DENILIQUIN_Threshold_Review</groupId>
+				<groupId>EDWARD_R_AT_MOULAMEIN_Threshold_Review</groupId>
+				<groupId>EDWARD_R_AT_OFFTAKE_Threshold_Review</groupId>
+				<groupId>EDWARD_R_AT_TOONALOOK_Threshold_Review</groupId>
+				<groupId>EDWARD_R_DS_STEVEN_Threshold_Review</groupId>
+				<groupId>FRENCHMANINLET_REG_Threshold_Review</groupId>
+				<groupId>GOULBURN_AT_MCCOY_Threshold_Review</groupId>
+				<groupId>GULPA_CK_AT_OFFTAKE_Threshold_Review</groupId>
+				<groupId>HEYWOODS_Threshold_Review</groupId>
+				<groupId>HUME_DAM_Threshold_Review</groupId>
+				<groupId>LAKE_VICTORIA_LAKE_CENTRE_Threshold_Review</groupId>
+				<groupId>LT_MERRAN_FRANK__BR_Threshold_Review</groupId>
+				<groupId>MERRAN_CK_US_WAK_JN_Threshold_Review</groupId>
+				<groupId>MULWALA_Threshold_Review</groupId>
+				<groupId>MURRAY_AT_MERBEIN_PS_Threshold_Review</groupId>
+				<groupId>MURRAY_R_AT_BARHAM_Threshold_Review</groupId>
+				<groupId>MURRAY_R_AT_GULPA_Threshold_Review</groupId>
+				<groupId>NIEMUR_AT_MALLAN_SCH_Threshold_Review</groupId>
+				<groupId>NIEMUR_R_BARH-MLN_RD_Threshold_Review</groupId>
+				<groupId>R_MURRAY_DS_LOCK_9_Threshold_Review</groupId>
+				<groupId>RUFUS_R_DS_OUTLET_Threshold_Review</groupId>
+				<groupId>SWAN_HILL_Threshold_Review</groupId>
+				<groupId>TALLANDOON_Threshold_Review</groupId>
+				<groupId>TOCUMWAL_Threshold_Review</groupId>
+				<groupId>WAKOOL_AT_STONEY_XING_Threshold_Review</groupId>
+				<groupId>WAKOOL_R_GEEGEE_BR_2_Threshold_Review</groupId>
+				<groupId>WEIR_32_Threshold_Review</groupId>
+				<groupId>WENTWORTH_MURRAY_COMPONENT_Threshold_Review</groupId>
+				<groupId>YARRAWONGA_AT_OFFTAKE_Threshold_Review</groupId>
+				<groupId>YARRAWONGA_WEIR_HG_Threshold_Review</groupId>
+			</nodes>
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
-		<node id="Prepare_Thresholds" name="Prepare Thresholds">
-			<workflowId>Prepare_Thresholds</workflowId>
-			<localRun>true</localRun>
-		</node>
 		<node id="Export_ThresholdCrossingsReport" name="Export threshold crossings HTML report">
 			<workflowId>Export_ThresholdCrossingsReport</workflowId>
 			<localRun>true</localRun>
