@@ -133,17 +133,132 @@
 			<groupId>Mur(F-H)LowerDar(A-E)_OPO</groupId>
 			<groupId>NSWDivs(ABCDE)_OPO</groupId>
 			<groupId>VIC_Diversions_OPO</groupId>
-			<node id="ThresholdCrossings_SOnO_OPO" name="Review SOnO threshold crossings">
-				<workflowId>Review_ThresholdCrossingsReport</workflowId>
+			<nodes id="ThresholdCrossings_OPO" name="Review threshold crossings">
+				<node id="ThresholdCrossings_SOnO_OPO" name="SOnO threshold alert report">
+					<workflowId>Review_ThresholdCrossingsReport</workflowId>
+					<mainPanel>web browser display</mainPanel>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$\ThresholdCrossingsSOnO\ThresholdCrossings_SOnO_Report.html</url>
+					<localRun>true</localRun>
+				</node>
+				
+				<nodes name="Exclude thresholds from SOnO report" id="Prepare_Thresholds_Review">
+					<node id="H_review" name="H_review">
+						<workflowId>Prepare_Thresholds</workflowId>
+						<displayGroupId>H_review</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+						<localRun>true</localRun>
+					</node>
+					<node id="dH_review" name="dH_review">
+						<workflowId>Prepare_Thresholds</workflowId>
+						<displayGroupId>dH_review</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+						<localRun>true</localRun>
+					</node>
+					<node id="Q_review" name="Q_review">
+						<workflowId>Prepare_Thresholds</workflowId>
+						<displayGroupId>Q_review</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+						<localRun>true</localRun>
+					</node>
+					<node id="V_review" name="V_review">
+						<workflowId>Prepare_Thresholds</workflowId>
+						<displayGroupId>V_review</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+						<localRun>true</localRun>
+					</node>
+					<node id="DO_review" name="DO_review">
+						<workflowId>Prepare_Thresholds</workflowId>
+						<displayGroupId>DO_review</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+						<localRun>true</localRun>
+					</node>
+					<nodes id="Threshold_Review_per_site">
+						<groupId>BALRANALD_WEIR_DS_Threshold_Review</groupId>
+						<groupId>BURTUNDY_Threshold_Review</groupId>
+						<groupId>COLEMANS_Threshold_Review</groupId>
+						<groupId>DOCTOR'S_POINT_Threshold_Review</groupId>
+						<groupId>DS_YARRAWONGA_WEIR_Threshold_Review</groupId>
+						<groupId>EDWARD_AT_DENILIQUIN_Threshold_Review</groupId>
+						<groupId>EDWARD_R_AT_MOULAMEIN_Threshold_Review</groupId>
+						<groupId>EDWARD_R_AT_OFFTAKE_Threshold_Review</groupId>
+						<groupId>EDWARD_R_AT_TOONALOOK_Threshold_Review</groupId>
+						<groupId>EDWARD_R_DS_STEVEN_Threshold_Review</groupId>
+						<groupId>FRENCHMANINLET_REG_Threshold_Review</groupId>
+						<groupId>GOULBURN_AT_MCCOY_Threshold_Review</groupId>
+						<groupId>GULPA_CK_AT_OFFTAKE_Threshold_Review</groupId>
+						<groupId>HEYWOODS_Threshold_Review</groupId>
+						<groupId>HUME_DAM_Threshold_Review</groupId>
+						<groupId>LAKE_VICTORIA_LAKE_CENTRE_Threshold_Review</groupId>
+						<groupId>LT_MERRAN_FRANK__BR_Threshold_Review</groupId>
+						<groupId>MERRAN_CK_US_WAK_JN_Threshold_Review</groupId>
+						<groupId>MULWALA_Threshold_Review</groupId>
+						<groupId>MURRAY_AT_MERBEIN_PS_Threshold_Review</groupId>
+						<groupId>MURRAY_R_AT_BARHAM_Threshold_Review</groupId>
+						<groupId>MURRAY_R_AT_GULPA_Threshold_Review</groupId>
+						<groupId>NIEMUR_AT_MALLAN_SCH_Threshold_Review</groupId>
+						<groupId>NIEMUR_R_BARH-MLN_RD_Threshold_Review</groupId>
+						<groupId>R_MURRAY_DS_LOCK_9_Threshold_Review</groupId>
+						<groupId>RUFUS_R_DS_OUTLET_Threshold_Review</groupId>
+						<groupId>SWAN_HILL_Threshold_Review</groupId>
+						<groupId>TALLANDOON_Threshold_Review</groupId>
+						<groupId>TOCUMWAL_Threshold_Review</groupId>
+						<groupId>WAKOOL_AT_STONEY_XING_Threshold_Review</groupId>
+						<groupId>WAKOOL_R_GEEGEE_BR_2_Threshold_Review</groupId>
+						<groupId>WEIR_32_Threshold_Review</groupId>
+						<groupId>WENTWORTH_MURRAY_COMPONENT_Threshold_Review</groupId>
+						<groupId>YARRAWONGA_AT_OFFTAKE_Threshold_Review</groupId>
+						<groupId>YARRAWONGA_WEIR_HG_Threshold_Review</groupId>
+					</nodes>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</nodes>
+<node id="ThresholdCrossings_RO_OPO" name="RO threshold alert report">
+					<workflowId>Review_ThresholdCrossingsReport</workflowId>
+					<mainPanel>web browser display</mainPanel>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCrossingsRO\ThresholdCrossings_RO_Report.html</url>
+					<localRun>true</localRun>
+				</node>				
+				<nodes id="Prepare_Thresholds" name="View Thresholds (SOnO &amp; RO)">
+					<workflowId>Prepare_Thresholds</workflowId>
+					<localRun>true</localRun>
+					<node id="H_value" name="H_value">
+						<displayGroupId>H_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="dH_value" name="dH_value">
+						<displayGroupId>dH_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="Q_value" name="Q_value">
+						<displayGroupId>Q_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="dQ_value" name="dQ_value">
+						<displayGroupId>dQ_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="V_value" name="V_value">
+						<displayGroupId>V_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="dV_value" name="dV_value">
+						<displayGroupId>dV_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="EC_value" name="EC_value">
+						<displayGroupId>EC_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<node id="DO_value" name="DO_value">
+						<displayGroupId>DO_value</displayGroupId>
+						<mainPanel>time series dialog</mainPanel>
+					</node>
+					<mainPanel>time series dialog</mainPanel>
+					<toolWindow>plot overview</toolWindow>
+				</nodes>
 				<mainPanel>web browser display</mainPanel>
 				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCrossingsSOnO\ThresholdCrossings_SOnO_Report.html</url>
-				<localRun>true</localRun>
-			</node>
-			<node id="ThresholdCrossings_RO_OPO" name="Review RO threshold crossings">
-				<mainPanel>web browser display</mainPanel>
-				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCrossingsRO\ThresholdCrossings_RO_Report.html</url>
-				<localRun>true</localRun>
-			</node>
+			</nodes>
 		</nodes>
 		<nodes name="Environmental Watering" id="EW_OPO">
 			<groupId>EWV_OPO</groupId>
@@ -176,66 +291,70 @@
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>
 	<nodes id="RiverOps" name="River Operations">
-		<node id="ExportTo_OPSsheets" name="Export to OPSsheets">
-			<workflowId>Export_ToMDBC_OPS</workflowId>
-			<visibleModifierGroup>ROWS</visibleModifierGroup>
-			<localRun>true</localRun>
-		</node>
-		<node id="Import_MDBC_OPS" name="Import from OPSsheets">
-			<workflowId>Import_MDBC_OPS</workflowId>
-			<visibleModifierGroup>ROWS</visibleModifierGroup>
-			<localRun>false</localRun>
-		</node>
-		<nodes id="ewSource_Prepare" name="Prepare data for Source RO">
-			<workflowId>Prepare_EWSourceRO</workflowId>
-			<node id="ewSource_Prepare_Data_Qtrade" name="Prepare SA trade for Source RO">
-				<workflowId>Prepare_EWSourceRO_Qtrade</workflowId>
-				<useForecastLengthFromInteractiveForecastDisplay>false</useForecastLengthFromInteractiveForecastDisplay>
-				<visibleModifierGroup>None</visibleModifierGroup>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>false</localRun>
+		<nodes id="OPSsheets">
+			<node id="ExportTo_OPSsheets" name="Export to OPSsheets">
+				<workflowId>Export_ToMDBC_OPS</workflowId>
+				<visibleModifierGroup>ROWS</visibleModifierGroup>
+				<localRun>true</localRun>
 			</node>
-			<node id="ewSource_Prepare_Data_Qcomb" name="Prepare Q_comb data for Source RO">
-				<workflowId>Prepare_EWSourceRO_Qcomb</workflowId>
-				<cardinalTimeStepStartTime times="08:00" timeZone="AEST"/>
-				<defaultModifierId>Q_fcst_ewSource</defaultModifierId>
-				<visibleModifierGroup>Source_RO</visibleModifierGroup>
-				<mainPanel>modifiers panel</mainPanel>
-				<localRun>false</localRun>
-			</node>
-			<node id="ewSource_Prepare_Data_QORD" name="Prepare QORD data for Source RO">
-				<workflowId>Prepare_EWSourceRO_QORD</workflowId>
-				<visibleModifierGroup>None</visibleModifierGroup>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>false</localRun>
-			</node>
-			<node id="ewSource_Rainfall" name="Prepare Rainfall for Source RO">
-				<workflowId>EWSourceRO_Rainfall_Forecast</workflowId>
-				<defaultModifierId>P_fcst_ewSource</defaultModifierId>
-				<visibleModifierGroup>Source_RO</visibleModifierGroup>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>false</localRun>
-			</node>
-			<node id="ewSource_Prepare_Data_EVAP" name="Prepare EVAP data for Source RO">
-				<workflowId>Prepare_EWSourceRO_EVAP</workflowId>
-				<defaultModifierId>EVAP_fcst_Source</defaultModifierId>
-				<visibleModifierGroup>Source_RO</visibleModifierGroup>
-				<mainPanel>time series dialog</mainPanel>
+			<node id="Import_MDBC_OPS" name="Import from OPSsheets">
+				<workflowId>Import_MDBC_OPS</workflowId>
+				<visibleModifierGroup>ROWS</visibleModifierGroup>
 				<localRun>false</localRun>
 			</node>
 		</nodes>
-		<node id="ExportTo_ewSource" name="Export to Source RO">
-			<workflowId>Export_ToEWSourceRO</workflowId>
-			<timeZero date="2017-05-31" time="22:00:00"/>
-			<!-- date and time in GMT time zone-->
-			<visibleModifierGroup>None</visibleModifierGroup>
-		</node>
-		<node id="ImportFrom_ewSource" name="Import from Source RO">
-			<workflowId>Import_FromEWSourceRO</workflowId>
-			<displayGroupId>ImportFrom_ewSource</displayGroupId>
-			<visibleModifierGroup>None</visibleModifierGroup>
-			<localRun>false</localRun>
-		</node>
+		<nodes id="Source">
+			<nodes id="ewSource_Prepare" name="Prepare data for Source RO">
+				<workflowId>Prepare_EWSourceRO</workflowId>
+				<node id="ewSource_Prepare_Data_Qtrade" name="Prepare SA trade for Source RO">
+					<workflowId>Prepare_EWSourceRO_Qtrade</workflowId>
+					<useForecastLengthFromInteractiveForecastDisplay>false</useForecastLengthFromInteractiveForecastDisplay>
+					<visibleModifierGroup>None</visibleModifierGroup>
+					<mainPanel>time series dialog</mainPanel>
+					<localRun>false</localRun>
+				</node>
+				<node id="ewSource_Prepare_Data_Qcomb" name="Prepare Q_comb data for Source RO">
+					<workflowId>Prepare_EWSourceRO_Qcomb</workflowId>
+					<cardinalTimeStepStartTime times="08:00" timeZone="AEST"/>
+					<defaultModifierId>Q_fcst_ewSource</defaultModifierId>
+					<visibleModifierGroup>Source_RO</visibleModifierGroup>
+					<mainPanel>modifiers panel</mainPanel>
+					<localRun>false</localRun>
+				</node>
+				<node id="ewSource_Prepare_Data_QORD" name="Prepare QORD data for Source RO">
+					<workflowId>Prepare_EWSourceRO_QORD</workflowId>
+					<visibleModifierGroup>None</visibleModifierGroup>
+					<mainPanel>time series dialog</mainPanel>
+					<localRun>false</localRun>
+				</node>
+				<node id="ewSource_Rainfall" name="Prepare Rainfall for Source RO">
+					<workflowId>EWSourceRO_Rainfall_Forecast</workflowId>
+					<defaultModifierId>P_fcst_ewSource</defaultModifierId>
+					<visibleModifierGroup>Source_RO</visibleModifierGroup>
+					<mainPanel>time series dialog</mainPanel>
+					<localRun>false</localRun>
+				</node>
+				<node id="ewSource_Prepare_Data_EVAP" name="Prepare EVAP data for Source RO">
+					<workflowId>Prepare_EWSourceRO_EVAP</workflowId>
+					<defaultModifierId>EVAP_fcst_Source</defaultModifierId>
+					<visibleModifierGroup>Source_RO</visibleModifierGroup>
+					<mainPanel>time series dialog</mainPanel>
+					<localRun>false</localRun>
+				</node>
+			</nodes>
+			<node id="ExportTo_ewSource" name="Export to Source RO">
+				<workflowId>Export_ToEWSourceRO</workflowId>
+				<timeZero date="2017-05-31" time="22:00:00"/>
+				<!-- date and time in GMT time zone-->
+				<visibleModifierGroup>None</visibleModifierGroup>
+			</node>
+			<node id="ImportFrom_ewSource" name="Import from Source RO">
+				<workflowId>Import_FromEWSourceRO</workflowId>
+				<displayGroupId>ImportFrom_ewSource</displayGroupId>
+				<visibleModifierGroup>None</visibleModifierGroup>
+				<localRun>false</localRun>
+			</node>
+		</nodes>
 		<nodes id="RiverOps_Overview" name="Operations Overview plots">
 			<node id="RiverOps_Overview.Kiewa" name="Kiewa River">
 				<displayGroupId>RiverOps_Overview.Kiewa</displayGroupId>
@@ -370,173 +489,74 @@
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
 	</nodes>
 	<nodes id="Reporting" name="Reporting">
-		<node id="Prepare_WeeklyReport" name="Generate Data Weekly Report">
-			<workflowId>Prepare_WeeklyReport</workflowId>
-			<displayGroupId>H_value</displayGroupId>
-			<localRun>true</localRun>
-		</node>
-		<nodes id="Report_review" name="Review">
-			<node id="Review_allstorages" name="All Major Storages">
-				<displayGroupId>wr_allstorages</displayGroupId>
-			</node>
-			<node id="Review_snowystorage" name="Snowy Storage">
-				<displayGroupId>wr_snowystorage</displayGroupId>
-			</node>
-			<node id="Review_alldiversions" name="All Diversions">
-				<displayGroupId>wr_alldiversions</displayGroupId>
-			</node>
-			<node id="Review_salinity" name="(not used) Salinity ">
-				<displayGroupId>wr_salinity</displayGroupId>
-			</node>
-			<node id="Review_allriverlevelflows" name="(not used) River Levels and Flows">
-				<displayGroupId>wr_allriverlevelflows</displayGroupId>
-			</node>
-			<node id="Review_murrayweirs" name="(not used) Murray Weirs and Locks">
-				<displayGroupId>wr_murrayweirs</displayGroupId>
-			</node>
-			<node id="Review_lowerlakes" name="(not used) Lower Lakes">
-				<displayGroupId>wr_lowerlakes</displayGroupId>
-			</node>
-			<node id="Review_barrages" name="(not used) Barrages">
-				<displayGroupId>wr_barrages</displayGroupId>
-			</node>
-			<node id="Review_flowtosa" name="Flow to South Australie">
-				<displayGroupId>wr_flowtosa</displayGroupId>
-			</node>
-			<node id="Review_nswdiversion" name="NSW Diversion">
-				<displayGroupId>wr_nswdiversion</displayGroupId>
-			</node>
-			<node id="Review_vicdiversion" name="VIC Diversion">
-				<displayGroupId>wr_vicdiversion</displayGroupId>
-			</node>
-		<node id="Review_evap" name="EVAP">
-				<displayGroupId>wr_evap</displayGroupId>
-			</node>
-		<node id="Review_systeminflows_daily" name="System Inflows - Daily">
-				<displayGroupId>wr_systeminflows_daily</displayGroupId>
-			</node>
-			<node id="Review_systeminflows_monthly" name="System Inflows - Monthly">
-				<displayGroupId>wr_systeminflows_monthly</displayGroupId>
-			</node>
-		</nodes>
-		<node id="Prepare_MonthlyReport" name="Generate monthly Data for Weekly Report">
-			<workflowId>Prepare_MonthlyReport</workflowId>
-			<localRun>true</localRun>
-		</node>
-		<node id="Export_WeeklyReport" name="Export Weekly Report">
+		<nodes id="Export_WeeklyReport" name="Export Weekly Report (on server)">
 			<workflowId>Export_WeeklyReport</workflowId>
 			<localRun>false</localRun>
-		</node>
-		<node id="Export_MonthlyReport" name="Export monthly input for Weekly Report">
+			<node id="Prepare_WeeklyReport" name="Prepare Data Weekly Report">
+				<workflowId>Prepare_WeeklyReport</workflowId>
+				<displayGroupId>H_value</displayGroupId>
+				<localRun>true</localRun>
+			</node>
+			<nodes id="Report_review" name="Review">
+				<node id="Review_allstorages" name="All Major Storages">
+					<displayGroupId>wr_allstorages</displayGroupId>
+				</node>
+				<node id="Review_snowystorage" name="Snowy Storage">
+					<displayGroupId>wr_snowystorage</displayGroupId>
+				</node>
+				<node id="Review_alldiversions" name="All Diversions">
+					<displayGroupId>wr_alldiversions</displayGroupId>
+				</node>
+				<node id="Review_salinity" name="(not used) Salinity ">
+					<displayGroupId>wr_salinity</displayGroupId>
+				</node>
+				<node id="Review_allriverlevelflows" name="(not used) River Levels and Flows">
+					<displayGroupId>wr_allriverlevelflows</displayGroupId>
+				</node>
+				<node id="Review_murrayweirs" name="(not used) Murray Weirs and Locks">
+					<displayGroupId>wr_murrayweirs</displayGroupId>
+				</node>
+				<node id="Review_lowerlakes" name="(not used) Lower Lakes">
+					<displayGroupId>wr_lowerlakes</displayGroupId>
+				</node>
+				<node id="Review_barrages" name="(not used) Barrages">
+					<displayGroupId>wr_barrages</displayGroupId>
+				</node>
+				<node id="Review_flowtosa" name="Flow to South Australie">
+					<displayGroupId>wr_flowtosa</displayGroupId>
+				</node>
+				<node id="Review_nswdiversion" name="NSW Diversion">
+					<displayGroupId>wr_nswdiversion</displayGroupId>
+				</node>
+				<node id="Review_vicdiversion" name="VIC Diversion">
+					<displayGroupId>wr_vicdiversion</displayGroupId>
+				</node>
+				<node id="Review_evap" name="EVAP">
+					<displayGroupId>wr_evap</displayGroupId>
+				</node>
+				<node id="Review_systeminflows_daily" name="System Inflows - Daily">
+					<displayGroupId>wr_systeminflows_daily</displayGroupId>
+				</node>
+				<node id="Review_systeminflows_monthly" name="System Inflows - Monthly">
+					<displayGroupId>wr_systeminflows_monthly</displayGroupId>
+				</node>
+			</nodes>
+		</nodes>
+		<nodes id="Export_MonthlyReport" name="Export Monthly part of Weekly Report (on server)">
 			<workflowId>Export_MonthlyReport</workflowId>
 			<localRun>false</localRun>
-		</node>
+			<node id="Prepare_MonthlyReport" name="Prepare Monthly Data Weekly Report">
+				<workflowId>Prepare_MonthlyReport</workflowId>
+				<localRun>true</localRun>
+			</node>
+		</nodes>
 		<node id="Export_FlowLevelReport" name="Export River flow and level report">
 			<workflowId>Export_FlowLevelReport</workflowId>
 			<localRun>true</localRun>
 		</node>
-		<nodes id="Prepare_Thresholds" name="Prepare Thresholds">
-			<workflowId>Prepare_Thresholds</workflowId>
-			<localRun>true</localRun>
-			<node id="H_value" name="H_value">
-				<displayGroupId>H_value</displayGroupId>
-			</node>
-			<node id="dH_value" name="dH_value">
-				<displayGroupId>dH_value</displayGroupId>
-			</node>
-			<node id="Q_value" name="Q_value">
-				<displayGroupId>Q_value</displayGroupId>
-			</node>
-			<node id="dQ_value" name="dQ_value">
-				<displayGroupId>dQ_value</displayGroupId>
-			</node>
-			<node id="V_value" name="V_value">
-				<displayGroupId>V_value</displayGroupId>
-			</node>
-			<node id="dV_value" name="dV_value">
-				<displayGroupId>dV_value</displayGroupId>
-			</node>
-			<node id="EC_value" name="EC_value">
-				<displayGroupId>EC_value</displayGroupId>
-			</node>
-			<node id="DO_value" name="DO_value">
-				<displayGroupId>DO_value</displayGroupId>
-			</node>
-		</nodes>
-		<nodes name="Review Thresholds prepared" id="Prepare_Thresholds_Review">
-			<node id="H_review" name="H_review">
-				<workflowId>Prepare_Thresholds</workflowId>
-				<displayGroupId>H_review</displayGroupId>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>true</localRun>
-			</node>
-			<node id="dH_review" name="dH_review">
-				<workflowId>Prepare_Thresholds</workflowId>
-				<displayGroupId>dH_review</displayGroupId>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>true</localRun>
-			</node>
-			<node id="Q_review" name="Q_review">
-				<workflowId>Prepare_Thresholds</workflowId>
-				<displayGroupId>Q_review</displayGroupId>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>true</localRun>
-			</node>
-			<node id="V_review" name="V_review">
-				<workflowId>Prepare_Thresholds</workflowId>
-				<displayGroupId>V_review</displayGroupId>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>true</localRun>
-			</node>
-			<node id="DO_review" name="DO_review">
-				<workflowId>Prepare_Thresholds</workflowId>
-				<displayGroupId>DO_review</displayGroupId>
-				<mainPanel>time series dialog</mainPanel>
-				<localRun>true</localRun>
-			</node>
-			<nodes id="Threshold_Review_per_site">
-				<groupId>BALRANALD_WEIR_DS_Threshold_Review</groupId>
-				<groupId>BURTUNDY_Threshold_Review</groupId>
-				<groupId>COLEMANS_Threshold_Review</groupId>
-				<groupId>DOCTOR'S_POINT_Threshold_Review</groupId>
-				<groupId>DS_YARRAWONGA_WEIR_Threshold_Review</groupId>
-				<groupId>EDWARD_AT_DENILIQUIN_Threshold_Review</groupId>
-				<groupId>EDWARD_R_AT_MOULAMEIN_Threshold_Review</groupId>
-				<groupId>EDWARD_R_AT_OFFTAKE_Threshold_Review</groupId>
-				<groupId>EDWARD_R_AT_TOONALOOK_Threshold_Review</groupId>
-				<groupId>EDWARD_R_DS_STEVEN_Threshold_Review</groupId>
-				<groupId>FRENCHMANINLET_REG_Threshold_Review</groupId>
-				<groupId>GOULBURN_AT_MCCOY_Threshold_Review</groupId>
-				<groupId>GULPA_CK_AT_OFFTAKE_Threshold_Review</groupId>
-				<groupId>HEYWOODS_Threshold_Review</groupId>
-				<groupId>HUME_DAM_Threshold_Review</groupId>
-				<groupId>LAKE_VICTORIA_LAKE_CENTRE_Threshold_Review</groupId>
-				<groupId>LT_MERRAN_FRANK__BR_Threshold_Review</groupId>
-				<groupId>MERRAN_CK_US_WAK_JN_Threshold_Review</groupId>
-				<groupId>MULWALA_Threshold_Review</groupId>
-				<groupId>MURRAY_AT_MERBEIN_PS_Threshold_Review</groupId>
-				<groupId>MURRAY_R_AT_BARHAM_Threshold_Review</groupId>
-				<groupId>MURRAY_R_AT_GULPA_Threshold_Review</groupId>
-				<groupId>NIEMUR_AT_MALLAN_SCH_Threshold_Review</groupId>
-				<groupId>NIEMUR_R_BARH-MLN_RD_Threshold_Review</groupId>
-				<groupId>R_MURRAY_DS_LOCK_9_Threshold_Review</groupId>
-				<groupId>RUFUS_R_DS_OUTLET_Threshold_Review</groupId>
-				<groupId>SWAN_HILL_Threshold_Review</groupId>
-				<groupId>TALLANDOON_Threshold_Review</groupId>
-				<groupId>TOCUMWAL_Threshold_Review</groupId>
-				<groupId>WAKOOL_AT_STONEY_XING_Threshold_Review</groupId>
-				<groupId>WAKOOL_R_GEEGEE_BR_2_Threshold_Review</groupId>
-				<groupId>WEIR_32_Threshold_Review</groupId>
-				<groupId>WENTWORTH_MURRAY_COMPONENT_Threshold_Review</groupId>
-				<groupId>YARRAWONGA_AT_OFFTAKE_Threshold_Review</groupId>
-				<groupId>YARRAWONGA_WEIR_HG_Threshold_Review</groupId>
-			</nodes>
-			<mainPanel>time series dialog</mainPanel>
-			<toolWindow>plot overview</toolWindow>
-		</nodes>
 		<node id="Export_ThresholdCrossingsReport" name="Export threshold crossings HTML report">
 			<workflowId>Export_ThresholdCrossingsReport</workflowId>
-			<localRun>true</localRun>
+			<localRun>false</localRun>
 		</node>
 		<viewPermission>RiverOperations</viewPermission>
 		<visibleModifierGroup>ROWS</visibleModifierGroup>
@@ -1000,82 +1020,82 @@
 			<viewPermission>RiverOperations</viewPermission>
 			<visibleModifierGroup>ROWS</visibleModifierGroup>
 		</nodes>
-	<nodes id="OpsDashboard" name="River Ops Dashboard">
-		<node id="WIS_Dash" name="Water In Storages">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
-		</node>
-		<nodes id="GlobalWeather" name="Global Weather Animation">
-			<node id="windy.com_1" name="Windy.com - Wind Speed">
+		<nodes id="OpsDashboard" name="River Ops Dashboard">
+			<node id="WIS_Dash" name="Water In Storages">
 				<mainPanel>web browser display</mainPanel>
-				<url>https://www.windy.com/?-25.661,135.703,5,i:pressure</url>
+				<url>http://172.16.1.23:8080/WIS/Water_in_Storages.html</url>
 			</node>
-			<node id="windy.com_2" name="Windy.com - Rain &amp; Storm">
-				<mainPanel>web browser display</mainPanel>
-				<url>https://www.windy.com/-Rain-thunder-rain?rain,-25.661,135.703,5,i:pressure</url>
-			</node>
-			<node id="windy.com_3" name="Windy.com - Weather Radar">
-				<url>https://www.windy.com/-Weather-radar-radar?radar,-25.661,135.703,5</url>
-			</node>
-			<node id="earth_nullschool_net_1" name="Total Pricipitable Water">
-				<mainPanel>web browser display</mainPanel>
-				<url>https://earth.nullschool.net/#current/wind/isobaric/1000hPa/overlay=total_precipitable_water/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
-			</node>
-			<node id="earth_nullschool_net_2" name="3h Accumulated Pricipitation">
-				<mainPanel>web browser display</mainPanel>
-				<url>https://earth.nullschool.net/#current/wind/surface/level/overlay=precip_3hr/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
-			</node>
+			<nodes id="GlobalWeather" name="Global Weather Animation">
+				<node id="windy.com_1" name="Windy.com - Wind Speed">
+					<mainPanel>web browser display</mainPanel>
+					<url>https://www.windy.com/?-25.661,135.703,5,i:pressure</url>
+				</node>
+				<node id="windy.com_2" name="Windy.com - Rain &amp; Storm">
+					<mainPanel>web browser display</mainPanel>
+					<url>https://www.windy.com/-Rain-thunder-rain?rain,-25.661,135.703,5,i:pressure</url>
+				</node>
+				<node id="windy.com_3" name="Windy.com - Weather Radar">
+					<url>https://www.windy.com/-Weather-radar-radar?radar,-25.661,135.703,5</url>
+				</node>
+				<node id="earth_nullschool_net_1" name="Total Pricipitable Water">
+					<mainPanel>web browser display</mainPanel>
+					<url>https://earth.nullschool.net/#current/wind/isobaric/1000hPa/overlay=total_precipitable_water/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
+				</node>
+				<node id="earth_nullschool_net_2" name="3h Accumulated Pricipitation">
+					<mainPanel>web browser display</mainPanel>
+					<url>https://earth.nullschool.net/#current/wind/surface/level/overlay=precip_3hr/orthographic=-225.08,-23.47,1052/loc=131.621,-4.053</url>
+				</node>
+			</nodes>
+			<nodes id="BOM_climate" name="BOM Climate Maps">
+				<node id="Bom_climate_rain" name="Rainfall Latest">
+					<mainPanel>web browser display</mainPanel>
+					<url>http://www.bom.gov.au/jsp/awap/rain/index.jsp</url>
+				</node>
+				<node id="Bom_climate_temp" name="Temperature Latest">
+					<mainPanel>web browser display</mainPanel>
+					<url>http://www.bom.gov.au/jsp/awap/temp/index.jsp</url>
+				</node>
+			</nodes>
+			<visibleModifierGroup>ROWS</visibleModifierGroup>
 		</nodes>
-		<nodes id="BOM_climate" name="BOM Climate Maps">
-			<node id="Bom_climate_rain" name="Rainfall Latest">
+		<nodes id="Development" name="Development-Dashboard">
+			<node id="PBI_Dash1" name="Power BI Dashboard 1">
 				<mainPanel>web browser display</mainPanel>
-				<url>http://www.bom.gov.au/jsp/awap/rain/index.jsp</url>
+				<url>https://app.powerbi.com/view?r=eyJrIjoiOWU0ZThiMGQtMzcwOC00MmQ4LWJhZjItZDk0Y2QyODMzODA5IiwidCI6IjcyNDQ1YmFhLTMxNGYtNGM5Mi05MzY0LTFjYjJjNDkyNGJmNiIsImMiOjN9</url>
+				<!-- <url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url> -->
 			</node>
-			<node id="Bom_climate_temp" name="Temperature Latest">
+			<node id="PBI_Dash2" name="PowerBI Dashboard 2">
 				<mainPanel>web browser display</mainPanel>
-				<url>http://www.bom.gov.au/jsp/awap/temp/index.jsp</url>
+				<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
 			</node>
+			<node id="ShinyApp_io_Dash" name="ShinyApps.io Flights Dashboard">
+				<mainPanel>web browser display</mainPanel>
+				<url>https://mdba.shinyapps.io/TestShinyApp/</url>
+			</node>
+			<node id="ShinyApp_Dash" name="Local Flights Dashboard">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://rowststmc100:8888</url>
+			</node>
+			<viewPermission>Administrators</viewPermission>
 		</nodes>
-		<visibleModifierGroup>ROWS</visibleModifierGroup>
-	</nodes>
-	<nodes id="Development" name="Development-Dashboard">
-		<node id="PBI_Dash1" name="Power BI Dashboard 1">
-			<mainPanel>web browser display</mainPanel>
-			<url>https://app.powerbi.com/view?r=eyJrIjoiOWU0ZThiMGQtMzcwOC00MmQ4LWJhZjItZDk0Y2QyODMzODA5IiwidCI6IjcyNDQ1YmFhLTMxNGYtNGM5Mi05MzY0LTFjYjJjNDkyNGJmNiIsImMiOjN9</url>
-			<!-- <url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url> -->
-		</node>
-		<node id="PBI_Dash2" name="PowerBI Dashboard 2">
-			<mainPanel>web browser display</mainPanel>
-			<url>https://app.powerbi.com/view?r=eyJrIjoiODdhZjc4OGItZmY1MS00M2E1LWFiYmMtM2FlYjZhYjg1NWQxIiwidCI6IjFlMjU3ZjA5LWQ5NmItNDkxYS1hNDg4LWRjMmEzOTljYmVlNSJ9</url>
-		</node>
-		<node id="ShinyApp_io_Dash" name="ShinyApps.io Flights Dashboard">
-			<mainPanel>web browser display</mainPanel>
-			<url>https://mdba.shinyapps.io/TestShinyApp/</url>
-		</node>
-		<node id="ShinyApp_Dash" name="Local Flights Dashboard">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://rowststmc100:8888</url>
-		</node>
-		<viewPermission>Administrators</viewPermission>
-	</nodes>
-	<nodes id="Admin" name="System Admin">
-		<node id="rowsprdmc100" name="ROWS Prod AI">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
-		</node>
-		<node id="rowsprdarc100" name="ROWS Archive Server">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://rowsprdarc100.prod.local:8080/deltares-archive-server/</url>
-		</node>
-		<node id="rowsprdarc100_thredds" name="ROWS Thredds Server">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://rowsprdarc100.prod.local:8080/thredds/catalog.html</url>
-		</node>
-		<node id="rowststmc100" name="ROWS Test AI">
-			<mainPanel>web browser display</mainPanel>
-			<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
-		</node>
-		<viewPermission>Administrators</viewPermission>
-	</nodes>
+		<nodes id="Admin" name="System Admin">
+			<node id="rowsprdmc100" name="ROWS Prod AI">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
+			</node>
+			<node id="rowsprdarc100" name="ROWS Archive Server">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://rowsprdarc100.prod.local:8080/deltares-archive-server/</url>
+			</node>
+			<node id="rowsprdarc100_thredds" name="ROWS Thredds Server">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://rowsprdarc100.prod.local:8080/thredds/catalog.html</url>
+			</node>
+			<node id="rowststmc100" name="ROWS Test AI">
+				<mainPanel>web browser display</mainPanel>
+				<url>http://rowsprdmc100.prod.local:8080/aumuropmc00/ailogin</url>
+			</node>
+			<viewPermission>Administrators</viewPermission>
+		</nodes>
 	</nodes>
 </topology>
