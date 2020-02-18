@@ -75,7 +75,7 @@
 	</plot>
 	<plot id="ewSource_Prepare_Data_EVAP">
 		<subplot>
- 			<timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceId>ProcessATopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>AT_obs</parameterId>
@@ -122,7 +122,7 @@
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
-		<subplot>		
+		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_EVAP</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -907,60 +907,62 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<displayGroup id="ewSource_rainfall" name="Prepare Rainfall Data">
-		<nodeId>ewSource_Rainfall</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays id="rainfallpolicy_ewSource">
-			<locationSetId>SourceRO_sites_P</locationSetId>
-			<plotId>ewSource_Rainfall</plotId>
-		</singleLocationDisplays>
-	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_EVAP" name="Prepare Evaporation Data">
-		<nodeId>ewSource_Prepare_Data_EVAP</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays id="evaporation_ewSource">
-			<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
-			<plotId>ewSource_Prepare_Data_EVAP</plotId>
-		</singleLocationDisplays>
-	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_Qcomb" name="Prepare Flow Data">
-		<nodeId>ewSource_Prepare_Data_Qcomb</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays id="discharge_ewSource">
-			<locationSetId>SourceRO_sites_Q_Plan</locationSetId>
-			<plotId>ewSource_Prepare_Data_Qcomb</plotId>
-		</singleLocationDisplays>
-	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_QORD" name="Prepare Demand (Orders)">
-		<nodeId>ewSource_Prepare_Data_QORD</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays id="QORD_ewSource">
-			<locationSetId>SourceRO_sites_QORD</locationSetId>
-			<plotId>ewSource_Prepare_Data_QORD</plotId>
-		</singleLocationDisplays>
-	</displayGroup>
-	<displayGroup id="ewSource_Prepare_Data_Qtrade" name="Prepare Trade data">
-		<nodeId>ewSource_Prepare_Data_Qtrade</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<display id="ewSource_Prepare_Data_Qtrade_SA_deferred" name="SA Deferred">
-			<plotId>ewSource_Prepare_Data_Qtrade_SA_deferred</plotId>
-		</display>
-		<display id="ewSource_Prepare_Data_Qtrade_undelivered_trade" name="Undelivered Trade">
-			<plotId>ewSource_Prepare_Data_Qtrade_undelivered_trade</plotId>
-		</display>
-		<display id="ewSource_Prepare_Data_Qtrade_direct_trade" name="Direct Trade">
-			<plotId>ewSource_Prepare_Data_Qtrade_direct_trade</plotId>
-		</display>
-		<display id="ewSource_Prepare_Data_Qtrade" name="SA border trade">
-			<plotId>ewSource_Prepare_Data_Qtrade</plotId>
-		</display>
-	</displayGroup>
-	<displayGroup id="ImportFrom_ewSource" name="import from ewSource RO">
-		<nodeId>ImportFrom_ewSource</nodeId>
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays id="ewSource_Import_default">
-			<locationSetId>ewSourceRO_sites</locationSetId>
-			<plotId>ewSource_Import_default</plotId>
-		</singleLocationDisplays>
+	<displayGroup name="River Ops Source: prepare">
+		<displayGroup id="ewSource_rainfall" name="Prepare Rainfall Data">
+			<nodeId>ewSource_Rainfall</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="rainfallpolicy_ewSource">
+				<locationSetId>SourceRO_sites_P</locationSetId>
+				<plotId>ewSource_Rainfall</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ewSource_Prepare_Data_EVAP" name="Prepare Evaporation Data">
+			<nodeId>ewSource_Prepare_Data_EVAP</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="evaporation_ewSource">
+				<locationSetId>SourceRO_sites_EVAPfcst</locationSetId>
+				<plotId>ewSource_Prepare_Data_EVAP</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ewSource_Prepare_Data_Qcomb" name="Prepare Flow Data">
+			<nodeId>ewSource_Prepare_Data_Qcomb</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="discharge_ewSource">
+				<locationSetId>SourceRO_sites_Q_Plan</locationSetId>
+				<plotId>ewSource_Prepare_Data_Qcomb</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ewSource_Prepare_Data_QORD" name="Prepare Demand (Orders)">
+			<nodeId>ewSource_Prepare_Data_QORD</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="QORD_ewSource">
+				<locationSetId>SourceRO_sites_QORD</locationSetId>
+				<plotId>ewSource_Prepare_Data_QORD</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="ewSource_Prepare_Data_Qtrade" name="Prepare Trade data">
+			<nodeId>ewSource_Prepare_Data_Qtrade</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<display id="ewSource_Prepare_Data_Qtrade_SA_deferred" name="SA Deferred">
+				<plotId>ewSource_Prepare_Data_Qtrade_SA_deferred</plotId>
+			</display>
+			<display id="ewSource_Prepare_Data_Qtrade_undelivered_trade" name="Undelivered Trade">
+				<plotId>ewSource_Prepare_Data_Qtrade_undelivered_trade</plotId>
+			</display>
+			<display id="ewSource_Prepare_Data_Qtrade_direct_trade" name="Direct Trade">
+				<plotId>ewSource_Prepare_Data_Qtrade_direct_trade</plotId>
+			</display>
+			<display id="ewSource_Prepare_Data_Qtrade" name="SA border trade">
+				<plotId>ewSource_Prepare_Data_Qtrade</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="ImportFrom_ewSource" name="import from ewSource RO">
+			<nodeId>ImportFrom_ewSource</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays id="ewSource_Import_default">
+				<locationSetId>ewSourceRO_sites</locationSetId>
+				<plotId>ewSource_Import_default</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
 	</displayGroup>
 </displayGroups>

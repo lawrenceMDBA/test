@@ -183,6 +183,93 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="BoM_SDF_Plots">
+		<!--imported SDF ensemble produced by the Bureau of Meteorology-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>median</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p25</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<qualifierId>p99</qualifierId>
+			<locationSetId>sdf_sites</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+			<ensembleId>SWIFT</ensembleId>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="BoM_SWIFT_Plots">
+		<!--imported SWIFT produced by the Bureau of Meteorology-->
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastSDF</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_fcst</parameterId>
+			<qualifierId>sdf</qualifierId>
+			<locationSetId>VIC_SWIFT_subareas_oven</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="BoM_STF_calculated_results">
 		<!--imported STF produced by the Bureau of Meteorology-->
 		<!--imported flow forecasts from HydstraTSM -->
@@ -920,6 +1007,11 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<!--BoM SDF (parent filter_id: BoM_SDF)-->
+	<filter id="BoM_SDF_ensemble" name="SDF ensemble">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>BoM_SDF_Plots</timeSeriesSetsId>
+	</filter>
 	<!--BoM STF (parent filter_id: BoM_results_catchment)-->
 	<filter id="BoM_STF_calculated_results_OVENS_catchment" name="Ovens catchment (calculated)">
 		<validationIconsVisible>true</validationIconsVisible>
@@ -944,6 +1036,10 @@
 		<locationConstraints>
 			<attributeTextContains id="CATCHMENT" contains="Upper Murray"/>
 		</locationConstraints>
+	</filter>
+	<!--BoM SWIFT-->
+	<filter id="BoM_SWIFT" name="SWIFT">
+		<timeSeriesSetsId>BoM_SWIFT_Plots</timeSeriesSetsId>
 	</filter>
 	<!-- MDBC_OPS (parent filter_id: MDBC_OPS_results_catchment)-->
 	<filter id="MDBS_OPS_calculated_results_OVENS_catchment" name="Ovens catchment (calculated)">

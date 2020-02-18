@@ -573,103 +573,105 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<displayGroup id="Import_flood" name="Observations flood sites">
-		<nodeId>Import_flood</nodeId>
-		<viewPermission>FloodOperations</viewPermission>
-		<singleLocationDisplays id="importflood">
-			<locationSetId>flood.sites</locationSetId>
-			<plotId>Import_All_flood</plotId>
-		</singleLocationDisplays>
-	</displayGroup>
-	<displayGroup name="Observations (processing) flood sites (debug)">
-		<viewPermission>FloodOperations</viewPermission>
-		<displayGroup id="ImportProcess_flood" name="All parameters flood sites">
-			<nodeId>ImportProcess_flood</nodeId>
+	<displayGroup name="Import: Observations">
+		<displayGroup id="Import_flood" name="Observations flood sites">
+			<nodeId>Import_flood</nodeId>
 			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processflood">
+			<singleLocationDisplays id="importflood">
 				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_All_flood</plotId>
+				<plotId>Import_All_flood</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup id="ImportProcess_P_flood" name="P flood sites (all)">
-			<nodeId>ImportProcess_flood</nodeId>
+		<displayGroup name="Observations (processing) flood sites (debug)">
 			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processPflood">
+			<displayGroup id="ImportProcess_flood" name="All parameters flood sites">
+				<nodeId>ImportAndProcess_Observed</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_All_flood</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_P_flood" name="P flood sites (all)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processPflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_P_flood</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_P_flood_daily" name="P flood sites (daily)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processPflood_daily">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_P_flood_daily</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_P_flood_inst" name="P flood sites (inst)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processPflood_acc">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_P_flood_inst</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_P_flood_acc" name="P flood sites (acc)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processPflood_inst">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_P_flood_acc</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_H_flood" name="H flood sites">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processHflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_H_flood</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_Q_flood" name="Q flood sites">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processQflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_Q_flood</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_Q_flood_rated_" name="Q flood sites (rated)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processQflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_Q_flood_rated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_Q_flood_not_rated" name="Q flood sites (not rated)">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processQflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_Q_flood_not_rated</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="ImportProcess_V_flood" name="V flood sites">
+				<nodeId>ImportProcess_flood</nodeId>
+				<viewPermission>FloodOperations</viewPermission>
+				<singleLocationDisplays id="processVflood">
+					<locationSetId>flood.sites</locationSetId>
+					<plotId>ImportProcess_V_flood</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+		<displayGroup id="DataEntry_flood" name="Observations (Fops) flood sites">
+			<nodeId>DataEntry_flood</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="dataentryflood">
 				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_P_flood</plotId>
+				<plotId>DataEntry_All_flood</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup id="ImportProcess_P_flood_daily" name="P flood sites (daily)">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processPflood_daily">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_P_flood_daily</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_P_flood_inst" name="P flood sites (inst)">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processPflood_acc">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_P_flood_inst</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_P_flood_acc" name="P flood sites (acc)">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processPflood_inst">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_P_flood_acc</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_H_flood" name="H flood sites">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processHflood">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_H_flood</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_Q_flood" name="Q flood sites">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processQflood">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_Q_flood</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_Q_flood_rated_" name="Q flood sites (rated)">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processQflood">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_Q_flood_rated</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_Q_flood_not_rated" name="Q flood sites (not rated)">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processQflood">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_Q_flood_not_rated</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="ImportProcess_V_flood" name="V flood sites">
-			<nodeId>ImportProcess_flood</nodeId>
-			<viewPermission>FloodOperations</viewPermission>
-			<singleLocationDisplays id="processVflood">
-				<locationSetId>flood.sites</locationSetId>
-				<plotId>ImportProcess_V_flood</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-	</displayGroup>
-	<displayGroup id="DataEntry_flood" name="Observations (Fops) flood sites">
-		<nodeId>DataEntry_flood</nodeId>
-		<viewPermission>FloodOperations</viewPermission>
-		<singleLocationDisplays id="dataentryflood">
-			<locationSetId>flood.sites</locationSetId>
-			<plotId>DataEntry_All_flood</plotId>
-		</singleLocationDisplays>
 	</displayGroup>
 </displayGroups>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on areaId level. Export of external forecasts-->
+	<!--Delft-FEWS external forecasts will be stored in -->
+	<!--<archiveFolder>/<yyyy>/<MM>/<areaId>/<dd> /external_forecasts/<sourceId>_<ExtForecastTime>-->
+	<exportExternalForecast>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<relativePeriod unit="day" start="-5" end="0"/>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ADFD.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ADFD)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<locationId>$LOCATIONID$</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep unit="hour" multiplier="3"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Precipitation_Fcst_ADFD_higher.nc</fileName>
+					<areaId>$AREAID$</areaId>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Precipitation forecast (ADFD higher)</title>
+						<institution>Murray Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportForecastADFD</moduleInstanceId>
+						<valueType>grid</valueType>
+						<parameterId>P_fcst</parameterId>
+						<qualifierId>higher</qualifierId>
+						<locationId>$LOCATIONID$</locationId>
+						<timeSeriesType>external forecasting</timeSeriesType>
+						<timeStep id="1am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportExternalForecast>
+</exportArchiveModule>

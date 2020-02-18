@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
+	<plot id="DataEntry_StateAllocations.NSW">
+		<subplot>
+			<clusteredBars>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Allocations</parameterId>
+					<qualifierId>NSW</qualifierId>
+					<qualifierId>HS</qualifierId>
+					<locationSetId>de.sites_Allocations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Allocations</parameterId>
+					<qualifierId>NSW</qualifierId>
+					<qualifierId>GS</qualifierId>
+					<locationSetId>de.sites_Allocations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</clusteredBars>
+		</subplot>
+	</plot>
+	<plot id="DataEntry_StateAllocations.VIC">
+		<subplot>
+			<clusteredBars>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Allocations</parameterId>
+					<qualifierId>VIC</qualifierId>
+					<qualifierId>HR</qualifierId>
+					<locationSetId>de.sites_Allocations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Allocations</parameterId>
+					<qualifierId>VIC</qualifierId>
+					<qualifierId>LR</qualifierId>
+					<locationSetId>de.sites_Allocations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</clusteredBars>
+		</subplot>
+	</plot>
+	<plot id="DataEntry_StateAllocations.SA">
+		<subplot>
+			<clusteredBars>
+				<timeSeriesSet>
+					<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+					<valueType>scalar</valueType>
+					<parameterId>Allocations</parameterId>
+					<qualifierId>SA</qualifierId>
+					<qualifierId>HS</qualifierId>
+					<locationSetId>de.sites_Allocations</locationSetId>
+					<timeSeriesType>external historical</timeSeriesType>
+					<timeStep id="8am"/>
+					<relativeViewPeriod end="1" start="-6" unit="day"/>
+					<readWriteMode>editing visible to all future task runs</readWriteMode>
+				</timeSeriesSet>
+			</clusteredBars>
+		</subplot>
+	</plot>
+	<displayGroup id="StateAllocations.OPO" name="Processing State Allocations">
+		<displayGroup id="StateAllocations.DataEntry.NSW" name="Data entry NSW">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays>
+				<locationSetId>de.sites_Allocations.NSW</locationSetId>
+				<plotId>DataEntry_StateAllocations.NSW</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="StateAllocations.DataEntry.VIC" name="Data entry VIC">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays>
+				<locationSetId>de.sites_Allocations.VIC</locationSetId>
+				<plotId>DataEntry_StateAllocations.VIC</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup id="StateAllocations.DataEntry.SA" name="Data entry SA">
+			<viewPermission>RiverOperations</viewPermission>
+			<singleLocationDisplays>
+				<locationSetId>de.sites_Allocations.SA</locationSetId>
+				<plotId>DataEntry_StateAllocations.SA</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+	</displayGroup>
+</displayGroups>

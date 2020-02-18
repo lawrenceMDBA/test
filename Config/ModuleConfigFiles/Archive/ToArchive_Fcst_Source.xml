@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<!--Archive activities on areaId level. Export of simulated forecasts-->
+	<!--Delft-FEWS simulations will be stored in -->
+	<!--<archiveFolder>/<yyyy>/<MM>/<areaId>/<dd>/simulated/<workflowId><TimeZero><DispatchTime>-->
+	<!--Within this directory the following sub-folders may exist: /timeseries, /reports, /modifiers, /states-->
+	<exportSimulated>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<areaId>$AREAID$</areaId>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>Source_Output_Scenario-$SCENARIO$.nc</fileName>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Data imported from ewSource RO to ROWS</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>unaccounted_diff</qualifierId>
+						<qualifierId>$SCENARIO$</qualifierId>
+						<locationSetId>ewSourceRO_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_fcst</parameterId>
+						<qualifierId>$SCENARIO$</qualifierId>
+						<locationSetId>ewSourceRO_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_fcst</parameterId>
+						<qualifierId>$SCENARIO$</qualifierId>
+						<locationSetId>ewSourceRO_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+					<timeSeriesSet>
+						<moduleInstanceId>ImportFromEWSourceRO</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<qualifierId>$SCENARIO$</qualifierId>
+						<locationSetId>ewSourceRO_sites</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportSimulated>
+</exportArchiveModule>
