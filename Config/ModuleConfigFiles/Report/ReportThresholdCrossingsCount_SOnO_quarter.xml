@@ -10,7 +10,7 @@
 			<onlyWriteRowsWithCrossedThresholds>true</onlyWriteRowsWithCrossedThresholds>
 			<writeSingleTable enabled="true">
 				<!--the time of the timestep is interpreted as the starting time of the period-->
-				<timeStep id="8am_report"/>
+				<timeStep id="midnight"/>
 			</writeSingleTable>
 			<column>
 				<header># of crossings since $SINCE$</header>
@@ -64,7 +64,7 @@
 		<units>system</units>
 		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
 		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
-		<reportsRootSubDir>ThresholdCrossingsSOnOCount</reportsRootSubDir>
+		<reportsRootSubDir>ThresholdCountSOnO$SINCE$</reportsRootSubDir>
 		<sendToLocalFileSystem>true</sendToLocalFileSystem>
 		<timeZone>
 			<timeZoneOffset>+10:00</timeZoneOffset>
@@ -142,7 +142,7 @@
 		</inputVariable>
 	</declarations>
 	<!-- Since writeSingleTable=true, use scrubFolder=true to clear folder. Number of generated tables may differ every time the report is created  -->
-	<report scrubFolder="false">
+	<report scrubFolder="true">
 		<rowPerLocationHtmlTableInstance id="table" formatId="perQuarter"/>
 		<template>thresholdcrossingscount_table_template.html</template>
 		<outputFileName>ThresholdCrossingsCount_Table.html</outputFileName>
@@ -150,6 +150,6 @@
 	<!--  Merge tables in one html report. Template function FILECONTENT uses keyword  REMOVE to delete files after include  -->
 	<report>
 		<template>thresholdcrossingscount_SOnO_report_$SINCE$_template.html</template>
-		<outputFileName>ThresholdCrossingsCount_SOnO_Report_$SINCE$.html</outputFileName>
+		<outputFileName>ThresholdCount_SOnO_quarterlyReport_$SINCE$.html</outputFileName>
 	</report>
 </reports>

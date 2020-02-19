@@ -140,7 +140,6 @@
 					<url>file:\\\$EXPORT_FOLDER_REPORTS$\ThresholdCrossingsSOnO\ThresholdCrossings_SOnO_Report.html</url>
 					<localRun>true</localRun>
 				</node>
-				
 				<nodes name="Exclude thresholds from SOnO report" id="Prepare_Thresholds_Review">
 					<node id="H_review" name="H_review">
 						<workflowId>Prepare_Thresholds</workflowId>
@@ -212,12 +211,12 @@
 					<mainPanel>time series dialog</mainPanel>
 					<toolWindow>plot overview</toolWindow>
 				</nodes>
-<node id="ThresholdCrossings_RO_OPO" name="RO threshold alert report">
+				<node id="ThresholdCrossings_RO_OPO" name="RO threshold alert report">
 					<workflowId>Review_ThresholdCrossingsReport</workflowId>
 					<mainPanel>web browser display</mainPanel>
 					<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCrossingsRO\ThresholdCrossings_RO_Report.html</url>
 					<localRun>true</localRun>
-				</node>				
+				</node>
 				<nodes id="Prepare_Thresholds" name="View Thresholds (SOnO &amp; RO)">
 					<workflowId>Prepare_Thresholds</workflowId>
 					<localRun>true</localRun>
@@ -547,6 +546,32 @@
 			<localRun>false</localRun>
 			<node id="Prepare_MonthlyReport" name="Prepare Monthly Data Weekly Report">
 				<workflowId>Prepare_MonthlyReport</workflowId>
+				<localRun>true</localRun>
+			</node>
+		</nodes>
+		<nodes id="Export_QuarterlyReport" name="Export Quarterly Report (counting thresholds)">
+			<node id="Prepare_Thresholds_June1" name="Threshold count: June1 - Sept1">
+				<workflowId>Prepare_Thresholds_June1</workflowId>
+				<mainPanel>web browser display</mainPanel>
+				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCountSOnOJune1\ThresholdCount_SOnO_quarterlyReport_June1.html</url>
+				<localRun>true</localRun>
+			</node>
+			<node id="Prepare_Thresholds_September1" name="Threshold count: Sept1 - Dec1">
+				<workflowId>Prepare_Thresholds_September1</workflowId>
+				<mainPanel>web browser display</mainPanel>
+				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCountSOnOSeptember1\ThresholdCount_SOnO_quarterlyReport_September1.html</url>
+				<localRun>true</localRun>
+			</node>
+			<node id="Prepare_Thresholds_December1" name="Threshold count: Dec1 - Mar1">
+				<workflowId>Prepare_Thresholds_December1</workflowId>
+				<mainPanel>web browser display</mainPanel>
+				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCountSOnODecember1\ThresholdCount_SOnO_quarterlyReport_December1.html</url>
+				<localRun>true</localRun>
+			</node>
+			<node id="Prepare_Thresholds_March1" name="Threshold count: Mar1 - June1">
+				<workflowId>Prepare_Thresholds_March1</workflowId>
+				<mainPanel>web browser display</mainPanel>
+				<url>file:\\\$EXPORT_FOLDER_REPORTS$/ThresholdCountSOnOMarch1\ThresholdCount_SOnO_quarterlyReport_March1.html</url>
 				<localRun>true</localRun>
 			</node>
 		</nodes>
