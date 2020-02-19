@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- thresholds and counters as external historical with expiry time from workflow-->
+	<!--Input - hit_4count -->
+	<variable>
+		<variableId>H_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_count</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output - threshold count since-->
+	<variable>
+		<variableId>H_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_H_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Q_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_Q_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_Q_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dQ_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dQ_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dQ_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_V_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_V_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!-- thresholds count since -->
+	<transformation id="H_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>H_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>H_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>dH_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="Q_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>Q_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>Q_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dQ_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dQ_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>dQ_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="V_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>V_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>V_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+</transformationModule>
