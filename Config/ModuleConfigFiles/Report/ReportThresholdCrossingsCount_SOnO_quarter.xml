@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
+	<declarations>
+		<defineGlobal id="global1">Global Value 1</defineGlobal>
+		<!-- for each date from the view period as specified in the Manual Workflow display with Cold state -> Run start time and T0 a separate Html table will be created -->
+		<!-- Column definitions. Any function can be used -->
+		<!-- If there is at least one THRESHOLDCROSSING function with keyword "ALL_", then all crossings in the view period or season will be listed -->
+		<!-- RowPerLocationHtmlTable has then one row per location and threshold crossing  -->
+		<rowPerLocationHtmlTableFormat id="perQuarter" tableStyle="tableStyle3">
+			<onlyWriteRowsWithCrossedThresholds>true</onlyWriteRowsWithCrossedThresholds>
+			<writeSingleTable enabled="true">
+				<!--the time of the timestep is interpreted as the starting time of the period-->
+				<timeStep id="8am_report"/>
+			</writeSingleTable>
+			<column>
+				<header># of crossings since $SINCE$</header>
+				<width>220</width>
+				<function>LOCATIONATTRIBUTE(shortname)</function>
+			</column>
+			<column>
+				<header>H</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>MAXVALUE(H_threshold_count;0Decimal)</function>
+			</column>
+			<column>
+				<header>&#x0394;H</header>
+				<format>_dark</format>
+				<width>40</width>
+				<function>MAXVALUE(dH_threshold_count;0Decimal)</function>
+			</column>
+			<column>
+				<header>Q</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>MAXVALUE(Q_threshold_count;0Decimal)</function>
+			</column>
+			<column>
+				<header>&#x0394;Q</header>
+				<format>_dark</format>
+				<width>40</width>
+				<function>MAXVALUE(dQ_threshold_count;0Decimal)</function>
+			</column>
+			<column>
+				<header>V</header>
+				<format>_data</format>
+				<width>40</width>
+				<function>MAXVALUE(V_threshold_count;0Decimal)</function>
+			</column>
+		</rowPerLocationHtmlTableFormat>
+		<dateFormat id="dateTime">
+			<pattern>dd-MMM-yyyy HH:mm</pattern>
+		</dateFormat>
+		<dateFormat id="date">
+			<pattern>dd-MMM-yyyy</pattern>
+		</dateFormat>
+		<dateFormat id="dateYear">
+			<pattern>yyyy</pattern>
+		</dateFormat>
+		<numberFormat id="0Decimal">{0,number,###0}</numberFormat>
+		<numberFormat id="1Decimal">{0,number,###0.0}</numberFormat>
+		<numberFormat id="2Decimal">{0,number,###0.00}</numberFormat>
+		<numberFormat id="3Decimal">{0,number,###0.000}</numberFormat>
+		<units>system</units>
+		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
+		<reportsRootDir>$EXPORT_FOLDER_REPORTS$</reportsRootDir>
+		<reportsRootSubDir>ThresholdCrossingsSOnOCount</reportsRootSubDir>
+		<sendToLocalFileSystem>true</sendToLocalFileSystem>
+		<timeZone>
+			<timeZoneOffset>+10:00</timeZoneOffset>
+		</timeZone>
+		<!-- Crossing counts since $SINCE$-->
+		<inputVariable variableId="H_threshold_count">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_H_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_H_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dH_threshold_count">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_dH_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Q_threshold_count">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_Q_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_Q_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dQ_threshold_count">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dQ_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_dQ_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="V_threshold_count">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_V_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_V_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+	</declarations>
+	<!-- Since writeSingleTable=true, use scrubFolder=true to clear folder. Number of generated tables may differ every time the report is created  -->
+	<report scrubFolder="false">
+		<rowPerLocationHtmlTableInstance id="table" formatId="perQuarter"/>
+		<template>thresholdcrossingscount_table_template.html</template>
+		<outputFileName>ThresholdCrossingsCount_Table.html</outputFileName>
+	</report>
+	<!--  Merge tables in one html report. Template function FILECONTENT uses keyword  REMOVE to delete files after include  -->
+	<report>
+		<template>thresholdcrossingscount_SOnO_report_$SINCE$_template.html</template>
+		<outputFileName>ThresholdCrossingsCount_SOnO_Report_$SINCE$.html</outputFileName>
+	</report>
+</reports>
