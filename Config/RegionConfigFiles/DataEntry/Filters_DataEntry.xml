@@ -1174,6 +1174,30 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="Storages_Full_Volume_Web">
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStorages</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>WIS_web_pdf</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="1" start="-6" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>WIS_web_pdf</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-14" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="Storages_data_to_hydstra">
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessStorages</moduleInstanceId>
@@ -2527,9 +2551,14 @@
 		</locationConstraints>
 	</filter>
 	<!-- Filter Id for use in PI web service call for updating the Storages Pdf-->
+	<!-- Remove this after the new display is finalised and use the locationset below this -->
 	<filter id="Storages_DataEntry_Percent_Full" name="Percent_Full_web">
 		<validationIconsVisible>true</validationIconsVisible>
 		<timeSeriesSetsId>Storages_Full_Volume</timeSeriesSetsId>
+	</filter>
+	<filter id="Storages_DataEntry_Percent_Full_web" name="Vol_Percent_Full_web">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>Storages_Full_Volume_web</timeSeriesSetsId>
 	</filter>
 	<filter id="Storages_DataEntry" name="All_Storages_data">
 		<validationIconsVisible>true</validationIconsVisible>
