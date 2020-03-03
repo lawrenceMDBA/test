@@ -53,17 +53,23 @@
 		   </allValid>
 		</constraints>		
 	</locationSet>
-	<locationSet id="WIS_web_pdf">
+	<locationSet id="WIS_web_pdf_sites">
 	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
 	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)
 	LLAKES is not a part of calculations for any of Northbasin or southbasin or wholebasin-->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites_water_in_storages</locationSetId>
+	</locationSet>
+	<locationSet id="WIS_web_pdf_basin">
+	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
+	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)
+	LLAKES is not a part of calculations for any of Northbasin or southbasin or wholebasin-->
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationId>R_NORTHBASIN</locationId>
 		<locationId>R_412000</locationId> <!--Lachlan-->
 		<locationId>R_SOUTHBASIN</locationId>
-		<locationId>R_WHOLEBASIN</locationId>		
-	</locationSet>
+		<locationId>R_WHOLEBASIN</locationId>
+	</locationSet>		
 	<locationSet id="display_storages_catchment_basin">
 	<!-- Locationset used only for displaying the Volume, %Full, Total Capacity of catchments and basins
 	calculated through ProcessStorages moduleConfig (used in displayConfig of NStorage and SStorage)
