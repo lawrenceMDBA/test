@@ -1270,6 +1270,52 @@
 			<relativeViewPeriod start="-1" end="0" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Turbidity_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<qualifierId>raw</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>pH_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
 		<!-- 		<timeSeriesSet>
 			<moduleInstanceId>ProcessWTopo</moduleInstanceId>
 			<valueType>scalar</valueType>

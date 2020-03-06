@@ -1846,6 +1846,8 @@
 		<child foreignKey="Hume_DataEntry_V"/>
 		<child foreignKey="Hume_DataEntry_EC"/>
 		<child foreignKey="Hume_DataEntry_Q"/>
+		<child foreignKey="Hume_DataEntry_Turbidity"/>
+		<child foreignKey="Hume_DataEntry_pH"/>
 		<child foreignKey="Hume_DataEntry_DO"/>
 		<child foreignKey="Hume_DataEntry_DOpct"/>
 		<child foreignKey="Hume_DataEntry_QRL"/>
@@ -1900,6 +1902,20 @@
 	<filter id="Hume_DataEntry_Q" name="Discharge/Flow">
 		<validationIconsVisible>true</validationIconsVisible>
 		<timeSeriesSetsId>DataEntry_Q</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_Turbidity" name="Turbidity">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_Turbidity</timeSeriesSetsId>
+		<locationConstraints>
+			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
+		</locationConstraints>
+	</filter>
+	<filter id="Hume_DataEntry_pH" name="pH">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>DataEntry_pH</timeSeriesSetsId>
 		<locationConstraints>
 			<attributeTextContains id="DATA_ENTRY" contains="Hume"/>
 		</locationConstraints>
