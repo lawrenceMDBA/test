@@ -198,13 +198,13 @@
 		<classBreaks id="GSMaP_SPI">
 			<missingValueColor>gray70</missingValueColor>
 			<unitVisible>true</unitVisible>
-			<break color="FF8080" lowerValue="-2.00" label="Extream Dry" opaquenessPercentage="80"/>
-			<break color="FFBF80" lowerValue="-1.50" label="Severely Dry" opaquenessPercentage="80"/>
-			<break color="FFE6CC" lowerValue="-1.00" label="Moderately Dry" opaquenessPercentage="80"/>
-			<break color="FFFFFF" lowerValue="+0.99" label="Near normal" opaquenessPercentage="80"/>
-			<break color="D9F2E6" lowerValue="+1.49" label="Moderately Wet" opaquenessPercentage="80"/>
-			<break color="9FDFBF" lowerValue="+1.99" label="Very Wet" opaquenessPercentage="80"/>
-			<break color="66C2FF" lowerValue="+5.00" label="Extreamly Wet" opaquenessPercentage="80"/>
+			<break color="FF8080" lowerValue="-2.00" label="Extream Dry	[-2 and less]" opaquenessPercentage="80"/>
+			<break color="FFBF80" lowerValue="-1.50" label="Severely Dry [-1.50 to -1.99]" opaquenessPercentage="80"/>
+			<break color="FFE6CC" lowerValue="-1.00" label="Moderately Dry [-1.00 to -1.49]" opaquenessPercentage="80"/>
+			<break color="FFFFFF" lowerValue="+0.99" label="Near normal [-0.99 to 0.99]" opaquenessPercentage="80"/>
+			<break color="D9F2E6" lowerValue="+1.49" label="Moderately Wet [1.00 to 1.49]" opaquenessPercentage="80"/>
+			<break color="9FDFBF" lowerValue="+1.99" label="Very Wet [1.50 to 1.99]" opaquenessPercentage="80"/>
+			<break color="66C2FF" lowerValue="+5.00" label="Extreamly Wet [2.0+]" opaquenessPercentage="80"/>
 		</classBreaks>
 		<classBreaks id="SoilMoisture">
 			<missingValueColor>gray</missingValueColor>
@@ -2149,7 +2149,7 @@
 	</parametersDisplayConfig>
 	<moduleInstanceIdMappings>
 		<moduleInstanceIdMapping id="Ovens_ewSourceRR_Hcst">
-			<description>[Historical]</description>
+			<description>[Hindcast]</description>
 		</moduleInstanceIdMapping>
 		<moduleInstanceIdMapping id="ewSource_Fcst">
 			<description>[Forecast]</description>
@@ -2161,9 +2161,11 @@
 			<description>STF Forecast</description>
 		</moduleInstanceIdMapping>
 	</moduleInstanceIdMappings>
+	<sampleFunctions>
+		<dayMonthSampleFunction/>
+	</sampleFunctions>
 	<statisticalFunctions>
-		<statisticalFunction function="durationExceedence"/>
-		<statisticalFunction function="relativeAggregation">
+		<statisticalFunction function="relativeAggregation" ignoreMissings="true">
 			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
@@ -2177,7 +2179,7 @@
 			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
 			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
 		</statisticalFunction>
-		<statisticalFunction function="movingAverage">
+		<statisticalFunction function="movingAverage" ignoreMissings="true">
 			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
@@ -2191,7 +2193,7 @@
 			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
 			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
 		</statisticalFunction>
-		<statisticalFunction function="centralMovingAverage">
+		<statisticalFunction function="centralMovingAverage" ignoreMissings="true">
 			<movingAccumulationTimeSpan multiplier="1" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
@@ -2211,12 +2213,7 @@
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
-			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
-			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
 			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
 			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
 		</statisticalFunction>
 		<statisticalFunction function="cumulative">
@@ -2239,19 +2236,25 @@
 			<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
 			<movingAccumulationTimeSpan multiplier="1" unit="day"/>
-			<movingAccumulationTimeSpan multiplier="2" unit="day"/>
-			<movingAccumulationTimeSpan multiplier="3" unit="day"/>
 			<movingAccumulationTimeSpan multiplier="1" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="2" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="4" unit="week"/>
-			<movingAccumulationTimeSpan multiplier="12" unit="week"/>
 			<movingAccumulationTimeSpan multiplier="365" unit="day"/>
 		</statisticalFunction>
+		<statisticalFunction function="differences"/>
 		<statisticalFunction function="scatterPlot"/>
+		<statisticalFunction function="showLowsBelow"/>
+		<statisticalFunction function="showPeaksAbove"/>
 		<statisticalFunction function="boxPlot">
 			<timeStep id="Daily"/>
 			<timeStep id="Weekly"/>
 			<timeStep id="Monthly"/>
+		</statisticalFunction>
+		<statisticalFunction function="durationExceedence" ignoreMissings="true"/>
+		<statisticalFunction function="durationNonExceedence" ignoreMissings="true"/>
+		<statisticalFunction function="ensemblePercentileExceedence"/>
+		<statisticalFunction function="frequencyDistribution">
+			<samples amount="5"/>
+			<samples amount="10"/>
+			<samples amount="20"/>
 		</statisticalFunction>
 		<statisticalFunction function="historicalAnalysis">
 			<historicalPeriods>
@@ -2261,9 +2264,26 @@
 				</historicalPeriod>
 			</historicalPeriods>
 		</statisticalFunction>
+		<statisticalFunction function="historicalShowPeaksAbove">
+			<season startMonthDay="--06-01" endMonthDay="--05-31" label="Water Year" color="black"/>
+			<!-- Colours need changing -->
+			<season startMonthDay="--12-01" endMonthDay="--02-28" label="Summer" color="orange1"/>
+			<season startMonthDay="--03-01" endMonthDay="--05-31" label="Autum" color="plum2"/>
+			<season startMonthDay="--06-01" endMonthDay="--08-31" label="Winter" color="powder blue"/>
+			<season startMonthDay="--09-01" endMonthDay="--11-30" label="Spring" color="pale green"/>
+		</statisticalFunction>
+		<statisticalFunction function="historicalShowLowsBelow">
+			<season startMonthDay="--06-01" endMonthDay="--05-31" label="Water Year" color="black"/>
+			<season startMonthDay="--09-01" endMonthDay="--02-28" label="Grow Season" color="gray"/>     
+		</statisticalFunction>
 		<statisticalFunction function="elevation"/>
 		<statisticalFunction function="gaussianCurve"/>
-		<statisticalFunction function="cumulative"/>
+		<statisticalFunction function="doubleMassCurve"/>
+<!-- 		<statisticalFunction function="principalcomponentanalysis">
+			<observedParameterId>Q_obs.opo</observedParameterId>
+			<simulatedParameterId>SWE.sim</simulatedParameterId>
+			<dateFormat>dd-MM-yyyy</dateFormat>
+		</statisticalFunction> -->
 	</statisticalFunctions>
 	<descriptiveFunctionGroups>
 		<descriptiveFunctionGroup name="Basic statistics">
