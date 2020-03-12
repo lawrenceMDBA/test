@@ -69,8 +69,26 @@
 		<viewPermission>RiverOperations</viewPermission>
 	</workflowDescriptor>
 	<!-- Start of GSMaP workflows-->
-	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP_SPI" name="Import and process GSMaP data" visible="true" autoApprove="true">
-		<description>Import and process GSMaP data from ftp</description>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP_SPI" name="Import and process GSMaP SPI" visible="true" autoApprove="true">
+		<description>Import and process GSMaP (Seasonal Precip. Index) data from JAXA</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="3"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP_NRT" name="Import and process GSMaP NRT" visible="true" autoApprove="true">
+		<description>Import and process GSMaP (Near Realtime Precipitation) data from JAXA</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="3"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP_NOW" name="Import and process GSMaP NOW" visible="true" autoApprove="true">
+		<description>Import and process GSMaP Nowcast (quasi-realtime) Precipitation data from JAXA</description>
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="3"/>
+		<viewPermission>RiverOperations</viewPermission>
+	</workflowDescriptor>
+	<workflowDescriptor forecast="true" id="ImportAndProcess_GSMaP_NRT_G" name="Import and process GSMaP NRT" visible="true" autoApprove="true">
+		<description>Import and process GSMaP gauge corrected NRT Precipitation data from JAXA</description>
 		<cardinalTimeStep unit="hour"/>
 		<runExpiryTime unit="day" multiplier="3"/>
 		<viewPermission>RiverOperations</viewPermission>
