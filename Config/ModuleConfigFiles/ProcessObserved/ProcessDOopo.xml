@@ -14,21 +14,7 @@ OPO can be selected when all telemetry traces are unreliable and the site has to
 Merges OPO over selected (not over OPT over OPC) series-->
 	<!-- Temp2DOmax: calculate DO_max using temperature lookup table-->
 	<!-- DO%: user-simple (DO/DOmax)*100-->
-	<variable>
-		<variableId>OPO_historic_8am</variableId>
-		<timeSeriesSet>
-			<description>Import Hydstra Salinity data</description>
-			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>DO%_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<locationSetId>sites_DO_obs</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
+	<!-- Merging OPO over OPT over OPC allowed for this param -->
 	<variable>
 		<variableId>OPT_neq</variableId>
 		<timeSeriesSet>
@@ -44,20 +30,7 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
-		<variableId>OPT_8am_inst</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>DO_obs</parameterId>
-			<qualifierId>opt</qualifierId>
-			<locationSetId>sites</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
+
 	<variable>
 		<variableId>OPC_neq</variableId>
 		<timeSeriesSet>
@@ -69,6 +42,36 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="nonequidistant"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_historic_8am</variableId>
+		<timeSeriesSet>
+			<description>Import Hydstra Salinity data</description>
+			<moduleInstanceId>ImportObservedOPO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_DO_obs</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output-->
+	<variable>
+		<variableId>OPT_8am_inst</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opt</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -95,6 +98,21 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<parameterId>DO_obs</parameterId>
 			<qualifierId>opo</qualifierId>
 			<qualifierId>tmp</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>OPO_8am_inst_copy</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>copy</qualifierId>
 			<locationSetId>sites</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
@@ -158,6 +176,9 @@ Merges OPO over selected (not over OPT over OPC) series-->
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
 	<transformation id="OPT_neq_to_8am_inst">
 		<sample>
 			<nonEquidistant>
@@ -198,15 +219,26 @@ Merges OPO over selected (not over OPT over OPC) series-->
 				<input>
 					<variableId>OPO_8am_inst</variableId>
 				</input>
-								<attributeFunctionId>@DO_PREFERRED@_8am_inst</attributeFunctionId>
+				<attributeFunctionId>@DO_PREFERRED@_8am_inst</attributeFunctionId>
 				<output>
 					<variableId>Selected_8am_inst</variableId>
 				</output>
 			</selectDataSource>
 		</merge>
 	</transformation>
-	<transformation id="Merge_OPO_Over_Selected(_OPT_OPC)_8am_inst">
-	<!-- Merging OPO over OPT over OPC allowed for this param -->
+	<transformation id="OPO_8am_inst_copy">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>OPO_8am_inst</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>OPO_8am_inst_copy</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="OPO_8am_inst">
 		<merge>
 			<simple>
 				<inputVariable>
@@ -241,6 +273,16 @@ Merges OPO over selected (not over OPT over OPC) series-->
 				<output>
 					<variableId>DO_max</variableId>
 				</output>
+
+
+
+
+
+
+
+
+
+
 			</simple>
 		</lookup>
 	</transformation>
