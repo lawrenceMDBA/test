@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!-- DO_max: calculate DO_max using temperature lookup table-->
+	<!-- DO%: (DO_obs / DO_max)*100-->
+	<variable>
+		<variableId>WT</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>WT_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO_obs</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Output-->
+	<variable>
+		<variableId>DO_max</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO_obs</parameterId>
+			<qualifierId>max</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>DO%</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>DO%_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<transformation id="DO_max">
+		<lookup>
+			<simple>
+				<input>
+					<variableId>WT</variableId>
+				</input>
+				<coefficientSetId>Temp2DOmax_Table</coefficientSetId>
+				<coefficientSetFile>Temp2DOmax_Table</coefficientSetFile>
+				<output>
+					<variableId>DO_max</variableId>
+				</output>
+			</simple>
+		</lookup>
+	</transformation>
+	<transformation id="DO%">
+		<user>
+			<simple>
+				<expression>(DO_obs/DO_max)*100</expression>
+				<outputVariable>
+					<variableId>DO%</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>
