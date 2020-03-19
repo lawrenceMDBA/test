@@ -660,6 +660,19 @@
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
+		<node id="RTCTools_Prepare_Data_Qfcst" name="Gamma function forecasts">
+			<workflowId>Prepare_RTCTools_Qfcst</workflowId>
+			<cardinalTimeStepStartTime times="08:00" timeZone="AEST"/>
+			<mapExtentId>Ovens</mapExtentId>
+			<filterId>Parameter_FloodOps</filterId>
+			<displayGroupId>RTCTools_Prepare_Data_Qfcst</displayGroupId>
+			<defaultModifierId>Q_fcst_rtctools</defaultModifierId>
+			<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
+			<graceTime unit="hour" multiplier="6"/>
+			<mainPanel>modifiers panel</mainPanel>
+			<toolWindow>plot overview</toolWindow>
+			<localRun>false</localRun>
+		</node>
 		<nodes id="URBS" name="URBS Forecasting (Upper Murray)">
 			<node id="rainfallpolicy_upper_murray" name="   Set Rainfall Current Policy and T0">
 				<workflowId>UpperMurray_Rainfall_IFD</workflowId>
@@ -667,7 +680,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Pobs</filterId>
 				<displayGroupId>rainfallpolicy_upper_murray</displayGroupId>
 				<defaultModifierId>Rainfall Policy</defaultModifierId>
@@ -685,7 +698,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_mittaToDartmouth</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
@@ -703,7 +716,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_mittaToTallandoon</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
@@ -721,7 +734,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_ToJingellic</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
@@ -739,7 +752,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_ToHumeDam</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
@@ -757,7 +770,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_BelowHume</displayGroupId>
 				<defaultModifierId>URBS_R</defaultModifierId>
@@ -775,7 +788,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_official</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -792,7 +805,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>rainfallscenario_upper_murray</displayGroupId>
 				<defaultModifierId>Rainfall Scenario</defaultModifierId>
@@ -810,7 +823,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_runscenario</displayGroupId>
 				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
@@ -828,7 +841,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_scenario</displayGroupId>
 				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
@@ -846,7 +859,7 @@
 					<workflowId>UpperMurray_Rainfall_IFD</workflowId>
 					<coldState unit="day" multiplier="2"/>
 				</coldStateFromCurrentRun>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_runensemble</displayGroupId>
 				<defaultModifierId>Hume_Release_Scenario</defaultModifierId>
@@ -864,7 +877,7 @@
 		<nodes id="RTCTools" name="RTCTools (Upper Murray)">
 			<node id="upper_murray_HumeDam_Sim_Local" name="   Run HumeDam Simulation">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Sim</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_Simulation</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -877,7 +890,7 @@
 			</node>
 			<node id="upper_murray_HumeDam_Sim_Official" name="Save HumeDam Simulation">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Official</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_official_Simulation</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -890,7 +903,7 @@
 			</node>
 			<node id="upper_murray_HumeDam_Sim_Ensemble" name="Run Ensemble HumeDam Simulation">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Sim_Ensemble</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_Simulation_Ensemble</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -903,7 +916,7 @@
 			</node>
 			<node id="upper_murray_HumeDam_Opt_Local" name="   Run HumeDam Optimization">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Opt</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_Optimization</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -916,7 +929,7 @@
 			</node>
 			<node id="upper_murray_HumeDam_Opt_Official" name="Save HumeDam Optimization">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Official</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_official_Optimization</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>
@@ -929,7 +942,7 @@
 			</node>
 			<node id="upper_murray_HumeDam_Opt_Ensemble" name="Run Ensemble HumeDam Optimization">
 				<workflowId>UpperMurray_RTCTools_HumeDam_Opt_Ensemble</workflowId>
-				<mapExtentId>Upper Murray</mapExtentId>
+				<mapExtentId>Ovens</mapExtentId>
 				<filterId>Parameter_FloodOps_Hobs</filterId>
 				<displayGroupId>upper_murray_Optimisation_Ensemble</displayGroupId>
 				<defaultModifierId>Hume_Release_Forecast</defaultModifierId>

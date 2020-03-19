@@ -138,6 +138,17 @@
 	<plot id="ewSource_Prepare_Data_Qcomb">
 		<subplot>
 			<timeSeriesSet>
+			<moduleInstanceId>ProcessQopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-10" end="0" unit="day" startOverrulable="true"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+			<timeSeriesSet>
 				<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_comb</parameterId>
