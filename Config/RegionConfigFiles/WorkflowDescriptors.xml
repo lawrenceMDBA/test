@@ -276,6 +276,13 @@
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
+	<!-- Gamma (Model)-->
+	<workflowDescriptor forecast="true" id="Prepare_RTCTools_Qfcst" name="Prepare Q_fcst data (based on gamma function)" visible="true" autoApprove="true">
+		<cardinalTimeStep unit="hour"/>
+		<runExpiryTime unit="day" multiplier="7"/>
+		<viewPermission>FloodOperations</viewPermission>
+		<runPermission>WorkflowRunners</runPermission>
+	</workflowDescriptor>
 	<!-- URBS (Model)-->
 	<workflowDescriptor forecast="true" id="UpperMurray_Rainfall" name="Rainfall Upper Murray (Current Policy) - only used in other WFs" visible="false" autoApprove="true">
 		<cardinalTimeStep unit="hour"/>
@@ -451,7 +458,7 @@
 	</workflowDescriptor>
 	<workflowDescriptor forecast="false" id="Prepare_Thresholds_March1" name="Threshold count: Mar1 - June1" visible="true" allowApprove="true" autoApprove="true">
 		<description>Prepare data for the Threshold crossings count report</description>
-		<cardinalTimeStep id="June1"/>		
+		<cardinalTimeStep id="June1"/>
 		<runExpiryTime unit="month" multiplier="18"/>
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>

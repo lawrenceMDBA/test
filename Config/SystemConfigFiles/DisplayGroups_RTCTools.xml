@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <displayGroups version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/displayGroups.xsd">
 	<description>Preconfigured display for thresholds data</description>
+	<plot id="RTCTools_Prepare_Data_Qfcst">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessObserved_FloodOps</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>Fops</qualifierId>
+				<locationSetId>RTCTools_sites_Q</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod start="-400" end="0" unit="day" startOverrulable="true"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PrepareRTCTools_Qfcst</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_fcst</parameterId>
+				<qualifierId>Gamma</qualifierId>
+				<locationSetId>RTCTools_sites_Q</locationSetId>
+				<timeSeriesType>simulated forecasting</timeSeriesType>
+				<timeStep unit="hour" multiplier="1"/>
+				<readWriteMode>read complete forecast</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
 	<plot id="RTCTools_reservoir_1h">
 		<subplot>
 			<timeSeriesSet>
@@ -321,6 +346,14 @@
 	</plot>
 	<displayGroup id="upper_murray_RTCTools" name="FloodOps RTCTools: Upper Murray">
 		<viewPermission>FloodOperations</viewPermission>
+		<displayGroup id="RTCTools_Prepare_Data_Qfcst" name="Prepare Flow Data">
+			<nodeId>RTCTools_Prepare_Data_Qfcst</nodeId>
+			<viewPermission>FloodOperations</viewPermission>
+			<singleLocationDisplays id="discharge_RTCTools">
+				<locationSetId>RTCTools_sites_Qfcst</locationSetId>
+				<plotId>RTCTools_Prepare_Data_Qfcst</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
 		<displayGroup id="upper_murray_Simulation" name="Upper Murray - HumeDam (simulation, local)">
 			<display id="R_401027" name="401027 - HUME DAM">
 				<plotId>RTCTools_reservoir_1h</plotId>

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locationSets version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/locationSets.xsd">
+	<!-- RTC-Tools-->
+	<locationSet id="RTCTools_sites_Q">
+		<description>RTC-Tools sites with flow fcst</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeExists id="SITE_Q_PULSE_PEAKQ_HOURLY"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="RTCTools_sites_Qfcst">
+		<description>RTC-Tools sites with flow fcst</description>
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>RTCTools_sites_Q</locationSetId>
+	</locationSet>
 	<!-- ewsource  RO-->
 	<!-- P stand for Planning and O stands for Operational (opo) data -->
 	<locationSet id="ewSourceRO_catchments">

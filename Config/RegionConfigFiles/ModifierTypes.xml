@@ -778,7 +778,7 @@
 				<attribute id="URBS_PR">
 					<comment>Default 0.25, calibration range 0.15-0.35</comment>
 				</attribute>
-<!--				<attribute id="URBS_LOSSSOURCE">
+				<!--				<attribute id="URBS_LOSSSOURCE">
 					<conditionalSelection>
 						<option value="User_IL">
 							<disabledAttributeId>URBS_IL_AWRA</disabledAttributeId>
@@ -917,6 +917,26 @@
 					<position row="4" column="1"/>
 				</panel>
 			</template>-->
+		</locationAttributeModifier>
+		<locationAttributeModifier id="Q_fcst_rtctools" name="Short term operator flow forecast">
+			<expiryTime unit="day" multiplier="14"/>
+			<modifiableGroup name="Discharge">
+				<locationSetId>RTCTools_sites_Q</locationSetId>
+				<attribute id="SITE_Q_PULSE_PEAKQ_HOURLY">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKT_HOURLY">
+					<comment>no advice </comment>
+				</attribute>
+				<attribute id="SITE_Q_AREA_HOURLY">
+					<comment>no advice </comment>
+				</attribute>
+				<tabularLayout>
+					<showOriginalValues>false</showOriginalValues>
+					<locationOrientation>row</locationOrientation>
+				</tabularLayout>
+				<summaryFunction>Gamma: Trend to @SITE_Q_TREND_BASEQ@ at rate @SITE_Q_TREND_FACTOR@; Pulse to @SITE_Q_PULSE_PEAKQ@ at rise 1/@SITE_Q_PULSE_RISE@, after @SITE_Q_PULSE_PEAKT@ days recede to @SITE_Q_PULSE_BASEQ@ at rate @SITE_Q_PULSE_RECEDE@</summaryFunction>
+			</modifiableGroup>
 		</locationAttributeModifier>
 		<locationAttributeModifier id="RTCTools_R" name="RTCTools Goals parameters">
 			<expiryTime unit="day" multiplier="14"/>
@@ -1088,6 +1108,7 @@
 		<modifierId>Hume_Release_Forecast</modifierId>
 		<modifierId>Hume_Inflow_Forecast</modifierId>
 		<modifierId>Hume_Keiwa_Forecast</modifierId>
+		<modifierId>Q_fcst_rtctools</modifierId>
 	</modifiersGroup>
 	<modifiersGroup id="RTCTools_O">
 		<modifierId>Hume_Release_Forecast</modifierId>
