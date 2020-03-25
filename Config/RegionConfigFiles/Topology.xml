@@ -13,6 +13,7 @@
 		<multipleNodesDirectory nodeIdPrefix="PeakHeights">$DOCUMENTS_PEAKHEIGHTS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="Reporting">$DOCUMENTS_REPORTING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="RiverOps">$DOCUMENTS_RIVEROPS_FOLDER$</multipleNodesDirectory>
+		<multipleNodesDirectory nodeIdPrefix="FloodOps">$DOCUMENTS_FLOODOPS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="ROWS">$DOCUMENTS_ROWS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="RunoffForecasting">$DOCUMENTS_RUNOFFFORECASTING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="URBS">$DOCUMENTS_URBS_FOLDER$</multipleNodesDirectory>
@@ -500,7 +501,7 @@
 				<node id="Review_vicdiversion" name="VIC Diversion">
 					<displayGroupId>wr_vicdiversion</displayGroupId>
 				</node>
-				<node id="Review_evap" name="EVAP">
+				<node id="Review_evap" name="EVAP (monthly input)">
 					<displayGroupId>wr_evap</displayGroupId>
 				</node>
 				<node id="Review_systeminflows_daily" name="System Inflows - Daily">
@@ -510,14 +511,19 @@
 					<displayGroupId>wr_systeminflows_monthly</displayGroupId>
 				</node>
 			</nodes>
+			<mainPanel>web browser display</mainPanel>
+			<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 		</nodes>
 		<nodes id="Export_MonthlyReport" name="Export Monthly part of Weekly Report (on server)">
 			<workflowId>Export_MonthlyReport</workflowId>
 			<localRun>false</localRun>
 			<node id="Prepare_MonthlyReport" name="Prepare Monthly Data Weekly Report">
 				<workflowId>Prepare_MonthlyReport</workflowId>
+				<displayGroupId>wr_evap</displayGroupId>
 				<localRun>true</localRun>
 			</node>
+			<mainPanel>web browser display</mainPanel>
+			<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_monthly.html</url>
 		</nodes>
 		<nodes id="Export_QuarterlyReport" name="Export Quarterly Report (counting thresholds)">
 			<node id="Prepare_Thresholds_June1" name="Threshold count: June1 - Sept1">
@@ -629,7 +635,7 @@
 		<groupId>WaterCoach</groupId>
 		<viewPermission>WaterCoach</viewPermission>
 	</nodes>
-	<nodes id="Flood_Ops" name="Flood Ops">
+	<nodes id="FloodOps" name="Flood Ops">
 		<node id="ImportAndProcess_Observed_flood_latest" name="Import and process Observations (FloodOps)">
 			<workflowId>ImportAndProcess_Observed_FloodOps_Latest</workflowId>
 			<coldState unit="day" multiplier="10"/>
@@ -957,7 +963,7 @@
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
-		<nodes id="FloodOps" name="Export to Floodsheets">
+		<nodes id="FloodSheets" name="Export to Floodsheets">
 			<workflowId>Export_ToFloodsheets</workflowId>
 			<node id="Export_ToFloodsheets_hume" name="Export to Hume Floodsheet">
 				<workflowId>Export_ToFloodsheets_hume</workflowId>

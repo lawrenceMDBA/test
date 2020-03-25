@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews">
+	<!-- Input -->
 	<variable>
 		<variableId>H</variableId>
 		<timeSeriesSet>
@@ -15,20 +16,6 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>A</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>LevelToArea</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>A_obs</parameterId>
-			<qualifierId>opo</qualifierId>
-			<locationSetId>sites_H_surfacearea</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>H_Victoria</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessHopo</moduleInstanceId>
@@ -40,6 +27,21 @@
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- Output -->
+	<variable>
+		<variableId>A</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_H_surfacearea</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
