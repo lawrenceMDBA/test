@@ -1101,6 +1101,86 @@
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="MDBC_OPS_thresholds_SO_dh24_hourly">
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod start="-1" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>moving</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>min</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
+	<timeSeriesSets id="MDBC_OPS_thresholds_SO_dh24_8am">
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>6days</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_ALL</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<timeSeriesSets id="MDBC_OPS_thresholds_SO">
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -2844,10 +2924,22 @@
 		</locationConstraints>
 	</filter>
 	<filter id="MDBC_OPS_thresholds_SO" name="SOnO Thresholds">
+		<child foreignKey="MDBS_OPS_thresholds_SO_dH24_hourly"/>
+		<child foreignKey="MDBS_OPS_thresholds_SO_dH24_8am"/>
 		<child foreignKey="MDBS_OPS_thresholds_SO_UpstreamOfHume"/>
 		<child foreignKey="MDBS_OPS_thresholds_SO_HumeToYarrawonga"/>
 		<child foreignKey="MDBS_OPS_thresholds_SO_YarrawongaToEuston"/>
 		<child foreignKey="MDBS_OPS_thresholds_SO_EustonToSA"/>
+	</filter>
+	<filter id="MDBS_OPS_thresholds_SO_dH24_hourly" name="max dH over 24h (hourly series)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>MDBC_OPS_thresholds_SO_dh24_hourly</timeSeriesSetsId>
+	</filter>
+	<filter id="MDBS_OPS_thresholds_SO_dH24_8am" name="max dH over 24h (8am series)">
+		<validationIconsVisible>true</validationIconsVisible>
+		<mapExtentId>Murray-Darling</mapExtentId>
+		<timeSeriesSetsId>MDBC_OPS_thresholds_SO_dh24_8am</timeSeriesSetsId>
 	</filter>
 	<filter id="MDBS_OPS_thresholds_SO_UpstreamOfHume" name="Upstream of Hume">
 		<validationIconsVisible>true</validationIconsVisible>
