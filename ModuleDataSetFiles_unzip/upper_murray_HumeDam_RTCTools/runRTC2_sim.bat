@@ -1,0 +1,2 @@
+call .\venv\Scripts\activate && python .\src\Reservoir_Simulation.py --reservoirs_csv_path .\model\reservoirs.csv --volume_level_csv_paths .\model\volumelevel.csv  --delays_csv_path .\model\delays.csv > .\RTC23sim_stdout.txt 2>&1
+exit /b "%errorlevel%"  

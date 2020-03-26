@@ -50,16 +50,6 @@
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;V_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(V_merge;0Decimal)</function>
 			</column>
-			<!--<column>
-				<header>EC</header>
-				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;EC_threshold)</backgroundColorFunction>
-				<function>MAXVALUE(EC_calc;0Decimal)</function>
-			</column>
-			<column>
-				<header>DO%</header>
-				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;DO%_threshold)</backgroundColorFunction>
-				<function>MINVALUE(DOPCT_calc;0Decimal)</function>
-			</column>-->
 			<column>
 				<header>&#x0394;H_DateTime(hr/24hr)</header>
 				<function>THRESHOLDCROSSING(ALL_DATETIMES;ALL_threshold_dH_hourly_merge;dateFormat1)</function>
@@ -168,7 +158,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Q_calc</parameterId>
 				<locationSetId>threshold_sites_Q</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
@@ -180,7 +170,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>dQ</parameterId>
 				<locationSetId>threshold_sites_dQ</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
@@ -192,36 +182,12 @@
 				<valueType>scalar</valueType>
 				<parameterId>V_calc</parameterId>
 				<locationSetId>threshold_sites_V</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--<inputVariable variableId="EC_calc">
-			<timeSeriesSet>
-				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EC_calc</parameterId>
-				<locationSetId>threshold_sites_EC</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		<inputVariable variableId="DOPCT_calc">
-			<timeSeriesSet>
-				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>DO%_calc</parameterId>
-				<locationSetId>threshold_sites_DO%</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>-->
 		<inputVariable variableId="H_threshold">
 			<timeSeriesSet>
 				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -281,7 +247,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>Threshold_dH</parameterId>
 				<qualifierId>SO</qualifierId>
-				<qualifierId>24h</qualifierId>				
+				<qualifierId>24h</qualifierId>
 				<locationSetId>threshold_sites_dH_hourly</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep multiplier="1" unit="hour"/>
@@ -328,32 +294,6 @@
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		<!--<inputVariable variableId="EC_threshold">
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_EC</parameterId>
-				<qualifierId>SO</qualifierId>
-				<locationSetId>threshold_sites_EC</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="DO%_threshold">
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_DO%</parameterId>
-				<qualifierId>SO</qualifierId>
-				<locationSetId>threshold_sites_DO%</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>-->
 		<inputVariable variableId="ALL_threshold_merge">
 			<timeSeriesSet>
 				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -381,33 +321,6 @@
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		<!--<inputVariable variableId="ALL_threshold_hourly_max">
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_dH</parameterId>
-				<qualifierId>SO</qualifierId>
-				<locationSetId>threshold_sites_SO</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep unit="hour"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="ALL_threshold_24hourly_max">
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_dH</parameterId>
-				<qualifierId>SO</qualifierId>
-				<qualifierId>24h</qualifierId>
-				<locationSetId>threshold_sites_SO</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep unit="hour"/>
-				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>-->
 		<inputVariable variableId="ALL_threshold_dH_hourly_merge">
 			<timeSeriesSet>
 				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idMap version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/idMap.xsd">
-<!-- opo -->
+	<!-- opo -->
 	<parameter internal="Q_obs" internalQualifier="opo" external="flow_observed"/>
 	<parameter internal="Q_obs" internalQualifier="rated" external="flow_rated"/>
 	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="inflow" external="flow_inflow"/>
@@ -9,11 +9,12 @@
 	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="turb" external="flow_turbine"/>
 	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="valves" external="flow_valves"/>
 	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="env" external="flow_environmental"/>
-	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="credit" external="flow_instream_credits"/>
 	<parameter internal="Q_ivt" internalQualifier="opo" external="flow_ivt"/>
 	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="other" external="flow_other"/>
+	<parameter internal="Q_obs" internalQualifier="opo" internalQualifier1="return" external="flow_return"/>
 	<parameter internal="H_obs" internalQualifier="opo" external="level_observed"/>
 	<parameter internal="P_obs" internalQualifier="opo" external="precipitation_observed"/>
+	<parameter internal="EC_obs" internalQualifier="opo" external="electric_conductivity"/>
 	<parameter internal="EVAP_obs" internalQualifier="opo" external="evaporation"/>
 	<parameter internal="EVAP_obs" internalQualifier="opo" internalQualifier1="mlake" external="evaporation_morton_lake"/>
 	<parameter internal="EVAP_obs" internalQualifier="opo" internalQualifier1="fao56" external="evaporation_fao56"/>
@@ -36,12 +37,12 @@
 	<parameter internal="QORD_obs" internalQualifier="opo" internalQualifier1="longterm" external="water_order_longterm"/>
 	<parameter internal="WindDir_obs" internalQualifier="opo" external="wind_direction"/>
 	<parameter internal="WindVel_obs" internalQualifier="opo" external="wind_velocity"/>
-<!-- Fops -->
+	<!-- Fops -->
 	<parameter internal="Q_obs" internalQualifier="Fops" external="flow_observed"/>
 	<parameter internal="H_obs" internalQualifier="Fops" external="level_observed"/>
 	<parameter internal="P_obs" internalQualifier="Fops" external="precipitation_observed"/>
 	<parameter internal="V_obs" internalQualifier="Fops" external="volume_observed"/>
-<!-- NWP -->
+	<!-- NWP -->
 	<parameter internal="P_fcst" external="precipitation_forecast"/>
 	<parameter internal="P_fcst" internalQualifier="higher" external="precipitation_forecast_higher"/>
 	<parameter internal="P_fcst" internalQualifier="avg" external="precipitation_forecast_avg"/>
@@ -49,14 +50,39 @@
 	<parameter internal="P_fcst" internalQualifier="max" external="precipitation_forecast_max"/>
 	<parameter internal="SM_fcst" external="soil_moisture_forecast"/>
 	<parameter internal="SM_obs" external="soil_moisture_observed"/>
-<!-- URBS/Flow-n-Sal -->
-	<parameter internal="P_comb" external="forecast_rainfall"/>
-	<parameter internal="Q_fcst" external="forecast_flow"/>
-	<parameter internal="Q_in_fcst" external="forecast_inflow"/>
-	<parameter internal="Q_out_fcst" external="forecast_outflow"/>
+	<!-- simulated forecasts (FloodOps) -->
+	<parameter internal="EC_fcst" external="forecast_EC"/>
+	<parameter internal="H_fcst" external="forecast_level"/>
 	<parameter internal="P_calc" internalQualifier="gross" external="forecast_gross_rainfall"/>
 	<parameter internal="P_calc" internalQualifier="net" external="forecast_net_rainfall"/>
-	<parameter internal="H_fcst" external="forecast_level"/>
+	<parameter internal="P_comb" external="forecast_rainfall"/>
+	<parameter internal="Q_fcst" external="forecast_flow"/>
+	<parameter internal="Q_fcst" internalQualifier="rtctools" external="forecast_flow_rtctools"/>
+	<parameter internal="Q_in_fcst" external="forecast_inflow"/>
+	<parameter internal="Q_out_fcst" external="forecast_outflow"/>
+	<parameter internal="QSPILL_fcst" external="forecast_outflow_spill"/>
+	<parameter internal="QTURB_fcst" external="forecast_outflow_turb"/>
 	<parameter internal="V_fcst" external="forecast_volume"/>
-	<parameter internal="EC_fcst" external="forecast_EC"/>
+	<!-- model in- and output (SourceOps) -->
+	<parameter internal="EVAP_comb" internalQualifier="fao56" external="forecast_evaporation_fao56"/>
+	<parameter internal="EVAP_comb" internalQualifier="mlake" external="forecast_evaporation_mlake"/>
+	<parameter internal="Q_trade" internalQualifier="SA_deferred" external="forecast_trade_sadeferred"/>
+	<parameter internal="Q_trade" internalQualifier="CEHW" internalQualifier1="dir_trade" external="forecast_trade_cehw"/>
+	<parameter internal="Q_trade" internalQualifier="TLM" internalQualifier1="dir_trade" external="forecast_trade_tlm"/>
+	<parameter internal="Q_trade" internalQualifier="tot_trade" external="forecast_trade_total"/>
+	<parameter internal="Q_trade" internalQualifier="undelivered_trade" external="forecast_trade_undelivered"/>
+	<parameter internal="Q_comb" internalQualifier="min" external="forecast_flow_scenario_min"/>
+	<parameter internal="Q_comb" internalQualifier="aep90" external="forecast_flow_scenario_aep90"/>
+	<parameter internal="Q_comb" internalQualifier="aep75" external="forecast_flow_scenario_aep75"/>
+	<parameter internal="Q_comb" internalQualifier="aep50" external="forecast_flow_scenario_aep50"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="credit" external="flow_instream_credits"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="mur_bypass" external="flow_instream_mur_bypass"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="ent_use" external="flow_instream_ent_use"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="sa_delivery" external="flow_instream_sa_delivery"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="loss" external="flow_instream_loss"/>
+	<parameter internal="Q_env" internalQualifier="opo" internalQualifier1="env_use" external="flow_instream_env_use"/>
+	<parameter internal="Q_fcst" internalQualifier="unaccounted_diff" internalQualifier1="default" external="forecast_flow_source_unaccounted_diff_default"/>
+	<parameter internal="Q_fcst" internalQualifier="default" external="forecast_source_flow_default"/>
+	<parameter internal="H_fcst" internalQualifier="default" external="forecast_source_level_default"/>
+	<parameter internal="V_fcst" internalQualifier="default" external="forecast_source_volume_default"/>
 </idMap>

@@ -280,7 +280,7 @@
 					Parameters to be exported to Source River Ops model 
 				</description>
 				<text>%SOURCE_PARAMS%</text>
-			</attribute>			
+			</attribute>
 			<attribute id="SOURCE_SEQ">
 				<description>
 					Indicates the order in which the sites are exported to Source River Ops model 
@@ -1378,11 +1378,11 @@
 					<number>%SITE_Q_PULSE_RISE%</number>
 				</attribute>
 				<attribute id="SITE_Q_PULSE_PEAKQ" name="Peak Q">
-					<description>Peak flow during Pulse fcst (ML/day)</description>
+					<description>Peak flow [ML/day]</description>
 					<number>%SITE_Q_PULSE_PEAKQ%</number>
 				</attribute>
 				<attribute id="SITE_Q_PULSE_PEAKT" name="Peak timing">
-					<description>Timing peak flow in days from now</description>
+					<description>Timing peak flow [days from now]</description>
 					<number>%SITE_Q_PULSE_PEAKT%</number>
 				</attribute>
 				<attribute id="SITE_Q_PULSE_RECEDE" name="Recede rate">
@@ -1390,8 +1390,12 @@
 					<number>%SITE_Q_PULSE_RECEDE%</number>
 				</attribute>
 				<attribute id="SITE_Q_PULSE_BASEQ" name="Target">
-					<description>Flow to end Pulse fcst with (ML/day)</description>
+					<description>Flow to end Pulse fcst with [ML/day]</description>
 					<number>%SITE_Q_PULSE_BASEQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_AREA" name="AREA">
+					<description>Catchment area [acres]</description>
+					<number>%SITE_Q_AREA%</number>
 				</attribute>
 				<attribute id="JAN_MIN_QPLAN" name="JAN_MIN_QPLAN">
 					<description>Longterm forecast Qplan minimum scenario</description>
@@ -1599,8 +1603,7 @@
 				<attribute id="SOURCE_QORD_SEQ" name="Source QORD Seq">
 					<description>Order/Demand site sequence</description>
 					<text>%QORD_SEQ%</text>
-				</attribute>			
-
+				</attribute>
 				<attribute id="SOURCE_H_SEQ" name="Source H Seq">
 					<description>Water level site sequence</description>
 					<text>%H_SEQ%</text>
@@ -1631,6 +1634,136 @@
 				<id>%ROWS_SITE_ID%</id>
 				<attribute id="SAMPLE_PARAMS">
 					<text>%SAMPLE_PARAMS%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_Locations_sdf</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="SDF_SITE_ID">
+					<description>station identifier as used in SDF BoM forecast. Usage: idmaps</description>
+					<text>%SDF_SITE_ID%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_Locations_weeklyreport</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<relation id="MET_MLAKE">
+					<relatedLocationId>%MET_MLAKE%</relatedLocationId>
+				</relation>
+				<relation id="MET_PAN">
+					<relatedLocationId>%MET_PAN%</relatedLocationId>
+				</relation>
+				<relation id="STORAGE">
+					<relatedLocationId>%STORAGE%</relatedLocationId>
+				</relation>
+				<relation id="OUTLET">
+					<relatedLocationId>%OUTLET%</relatedLocationId>
+				</relation>
+				<relation id="LAKE_GROUP">
+					<relatedLocationId>%LAKE_GROUP%</relatedLocationId>
+				</relation>
+				<attribute id="SURFACE_AREA">
+					<description>Boolean: Y/N</description>
+					<text>%SURFACE_AREA%</text>
+				</attribute>
+				<attribute id="MET_MLAKE">
+					<text>%MET_MLAKE%</text>
+				</attribute>
+				<attribute id="MET_PAN">
+					<text>%MET_PAN%</text>
+				</attribute>
+				<attribute id="MLAKE_MET">
+					<description>Boolean: Y/N</description>
+					<text>%MLAKE_MET%</text>
+				</attribute>
+				<attribute id="PAN_MET">
+					<description>Boolean: Y/N</description>
+					<text>%PAN_MET%</text>
+				</attribute>
+				<attribute id="PAN_FACTOR">
+					<number>%PAN_FACTOR%</number>
+				</attribute>
+				<attribute id="REPORT_NAME">
+					<text>%REPORT_NAME%</text>
+				</attribute>
+				<attribute id="REPORT_SEQ">
+					<number>%REPORT_SEQ%</number>
+				</attribute>
+				<attribute id="STATE_ALLOCATION">
+					<text>%STATE_ALLOCATION%</text>
+				</attribute>
+				<attribute id="SNOWY_TABLE">
+					<text>%SNOWY_TABLE%</text>
+				</attribute>
+			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_rtctools_parameters</csvFile>
+				<id>%ROWS_SITE_ID%</id>
+				<attribute id="reservoir_name" name="Reservoir Name">
+					<text>%reservoir_name%</text>
+				</attribute>
+				<attribute id="downstream_location" name="Downstream Target Location">
+					<text>%downstream_location%</text>
+				</attribute>
+				<attribute id="use_surcharge_max" name="Use Surcharge Target Waterlevel">
+					<boolean>%use_surcharge_max%</boolean>
+				</attribute>
+				<attribute id="priority_surcharge_max" name="Priority Surcharge Target Waterlevel">
+					<number>%priority_surcharge_max%</number>
+				</attribute>
+				<attribute id="use_fullsupply_max" name="Use Full Supply Target Waterlevel">
+					<boolean>%use_fullsupply_max%</boolean>
+				</attribute>
+				<attribute id="priority_fullsupply_max" name="Priority  Full Supply Target Waterlevel">
+					<number>%priority_fullsupply_max%</number>
+				</attribute>
+				<attribute id="use_downstreamflow_target_range" name="Use Downstream Flow Target">
+					<boolean>%use_downstreamflow_target_range%</boolean>
+				</attribute>
+				<attribute id="priority_downstreamflow_target_range" name="Priority Downstream Discharge Target">
+					<number>%priority_downstreamflow_target_range%</number>
+				</attribute>
+				<attribute id="downstreamflow_target_min" name="Minimum Downstream Flow Target [m3/s]">
+					<number>%downstreamflow_target_min%</number>
+				</attribute>
+				<attribute id="downstreamflow_target_max" name="Maximum Downstream Flow Target [m3/s]">
+					<number>%downstreamflow_target_max%</number>
+				</attribute>
+				<attribute id="use_track_release_timeseries" name="Use Release Scenario Target">
+					<boolean>%use_track_release_timeseries%</boolean>
+				</attribute>
+				<attribute id="priority_track_release_timeseries" name="Priority Release Scenario Target">
+					<number>%priority_track_release_timeseries%</number>
+				</attribute>
+				<attribute id="use_minimize_Qout" name="Use Minimize Release">
+					<boolean>%use_minimize_Qout%</boolean>
+				</attribute>
+				<attribute id="priority_minimize_Qout" name="Priority Minimize Release">
+					<number>%priority_minimize_Qout%</number>
+				</attribute>
+				<attribute id="use_minimize_Qspill" name="Use Minimize Spill">
+					<boolean>%use_minimize_Qspill%</boolean>
+				</attribute>
+				<attribute id="priority_minimize_Qspill" name="Priority Minimize Spill">
+					<number>%priority_minimize_Qspill%</number>
+				</attribute>
+				<attribute id="use_smoothen_Qturbine" name="Use Smooth Turbines">
+					<boolean>%use_smoothen_Qturbine%</boolean>
+				</attribute>
+				<attribute id="priority_smoothen_Qturbine" name="Priority Smooth Turbines">
+					<number>%priority_smoothen_Qturbine%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKQ_HOURLY" name="Peak Q">
+					<description>Peak flow during Pulse fcst (ML/day)</description>
+					<number>%SITE_Q_PULSE_PEAKQ%</number>
+				</attribute>
+				<attribute id="SITE_Q_PULSE_PEAKT_HOURLY" name="Peak timing">
+					<description>Timing peak flow in days from now</description>
+					<number>%SITE_Q_PULSE_PEAKT%</number>
+				</attribute>
+				<attribute id="SITE_Q_AREA_HOURLY" name="AREA">
+					<description>Catchment area</description>
+					<number>%SITE_Q_AREA%</number>
 				</attribute>
 			</attributeFile>
 		</csvFile>
@@ -2310,6 +2443,30 @@
 			<attributeTextEquals equals="Y" id="P_OBS"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="sites_EVAP_loss">
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<anyValid>
+				<attributeExists id="MET_MLAKE"/>
+				<attributeExists id="MET_PAN"/>
+			</anyValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EVAP_pan">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="PAN_MET"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_EVAP_Mlake">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextEquals equals="Y" id="MLAKE_MET"/>
+		</constraints>
+	</locationSet>
 	<locationSet id="sites_H_obs">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -2383,6 +2540,13 @@
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="CAPACITY"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="sites_H_surfacearea">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeTextContains id="SURFACE_AREA" contains="Y"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="sites_Q_observed">
@@ -2601,6 +2765,10 @@
 			<attributeTextEquals equals="Y" id="DO_OBS"/>
 		</constraints>
 	</locationSet>
+	<locationSet id="sites_Turbidity_obs">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+	</locationSet>
 	<locationSet id="sites_EC_obs">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
@@ -2671,28 +2839,28 @@
 	</locationSet>
 	<!-- web report sites-->
 	<locationSet id="wr.sites_all">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeExists id="REPORT_WEEKLY"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_mdbastorage_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2702,33 +2870,46 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_majorstatestorages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="major_state_storages"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_allstorages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_mdbastorage</locationSetId>
 		<locationSetId>wr.sites_majorstatestorages</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_snowystorage">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
-			<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+			<allValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+				<attributeTextContains id="SNOWY_TABLE" contains="storage"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_snowydiversion">
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+				<attributeTextContains id="SNOWY_TABLE" contains="diversion"/>
+			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_diversion"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2738,21 +2919,21 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_nswdiversion_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nsw_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="vic_diversion"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion_table">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<anyValid>
@@ -2762,88 +2943,88 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_vicdiversion_total">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="vic_total"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_alldiversions">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_nswdiversion</locationSetId>
 		<locationSetId>wr.sites_vicdiversion</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_flowtosa">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="flow_to_sa"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_salinity">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="salinity"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_rivermurray">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="river_murray"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_tributaries">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="tributaries"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_natinflowhume">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="nat_inflow_hume"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_allriverlevelflows">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_rivermurray</locationSetId>
 		<locationSetId>wr.sites_tributaries</locationSetId>
 		<locationSetId>wr.sites_natinflowhume</locationSetId>
 	</locationSet>
 	<locationSet id="wr.sites_murrayweirs">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="murray_weirs"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_murrayweirs_usds">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>wr.sites_murrayweirs</locationSetId>
 		<constraints>
 			<attributeExists id="DS"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_lowerlakes">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="lower_lakes"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_barrages">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="barrages"/>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_murray_system_inflow">
-		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="murray_system_inflow"/>
@@ -3216,6 +3397,15 @@
 			<anyValid>
 				<attributeExists id="dH_LT_SOFT"/>
 				<attributeExists id="dH_SPECIAL"/>
+				<attributeExists id="dH_HOUR_SPECIAL"/>
+				<attributeExists id="dH_S_SOFT_1"/>
+				<attributeExists id="dH_S_SOFT_2"/>
+				<attributeExists id="dH_S_HARD_1"/>
+				<attributeExists id="dH_S_HARD_2"/>
+				<attributeExists id="dH_S_HARD_3"/>
+				<attributeExists id="dH_S_HARD_4"/>
+				<attributeExists id="dH_S_HARD_5"/>
+				<attributeExists id="dH_S_HARD_6"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
@@ -3249,12 +3439,6 @@
 			<attributeTextContains id="TYPE" contains="SO_"/>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_dH_hourly_RO">
-		<locationSetId>threshold_sites_dH_hourly</locationSetId>
-		<constraints>
-			<attributeTextContains id="TYPE" contains="RO_"/>
-		</constraints>
-	</locationSet>-->
 	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
 	<!-- To get rid of Errors in build 67363 or higher like 
 	Config.Error: Only one threshold value set allowed per time series 
@@ -3402,6 +3586,11 @@
 		<constraints>
 			<anyValid>
 				<attributeExists id="dQ_SPECIAL"/>
+				<attributeExists id="dQ_S_HARD_1"/>
+				<attributeExists id="dQ_S_HARD_2"/>
+				<attributeExists id="dQ_S_HARD_3"/>
+				<attributeExists id="dQ_S_HARD_4"/>
+				<attributeExists id="dQ_S_HARD_1"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
@@ -3412,12 +3601,6 @@
 			<attributeTextContains id="TYPE" contains="SO_"/>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_dQ_RO">
-		<locationSetId>threshold_sites_dQ</locationSetId>
-		<constraints>
-			<attributeTextContains id="TYPE" contains="RO_"/>
-		</constraints>
-	</locationSet>-->
 	<locationSet id="threshold_sites_Q_prep">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
@@ -3458,18 +3641,9 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_Q_GT_REL_SOFT">
-		<locationSetId>threshold_sites_all</locationSetId>
-		<constraints>
-			<anyValid>
-				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
-			</anyValid>
-		</constraints>
-	</locationSet>-->
 	<locationSet id="threshold_sites_Q_REL">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
-		<!--<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>-->
 	</locationSet>
 	<locationSet id="threshold_sites_EC">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
@@ -3917,7 +4091,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="Jin2Doc.ops_display_reservoir">
-	<!-- Jingelling to Doctors Pt Overview Plot -->
+		<!-- Jingelling to Doctors Pt Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>ops_display_reservoir</locationSetId>
 		<constraints>
@@ -3940,7 +4114,7 @@
 		</constraints>
 	</locationSet>
 	<locationSet id="Hin2Tall.ops_display_reservoir">
-	<!-- Hinnomungie to Tallandoon Overview Plot -->
+		<!-- Hinnomungie to Tallandoon Overview Plot -->
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>ops_display_reservoir</locationSetId>
 		<constraints>

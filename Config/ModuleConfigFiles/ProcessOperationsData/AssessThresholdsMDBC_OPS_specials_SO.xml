@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
-	<!-- Module instance to check the merged timeseries (from PreprocessThresholds_MDBC_OPS) for threshold violations. 
-For some timeseries a little extra processing is need. 
-For example, the orders are subtracted from the diversions because that is what the threshold SOFT_IF_EXCESS(QDIV)_GT actually looks at. 
-
-Each threshold is then checked separately per selected location and the result (the numerical flag) is stored in a timeseries. 
-In the case where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single timeseries. 
-This means that in the end only one timeseries with threshold flags is stored for each combination of type of data and location.  
--->
+	<!--Check the merged timeseries (from PreprocessThresholds_MDBC_OPS) for threshold violations. 
+  - For some timeseries a little extra processing is need. 
+    eg, the orders are subtracted from the diversions, because that is what the threshold SOFT_IF_EXCESS(QDIV)_GT looks at. 
+  - Each threshold is checked per selected location. The result (the numerical flag) is stored in a timeseries. 
+  - Where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single timeseries. 
+    ie, i the end only one timeseries with threshold flags is stored for each combination of type of data and location.  -->
+	<!--Heywoods and Doctors Point dH rate of fall (dH) for are calculated from hourly data:
+  - dH is maximum rate of fall within a 24 hour period, i.e. 8am - 7am
+  - 6 day rolling average of dH
+Heywoods Threshold Rule:
+    a. Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+    b. When Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.249m
+Doctors Point Threshold Rule:
+    a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
+    b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
 	<!--Input-->
 	<!-- use hourly data to determine dH over 24h for MittaMitta -->
 	<variable>
@@ -146,19 +153,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--<variable>
-		<variableId>Q_LakeVic</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<locationId>R_A4260502</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
 	<variable>
 		<variableId>V_LakeVic</variableId>
 		<timeSeriesSet>
@@ -240,6 +234,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Input - Heywoods and Doctors point-->
 	<variable>
 		<variableId>Q_Doctors</variableId>
 		<timeSeriesSet>
@@ -254,11 +249,14 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_Heywood</variableId>
+		<variableId>dH_Fall_Heywood_24hmax</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
 			<locationId>R_409016</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -267,27 +265,14 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_Heywood_weekly_rolling</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>weekly</qualifierId>
-			<locationId>R_409016</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-6" end="0"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dH_Doctors</variableId>
+		<variableId>dH_Fall_Doctors_24hmax</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
 			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -295,23 +280,8 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
-		<variableId>dH_Doctors_weekly_rolling</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>weekly</qualifierId>
-			<locationId>R_409017</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-6" end="0"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--Throughput - extra calculation results - make sure these are temporary timeSeries with synchLevel 9 in final versions! -->
+	<!--Calculation results -->
+	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
 		<variableId>dH_LakeVic</variableId>
 		<timeSeriesSet>
@@ -369,36 +339,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--<variable>
-		<variableId>Q_cap_LakeVic</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>capacity</qualifierId>
-			<locationId>R_A4260502</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Q_delta_LakeVic</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>delta</qualifierId>
-			<locationId>R_A4260502</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
 	<variable>
 		<variableId>dQ_LowDar</variableId>
 		<timeSeriesSet>
@@ -474,7 +414,75 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Throughput - individual threshold crossings - make sure these are temporary timeSeries with synchLevel 9 in final versions! -->
+	<!--Calculation results - Heywood and Doctors -->
+	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
+	<variable>
+		<variableId>dH_Heywood_weekly_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Heywood_6days_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>6days</qualifierId>
+			<locationId>R_409016</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Doctors_weekly_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>weekly</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Doctors_6days_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>6days</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - individual threshold crossings -->
+	<!-- For use elsewhere in the workflow-->
+	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
 		<variableId>dH_thresh_hard_MittaMitta_1</variableId>
 		<timeSeriesSet>
@@ -571,22 +579,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--<variable>
-		<variableId>Q_thresh_soft_MittaMitta</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_401211A</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
 	<variable>
 		<variableId>Q_thresh_hard_Mulwala</variableId>
 		<timeSeriesSet>
@@ -635,38 +627,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--<variable>
-		<variableId>Q_thresh_hard_LakeVic</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_A4260502</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Q_thresh_soft_LakeVic</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_Q</parameterId>
-			<qualifierId>RO</qualifierId>
-			<qualifierId>tmp2</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_A4260502</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
 	<variable>
 		<variableId>V_Meninde</variableId>
 		<timeSeriesSet>
@@ -680,6 +640,25 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<variable>
+		<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_H</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>tmp3</qualifierId>
+			<qualifierId>special</qualifierId>
+			<locationId>R_409216A</locationId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Throughput - individual threshold crossings - LowDar-->
+	<!-- For use elsewhere in the workflow-->
+	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
 		<variableId>dQ_thresh_hard_LowDar_1</variableId>
 		<timeSeriesSet>
@@ -984,40 +963,11 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--Throughput - individual threshold crossings - Heywood and Doctors-->
+	<!-- For use elsewhere in the workflow-->
+	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
-		<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_H</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp3</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_409216A</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<!--<variable>
-		<variableId>dH_thresh_hard_Heywood_1</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp2</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_409016</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
-	<variable>
-		<variableId>dH_thresh_hard_Heywood_2</variableId>
+		<variableId>dH_thresh_hard_Heywood_tmp3</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1033,7 +983,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_hard_Heywood_3</variableId>
+		<variableId>dH_thresh_hard_Heywood_tmp4</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1048,24 +998,8 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--<variable>
-		<variableId>dH_thresh_hard_Doctors_1</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp5</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_409017</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
 	<variable>
-		<variableId>dH_thresh_hard_Doctors_2</variableId>
+		<variableId>dH_thresh_hard_Doctors_tmp6</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1081,7 +1015,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_hard_Doctors_3</variableId>
+		<variableId>dH_thresh_hard_Doctors_tmp7</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -1096,8 +1030,11 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
+	<!--========= START TRANSFORMATIONS ========= -->
+	<!--%%%%%%%%%%%%%%%%%%%%%%%%%-->
 	<!--Transformations - calc-->
-	<transformation id="MittaMitta_dH_hourly_24h">
+	<transformation id="dH_MittaMitta_hourly_24h">
 		<user>
 			<simple>
 				<expression>H_MittaMitta_hourly - H_MittaMitta_hourly_delay24h</expression>
@@ -1107,19 +1044,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<!--<transformation id="MittaMitta_Q_weeklyrolling">
-		<aggregation>
-			<instantaneousToMean>
-				<inputVariable>
-					<variableId>Q_MittaMitta</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Q_MittaMitta_weekly_rolling</variableId>
-				</outputVariable>
-			</instantaneousToMean>
-		</aggregation>
-	</transformation>-->
-	<transformation id="Mulwala_Q_related">
+	<transformation id="Q_related_Mulwala">
 		<lookup>
 			<simple>
 				<input>
@@ -1147,7 +1072,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</lookup>
 	</transformation>
-	<transformation id="Yarrawonga_Q_related">
+	<transformation id="Q_related_Yarrawonga">
 		<lookup>
 			<simple>
 				<input>
@@ -1173,617 +1098,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</lookup>
 	</transformation>
-	<!--<transformation id="LakeVic_Q_cap">
-		<lookup>
-			<simple>
-				<input>
-					<variableId>V_LakeVic</variableId>
-				</input>
-				<coefficientSet>
-					<interpolationType>linear</interpolationType>
-					<extrapolationType>maxmin</extrapolationType>
-					<lookupTable>
-						<lookupTableRow input="0" output="0"/>
-						<lookupTableRow input="100000" output="0"/>
-						<lookupTableRow input="101000" output="21"/>
-						<lookupTableRow input="102000" output="42"/>
-						<lookupTableRow input="103000" output="62"/>
-						<lookupTableRow input="104000" output="83"/>
-						<lookupTableRow input="105000" output="104"/>
-						<lookupTableRow input="106000" output="125"/>
-						<lookupTableRow input="107000" output="146"/>
-						<lookupTableRow input="108000" output="167"/>
-						<lookupTableRow input="109000" output="188"/>
-						<lookupTableRow input="110000" output="208"/>
-						<lookupTableRow input="111000" output="229"/>
-						<lookupTableRow input="112000" output="250"/>
-						<lookupTableRow input="113000" output="271"/>
-						<lookupTableRow input="114000" output="292"/>
-						<lookupTableRow input="115000" output="312"/>
-						<lookupTableRow input="116000" output="333"/>
-						<lookupTableRow input="117000" output="354"/>
-						<lookupTableRow input="118000" output="375"/>
-						<lookupTableRow input="119000" output="396"/>
-						<lookupTableRow input="120000" output="417"/>
-						<lookupTableRow input="121000" output="437"/>
-						<lookupTableRow input="122000" output="458"/>
-						<lookupTableRow input="123000" output="479"/>
-						<lookupTableRow input="124000" output="500"/>
-						<lookupTableRow input="125000" output="521"/>
-						<lookupTableRow input="126000" output="542"/>
-						<lookupTableRow input="127000" output="562"/>
-						<lookupTableRow input="128000" output="583"/>
-						<lookupTableRow input="129000" output="604"/>
-						<lookupTableRow input="130000" output="625"/>
-						<lookupTableRow input="131000" output="646"/>
-						<lookupTableRow input="132000" output="667"/>
-						<lookupTableRow input="133000" output="687"/>
-						<lookupTableRow input="134000" output="708"/>
-						<lookupTableRow input="135000" output="729"/>
-						<lookupTableRow input="136000" output="750"/>
-						<lookupTableRow input="137000" output="771"/>
-						<lookupTableRow input="138000" output="792"/>
-						<lookupTableRow input="139000" output="812"/>
-						<lookupTableRow input="140000" output="833"/>
-						<lookupTableRow input="141000" output="854"/>
-						<lookupTableRow input="142000" output="875"/>
-						<lookupTableRow input="143000" output="896"/>
-						<lookupTableRow input="144000" output="917"/>
-						<lookupTableRow input="145000" output="937"/>
-						<lookupTableRow input="146000" output="958"/>
-						<lookupTableRow input="147000" output="979"/>
-						<lookupTableRow input="148000" output="1000"/>
-						<lookupTableRow input="149000" output="1026"/>
-						<lookupTableRow input="150000" output="1052"/>
-						<lookupTableRow input="151000" output="1078"/>
-						<lookupTableRow input="152000" output="1104"/>
-						<lookupTableRow input="153000" output="1130"/>
-						<lookupTableRow input="154000" output="1157"/>
-						<lookupTableRow input="155000" output="1183"/>
-						<lookupTableRow input="156000" output="1209"/>
-						<lookupTableRow input="157000" output="1235"/>
-						<lookupTableRow input="158000" output="1261"/>
-						<lookupTableRow input="159000" output="1287"/>
-						<lookupTableRow input="160000" output="1313"/>
-						<lookupTableRow input="161000" output="1339"/>
-						<lookupTableRow input="162000" output="1365"/>
-						<lookupTableRow input="163000" output="1391"/>
-						<lookupTableRow input="164000" output="1417"/>
-						<lookupTableRow input="165000" output="1443"/>
-						<lookupTableRow input="166000" output="1470"/>
-						<lookupTableRow input="167000" output="1496"/>
-						<lookupTableRow input="168000" output="1522"/>
-						<lookupTableRow input="169000" output="1548"/>
-						<lookupTableRow input="170000" output="1574"/>
-						<lookupTableRow input="171000" output="1600"/>
-						<lookupTableRow input="172000" output="1663"/>
-						<lookupTableRow input="173000" output="1726"/>
-						<lookupTableRow input="174000" output="1789"/>
-						<lookupTableRow input="175000" output="1853"/>
-						<lookupTableRow input="176000" output="1916"/>
-						<lookupTableRow input="177000" output="1979"/>
-						<lookupTableRow input="178000" output="2042"/>
-						<lookupTableRow input="179000" output="2105"/>
-						<lookupTableRow input="180000" output="2168"/>
-						<lookupTableRow input="181000" output="2232"/>
-						<lookupTableRow input="182000" output="2295"/>
-						<lookupTableRow input="183000" output="2358"/>
-						<lookupTableRow input="184000" output="2421"/>
-						<lookupTableRow input="185000" output="2484"/>
-						<lookupTableRow input="186000" output="2547"/>
-						<lookupTableRow input="187000" output="2611"/>
-						<lookupTableRow input="188000" output="2674"/>
-						<lookupTableRow input="189000" output="2737"/>
-						<lookupTableRow input="190000" output="2800"/>
-						<lookupTableRow input="191000" output="2834"/>
-						<lookupTableRow input="192000" output="2868"/>
-						<lookupTableRow input="193000" output="2902"/>
-						<lookupTableRow input="194000" output="2936"/>
-						<lookupTableRow input="195000" output="2970"/>
-						<lookupTableRow input="196000" output="3004"/>
-						<lookupTableRow input="197000" output="3038"/>
-						<lookupTableRow input="198000" output="3072"/>
-						<lookupTableRow input="199000" output="3106"/>
-						<lookupTableRow input="200000" output="3140"/>
-						<lookupTableRow input="201000" output="3174"/>
-						<lookupTableRow input="202000" output="3208"/>
-						<lookupTableRow input="203000" output="3242"/>
-						<lookupTableRow input="204000" output="3276"/>
-						<lookupTableRow input="205000" output="3310"/>
-						<lookupTableRow input="206000" output="3344"/>
-						<lookupTableRow input="207000" output="3378"/>
-						<lookupTableRow input="208000" output="3412"/>
-						<lookupTableRow input="209000" output="3446"/>
-						<lookupTableRow input="210000" output="3480"/>
-						<lookupTableRow input="211000" output="3514"/>
-						<lookupTableRow input="212000" output="3548"/>
-						<lookupTableRow input="213000" output="3582"/>
-						<lookupTableRow input="214000" output="3616"/>
-						<lookupTableRow input="215000" output="3650"/>
-						<lookupTableRow input="216000" output="3684"/>
-						<lookupTableRow input="217000" output="3718"/>
-						<lookupTableRow input="218000" output="3752"/>
-						<lookupTableRow input="219000" output="3786"/>
-						<lookupTableRow input="220000" output="3820"/>
-						<lookupTableRow input="221000" output="3854"/>
-						<lookupTableRow input="222000" output="3888"/>
-						<lookupTableRow input="223000" output="3922"/>
-						<lookupTableRow input="224000" output="3956"/>
-						<lookupTableRow input="225000" output="3990"/>
-						<lookupTableRow input="226000" output="4024"/>
-						<lookupTableRow input="227000" output="4058"/>
-						<lookupTableRow input="228000" output="4092"/>
-						<lookupTableRow input="229000" output="4126"/>
-						<lookupTableRow input="230000" output="4160"/>
-						<lookupTableRow input="231000" output="4194"/>
-						<lookupTableRow input="232000" output="4228"/>
-						<lookupTableRow input="233000" output="4262"/>
-						<lookupTableRow input="234000" output="4296"/>
-						<lookupTableRow input="235000" output="4330"/>
-						<lookupTableRow input="236000" output="4364"/>
-						<lookupTableRow input="237000" output="4398"/>
-						<lookupTableRow input="238000" output="4432"/>
-						<lookupTableRow input="239000" output="4466"/>
-						<lookupTableRow input="240000" output="4500"/>
-						<lookupTableRow input="241000" output="4533"/>
-						<lookupTableRow input="242000" output="4565"/>
-						<lookupTableRow input="243000" output="4598"/>
-						<lookupTableRow input="244000" output="4630"/>
-						<lookupTableRow input="245000" output="4663"/>
-						<lookupTableRow input="246000" output="4695"/>
-						<lookupTableRow input="247000" output="4728"/>
-						<lookupTableRow input="248000" output="4760"/>
-						<lookupTableRow input="249000" output="4793"/>
-						<lookupTableRow input="250000" output="4825"/>
-						<lookupTableRow input="251000" output="4858"/>
-						<lookupTableRow input="252000" output="4890"/>
-						<lookupTableRow input="253000" output="4923"/>
-						<lookupTableRow input="254000" output="4955"/>
-						<lookupTableRow input="255000" output="4988"/>
-						<lookupTableRow input="256000" output="5020"/>
-						<lookupTableRow input="257000" output="5053"/>
-						<lookupTableRow input="258000" output="5085"/>
-						<lookupTableRow input="259000" output="5118"/>
-						<lookupTableRow input="260000" output="5150"/>
-						<lookupTableRow input="261000" output="5183"/>
-						<lookupTableRow input="262000" output="5215"/>
-						<lookupTableRow input="263000" output="5248"/>
-						<lookupTableRow input="264000" output="5280"/>
-						<lookupTableRow input="265000" output="5313"/>
-						<lookupTableRow input="266000" output="5345"/>
-						<lookupTableRow input="267000" output="5378"/>
-						<lookupTableRow input="268000" output="5410"/>
-						<lookupTableRow input="269000" output="5443"/>
-						<lookupTableRow input="270000" output="5475"/>
-						<lookupTableRow input="271000" output="5508"/>
-						<lookupTableRow input="272000" output="5540"/>
-						<lookupTableRow input="273000" output="5573"/>
-						<lookupTableRow input="274000" output="5605"/>
-						<lookupTableRow input="275000" output="5638"/>
-						<lookupTableRow input="276000" output="5670"/>
-						<lookupTableRow input="277000" output="5703"/>
-						<lookupTableRow input="278000" output="5735"/>
-						<lookupTableRow input="279000" output="5768"/>
-						<lookupTableRow input="280000" output="5800"/>
-						<lookupTableRow input="281000" output="5822"/>
-						<lookupTableRow input="282000" output="5844"/>
-						<lookupTableRow input="283000" output="5866"/>
-						<lookupTableRow input="284000" output="5888"/>
-						<lookupTableRow input="285000" output="5910"/>
-						<lookupTableRow input="286000" output="5932"/>
-						<lookupTableRow input="287000" output="5954"/>
-						<lookupTableRow input="288000" output="5976"/>
-						<lookupTableRow input="289000" output="5998"/>
-						<lookupTableRow input="290000" output="6020"/>
-						<lookupTableRow input="291000" output="6042"/>
-						<lookupTableRow input="292000" output="6064"/>
-						<lookupTableRow input="293000" output="6086"/>
-						<lookupTableRow input="294000" output="6108"/>
-						<lookupTableRow input="295000" output="6130"/>
-						<lookupTableRow input="296000" output="6152"/>
-						<lookupTableRow input="297000" output="6174"/>
-						<lookupTableRow input="298000" output="6196"/>
-						<lookupTableRow input="299000" output="6218"/>
-						<lookupTableRow input="300000" output="6240"/>
-						<lookupTableRow input="301000" output="6262"/>
-						<lookupTableRow input="302000" output="6284"/>
-						<lookupTableRow input="303000" output="6306"/>
-						<lookupTableRow input="304000" output="6328"/>
-						<lookupTableRow input="305000" output="6350"/>
-						<lookupTableRow input="306000" output="6372"/>
-						<lookupTableRow input="307000" output="6394"/>
-						<lookupTableRow input="308000" output="6416"/>
-						<lookupTableRow input="309000" output="6438"/>
-						<lookupTableRow input="310000" output="6460"/>
-						<lookupTableRow input="311000" output="6482"/>
-						<lookupTableRow input="312000" output="6504"/>
-						<lookupTableRow input="313000" output="6526"/>
-						<lookupTableRow input="314000" output="6548"/>
-						<lookupTableRow input="315000" output="6570"/>
-						<lookupTableRow input="316000" output="6592"/>
-						<lookupTableRow input="317000" output="6614"/>
-						<lookupTableRow input="318000" output="6636"/>
-						<lookupTableRow input="319000" output="6658"/>
-						<lookupTableRow input="320000" output="6680"/>
-						<lookupTableRow input="321000" output="6702"/>
-						<lookupTableRow input="322000" output="6724"/>
-						<lookupTableRow input="323000" output="6746"/>
-						<lookupTableRow input="324000" output="6768"/>
-						<lookupTableRow input="325000" output="6790"/>
-						<lookupTableRow input="326000" output="6812"/>
-						<lookupTableRow input="327000" output="6834"/>
-						<lookupTableRow input="328000" output="6856"/>
-						<lookupTableRow input="329000" output="6878"/>
-						<lookupTableRow input="330000" output="6900"/>
-						<lookupTableRow input="331000" output="6913"/>
-						<lookupTableRow input="332000" output="6927"/>
-						<lookupTableRow input="333000" output="6940"/>
-						<lookupTableRow input="334000" output="6953"/>
-						<lookupTableRow input="335000" output="6967"/>
-						<lookupTableRow input="336000" output="6980"/>
-						<lookupTableRow input="337000" output="6993"/>
-						<lookupTableRow input="338000" output="7007"/>
-						<lookupTableRow input="339000" output="7020"/>
-						<lookupTableRow input="340000" output="7033"/>
-						<lookupTableRow input="341000" output="7047"/>
-						<lookupTableRow input="342000" output="7060"/>
-						<lookupTableRow input="343000" output="7073"/>
-						<lookupTableRow input="344000" output="7087"/>
-						<lookupTableRow input="345000" output="7100"/>
-						<lookupTableRow input="346000" output="7113"/>
-						<lookupTableRow input="347000" output="7127"/>
-						<lookupTableRow input="348000" output="7140"/>
-						<lookupTableRow input="349000" output="7153"/>
-						<lookupTableRow input="350000" output="7167"/>
-						<lookupTableRow input="351000" output="7180"/>
-						<lookupTableRow input="352000" output="7193"/>
-						<lookupTableRow input="353000" output="7207"/>
-						<lookupTableRow input="354000" output="7220"/>
-						<lookupTableRow input="355000" output="7233"/>
-						<lookupTableRow input="356000" output="7247"/>
-						<lookupTableRow input="357000" output="7260"/>
-						<lookupTableRow input="358000" output="7273"/>
-						<lookupTableRow input="359000" output="7287"/>
-						<lookupTableRow input="360000" output="7300"/>
-						<lookupTableRow input="361000" output="7315"/>
-						<lookupTableRow input="362000" output="7330"/>
-						<lookupTableRow input="363000" output="7345"/>
-						<lookupTableRow input="364000" output="7360"/>
-						<lookupTableRow input="365000" output="7375"/>
-						<lookupTableRow input="366000" output="7390"/>
-						<lookupTableRow input="367000" output="7405"/>
-						<lookupTableRow input="368000" output="7420"/>
-						<lookupTableRow input="369000" output="7435"/>
-						<lookupTableRow input="370000" output="7450"/>
-						<lookupTableRow input="371000" output="7465"/>
-						<lookupTableRow input="372000" output="7480"/>
-						<lookupTableRow input="373000" output="7495"/>
-						<lookupTableRow input="374000" output="7510"/>
-						<lookupTableRow input="375000" output="7525"/>
-						<lookupTableRow input="376000" output="7540"/>
-						<lookupTableRow input="377000" output="7555"/>
-						<lookupTableRow input="378000" output="7570"/>
-						<lookupTableRow input="379000" output="7585"/>
-						<lookupTableRow input="380000" output="7600"/>
-						<lookupTableRow input="381000" output="7615"/>
-						<lookupTableRow input="382000" output="7630"/>
-						<lookupTableRow input="383000" output="7645"/>
-						<lookupTableRow input="384000" output="7660"/>
-						<lookupTableRow input="385000" output="7675"/>
-						<lookupTableRow input="386000" output="7690"/>
-						<lookupTableRow input="387000" output="7705"/>
-						<lookupTableRow input="388000" output="7720"/>
-						<lookupTableRow input="389000" output="7735"/>
-						<lookupTableRow input="390000" output="7750"/>
-						<lookupTableRow input="391000" output="7765"/>
-						<lookupTableRow input="392000" output="7780"/>
-						<lookupTableRow input="393000" output="7795"/>
-						<lookupTableRow input="394000" output="7810"/>
-						<lookupTableRow input="395000" output="7825"/>
-						<lookupTableRow input="396000" output="7840"/>
-						<lookupTableRow input="397000" output="7855"/>
-						<lookupTableRow input="398000" output="7870"/>
-						<lookupTableRow input="399000" output="7885"/>
-						<lookupTableRow input="400000" output="7900"/>
-						<lookupTableRow input="401000" output="7908"/>
-						<lookupTableRow input="402000" output="7916"/>
-						<lookupTableRow input="403000" output="7924"/>
-						<lookupTableRow input="404000" output="7932"/>
-						<lookupTableRow input="405000" output="7940"/>
-						<lookupTableRow input="406000" output="7948"/>
-						<lookupTableRow input="407000" output="7956"/>
-						<lookupTableRow input="408000" output="7964"/>
-						<lookupTableRow input="409000" output="7972"/>
-						<lookupTableRow input="410000" output="7980"/>
-						<lookupTableRow input="411000" output="7988"/>
-						<lookupTableRow input="412000" output="7996"/>
-						<lookupTableRow input="413000" output="8004"/>
-						<lookupTableRow input="414000" output="8012"/>
-						<lookupTableRow input="415000" output="8020"/>
-						<lookupTableRow input="416000" output="8028"/>
-						<lookupTableRow input="417000" output="8036"/>
-						<lookupTableRow input="418000" output="8044"/>
-						<lookupTableRow input="419000" output="8052"/>
-						<lookupTableRow input="420000" output="8060"/>
-						<lookupTableRow input="421000" output="8068"/>
-						<lookupTableRow input="422000" output="8076"/>
-						<lookupTableRow input="423000" output="8084"/>
-						<lookupTableRow input="424000" output="8092"/>
-						<lookupTableRow input="425000" output="8100"/>
-						<lookupTableRow input="426000" output="8108"/>
-						<lookupTableRow input="427000" output="8116"/>
-						<lookupTableRow input="428000" output="8124"/>
-						<lookupTableRow input="429000" output="8132"/>
-						<lookupTableRow input="430000" output="8140"/>
-						<lookupTableRow input="431000" output="8148"/>
-						<lookupTableRow input="432000" output="8156"/>
-						<lookupTableRow input="433000" output="8164"/>
-						<lookupTableRow input="434000" output="8172"/>
-						<lookupTableRow input="435000" output="8180"/>
-						<lookupTableRow input="436000" output="8188"/>
-						<lookupTableRow input="437000" output="8196"/>
-						<lookupTableRow input="438000" output="8204"/>
-						<lookupTableRow input="439000" output="8212"/>
-						<lookupTableRow input="440000" output="8220"/>
-						<lookupTableRow input="441000" output="8228"/>
-						<lookupTableRow input="442000" output="8236"/>
-						<lookupTableRow input="443000" output="8244"/>
-						<lookupTableRow input="444000" output="8252"/>
-						<lookupTableRow input="445000" output="8260"/>
-						<lookupTableRow input="446000" output="8268"/>
-						<lookupTableRow input="447000" output="8276"/>
-						<lookupTableRow input="448000" output="8284"/>
-						<lookupTableRow input="449000" output="8292"/>
-						<lookupTableRow input="450000" output="8300"/>
-						<lookupTableRow input="451000" output="8301"/>
-						<lookupTableRow input="452000" output="8302"/>
-						<lookupTableRow input="453000" output="8303"/>
-						<lookupTableRow input="454000" output="8304"/>
-						<lookupTableRow input="455000" output="8305"/>
-						<lookupTableRow input="456000" output="8306"/>
-						<lookupTableRow input="457000" output="8307"/>
-						<lookupTableRow input="458000" output="8308"/>
-						<lookupTableRow input="459000" output="8309"/>
-						<lookupTableRow input="460000" output="8310"/>
-						<lookupTableRow input="461000" output="8311"/>
-						<lookupTableRow input="462000" output="8312"/>
-						<lookupTableRow input="463000" output="8313"/>
-						<lookupTableRow input="464000" output="8314"/>
-						<lookupTableRow input="465000" output="8315"/>
-						<lookupTableRow input="466000" output="8316"/>
-						<lookupTableRow input="467000" output="8317"/>
-						<lookupTableRow input="468000" output="8318"/>
-						<lookupTableRow input="469000" output="8319"/>
-						<lookupTableRow input="470000" output="8320"/>
-						<lookupTableRow input="471000" output="8321"/>
-						<lookupTableRow input="472000" output="8322"/>
-						<lookupTableRow input="473000" output="8323"/>
-						<lookupTableRow input="474000" output="8324"/>
-						<lookupTableRow input="475000" output="8325"/>
-						<lookupTableRow input="476000" output="8326"/>
-						<lookupTableRow input="477000" output="8327"/>
-						<lookupTableRow input="478000" output="8328"/>
-						<lookupTableRow input="479000" output="8329"/>
-						<lookupTableRow input="480000" output="8330"/>
-						<lookupTableRow input="481000" output="8331"/>
-						<lookupTableRow input="482000" output="8332"/>
-						<lookupTableRow input="483000" output="8333"/>
-						<lookupTableRow input="484000" output="8334"/>
-						<lookupTableRow input="485000" output="8335"/>
-						<lookupTableRow input="486000" output="8336"/>
-						<lookupTableRow input="487000" output="8337"/>
-						<lookupTableRow input="488000" output="8338"/>
-						<lookupTableRow input="489000" output="8339"/>
-						<lookupTableRow input="490000" output="8340"/>
-						<lookupTableRow input="491000" output="8341"/>
-						<lookupTableRow input="492000" output="8342"/>
-						<lookupTableRow input="493000" output="8343"/>
-						<lookupTableRow input="494000" output="8344"/>
-						<lookupTableRow input="495000" output="8345"/>
-						<lookupTableRow input="496000" output="8346"/>
-						<lookupTableRow input="497000" output="8347"/>
-						<lookupTableRow input="498000" output="8348"/>
-						<lookupTableRow input="499000" output="8349"/>
-						<lookupTableRow input="500000" output="8350"/>
-						<lookupTableRow input="501000" output="8351"/>
-						<lookupTableRow input="502000" output="8352"/>
-						<lookupTableRow input="503000" output="8353"/>
-						<lookupTableRow input="504000" output="8354"/>
-						<lookupTableRow input="505000" output="8355"/>
-						<lookupTableRow input="506000" output="8356"/>
-						<lookupTableRow input="507000" output="8357"/>
-						<lookupTableRow input="508000" output="8358"/>
-						<lookupTableRow input="509000" output="8359"/>
-						<lookupTableRow input="510000" output="8360"/>
-						<lookupTableRow input="511000" output="8361"/>
-						<lookupTableRow input="512000" output="8362"/>
-						<lookupTableRow input="513000" output="8363"/>
-						<lookupTableRow input="514000" output="8364"/>
-						<lookupTableRow input="515000" output="8365"/>
-						<lookupTableRow input="516000" output="8366"/>
-						<lookupTableRow input="517000" output="8367"/>
-						<lookupTableRow input="518000" output="8368"/>
-						<lookupTableRow input="519000" output="8369"/>
-						<lookupTableRow input="520000" output="8370"/>
-						<lookupTableRow input="521000" output="8371"/>
-						<lookupTableRow input="522000" output="8372"/>
-						<lookupTableRow input="523000" output="8373"/>
-						<lookupTableRow input="524000" output="8374"/>
-						<lookupTableRow input="525000" output="8375"/>
-						<lookupTableRow input="526000" output="8376"/>
-						<lookupTableRow input="527000" output="8377"/>
-						<lookupTableRow input="528000" output="8378"/>
-						<lookupTableRow input="529000" output="8379"/>
-						<lookupTableRow input="530000" output="8380"/>
-						<lookupTableRow input="531000" output="8381"/>
-						<lookupTableRow input="532000" output="8382"/>
-						<lookupTableRow input="533000" output="8383"/>
-						<lookupTableRow input="534000" output="8384"/>
-						<lookupTableRow input="535000" output="8385"/>
-						<lookupTableRow input="536000" output="8386"/>
-						<lookupTableRow input="537000" output="8387"/>
-						<lookupTableRow input="538000" output="8388"/>
-						<lookupTableRow input="539000" output="8389"/>
-						<lookupTableRow input="540000" output="8390"/>
-						<lookupTableRow input="541000" output="8391"/>
-						<lookupTableRow input="542000" output="8392"/>
-						<lookupTableRow input="543000" output="8393"/>
-						<lookupTableRow input="544000" output="8394"/>
-						<lookupTableRow input="545000" output="8395"/>
-						<lookupTableRow input="546000" output="8396"/>
-						<lookupTableRow input="547000" output="8397"/>
-						<lookupTableRow input="548000" output="8398"/>
-						<lookupTableRow input="549000" output="8399"/>
-						<lookupTableRow input="550000" output="8400"/>
-						<lookupTableRow input="551000" output="8401"/>
-						<lookupTableRow input="552000" output="8402"/>
-						<lookupTableRow input="553000" output="8403"/>
-						<lookupTableRow input="554000" output="8404"/>
-						<lookupTableRow input="555000" output="8405"/>
-						<lookupTableRow input="556000" output="8406"/>
-						<lookupTableRow input="557000" output="8407"/>
-						<lookupTableRow input="558000" output="8408"/>
-						<lookupTableRow input="559000" output="8409"/>
-						<lookupTableRow input="560000" output="8410"/>
-						<lookupTableRow input="561000" output="8411"/>
-						<lookupTableRow input="562000" output="8412"/>
-						<lookupTableRow input="563000" output="8413"/>
-						<lookupTableRow input="564000" output="8414"/>
-						<lookupTableRow input="565000" output="8415"/>
-						<lookupTableRow input="566000" output="8416"/>
-						<lookupTableRow input="567000" output="8417"/>
-						<lookupTableRow input="568000" output="8418"/>
-						<lookupTableRow input="569000" output="8419"/>
-						<lookupTableRow input="570000" output="8420"/>
-						<lookupTableRow input="571000" output="8421"/>
-						<lookupTableRow input="572000" output="8422"/>
-						<lookupTableRow input="573000" output="8423"/>
-						<lookupTableRow input="574000" output="8424"/>
-						<lookupTableRow input="575000" output="8425"/>
-						<lookupTableRow input="576000" output="8426"/>
-						<lookupTableRow input="577000" output="8427"/>
-						<lookupTableRow input="578000" output="8428"/>
-						<lookupTableRow input="579000" output="8429"/>
-						<lookupTableRow input="580000" output="8430"/>
-						<lookupTableRow input="581000" output="8431"/>
-						<lookupTableRow input="582000" output="8432"/>
-						<lookupTableRow input="583000" output="8433"/>
-						<lookupTableRow input="584000" output="8434"/>
-						<lookupTableRow input="585000" output="8435"/>
-						<lookupTableRow input="586000" output="8436"/>
-						<lookupTableRow input="587000" output="8437"/>
-						<lookupTableRow input="588000" output="8438"/>
-						<lookupTableRow input="589000" output="8439"/>
-						<lookupTableRow input="590000" output="8440"/>
-						<lookupTableRow input="591000" output="8441"/>
-						<lookupTableRow input="592000" output="8442"/>
-						<lookupTableRow input="593000" output="8443"/>
-						<lookupTableRow input="594000" output="8444"/>
-						<lookupTableRow input="595000" output="8445"/>
-						<lookupTableRow input="596000" output="8446"/>
-						<lookupTableRow input="597000" output="8447"/>
-						<lookupTableRow input="598000" output="8448"/>
-						<lookupTableRow input="599000" output="8449"/>
-						<lookupTableRow input="600000" output="8450"/>
-						<lookupTableRow input="601000" output="8451"/>
-						<lookupTableRow input="602000" output="8452"/>
-						<lookupTableRow input="603000" output="8453"/>
-						<lookupTableRow input="604000" output="8454"/>
-						<lookupTableRow input="605000" output="8455"/>
-						<lookupTableRow input="606000" output="8456"/>
-						<lookupTableRow input="607000" output="8457"/>
-						<lookupTableRow input="608000" output="8458"/>
-						<lookupTableRow input="609000" output="8459"/>
-						<lookupTableRow input="610000" output="8460"/>
-						<lookupTableRow input="611000" output="8461"/>
-						<lookupTableRow input="612000" output="8462"/>
-						<lookupTableRow input="613000" output="8463"/>
-						<lookupTableRow input="614000" output="8464"/>
-						<lookupTableRow input="615000" output="8465"/>
-						<lookupTableRow input="616000" output="8466"/>
-						<lookupTableRow input="617000" output="8467"/>
-						<lookupTableRow input="618000" output="8468"/>
-						<lookupTableRow input="619000" output="8469"/>
-						<lookupTableRow input="620000" output="8470"/>
-						<lookupTableRow input="621000" output="8471"/>
-						<lookupTableRow input="622000" output="8472"/>
-						<lookupTableRow input="623000" output="8473"/>
-						<lookupTableRow input="624000" output="8474"/>
-						<lookupTableRow input="625000" output="8475"/>
-						<lookupTableRow input="626000" output="8476"/>
-						<lookupTableRow input="627000" output="8477"/>
-						<lookupTableRow input="628000" output="8478"/>
-						<lookupTableRow input="629000" output="8479"/>
-						<lookupTableRow input="630000" output="8480"/>
-						<lookupTableRow input="631000" output="8481"/>
-						<lookupTableRow input="632000" output="8482"/>
-						<lookupTableRow input="633000" output="8483"/>
-						<lookupTableRow input="634000" output="8484"/>
-						<lookupTableRow input="635000" output="8485"/>
-						<lookupTableRow input="636000" output="8486"/>
-						<lookupTableRow input="637000" output="8487"/>
-						<lookupTableRow input="638000" output="8488"/>
-						<lookupTableRow input="639000" output="8489"/>
-						<lookupTableRow input="640000" output="8490"/>
-						<lookupTableRow input="641000" output="8491"/>
-						<lookupTableRow input="642000" output="8492"/>
-						<lookupTableRow input="643000" output="8493"/>
-						<lookupTableRow input="644000" output="8494"/>
-						<lookupTableRow input="645000" output="8495"/>
-						<lookupTableRow input="646000" output="8496"/>
-						<lookupTableRow input="647000" output="8497"/>
-						<lookupTableRow input="648000" output="8498"/>
-						<lookupTableRow input="649000" output="8499"/>
-						<lookupTableRow input="650000" output="8500"/>
-						<lookupTableRow input="651000" output="8501"/>
-						<lookupTableRow input="652000" output="8502"/>
-						<lookupTableRow input="653000" output="8503"/>
-						<lookupTableRow input="654000" output="8504"/>
-						<lookupTableRow input="655000" output="8505"/>
-						<lookupTableRow input="656000" output="8506"/>
-						<lookupTableRow input="657000" output="8507"/>
-						<lookupTableRow input="658000" output="8508"/>
-						<lookupTableRow input="659000" output="8509"/>
-						<lookupTableRow input="660000" output="8510"/>
-						<lookupTableRow input="661000" output="8511"/>
-						<lookupTableRow input="662000" output="8512"/>
-						<lookupTableRow input="663000" output="8513"/>
-						<lookupTableRow input="664000" output="8514"/>
-						<lookupTableRow input="665000" output="8515"/>
-						<lookupTableRow input="666000" output="8516"/>
-						<lookupTableRow input="667000" output="8517"/>
-						<lookupTableRow input="668000" output="8518"/>
-						<lookupTableRow input="669000" output="8519"/>
-						<lookupTableRow input="670000" output="8520"/>
-						<lookupTableRow input="671000" output="8521"/>
-						<lookupTableRow input="672000" output="8522"/>
-						<lookupTableRow input="673000" output="8523"/>
-						<lookupTableRow input="674000" output="8524"/>
-						<lookupTableRow input="675000" output="8525"/>
-						<lookupTableRow input="676000" output="8526"/>
-						<lookupTableRow input="677000" output="8527"/>
-						<lookupTableRow input="678000" output="8528"/>
-						<lookupTableRow input="679000" output="8529"/>
-						<lookupTableRow input="680000" output="9000"/>
-					</lookupTable>
-				</coefficientSet>
-				<output>
-					<variableId>Q_cap_LakeVic</variableId>
-				</output>
-			</simple>
-		</lookup>
-	</transformation>
-	<transformation id="LakeVic_Q-QCAP">
-		<user>
-			<simple>
-				<expression>Q_cap_LakeVic - Q_LakeVic</expression>
-				<outputVariable>
-					<variableId>Q_delta_LakeVic</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
-	<transformation id="LowDar_dQ">
+	<transformation id="dQ_LowDar">
 		<user>
 			<simple>
 				<expression>Q_LowDar - Q_delay_LowDar</expression>
@@ -1793,7 +1108,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="LowDar_Q_JanFebMar">
+	<transformation id="Q_LowDar_JanFebMar">
 		<periodTransformation>
 			<period>
 				<season>
@@ -1813,7 +1128,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</aggregation>
 		</periodTransformation>
 	</transformation>
-	<transformation id="LowDar_Q_Apr">
+	<transformation id="Q_LowDar_Apr">
 		<periodTransformation>
 			<period>
 				<season>
@@ -1833,7 +1148,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</aggregation>
 		</periodTransformation>
 	</transformation>
-	<transformation id="LowDar_Q_NovDec">
+	<transformation id="Q_LowDar_NovDec">
 		<periodTransformation>
 			<period>
 				<season>
@@ -1853,7 +1168,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</aggregation>
 		</periodTransformation>
 	</transformation>
-	<transformation id="LowDar_Q_May-Oct">
+	<transformation id="Q_LowDar_MaythruOct">
 		<periodTransformation>
 			<period>
 				<season>
@@ -1873,20 +1188,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</aggregation>
 		</periodTransformation>
 	</transformation>
-	<!--<transformation id="Dartmouth_VPCT">
-		<user>
-			<simple>
-				<expression>(V_Dartmouth / FSV)*100</expression>
-				<coefficientSetFunctions>
-					<coefficient id="FSV" value="%FSV%"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>VPCT_Dartmouth</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
-	<transformation id="MittaMitta_related_VPCT_inverted">
+	<transformation id="VPCT_MittaMitta_related_inverted">
 		<user>
 			<simple>
 				<expression>100 - VPCT_Dartmouth</expression>
@@ -1896,7 +1198,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="YarrawongaStorage_H_DecJan">
+	<transformation id="H_YarrawongaStorage_DecJan">
 		<periodTransformation>
 			<period>
 				<season>
@@ -1916,11 +1218,12 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</aggregation>
 		</periodTransformation>
 	</transformation>
-	<transformation id="Heywood_dH_weeklyrolling">
+	<!--Transformations - calc - Heywood and Doctors-->
+	<transformation id="dH_Heywood_weekly_rolling">
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Heywood</variableId>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Heywood_weekly_rolling</variableId>
@@ -1928,11 +1231,23 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</meanToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="Doctors_dH_weeklyrolling">
+	<transformation id="dH_Heywood_6days_rolling">
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Doctors</variableId>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_Heywood_6days_rolling</variableId>
+				</outputVariable>
+			</meanToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="dH_Doctors_weekly_rolling">
+		<aggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Doctors_weekly_rolling</variableId>
@@ -1940,7 +1255,19 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</meanToMean>
 		</aggregation>
 	</transformation>
-	<!--Transformations - thresholds temporary-->
+	<transformation id="dH_Doctors_6days_rolling">
+		<aggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_Doctors_6days_rolling</variableId>
+				</outputVariable>
+			</meanToMean>
+		</aggregation>
+	</transformation>
+	<!--Transformations - througput thresholds-->
 	<transformation id="MittaMitta_dH_thresh_hard_1">
 		<user>
 			<simple>
@@ -2026,37 +1353,6 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<!--<transformation id="MittaMitta_Q_thresh_soft">
-		<user>
-			<simple>
-				<limitVariable>
-					<variableId>VPCT_MittaMitta_related_inverted</variableId>
-				</limitVariable>
-				<expression>if (Q_MittaMitta_weekly_rolling &lt;= Q_thresh_soft, 301, 1/0)</expression>
-				<coefficientSet>
-					<upperLimit>20</upperLimit>
-					<coefficient id="Q_thresh_soft" value="500"/>
-				</coefficientSet>
-				<coefficientSet>
-					<lowerLimit>20</lowerLimit>
-					<upperLimit>30</upperLimit>
-					<coefficient id="Q_thresh_soft" value="400"/>
-				</coefficientSet>
-				<coefficientSet>
-					<lowerLimit>30</lowerLimit>
-					<upperLimit>40</upperLimit>
-					<coefficient id="Q_thresh_soft" value="300"/>
-				</coefficientSet>
-				<coefficientSet>
-					<lowerLimit>40</lowerLimit>
-					<coefficient id="Q_thresh_soft" value="NaN"/>
-				</coefficientSet>
-				<outputVariable>
-					<variableId>Q_thresh_soft_MittaMitta</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
 	<transformation id="Mulwala_Q_thresh_hard">
 		<user>
 			<simple>
@@ -2095,32 +1391,20 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<!--<transformation id="LakeVic_Q_thresh_hard">
+	<transformation id="YarrawongStorage_H_thresh_soft_DecJan">
 		<user>
 			<simple>
-				<expression>if ( Q_delta_LakeVic  &lt; Q_S_HARD_1, 302, 1/0)</expression>
+				<expression>if ( H_YarrawongaStorage_DecJan &lt; H_S_SOFT_1 - 0.0001, 101, 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="Q_S_HARD_1" value="@Q-QCAP_LT_HARD@"/>
+					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
-					<variableId>Q_thresh_hard_LakeVic</variableId>
+					<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
 				</outputVariable>
 			</simple>
 		</user>
-	</transformation>-->
-	<!--<transformation id="LakeVic_Q_thresh_soft">
-		<user>
-			<simple>
-				<expression>if ( Q_delta_LakeVic  &lt; Q_S_SOFT_1, 301, 1/0)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="Q_S_SOFT_1" value="@Q-QCAP_LT_SOFT@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>Q_thresh_soft_LakeVic</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
+	</transformation>
+	<!--Transformations - througput thresholds - LowDar-->
 	<transformation id="LowDar_dQ_thresh_hard_1">
 		<user>
 			<simple>
@@ -2199,7 +1483,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-		<transformation id="LowDar_dQ_thresh_soft_1">
+	<transformation id="LowDar_dQ_thresh_soft_1">
 		<user>
 			<simple>
 				<expression>if (V_Meninde &gt; V_S_COND_2, if(V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_2, if ( dQ_LowDar &lt; dQ_S_HARD_1 - 0.0001, 401, 1/0), 1/0), 1/0),1/0)</expression>
@@ -2237,7 +1521,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<simple>
 				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &lt;= Q_S_COND_1, if ( dQ_LowDar &gt; dQ_S_HARD_3 + 0.0001, 401, 1/0), 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>				
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
 					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_3" value="@dQ_S_HARD_3@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
@@ -2253,7 +1537,7 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			<simple>
 				<expression>if (V_Meninde &gt; V_S_COND_2, if (V_Meninde &lt; V_S_COND_1, if ( Q_LowDar &gt; Q_S_COND_1 + 0.0001, if ( Q_LowDar &lt;= Q_S_COND_2, if(dQ_LowDar &gt; dQ_S_HARD_4 + 0.0001, 401, 1/0), 1/0), 1/0), 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
-					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>				
+					<coefficient id="V_S_COND_2" value="@V_S_COND_2@"/>
 					<coefficient id="V_S_COND_1" value="@V_S_COND_1@"/>
 					<coefficient id="dQ_S_HARD_4" value="@dQ_S_HARD_4@"/>
 					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
@@ -2408,117 +1692,71 @@ This means that in the end only one timeseries with threshold flags is stored fo
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="YarrawongStorage_H_thresh_soft_DecJan">
-		<user>
-			<simple>
-				<expression>if ( H_YarrawongaStorage_DecJan &lt; H_S_SOFT_1 - 0.0001, 101, 1/0)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="H_S_SOFT_1" value="@H_S_SOFT_1@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>H_thresh_soft_YarraStorage_DJ</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<!--<transformation id="Heywood_dH_thresh_hard1">
+	<!--Transformations - throughput thresholds - Heywood and Doctors-->
+	<transformation id="dH_thresh_hard_Heywood_tmp3">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_S_COND_1, if(dH_Heywood &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
-					<coefficient id="Q_S_COND_1" value="12000"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>dH_thresh_hard_Heywood_1</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
-	<transformation id="Heywood_dH_thresh_hard2">
-		<user>
-			<simple>
-				<limitVariable>
-					<variableId>Q_Doctors</variableId>
-				</limitVariable>
-				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Heywood &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Fall_Heywood_24hmax &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
 					<coefficient id="Q_GT_HARD" value="25000"/>
 				</coefficientSetFunctions>
 				<outputVariable>
-					<variableId>dH_thresh_hard_Heywood_2</variableId>
+					<variableId>dH_thresh_hard_Heywood_tmp3</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Heywood_dH_thresh_hard3">
+	<transformation id="dH_thresh_hard_Heywood_tmp4">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Heywood_weekly_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Heywood_6days_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="Q_GT_HARD" value="25000"/>
 				</coefficientSetFunctions>
 				<outputVariable>
-					<variableId>dH_thresh_hard_Heywood_3</variableId>
+					<variableId>dH_thresh_hard_Heywood_tmp4</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<!--<transformation id="Doctors_dH_thresh_hard1">
+	<transformation id="dH_thresh_hard_Doctors_tmp6">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_S_COND_1, if(dH_Doctors &lt; dH_S_HARD_1, 202, 1/0), 1/0)</expression>
-				<coefficientSetFunctions>
-					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
-					<coefficient id="Q_S_COND_1" value="@Q_S_COND_1@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>dH_thresh_hard_Doctors_1</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
-	<transformation id="Doctors_dH_thresh_hard2">
-		<user>
-			<simple>
-				<limitVariable>
-					<variableId>Q_Doctors</variableId>
-				</limitVariable>
-				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Doctors &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt;Q_GT_HARD - 0.0001, if(dH_Fall_Doctors_24hmax &lt; dH_S_HARD_2 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_2" value="@dH_S_HARD_2@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
-					<variableId>dH_thresh_hard_Doctors_2</variableId>
+					<variableId>dH_thresh_hard_Doctors_tmp6</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Doctors_dH_thresh_hard3">
+	<transformation id="dH_thresh_hard_Doctors_tmp7">
 		<user>
 			<simple>
 				<limitVariable>
 					<variableId>Q_Doctors</variableId>
 				</limitVariable>
-				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Doctors_weekly_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
+				<expression>if (Q_Doctors &lt; Q_GT_HARD - 0.0001, if(dH_Doctors_6days_rolling &lt; dH_S_HARD_1 - 0.0001, 202, 1/0), 1/0)</expression>
 				<coefficientSetFunctions>
 					<coefficient id="dH_S_HARD_1" value="@dH_S_HARD_1@"/>
 					<coefficient id="Q_GT_HARD" value="@Q_GT_HARD@"/>
 				</coefficientSetFunctions>
 				<outputVariable>
-					<variableId>dH_thresh_hard_Doctors_3</variableId>
+					<variableId>dH_thresh_hard_Doctors_tmp7</variableId>
 				</outputVariable>
 			</simple>
 		</user>

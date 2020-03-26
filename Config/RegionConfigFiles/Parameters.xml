@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parameters version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/parameters.xsd">
+	<enumerations>
+		<enumeration id="Threshold_Counted">
+			<value code="0" label="NOT counted"/>
+			<value code="1" label="counted"/>
+		</enumeration>
+	</enumerations>
 	<parameterGroups>
 		<displayUnitConversionsId>ImportUnitConversions</displayUnitConversionsId>
 		<ratingCurveStageParameterId>H_obs</ratingCurveStageParameterId>
@@ -29,7 +35,6 @@
 			<parameterType>instantaneous</parameterType>
 			<unit>m/d</unit>
 			<valueResolution>0.001</valueResolution>
-			<!--			<usesDatum>true</usesDatum>-->
 			<parameter id="dH" name="Water Level change">
 				<shortName>dH</shortName>
 			</parameter>
@@ -71,6 +76,7 @@
 			</parameter>
 			<parameter id="Q_release" name="Flow reservoir outflow forecast">
 				<shortName>Q_release</shortName>
+				<allowMissing>false</allowMissing>
 			</parameter>
 			<parameter id="Q_release_scen" name="Flow reservoir outflow scenario forecast">
 				<shortName>Q_release_scen</shortName>
@@ -122,6 +128,21 @@
 			</parameter>
 			<parameter id="QRL_fcst" name="Release Flow forecast">
 				<shortName>QRL_fcst</shortName>
+			</parameter>
+			<parameter id="QTURB_obs" name="Turbined Flow observed">
+				<shortName>QTURB_obs</shortName>
+			</parameter>
+			<parameter id="QTURB_fcst" name="Turbined Flow forecast">
+				<shortName>QTURB_fcst</shortName>
+			</parameter>
+			<parameter id="QSPILL_obs" name="Spilled Flow observed">
+				<shortName>QSPILL_obs</shortName>
+			</parameter>
+			<parameter id="QSPILL_fcst" name="Spilled Flow forecast">
+				<shortName>QSPILL_fcst</shortName>
+			</parameter>
+			<parameter id="QBOTT_fcst" name="Bottom Outlet Flow forecast">
+				<shortName>QBOTT_fcst</shortName>
 			</parameter>
 			<parameter id="QL_obs" name="Loss observed">
 				<shortName>QL_obs</shortName>
@@ -182,7 +203,6 @@
 		<parameterGroup id="Flow change">
 			<parameterType>instantaneous</parameterType>
 			<unit>ML/day</unit>
-			<!-- <displayUnit>GL/day</displayUnit> -->
 			<valueResolution>1</valueResolution>
 			<parameter id="dQ" name="Flow rate change">
 				<shortName>dQ</shortName>
@@ -191,9 +211,6 @@
 		<parameterGroup id="Storage Volume">
 			<parameterType>instantaneous</parameterType>
 			<unit>ML</unit>
-			<!-- Disabled as this is making time series display plots to have 4 digit precision
- 			<displayUnit>GL</displayUnit>
-			-->
 			<valueResolution>1</valueResolution>
 			<usesDatum/>
 			<parameter id="V_obs" name="Storage Volume observed">
@@ -224,16 +241,34 @@
 				<shortName>V_undel</shortName>
 			</parameter>
 		</parameterGroup>
+		<parameterGroup id="Storage Volume [GL]">
+			<parameterType>instantaneous</parameterType>
+			<unit>GL</unit>
+			<valueResolution>1</valueResolution>
+			<usesDatum/>
+			<parameter id="V_GL" name="Storage Volume [GL]">
+				<shortName>V_GL</shortName>
+			</parameter>
+		</parameterGroup>
 		<parameterGroup id="Storage Volume change">
 			<parameterType>instantaneous</parameterType>
 			<unit>ML/day</unit>
-			<!-- Disabled as this is making time series display plots to have 4 digit precision
- 			<displayUnit>GL</displayUnit>
-			-->
 			<valueResolution>1</valueResolution>
 			<usesDatum/>
 			<parameter id="dV" name="Storage Volume change">
 				<shortName>dV</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Surface Area">
+			<parameterType>instantaneous</parameterType>
+			<unit>hectare</unit>
+			<valueResolution>0.01</valueResolution>
+			<usesDatum>true</usesDatum>
+			<parameter id="A_obs" name="Surface area observed">
+				<shortName>A_obs</shortName>
+			</parameter>
+			<parameter id="A_fcst" name="Surface area forecast">
+				<shortName>A_fcst</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Gate openings">
@@ -296,9 +331,12 @@
 		<parameterGroup id="Evaporation">
 			<parameterType>accumulative</parameterType>
 			<unit>mm</unit>
-			<valueResolution>0.001</valueResolution>
+			<valueResolution>0.1</valueResolution>
 			<parameter id="EVAP_obs" name="Evaporation observed">
 				<shortName>EVAP_obs</shortName>
+			</parameter>
+			<parameter id="EVAP_net" name="Evaporation net (obs - rainfall)">
+				<shortName>EVAP_net</shortName>
 			</parameter>
 			<parameter id="EVAP_calc" name="Evaporation calculated">
 				<shortName>EVAP_calc</shortName>
@@ -313,14 +351,22 @@
 				<shortName>PET_obs</shortName>
 			</parameter>
 		</parameterGroup>
-	<parameterGroup id="Losses">
-		<parameterType>accumulative</parameterType>
-		<unit>mm</unit>
-		<valueResolution>0.1</valueResolution>
-		<parameter id="IL" name="Initial Loss">
-			<shortName>IL</shortName>
-		</parameter>
-	</parameterGroup>
+		<parameterGroup id="Evaporation Loss">
+			<parameterType>instantaneous</parameterType>
+			<unit>GL</unit>
+			<valueResolution>.1</valueResolution>
+			<parameter id="EVAP_loss" name="Evaporation loss (calculated)">
+				<shortName>EVAP_loss</shortName>
+			</parameter>
+		</parameterGroup>
+		<parameterGroup id="Losses">
+			<parameterType>accumulative</parameterType>
+			<unit>mm</unit>
+			<valueResolution>0.1</valueResolution>
+			<parameter id="IL" name="Initial Loss">
+				<shortName>IL</shortName>
+			</parameter>
+		</parameterGroup>
 		<parameterGroup id="Soil Moisture">
 			<parameterType>instantaneous</parameterType>
 			<unit>mm</unit>
@@ -539,6 +585,27 @@
 				<shortName>index</shortName>
 			</parameter>
 		</parameterGroup>
+		<parameterGroup id="Threshold_Counted">
+			<enumerationId>Threshold_Counted</enumerationId>
+			<parameter id="Threshold_H_counted" name="Counted for level violations count">
+				<shortName>Threshold_H_counted</shortName>
+			</parameter>
+			<parameter id="Threshold_dH_counted" name="Counted for level change violations count">
+				<shortName>Threshold_dH_counted</shortName>
+			</parameter>
+			<parameter id="Threshold_Q_counted" name="Counted for flow violations count">
+				<shortName>Threshold_Q_counted</shortName>
+			</parameter>
+			<parameter id="Threshold_dQ_counted" name="Counted for flow change violations count">
+				<shortName>Threshold_dQ_counted</shortName>
+			</parameter>
+			<parameter id="Threshold_V_counted" name="Counted for storage violations count">
+				<shortName>Threshold_V_counted</shortName>
+			</parameter>
+			<parameter id="Threshold_DO%_counted" name="Counted for dissolved oxygen violations count">
+				<shortName>Threshold_DO%_counted</shortName>
+			</parameter>
+		</parameterGroup>
 		<parameterGroup id="Alert level">
 			<parameterType>instantaneous</parameterType>
 			<unit>-</unit>
@@ -563,6 +630,9 @@
 			<parameter id="proportion" name="Undelivered proportion">
 				<shortName>prop</shortName>
 			</parameter>
+			<parameter id="Gamma" name="Gamma">
+				<shortName>Gamma</shortName>
+			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Probability">
 			<parameterType>instantaneous</parameterType>
@@ -576,6 +646,9 @@
 			<parameterType>instantaneous</parameterType>
 			<unit>%</unit>
 			<valueResolution>0.01</valueResolution>
+			<parameter id="Allocations" name="State Allocations">
+				<shortName>Allocations</shortName>
+			</parameter>
 			<parameter id="DO%_obs" name="% Dissolved Oxygen observed">
 				<shortName>DO%_obs</shortName>
 			</parameter>
@@ -593,6 +666,9 @@
 			</parameter>
 			<parameter id="V%_fcst" name="% Storage Volume calculated">
 				<shortName>V%_fcst</shortName>
+			</parameter>
+			<parameter id="EVAP%_calc" name="% net evap loss calculated">
+				<shortName>EVAP%_calc</shortName>
 			</parameter>
 		</parameterGroup>
 		<parameterGroup id="Threshold levels">

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exportArchiveModule xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/exportArchiveModule.xsd">
+	<exportSimulated>
+		<general>
+			<archiveFolder>$EXPORT_FOLDER_TO_ARCHIVE$</archiveFolder>
+			<areaId>$AREAID$</areaId>
+			<idMapId>IdArchive</idMapId>
+		</general>
+		<activities>
+			<netcdfExportActivities>
+				<netcdfExportActivity>
+					<fileName>WaterLevel_Fcst.nc</fileName>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Forecast Water Levels (MDBC_OPS)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>H_fcst</parameterId>
+						<locationSetId>flow-n-sal.sites_level</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Flow_Fcst.nc</fileName>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Flows Forecast (MDBC_OPS)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>Q_fcst</parameterId>
+						<locationSetId>flow-n-sal.sites_flow</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>Volume_Fcst.nc</fileName>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Volume Forecast (MDBC_OPS)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>V_fcst</parameterId>
+						<locationSetId>flow-n-sal.sites_vol</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+				<netcdfExportActivity>
+					<fileName>EC_Fcst.nc</fileName>
+					<sourceId>$SOURCEID$</sourceId>
+					<ncMetaData>
+						<title>Electrical Conductivity Forecast (MDBC_OPS)</title>
+						<institution>Murray-Darling Basin Authority</institution>
+						<source>ROWS (Delft-FEWS)</source>
+					</ncMetaData>
+					<includeComments>true</includeComments>
+					<includeFlags>true</includeFlags>
+					<timeSeriesSet>
+						<moduleInstanceId>ExportOpsForecastToHydstra</moduleInstanceId>
+						<valueType>scalar</valueType>
+						<parameterId>EC_fcst</parameterId>
+						<locationSetId>flow-n-sal.sites_sal</locationSetId>
+						<timeSeriesType>simulated forecasting</timeSeriesType>
+						<timeStep id="8am"/>
+						<readWriteMode>read complete forecast</readWriteMode>
+					</timeSeriesSet>
+				</netcdfExportActivity>
+			</netcdfExportActivities>
+		</activities>
+	</exportSimulated>
+</exportArchiveModule>

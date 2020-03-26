@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--Transformations Morton's lake (mlake):
+net evap mlake   [mm]:   Evap_obs.mlake – rainfall (P_obs)
+Evap loss           [GL] :   surface area [hectare] * net evap  [mm] / 1,000,000
+		-->
+	<!--Transformations pan evaporation (pan):
+calc evap pan     [mm]:   Evap_obs * Pan factor 
+net evap pan      [mm]:   Evap_calc.pan - rainfall (P_obs) 
+Evap loss           [GL] :   surface area [hectare] * net evap  [mm] / 1,000,000
+		-->
+	<!-- +++ Input Variables (prepared elsewhere)-->
+	<variable>
+		<variableId>EVAP_OPO_mlake_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_Mlake</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_OPO_pan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_OPO_mlake_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_Mlake</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>P_OPO_pan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="hour" start="-23" end="1"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_OPO_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Victoria</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>A_Menindee</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>LevelToArea</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>A_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- +++ Output Variables for calculation evap loss (mlake)-->
+	<variable>
+		<variableId>EVAP_net_mlake_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_Mlake</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Dartmouth_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationRelationId>MET_MLAKE</locationRelationId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Hume_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationRelationId>MET_MLAKE</locationRelationId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Victoria_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationRelationId>MET_MLAKE</locationRelationId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Victoria</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Menindee_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationRelationId>MET_MLAKE</locationRelationId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_Menindee</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_mlake</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- +++ Output Variables for calculation evap loss (pan)-->
+	<variable>
+		<variableId>EVAP_calc_pan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_8am</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_pan</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Dartmouth_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationRelationId>MET_PAN</locationRelationId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Dartmouth</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Hume_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationRelationId>MET_PAN</locationRelationId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Hume</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Victoria_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationRelationId>MET_PAN</locationRelationId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Victoria</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationRelationId>MET_PAN</locationRelationId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Menindee_Met</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationRelationId>MET_PAN</locationRelationId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_Menindee</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_pan</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!-- +++ Output Variables monthly-->
+	<variable>
+		<variableId>V_monthly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_obs</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>V_monthly_GL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessVopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_GL</parameterId>
+			<qualifierId>opo</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_mlake_monthly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_mlake_monthly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_mlake_monthly_%</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP%_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_net_pan_monthly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_net</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_pan_monthly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP_loss</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>EVAP_loss_pan_monthly_%</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>EVAP%_calc</parameterId>
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<locationSetId>sites_EVAP_loss</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="Monthly"/>
+			<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--  *** Transformations daily loss mlake*** -->
+	<transformation id="EVAP_net_mlake_8am">
+		<user>
+			<simple>
+				<expression>EVAP_OPO_mlake_8am - P_OPO_mlake_8am</expression>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_8am</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_mlake_Dartmouth">
+		<user>
+			<simple>
+				<expression>EVAP_net_mlake_Dartmouth_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_Dartmouth</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_mlake_Hume">
+		<user>
+			<simple>
+				<expression>EVAP_net_mlake_Hume_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_mlake_Victoria">
+		<user>
+			<simple>
+				<expression>EVAP_net_mlake_Victoria_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_Victoria</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_mlake_Menindee">
+		<user>
+			<simple>
+				<expression>EVAP_net_mlake_Menindee_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_Menindee</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_loss_mlake">
+		<user>
+			<simple>
+				<expression>(EVAP_net_mlake * 0.001 * A * 10000)/1000000</expression>
+				<outputVariable>
+					<variableId>EVAP_loss_mlake</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--  *** Transformations daily loss pan*** -->
+	<transformation id="EVAP_calc_pan_8am">
+		<user>
+			<simple>
+				<expression>EVAP_OPO_pan_8am * PAN_FACTOR</expression>
+				<coefficientSetFunctions>
+					<coefficient id="PAN_FACTOR" value="@PAN_FACTOR@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>EVAP_calc_pan_8am</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_8am">
+		<user>
+			<simple>
+				<expression>EVAP_calc_pan_8am  - P_OPO_pan_8am</expression>
+				<outputVariable>
+					<variableId>EVAP_net_pan_8am</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_Dartmouth">
+		<user>
+			<simple>
+				<expression>EVAP_net_pan_Dartmouth_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_pan_Dartmouth</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_Hume">
+		<user>
+			<simple>
+				<expression>EVAP_net_pan_Hume_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_pan_Hume</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_Victoria">
+		<user>
+			<simple>
+				<expression>EVAP_net_pan_Victoria_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_pan_Victoria</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_Menindee">
+		<user>
+			<simple>
+				<expression>EVAP_net_pan_Menindee_Met</expression>
+				<outputVariable>
+					<variableId>EVAP_net_pan_Menindee</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_loss_pan">
+		<user>
+			<simple>
+				<expression>(EVAP_net_pan * 0.001 * A * 10000)/1000000</expression>
+				<outputVariable>
+					<variableId>EVAP_loss_pan</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<!--  *** Transformations monthly series*** -->
+	<transformation id="V_monthly">
+		<statisticsSerial>
+			<mean>
+				<inputVariable>
+					<variableId>V_OPO_8am</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>V_monthly</variableId>
+				</outputVariable>
+			</mean>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="V_monthly_GL">
+		<user>
+			<simple>
+				<expression>V_monthly / 1000</expression>
+				<outputVariable>
+					<variableId>V_monthly_GL</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_mlake_monthly">
+		<statisticsSerial>
+			<sum>
+				<inputVariable>
+					<variableId>EVAP_net_mlake</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_net_mlake_monthly</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="EVAP_loss_mlake_monthly">
+		<statisticsSerial>
+			<sum>
+				<inputVariable>
+					<variableId>EVAP_loss_mlake</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_loss_mlake_monthly</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="EVAP_loss_mlake_monthly_%">
+		<user>
+			<simple>
+				<expression>(EVAP_loss_mlake_monthly / V_monthly_GL) * 100</expression>
+				<outputVariable>
+					<variableId>EVAP_loss_mlake_monthly_%</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="EVAP_net_pan_monthly">
+		<statisticsSerial>
+			<sum>
+				<inputVariable>
+					<variableId>EVAP_net_pan</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_net_pan_monthly</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="EVAP_loss_pan_monthly">
+		<statisticsSerial>
+			<sum>
+				<inputVariable>
+					<variableId>EVAP_loss_pan</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>EVAP_loss_pan_monthly</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsSerial>
+	</transformation>
+	<transformation id="EVAP_loss_pan_monthly_%">
+		<user>
+			<simple>
+				<expression>(EVAP_loss_pan_monthly / V_monthly_GL) * 100</expression>
+				<outputVariable>
+					<variableId>EVAP_loss_pan_monthly_%</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+</transformationModule>

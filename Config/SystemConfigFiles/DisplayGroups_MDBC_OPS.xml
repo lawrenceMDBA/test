@@ -516,7 +516,8 @@
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
-			<!--<timeSeriesSet><moduleInstanceId>ImportMDBC_OPS</moduleInstanceId><valueType>scalar</valueType><parameterId>AT_calc</parameterId><locationSetId>de.sites_AT</locationSetId><timeSeriesType>external historical</timeSeriesType><timeStep id="8am"/><readWriteMode>add originals</readWriteMode></timeSeriesSet>--><timeSeriesSet>
+			<!--<timeSeriesSet><moduleInstanceId>ImportMDBC_OPS</moduleInstanceId><valueType>scalar</valueType><parameterId>AT_calc</parameterId><locationSetId>de.sites_AT</locationSetId><timeSeriesType>external historical</timeSeriesType><timeStep id="8am"/><readWriteMode>add originals</readWriteMode></timeSeriesSet>-->
+			<timeSeriesSet>
 				<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>WT_calc</parameterId>
@@ -620,7 +621,7 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
-				<externalForecastMaxAge unit="day" multiplier="1" />
+				<externalForecastMaxAge unit="day" multiplier="1"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
@@ -828,12 +829,12 @@
 				<timeSeriesType>external forecasting</timeSeriesType>
 				<timeStep id="8am"/>
 				<!-- <relativeForecastPeriod end="7" unit="day" /> -->
-				<externalForecastMaxAge unit="day" multiplier="1" />
+				<externalForecastMaxAge unit="day" multiplier="1"/>
 				<readWriteMode>read complete forecast</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<displayGroup name="MDBC_OPS" id="MDBC_OPS_results">
+	<displayGroup name="RiverOps MDBC_OPS" id="MDBC_OPS_results">
 		<viewPermission>RiverOperations</viewPermission>
 		<displayGroup id="MDBC_OPS.Ovens" name="Ovens (All MDBC_OPS results)">
 			<singleLocationDisplays>
