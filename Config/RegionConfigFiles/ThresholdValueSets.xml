@@ -76,16 +76,6 @@
 			<relativeViewPeriod start="-5" end="1" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-		<!--<timeSeriesSet>
-			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
-			<valueType>scalar</valueType>
-			<parameterId>H_fcst</parameterId>
-			<locationSetId>URBS_fcst_sites</locationSetId>
-			<timeSeriesType>simulated forecasting</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="7" start="-14" unit="day"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>-->
 	</thresholdValueSet>
 	<!--Threshold value sets for timeSeriesSets used in threshold assessment (objectives) - general thresholds-->
 	<thresholdValueSet id="Levels_objectives" name="Water levels (SOnO, RO)">
@@ -225,22 +215,26 @@
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>dH_Fall</qualifierId>
+			<qualifierId>max</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod unit="day" start="-30" end="10"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
 			<locationSetId>threshold_sites_level_changes</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod unit="day" start="-30" end="10"/>
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
-		<!--<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_dH</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod unit="day" start="-30" end="10"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>-->
 	</thresholdValueSet>
 	<thresholdValueSet id="StorageVolume" name="Storage Volume">
 		<description>Storage Volume</description>
@@ -1589,6 +1583,16 @@
 	</thresholdValueSet>
 	<eventTimeViewPeriod unit="week" start="-52" end="52"/>
 </thresholdValueSets>
+<!--<timeSeriesSet>
+			<moduleInstanceSetId>URBS_QtoH_Forecast</moduleInstanceSetId>
+			<valueType>scalar</valueType>
+			<parameterId>H_fcst</parameterId>
+			<locationSetId>URBS_fcst_sites</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="7" start="-14" unit="day"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>-->
 <!--<timeSeriesSet>
 			<moduleInstanceId>SchematicStatusDisplay</moduleInstanceId>
 			<valueType>scalar</valueType>

@@ -15,6 +15,7 @@
 		<multipleNodesDirectory nodeIdPrefix="Reporting">$DOCUMENTS_REPORTING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="RiverOps">$DOCUMENTS_RIVEROPS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="FloodOps">$DOCUMENTS_FLOODOPS_FOLDER$</multipleNodesDirectory>
+		<multipleNodesDirectory nodeIdPrefix="UnitHydrograph">$DOCUMENTS_ROOT_FOLDER$/UnitHydrograph</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="ROWS">$DOCUMENTS_ROWS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="RunoffForecasting">$DOCUMENTS_RUNOFFFORECASTING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="URBS">$DOCUMENTS_URBS_FOLDER$</multipleNodesDirectory>
@@ -669,12 +670,12 @@
 			<mainPanel>time series dialog</mainPanel>
 			<toolWindow>plot overview</toolWindow>
 		</nodes>
-		<node id="RTCTools_Prepare_Data_Qfcst" name="Gamma function forecasts">
-			<workflowId>Prepare_RTCTools_Qfcst</workflowId>
+		<node id="UnitHydrograph_flood" name="Gamma function forecasts (Unit Hydrograph)">
+			<workflowId>Prepare_UnitHydrograph_Qfcst</workflowId>
 			<cardinalTimeStepStartTime times="08:00" timeZone="AEST"/>
 			<mapExtentId>Ovens</mapExtentId>
 			<filterId>Parameter_FloodOps</filterId>
-			<displayGroupId>RTCTools_Prepare_Data_Qfcst</displayGroupId>
+			<displayGroupId>UnitHydrograph_flood</displayGroupId>
 			<defaultModifierId>Q_fcst_rtctools</defaultModifierId>
 			<visibleModifierGroup>RTCTools_S</visibleModifierGroup>
 			<graceTime unit="hour" multiplier="6"/>
