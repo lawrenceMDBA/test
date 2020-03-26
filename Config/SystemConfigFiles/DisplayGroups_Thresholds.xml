@@ -1890,7 +1890,7 @@
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
+				<parameterId>dH</parameterId>
 				<locationSetId>threshold_sites_all</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
@@ -2036,6 +2036,10 @@
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>3</plotWeight>
+			<axis>left</axis>
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -4743,6 +4747,10 @@
 		<displayGroup id="dH_review" name="dH_review">
 			<nodeId>dH_review</nodeId>
 			<viewPermission>RiverOperations</viewPermission>
+			<display id="R_401211A_dH_review">
+				<locationId>R_401211A</locationId>
+				<plotId>dH_review</plotId>
+			</display>
 			<display id="R_409017_dH_review">
 				<locationId>R_409017</locationId>
 				<plotId>dH_review</plotId>
@@ -4826,6 +4834,14 @@
 			<display id="R_409722A_Q_review">
 				<locationId>R_409722A</locationId>
 				<plotId>Q_review</plotId>
+			</display>
+		</displayGroup>
+		<displayGroup id="dQ_review" name="dQ_review">
+			<nodeId>dQ_review</nodeId>
+			<viewPermission>RiverOperations</viewPermission>
+			<display id="R_425012_dQ_review">
+				<locationId>R_425012</locationId>
+				<plotId>dQ_review</plotId>
 			</display>
 		</displayGroup>
 		<displayGroup id="V_review" name="V_review">
