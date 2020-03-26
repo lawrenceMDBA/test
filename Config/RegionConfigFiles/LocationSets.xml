@@ -3397,6 +3397,15 @@
 			<anyValid>
 				<attributeExists id="dH_LT_SOFT"/>
 				<attributeExists id="dH_SPECIAL"/>
+				<attributeExists id="dH_HOUR_SPECIAL"/>
+				<attributeExists id="dH_S_SOFT_1"/>
+				<attributeExists id="dH_S_SOFT_2"/>
+				<attributeExists id="dH_S_HARD_1"/>
+				<attributeExists id="dH_S_HARD_2"/>
+				<attributeExists id="dH_S_HARD_3"/>
+				<attributeExists id="dH_S_HARD_4"/>
+				<attributeExists id="dH_S_HARD_5"/>
+				<attributeExists id="dH_S_HARD_6"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
@@ -3430,12 +3439,6 @@
 			<attributeTextContains id="TYPE" contains="SO_"/>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_dH_hourly_RO">
-		<locationSetId>threshold_sites_dH_hourly</locationSetId>
-		<constraints>
-			<attributeTextContains id="TYPE" contains="RO_"/>
-		</constraints>
-	</locationSet>-->
 	<!-- Locationsets for use in thresholdvalue sets to separate the special objectives -->
 	<!-- To get rid of Errors in build 67363 or higher like 
 	Config.Error: Only one threshold value set allowed per time series 
@@ -3583,6 +3586,11 @@
 		<constraints>
 			<anyValid>
 				<attributeExists id="dQ_SPECIAL"/>
+				<attributeExists id="dQ_S_HARD_1"/>
+				<attributeExists id="dQ_S_HARD_2"/>
+				<attributeExists id="dQ_S_HARD_3"/>
+				<attributeExists id="dQ_S_HARD_4"/>
+				<attributeExists id="dQ_S_HARD_1"/>
 			</anyValid>
 		</constraints>
 	</locationSet>
@@ -3593,12 +3601,6 @@
 			<attributeTextContains id="TYPE" contains="SO_"/>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_dQ_RO">
-		<locationSetId>threshold_sites_dQ</locationSetId>
-		<constraints>
-			<attributeTextContains id="TYPE" contains="RO_"/>
-		</constraints>
-	</locationSet>-->
 	<locationSet id="threshold_sites_Q_prep">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
@@ -3639,18 +3641,9 @@
 			</anyValid>
 		</constraints>
 	</locationSet>
-	<!--<locationSet id="threshold_sites_Q_GT_REL_SOFT">
-		<locationSetId>threshold_sites_all</locationSetId>
-		<constraints>
-			<anyValid>
-				<attributeExists id="Q_GT_rel(Q)_SOFT"/>
-			</anyValid>
-		</constraints>
-	</locationSet>-->
 	<locationSet id="threshold_sites_Q_REL">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_Q_LT_REL_HARD</locationSetId>
-		<!--<locationSetId>threshold_sites_Q_GT_REL_SOFT</locationSetId>-->
 	</locationSet>
 	<locationSet id="threshold_sites_EC">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
