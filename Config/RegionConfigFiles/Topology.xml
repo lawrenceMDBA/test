@@ -10,6 +10,7 @@
 		<multipleNodesDirectory nodeIdPrefix="ewSource">$DOCUMENTS_SOURCE_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="Import">$DOCUMENTS_IMPORT_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="ObservedProcessing">$DOCUMENTS_OPOPROCESSING_FOLDER$</multipleNodesDirectory>
+		<multipleNodesDirectory nodeIdPrefix="ThresholdCrossings">$DOCUMENTS_OPOPROCESSING_FOLDER$/ThresholdCrossings/</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="PeakHeights">$DOCUMENTS_PEAKHEIGHTS_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="Reporting">$DOCUMENTS_REPORTING_FOLDER$</multipleNodesDirectory>
 		<multipleNodesDirectory nodeIdPrefix="RiverOps">$DOCUMENTS_RIVEROPS_FOLDER$</multipleNodesDirectory>
@@ -113,14 +114,16 @@
 			<groupId>Mur(F-H)LowerDar(A-E)_OPO</groupId>
 			<groupId>NSWDivs(ABCDE)_OPO</groupId>
 			<groupId>VIC_Diversions_OPO</groupId>
-			<nodes id="ThresholdCrossings_OPO" name="Review threshold crossings">
+			<nodes id="ThresholdCrossingsReview" name="Review threshold crossings">
 				<node id="ThresholdCrossings_SOnO_OPO" name="SOnO threshold alert report">
 					<workflowId>Review_ThresholdCrossingsReport</workflowId>
+					<coldState unit="day" multiplier="7"/>
 					<mainPanel>web browser display</mainPanel>
 					<url>file:\\\$EXPORT_FOLDER_REPORTS$\ThresholdCrossingsSOnO\ThresholdCrossings_SOnO_Report.html</url>
 					<localRun>true</localRun>
 				</node>
 				<nodes name="Exclude thresholds from SOnO report" id="Prepare_Thresholds_Review">
+					<workflowId>Prepare_Thresholds</workflowId>
 					<node id="H_review" name="H_review">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>H_review</displayGroupId>

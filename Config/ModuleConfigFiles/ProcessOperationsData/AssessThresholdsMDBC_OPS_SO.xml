@@ -8,7 +8,7 @@
   - Where multiple types of violation are associated with one type of data the resulting timeseries are merged in a single ts. 
     ie, i the end only one timeseries with threshold flags is stored for each combination of type of data and location.   -->
 	<!--Add transformations dV_thresh_hits and dV_thresh_count when required-->
-	<!--Exclude SO threshold violations from countL
+	<!--Exclude SO threshold violations from count
 The SO "counted" timeseries (generated in PreprocessThresholdsMDBC_OPS) for all SO Threshold_sites and parameter 
     combinations are used in this module: If these timeseries are set to 0 by the operator, any threshold violations for that 
     location/parameter combination will not be counted. The following parameters are supported:
@@ -23,7 +23,7 @@ The implementation is set up for the 8am (daily) threshold violations. dH thresh
 The implementation (in general) takes the results of the *_4count 'merge' transformation (that combines all the threshold 
     violation timeseries per parameter) and sets the value to 0 if the  SO "counted" timeseries are 0.
 Note1: The thresholds violations themselves are not removed, they will just not be counted. 
-Note2: Thuis is implemented for the SO threshold crossings, not for the RO-->
+Note2: This is implemented for the SO threshold crossings, not for the RO-->
 	<!--Input-->
 	<variable>
 		<variableId>H_calc</variableId>

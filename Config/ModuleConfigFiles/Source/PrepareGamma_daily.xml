@@ -114,6 +114,34 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>Gamma_serial_length</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>length</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="0" unit="hour" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Gamma_serial_length_ext</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Gamma</parameterId>
+			<qualifierId>length</qualifierId>
+			<locationSetId>SourceRO_sites_Q</locationSetId>
+			<timeSeriesType>simulated forecasting</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="0" end="730" unit="day" startOverrulable="true"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Gamma_Qfcst_z</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO_Qcomb</moduleInstanceId>
@@ -270,6 +298,16 @@
 			</simple>
 		</user>
 	</transformation>
+	<transformation id="Gamma_serial_length_ext">
+		<user>
+			<simple>
+				<expression>Gamma_serial_initial_complete</expression>
+				<outputVariable>
+					<variableId>Gamma_serial_length_ext</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="Gamma_serial_initial_ext2">
 		<user>
 			<simple>
@@ -279,6 +317,20 @@
 				</coefficientSetFunctions>
 				<outputVariable>
 					<variableId>Gamma_serial_initial_ext</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Gamma_serial_length_ext2">
+		<user>
+			<simple>
+				<expression>if(Gamma_serial_length_ext &gt; 5*24*Gamma_peak_time, N_a_N, -999)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="Gamma_peak_time" value="@SITE_Q_PULSE_PEAKT@"/>
+					<coefficient id="N_a_N" value="0/0"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Gamma_serial_length_ext</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -333,16 +385,6 @@
 			</default>
 		</interpolationSerial>
 	</transformation>
-	<!--<transformation id="Gamma_Qfcst_rise_receding">
-		<user>
-			<simple>
-				<expression>Gamma_Qfcst_rise_initial_complete2*((5-Gamma_Qfcst_z)/5)</expression>
-				<outputVariable>
-					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
 	<transformation id="Gamma_Qfcst_rise_constant">
 		<user>
 			<simple>
@@ -395,4 +437,27 @@
 			</simple>
 		</user>
 	</transformation>
+	<transformation id="Gamma_Qfcst_NaN">
+		<user>
+			<simple>
+				<expression>if((Gamma_serial_length_ext == -999) , Gamma_Qfcst , N_a_N)</expression>
+				<coefficientSetFunctions>
+					<coefficient id="N_a_N" value="0/0"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>Gamma_Qfcst</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 </transformationModule>
+<!--<transformation id="Gamma_Qfcst_rise_receding">
+		<user>
+			<simple>
+				<expression>Gamma_Qfcst_rise_initial_complete2*((5-Gamma_Qfcst_z)/5)</expression>
+				<outputVariable>
+					<variableId>Gamma_Qfcst_rise_initial_complete3</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>-->
