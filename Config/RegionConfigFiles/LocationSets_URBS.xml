@@ -248,9 +248,17 @@
 					<description>[URBS_LOSSTYPE] The type of continuing loss model used: ILCL is for a loss rate independent of rainfall and ILPR is for a runoff factor.</description>
 					<text>%URBS_LOSSTYPE%</text>
 				</attribute>
-				<attribute id="URBS_IL" name="Initial Loss (mm)">
-					<description>[URBS_IL] Initial rainfall loss.</description>
+<!--				<attribute id="URBS_LOSSSOURCE" name="Initial Loss Type">
+					<description>Source of the continuing loss model used: User_IL</description>
+					<text>%URBS_LOSSSOURCE%</text>
+				</attribute>
+-->				<attribute id="URBS_IL" name="Initial Loss (mm)">
+					<description>[URBS_IL] Initial rainfall loss. Copy the AWRA-L initial loss here, or use a different estimate.</description>
 					<number>%URBS_IL%</number>
+				</attribute>
+				<attribute id="URBS_IL_AWRA" name="Initial loss guidance (AWRA-L)">
+					<description>Estimated Initial rainfall loss based on correlation with AWRA-L (guidance)</description>
+					<number>%URBS_IL_AWRA%</number>
 				</attribute>
 				<attribute id="URBS_CL" name="Continuing Loss (mm/hr)">
 					<description>[URBS_CL] Continuing loss rate (ILCL model only).</description>
@@ -305,6 +313,30 @@
 					<number>%URBS_N%</number>
 				</attribute>
 			</attributeFile>
+			<attributeFile>
+				<csvFile>ROWS_urbs_subcatchments_AWRA_Metadata</csvFile>
+				<id>%SUBCATCHID%</id>
+				<attribute id="LIN_M" name="LinearValueM">
+					<description>m parameter of the LINEAR line of best fit</description>
+					<number>%LIN_M%</number>
+				</attribute>
+				<attribute id="LIN_C" name="LinearValueC">
+					<description>c parameter of the LINEAR line of best fit</description>
+					<number>%LIN_C%</number>
+				</attribute>
+				<attribute id="LOG_C" name="LogValueC">
+					<description>c parameter of the LOG line of best fit</description>
+					<number>%LOG_C%</number>
+				</attribute>
+				<attribute id="LOG_B" name="LogValueM">
+					<description>b parameter of the LOG line of best fit</description>
+					<number>%LOG_B%</number>
+				</attribute>
+				<attribute id="AWRA_LINE_TYPE" name="Best fit line type">
+					<description>Identified the best fit to use for IL Calculations - LINEAR ot LOG</description>
+					<text>%LINE_TYPE%</text>
+				</attribute>
+			</attributeFile>
 		</csvFile>
 	</locationSet>
 	<locationSet id="URBS_subcatchments.only">
@@ -314,6 +346,26 @@
 			<not>
 				<attributeTextContains id="URBS_SUBCATCHMENT_NAME" contains="whole"/>
 			</not>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_subcatchments.il_awral_lin">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_subcatchments.only</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeExists id="AWRA_LINE_TYPE"/>
+				<attributeTextEquals equals="Linear" id="AWRA_LINE_TYPE"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="URBS_subcatchments.il_awral_log">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>URBS_subcatchments.only</locationSetId>
+		<constraints>
+			<allValid>
+				<attributeExists id="AWRA_LINE_TYPE"/>
+				<attributeTextEquals equals="Log" id="AWRA_LINE_TYPE"/>
+			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_subcatchments.upper_murray">
@@ -651,7 +703,7 @@
 				<not>
 					<attributeExists id="QBC"/>
 				</not>
-			</allValid>	
+			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="URBS_fcst_sites_rated">
@@ -734,7 +786,7 @@
 			<attributeTextEquals id="MODEL_INFLOW" equals="mittaToDartmouth"/>
 		</constraints>
 	</locationSet>
-		<locationSet id="URBS_fcst_sites_mittaToTallandoon_inflow">
+	<locationSet id="URBS_fcst_sites_mittaToTallandoon_inflow">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>URBS_fcst_sites_model_inflow</locationSetId>
 		<constraints>

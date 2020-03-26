@@ -1,31 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<!-- **********************************
+Archiving all non-simulated data (RiverOps)
+Scheduled to run frequently, but can be activated from the OC as well (run on server)
+<archiveRoot> = <$EXPORT_FOLDER_TO_ARCHIVE$> as defined in global.properties
+area = mdba
+<yyyyMMdd> = T0 of the archive export task, 
+<revisionId> = MC id + revision number
+-->
+	<!--ToArchive_Obs_* (source=RiverOps)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/observed/
+Observed Daily Avg soil moisture data from BOM as imported
+Processed data created in the OPO transformation modules 
+	Each parameter is stored in a separate file-->
+	<!--ToArchive_NWP_* (sources=ACCESSG, ACCESSR, ADFD, PME)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/external_forecasts/<sourceId>_<T0>
+Current NWP forecasts as imported-->
+	<!--ToArchive_Prod_* (source=RiverOps)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/messages/ForecasterNotes.txt
+For messages a daily dataset is generated based on the message creation time
+<archiveRoot>/ratingcurves/<areaId>/<yyyyMMdd><filename>.xml
+Entire history of all the rating curves
+<archiveRoot>/config/<areaId>/<yyyyMMdd>/<revisionId>/ 
+Full ROWS configuration is stored in a zip file, named by config revision id
+-->
+	<!--ToArchive_Sys_* (source=n/a)
+Note: a 2nd export on the same day will overwrite the archived file.
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/messages/ForecasterNotes.txt
+For messages a daily dataset is generated based on the message creation time
+<archiveRoot>/ratingcurves/<areaId>/<yyyyMMdd><filename>.xml
+Entire history of all the rating curves
+<archiveRoot>/config/<areaId>/<yyyyMMdd>/<revisionId>/ 
+Full ROWS configuration is stored in a zip file, named by config revision id
+-->
+	<!-- **********************************
+Archiving all non-simulated data (FloodOps)
+-->
+	<!--ToArchive_Obs_* (source=FloodOps)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/observed/
+data generated in module ProcessObserved_FloodOps 
+	Each parameter is stored in a separate file-->
+	<!--Export_ToArchive_FloodOps_NWP (sources=ACCESSG, ACCESSR, ADFD, PME)
+<archiveRoot>/<yyyy>/<MM>/<areaId>/<dd>/external_forecasts/<sourceId>_<T0>
+Current NWP forecasts processed to smaller grid
+TODO: is this still required?-->
+	<!-- **********************************
+Archiving all simulated data (FloodOps)
+ToArchive_Fcst_* is included with the official forecast-->
 	<properties>
 		<string key="AREAID" value="mdba"/>
 	</properties>
 	<activity>
+		<properties>
+			<string key="SOURCEID" value="RiverOps"/>
+		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_OPO</moduleInstanceId>
+		<moduleInstanceId>ToArchive_Obs_opo</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="RiverOps"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_Obs_AWRA</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="ACCESSG"/>
+			<string key="LOCATIONID" value="NWP"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_ACCESSG</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="ACCESSR"/>
+			<string key="LOCATIONID" value="NWP"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_ACCESSR</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="ADFD"/>
+			<string key="LOCATIONID" value="ADFD"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_ADFD</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="PME"/>
+			<string key="LOCATIONID" value="ADFD"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_NWP_PME</moduleInstanceId>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_AWRA</moduleInstanceId>
-	</activity>
-	<!-- Runnig separately Export_ToArchive_FloodOps_NWP -->
-	<!--<activity>
-		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_NWP</moduleInstanceId>
-	</activity>-->
-	<activity>
-		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_Messages</moduleInstanceId>
+		<moduleInstanceId>ToArchive_Sys_Messages</moduleInstanceId>
 	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_Ratings</moduleInstanceId>
-        </activity>
+		<moduleInstanceId>ToArchive_Sys_Ratings</moduleInstanceId>
+	</activity>
 	<activity>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ToArchive_Configuration</moduleInstanceId>
+		<moduleInstanceId>ToArchive_Sys_Configuration</moduleInstanceId>
 	</activity>
-</workflow>
+	<activity>
+		<properties>
+			<string key="SOURCEID" value="FloodOps"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ToArchive_Obs_Fops</moduleInstanceId>
+	</activity>
+<!--This workflow is deprecated, now archive all NWP on original grid and only tag the ones you want to keep-->
+<!--With this, the WaterCoach workflows can use "normal" processing MFs-->
+<!--	<activity>
+		<runIndependent>false</runIndependent>
+		<workflowId>Export_ToArchive_FloodOps_NWP</workflowId>
+	</activity>
+--></workflow>

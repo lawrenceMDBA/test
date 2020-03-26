@@ -2,6 +2,10 @@
 <workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
 	<activity>
 		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessPopo</moduleInstanceId>
 	</activity>
 	<activity>
@@ -85,10 +89,6 @@
 		<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
 	</activity>
 	<activity>
-		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessQORDmdbcopo</moduleInstanceId>
-	</activity>
-	<activity>
 		<!--This should not be used in the future-->
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
@@ -106,6 +106,7 @@
 		<moduleInstanceId>ProcessQturbopo</moduleInstanceId>
 	</activity>
 	<activity>
+
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQspillopo</moduleInstanceId>
 	</activity>
@@ -113,7 +114,11 @@
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQtotalopo</moduleInstanceId>
 	</activity>
-	<activity>
+		<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQORDmdbcopo</moduleInstanceId>
+	</activity>
+<activity>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessQtotalopo</moduleInstanceId>
 		<moduleConfigFileName>CalculateTotalFlow</moduleConfigFileName>
@@ -130,4 +135,8 @@
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>TriggerEmailReport_ThresholdCrossings</moduleInstanceId>
 	</activity>
+<activity>
+    <runIndependent>false</runIndependent>
+    <predefinedActivity>threshold event crossing</predefinedActivity>
+</activity>   
 </workflow>

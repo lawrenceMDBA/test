@@ -407,51 +407,53 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<displayGroup name="Hydstra model input" id="Hydstra_model_input">
-		<viewPermission>RiverOperations</viewPermission>
-		<displayGroup id="Hydstra_input_Q" name="Flow input">
+	<displayGroup name="Maintenance: Hydstra">
+		<displayGroup name="Hydstra model input" id="Hydstra_model_input">
+			<viewPermission>RiverOperations</viewPermission>
+			<displayGroup id="Hydstra_input_Q" name="Flow input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_Q_obs</locationSetId>
+					<locationSetId>tsm_sites_Q_rated</locationSetId>
+					<plotId>HydstraInput_Flow</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hydstra_input_H" name="Levels input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_H</locationSetId>
+					<plotId>HydstraInput_Levels</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hydstra_input_AT" name="Air temperature input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_AT</locationSetId>
+					<plotId>HydstraInput_AirTemperature</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hydstra_input_P" name="Rainfall input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_P</locationSetId>
+					<plotId>HydstraInput_Rainfall</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hydstra_input_EVAP" name="Evaporation input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_E</locationSetId>
+					<plotId>HydstraInput_Evaporation</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+			<displayGroup id="Hydstra_input_Gates" name="Gates open input">
+				<singleLocationDisplays>
+					<locationSetId>tsm_sites_Gates</locationSetId>
+					<plotId>HydstraInput_Gatesopen</plotId>
+				</singleLocationDisplays>
+			</displayGroup>
+		</displayGroup>
+		<displayGroup name="Hydstra results" id="Hydstra_results">
+			<viewPermission>RiverOperations</viewPermission>
 			<singleLocationDisplays>
-				<locationSetId>tsm_sites_Q_obs</locationSetId>
-				<locationSetId>tsm_sites_Q_rated</locationSetId>
-				<plotId>HydstraInput_Flow</plotId>
+				<locationSetId>tsm_sites_output</locationSetId>
+				<plotId>HydstraResults</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup id="Hydstra_input_H" name="Levels input">
-			<singleLocationDisplays>
-				<locationSetId>tsm_sites_H</locationSetId>
-				<plotId>HydstraInput_Levels</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="Hydstra_input_AT" name="Air temperature input">
-			<singleLocationDisplays>
-				<locationSetId>tsm_sites_AT</locationSetId>
-				<plotId>HydstraInput_AirTemperature</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="Hydstra_input_P" name="Rainfall input">
-			<singleLocationDisplays>
-				<locationSetId>tsm_sites_P</locationSetId>
-				<plotId>HydstraInput_Rainfall</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="Hydstra_input_EVAP" name="Evaporation input">
-			<singleLocationDisplays>
-				<locationSetId>tsm_sites_E</locationSetId>
-				<plotId>HydstraInput_Evaporation</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup id="Hydstra_input_Gates" name="Gates open input">
-			<singleLocationDisplays>
-				<locationSetId>tsm_sites_Gates</locationSetId>
-				<plotId>HydstraInput_Gatesopen</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-	</displayGroup>
-	<displayGroup name="Hydstra results" id="Hydstra_results">
-		<viewPermission>RiverOperations</viewPermission>
-		<singleLocationDisplays>
-			<locationSetId>tsm_sites_output</locationSetId>
-			<plotId>HydstraResults</plotId>
-		</singleLocationDisplays>
 	</displayGroup>
 </displayGroups>

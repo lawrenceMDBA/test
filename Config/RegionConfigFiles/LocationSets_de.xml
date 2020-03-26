@@ -290,7 +290,7 @@
 		<locationSetId>de.sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.wenv;"/>
-		</constraints>	
+		</constraints>
 	</locationSet>
 	<locationSet id="de.sites_Q.trib">
 		<description>data entry sites with Tributary flow</description>
@@ -298,7 +298,7 @@
 		<locationSetId>de.sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.trib;"/>
-		</constraints>		
+		</constraints>
 	</locationSet>
 	<locationSet id="de.sites_Q.env_use">
 		<description>data entry sites with modelled enviromental use flows</description>
@@ -307,7 +307,7 @@
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.env_use;"/>
 		</constraints>
-		</locationSet>			
+	</locationSet>
 	<locationSet id="de.sites_Q.model_use">
 		<description>data entry sites with hybrid event modelled data</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
@@ -315,7 +315,7 @@
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.model_use;"/>
 		</constraints>
-		</locationSet>				
+	</locationSet>
 	<locationSet id="de.sites_Q.pump">
 		<description>data entry sites with pumped enviromental flow</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
@@ -323,7 +323,7 @@
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.pump"/>
 		</constraints>
-		</locationSet>
+	</locationSet>
 	<locationSet id="de.sites_Q.return">
 		<description>data entry sites with enviromental flow return</description>
 		<sortingLocationAttributeId>DATA_ENTRY_SEQ</sortingLocationAttributeId>
@@ -386,6 +386,38 @@
 		<locationSetId>de.sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="DATA_ENTRY_PARAMS" contains="Q.total"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Allocations">
+		<description>data entry sites with State Allocations</description>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>sites</locationSetId>
+		<constraints>
+			<attributeExists id="STATE_ALLOCATION"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Allocations.NSW">
+		<description>data entry sites with State Allocations</description>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_Allocations</locationSetId>
+		<constraints>
+			<attributeTextContains id="STATE_ALLOCATION" contains="NSW"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Allocations.VIC">
+		<description>data entry sites with State Allocations</description>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_Allocations</locationSetId>
+		<constraints>
+			<attributeTextContains id="STATE_ALLOCATION" contains="VIC"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="de.sites_Allocations.SA">
+		<description>data entry sites with State Allocations</description>
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>de.sites_Allocations</locationSetId>
+		<constraints>
+			<attributeTextContains id="STATE_ALLOCATION" contains="SA"/>
 		</constraints>
 	</locationSet>
 	<!-- QRL should not be used. Use Q or Q with qualifier-->
@@ -1422,8 +1454,8 @@ Data entry sites to EWSRC_DE
 		<locationSetId>Yarrawonga2MDBC_OPS.sites_H</locationSetId>
 		<locationSetId>Deniliquin2MDBC_OPS.sites_H</locationSetId>
 		<locationSetId>SouthOz2MDBC_OPS.sites_H</locationSetId>
-		<locationSetId>Goolwa.sites_H</locationSetId>		
-		<locationSetId>Torrumbarry2MDBC_OPS.sites_H</locationSetId>		
+		<locationSetId>Goolwa.sites_H</locationSetId>
+		<locationSetId>Torrumbarry2MDBC_OPS.sites_H</locationSetId>
 	</locationSet>
 	<locationSet id="de2HYDSTRA_sites_V">
 		<description>OPO data entry sites exported to Hydstra</description>
@@ -1443,7 +1475,7 @@ Data entry sites to EWSRC_DE
 		<locationSetId>Yarrawonga2MDBC_OPS.sites_EC</locationSetId>
 		<locationSetId>Deniliquin2MDBC_OPS.sites_EC</locationSetId>
 		<locationSetId>SouthOz2MDBC_OPS.sites_EC</locationSetId>
-		<locationSetId>Goolwa.sites_EC</locationSetId>	
+		<locationSetId>Goolwa.sites_EC</locationSetId>
 	</locationSet>
 	<locationSet id="de2HYDSTRA_sites_Q">
 		<description>OPO data entry sites exported to Hydstra</description>

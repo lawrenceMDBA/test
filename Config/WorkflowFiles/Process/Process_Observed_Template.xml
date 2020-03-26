@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow version="1.1" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/workflow.xsd">
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessPopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>QC_SpatialHomogeneityCheck</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessHopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>LevelToFlow</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>LevelToStorage</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessVopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCE" value="fao56"/>
+			<string key="ROWS_EWSOURCE_EVAP" value="640"/>
+			<string key="OPC_NEQ_START" value="-30"/>
+			<string key="RESULT_MOD_INST" value="ProcessEVAPopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessEVAPfao</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateEVAP</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="SOURCE" value="mlake"/>
+			<string key="ROWS_EWSOURCE_EVAP" value="650"/>
+			<string key="OPC_NEQ_START" value="-14"/>
+			<string key="RESULT_MOD_INST" value="ProcessEVAPopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessEVAPmlake</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateEVAP</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="HISTORIC_PARAM" value="EC"/>
+			<string key="PARAM" value="EC"/>
+			<string key="SELECT_PREF_PARAM" value="EC"/>
+			<string key="RESULT_MOD_INST" value="ProcessECopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessECopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="HISTORIC_PARAM" value="WT"/>
+			<string key="PARAM" value="WT"/>
+			<string key="SELECT_PREF_PARAM" value="WT"/>
+			<string key="RESULT_MOD_INST" value="ProcessWTopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessWTopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="HISTORIC_PARAM" value="AT"/>
+			<string key="PARAM" value="AT"/>
+			<string key="SELECT_PREF_PARAM" value="AT"/>
+			<string key="RESULT_MOD_INST" value="ProcessATopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessATopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="HISTORIC_PARAM" value="DO%"/>
+			<string key="PARAM" value="DO"/>
+			<string key="SELECT_PREF_PARAM" value="DO"/>
+			<string key="RESULT_MOD_INST" value="ProcessDOopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessDOopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
+	</activity>
+	<activity>
+		<moduleInstanceId>ProcessDOPercentageopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="HISTORIC_PARAM" value="Turbidity"/>
+			<string key="PARAM" value="Turbidity"/>
+			<string key="SELECT_PREF_PARAM" value="WT"/>
+			<string key="RESULT_MOD_INST" value="ProcessTurbidityopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_template</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcesspHopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="WindDir"/>
+			<string key="RESULT_MOD_INST" value="ProcessWindDiropo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessWindDiropo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="WindVel"/>
+			<string key="RESULT_MOD_INST" value="ProcessWindVelopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessWindVelopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="NoGatesOpen"/>
+			<string key="RESULT_MOD_INST" value="ProcessGatesOpenopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessGatesOpenopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateNoselectpreferred</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="QDIV"/>
+			<string key="HIST_LOCSET_PARAM" value="Q"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_MOD_INST" value="ProcessQDIVopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQDIVopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="QORD"/>
+			<string key="HIST_LOCSET_PARAM" value="Q"/>
+			<string key="OP_END_DAY" value="30"/>
+			<string key="RESULT_MOD_INST" value="ProcessQORDopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQORDopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="Q"/>
+			<string key="HIST_LOCSET_PARAM" value="Q"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_MOD_INST" value="ProcessQRLopo"/>
+		</properties>
+		<!--This should not be used in the future-->
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQRLopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQ</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="Q"/>
+			<string key="PARAM_QUALIFIER" value="inflow"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_LOC_SET" value="de.sites_Q.inflow"/>
+			<string key="SRC_MOD_INST" value="ImportObserved"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ImportObserved"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQinflowopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="Q"/>
+			<string key="PARAM_QUALIFIER" value="valves"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_LOC_SET" value="de.sites_Q.valves"/>
+			<string key="SRC_MOD_INST" value="ImportObserved"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ImportObserved"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQvalvesopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQturbopo</moduleInstanceId>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="Q"/>
+			<string key="PARAM_QUALIFIER" value="spill"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_LOC_SET" value="de.sites_Q.spill"/>
+			<string key="SRC_MOD_INST" value="ImportObserved"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ImportObserved"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQspillopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="Q"/>
+			<string key="PARAM_QUALIFIER" value="total"/>
+			<string key="OP_END_DAY" value="0"/>
+			<string key="RESULT_LOC_SET" value="de.sites_Q.total"/>
+			<string key="SRC_MOD_INST" value="ProcessQopo"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ProcessQopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQtotalopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<properties>
+			<string key="PARAM" value="QORD"/>
+			<string key="PARAM_QUALIFIER" value="mdbc"/>
+			<string key="OP_END_DAY" value="30"/>
+			<string key="RESULT_LOC_SET" value="sites"/>
+			<string key="SRC_MOD_INST" value="ProcessQORDopo"/>
+			<string key="RESULT_MOD_INST_OBS" value="ProcessQORDopo"/>
+			<string key="RESULT_MOD_INST_FCST" value="ProcessQORDopo"/>
+		</properties>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQORDmdbcopo</moduleInstanceId>
+		<moduleConfigFileName>Processopo_templateQqualifier</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>ProcessQtotalopo</moduleInstanceId>
+		<moduleConfigFileName>CalculateTotalFlow</moduleConfigFileName>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>AssessThresholdsObserved</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>true</runIndependent>
+		<moduleInstanceId>EmailReport_ThresholdCrossings</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<moduleInstanceId>TriggerEmailReport_ThresholdCrossings</moduleInstanceId>
+	</activity>
+	<activity>
+		<runIndependent>false</runIndependent>
+		<predefinedActivity>threshold event crossing</predefinedActivity>
+	</activity>
+</workflow>

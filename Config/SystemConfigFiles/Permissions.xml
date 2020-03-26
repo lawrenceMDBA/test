@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<permissions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/permissions.xsd" xmlns="http://www.wldelft.nl/fews"> 
-    <permission id="RiverOperations">
-        <userGroup id="DataEntry"/>
-    </permission>
-    <permission id="FloodOperations">
-        <userGroup id="Forecaster"/>
-    </permission>
-    <permission id="WaterCoach">
-        <userGroup id="Forecaster"/>
-    </permission>
-    <permission id="Archive_Management">
-        <userGroup id="Administrators"/>
-        <userGroup id="Forecaster"/>
-    </permission>
-    <permission id="Administrators">
-        <userGroup id="Administrators"/>
-    </permission>
+<permissions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/permissions.xsd" xmlns="http://www.wldelft.nl/fews">
+	<permission id="RiverOperations">
+		<userGroup id="DataEntry"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="FloodOperations">
+		<userGroup id="Forecaster"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="WaterCoach">
+		<userGroup id="Forecaster"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="Archive_Management">
+		<userGroup id="Forecaster"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="Administrators">
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="WorkflowRunners">
+		<userGroup id="Forecaster"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
+	<permission id="DataEditors">
+		<userGroup id="Forecaster"/>
+		<userGroup id="DataEntry"/>
+		<userGroup id="RiverOperators"/>
+		<userGroup id="Administrators"/>
+	</permission>
 </permissions>

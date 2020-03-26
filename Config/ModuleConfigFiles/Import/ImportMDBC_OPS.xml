@@ -8,6 +8,7 @@
 			<folder>$IMPORT_FOLDER_FROM_MDBC_OPS$</folder>
 			<fileNamePatternFilter>*calc*.csv</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_MDBC_OPS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
 			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
 			<logWarningsForUnmappableLocations>false</logWarningsForUnmappableLocations>
 			<logWarningsForUnmappableParameters>false</logWarningsForUnmappableParameters>
@@ -519,6 +520,7 @@
 			<folder>$IMPORT_FOLDER_FROM_MDBC_OPS$</folder>
 			<fileNamePatternFilter>*forecast*</fileNamePatternFilter>
 			<failedFolder>$IMPORT_FAILED_FROM_MDBC_OPS$</failedFolder>
+			<deleteImportedFiles>false</deleteImportedFiles>
 			<logWarningsForUnmappableTimeSeries>false</logWarningsForUnmappableTimeSeries>
 			<logWarningsForUnmappableLocations>false</logWarningsForUnmappableLocations>
 			<logWarningsForUnmappableParameters>false</logWarningsForUnmappableParameters>
@@ -635,7 +637,7 @@
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 		<!-- Disabled as these parameters are depricated -->
-<!-- 	<timeSeriesSet>
+		<!-- 	<timeSeriesSet>
 			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>QDIV_fcst</parameterId>

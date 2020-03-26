@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generalAdapterRun xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/generalAdapterRun.xsd">
 	<general>
-		<piVersion>1.10</piVersion>
+		<piVersion>1.12</piVersion>
 		<rootDir>$EXPORT_FOLDER_RATINGS$</rootDir>
 		<workDir>%ROOT_DIR%</workDir>
 		<exportDir>%ROOT_DIR%</exportDir>
@@ -19,9 +19,11 @@
 	<activities>
 		<exportActivities>
 		<exportRatingCurveActivity>
-			<exportFile>all_ratings.xml</exportFile>
+			<exportFile>ratings_exportRatingCurveActivity.xml</exportFile>
+			<!-- SDK: 2018.02 functionality, still to be back ported from development version -->
+			<!--<onlyLatestAvailable>false</onlyLatestAvailable>-->
 			<locationSetId>sites_H_rated</locationSetId>
-		</exportRatingCurveActivity>
+			</exportRatingCurveActivity>
 		</exportActivities>
 	</activities>
 </generalAdapterRun>

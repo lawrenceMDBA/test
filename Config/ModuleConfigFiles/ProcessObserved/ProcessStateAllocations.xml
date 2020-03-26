@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
+	<!--+ State Allocations-->
+	<!-- NSW, VIC, SA -->
+	<!-- - manual daily data entry of underlivered at start of month [ML] -->
+	<!-- - keep previous value if no new value is entered -->
+	<!--Variables - NSW-->
+	<variable>
+		<variableId>NSW_HS</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Allocations</parameterId>
+			<qualifierId>NSW</qualifierId>
+			<qualifierId>HS</qualifierId>
+			<locationSetId>de.sites_Allocations.NSW</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-28" end="0" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NSW_GS</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Allocations</parameterId>
+			<qualifierId>NSW</qualifierId>
+			<qualifierId>GS</qualifierId>
+			<locationSetId>de.sites_Allocations.NSW</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-28" end="0" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables - VIC-->
+	<variable>
+		<variableId>VIC_HR</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Allocations</parameterId>
+			<qualifierId>VIC</qualifierId>
+			<qualifierId>HR</qualifierId>
+			<locationSetId>de.sites_Allocations.VIC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-28" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>VIC_LR</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Allocations</parameterId>
+			<qualifierId>VIC</qualifierId>
+			<qualifierId>LR</qualifierId>
+			<locationSetId>de.sites_Allocations.VIC</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-28" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--Variables - SA-->
+	<variable>
+		<variableId>SA_HS</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessStateAllocations</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Allocations</parameterId>
+			<qualifierId>SA</qualifierId>
+			<qualifierId>HS</qualifierId>
+			<locationSetId>de.sites_Allocations.SA</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod start="-28" end="0" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--*** TRANSFORMATIONS ***-->
+	<transformation id="NSW_HS">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>NSW_HS</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>NSW_HS</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="NSW_GS">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>NSW_GS</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>NSW_GS</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="VIC_HR">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>VIC_HR</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>VIC_HR</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="VIC_LR">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>VIC_LR</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>VIC_LR</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+	<transformation id="SA_HS">
+		<interpolationSerial>
+			<extrapolateConstant>
+				<inputVariable>
+					<variableId>SA_HS</variableId>
+				</inputVariable>
+				<extrapolateDirection>end</extrapolateDirection>
+				<outputVariable>
+					<variableId>SA_HS</variableId>
+				</outputVariable>
+			</extrapolateConstant>
+		</interpolationSerial>
+	</transformation>
+</transformationModule>
