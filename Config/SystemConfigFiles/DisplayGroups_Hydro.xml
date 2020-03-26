@@ -655,7 +655,7 @@
 				<timeStep id="8am"/>
 				<aggregationPeriod unit="day" start="-5" end="0"/>
 				<readWriteMode>add originals</readWriteMode>
-		    </timeSeriesSet>
+			</timeSeriesSet>
 		</subplot>
 		<subplot>
 			<timeSeriesSet>
@@ -704,7 +704,7 @@
 				<qualifierId>monthly</qualifierId>
 				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="Monthly" />
+				<timeStep id="Monthly"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
@@ -1289,6 +1289,7 @@
 	</plot>
 	<plot id="wr_evap">
 		<subplot>
+			<plotWeight>1</plotWeight>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessVopo</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -1300,6 +1301,9 @@
 				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>3</plotWeight>
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -1315,55 +1319,7 @@
 			<timeSeriesSet>
 				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>EVAP_loss</parameterId>
-				<qualifierId>opo</qualifierId>
-				<qualifierId>pan</qualifierId>
-				<locationSetId>sites_EVAP_loss</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="Monthly"/>
-				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EVAP%_calc</parameterId>
-				<qualifierId>opo</qualifierId>
-				<qualifierId>pan</qualifierId>
-				<locationSetId>sites_EVAP_loss</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="Monthly"/>
-				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
-				<valueType>scalar</valueType>
 				<parameterId>EVAP_net</parameterId>
-				<qualifierId>opo</qualifierId>
-				<qualifierId>pan</qualifierId>
-				<locationSetId>sites_EVAP_loss</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="Monthly"/>
-				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EVAP_loss</parameterId>
-				<qualifierId>opo</qualifierId>
-				<qualifierId>mlake</qualifierId>
-				<locationSetId>sites_EVAP_loss</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="Monthly"/>
-				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EVAP%_calc</parameterId>
 				<qualifierId>opo</qualifierId>
 				<qualifierId>mlake</qualifierId>
 				<locationSetId>sites_EVAP_loss</locationSetId>
@@ -1374,29 +1330,57 @@
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
+			<plotWeight>3</plotWeight>
 			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
+				<parameterId>EVAP_loss</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>3</plotWeight>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>pan</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>ProcessEVAPopo</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>EVAP%_calc</parameterId>
+				<qualifierId>opo</qualifierId>
+				<qualifierId>mlake</qualifierId>
+				<locationSetId>sites_EVAP_loss</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<relativeViewPeriod end="0" start="-180" startOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>

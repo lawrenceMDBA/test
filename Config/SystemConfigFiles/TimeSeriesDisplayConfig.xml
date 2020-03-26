@@ -450,6 +450,60 @@
 			<markerSize>4</markerSize>
 			<precision>1</precision>
 		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP%_calc">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<preferredColor>firebrick</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP%_calc">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_loss">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<preferredColor>firebrick</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_loss">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_net">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>mlake</qualifierId>
+			<preferredColor>firebrick</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>triangleup</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="EVAP_net">
+			<qualifierId>opo</qualifierId>
+			<qualifierId>pan</qualifierId>
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<markerStyle>circle</markerStyle>
+			<markerSize>10</markerSize>
+			<precision>1</precision>
+		</parameterDisplayOptions>
 		<parameterDisplayOptions id="EVAP_comb">
 			<preferredColor>slate blue</preferredColor>
 			<lineStyle>bar</lineStyle>
@@ -1394,6 +1448,14 @@
 			<lineWidth>1</lineWidth>
 			<markerStyle>triangledown</markerStyle>
 			<markerSize>4</markerSize>
+			<precision>0</precision>
+		</parameterDisplayOptions>
+		<parameterDisplayOptions id="V_GL">
+			<preferredColor>slate blue</preferredColor>
+			<lineStyle>solid</lineStyle>
+			<lineWidth>1</lineWidth>
+			<markerStyle>triangledown</markerStyle>
+			<markerSize>10</markerSize>
 			<precision>0</precision>
 		</parameterDisplayOptions>
 		<parameterDisplayOptions id="V_fcst">
@@ -2390,11 +2452,11 @@
 			<season startMonthDay="--03-01" endMonthDay="--05-31" label="Autum" color="plum2"/>
 			<season startMonthDay="--06-01" endMonthDay="--08-31" label="Winter" color="powder blue"/>
 			<season startMonthDay="--09-01" endMonthDay="--11-30" label="Spring" color="pale green"/>
-		</statisticalFunction> 
+		</statisticalFunction>
 		<statisticalFunction function="elevation"/>
 		<statisticalFunction function="gaussianCurve"/>
 		<statisticalFunction function="cumulative"/>
-<!-- 		<statisticalFunction function="principalcomponentanalysis">
+		<!-- 		<statisticalFunction function="principalcomponentanalysis">
 			<observedParameterId>Q_obs.opo</observedParameterId>
 			<simulatedParameterId>SWE.sim</simulatedParameterId>
 			<dateFormat>dd-MM-yyyy</dateFormat>
