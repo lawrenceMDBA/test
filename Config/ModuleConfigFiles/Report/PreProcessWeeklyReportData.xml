@@ -3,7 +3,7 @@
 	<!--TODO: make temporary? 
 TODO: total flows are all saved in GL/s etc.! should be accumulative something. -->
 	<!--1. Water in storage 
-locationsSets: wr.sites_mdbastorage & wr.sites_majorstatestorages (wr.sites_allstorages)
+locationsSets: wr.sites_mdba_storage & wr.sites_majorstatestorages (wr.sites_allstorages)
 
 Output: 
 Storage level at wednesday 8am.
@@ -93,30 +93,19 @@ locationsSets: wr.sites_barrages-->
 locationSets: wr.sites_murray_system_inflow
 
 11. State allocations -->
+	<!--========== Variables ==========-->
+	<!--1. Water in storage - in- and throughput series-->
 	<variable>
 		<variableId>Storage_H</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdba_storage</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Storage_H_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -125,11 +114,105 @@ locationSets: wr.sites_murray_system_inflow
 			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_active_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="day" multiplier="7"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_R_401027</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_401027</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_R_401224A</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_401224A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_R_A4261093</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_A4261093</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_R_MENINDE</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>R_MENINDE</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--1. Water in storage - output series-->
+	<variable>
+		<variableId>Storage_V_weekly_Z_MDBATOTAL</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationId>Z_MDBATOTAL</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_H_weekly_storage</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>wr.sites_mdba_storage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -138,7 +221,7 @@ locationSets: wr.sites_murray_system_inflow
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -151,7 +234,7 @@ locationSets: wr.sites_murray_system_inflow
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V%_calc</parameterId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -165,26 +248,11 @@ locationSets: wr.sites_murray_system_inflow
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
 			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Storage_V_active_shift</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-			<delay unit="day" multiplier="7"/>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -194,20 +262,21 @@ locationSets: wr.sites_murray_system_inflow
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
 			<qualifierId>delta</qualifierId>
-			<locationSetId>wr.sites_allstorages</locationSetId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--2. Snowy Mountains scheme - in- and throughput series-->
 	<variable>
 		<variableId>Snowy_V</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -215,12 +284,41 @@ locationSets: wr.sites_murray_system_inflow
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>Snowy_QDIV</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<locationSetId>wr.sites_snowy</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Snowy_V_active_shift</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_snowy</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="tue_8am"/>
+			<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="day" multiplier="7"/>
+		</timeSeriesSet>
+	</variable>
+	<!--2. Snowy Mountains scheme - output series-->
+	<variable>
 		<variableId>Snowy_V_weekly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -233,7 +331,7 @@ locationSets: wr.sites_murray_system_inflow
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>V%_calc</parameterId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -247,26 +345,11 @@ locationSets: wr.sites_murray_system_inflow
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
 			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Snowy_V_active_shift</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="tue_8am"/>
-			<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-			<delay unit="day" multiplier="7"/>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -276,24 +359,11 @@ locationSets: wr.sites_murray_system_inflow
 			<valueType>scalar</valueType>
 			<parameterId>V_calc</parameterId>
 			<qualifierId>delta</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Snowy_QDIV</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -303,7 +373,7 @@ locationSets: wr.sites_murray_system_inflow
 			<valueType>scalar</valueType>
 			<parameterId>QDIV_calc</parameterId>
 			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<aggregationPeriod unit="day" start="-7" end="0"/>
@@ -319,7 +389,7 @@ locationSets: wr.sites_murray_system_inflow
 			<parameterId>QDIV_calc</parameterId>
 			<qualifierId>total</qualifierId>
 			<qualifierId>fromMay1</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
@@ -334,13 +404,14 @@ locationSets: wr.sites_murray_system_inflow
 			<parameterId>QDIV_calc</parameterId>
 			<qualifierId>total</qualifierId>
 			<qualifierId>fromMay1</qualifierId>
-			<locationSetId>wr.sites_snowystorage</locationSetId>
+			<locationSetId>wr.sites_snowy</locationSetId>
 			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="tue_8am"/>
 			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--3. Major Diversions from Murray and Lower Darling (GL) -->
 	<variable>
 		<variableId>Diversions_QDIV</variableId>
 		<timeSeriesSet>
@@ -399,6 +470,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--4. Flow to South Australia-->
 	<variable>
 		<variableId>FlowToSA_Q</variableId>
 		<timeSeriesSet>
@@ -459,20 +531,6 @@ locationSets: wr.sites_murray_system_inflow
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>FlowToSA_Q_runningtotal_thismonth_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_flowtosa</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>FlowToSA_Q_total_lastmonth</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -502,6 +560,21 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<variable>
+		<variableId>FlowToSA_Q_runningtotal_thismonth_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_flowtosa</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--5. Salinity (EC) -->
 	<variable>
 		<variableId>Salinity_EC</variableId>
 		<timeSeriesSet>
@@ -574,6 +647,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--6. River levels and flows - input series-->
 	<variable>
 		<variableId>Rivers_H</variableId>
 		<timeSeriesSet>
@@ -602,6 +676,20 @@ locationSets: wr.sites_murray_system_inflow
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>Rivers_Q</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<!--6. River levels and flows - output series-->
+	<variable>
 		<variableId>Rivers_H_weekly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -609,20 +697,6 @@ locationSets: wr.sites_murray_system_inflow
 			<parameterId>H_calc</parameterId>
 			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Rivers_H_ahd_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<qualifierId>ahd</qualifierId>
-			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -637,6 +711,20 @@ locationSets: wr.sites_murray_system_inflow
 			<qualifierId>shift_t2</qualifierId>
 			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Rivers_H_ahd_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>ahd</qualifierId>
+			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="wed_8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
@@ -671,19 +759,6 @@ locationSets: wr.sites_murray_system_inflow
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Rivers_Q</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Q_calc</parameterId>
-			<locationSetId>wr.sites_allriverlevelflows</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>Rivers_Q_weekly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -712,6 +787,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--7. Weirs and locks - input series-->
 	<variable>
 		<variableId>WeirsLocks_H</variableId>
 		<timeSeriesSet>
@@ -728,17 +804,18 @@ locationSets: wr.sites_murray_system_inflow
 	<variable>
 		<variableId>WeirsLocks_H_ds</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_calc</parameterId>
-			<locationRelationId>DS</locationRelationId>
+			<qualifierId>ds</qualifierId>
 			<locationSetId>wr.sites_murrayweirs_usds</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
+			<timeSeriesType>simulated historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
+			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--7. Weirs and locks - output series-->
 	<variable>
 		<variableId>WeirsLocks_H_delta</variableId>
 		<timeSeriesSet>
@@ -797,6 +874,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--8. Lower lakes (SA) -->
 	<variable>
 		<variableId>LowerLakes_H</variableId>
 		<timeSeriesSet>
@@ -826,6 +904,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--9. Barrages - input series-->
 	<variable>
 		<variableId>Barrages_H</variableId>
 		<timeSeriesSet>
@@ -837,33 +916,6 @@ locationSets: wr.sites_murray_system_inflow
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Barrages_H_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>wr.sites_barrages</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Barrages_H_ahd_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<qualifierId>ahd</qualifierId>
-			<locationSetId>wr.sites_barrages</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -907,6 +959,34 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
+	<!--9. Barrages - output series-->
+	<variable>
+		<variableId>Barrages_H_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Barrages_H_ahd_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_calc</parameterId>
+			<qualifierId>ahd</qualifierId>
+			<locationSetId>wr.sites_barrages</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>Barrages_GatesOpen_weekly</variableId>
 		<timeSeriesSet>
@@ -948,234 +1028,7 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_mdbastorage</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_percent</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V%_calc</parameterId>
-			<locationSetId>wr.sites_mdbastorage</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_active</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_mdbastorage</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_delta</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>delta</qualifierId>
-			<locationSetId>wr.sites_mdbastorage</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>NSW_QDIV_thisweek</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_nswdiversion</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<aggregationPeriod unit="day" start="-7" end="0"/>
-			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>NSW_QDIV_fromJuly1_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<qualifierId>fromJuly1</qualifierId>
-			<locationSetId>wr.sites_nswdiversion</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Vic_QDIV_thisweek</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_vicdiversion</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<aggregationPeriod unit="day" start="-7" end="0"/>
-			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Vic_QDIV_fromJuly1_weekly</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<qualifierId>fromJuly1</qualifierId>
-			<locationSetId>wr.sites_vicdiversion</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_weekly_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_percent_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V%_calc</parameterId>
-			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_active_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>active</qualifierId>
-			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>MDBA_Storage_V_delta_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>V_calc</parameterId>
-			<qualifierId>delta</qualifierId>
-			<locationSetId>wr.sites_mdbastorage_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>NSW_QDIV_thisweek_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<aggregationPeriod unit="day" start="-7" end="0"/>
-			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>NSW_QDIV_fromJuly1_weekly_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<qualifierId>fromJuly1</qualifierId>
-			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Vic_QDIV_thisweek_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<aggregationPeriod unit="day" start="-7" end="0"/>
-			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>Vic_QDIV_fromJuly1_weekly_total</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>QDIV_calc</parameterId>
-			<qualifierId>total</qualifierId>
-			<qualifierId>fromJuly1</qualifierId>
-			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-			<timeSeriesType>simulated historical</timeSeriesType>
-			<timeStep id="wed_8am"/>
-			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
+	<!--10. graphs-->
 	<variable>
 		<variableId>MurraySystemInflow</variableId>
 		<timeSeriesSet>
@@ -1253,24 +1106,36 @@ locationSets: wr.sites_murray_system_inflow
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<transformation id="Storage_H_to_H_weekly">
+	<!--========== Transformations ==========-->
+	<!--1. Water in storage-->
+	<transformation id="Storage_H_weekly_storage">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
 					<variableId>Storage_H</variableId>
 				</equidistantInputVariable>
 				<timeReferenceInputVariable>
-					<variableId>Storage_H_weekly</variableId>
+					<variableId>Storage_H_weekly_storage</variableId>
 				</timeReferenceInputVariable>
 				<interpolationType>closestBackward</interpolationType>
 				<timeWindow unit="day" multiplier="6"/>
 				<outputVariable>
-					<variableId>Storage_H_weekly</variableId>
+					<variableId>Storage_H_weekly_storage</variableId>
 				</outputVariable>
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Storage_V_to_V_weekly">
+	<transformation id="Storage_V_Z_MDBATOTAL">
+		<user>
+			<simple>
+				<expression>Storage_V_R_401027 + Storage_V_R_401224A + Storage_V_R_A4261093  + Storage_V_R_MENINDE</expression>
+				<outputVariable>
+					<variableId>Storage_V_weekly_Z_MDBATOTAL</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="Storage_V_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1287,7 +1152,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Storage_V_weekly_to_V_ratio">
+	<transformation id="Storage_V_percent">
 		<user>
 			<simple>
 				<expression>100 * Storage_V_weekly / Storage_V_max</expression>
@@ -1300,7 +1165,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Storage_V_weekly_to_V_active">
+	<transformation id="Storage_V_active">
 		<user>
 			<simple>
 				<expression>Storage_V_weekly - Storage_V_dead</expression>
@@ -1313,7 +1178,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Storage_V_active_to_V_delta">
+	<transformation id="Storage_V_delta">
 		<user>
 			<simple>
 				<expression>Storage_V_active - Storage_V_active_shift</expression>
@@ -1323,7 +1188,8 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Snowy_V_to_Vweekly">
+	<!--2. Snowy Mountains scheme-->
+	<transformation id="Snowy_V_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1340,7 +1206,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Snowy_V_weekly_to_V_ratio">
+	<transformation id="Snowy_V_percent">
 		<user>
 			<simple>
 				<expression>100 * Snowy_V_weekly / Snowy_V_max</expression>
@@ -1353,7 +1219,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Snowy_V_weekly_to_V_active">
+	<transformation id="Snowy_V_active">
 		<user>
 			<simple>
 				<expression>Snowy_V_weekly - Snowy_V_dead</expression>
@@ -1366,7 +1232,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Snowy_V_active_to_V_delta">
+	<transformation id="Snowy_V_delta">
 		<user>
 			<simple>
 				<expression>Snowy_V_active - Snowy_V_active_shift</expression>
@@ -1376,7 +1242,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Snowy_QDIV_weeklysum">
+	<transformation id="Snowy_QDIV_thisweek">
 		<aggregation>
 			<accumulative>
 				<inputVariable>
@@ -1388,7 +1254,7 @@ locationSets: wr.sites_murray_system_inflow
 			</accumulative>
 		</aggregation>
 	</transformation>
-	<transformation id="Snowy_QDIV_seasonalsum">
+	<transformation id="Snowy_QDIV_fromMay1">
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
@@ -1401,7 +1267,7 @@ locationSets: wr.sites_murray_system_inflow
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="Snowy_QDIV_seasonalsum_daily_to_weekly">
+	<transformation id="Snowy_QDIV_fromMay1_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1418,7 +1284,8 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Diversions_QDIV_weeklysum">
+	<!--3. Major Diversions from Murray and Lower Darling (GL) -->
+	<transformation id="Diversions_QDIV_thisweek">
 		<aggregation>
 			<accumulative>
 				<inputVariable>
@@ -1430,7 +1297,7 @@ locationSets: wr.sites_murray_system_inflow
 			</accumulative>
 		</aggregation>
 	</transformation>
-	<transformation id="Diversions_QDIV_seasonalsum">
+	<transformation id="Diversions_QDIV_fromJuly1">
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
@@ -1443,7 +1310,7 @@ locationSets: wr.sites_murray_system_inflow
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="Diversions_QDIV_seasonalsum_daily_to_weekly">
+	<transformation id="Diversions_QDIV_fromJuly1_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1460,7 +1327,8 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="FlowToSA_Q_weeklysum">
+	<!--4. Flow to South Australia-->
+	<transformation id="FlowToSA_Q_thisweek">
 		<aggregation>
 			<accumulative>
 				<inputVariable>
@@ -1472,7 +1340,7 @@ locationSets: wr.sites_murray_system_inflow
 			</accumulative>
 		</aggregation>
 	</transformation>
-	<transformation id="FlowToSA_Q_weeklyavg">
+	<transformation id="FlowToSA_Q_average_thisweek">
 		<aggregation>
 			<instantaneousToMean>
 				<inputVariable>
@@ -1484,7 +1352,7 @@ locationSets: wr.sites_murray_system_inflow
 			</instantaneousToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="FlowToSA_Q_monthlycumulative">
+	<transformation id="FlowToSA_Q_runningtotal_thismonth">
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
@@ -1497,7 +1365,7 @@ locationSets: wr.sites_murray_system_inflow
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="FlowToSA_Q_total_previousmonth_monthly">
+	<transformation id="FlowToSA_Q_total_lastmonth">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1514,7 +1382,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="FlowToSA_Q_total_previousmonth_weekly">
+	<transformation id="FlowToSA_Q_total_lastmonth_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1531,7 +1399,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="FlowToSA_Q_monthlysum_daily_to_weekly">
+	<transformation id="FlowToSA_Q_runningtotal_thismonth_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1548,7 +1416,8 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Salinity_EC_to_weekly">
+	<!--5. Salinity (EC) -->
+	<transformation id="Salinity_EC_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1565,7 +1434,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Salinity_EC_weeklyavg">
+	<transformation id="Salinity_EC_average_thisweek">
 		<aggregation>
 			<instantaneousToMean>
 				<inputVariable>
@@ -1577,7 +1446,7 @@ locationSets: wr.sites_murray_system_inflow
 			</instantaneousToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="Salinity_EC_seasonalavg_daily">
+	<transformation id="Salinity_EC_average_fromAugust1">
 		<accumulation>
 			<meanInterval>
 				<inputVariable>
@@ -1590,7 +1459,7 @@ locationSets: wr.sites_murray_system_inflow
 			</meanInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="Salinity_EC_seasonalavg_daily_to_weekly">
+	<transformation id="Salinity_EC_average_fromAugust1_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1607,7 +1476,8 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Rivers_H_to_H_weekly">
+	<!--6. River levels and flows-->
+	<transformation id="Rivers_H_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1624,7 +1494,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Rivers_H_shift_to_H_weekly">
+	<transformation id="Rivers_H_shift_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1641,7 +1511,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Rivers_H_weekly_to_H_ahd">
+	<transformation id="Rivers_H_ahd_weekly">
 		<user>
 			<simple>
 				<expression>Rivers_H_weekly + Gauge</expression>
@@ -1654,7 +1524,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Rivers_H_weekly_to_H_delta">
+	<transformation id="Rivers_H_delta_weekly">
 		<user>
 			<simple>
 				<expression>Rivers_H_weekly - Rivers_H_shift_weekly</expression>
@@ -1664,7 +1534,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Rivers_H_weekly_to_H_delta">
+	<transformation id="Rivers_H_trend_weekly">
 		<user>
 			<simple>
 				<expression>if ( Rivers_H_delta_weekly &lt;= -0.010 , -1, if ( Rivers_H_delta_weekly &gt;= 0.010, 1, 0 ) )</expression>
@@ -1674,7 +1544,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Rivers_Q_to_Q_weekly">
+	<transformation id="Rivers_Q_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1691,7 +1561,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Rivers_Q_weeklyavg">
+	<transformation id="Rivers_Q_average_thisweek">
 		<aggregation>
 			<instantaneousToMean>
 				<inputVariable>
@@ -1703,7 +1573,8 @@ locationSets: wr.sites_murray_system_inflow
 			</instantaneousToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="WeirsLocks_H_to_H_delta">
+	<!--7. Weirs and locks-->
+	<transformation id="WeirsLocks_H_delta">
 		<user>
 			<simple>
 				<expression>WeirsLocks_H - FSL  + Gauge</expression>
@@ -1717,7 +1588,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="WeirsLocks_H_ds_to_H_ds_delta">
+	<transformation id="WeirsLocks_H_ds_delta">
 		<user>
 			<simple>
 				<expression>WeirsLocks_H_ds - FSL + Gauge</expression>
@@ -1731,7 +1602,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="WeirsLocks_H_delta_to_weekly">
+	<transformation id="WeirsLocks_H_delta_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1748,7 +1619,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="WeirsLocks_H_ds_delta_to_weekly">
+	<transformation id="WeirsLocks_H_ds_delta_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1765,7 +1636,8 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="LowerLakes_H_avg5day">
+	<!--8. Lower lakes (SA) -->
+	<transformation id="LowerLakes_H_average_5d">
 		<aggregation>
 			<instantaneousToMean>
 				<inputVariable>
@@ -1777,7 +1649,8 @@ locationSets: wr.sites_murray_system_inflow
 			</instantaneousToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="Barrages_H_to_H_weekly">
+	<!--9. Barrages-->
+	<transformation id="Barrages_H_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1794,7 +1667,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Barrages_H_weekly_to_H_ahd">
+	<transformation id="Barrages_H_ahd_weekly">
 		<user>
 			<simple>
 				<expression>Barrages_H_weekly + Gauge</expression>
@@ -1807,7 +1680,7 @@ locationSets: wr.sites_murray_system_inflow
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="Barrages_GatesOpen_to_GatesOpen_weekly">
+	<transformation id="Barrages_GatesOpen_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1824,7 +1697,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Barrages_GatesOpen_vs_to_GatesOpen_vs_weekly">
+	<transformation id="Barrages_GatesOpen_vs_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1841,7 +1714,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="Barrages_GatesOpen_rr_to_GatesOpen_rr_weekly">
+	<transformation id="Barrages_GatesOpen_rr_weekly">
 		<sample>
 			<equidistant>
 				<equidistantInputVariable>
@@ -1858,103 +1731,7 @@ locationSets: wr.sites_murray_system_inflow
 			</equidistant>
 		</sample>
 	</transformation>
-	<transformation id="MDBA_Storage_V_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>MDBA_Storage_V_weekly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>MDBA_Storage_V_weekly_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="MDBA_Storage_V_active_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>MDBA_Storage_V_active</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>MDBA_Storage_V_active_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="MDBA_Storage_V_percent_total">
-		<user>
-			<simple>
-				<expression>100 * MDBA_Storage_V_weekly_total / MDBA_Storage_V_weekly_max</expression>
-				<coefficientSetFunctions>
-					<coefficient id="MDBA_Storage_V_weekly_max" value="@FSV@"/>
-				</coefficientSetFunctions>
-				<outputVariable>
-					<variableId>MDBA_Storage_V_percent_total</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="MDBA_Storage_V_delta_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>MDBA_Storage_V_delta</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>MDBA_Storage_V_delta_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="NSW_QDIV_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>NSW_QDIV_thisweek</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>NSW_QDIV_thisweek_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="NSW_QDIV_seasonal_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>NSW_QDIV_fromJuly1_weekly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>NSW_QDIV_fromJuly1_weekly_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="Vic_QDIV_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>Vic_QDIV_thisweek</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Vic_QDIV_thisweek_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
-	<transformation id="Vic_QDIV_seasonal_total">
-		<statisticsChildrenLocations>
-			<sum>
-				<inputVariable>
-					<variableId>Vic_QDIV_fromJuly1_weekly</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>Vic_QDIV_fromJuly1_weekly_total</variableId>
-				</outputVariable>
-			</sum>
-		</statisticsChildrenLocations>
-	</transformation>
+	<!--10. graphs-->
 	<transformation id="MurraySystemInflow_total">
 		<statisticsChildrenLocations>
 			<sum>
@@ -2015,4 +1792,330 @@ locationSets: wr.sites_murray_system_inflow
 			</instantaneousToMean>
 		</aggregation>
 	</transformation>
+	<!--not used-->
+	<!--<variable>
+		<variableId>Storage_V_weekly_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_mdba_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_percent_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_mdba_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_active_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_mdba_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Storage_V_delta_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_mdba_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--	<variable>
+		<variableId>NSW_QDIV_thisweek_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NSW_QDIV_fromJuly1_weekly_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_nswdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Vic_QDIV_thisweek_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Vic_QDIV_fromJuly1_weekly_total</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MDBA_Storage_V_active</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>active</qualifierId>
+			<locationSetId>wr.sites_mdba_storage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MDBA_Storage_V_percent</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V%_calc</parameterId>
+			<locationSetId>wr.sites_mdba_storage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MDBA_Storage_V_delta</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>wr.sites_mdba_storage</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NSW_QDIV_thisweek</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_nswdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>NSW_QDIV_fromJuly1_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_nswdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Vic_QDIV_thisweek</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<locationSetId>wr.sites_vicdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<aggregationPeriod unit="day" start="-7" end="0"/>
+			<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>Vic_QDIV_fromJuly1_weekly</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>QDIV_calc</parameterId>
+			<qualifierId>total</qualifierId>
+			<qualifierId>fromJuly1</qualifierId>
+			<locationSetId>wr.sites_vicdiversion</locationSetId>
+			<timeSeriesType>simulated historical</timeSeriesType>
+			<timeStep id="wed_8am"/>
+			<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>MurraySystemInflow</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_calc</parameterId>
+			<locationSetId>HYDRO_sites_Q</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>-->
+	<!--not used-->
+	<!--<transformation id="Storage_V_weekly_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>Storage_V_weekly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Storage_V_weekly_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="Storage_V_active_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>MDBA_Storage_V_active</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>MDBA_Storage_V_active_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="Storage_V_percent_total">
+		<user>
+			<simple>
+				<expression>100 * MDBA_Storage_V_weekly_total / MDBA_Storage_V_weekly_max</expression>
+				<coefficientSetFunctions>
+					<coefficient id="MDBA_Storage_V_weekly_max" value="@FSV@"/>
+				</coefficientSetFunctions>
+				<outputVariable>
+					<variableId>MDBA_Storage_V_percent_total</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="MDBA_Storage_V_delta_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>MDBA_Storage_V_delta</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Storage_V_delta_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="NSW_QDIV_thisweek_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>NSW_QDIV_thisweek</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>NSW_QDIV_thisweek_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="NSW_QDIV_fromJuly1_weekly_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>NSW_QDIV_fromJuly1_weekly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>NSW_QDIV_fromJuly1_weekly_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="Vic_QDIV_thisweek_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>Vic_QDIV_thisweek</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Vic_QDIV_thisweek_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>
+	<transformation id="Vic_QDIV_fromJuly1_weekly_total">
+		<statisticsChildrenLocations>
+			<sum>
+				<inputVariable>
+					<variableId>Vic_QDIV_fromJuly1_weekly</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>Vic_QDIV_fromJuly1_weekly_total</variableId>
+				</outputVariable>
+			</sum>
+		</statisticsChildrenLocations>
+	</transformation>-->
 </transformationModule>

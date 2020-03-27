@@ -1695,6 +1695,9 @@
 				<attribute id="SNOWY_TABLE">
 					<text>%SNOWY_TABLE%</text>
 				</attribute>
+				<attribute id="DUMMY">
+					<text>%DUMMY%</text>
+				</attribute>
 			</attributeFile>
 			<attributeFile>
 				<csvFile>ROWS_rtctools_parameters</csvFile>
@@ -2845,21 +2848,21 @@
 			<attributeExists id="REPORT_WEEKLY"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="wr.sites_mdbastorage_total">
+	<locationSet id="wr.sites_mdba_total">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_total"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="wr.sites_mdbastorage">
+	<locationSet id="wr.sites_mdba_storage">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<attributeTextContains id="REPORT_WEEKLY" contains="mdba_storage"/>
 		</constraints>
 	</locationSet>
-	<locationSet id="wr.sites_mdbastorage_table">
+	<locationSet id="wr.sites_mdbastorage_plustotals">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
@@ -2878,25 +2881,32 @@
 	</locationSet>
 	<locationSet id="wr.sites_allstorages">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
-		<locationSetId>wr.sites_mdbastorage</locationSetId>
+		<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
 		<locationSetId>wr.sites_majorstatestorages</locationSetId>
 	</locationSet>
-	<locationSet id="wr.sites_snowystorage">
+	<locationSet id="wr.sites_snowy">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
 		<locationSetId>sites</locationSetId>
 		<constraints>
 			<allValid>
 				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
+			</allValid>
+		</constraints>
+	</locationSet>
+	<locationSet id="wr.sites_snowystorage">
+		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
+		<locationSetId>wr.sites_snowy</locationSetId>
+		<constraints>
+			<allValid>
 				<attributeTextContains id="SNOWY_TABLE" contains="storage"/>
 			</allValid>
 		</constraints>
 	</locationSet>
 	<locationSet id="wr.sites_snowydiversion">
 		<sortingLocationAttributeId>REPORT_SEQ</sortingLocationAttributeId>
-		<locationSetId>sites</locationSetId>
+		<locationSetId>wr.sites_snowy</locationSetId>
 		<constraints>
 			<allValid>
-				<attributeTextContains id="REPORT_WEEKLY" contains="snowy_storage"/>
 				<attributeTextContains id="SNOWY_TABLE" contains="diversion"/>
 			</allValid>
 		</constraints>
