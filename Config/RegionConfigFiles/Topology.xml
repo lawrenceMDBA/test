@@ -475,50 +475,65 @@
 			<node id="Prepare_WeeklyReport" name="Prepare Data Weekly Report">
 				<workflowId>Prepare_WeeklyReport</workflowId>
 				<displayGroupId>H_value</displayGroupId>
+				<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				<localRun>true</localRun>
 			</node>
 			<nodes id="Report_review" name="Review">
 				<node id="Review_allstorages" name="All Major Storages">
 					<displayGroupId>wr_allstorages</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_snowystorage" name="Snowy Storage">
-					<displayGroupId>wr_snowystorage</displayGroupId>
+					<displayGroupId>wr_snowydiversion</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_alldiversions" name="All Diversions">
 					<displayGroupId>wr_alldiversions</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_salinity" name="(not used) Salinity ">
 					<displayGroupId>wr_salinity</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_allriverlevelflows" name="(not used) River Levels and Flows">
 					<displayGroupId>wr_allriverlevelflows</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_murrayweirs" name="(not used) Murray Weirs and Locks">
 					<displayGroupId>wr_murrayweirs</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_lowerlakes" name="(not used) Lower Lakes">
 					<displayGroupId>wr_lowerlakes</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_barrages" name="(not used) Barrages">
 					<displayGroupId>wr_barrages</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_flowtosa" name="Flow to South Australie">
 					<displayGroupId>wr_flowtosa</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_nswdiversion" name="NSW Diversion">
 					<displayGroupId>wr_nswdiversion</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_vicdiversion" name="VIC Diversion">
 					<displayGroupId>wr_vicdiversion</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_evap" name="EVAP (monthly input)">
 					<displayGroupId>wr_evap</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_systeminflows_daily" name="System Inflows - Daily">
 					<displayGroupId>wr_systeminflows_daily</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 				<node id="Review_systeminflows_monthly" name="System Inflows - Monthly">
 					<displayGroupId>wr_systeminflows_monthly</displayGroupId>
+					<url>file:\\\$EXPORT_FOLDER_REPORTS$/report_weekly.html</url>
 				</node>
 			</nodes>
 			<mainPanel>web browser display</mainPanel>
@@ -526,7 +541,6 @@
 		</nodes>
 		<nodes id="Export_MonthlyReport" name="Export Monthly part of Weekly Report (on server)">
 			<workflowId>Export_MonthlyReport</workflowId>
-			<localRun>false</localRun>
 			<node id="Prepare_MonthlyReport" name="Prepare Monthly Data Weekly Report">
 				<workflowId>Prepare_MonthlyReport</workflowId>
 				<displayGroupId>wr_evap</displayGroupId>
