@@ -139,6 +139,8 @@ locationsSets: wr.sites_barrages-->
 		<numberFormat id="2_decimals">{0,number,###0.00}</numberFormat>
 		<numberFormat id="no_decimals">{0,number,###0}</numberFormat>
 		<numberFormat id="1_decimal">{0,number,###0.0}</numberFormat>
+		<numberFormat id="seperator_no_decimals">{0,number,###,###}</numberFormat>
+		<numberFormat id="seperator_1_decimal">{0,number,###,##0.0}</numberFormat>
 		<numberFormat id="numberFormatThreshold">{0,number,0.00}</numberFormat>
 		<generatePdf>false</generatePdf>
 		<templateDir>%REGION_HOME%/Config/ReportTemplateFiles</templateDir>
@@ -339,20 +341,6 @@ locationsSets: wr.sites_barrages-->
 				<valueType>scalar</valueType>
 				<parameterId>Q_calc</parameterId>
 				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_flowtosa</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="FlowToSA_Q_average_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<qualifierId>mean</qualifierId>
 				<locationSetId>wr.sites_flowtosa</locationSetId>
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="wed_8am"/>
@@ -1073,13 +1061,13 @@ locationsSets: wr.sites_barrages-->
 				<header>Full supply volume (ML)</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
+				<function>LOCATIONATTRIBUTE(FSV ;; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (ML)</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; no_decimals)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_weekly ; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>Current storage volume (%)</header>
@@ -1091,7 +1079,7 @@ locationsSets: wr.sites_barrages-->
 				<header>Change in total storage for the week (ML)</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_delta ; no_decimals)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_delta ; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Storages_MDBA_totals" tableStyle="tableStyle3">
@@ -1111,13 +1099,13 @@ locationsSets: wr.sites_barrages-->
 				<header>''</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>LOCATIONATTRIBUTE(FSV ;; no_decimals)</function>
+				<function>LOCATIONATTRIBUTE(FSV ;; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>''</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_weekly_totals ; no_decimals)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_weekly_totals ; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>''</header>
@@ -1129,7 +1117,7 @@ locationsSets: wr.sites_barrages-->
 				<header>''</header>
 				<format>_data</format>
 				<width>85</width>
-				<function>INDEXVALUE(0;StorageMDBA_V_delta_totals ; no_decimals)</function>
+				<function>INDEXVALUE(0;StorageMDBA_V_delta_totals ; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Snowy_diversion" tableStyle="tableStyle3">
@@ -1197,25 +1185,25 @@ locationsSets: wr.sites_barrages-->
 				<header>Entitlement this month *</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_thisweek;1_decimal)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_thisweek;seperator_1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow this week (GL/week)</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; 1_decimal)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; seperator_1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow so far this month (GL)</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;1_decimal)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;seperator_1_decimal)</function>
 			</column>
 			<column>
 				<header>Flow last month (GL)</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly ; 1_decimal)</function>
+				<function>INDEXVALUE(0;FlowToSA_Q_total_lastmonth_weekly ; seperator_1_decimal)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="WeirsLocks_notused" tableStyle="tableStyle3">
