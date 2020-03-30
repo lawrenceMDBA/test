@@ -420,6 +420,7 @@
 	<!-- Report (Process)-->
 	<workflowDescriptor forecast="true" id="Prepare_WeeklyReport" name="Prepare Weekly Report" visible="true" allowApprove="true" autoApprove="true">
 		<description>Calculate data for the weekly report</description>
+		<cardinalTimeStep id="wed_8am"/>
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>
 	</workflowDescriptor>
@@ -517,6 +518,7 @@
 	</workflowDescriptor>
 	<workflowDescriptor forecast="true" id="Export_WeeklyReport" name="Export Weekly Report" visible="true" allowApprove="true" autoApprove="true">
 		<description>Build and Export the weekly report</description>
+		<cardinalTimeStep id="wed_8am"/>
 		<runExpiryTime unit="day" multiplier="30"/>
 		<viewPermission>RiverOperations</viewPermission>
 		<runPermission>WorkflowRunners</runPermission>

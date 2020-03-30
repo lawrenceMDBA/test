@@ -317,8 +317,17 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-			<expiryTime unit="day" multiplier="365"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>V_calc</parameterId>
+			<locationSetId>wr.sites_mdbastorage_plustotals</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-14" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</thresholdValueSet>
 	<thresholdValueSet id="StorageVolume_objectives" name="Storage Volume (SOnO, RO)">
