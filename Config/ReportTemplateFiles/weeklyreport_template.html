@@ -197,7 +197,7 @@ table#tableStyle3 {
 
 <body>
 <p style="font-family: Arial; font-size: 14pt; padding: 0px; margin: 0px;">
-	<strong>Weekly report for the week ending $INDEXTIME(0;StorageMDBA_H_weekly; LongDate)$  </strong>
+	<strong>Weekly report for the week ending $INDEXTIME(0;StorageMDBA_V_weekly; LongDate)$  </strong>
 	</p
 
 <p style="font-family: Arial; font-size: 11pt; padding: 0.5cm; margin: 0px;">
@@ -208,7 +208,7 @@ table#tableStyle3 {
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	Week ending $INDEXTIME(0;StorageMDBA_H_weekly;LongDate)$</a>
+	Week ending $INDEXTIME(0;StorageMDBA_V_weekly;LongDate)$</a>
 </p>
 <table border="0">
 	<tbody>
@@ -238,24 +238,6 @@ Snowy diversions for week ending $INDEXTIME(-1;Snowy_QDIV_thisweek;ReadableDate)
 	TODO: Add link to Snowy website
 </p>
 
-<p style="font-family: Arial; font-size: 11pt;padding-top: 0.5cm; margin:0pt;">
-	<strong>Major Diversions from Murray and Lower Darling (GL) *</strong>
-</p>
-<table border="0">
-	<tbody>
-		<tr>
-			<td>
-				$TABLE(Diversions_NSW)$
-			</td>
-			<td>
-				$TABLE(Diversions_Vic)$
-			</td>
-		</tr>
-	</tbody>
-</table>
-<p style="font-family: Arial; font-size: 8pt;padding: 0px; margin:0px;">
-        * Figures derived from estimates and monthly data. Please note that not all data may have been available at the time of creating this report.
-</p>
 <br />
 
 <table border="0">
