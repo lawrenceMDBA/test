@@ -445,13 +445,14 @@
 			</timeSeriesSet>
 		</subplot>
 	</plot>
-	<plot id="wr_snowydiversion">
+	<plot id="wr_snowydiversion_V">
 		<subplot>
 			<plotWeight>1</plotWeight>
 			<timeSeriesSet>
-				<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+				<moduleInstanceId>ProcessVopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>V_calc</parameterId>
+				<parameterId>V_obs</parameterId>
+				<qualifierId>opo</qualifierId>
 				<locationSetId>wr.sites_snowydiversion</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
@@ -516,13 +517,16 @@
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
+	</plot>
+	<plot id="wr_snowydiversion">
 		<subplot>
 			<plotWeight>1</plotWeight>
 			<timeSeriesSet>
-				<moduleInstanceId>ImportCalculatedHydro</moduleInstanceId>
+				<moduleInstanceId>ProcessQopo</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<locationSetId>wr.sites_snowydiversion</locationSetId>
+				<parameterId>Q_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>wr.sites_snowy</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
@@ -565,102 +569,6 @@
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="tue_8am"/>
 				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-	</plot>
-	<plot id="wr_nswdiversion">
-		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_nswdiversion</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_nswdiversion</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_nswdiversion_total</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-	</plot>
-	<plot id="wr_vicdiversion">
-		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_vicdiversion</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_vicdiversion</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
@@ -725,7 +633,19 @@
 				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<relativeViewPeriod start="-500" end="120" startOverrulable="true" endOverrulable="true" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<aggregationPeriod unit="day" start="-5" end="0"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
@@ -737,10 +657,9 @@
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<aggregationPeriod unit="day" start="-5" end="0"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read only</readWriteMode>
+				<delay unit="day" multiplier="365"/>
 			</timeSeriesSet>
-		</subplot>
-		<subplot>
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -751,7 +670,7 @@
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<cycle unit="year"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
@@ -761,24 +680,36 @@
 				<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_calc</parameterId>
-				<qualifierId>lta</qualifierId>
+				<qualifierId>10yr_avg</qualifierId>
 				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
 				<cycle unit="year"/>
-				<relativeViewPeriod start="-500" end="120" startOverrulable="true" endOverrulable="true" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>ImportPeriodicStatistics</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Q_in_calc</parameterId>
-				<qualifierId>10yr_avg</qualifierId>
+				<qualifierId>lta</qualifierId>
 				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
 				<cycle unit="year"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Q_in_calc</parameterId>
+				<qualifierId>monthly</qualifierId>
+				<qualifierId>report</qualifierId>
+				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="Monthly"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -788,7 +719,7 @@
 				<locationSetId>wr.sites_murray_system_inflow</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="Monthly"/>
-				<readWriteMode>add originals</readWriteMode>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
@@ -920,6 +851,102 @@
 				<qualifierId>total</qualifierId>
 				<qualifierId>fromJuly1</qualifierId>
 				<locationSetId>wr.sites_alldiversions</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="wr_nswdiversion">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>wr.sites_nswdiversion</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<aggregationPeriod unit="day" start="-7" end="0"/>
+				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>fromJuly1</qualifierId>
+				<locationSetId>wr.sites_nswdiversion</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>fromJuly1</qualifierId>
+				<locationSetId>wr.sites_nswdiversion_total</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+	</plot>
+	<plot id="wr_vicdiversion">
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>wr.sites_vicdiversion</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<aggregationPeriod unit="day" start="-7" end="0"/>
+				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>fromJuly1</qualifierId>
+				<locationSetId>wr.sites_vicdiversion</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
+				<timeSeriesType>simulated historical</timeSeriesType>
+				<timeStep id="wed_8am"/>
+				<aggregationPeriod unit="day" start="-7" end="0"/>
+				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
+				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>QDIV_calc</parameterId>
+				<qualifierId>total</qualifierId>
+				<qualifierId>fromJuly1</qualifierId>
+				<locationSetId>wr.sites_vicdiversion_total</locationSetId>
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="wed_8am"/>
 				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
@@ -1356,18 +1383,6 @@
 				<plotId>wr_snowydiversion</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
-		<displayGroup name="NSW Diversions" id="wr_nswdiversion">
-			<singleLocationDisplays>
-				<locationSetId>wr.sites_nswdiversion_table</locationSetId>
-				<plotId>wr_nswdiversion</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
-		<displayGroup name="VIC Diversions" id="wr_vicdiversion">
-			<singleLocationDisplays>
-				<locationSetId>wr.sites_vicdiversion_table</locationSetId>
-				<plotId>wr_vicdiversion</plotId>
-			</singleLocationDisplays>
-		</displayGroup>
 		<displayGroup name="Flow to South Australia" id="wr_flowtosa">
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_flowtosa</locationSetId>
@@ -1402,6 +1417,18 @@
 			<singleLocationDisplays>
 				<locationSetId>wr.sites_alldiversions</locationSetId>
 				<plotId>wr_alldiversions</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup name="NSW Diversions" id="wr_nswdiversion">
+			<singleLocationDisplays>
+				<locationSetId>wr.sites_nswdiversion_table</locationSetId>
+				<plotId>wr_nswdiversion</plotId>
+			</singleLocationDisplays>
+		</displayGroup>
+		<displayGroup name="VIC Diversions" id="wr_vicdiversion">
+			<singleLocationDisplays>
+				<locationSetId>wr.sites_vicdiversion_table</locationSetId>
+				<plotId>wr_vicdiversion</plotId>
 			</singleLocationDisplays>
 		</displayGroup>
 		<displayGroup name="Salinity/EC (not used)" id="wr_salinity">

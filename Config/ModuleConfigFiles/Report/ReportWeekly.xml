@@ -21,13 +21,6 @@ Total diversions of the past 7 days at wednesday 8am.
 Total diversions since May 1st at wednesday 8am.
 
 -> maybe needs a split of locations, some are meant for storage, some for diversion -->
-<!--3. Major Diversions from Murray and Lower Darling (GL) 
-
-Output: 
-Total diversions of the past 7 days at wednesday 8am.
-Total diversions since July 1st at wednesday 8am.
-
-locationsSets: wr.sites_nswdiversion_table & wr.sites_vicdiversion_table (wr.sites_alldiversions)-->
 <!--4. Flow to South Australia 
 
 Output: 
@@ -35,45 +28,6 @@ Total flow of the past 7 days at wednesday 8am
 Total flow of the current month at wednesday 8am.
 
 locationsSets: wr.sites_flowtosa-->
-<!--5. Salinity (EC) 
-
-Output: 
-Salinity at wednesday 8am.
-Average weekly salinity at wednesday 8am.
-Average salinity since August 1 at wednesday 8am. 
-
-locationsSets: wr.sites_salinity-->
-<!--6. River levels and flows
-
-Output:
-Water level at local datum at wednesday 8am. This is straight from the imported results.
-Water level at AHD at wednesday 8am. 
-Flow at wednesday 8am.
-Difference in level of wednesday 8am and two days before (at wednesday 8am).
-Average flow this week at wednesday 8am. 
-
-locationsSets: wr.sites_rivermurray & wr.sites_tributaries & wr.sites_natinflowhume (wr.sites_allriverlevelflows) -->
-<!--7. Weirs and locks
-
-Output:
-Difference of water level upstream and downstream compared to FSL at wednesday 8am . 
-
-locationsSets: wr.sites_murrayweirs & wr.sites_murrayweirs_usds (sites with a ds location as well) -->
-<!--8. Lower lakes (SA) 
-
-Output: 
-Average water level AHD of the past 5 days at wednesday 8am. This water level is already imported as AHD, as far as we know. 
-
-locationsSets: wr.sites_lowerlakes-->
-<!--9. Barrages
-
-Output: 
-Current water level AHD at wednesday 8am 
-Number of open gates at wednesday 8am 
-Status of gate 1 at wednesday 8am (=vertical slot)
-Status of gate 2  at wednesday 8am (=rock ramp)
-
-locationsSets: wr.sites_barrages-->
 <reports xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/reports.xsd" version="1.0">
 	<declarations>
 		<defineGlobal id="ForecastingRegion">Murray-Darling</defineGlobal>
@@ -108,33 +62,15 @@ locationsSets: wr.sites_barrages-->
 		</chartFormat>
 		<dateFormat id="LongDate">
 			<timeZone>
-				<timeZoneName>CET</timeZoneName>
+				<timeZoneName>GMT+10</timeZoneName>
 			</timeZone>
 			<pattern>EEEE dd MMM yyyy</pattern>
 		</dateFormat>
 		<dateFormat id="ReadableDate">
 			<timeZone>
-				<timeZoneName>CET</timeZoneName>
+				<timeZoneName>GMT+10</timeZoneName>
 			</timeZone>
 			<pattern>dd MMM yyyy</pattern>
-		</dateFormat>
-		<dateFormat id="dateFormatThreshold">
-			<timeZone>
-				<timeZoneName>CET</timeZoneName>
-			</timeZone>
-			<pattern>yyyy-MM-dd</pattern>
-		</dateFormat>
-		<dateFormat id="timeFormatThreshold">
-			<timeZone>
-				<timeZoneName>CET</timeZoneName>
-			</timeZone>
-			<pattern>HH:mm</pattern>
-		</dateFormat>
-		<dateFormat id="dateTimeFormatThreshold">
-			<timeZone>
-				<timeZoneName>CET</timeZoneName>
-			</timeZone>
-			<pattern>yyyy-MM-dd HH:mm</pattern>
 		</dateFormat>
 		<numberFormat id="2_decimals">{0,number,###0.00}</numberFormat>
 		<numberFormat id="no_decimals">{0,number,###0}</numberFormat>
@@ -222,32 +158,6 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		<!--1. Water in storage (not used)-->
-		<inputVariable variableId="StorageMDBA_H_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<locationSetId>wr.sites_mdba_storage</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="StorageMDBA_V_active">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>V_calc</parameterId>
-				<qualifierId>active</qualifierId>
-				<locationSetId>wr.sites_mdba_storage</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-35" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
 		<!--2. Snowy Mountains scheme-->
 		<inputVariable variableId="Snowy_QDIV_thisweek">
 			<timeSeriesSet>
@@ -274,63 +184,6 @@ locationsSets: wr.sites_barrages-->
 				<timeSeriesType>simulated historical</timeSeriesType>
 				<timeStep id="tue_8am"/>
 				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--3. Major Diversions from Murray and Lower Darling (GL) -->
-		<inputVariable variableId="DiversionsNSW_QDIV_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_nswdiversion_table</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="DiversionsNSW_QDIV_fromJuly1_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_nswdiversion_table</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="DiversionsVic_QDIV_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_table</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="DiversionsVic_QDIV_fromJuly1_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>QDIV_calc</parameterId>
-				<qualifierId>total</qualifierId>
-				<qualifierId>fromJuly1</qualifierId>
-				<locationSetId>wr.sites_vicdiversion_table</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
@@ -376,340 +229,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
-		<!--5. Salinity (EC) -->
-		<inputVariable variableId="Salinity_EC_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EC_calc</parameterId>
-				<locationSetId>wr.sites_salinity</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Salinity_EC_average_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EC_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<locationSetId>wr.sites_salinity</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-366" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Salinity_EC_average_fromAugust1_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>EC_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<qualifierId>fromAugust1</qualifierId>
-				<locationSetId>wr.sites_salinity</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--6. River levels and flows-->
-		<inputVariable variableId="Murray_H_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<locationSetId>wr.sites_rivermurray</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Murray_H_ahd_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>ahd</qualifierId>
-				<locationSetId>wr.sites_rivermurray</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Murray_Q_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<locationSetId>wr.sites_rivermurray</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Murray_H_trend_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>trend</qualifierId>
-				<locationSetId>wr.sites_rivermurray</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Murray_Q_average_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<qualifierId>weekly</qualifierId>
-				<locationSetId>wr.sites_rivermurray</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Tributaries_H_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<locationSetId>wr.sites_tributaries</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Tributaries_H_ahd_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>ahd</qualifierId>
-				<locationSetId>wr.sites_tributaries</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Tributaries_Q_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<locationSetId>wr.sites_tributaries</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Tributaries_H_trend_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>trend</qualifierId>
-				<locationSetId>wr.sites_tributaries</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Tributaries_Q_average_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<qualifierId>weekly</qualifierId>
-				<locationSetId>wr.sites_tributaries</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="NatInflowHume_H_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<locationSetId>wr.sites_natinflowhume</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="NatInflowHume_H_ahd_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>ahd</qualifierId>
-				<locationSetId>wr.sites_natinflowhume</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="NatInflowHume_Q_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<locationSetId>wr.sites_natinflowhume</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="NatInflowHume_H_trend_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>trend</qualifierId>
-				<locationSetId>wr.sites_natinflowhume</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="8" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="NatInflowHume_Q_average_thisweek">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<qualifierId>weekly</qualifierId>
-				<locationSetId>wr.sites_natinflowhume</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod unit="day" start="-7" end="0"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--7. Weirs and locks-->
-		<inputVariable variableId="WeirsLocks_H_delta_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>delta</qualifierId>
-				<locationSetId>wr.sites_murrayweirs</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="WeirsLocks_H_ds_delta_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>delta</qualifierId>
-				<qualifierId>ds</qualifierId>
-				<locationSetId>wr.sites_murrayweirs</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--8. Lower lakes (SA) -->
-		<inputVariable variableId="LowerLakes_H_average_5d">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>mean</qualifierId>
-				<qualifierId>weekly</qualifierId>
-				<locationSetId>wr.sites_lowerlakes</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<aggregationPeriod end="0" start="-5" unit="day"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--9. Barrages-->
-		<inputVariable variableId="Barrages_H_ahd_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<qualifierId>ahd</qualifierId>
-				<locationSetId>wr.sites_barrages</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Barrages_GatesOpen_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>NoGatesOpen_calc</parameterId>
-				<locationSetId>wr.sites_barrages</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Barrages_GatesOpen_vs_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>NoGatesOpen_calc</parameterId>
-				<qualifierId>vs</qualifierId>
-				<locationSetId>wr.sites_barrages</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<inputVariable variableId="Barrages_GatesOpen_rr_weekly">
-			<timeSeriesSet>
-				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>NoGatesOpen_calc</parameterId>
-				<qualifierId>rr</qualifierId>
-				<locationSetId>wr.sites_barrages</locationSetId>
-				<timeSeriesType>simulated historical</timeSeriesType>
-				<timeStep id="wed_8am"/>
-				<relativeViewPeriod end="0" start="-28" startOverrulable="true" unit="day"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</inputVariable>
-		<!--10. Graphs-->
+		<!--10. Murray System Inflows - daily (Graph)-->
 		<inputVariable variableId="MurraySystemInflow_5daymovavg">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -751,6 +271,7 @@ locationsSets: wr.sites_barrages-->
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
+		<!--10. Murray System Inflows - monthly (Graph)-->
 		<inputVariable variableId="MurraySystemInflow_monthly">
 			<timeSeriesSet>
 				<moduleInstanceId>PreProcessWeeklyReportData</moduleInstanceId>
@@ -1122,7 +643,7 @@ locationsSets: wr.sites_barrages-->
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="Snowy_diversion" tableStyle="tableStyle3">
 			<column>
-				<header>Diversion (GL)</header>
+				<header>Diversion (ML)</header>
 				<format>_name</format>
 				<width>120</width>
 				<function>LOCATIONATTRIBUTE(REPORT_NAME;Snowy_QDIV_thisweek)</function>
@@ -1131,53 +652,13 @@ locationsSets: wr.sites_barrages-->
 				<header>This week</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Snowy_QDIV_thisweek ; no_decimals)</function>
+				<function>INDEXVALUE(-1;Snowy_QDIV_thisweek ; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>From May 1</header>
 				<format>_data</format>
 				<width>40</width>
-				<function>INDEXVALUE(-1;Snowy_QDIV_fromMay1_weekly ; no_decimals)</function>
-			</column>
-		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Diversions_NSW" tableStyle="tableStyle3">
-			<column>
-				<header>New South Wales</header>
-				<format>_name</format>
-				<width>120</width>
-				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsNSW_QDIV_thisweek)</function>
-			</column>
-			<column>
-				<header>This week</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsNSW_QDIV_thisweek ; 1_decimal)</function>
-			</column>
-			<column>
-				<header>From July 1</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsNSW_QDIV_fromJuly1_weekly ; no_decimals)</function>
-			</column>
-		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Diversions_Vic" tableStyle="tableStyle3">
-			<column>
-				<header>Victoria</header>
-				<format>_name</format>
-				<width>250</width>
-				<function>LOCATIONATTRIBUTE(REPORT_NAME;DiversionsVic_QDIV_thisweek)</function>
-			</column>
-			<column>
-				<header>This week</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsVic_QDIV_thisweek ; 1_decimal)</function>
-			</column>
-			<column>
-				<header>From July 1</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;DiversionsVic_QDIV_fromJuly1_weekly ; no_decimals)</function>
+				<function>INDEXVALUE(-1;Snowy_QDIV_fromMay1_weekly ; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="FlowtoSA" tableStyle="tableStyle3">
@@ -1185,97 +666,25 @@ locationsSets: wr.sites_barrages-->
 				<header>Entitlement this month *</header>
 				<format>_data</format>
 				<width>80</width>
-				<function>INDEXVALUE(0;FlowToSA_Q_thisweek;seperator_1_decimal)</function>
+				<function>LOCATIONATTRIBUTE(REPORT_NAME;FlowToSA_Q_thisweek)</function>
 			</column>
 			<column>
-				<header>Flow this week (GL/week)</header>
+				<header>Flow this week (ML/week)</header>
 				<format>_data</format>
 				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_thisweek ; seperator_1_decimal)</function>
 			</column>
 			<column>
-				<header>Flow so far this month (GL)</header>
+				<header>Flow so far this month (ML)</header>
 				<format>_data</format>
 				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_runningtotal_thismonth_weekly;seperator_1_decimal)</function>
 			</column>
 			<column>
-				<header>Flow last month (GL)</header>
+				<header>Flow last month (ML)</header>
 				<format>_data</format>
 				<width>80</width>
 				<function>INDEXVALUE(0;FlowToSA_Q_total_lastmonth_weekly ; seperator_1_decimal)</function>
-			</column>
-		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="WeirsLocks_notused" tableStyle="tableStyle3">
-			<column>
-				<header>Murray</header>
-				<format>_data</format>
-				<width>250</width>
-				<function>LOCATIONNAME(WeirsLocks_H_delta_weekly)</function>
-			</column>
-			<column>
-				<header>Full supply level (m AHD)</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>LOCATIONATTRIBUTE(FSL ;; 2_decimals)</function>
-			</column>
-			<column>
-				<header>u/s</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;WeirsLocks_H_delta_weekly ; 2_decimals)</function>
-			</column>
-			<column>
-				<header>d/s</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;WeirsLocks_H_ds_delta_weekly ; 2_decimals)</function>
-			</column>
-		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="LowerLakes_notused" tableStyle="tableStyle3">
-			<column>
-				<header>Lake Alexandria average level for the past 5 days (m AHD)</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0;LowerLakes_H_average_5d ; 2_decimals)</function>
-			</column>
-		</rowPerLocationHtmlTable>
-		<rowPerLocationHtmlTable id="Barrages_notused" tableStyle="tableStyle3">
-			<column>
-				<header> </header>
-				<format>_data</format>
-				<width>250</width>
-				<function>LOCATIONNAME( Barrages_H_ahd_weekly )</function>
-			</column>
-			<column>
-				<header>Openings</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>LOCATIONNAME( Barrages_H_ahd_weekly )</function>
-			</column>
-			<column>
-				<header>Level (m AHD)</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_H_ahd_weekly ; 2_decimals)</function>
-			</column>
-			<column>
-				<header>No. open</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_weekly ; no_decimals)</function>
-			</column>
-			<column>
-				<header>Rock ramp</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_vs_weekly ; no_decimals)</function>
-			</column>
-			<column>
-				<header>Vertical slot</header>
-				<format>_data</format>
-				<width>40</width>
-				<function>INDEXVALUE(0; Barrages_GatesOpen_rr_weekly ; no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="StateAllocations_NSW" tableStyle="tableStyle3">
@@ -1289,13 +698,13 @@ locationsSets: wr.sites_barrages-->
 				<header>High Security</header>
 				<format>_data</format>
 				<width>60</width>
-				<function>INDEXVALUE(0; StateAllocations_NSW_HS; no_decimals)</function>
+				<function>INDEXVALUE(0; StateAllocations_NSW_HS; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>General Security</header>
 				<format>_data</format>
 				<width>60</width>
-				<function>INDEXVALUE(0; StateAllocations_NSW_GS; no_decimals)</function>
+				<function>INDEXVALUE(0; StateAllocations_NSW_GS; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="StateAllocations_VIC" tableStyle="tableStyle3">
@@ -1309,13 +718,13 @@ locationsSets: wr.sites_barrages-->
 				<header>High Reliability</header>
 				<format>_data</format>
 				<width>60</width>
-				<function>INDEXVALUE(0; StateAllocations_VIC_HR; no_decimals)</function>
+				<function>INDEXVALUE(0; StateAllocations_VIC_HR; seperator_no_decimals)</function>
 			</column>
 			<column>
 				<header>Low Reliability</header>
 				<format>_data</format>
 				<width>60</width>
-				<function>INDEXVALUE(0; StateAllocations_VIC_LR; no_decimals)</function>
+				<function>INDEXVALUE(0; StateAllocations_VIC_LR; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<rowPerLocationHtmlTable id="StateAllocations_SA" tableStyle="tableStyle3">
@@ -1329,7 +738,7 @@ locationsSets: wr.sites_barrages-->
 				<header>High Security</header>
 				<format>_data</format>
 				<width>130</width>
-				<function>INDEXVALUE(0; StateAllocations_SA_HS; no_decimals)</function>
+				<function>INDEXVALUE(0; StateAllocations_SA_HS; seperator_no_decimals)</function>
 			</column>
 		</rowPerLocationHtmlTable>
 		<template>weeklyreport_template.html</template>
