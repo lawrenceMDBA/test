@@ -30,6 +30,12 @@
 				<function>MAXVALUE(dH_threshold_count;0Decimal)</function>
 			</column>
 			<column>
+				<header>&#x0394;H total</header>
+				<format>_dark</format>
+				<width>40</width>
+				<function>MAXVALUE(dH_threshold_count_total;0Decimal)</function>
+			</column>
+			<column>
 				<header>Q</header>
 				<format>_data</format>
 				<width>40</width>
@@ -90,6 +96,21 @@
 				<valueType>scalar</valueType>
 				<parameterId>Threshold_dH_count</parameterId>
 				<qualifierId>SO</qualifierId>
+				<qualifierId>$SINCE$</qualifierId>
+				<locationSetId>threshold_sites_dH_SO</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod start="0" end="0" unit="day"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="dH_threshold_count_total">
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_count</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>total</qualifierId>
 				<qualifierId>$SINCE$</qualifierId>
 				<locationSetId>threshold_sites_dH_SO</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
