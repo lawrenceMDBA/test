@@ -296,13 +296,13 @@ Doctors Point Threshold Rule:
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>Q_MittaMitta_weekly_rolling</variableId>
+		<variableId>Q_MittaMitta_6days_rolling</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Q_calc</parameterId>
 			<qualifierId>SO</qualifierId>
-			<qualifierId>weekly</qualifierId>
+			<qualifierId>6days</qualifierId>
 			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -417,22 +417,6 @@ Doctors Point Threshold Rule:
 	<!--Calculation results - Heywood and Doctors -->
 	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
-		<variableId>dH_Heywood_weekly_rolling</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>weekly</qualifierId>
-			<locationId>R_409016</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-6" end="0"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>dH_Heywood_6days_rolling</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -443,23 +427,23 @@ Doctors Point Threshold Rule:
 			<locationId>R_409016</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-5" end="0"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_Doctors_weekly_rolling</variableId>
+		<variableId>dH_Heywood_5days_rolling</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>dH</parameterId>
 			<qualifierId>SO</qualifierId>
-			<qualifierId>weekly</qualifierId>
-			<locationId>R_409017</locationId>
+			<qualifierId>5days</qualifierId>
+			<locationId>R_409016</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
-			<aggregationPeriod unit="day" start="-6" end="0"/>
+			<aggregationPeriod unit="day" start="-5" end="0"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
@@ -472,6 +456,22 @@ Doctors Point Threshold Rule:
 			<parameterId>dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>6days</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<aggregationPeriod unit="day" start="-6" end="0"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_Doctors_5days_rolling</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>5days</qualifierId>
 			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -1219,18 +1219,6 @@ Doctors Point Threshold Rule:
 		</periodTransformation>
 	</transformation>
 	<!--Transformations - calc - Heywood and Doctors-->
-	<transformation id="dH_Heywood_weekly_rolling">
-		<aggregation>
-			<meanToMean>
-				<inputVariable>
-					<variableId>dH_Fall_Heywood_24hmax</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>dH_Heywood_weekly_rolling</variableId>
-				</outputVariable>
-			</meanToMean>
-		</aggregation>
-	</transformation>
 	<transformation id="dH_Heywood_6days_rolling">
 		<aggregation>
 			<meanToMean>
@@ -1243,14 +1231,14 @@ Doctors Point Threshold Rule:
 			</meanToMean>
 		</aggregation>
 	</transformation>
-	<transformation id="dH_Doctors_weekly_rolling">
+	<transformation id="dH_Heywood_5days_rolling">
 		<aggregation>
 			<meanToMean>
 				<inputVariable>
-					<variableId>dH_Fall_Doctors_24hmax</variableId>
+					<variableId>dH_Fall_Heywood_24hmax</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_Doctors_weekly_rolling</variableId>
+					<variableId>dH_Heywood_5days_rolling</variableId>
 				</outputVariable>
 			</meanToMean>
 		</aggregation>
@@ -1263,6 +1251,18 @@ Doctors Point Threshold Rule:
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_Doctors_6days_rolling</variableId>
+				</outputVariable>
+			</meanToMean>
+		</aggregation>
+	</transformation>
+	<transformation id="dH_Doctors_5days_rolling">
+		<aggregation>
+			<meanToMean>
+				<inputVariable>
+					<variableId>dH_Fall_Doctors_24hmax</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_Doctors_5days_rolling</variableId>
 				</outputVariable>
 			</meanToMean>
 		</aggregation>

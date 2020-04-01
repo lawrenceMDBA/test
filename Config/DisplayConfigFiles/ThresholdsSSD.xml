@@ -38,8 +38,8 @@
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod unit="day" start="0" end="0"/>
@@ -48,6 +48,20 @@
 	</variable>
 	<variable>
 		<variableId>dH_value</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod unit="day" start="0" end="0"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_value_8am</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -284,15 +298,14 @@
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
-			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
-	</variable>		
+	</variable>
 	<variable>
 		<variableId>dH_threshold_count_SO</variableId>
 		<timeSeriesSet>

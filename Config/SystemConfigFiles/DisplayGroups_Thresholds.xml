@@ -200,10 +200,10 @@
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
-				<locationSetId>threshold_sites_all</locationSetId>
+				<parameterId>H_obs</parameterId>
+				<locationSetId>threshold_sites_dH</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
+				<timeStep multiplier="1" unit="hour"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
@@ -219,7 +219,7 @@
 				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<aggregationPeriod unit="day" start="-5" end="0"/>
+				<aggregationPeriod unit="day" start="-6" end="0"/>
 				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
@@ -227,9 +227,12 @@
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
+				<qualifierId>24h</qualifierId>
+				<qualifierId>dH_Fall</qualifierId>
+				<qualifierId>max</qualifierId>
 				<locationSetId>threshold_sites_dH</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep times="08:00" timeZone="GMT+10"/>
+				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
@@ -1204,25 +1207,15 @@
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
+				<parameterId>H_obs</parameterId>
 				<locationId>R_409016</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
+				<timeStep multiplier="1" unit="hour"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>dH</parameterId>
-				<locationId>R_409016</locationId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -1241,7 +1234,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
 				<qualifierId>SO</qualifierId>
-				<qualifierId>weekly</qualifierId>
+				<qualifierId>6days</qualifierId>
 				<locationId>R_409016</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
@@ -1308,8 +1301,31 @@
 				<locationId>R_409016</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_counted</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationId>R_409016</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_counted</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationId>R_409016</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
@@ -1318,25 +1334,15 @@
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
-				<parameterId>H_calc</parameterId>
+				<parameterId>H_obs</parameterId>
 				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
+				<timeStep multiplier="1" unit="hour"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>dH</parameterId>
-				<locationId>R_409017</locationId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -1355,7 +1361,7 @@
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
 				<qualifierId>SO</qualifierId>
-				<qualifierId>weekly</qualifierId>
+				<qualifierId>6days</qualifierId>
 				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
@@ -1422,8 +1428,31 @@
 				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_counted</parameterId>
+				<qualifierId>SO</qualifierId>
+				<locationId>R_409017</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_counted</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationId>R_409017</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
@@ -1932,17 +1961,6 @@
 	<plot id="dH_review">
 		<subplot>
 			<plotWeight>3</plotWeight>
-			<axis>left</axis>
-			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>dH</parameterId>
-				<locationSetId>threshold_sites_all</locationSetId>
-				<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
 			<timeSeriesSet>
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
@@ -1950,8 +1968,7 @@
 				<qualifierId>24h</qualifierId>
 				<qualifierId>dH_Fall</qualifierId>
 				<qualifierId>max</qualifierId>
-				<locationId>R_409016</locationId>
-				<locationId>R_409017</locationId>
+				<locationSetId>threshold_sites_dH</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -1963,11 +1980,10 @@
 				<parameterId>dH</parameterId>
 				<qualifierId>SO</qualifierId>
 				<qualifierId>6days</qualifierId>
-				<locationId>R_409016</locationId>
-				<locationId>R_409017</locationId>
+				<locationSetId>threshold_sites_dH</locationSetId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
-				<aggregationPeriod unit="day" start="-5" end="0"/>
+				<aggregationPeriod unit="day" start="-6" end="0"/>
 				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
 			</timeSeriesSet>
@@ -1997,6 +2013,35 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot>
+		<subplot>
+			<plotWeight>3</plotWeight>
+			<axis>right</axis>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH_counted</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>threshold_sites_dH_hourly</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+						<axis>left</axis>
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Threshold_dH</parameterId>
+				<qualifierId>SO</qualifierId>
+				<qualifierId>mov_avg</qualifierId>
+				<locationSetId>threshold_sites_dH_hourly</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep times="08:00" timeZone="GMT+10"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 	</plot>
@@ -6604,51 +6649,3 @@
 		</displayGroup>
 	</displayGroup>
 </displayGroups>
-<!--<plot id="Q_special_409029">
-		<subplot>
-			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<locationId>R_409029</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<timeSeriesSet>
-				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Q_calc</parameterId>
-				<locationId>R_409103</locationId>
-			<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-		<subplot>
-			<axis>right</axis>
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_Q_count</parameterId>
-				<locationId>R_409029</locationId>
-<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-			<axis>left</axis>
-			<timeSeriesSet>
-				<moduleInstanceId>AssessThresholdsMDBC_OPS</moduleInstanceId>
-				<valueType>scalar</valueType>
-				<parameterId>Threshold_Q</parameterId>
-				<locationId>R_409029</locationId>
-<timeSeriesType>external historical</timeSeriesType>
-				<timeStep id="8am"/>
-				<relativeViewPeriod unit="day" start="-30" end="10"/>
-				<readWriteMode>read only</readWriteMode>
-			</timeSeriesSet>
-		</subplot>
-	</plot>-->

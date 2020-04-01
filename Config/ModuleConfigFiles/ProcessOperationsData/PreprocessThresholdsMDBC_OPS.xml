@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformationModule version="1.0" xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
 	<!-- Preparation of timeseries to evaluate theshold crossings
-To avoid unnecessary data processing this is only done for those combinations of locations and parameters as follows from ROWS_ops_Thresholds.csv. 
-The parameters that have at least one threshold associated with them are: H, V, Q, QORD, QDIV, EC, QRL. 
-Per parameter and selected location the observed, calculated and forecasted timeseries are merged, in that order of preference. 
-For the diversions and orders also a merge of subtypes (irrig, urban, total, saline, ind, envpump, envstruct and st, lt, mdbc respectively) is done. 
+To avoid unnecessary data processing this is only done for those combinations of locations and 
+parameters as follows from ROWS_ops_Thresholds.csv. 
+The parameters that have at least one threshold associated with them are: 
+        H, V, Q, QORD, QDIV, EC, QRL. 
+Per parameter and selected location obs, calc and forecast series are merged, in that order of preference. 
+For the diversions and orders also a merge of subtypes 
+		(irrig, urban, total, saline, ind, envpump, envstruct and st, lt, mdbc respectively) is done. 
 The subtypes are assumed to be non-overlapping so no data is lost. -->
-	<!-- The dH rate of fall for Heywoods and Doctors Point needs to be calculated from hourly data (Currently it is calculated using daily 8am data).
-Calculate the Maximum rate of fall within a 24 hour period. (the hourly data for the 24 hour period (8am - 7am) should be used )
+	<!-- The dH rate of fall for Heywoods and Doctors Point is calculated based on hourly data (instead of daily 8am).
+Calculate the Maximum rate of fall within a 24 hour period (i.e. the hourly data for the 24 hour period (8am - 7am))
 Calculate the 6 day rolling average of rate off fall
 Heywoods Rule:
  a. Q (at 409017) < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
@@ -15,9 +18,13 @@ Heywoods Rule:
 Doctors Point Rule:
  a.When Q < 25,000 ML/day, ΔH (rate of fall) > 0.225 m
  b.When Q < 25,000 ML/day, ΔH (rate of fall) (6 day rolling average) > 0.154 m-->
-	<!--Create "counted" timeseries for all SO Threshold_sites and parameter combinations. The default value will be 1 (counted). These timeseries will be 
-used to ignore certain timesteps from the threshold count: If these timeseries are set to 0 by the operator, any threshold violations will not be counted. 
-Note: The thresholds violations themselves are not removed, they will just not be counted. The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
+	<!--Create "counted" timeseries for all SO Threshold_sites and parameter combinations. 
+The default value will be 1 (counted). These timeseries will be used to ignore certain timesteps 
+from the threshold count: If these timeseries are set to 0 by the operator, any threshold 
+violations will not be counted. 
+Note: The thresholds violations themselves are not removed, they will just not be counted. 
+The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
+	<!-- Counted variables-->
 	<variable>
 		<variableId>H_thresh_counted</variableId>
 		<timeSeriesSet>
@@ -39,6 +46,21 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_counted</parameterId>
 			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_6days_thresh_counted</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
 			<locationSetId>threshold_sites_dH_SO</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
@@ -131,6 +153,21 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_6days_thresh_counted_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>mov_avg</qualifierId>
+			<locationSetId>threshold_sites_dH_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Q_thresh_counted_tmp</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -186,34 +223,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Input-->
-	<variable>
-		<variableId>H_calc</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>H_calc_delay24h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-			<delay unit="day"/>
-		</timeSeriesSet>
-	</variable>
+	<!--Input variables-->
 	<variable>
 		<variableId>H_obs_opt_neq</variableId>
 		<timeSeriesSet>
@@ -394,7 +404,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Througpput - neq to hourly-->
+	<!--Throughput - neq to hourly and daily-->
 	<variable>
 		<variableId>H_merge_neq</variableId>
 		<timeSeriesSet>
@@ -422,6 +432,20 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>H_merge_hourly_delay1h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+			<delay unit="hour"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>H_merge_hourly_block</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -436,17 +460,16 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_delay1h</variableId>
+		<variableId>H_merge_daily</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>H_obs</parameterId>
 			<locationSetId>threshold_sites_dH_hourly</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
+			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>add originals</readWriteMode>
-			<delay unit="hour"/>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -478,6 +501,35 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<!--Output-->
+	<variable>
+		<variableId>H_merge_hourly_delay24h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+			<delay unit="hour" multiplier="23"/>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>dH</parameterId>
+			<qualifierId>delta</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
 	<variable>
 		<variableId>V_merge</variableId>
 		<timeSeriesSet>
@@ -511,19 +563,6 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			<valueType>scalar</valueType>
 			<parameterId>QORD_calc</parameterId>
 			<locationSetId>threshold_sites_Q-QORD</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dH</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -571,19 +610,6 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>H_calc</parameterId>
-			<locationSetId>threshold_sites_all</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>read only</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>EC</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -611,7 +637,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 	</variable>
 	<!--Input Heywood -->
 	<variable>
-		<variableId>H_merge_hourly_Heywood</variableId>
+		<variableId>Heywood_H_merge_hourly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -624,7 +650,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Heywood_delay1h</variableId>
+		<variableId>Heywood_H_merge_hourly_delay1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -638,7 +664,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Heywood_block</variableId>
+		<variableId>Heywood_H_merge_hourly_block</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -652,7 +678,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Heywood_block_delay1h</variableId>
+		<variableId>Heywood_H_merge_hourly_block_delay1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -668,7 +694,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 	</variable>
 	<!--Output Heywood -->
 	<variable>
-		<variableId>H_merge_daily_Heywood</variableId>
+		<variableId>Heywood_H_merge_daily</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -681,7 +707,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_daily_1h_Heywood</variableId>
+		<variableId>Heywood_H_merge_daily_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -695,7 +721,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Heywood_direction</variableId>
+		<variableId>Heywood_dH_hourly_direction</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -709,7 +735,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Heywood_moving_max</variableId>
+		<variableId>Heywood_dH_hourly_moving_max</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -724,7 +750,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Heywood_moving_min</variableId>
+		<variableId>Heywood_dH_hourly_moving_min</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -739,7 +765,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Heywood_moving_dH_Fall</variableId>
+		<variableId>Heywood_dH_hourly_moving_dH_Fall</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -754,7 +780,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
+		<variableId>Heywood_dH_hourly_moving_dH_Fall_min</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -770,7 +796,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_Fall_Heywood_24hmax</variableId>
+		<variableId>Heywood_dH_Fall_24hmax</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -787,7 +813,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 	</variable>
 	<!--Input Doctors Point-->
 	<variable>
-		<variableId>H_merge_hourly_Doctors</variableId>
+		<variableId>Doctors_H_merge_hourly</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -800,7 +826,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Doctors_delay1h</variableId>
+		<variableId>Doctors_H_merge_hourly_delay1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -814,7 +840,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Doctors_block</variableId>
+		<variableId>Doctors_H_merge_hourly_block</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -828,7 +854,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_hourly_Doctors_block_delay1h</variableId>
+		<variableId>Doctors_H_merge_hourly_block_delay1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -844,7 +870,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 	</variable>
 	<!--Output Doctors Point-->
 	<variable>
-		<variableId>H_merge_daily_Doctors</variableId>
+		<variableId>Doctors_H_merge_daily</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -857,7 +883,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>H_merge_daily_1h_Doctors</variableId>
+		<variableId>Doctors_H_merge_daily_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -871,7 +897,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Doctors_direction</variableId>
+		<variableId>Doctors_dH_hourly_direction</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -885,7 +911,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Doctors_moving_max</variableId>
+		<variableId>Doctors_dH_hourly_moving_max</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -900,7 +926,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Doctors_moving_min</variableId>
+		<variableId>Doctors_dH_hourly_moving_min</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -915,7 +941,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Doctors_moving_dH_Fall</variableId>
+		<variableId>Doctors_dH_hourly_moving_dH_Fall</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -930,7 +956,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
+		<variableId>Doctors_dH_hourly_moving_dH_Fall_min</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -946,7 +972,7 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_Fall_Doctors_24hmax</variableId>
+		<variableId>Doctors_dH_Fall_24hmax</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -961,7 +987,8 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Transformations - create threshold "counted" timeseries (create default and merge with existing timeseries) - if these timeseries are set to 0, any threshold violations will not be counted-->
+	<!--################ Transformations #####################-->
+	<!--Counted-->
 	<transformation id="H_thresh_counted_tmp">
 		<user>
 			<simple>
@@ -1008,6 +1035,31 @@ Note: The thresholds violations themselves are not removed, they will just not b
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_thresh_counted</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_6days_thresh_counted_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_6days_thresh_counted_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_6days_thresh_counted">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_6days_thresh_counted</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_6days_thresh_counted_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_6days_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>
@@ -1155,7 +1207,33 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			</block>
 		</interpolationSerial>
 	</transformation>
+	<transformation id="H_merge_daily">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>H_merge_hourly</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>H_merge_daily</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closest</interpolationType>
+				<outputVariable>
+					<variableId>H_merge_daily</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
 	<!--Output-->
+	<transformation id="dH_hourly">
+		<user>
+			<simple>
+				<expression>H_merge_hourly - H_merge_hourly_delay1h</expression>
+				<outputVariable>
+					<variableId>dH_hourly</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="V_merge">
 		<merge>
 			<simple>
@@ -1207,26 +1285,6 @@ Note: The thresholds violations themselves are not removed, they will just not b
 			</simple>
 		</merge>
 	</transformation>
-	<transformation id="dH">
-		<user>
-			<simple>
-				<expression>H_calc - H_calc_delay24h</expression>
-				<outputVariable>
-					<variableId>dH</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="dH_hourly">
-		<user>
-			<simple>
-				<expression>H_merge_hourly - H_merge_hourly_delay1h</expression>
-				<outputVariable>
-					<variableId>dH_hourly</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
 	<transformation id="dQ">
 		<user>
 			<simple>
@@ -1246,18 +1304,6 @@ Note: The thresholds violations themselves are not removed, they will just not b
 				</outputVariable>
 			</simple>
 		</user>
-	</transformation>
-	<transformation id="H">
-		<merge>
-			<simple>
-				<inputVariable>
-					<variableId>H_calc</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>H</variableId>
-				</outputVariable>
-			</simple>
-		</merge>
 	</transformation>
 	<transformation id="EC">
 		<merge>
@@ -1284,209 +1330,129 @@ Note: The thresholds violations themselves are not removed, they will just not b
 		</merge>
 	</transformation>
 	<!--Output - Heywood-->
-	<transformation id="H_merge_daily_Heywood">
+	<transformation id="Heywood_dH_hourly_direction">
 		<user>
 			<simple>
-				<expression>H_merge_hourly_Heywood_block</expression>
+				<expression>if(Heywood_H_merge_hourly_block - Heywood_H_merge_hourly_block_delay1h &gt; 0, 1, if(Heywood_H_merge_hourly_block - Heywood_H_merge_hourly_block_delay1h&lt; 0, -1, 0))</expression>
 				<outputVariable>
-					<variableId>H_merge_daily_Heywood</variableId>
+					<variableId>Heywood_dH_hourly_direction</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="H_merge_daily_1h_Heywood">
+	<transformation id="Heywood_dH_hourly_moving_max">
 		<user>
 			<simple>
-				<expression>H_merge_daily_Heywood</expression>
+				<expression>if(isMissing(Heywood_H_merge_daily_1h), max(PREVIOUS_OUTPUT_VALUE,Heywood_H_merge_hourly_block), Heywood_H_merge_daily_1h)</expression>
 				<outputVariable>
-					<variableId>H_merge_daily_1h_Heywood</variableId>
+					<variableId>Heywood_dH_hourly_moving_max</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Heywood_direction">
+	<transformation id="Heywood_dH_hourly_moving_min">
 		<user>
 			<simple>
-				<expression>if(H_merge_hourly_Heywood_block - H_merge_hourly_Heywood_block_delay1h &gt; 0, 1, if(H_merge_hourly_Heywood_block - H_merge_hourly_Heywood_block_delay1h &lt; 0, -1, 0))</expression>
+				<expression>if(isMissing(Heywood_H_merge_daily_1h), if(Heywood_dH_hourly_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,Heywood_H_merge_hourly_block), Heywood_H_merge_hourly_block), Heywood_H_merge_daily_1h)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Heywood_direction</variableId>
+					<variableId>Heywood_dH_hourly_moving_min</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Heywood_moving_max">
+	<transformation id="Heywood_dH_hourly_moving_dH_Fall">
 		<user>
 			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Heywood), max(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<expression>if(isMissing(Heywood_H_merge_daily_1h), Heywood_dH_hourly_moving_min - Heywood_dH_hourly_moving_max, 0)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Heywood_moving_max</variableId>
+					<variableId>Heywood_dH_hourly_moving_dH_Fall</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Heywood_moving_min">
+	<transformation id="Heywood_dH_hourly_moving_dH_Fall_min">
 		<user>
 			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Heywood), if(dH_hourly_Heywood_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Heywood_block), H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<expression>if(isMissing(Heywood_H_merge_daily_1h), min(PREVIOUS_OUTPUT_VALUE, Heywood_dH_hourly_moving_dH_Fall), 0)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Heywood_moving_min</variableId>
+					<variableId>Heywood_dH_hourly_moving_dH_Fall_min</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Heywood_moving_dH_Fall">
-		<user>
-			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Heywood), dH_hourly_Heywood_moving_min - dH_hourly_Heywood_moving_max, 0)</expression>
-				<outputVariable>
-					<variableId>dH_hourly_Heywood_moving_dH_Fall</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="dH_hourly_Heywood_moving_dH_Fall_min">
-		<user>
-			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Heywood), min(PREVIOUS_OUTPUT_VALUE, dH_hourly_Heywood_moving_dH_Fall), 0)</expression>
-				<outputVariable>
-					<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="dH_Fall_Heywood_24hmax">
+	<transformation id="Heywood_dH_Fall_24hmax">
 		<statisticsSerial>
 			<min>
 				<inputVariable>
-					<variableId>dH_hourly_Heywood_moving_dH_Fall_min</variableId>
+					<variableId>Heywood_dH_hourly_moving_dH_Fall_min</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_Fall_Heywood_24hmax</variableId>
+					<variableId>Heywood_dH_Fall_24hmax</variableId>
 				</outputVariable>
 			</min>
 		</statisticsSerial>
 	</transformation>
 	<!--Output - Doctors point-->
-	<transformation id="H_merge_daily_Doctors">
+	<transformation id="Doctors_dH_hourly_direction">
 		<user>
 			<simple>
-				<expression>H_merge_hourly_Doctors_block</expression>
+				<expression>if(Doctors_H_merge_hourly_block - Doctors_H_merge_hourly_block_delay1h &gt; 0, 1, if(Doctors_H_merge_hourly_block - Doctors_H_merge_hourly_block_delay1h &lt; 0, -1, 0))</expression>
 				<outputVariable>
-					<variableId>H_merge_daily_Doctors</variableId>
+					<variableId>Doctors_dH_hourly_direction</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="H_merge_daily_1h_Doctors">
+	<transformation id="Doctors_dH_hourly_moving_max">
 		<user>
 			<simple>
-				<expression>H_merge_daily_Doctors</expression>
+				<expression>if(isMissing(Doctors_H_merge_daily_1h), max(PREVIOUS_OUTPUT_VALUE,Doctors_H_merge_hourly_block), Doctors_H_merge_daily_1h)</expression>
 				<outputVariable>
-					<variableId>H_merge_daily_1h_Doctors</variableId>
+					<variableId>Doctors_dH_hourly_moving_max</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Doctors_direction">
+	<transformation id="Doctors_dH_hourly_moving_min">
 		<user>
 			<simple>
-				<expression>if(H_merge_hourly_Doctors_block - H_merge_hourly_Doctors_block_delay1h &gt; 0, 1, if(H_merge_hourly_Doctors_block - H_merge_hourly_Heywood_block_delay1h &lt; 0, -1, 0))</expression>
+				<expression>if(isMissing(Doctors_H_merge_daily_1h), if(Doctors_dH_hourly_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,Doctors_H_merge_hourly_block), Doctors_H_merge_hourly_block), Doctors_H_merge_daily_1h)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Doctors_direction</variableId>
+					<variableId>Doctors_dH_hourly_moving_min</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Doctors_moving_max">
+	<transformation id="Doctors_dH_hourly_moving_dH_Fall">
 		<user>
 			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Doctors), max(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Doctors_block), H_merge_daily_1h_Heywood)</expression>
+				<expression>if(isMissing(Doctors_H_merge_daily_1h), Doctors_dH_hourly_moving_min - Doctors_dH_hourly_moving_max, 0)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Doctors_moving_max</variableId>
+					<variableId>Doctors_dH_hourly_moving_dH_Fall</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Doctors_moving_min">
+	<transformation id="Doctors_dH_hourly_moving_dH_Fall_min">
 		<user>
 			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Doctors), if(dH_hourly_Doctors_direction &lt;= 0,  min(PREVIOUS_OUTPUT_VALUE,H_merge_hourly_Doctors_block), H_merge_hourly_Heywood_block), H_merge_daily_1h_Heywood)</expression>
+				<expression>if(isMissing(Doctors_H_merge_daily_1h), min(PREVIOUS_OUTPUT_VALUE, Doctors_dH_hourly_moving_dH_Fall), 0)</expression>
 				<outputVariable>
-					<variableId>dH_hourly_Doctors_moving_min</variableId>
+					<variableId>Doctors_dH_hourly_moving_dH_Fall_min</variableId>
 				</outputVariable>
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_hourly_Doctors_moving_dH_Fall">
-		<user>
-			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Doctors), dH_hourly_Doctors_moving_min - dH_hourly_Heywood_moving_max, 0)</expression>
-				<outputVariable>
-					<variableId>dH_hourly_Doctors_moving_dH_Fall</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="dH_hourly_Doctors_moving_dH_Fall_min">
-		<user>
-			<simple>
-				<expression>if(isMissing(H_merge_daily_1h_Doctors), min(PREVIOUS_OUTPUT_VALUE, dH_hourly_Doctors_moving_dH_Fall), 0)</expression>
-				<outputVariable>
-					<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
-	<transformation id="dH_Fall_Doctors_24hmax">
+	<transformation id="Doctors_dH_Fall_24hmax">
 		<statisticsSerial>
 			<min>
 				<inputVariable>
-					<variableId>dH_hourly_Doctors_moving_dH_Fall_min</variableId>
+					<variableId>Doctors_dH_hourly_moving_dH_Fall_min</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>dH_Fall_Doctors_24hmax</variableId>
+					<variableId>Doctors_dH_Fall_24hmax</variableId>
 				</outputVariable>
 			</min>
 		</statisticsSerial>
 	</transformation>
 </transformationModule>
-<!-- moved aggregation to 24 h for Colemans to xx_specials_SO, since it's only done for this single location -->
-<!--<variable>
-	<variableId>H_merge_hourly_delay24h</variableId>
-	<timeSeriesSet>
-		<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-		<valueType>scalar</valueType>
-		<parameterId>H_obs</parameterId>
-		<locationSetId>threshold_sites_dH_hourly</locationSetId>
-		<timeSeriesType>external historical</timeSeriesType>
-		<timeStep unit="hour"/>
-		<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-		<readWriteMode>add originals</readWriteMode>
-		<delay unit="hour" multiplier="23"/>
-	</timeSeriesSet>
-</variable>
-<variable>
-		<variableId>dH_hourly_24h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>dH</parameterId>
-			<qualifierId>delta</qualifierId>
-			<qualifierId>24h</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep unit="hour"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>-->
-<!--<transformation id="dH_24h_hourly">
-		<user>
-			<simple>
-				<expression>H_merge_hourly - H_merge_hourly_delay24h</expression>
-				<outputVariable>
-					<variableId>dH_hourly_24h</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>-->
