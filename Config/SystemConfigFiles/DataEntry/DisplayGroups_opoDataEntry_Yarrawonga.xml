@@ -302,7 +302,7 @@
 		<!-- Turbidity_obs -->
 		<subplot>
 			<timeSeriesSet>
-				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<moduleInstanceId>ProcessTurbidityopo</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>Turbidity_obs</parameterId>
 				<qualifierId>opo</qualifierId>
@@ -313,6 +313,19 @@
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
+<!-- 		<subplot>
+			<timeSeriesSet>
+				<moduleInstanceId>ImportObserved</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>Turbidity_obs</parameterId>
+				<qualifierId>opo</qualifierId>
+				<locationSetId>de.sites_Turbidity</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod end="1" start="-6" unit="day"/>
+				<readWriteMode>editing visible to all future task runs</readWriteMode>
+			</timeSeriesSet>
+		</subplot> -->
 		<!-- WindDir_obs -->
 		<subplot>
 			<line>
