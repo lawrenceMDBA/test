@@ -940,7 +940,7 @@
 		</locationAttributeModifier>
 		<locationAttributeModifier id="RTCTools_R" name="RTCTools Goals parameters">
 			<expiryTime unit="day" multiplier="14"/>
-			<modifiableGroup name="RTCTools Optimization Goals Parametrs">
+			<modifiableGroup name="RTCTools Optimization Goals Parameters">
 				<locationId>R_401027</locationId>
 				<attribute id="use_surcharge_max">
 					<visible>true</visible>
@@ -948,7 +948,7 @@
 				</attribute>
 				<attribute id="priority_surcharge_max">
 					<visible>true</visible>
-					<comment>Keep water volumes below crest height and above surcharge, Default 4</comment>
+					<comment>Priority of goal to: Keep water volumes below crest height and above surcharge, Default 4  (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_fullsupply_max">
 					<visible>false</visible>
@@ -956,7 +956,7 @@
 				</attribute>
 				<attribute id="priority_fullsupply_max">
 					<visible>false</visible>
-					<comment>Further reduce maximum reservoir volume to full supply level, Default 8</comment>
+					<comment>Priority of goal to: Further reduce maximum reservoir volume to full supply level, Default 8  (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_track_release_timeseries">
 					<visible>true</visible>
@@ -964,7 +964,7 @@
 				</attribute>
 				<attribute id="priority_track_release_timeseries">
 					<visible>true</visible>
-					<comment>Priority of user defined release scheme, Default 10</comment>
+					<comment>Priority of goal to: follow user defined release scheme, Default 10  (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="downstream_location">
 					<readOnly>true</readOnly>
@@ -972,11 +972,11 @@
 				</attribute>
 				<attribute id="downstreamflow_target_min">
 					<visible>true</visible>
-					<comment>Minimum flow requested at downstream target location, Default 11</comment>
+					<comment>Priority of goal to: Minimum flow requested at downstream target location, Default 11  (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="downstreamflow_target_max">
 					<visible>true</visible>
-					<comment>Maximum flow acceptable at downstream target location, Default 11</comment>
+					<comment>Priority of goal to: keep flow at downstream target location below a maximum, Default 11 (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_downstreamflow_target_range">
 					<visible>true</visible>
@@ -984,7 +984,7 @@
 				</attribute>
 				<attribute id="priority_downstreamflow_target_range">
 					<visible>true</visible>
-					<comment>Priority of downstream flow target range, Default 11</comment>
+					<comment>Priority of goal to: maintain downstream flow target range, Default 11 (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_minimize_Qspill">
 					<visible>true</visible>
@@ -992,7 +992,7 @@
 				</attribute>
 				<attribute id="priority_minimize_Qspill">
 					<visible>true</visible>
-					<comment>Priority of spill minimiation, Default 12</comment>
+					<comment>Priority of goal to: spill minimiation, Default 12 (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_minimize_Qout">
 					<visible>true</visible>
@@ -1000,7 +1000,7 @@
 				</attribute>
 				<attribute id="priority_minimize_Qout">
 					<visible>true</visible>
-					<comment>Priority of outflow minimization, Default 50</comment>
+					<comment>Priority of goal to: outflow minimization, Default 50 (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<attribute id="use_smoothen_Qturbine">
 					<visible>false</visible>
@@ -1008,7 +1008,7 @@
 				</attribute>
 				<attribute id="priority_smoothen_Qturbine">
 					<visible>false</visible>
-					<comment>Priority to smoothen operation of the turbine over time, Default 1</comment>
+					<comment>Priority of goal to: smoothen operation of the turbine over time, Default 1 (lower number = higher priority, integer values only)</comment>
 				</attribute>
 				<panelLayout>
 					<tableLayout id="RTC_GOALS">
