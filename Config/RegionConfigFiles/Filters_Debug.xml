@@ -2485,7 +2485,33 @@
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</timeSeriesSets>
+	<timeSeriesSets id="Gaugings">
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>H_obs</parameterId>
+			<qualifierId>gauging</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportObserved</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Q_obs</parameterId>
+			<qualifierId>gauging</qualifierId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="nonequidistant"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</timeSeriesSets>
 	<!--Debug (parent filter_id: Debug)-->
+	<filter id="Gaugings" name="Gaugings">
+		<validationIconsVisible>true</validationIconsVisible>
+		<timeSeriesSetsId>Gaugings</timeSeriesSetsId>
+	</filter>
 	<filter id="TestDataEntry" name="TestDataEntry">
 		<validationIconsVisible>true</validationIconsVisible>
 		<mapExtentId/>
