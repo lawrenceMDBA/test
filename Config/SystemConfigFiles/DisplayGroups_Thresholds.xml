@@ -1965,10 +1965,34 @@
 				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
 				<valueType>scalar</valueType>
 				<parameterId>dH</parameterId>
+				<qualifierId>delta</qualifierId>
+				<locationSetId>threshold_sites_dH</locationSetId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
+				<qualifierId>delta</qualifierId>
+				<qualifierId>24h</qualifierId>
+				<locationId>R_401211A</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep unit="hour"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
+			</timeSeriesSet>
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
 				<qualifierId>24h</qualifierId>
 				<qualifierId>dH_Fall</qualifierId>
 				<qualifierId>max</qualifierId>
-				<locationSetId>threshold_sites_dH</locationSetId>
+				<locationId>R_409016</locationId>
+				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
@@ -1980,12 +2004,13 @@
 				<parameterId>dH</parameterId>
 				<qualifierId>SO</qualifierId>
 				<qualifierId>6days</qualifierId>
-				<locationSetId>threshold_sites_dH</locationSetId>
+				<locationId>R_409016</locationId>
+				<locationId>R_409017</locationId>
 				<timeSeriesType>external historical</timeSeriesType>
 				<timeStep id="8am"/>
 				<aggregationPeriod unit="day" start="-6" end="0"/>
-				<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-				<readWriteMode>add originals</readWriteMode>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</subplot>
 		<subplot>
@@ -2030,7 +2055,7 @@
 				<relativeViewPeriod unit="day" start="-30" end="10"/>
 				<readWriteMode>editing visible to all future task runs</readWriteMode>
 			</timeSeriesSet>
-						<axis>left</axis>
+			<axis>left</axis>
 			<timeSeriesSet>
 				<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 				<valueType>scalar</valueType>
