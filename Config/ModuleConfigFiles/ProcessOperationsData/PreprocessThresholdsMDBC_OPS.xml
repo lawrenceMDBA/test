@@ -703,7 +703,7 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -879,7 +879,7 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -1330,6 +1330,16 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 		</merge>
 	</transformation>
 	<!--Output - Heywood-->
+	<transformation id="Heywood_H_merge_daily_1h">
+		<user>
+			<simple>
+				<expression>Heywood_H_merge_daily</expression>
+				<outputVariable>
+					<variableId>Heywood_H_merge_daily_1h</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="Heywood_dH_hourly_direction">
 		<user>
 			<simple>
@@ -1393,6 +1403,16 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 		</statisticsSerial>
 	</transformation>
 	<!--Output - Doctors point-->
+	<transformation id="Doctors_H_merge_daily_1h">
+		<user>
+			<simple>
+				<expression>Doctors_H_merge_daily</expression>
+				<outputVariable>
+					<variableId>Doctors_H_merge_daily_1h</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
 	<transformation id="Doctors_dH_hourly_direction">
 		<user>
 			<simple>

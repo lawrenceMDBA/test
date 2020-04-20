@@ -26,6 +26,11 @@
 				<function>MAXVALUE(H_calc;3Decimal)</function>
 			</column>
 			<column>
+				<header>&#x0394;H (24h)</header>
+				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_threshold)</backgroundColorFunction>
+				<function>MAXVALUE(Set_dH_Fall_max_24h;3Decimal)</function>
+			</column>
+			<column>
 				<header>&#x0394;H</header>
 				<backgroundColorFunction>THRESHOLDCROSSING(ALL_THRESHOLDCOLORS;dH_threshold)</backgroundColorFunction>
 				<function>MAXVALUE(Set_dH_deltaH;3Decimal)</function>
@@ -108,6 +113,22 @@
 				<timeStep id="8am"/>
 				<relativeViewPeriod start="-1" startOverrulable="true" end="0" unit="day"/>
 				<readWriteMode>add originals</readWriteMode>
+			</timeSeriesSet>
+		</inputVariable>
+		<inputVariable variableId="Set_dH_Fall_max_24h">
+			<timeSeriesSet>
+				<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+				<valueType>scalar</valueType>
+				<parameterId>dH</parameterId>
+				<qualifierId>24h</qualifierId>
+				<qualifierId>dH_Fall</qualifierId>
+				<qualifierId>max</qualifierId>
+				<locationId>R_409016</locationId>
+				<locationId>R_409017</locationId>
+				<timeSeriesType>external historical</timeSeriesType>
+				<timeStep id="8am"/>
+				<relativeViewPeriod unit="day" start="-30" end="10"/>
+				<readWriteMode>read only</readWriteMode>
 			</timeSeriesSet>
 		</inputVariable>
 		<inputVariable variableId="Set_dH_6d_rolling">

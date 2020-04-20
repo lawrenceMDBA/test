@@ -31,24 +31,25 @@
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_hit_4count_total</variableId>
+		<variableId>dH_6days_threshold_hit_4count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>crossing</qualifierId>
 			<qualifierId>count</qualifierId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
+			<readWriteMode>read only</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -131,7 +132,24 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_count_total</variableId>
+		<variableId>dH_6days_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>mov_avg</qualifierId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_threshold_heywood_doctors_total_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -139,7 +157,8 @@
 			<qualifierId>$SINCE$</qualifierId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -223,19 +242,29 @@
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="dH_threshold_count_total">
+	<transformation id="dH_6days_threshold_count">
 		<accumulation>
 			<sumInterval>
 				<inputVariable>
-					<variableId>dH_threshold_hit_4count_total</variableId>
+					<variableId>dH_6days_threshold_hit_4count</variableId>
 				</inputVariable>
 				<intervalTimeStep id="$SINCE$"/>
 				<ignoreMissing>true</ignoreMissing>
 				<outputVariable>
-					<variableId>dH_threshold_count_total</variableId>
+					<variableId>dH_6days_threshold_count</variableId>
 				</outputVariable>
 			</sumInterval>
 		</accumulation>
+	</transformation>
+	<transformation id="dH_threshold_heywood_doctors_total_count">
+		<user>
+			<simple>
+				<expression>dH_threshold_count + dH_6days_threshold_count</expression>
+				<outputVariable>
+					<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
 	</transformation>
 	<transformation id="Q_threshold_count">
 		<accumulation>
