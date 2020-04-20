@@ -34,21 +34,21 @@
 	</variable>
 	<!--NWP Forecast grids with original time interval.-->
 	<variable>
-		<variableId>ACCESSG_P_grid</variableId>
+		<variableId>ACCESSG3_10days_P_grid</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+			<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<locationId>NWP</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="3" unit="hour"/>
+			<timeStep multiplier="1" unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_grid</variableId>
+		<variableId>ACCESSG3_3days_P_grid</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<locationId>NWP</locationId>
@@ -84,7 +84,7 @@
 	</variable>
 	<!--NWP Forecast series interpolated to Source RO locations in original time interval and 1 day time interval (temporary)-->
 	<variable>
-		<variableId>ACCESSG_P_scalar</variableId>
+		<variableId>ACCESSG3_10days_P_scalar</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -92,13 +92,13 @@
 			<qualifierId>accessg</qualifierId>
 			<locationSetId>SourceRO_sites_P</locationSetId>
 			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour" multiplier="3"/>
+			<timeStep unit="hour" multiplier="1"/>
 			<relativeViewPeriod unit="day" start="-7" end="14"/>
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_scalar</variableId>
+		<variableId>ACCESSG3_3days_P_scalar</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -140,7 +140,7 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSG</variableId>
+		<variableId>ACCESSG3_10days</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -154,7 +154,7 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR</variableId>
+		<variableId>ACCESSG3_3days</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PrepareewSourceRO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -358,30 +358,30 @@
 	<!--************ Start of Transformations *************-->
 	<!--********************************************************-->
 	<!--Step 1: Compute sub-area averages from all rainfall forecast products-->
-	<transformation id="Interpolate_ACCESSG_to_scalar">
+	<transformation id="Interpolate_ACCESSG3_10days_to_scalar">
 		<interpolationSpatial>
 			<closestDistance>
 				<inputVariable>
-					<variableId>ACCESSG_P_grid</variableId>
+					<variableId>ACCESSG3_10days_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
-					<variableId>ACCESSG_P_scalar</variableId>
+					<variableId>ACCESSG3_10days_P_scalar</variableId>
 				</outputVariable>
 			</closestDistance>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="Interpolate_ACCESSR_to_scalar">
+	<transformation id="Interpolate_ACCESSG3_3days_to_scalar">
 		<interpolationSpatial>
 			<closestDistance>
 				<inputVariable>
-					<variableId>ACCESSR_P_grid</variableId>
+					<variableId>ACCESSG3_3days_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<outputVariable>
-					<variableId>ACCESSR_P_scalar</variableId>
+					<variableId>ACCESSG3_3days_P_scalar</variableId>
 				</outputVariable>
 			</closestDistance>
 		</interpolationSpatial>
@@ -415,26 +415,26 @@
 		</interpolationSpatial>
 	</transformation>
 	<!--Step 2: Aggregate all original NWP subarea data to daily intervals (accumulate rainfall)-->
-	<transformation id="ACCESSG">
+	<transformation id="ACCESSG3_10days">
 		<aggregation>
 			<accumulative>
 				<inputVariable>
-					<variableId>ACCESSG_P_scalar</variableId>
+					<variableId>ACCESSG3_10days_P_scalar</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>ACCESSG</variableId>
+					<variableId>ACCESSG3_10days</variableId>
 				</outputVariable>
 			</accumulative>
 		</aggregation>
 	</transformation>
-	<transformation id="ACCESSR">
+	<transformation id="ACCESSG3_3days">
 		<aggregation>
 			<accumulative>
 				<inputVariable>
-					<variableId>ACCESSR_P_scalar</variableId>
+					<variableId>ACCESSG3_3days_P_scalar</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>ACCESSR</variableId>
+					<variableId>ACCESSG3_3days</variableId>
 				</outputVariable>
 			</accumulative>
 		</aggregation>
@@ -478,10 +478,10 @@
 		<merge>
 			<selectDataSource>
 				<input>
-					<variableId>ACCESSG</variableId>
+					<variableId>ACCESSG3_10days</variableId>
 				</input>
 				<input>
-					<variableId>ACCESSR</variableId>
+					<variableId>ACCESSG3_3days</variableId>
 				</input>
 				<input>
 					<variableId>ADFD</variableId>
