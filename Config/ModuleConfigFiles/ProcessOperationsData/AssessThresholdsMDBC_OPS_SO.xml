@@ -282,7 +282,7 @@ Note2: This is implemented for the SO threshold crossings, not for the RO-->
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_hard_Heywood_3</variableId>
+		<variableId>dH_6days_threshold_tmp4_hard_Heywood</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -290,8 +290,7 @@ Note2: This is implemented for the SO threshold crossings, not for the RO-->
 			<qualifierId>SO</qualifierId>
 			<qualifierId>tmp4</qualifierId>
 			<qualifierId>special</qualifierId>
-			<locationSetId>threshold_sites_SO</locationSetId>
-			<!--<locationId>R_409016</locationId>-->
+			<locationId>R_409016</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -316,7 +315,7 @@ Note2: This is implemented for the SO threshold crossings, not for the RO-->
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_thresh_hard_Doctors_3</variableId>
+		<variableId>dH_6days_threshold_tmp7_hard_Doctors</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -324,8 +323,7 @@ Note2: This is implemented for the SO threshold crossings, not for the RO-->
 			<qualifierId>SO</qualifierId>
 			<qualifierId>tmp7</qualifierId>
 			<qualifierId>special</qualifierId>
-			<locationSetId>threshold_sites_SO</locationSetId>
-			<!--<locationId>R_409017</locationId>-->
+			<locationId>R_409017</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -824,39 +822,6 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<readWriteMode>add originals</readWriteMode>
 		</timeSeriesSet>
 	</variable>
-	<!--Input - individual threshold crossings  (specials)-->
-	<variable>
-		<variableId>dH_6days_threshold_tmp4_hard_Heywood</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp4</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_409016</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>dH_6days_threshold_tmp7_hard_Doctors</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>tmp7</qualifierId>
-			<qualifierId>special</qualifierId>
-			<locationId>R_409017</locationId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
 	<!--Throughput - individual threshold crossings -->
 	<!-- TODO: should be temporary timeSeries with synch 9 in final version-->
 	<variable>
@@ -1152,7 +1117,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1168,7 +1134,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>count</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1184,7 +1151,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>count</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1198,7 +1166,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1213,7 +1181,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>report</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1228,7 +1196,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>24h</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1476,23 +1444,6 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_heywood_doctors_total_hit_4_count</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>Threshold_dH</parameterId>
-			<qualifierId>SO</qualifierId>
-			<qualifierId>crossing</qualifierId>
-			<qualifierId>count</qualifierId>
-			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
-			<timeSeriesType>external historical</timeSeriesType>
-			<timeStep id="8am"/>
-			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
-			<readWriteMode>add originals</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
 		<variableId>dH_6days_threshold_hit</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -1501,7 +1452,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>crossing</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1518,7 +1470,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>mov_avg</qualifierId>
 			<qualifierId>crossing</qualifierId>
 			<qualifierId>count</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1533,7 +1486,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>crossing</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1549,7 +1502,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>24h</qualifierId>
 			<qualifierId>crossing</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1700,7 +1653,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1715,7 +1669,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1729,7 +1684,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1744,7 +1699,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>24h</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1752,14 +1707,14 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>dH_threshold_colemans_total_count</variableId>
+		<variableId>dH_threshold_hourly_colemans_total_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>Threshold_dH_count</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>total</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>external historical</timeSeriesType>
 			<timeStep multiplier="1" unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1877,7 +1832,8 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>NaN</qualifierId>
 			<qualifierId>mov_avg</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly</locationSetId>
+			<locationId>R_409016</locationId>
+			<locationId>R_409017</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1893,7 +1849,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<parameterId>Threshold_dH</parameterId>
 			<qualifierId>SO</qualifierId>
 			<qualifierId>NaN</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -1910,7 +1866,7 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			<qualifierId>SO</qualifierId>
 			<qualifierId>24h</qualifierId>
 			<qualifierId>NaN</qualifierId>
-			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<locationId>R_401211A</locationId>
 			<timeSeriesType>temporary</timeSeriesType>
 			<timeStep unit="hour"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
@@ -2702,16 +2658,6 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			</simple>
 		</user>
 	</transformation>
-	<transformation id="dH_threshold_heywood_doctors_total_hit_4count">
-		<user>
-			<simple>
-				<expression>dH_threshold_hit_4count + dH_6days_threshold_hit_4count</expression>
-				<outputVariable>
-					<variableId>dH_threshold_heywood_doctors_total_hit_4_count</variableId>
-				</outputVariable>
-			</simple>
-		</user>
-	</transformation>
 	<transformation id="dH_threshold_hourly_hit">
 		<user>
 			<simple>
@@ -2878,12 +2824,12 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 			</sumInterval>
 		</accumulation>
 	</transformation>
-	<transformation id="dH_threshold_colemans_total_count">
+	<transformation id="dH_threshold_hourly_colemans_total_count">
 		<user>
 			<simple>
 				<expression>dH_threshold_hourly_count + dH_threshold_24hourly_count</expression>
 				<outputVariable>
-					<variableId>dH_threshold_colemans_total_count</variableId>
+					<variableId>dH_threshold_hourly_colemans_total_count</variableId>
 				</outputVariable>
 			</simple>
 		</user>
@@ -3082,6 +3028,44 @@ Exclusion timeseries for all Threshold_sites and parameter combinations (1= coun
 		</interpolationSerial>
 	</transformation>
 </transformationModule>
+<!--<variable>
+	<variableId>dH_thresh_hard_Heywood_3</variableId>
+	<timeSeriesSet>
+		<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+		<valueType>scalar</valueType>
+		<parameterId>Threshold_dH</parameterId>
+		<qualifierId>SO</qualifierId>
+		<qualifierId>tmp4</qualifierId>
+		<qualifierId>special</qualifierId>
+		<locationSetId>threshold_sites_SO</locationSetId>
+		-->
+<!--<locationId>R_409016</locationId>-->
+<!--
+		<timeSeriesType>temporary</timeSeriesType>
+		<timeStep id="8am"/>
+		<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+		<readWriteMode>add originals</readWriteMode>
+	</timeSeriesSet>
+</variable>
+<variable>
+	<variableId>dH_thresh_hard_Doctors_3</variableId>
+	<timeSeriesSet>
+		<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+		<valueType>scalar</valueType>
+		<parameterId>Threshold_dH</parameterId>
+		<qualifierId>SO</qualifierId>
+		<qualifierId>tmp7</qualifierId>
+		<qualifierId>special</qualifierId>
+		<locationSetId>threshold_sites_SO</locationSetId>
+		-->
+<!--<locationId>R_409017</locationId>-->
+<!--
+		<timeSeriesType>temporary</timeSeriesType>
+		<timeStep id="8am"/>
+		<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+		<readWriteMode>add originals</readWriteMode>
+	</timeSeriesSet>
+</variable>-->
 <!--<variable>
 		<variableId>Q_GT_relation_soft_calc</variableId>
 		<timeSeriesSet>
