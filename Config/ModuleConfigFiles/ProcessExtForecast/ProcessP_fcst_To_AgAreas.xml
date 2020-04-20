@@ -2,34 +2,9 @@
 <transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
 	<!--Interpolates the gridded data to subcatchments for analysis in the spatial display.-->
 	<variable>
-		<variableId>ACCESS-G_grid</variableId>
+		<variableId>ACCESS-G3_10days_grid</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
-			<valueType>grid</valueType>
-			<parameterId>P_fcst</parameterId>
-			<locationId>NWP</locationId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="3" unit="hour"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESS-G_AgAreas</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg</qualifierId>
-			<locationSetId>aggregation_areas</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="3"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESS-R_grid</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<locationId>NWP</locationId>
@@ -39,12 +14,37 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESS-R_AgAreas</variableId>
+		<variableId>ACCESS-G3_10days_AgAreas</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
+			<qualifierId>accessg3_10</qualifierId>
+			<locationSetId>aggregation_areas</locationSetId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep unit="hour" multiplier="1"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESS-G3_3days_grid</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+			<valueType>grid</valueType>
+			<parameterId>P_fcst</parameterId>
+			<locationId>NWP</locationId>
+			<timeSeriesType>external forecasting</timeSeriesType>
+			<timeStep multiplier="1" unit="hour"/>
+			<readWriteMode>read complete forecast</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>ACCESS-G3_3days_AgAreas</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>P_fcst</parameterId>
+			<qualifierId>accessg3_3</qualifierId>
 			<locationSetId>aggregation_areas</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="1"/>
@@ -104,28 +104,28 @@
 		</timeSeriesSet>
 	</variable>
 	<!--START OF THE COMPUTATIONS - Compute average over polygons using cookie cutter method-->
-	<transformation id="Interpolate_ACCESS-G_to_AggregationAreas">
+	<transformation id="Interpolate_ACCESS-G3_10days_to_AggregationAreas">
 		<interpolationSpatial>
 			<average>
 				<minimumValue>0</minimumValue>
 				<inputVariable>
-					<variableId>ACCESS-G_grid</variableId>
+					<variableId>ACCESS-G3_10days_grid</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>ACCESS-G_AgAreas</variableId>
+					<variableId>ACCESS-G3_10days_AgAreas</variableId>
 				</outputVariable>
 			</average>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="Interpolate_ACCESS-R_to_AggregationAreas">
+	<transformation id="Interpolate_ACCESS-G3_3days_to_AggregationAreas">
 		<interpolationSpatial>
 			<average>
 				<minimumValue>0</minimumValue>
 				<inputVariable>
-					<variableId>ACCESS-R_grid</variableId>
+					<variableId>ACCESS-G3_3days_grid</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>ACCESS-R_AgAreas</variableId>
+					<variableId>ACCESS-G3_3days_AgAreas</variableId>
 				</outputVariable>
 			</average>
 		</interpolationSpatial>
