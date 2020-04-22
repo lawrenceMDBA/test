@@ -125,37 +125,37 @@
 				</node>
 				<nodes name="Exclude thresholds from SOnO report" id="Prepare_Thresholds_Review">
 					<workflowId>Prepare_Thresholds</workflowId>
-					<node id="H_review" name="H_review">
+					<node id="H_review" name="H_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>H_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
 						<localRun>true</localRun>
 					</node>
-					<node id="dH_review" name="dH_review">
+					<node id="dH_review" name="dH_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>dH_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
 						<localRun>true</localRun>
 					</node>
-					<node id="Q_review" name="Q_review">
+					<node id="Q_review" name="Q_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>Q_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
 						<localRun>true</localRun>
 					</node>
-					<node id="dQ_review" name="dQ_review">
+					<node id="dQ_review" name="dQ_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>dQ_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
 						<localRun>true</localRun>
 					</node>
-					<node id="V_review" name="V_review">
+					<node id="V_review" name="V_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>V_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
 						<localRun>true</localRun>
 					</node>
-					<node id="DO_review" name="DO_review">
+					<node id="DO_review" name="DO_review (SO)">
 						<workflowId>Prepare_Thresholds</workflowId>
 						<displayGroupId>DO_review</displayGroupId>
 						<mainPanel>time series dialog</mainPanel>
@@ -1012,7 +1012,6 @@
 	<nodes id="Maintenance" name="Maintenance">
 		<node id="RatingsExport" name="Export Ratings to local disk">
 			<workflowId>Export_Ratings</workflowId>
-			<viewPermission>RiverOperations</viewPermission>
 			<localRun>true</localRun>
 		</node>
 		<nodes id="Prepare_flood" name="Prepare system">
@@ -1036,7 +1035,6 @@
 				<toolWindow>document selection panel</toolWindow>
 				<localRun>true</localRun>
 			</node>
-			<viewPermission>RiverOperations</viewPermission>
 			<visibleModifierGroup>None</visibleModifierGroup>
 		</nodes>
 		<nodes id="RunoffForecasting" name="Runoff Forecasting (can be deleted)">
@@ -1059,9 +1057,9 @@
 				<workflowId>Ovens_ewSourceRR</workflowId>
 				<localRun>false</localRun>
 			</node>
-			<viewPermission>RiverOperations</viewPermission>
 			<visibleModifierGroup>ROWS</visibleModifierGroup>
 		</nodes>
+		<viewPermission>RiverOperations</viewPermission>
 	</nodes>
 	<nodes id="OpsDashboard" name="River Ops Dashboard">
 		<node id="WIS_Dash" name="Water In Storages">

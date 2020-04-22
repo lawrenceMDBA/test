@@ -53,6 +53,39 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_hourly_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h_threshold_hit_4count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<qualifierId>crossing</qualifierId>
+			<qualifierId>count</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>read only</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Q_threshold_hit_4count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -166,6 +199,84 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_hourly_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h_threshold_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_threshold_colemans_8am_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h_threshold_colemans_8am_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_threshold_colemans_8am_total_count</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_count</parameterId>
+			<qualifierId>$SINCE$</qualifierId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>total</qualifierId>
+			<locationId>R_401211A</locationId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep id="8am"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>Q_threshold_count</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>AssessThresholdsMDBC_OPS_SO</moduleInstanceId>
@@ -262,6 +373,76 @@
 				<expression>dH_threshold_count + dH_6days_threshold_count</expression>
 				<outputVariable>
 					<variableId>dH_threshold_heywood_doctors_total_count</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_hourly_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>dH_hourly_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_hourly_24h_threshold_count">
+		<accumulation>
+			<sumInterval>
+				<inputVariable>
+					<variableId>dH_hourly_24h_threshold_hit_4count</variableId>
+				</inputVariable>
+				<intervalTimeStep id="$SINCE$"/>
+				<ignoreMissing>true</ignoreMissing>
+				<outputVariable>
+					<variableId>dH_hourly_24h_threshold_count</variableId>
+				</outputVariable>
+			</sumInterval>
+		</accumulation>
+	</transformation>
+	<transformation id="dH_hourly_threshold_colemans_8am_count">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>dH_hourly_threshold_count</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>dH_hourly_threshold_colemans_8am_count</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestBackward</interpolationType>
+				<outputVariable>
+					<variableId>dH_hourly_threshold_colemans_8am_count</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="dH_hourly_24h_threshold_colemans_8am_count">
+		<sample>
+			<equidistant>
+				<equidistantInputVariable>
+					<variableId>dH_hourly_24h_threshold_count</variableId>
+				</equidistantInputVariable>
+				<timeReferenceInputVariable>
+					<variableId>dH_hourly_24h_threshold_colemans_8am_count</variableId>
+				</timeReferenceInputVariable>
+				<interpolationType>closestBackward</interpolationType>
+				<outputVariable>
+					<variableId>dH_hourly_24h_threshold_colemans_8am_count</variableId>
+				</outputVariable>
+			</equidistant>
+		</sample>
+	</transformation>
+	<transformation id="dH_hourly_threshold_colemans_8am_total_count">
+		<user>
+			<simple>
+				<expression>dH_hourly_threshold_colemans_8am_count + dH_hourly_24h_threshold_colemans_8am_count</expression>
+				<outputVariable>
+					<variableId>dH_hourly_threshold_colemans_8am_total_count</variableId>
 				</outputVariable>
 			</simple>
 		</user>

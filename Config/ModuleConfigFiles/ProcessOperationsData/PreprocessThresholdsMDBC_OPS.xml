@@ -54,6 +54,35 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 		</timeSeriesSet>
 	</variable>
 	<variable>
+		<variableId>dH_hourly_thresh_counted</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h_thresh_counted</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>external historical</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>add originals</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
 		<variableId>dH_6days_thresh_counted</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
@@ -150,6 +179,35 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 			<timeStep id="8am"/>
 			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
 			<readWriteMode>editing visible to all future task runs</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_thresh_counted_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing only visible to current task run</readWriteMode>
+		</timeSeriesSet>
+	</variable>
+	<variable>
+		<variableId>dH_hourly_24h_thresh_counted_tmp</variableId>
+		<timeSeriesSet>
+			<moduleInstanceId>PreprocessThresholdsMDBC_OPS</moduleInstanceId>
+			<valueType>scalar</valueType>
+			<parameterId>Threshold_dH_counted</parameterId>
+			<qualifierId>SO</qualifierId>
+			<qualifierId>24h</qualifierId>
+			<locationSetId>threshold_sites_dH_hourly_SO</locationSetId>
+			<timeSeriesType>temporary</timeSeriesType>
+			<timeStep unit="hour"/>
+			<relativeViewPeriod end="0" start="-367" startOverrulable="true" unit="day"/>
+			<readWriteMode>editing only visible to current task run</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -1060,6 +1118,66 @@ The counting takes place in the AssessThresholdsMDBC_OPS_SO module.-->
 				</inputVariable>
 				<outputVariable>
 					<variableId>dH_6days_thresh_counted</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_hourly_thresh_counted_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_hourly_thresh_counted_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_thresh_counted">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_hourly_thresh_counted</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_hourly_thresh_counted_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_hourly_thresh_counted</variableId>
+				</outputVariable>
+			</simple>
+		</merge>
+	</transformation>
+	<transformation id="dH_hourly_24h_thresh_counted_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_hourly_24h_thresh_counted_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_24h_thresh_counted_tmp">
+		<user>
+			<simple>
+				<expression>1</expression>
+				<outputVariable>
+					<variableId>dH_hourly_24h_thresh_counted_tmp</variableId>
+				</outputVariable>
+			</simple>
+		</user>
+	</transformation>
+	<transformation id="dH_hourly_24h_thresh_counted">
+		<merge>
+			<simple>
+				<inputVariable>
+					<variableId>dH_hourly_24h_thresh_counted</variableId>
+				</inputVariable>
+				<inputVariable>
+					<variableId>dH_hourly_24h_thresh_counted_tmp</variableId>
+				</inputVariable>
+				<outputVariable>
+					<variableId>dH_hourly_24h_thresh_counted</variableId>
 				</outputVariable>
 			</simple>
 		</merge>

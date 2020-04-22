@@ -3437,14 +3437,28 @@
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_all</locationSetId>
 		<constraints>
-			<anyValid>
+			<attributeExists id="dH_HOUR_SPECIAL"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_8am">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_all</locationSetId>
+		<constraints>
+			<not>
 				<attributeExists id="dH_HOUR_SPECIAL"/>
-			</anyValid>
+			</not>
 		</constraints>
 	</locationSet>
 	<locationSet id="threshold_sites_dH_hourly_SO">
 		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
 		<locationSetId>threshold_sites_dH_hourly</locationSetId>
+		<constraints>
+			<attributeTextContains id="TYPE" contains="SO_"/>
+		</constraints>
+	</locationSet>
+	<locationSet id="threshold_sites_dH_8am_SO">
+		<sortingLocationAttributeId>HYDSTRA_SITE_ID</sortingLocationAttributeId>
+		<locationSetId>threshold_sites_dH_8am</locationSetId>
 		<constraints>
 			<attributeTextContains id="TYPE" contains="SO_"/>
 		</constraints>
