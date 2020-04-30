@@ -12,42 +12,42 @@
 		<activities>
 			<netcdfExportActivities>
 				<netcdfExportActivity>
-					<fileName>Precipitation_Fcst_ACCESSG.nc</fileName>
+					<fileName>Precipitation_Fcst_ACCESSG3_10days.nc</fileName>
 					<areaId>mdba</areaId>
 					<sourceId>ACCESSG</sourceId>
 					<ncMetaData>
-						<title>Precipitation forecast (ACCESSG)</title>
+						<title>Precipitation forecast (ACCESSG3_10days)</title>
 						<institution>Murray Darling Basin Authority</institution>
 						<source>ROWS-Flood (Delft-FEWS)</source>
 					</ncMetaData>
 					<includeComments>true</includeComments>
 					<includeFlags>true</includeFlags>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>ACCESSG_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="3" unit="hour"/>
+						<timeStep multiplier="1" unit="hour"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</netcdfExportActivity>
 				<netcdfExportActivity>
-					<fileName>Precipitation_Fcst_ACCESSR.nc</fileName>
+					<fileName>Precipitation_Fcst_ACCESSG3_3days.nc</fileName>
 					<areaId>mdba</areaId>
-					<sourceId>ACCESSR</sourceId>
+					<sourceId>ACCESSG</sourceId>
 					<ncMetaData>
-						<title>Precipitation forecast (ACCESSR)</title>
+						<title>Precipitation forecast (ACCESSG3_3days)</title>
 						<institution>Murray Darling Basin Authority</institution>
 						<source>ROWS-Flood (Delft-FEWS)</source>
 					</ncMetaData>
 					<includeComments>true</includeComments>
 					<includeFlags>true</includeFlags>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
-						<locationId>ACCESSR_archive</locationId>
+						<locationId>ACCESSG_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep multiplier="1" unit="hour"/>
 						<readWriteMode>read complete forecast</readWriteMode>

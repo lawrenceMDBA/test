@@ -3,18 +3,18 @@
 	<!--ToArchive_FloodOps_URBS is run with every official forecast-->
 	<activity>
 		<properties>
-			<string key="NWP" value="ACCESSG"/>
+			<string key="NWP" value="ACCESSG3_10days"/>
 			<string key="NWP_GRID" value="NWP"/>
 			<string key="NWP_GRID_ARCHIVE" value="ACCESSG_archive"/>
 		</properties>
 		<runIndependent>false</runIndependent>
-		<moduleInstanceId>ProcessNWP_To_Archive</moduleInstanceId>
+		<moduleInstanceId>ProcessNWP_To_Archive_1h</moduleInstanceId>
 	</activity>
 	<activity>
 		<properties>
-			<string key="NWP" value="ACCESSR"/>
+			<string key="NWP" value="ACCESSG3_3days"/>
 			<string key="NWP_GRID" value="NWP"/>
-			<string key="NWP_GRID_ARCHIVE" value="ACCESSR_archive"/>
+			<string key="NWP_GRID_ARCHIVE" value="ACCESSG_archive"/>
 		</properties>
 		<runIndependent>false</runIndependent>
 		<moduleInstanceId>ProcessNWP_To_Archive_1h</moduleInstanceId>
