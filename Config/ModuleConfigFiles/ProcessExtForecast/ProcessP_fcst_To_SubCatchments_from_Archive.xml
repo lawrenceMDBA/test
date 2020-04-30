@@ -2,21 +2,21 @@
 <transformationModule version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/transformationModule.xsd">
 	<!--Interpolates the gridded data to subcatchments for analysis in the spatial display. All subcatchments must have polygons, the average cookie cutter function can be used-->
 	<variable>
-		<variableId>ACCESSG_P_grid</variableId>
+		<variableId>ACCESSG3_10days_P_grid</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
+			<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<locationId>ACCESSG_archive</locationId>
 			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep multiplier="3" unit="hour"/>
+			<timeStep multiplier="1" unit="hour"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_grid</variableId>
+		<variableId>ACCESSG3_3days_P_grid</variableId>
 		<timeSeriesSet>
-			<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
+			<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
 			<valueType>grid</valueType>
 			<parameterId>P_fcst</parameterId>
 			<locationId>ACCESSR_archive</locationId>
@@ -91,12 +91,12 @@
 	</variable>
 	<!--NWP subcatchments-->
 	<variable>
-		<variableId>ACCESSG_P_subareas_3h</variableId>
+		<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg</qualifierId>
+			<qualifierId>accessg3_10</qualifierId>
 			<locationSetId>URBS_subareas</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
@@ -105,12 +105,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSG_P_subcatchments_3h</variableId>
+		<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg</qualifierId>
+			<qualifierId>accessg3_10</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour" multiplier="3"/>
@@ -118,12 +118,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSG_P_subcatchments_1h</variableId>
+		<variableId>ACCESSG3_10days_P_subcatchments_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg</qualifierId>
+			<qualifierId>accessg3_10</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -132,12 +132,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_subareas_1h</variableId>
+		<variableId>ACCESSG3_3days_P_subareas_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
+			<qualifierId>accessg3_3</qualifierId>
 			<locationSetId>URBS_subareas</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -146,12 +146,12 @@
 		</timeSeriesSet>
 	</variable>
 	<variable>
-		<variableId>ACCESSR_P_subcatchments_1h</variableId>
+		<variableId>ACCESSG3_3days_P_subcatchments_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
 			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessr</qualifierId>
+			<qualifierId>accessg3_3</qualifierId>
 			<locationSetId>URBS_subcatchments</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
 			<timeStep unit="hour"/>
@@ -374,59 +374,59 @@
 		</timeSeriesSet>
 	</variable>
 	<!--START OF THE COMPUTATIONS - Compute average over polygons using coockie cutter method-->
-	<transformation id="Interpolate_ACCESS-G_to_subareas">
+	<transformation id="Interpolate_ACCESS-G3_10days_to_subareas">
 		<interpolationSpatial>
 			<inverseDistance>
 				<inputVariable>
-					<variableId>ACCESSG_P_grid</variableId>
+					<variableId>ACCESSG3_10days_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<inverseDistancePower>2</inverseDistancePower>
 				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
-					<variableId>ACCESSG_P_subareas_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
 				</outputVariable>
 			</inverseDistance>
 		</interpolationSpatial>
 	</transformation>
-	<transformation id="SubCatchAverageRainfall_ACCESS-G">
+	<transformation id="SubCatchAverageRainfall_ACCESS-G3_10days">
 		<statisticsRelatedLocations>
 			<mean>
 				<inputVariable>
-					<variableId>ACCESSG_P_subareas_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
 				</inputVariable>
 				<locationRelationId>subcatchment</locationRelationId>
 				<outputVariable>
-					<variableId>ACCESSG_P_subcatchments_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
 				</outputVariable>
 			</mean>
 		</statisticsRelatedLocations>
 	</transformation>
-	<transformation id="Disaggregate_ACCESS_G_1h">
+	<transformation id="Disaggregate_ACCESS_G3_10days_1h">
 		<disaggregation>
 			<accumulative>
 				<inputVariable>
-					<variableId>ACCESSG_P_subcatchments_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
 				</inputVariable>
 				<outputVariable>
-					<variableId>ACCESSG_P_subcatchments_1h</variableId>
+					<variableId>ACCESSG3_10days_P_subcatchments_1h</variableId>
 				</outputVariable>
 			</accumulative>
 		</disaggregation>
 	</transformation>
-	<transformation id="Interpolate_ACCESS-R_to_subareas">
+	<transformation id="Interpolate_ACCESS-G3_3days_to_subareas">
 		<interpolationSpatial>
 			<inverseDistance>
 				<inputVariable>
-					<variableId>ACCESSR_P_grid</variableId>
+					<variableId>ACCESSG3_3days_P_grid</variableId>
 				</inputVariable>
 				<searchRadius>100000</searchRadius>
 				<distanceGeoDatum>UTM55S</distanceGeoDatum>
 				<inverseDistancePower>2</inverseDistancePower>
 				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
-					<variableId>ACCESSR_P_subareas_1h</variableId>
+					<variableId>ACCESSG3_3days_P_subareas_1h</variableId>
 				</outputVariable>
 			</inverseDistance>
 		</interpolationSpatial>
@@ -435,11 +435,11 @@
 		<statisticsRelatedLocations>
 			<mean>
 				<inputVariable>
-					<variableId>ACCESSR_P_subareas_1h</variableId>
+					<variableId>ACCESSG3_3days_P_subareas_1h</variableId>
 				</inputVariable>
 				<locationRelationId>subcatchment</locationRelationId>
 				<outputVariable>
-					<variableId>ACCESSR_P_subcatchments_1h</variableId>
+					<variableId>ACCESSG3_3days_P_subcatchments_1h</variableId>
 				</outputVariable>
 			</mean>
 		</statisticsRelatedLocations>

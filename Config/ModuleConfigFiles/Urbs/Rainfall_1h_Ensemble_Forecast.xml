@@ -104,19 +104,6 @@
 		</timeSeriesSet>
 	</variable>
 	<!--NWP Forecast series interpolated to sub-areas in original time interval and 1 hour time interval-->
-	<!-- <variable>
-		<variableId>ACCESSG3_10days_P_UrbsSubAreas</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>$CATCHMENT$_Rainfall_Forecast</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg3_10</qualifierId>
-			<locationSetId>URBS_subareas.$CATCHMENT$</locationSetId>
-			<timeSeriesType>temporary</timeSeriesType>
-			<timeStep unit="hour" multiplier="1"/>
-			<readWriteMode>read complete forecast</readWriteMode>
-		</timeSeriesSet>
-	</variable> -->
 	<variable>
 		<variableId>ACCESSG3_10days</variableId>
 		<timeSeriesSet>
@@ -449,7 +436,7 @@
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 			<ensembleId>$ENSEMBLE$</ensembleId>
-			<ensembleMemberId>ACCESSG</ensembleMemberId>
+			<ensembleMemberId>ACCESSG3_10</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -464,7 +451,7 @@
 			<relativeViewPeriod unit="hour" start="-48" end="168" startOverrulable="true" endOverrulable="true"/>
 			<readWriteMode>add originals</readWriteMode>
 			<ensembleId>$ENSEMBLE$</ensembleId>
-			<ensembleMemberId>ACCESSR</ensembleMemberId>
+			<ensembleMemberId>ACCESSG3_3</ensembleMemberId>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -682,18 +669,6 @@
 		</interpolationSpatial>
 	</transformation>
 	<!--Step 2: Disaggregate all original NWP subarea data to hourly intervals-->
-	<!-- <transformation id="ACCESSG">
-		<disaggregation>
-			<accumulative>
-				<inputVariable>
-					<variableId>ACCESSG_P_UrbsSubAreas</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>ACCESSG</variableId>
-				</outputVariable>
-			</accumulative>
-		</disaggregation>
-	</transformation> -->
 	<transformation id="ADFD">
 		<disaggregation>
 			<accumulative>
