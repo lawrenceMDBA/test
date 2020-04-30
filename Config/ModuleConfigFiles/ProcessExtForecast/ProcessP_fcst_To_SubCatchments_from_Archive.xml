@@ -91,7 +91,7 @@
 	</variable>
 	<!--NWP subcatchments-->
 	<variable>
-		<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
+		<variableId>ACCESSG3_10days_P_subareas_1h</variableId>
 		<timeSeriesSet>
 			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 			<valueType>scalar</valueType>
@@ -99,22 +99,9 @@
 			<qualifierId>accessg3_10</qualifierId>
 			<locationSetId>URBS_subareas</locationSetId>
 			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="3"/>
+			<timeStep unit="hour" multiplier="1"/>
 			<readWriteMode>read complete forecast</readWriteMode>
 			<expiryTime unit="day" multiplier="2"/>
-		</timeSeriesSet>
-	</variable>
-	<variable>
-		<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
-		<timeSeriesSet>
-			<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
-			<valueType>scalar</valueType>
-			<parameterId>P_fcst</parameterId>
-			<qualifierId>accessg3_10</qualifierId>
-			<locationSetId>URBS_subcatchments</locationSetId>
-			<timeSeriesType>external forecasting</timeSeriesType>
-			<timeStep unit="hour" multiplier="3"/>
-			<readWriteMode>read complete forecast</readWriteMode>
 		</timeSeriesSet>
 	</variable>
 	<variable>
@@ -385,7 +372,7 @@
 				<inverseDistancePower>2</inverseDistancePower>
 				<numberOfPoints>9</numberOfPoints>
 				<outputVariable>
-					<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subareas_1h</variableId>
 				</outputVariable>
 			</inverseDistance>
 		</interpolationSpatial>
@@ -394,27 +381,15 @@
 		<statisticsRelatedLocations>
 			<mean>
 				<inputVariable>
-					<variableId>ACCESSG3_10days_P_subareas_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subareas_1h</variableId>
 				</inputVariable>
 				<locationRelationId>subcatchment</locationRelationId>
 				<outputVariable>
-					<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
+					<variableId>ACCESSG3_10days_P_subcatchments_1h</variableId>
 				</outputVariable>
 			</mean>
 		</statisticsRelatedLocations>
-	</transformation>
-	<transformation id="Disaggregate_ACCESS_G3_10days_1h">
-		<disaggregation>
-			<accumulative>
-				<inputVariable>
-					<variableId>ACCESSG3_10days_P_subcatchments_3h</variableId>
-				</inputVariable>
-				<outputVariable>
-					<variableId>ACCESSG3_10days_P_subcatchments_1h</variableId>
-				</outputVariable>
-			</accumulative>
-		</disaggregation>
-	</transformation>
+	</transformation>	
 	<transformation id="Interpolate_ACCESS-G3_3days_to_subareas">
 		<interpolationSpatial>
 			<inverseDistance>
