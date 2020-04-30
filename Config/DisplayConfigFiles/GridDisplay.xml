@@ -2166,14 +2166,14 @@
 	</gridPlotGroup>		
 	<gridPlotGroup id="NWP" name="NWP Grided Forecasts">
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-			<gridPlot id="ACCESSG3_10days.P_fcst" name="ACCESS-G3 10 days(Total Rainfall)">
+			<gridPlot id="ACCESSG.P_fcst" name="ACCESS-G (Accumulated Rainfall)">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>P_fcst</parameterId>
 					<locationId>NWP</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep multiplier="1" unit="hour"/>
+					<timeStep multiplier="3" unit="hour"/>
 					<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
@@ -2194,15 +2194,15 @@
 				<classBreaksId>Rainfall</classBreaksId>
 				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
-			<gridPlot id="ACCESSG3_10days.P_fcst_AgAreas" name="ACCESS-G3 10 days(Aggregation Areas)">
+			<gridPlot id="ACCESSG.P_fcst_AgAreas" name="ACCESS-G (Aggregation Areas)">
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessg3_10</qualifierId>
+					<qualifierId>accessg</qualifierId>
 					<locationSetId>aggregation_areas</locationSetId>
 					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="1"/>
+					<timeStep unit="hour" multiplier="3"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
 				<movieFrameDurationMillis>500</movieFrameDurationMillis>
@@ -2219,15 +2219,15 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="ACCESSG3_10days.P_fcst_TSMSites" name="ACCESS-G3 10 days(TSM Sites)">
+			<gridPlot id="ACCESSG.P_fcst_TSMSites" name="ACCESS-G (TSM Sites)">
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessg3_10</qualifierId>
+					<qualifierId>accessg</qualifierId>
 					<locationSetId>tsm_sites_P</locationSetId>
 					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="1"/>
+					<timeStep unit="hour" multiplier="3"/>
 					<relativeViewPeriod end="7" start="-7" unit="day"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 					<expiryTime unit="day" multiplier="2"/>
@@ -2246,9 +2246,9 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="ACCESSG3_3days.P_fcst" name="ACCESS-G3 3 days(Total Rainfall)">
+			<gridPlot id="ACCESSR.P_fcst" name="ACCESS-R (Accumulated Rainfall)">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>P_fcst</parameterId>
 					<locationId>NWP</locationId>
@@ -2274,12 +2274,12 @@
 				<classBreaksId>Rainfall</classBreaksId>
 				<!-- <contourLinesColor>gray</contourLinesColor> -->
 			</gridPlot>
-			<gridPlot id="ACCESSG3_3days.P_fcst_AgAreas" name="ACCESS-G3 3 days(Aggregation Areas)">
+			<gridPlot id="ACCESSR.P_fcst_AgAreas" name="ACCESS-R (Aggregation Areas)">
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessP_fcst_To_AgAreas</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessg3_3</qualifierId>
+					<qualifierId>accessr</qualifierId>
 					<locationSetId>aggregation_areas</locationSetId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour" multiplier="1"/>
@@ -2299,12 +2299,12 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="ACCESSG3_3days.P_fcst_TSMSites" name="ACCESS-G3 3 days(TSM Sites)">
+			<gridPlot id="ACCESSR.P_fcst_TSMSites" name="ACCESS-R (TSM Sites)">
 				<timeSeriesSet>
 					<moduleInstanceId>ProcessP_fcst_To_TSMSites</moduleInstanceId>
 					<valueType>scalar</valueType>
 					<parameterId>P_fcst</parameterId>
-					<qualifierId>accessg3_3</qualifierId>
+					<qualifierId>accessr</qualifierId>
 					<locationSetId>tsm_sites_P</locationSetId>
 					<timeSeriesType>external forecasting</timeSeriesType>
 					<timeStep unit="hour" multiplier="1"/>
@@ -2444,9 +2444,6 @@
 				</timeSeriesSet>
 				<numberOfRecentForecasts>3</numberOfRecentForecasts>
 				<movieFrameDurationMillis>500</movieFrameDurationMillis>
-				<movingAccumulationTimeSpan multiplier="3" unit="hour"/>
-				<movingAccumulationTimeSpan multiplier="6" unit="hour"/>
-				<movingAccumulationTimeSpan multiplier="12" unit="hour"/>
 				<movingAccumulationTimeSpan multiplier="24" unit="hour"/>
 				<movingAccumulationTimeSpan multiplier="2" unit="day"/>
 				<movingAccumulationTimeSpan multiplier="3" unit="day"/>
@@ -2775,14 +2772,14 @@
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Soil Moisture">
-			<gridPlot id="ACCESSSG3_10days.Soil_moist" name="ACCESS-G3 10 days Soil Moisture">
+			<gridPlot id="ACCESSSG.Soil_moist" name="ACCESS-G Soil Moisture">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>SM_fcst</parameterId>
 					<locationId>NWP</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="1"/>
+					<timeStep unit="hour" multiplier="3"/>
 					<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
@@ -2802,9 +2799,9 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>SoilMoisture</classBreaksId>
 			</gridPlot>
-			<gridPlot id="ACCESSG3_3days.Soil_moist" name="ACCESS-G3 3 days Soil Moisture">
+			<gridPlot id="ACCESSR.Soil_moist" name="ACCESS-R Soil Moisture">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>SM_fcst</parameterId>
 					<locationId>NWP</locationId>
@@ -2830,14 +2827,14 @@
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Evaporation">
-			<gridPlot id="ACCESSG3_10days.Evaporation" name="ACCESS-G3 10days (Accumulated Evaporation)">
+			<gridPlot id="ACCESSG.Evaporation" name="ACCESS-G (Accumulated Evaporation)">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>EVAP_fcst</parameterId>
 					<locationId>NWP</locationId>
 					<timeSeriesType>external forecasting</timeSeriesType>
-					<timeStep unit="hour" multiplier="1"/>
+					<timeStep unit="hour" multiplier="3"/>
 					<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 					<readWriteMode>read complete forecast</readWriteMode>
 				</timeSeriesSet>
@@ -2857,9 +2854,9 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Evaporation</classBreaksId>
 			</gridPlot>
-			<gridPlot id="ACCESSG3_3days.Evaporation" name="ACCESS-G3 3 days (Accumulated Evaporation)">
+			<gridPlot id="ACCESSR.Evaporation" name="ACCESS-R (Accumulated Evaporation)">
 				<timeSeriesSet>
-					<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+					<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 					<valueType>grid</valueType>
 					<parameterId>EVAP_fcst</parameterId>
 					<locationId>NWP</locationId>
@@ -3063,27 +3060,27 @@
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation">
-			<gridPlot id="FloodOps_ACCESSG3_10days.P_fcst" name="ACCESS-G3 10 days">
+			<gridPlot id="FloodOps_ACCESSG.P_fcst" name="ACCESS-G">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>ACCESSG_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
@@ -3100,7 +3097,7 @@
 						<parameterId>P_obs</parameterId>
 						<locationSetId>URBS_subcatchments</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod start="-6" end="0" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -3118,7 +3115,7 @@
 						<qualifierId>Fops</qualifierId>
 						<locationSetId>flood.sites_pobs</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod end="0" start="-6" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -3139,13 +3136,13 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="FloodOps_ACCESSG3_3days.P_fcst" name="ACCESS-G3 3 days">
+			<gridPlot id="FloodOps_ACCESSR.P_fcst" name="ACCESS-R">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
-						<locationId>ACCESSG_archive</locationId>
+						<locationId>ACCESSR_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep multiplier="1" unit="hour"/>
 						<readWriteMode>read complete forecast</readWriteMode>
@@ -3153,7 +3150,7 @@
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
@@ -3592,27 +3589,27 @@
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation (URBS sub areas)">
-			<gridPlot id="FloodOps_ACCESSG3_10days.P_fcst_Subareas" name="ACCESS-G3 10 days">
+			<gridPlot id="FloodOps_ACCESSG.P_fcst_Subareas" name="ACCESS-G">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>ACCESSG_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
@@ -3622,10 +3619,10 @@
 						<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 						<valueType>scalar</valueType>
 						<parameterId>P_fcst</parameterId>
-						<qualifierId>accessg3_10</qualifierId>
+						<qualifierId>accessg</qualifierId>
 						<locationSetId>URBS_subareas</locationSetId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
@@ -3641,7 +3638,7 @@
 						<parameterId>P_obs</parameterId>
 						<locationSetId>URBS_subcatchments</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod start="-6" end="0" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -3659,7 +3656,7 @@
 						<qualifierId>Fops</qualifierId>
 						<locationSetId>flood.sites_pobs</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod end="0" start="-6" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -3680,13 +3677,13 @@
 				<movingAccumulationTimeSpan multiplier="10" unit="day"/>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="FloodOps_ACCESSG3_3days.P_fcst_Subareas" name="ACCESS-G3 3 days">
+			<gridPlot id="FloodOps_ACCESSR.P_fcst_Subareas" name="ACCESS-R">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
-						<locationId>ACCESSG_archive</locationId>
+						<locationId>ACCESSR_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep multiplier="1" unit="hour"/>
 						<readWriteMode>read complete forecast</readWriteMode>
@@ -3694,7 +3691,7 @@
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
@@ -3708,7 +3705,7 @@
 						<moduleInstanceId>ProcessP_fcst_To_SubCatchments</moduleInstanceId>
 						<valueType>scalar</valueType>
 						<parameterId>P_fcst</parameterId>
-						<qualifierId>accessg3_3</qualifierId>
+						<qualifierId>accessr</qualifierId>
 						<locationSetId>URBS_subareas</locationSetId>
 						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep unit="hour"/>
@@ -4209,27 +4206,27 @@
 			</gridPlot>
 		</gridPlotGroup>
 		<gridPlotGroup id="NWP_P" name="Precipitation - Current Policy (URBS sub areas)">
-			<gridPlot id="FloodOps_ACCESSG3_10days.P_fcst_Subcatchments" name="ACCESS-G3 10days">
+			<gridPlot id="FloodOps_ACCESSG.P_fcst_Subcatchments" name="ACCESS-G">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>ACCESSG_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_10days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSG</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
-						<timeStep multiplier="1" unit="hour"/>
+						<timeStep multiplier="3" unit="hour"/>
 						<relativeViewPeriod end="10" start="-2" endOverrulable="true" unit="day"/>
 						<readWriteMode>read complete forecast</readWriteMode>
 					</timeSeriesSet>
@@ -4259,7 +4256,7 @@
 						<parameterId>P_obs</parameterId>
 						<locationSetId>URBS_subcatchments</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod start="-6" end="0" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -4277,7 +4274,7 @@
 						<qualifierId>Fops</qualifierId>
 						<locationSetId>flood.sites_pobs</locationSetId>
 						<timeSeriesType>external historical</timeSeriesType>
-						<timeStep unit="hour" multiplier="1"/>
+						<timeStep unit="hour" multiplier="3"/>
 						<relativeViewPeriod end="0" start="-6" unit="day"/>
 						<readWriteMode>read only</readWriteMode>
 					</timeSeriesSet>
@@ -4287,13 +4284,13 @@
 				<movieFrameDurationMillis>500</movieFrameDurationMillis>
 				<classBreaksId>Rainfall</classBreaksId>
 			</gridPlot>
-			<gridPlot id="FloodOps_ACCESSG3_3days.P_fcst_Subcatchments" name="ACCESS-G3 3 days">
+			<gridPlot id="FloodOps_ACCESSR.P_fcst_Subcatchments" name="ACCESS-R">
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
-						<locationId>ACCESSG_archive</locationId>
+						<locationId>ACCESSR_archive</locationId>
 						<timeSeriesType>external forecasting</timeSeriesType>
 						<timeStep multiplier="1" unit="hour"/>
 						<readWriteMode>read complete forecast</readWriteMode>
@@ -4301,7 +4298,7 @@
 				</dataLayer>
 				<dataLayer>
 					<timeSeriesSet>
-						<moduleInstanceId>ImportForecastACCESSG3_3days</moduleInstanceId>
+						<moduleInstanceId>ImportForecastACCESSR</moduleInstanceId>
 						<valueType>grid</valueType>
 						<parameterId>P_fcst</parameterId>
 						<locationId>NWP</locationId>
