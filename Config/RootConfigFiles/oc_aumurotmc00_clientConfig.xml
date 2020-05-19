@@ -16,13 +16,13 @@ http://fews.wldelft.nl/schemas/version1.0/clientConfig.xsd">
 		<!--<synchProfileId>full</synchProfileId>
 		<synchProfileId>minimal</synchProfileId>-->
 	</connection>
-
 	<jvmOption>-Xmn1100m</jvmOption>
 	<jvmOption>-Xmx1500m</jvmOption>
 	<!-- optional, when warmstates are so big they are better placed on disk -->
 	<!-- <warmStatesDirectory>/opt/fews/region_home/fromfss/WarmStates</warmStatesDirectory> -->
 	<!-- Needed for web browser display -->
     <autoExportModuleDataSet name="jcef" exportDir="Modules"/>
+	<autoExportModuleDataSet name="documents" exportDir=""/>
 	<!-- Uncomment the localDataStoreFormat / synchProfiles section if synchronisation is desired. This is not the default option.
 	Normally only activated on instigation by FEWS-support for the purpose of 
 	1. readonly / offline mode when there are (network / wifi / database) connection problems

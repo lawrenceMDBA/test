@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientConfiguration xmlns="http://www.wldelft.nl/fews" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wldelft.nl/fews http://fews.wldelft.nl/schemas/version1.0/clientConfig.xsd">
+	<clientType>Stand alone</clientType> 
+	<otherRootConfigFiles>
+		<name>patch.jar</name>
+		<name>sa_global.properties</name>
+		<name>fews-splash.jpg</name>
+		<name>oc_clientConfig.xml</name>
+	</otherRootConfigFiles>
+	<jvmOption>-Xmn1100m</jvmOption>
+	<jvmOption>-Xmx1500m</jvmOption>
+	<localDataStoreFormat>Firebird</localDataStoreFormat>
+	<autoExportModuleDataSet name="jcef" exportDir="Modules"/>
+	<autoExportModuleDataSet name="documents" exportDir=""/>
+	<!-- optional, when warmstates are so big they are better placed on disk -->
+	<!-- <warmStatesDirectory>/opt/fews/region_home/fromfss/WarmStates</warmStatesDirectory> -->
+	<!-- Needed for web browser display -->
+	<!--<autoExportModuleDataSet name="jcef" exportDir="Modules"/>-->
+	<!-- Uncomment the localDataStoreFormat / synchProfiles section if synchronisation is desired. This is not the default option.
+	Normally only activated on instigation by FEWS-support for the purpose of 
+	1. readonly / offline mode when there are (network / wifi / database) connection problems
+	2. support on troublesome workflows
+	In order to have the synchProfiles available the synchProfileIds have to be configured in the connection section:
+	<connection ...>
+	...
+		<synchProfileId>full</synchProfileId>
+		<synchProfileId>minimal</synchProfileId>
+	</connection>
+	-->
+   
+	<synchProfile id="full">
+		<xmlConfig enabled="true" name="Default xml config" synchLevel="11"/>
+		<coldStates enabled="true" name="Default cold states" synchLevel="11"/>
+		<moduleDataSets enabled="true" name="Default module data sets" synchLevel="11"/>
+		<mapLayers enabled="true" name="Default map layers" synchLevel="11"/>
+		<icons enabled="true" name="Default icons" synchLevel="11"/>
+		<reportTemplates enabled="true" name="Default report templates" synchLevel="11"/>
+		<reportImages enabled="true" name="Default report images" synchLevel="11"/>
+		<continuousTimeSeries enabled="true" name="Telemetry" synchLevel="1" maxAge="730" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Manual" synchLevel="5" maxAge="730" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Astronomical and climatological" synchLevel="4" maxAge="10" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Small external forecast grids" synchLevel="6" maxAge="10" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Large external forecast grids" synchLevel="16" maxAge="10" unit="day"/>
+		<continuousTimeSeries enabled="false" name="Simulated forecast grids" synchLevel="2" maxAge="12" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Performance indicator" synchLevel="8" maxAge="30" unit="day"/> 
+		<forecastTriggeredTimeSeries enabled="true" name="Simulated forecast time series" synchLevel="0"/>
+		<warmStates enabled="true" name="Warm states" maxAge="10" unit="day"/>
+		<logEntries enabled="true" name="Log Entries" maxAge="10" unit="day"/>
+		<thresholdEvents enabled="true" name="Threshold Events" maxAge="10" unit="day"/>		
+	</synchProfile>
+	<synchProfile id="minimal">
+		<xmlConfig enabled="true" name="Default xml config" synchLevel="11"/>
+		<coldStates enabled="true" name="Default cold states" synchLevel="11"/>
+		<moduleDataSets enabled="false" name="Default module data sets" synchLevel="11"/>
+		<mapLayers enabled="true" name="Default map layers" synchLevel="11"/>
+		<icons enabled="true" name="Default icons" synchLevel="11"/>
+		<reportTemplates enabled="false" name="Default report templates" synchLevel="11"/>
+		<reportImages enabled="false" name="Default report images" synchLevel="11"/>
+		<continuousTimeSeries enabled="true" name="Telemetry" synchLevel="1" maxAge="365" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Manual" synchLevel="5" maxAge="365" unit="day"/>
+		<continuousTimeSeries enabled="true" name="Astronomical and climatological" synchLevel="4" maxAge="1" unit="day"/>
+		<continuousTimeSeries enabled="false" name="Small external forecast grids" synchLevel="6" maxAge="10" unit="day"/>
+		<continuousTimeSeries enabled="false" name="Large external forecast grids" synchLevel="16" maxAge="10" unit="day"/>
+		<forecastTriggeredTimeSeries enabled="true" name="Simulated forecast time series" synchLevel="0"/>
+		<warmStates enabled="false" name="Warm states" maxAge="10" unit="day"/>
+		<logEntries enabled="true" name="Log Entries" maxAge="1" unit="day"/>
+		<thresholdEvents enabled="true" name="Threshold Events" maxAge="1" unit="day"/>
+	</synchProfile>
+</clientConfiguration>
